@@ -1,0 +1,54 @@
+#This file specifies the key bindings for this game. The bindings are all
+# numbers for pygame.K_KEYNAME, as listed at
+# http://pygame.org/docs/ref/pygame_constants.html
+up=273
+down=274
+left=276
+right=275
+action=13
+cancel=27
+
+#In battle, do a standard attack. (a)
+attack=97
+#In the main screen, save: (s)
+save=115
+#In the main screen, quit: (q)
+quit=113
+#In the main screen, open the inventory: (i)
+inv=105
+
+#If using a cheating character, load the console in the main window. (~)
+load_console=96
+
+#Number of lines for the message scroller in the main window.
+#6 should be sized about right for 800x600.
+message_lines = 6
+
+#Difficulty: Easy=0, Normal=1, Hard=2.
+difficulty=1
+
+#size (in pixels) of the editor screen
+editor_xsize = 1024
+editor_ysize = 768
+#size (in tiles) of the editor screen. 15 works well with 640x480,
+#20 with 800x600, and 24 with 1024x768
+editor_tilesize = 24
+
+#Is the game screen fullscreen, (or windowed)?
+fullscreen=0
+
+#Should we use the joystick?
+usejoystick=1
+
+#Which joystick should we use? (If more than one)
+#(May not work. I can't test it...)
+joystick_number = 0
+
+#Which joystick buttons are used for action and cancel
+joystick_action=0
+joystick_cancel=1
+
+#Which axis' to use for left-right, and up-down movement.
+joystick_lr_axis=0
+joystick_ud_axis=1
+
