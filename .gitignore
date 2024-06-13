@@ -1,0 +1,10 @@
+# Python Environment
+.venv/
+__pycache__/
+*.pyc
+
+# VS Code Files
+.vscode/
+
+# Repo Specific Files
+temp_editor_script.txt

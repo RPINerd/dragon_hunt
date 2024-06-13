@@ -1,0 +1,418 @@
+TODO:
+Multiple Characters.
+map transitions.
+Add ability to "undo" in map editor.
+Complete testing map.
+Scripted Enemy attacks/ep.
+Allow new stats.
+Spawn monster.
+Scriptable equipment spaces.
+Show picture in popup window.
+Include files/functions.
+Better shop price adjustments.
+Actors.
+Better Shop scripting.
+Adjustment of dropped items.
+Number of used inv spots.
+Module in .zip.
+
+Changelog:
+
+3.56
+Improved speed when loading linked maps.
+The save button in the inventory refreshes properly. (Lukas Sabota for report)
+Fixed a couple walkable mistakes in the first DA town. (Lukas Sabota for report)
+Joystick functionality added. (Lukas Sabota for suggestion)
+Psyco will be used if available.
+Added options screen.
+Loading screen works properly with 0 saves.
+Text entry no longer uses the custom keys.
+
+3.55
+Fixed bug that dropped an item when trying to use a skill. (report by YK)
+Game will no longer crash if no sound is available. (fix by Gekko04)
+The Death spell in Dark Ages actually works now. (report by Daniel Sturm)
+
+3.54
+Allowed skill usage outside of battle.
+Added copytile mode in editor.
+Added Dark Ages module.
+Manually setting exp levels is possible.
+
+3.53
+Added code to allow world-map type environments.
+Added fade-out effect. Now all I need is a fade-in effect...
+Improved the map editor significantly.
+Recreated the towns.
+
+3.52
+Rewrote the display code to use pygame instead of Tkinter. This should help
+	in adding more graphical flash.
+Minor bugfixes.
+
+3.51
+Fixed a few bugs that ended up in 3.50.
+
+3.50
+UI re-organization
+unified game into a single canvas/window
+Completely removed PGUP/DN keys as unneeded.
+Fixed Python traceback when closing the main window with the inv open.
+skill("use", "something") added.
+skill use in battle shows price, items can be equipped during battle
+generic_dialog() added.
+inv("use", "something") added.
+mapspot() added.
+gamestat("new*") added.
+Stat names can be adjusted.
+New game/load game/battle/console/rpg.py/message scroller windows redone
+	to use canvas exclusively.
+Dialogs work from battle.
+inv() can return item stats.
+equip() function added.
+All "clicking" binds use g.window_main, and <ButtonRelease-1>.
+Confirmation when closing game.
+
+3.49
+Redid inv; it now uses the same canvas as the main map.
+Redid store; it now uses the same canvas as the main map.
+Removed left sidebar, after transferring all data to other locations.
+Double-click in inv/store will affect item. (Michael Kallas for idea)
+Player will die properly when facing non-random enemies. (Michael Kallas
+	for bug report)
+Added inv icon to main map.
+Better battle scripting (possible to adjust monster stats).
+Redid error checking slightly. Less chance for infinite loops now.
+Adjusted shop doors. (No moving two spaces on entry.)
+Added gamestat() command.
+Possible to have newlines in dialog/question.
+Fixed bug with hero().
+Added townsperson to island_shops.
+Script set() command accepts shortcuts.
+Can view xyz coords in scripting.
+addoverpix() scripting command added.
+inv() scripting command added.
+skill() scripting command added.
+inv_spot() added. (View item by inv loc.)
+Ability to change the titlebar text.
+Nerfed frenzy and dismember a bit.
+
+3.48
+Any images in modules/default/images will also be loaded. Completely useless
+	right now, but if we get multiple modules, could reduce size.
+Skills can now be script-based.
+Map editor now correctly deals with multiple modules.
+Main window no longer comes up twice if "new game" is chosen twice rapidly.
+Added cheat console.
+Added wall_* script commands. (Allison Marles)
+Added/updated levels. (Allison Marles)
+Difficulty levels. (settings.txt)
+default_player_name actually works now.
+Updated docs.
+Shop name listed in the store, (Allison Marles)
+Prevent edge-of-map Python tracebacks.
+Redid scripting. All commands are now stackable.
+
+3.47
+Loadgame window displays stats before loading the game.
+Moved all player stats to the file "player.py", and changed it to a class.
+(This is the first step to getting multiple characters.)
+Added hurt_monster and damage_monster scripting commands.
+Cleaned up the battle code a bit.
+Minor improvements to a few maps.
+
+3.46
+Stopped map editor from deleting comments/indentation/blank lines.
+Fixed some minor bugs/CVS problems. (some fixes by Allison Marles)
+It is now possible to have items with scripting.
+Inventory equipment is tile-based.
+Stores, battles, and inventory all appear within the main window now.
+
+3.45
+Wingame.txt works properly again.
+Several new levels added. (Allison Marles, George Tuosto)
+Copyright aspects tightened up. (Proper headers.)
+Gems added. (Allison Marles)
+Jellyfish enemy added. (Allison Marles)
+
+3.44
+Possible to edit map settings after load.
+Messed with documentation.
+Centralized more of the scripting code. (No user-visible changes)
+Redid "if" action to use if/else/endif syntax.
+Fixed bug with hit graphic displaying on wrong monster.
+Adjusted display of stats/description based on the selected monster.
+Added (unusable) path from town.
+Updated URL in setup.py.
+
+3.43
+Centralized button loading code. (No user-visible changes)
+Now possible to adjust scripting in editor.
+New levels. (Allison Marles)
+Map can change default hero pictures. (Allison Marles)
+Map editor fills in current size of map when resize is chosen.
+Moved some files to doc/updated documentation.
+Fixed bug with canceling attack with multiple monsters.
+Better mouse interface for battle.
+Frenzy does not ask a target for every hit. (Only after monster dies)
+Fixed bug in editor which caused annoying things to happen when a map didn't
+ fill the whole screen.
+Give name command works with ~~ embedded actions.
+Second town has better armor/weapons than the first town.
+Adjustable number of lines in message scroller. (settings.txt)
+Graphical effect for hitting a monster.
+Battles use already loaded images for monsters/hero.
+
+3.42
+Fixed focus of button in shop.
+Centered picture of smoke bomb. (Allison Marles)
+Fixed bug with dragons.
+Fixed visual bug in level 4.
+Items with price of 0 are no longer droppable.
+Water battle background for island level. (Allison Marles)
+New levels. (Allison Marles)
+New assorted content. (George Tuosto)
+Multiple monsters in battle.
+Allowed editing battle background in editor.
+Assorted fixes/updates to map editor. (Allison Marles)
+
+3.41
+Fixed town walls.
+Added ability to view/change walkable status of tiles in map editor.
+Redid loading code to be more simple. There should be no visible changes.
+Made more of the battle code safe for multiple monsters.
+
+3.40
+Changed monster hp text display from label to canvas; to help with:
+Allowed changing the background picture for battles on a per-map basis.
+New (better) buttons. (Allison Marles)
+Canvas buttons in shop. (Allison Marles)
+Map Editor works again. (Oops)
+Added ability to insert actions into strings.
+(info, dialog, question, and set actions)
+Added ability to run a script on the death of a monster. (See dragon.txt)
+Removed Dragon items from stores.
+Updated copyright dates.
+Fixed bug with is_equipped command.
+New fourth level.
+
+3.39
+Quit button now works from battle. (Allison Marles)
+Hero is now pointed the right direction upon changing maps. (Allison Marles)
+Keep battle item listbox focused on item/skill after use.
+Allowed double-click in editor loadmap window.
+Added scrollbar in editor loadmap window.
+Added "printvars" scripting command.
+Better fail for undefined tiles.
+Preliminary work for allowing multiple monsters.
+All monsters have pictures.
+Addpix/delpix work with tiles with spaces.
+
+3.38
+Game handles stacks of items properly now.
+More powerful handling of off-map areas.
+Improved maps. (Town, Level 2, Island)
+All functions (should) now consistantly use absolute coordinates.
+The Rage ability actually has an effect now. (Oops)
+Abilities have been rebalanced.
+Item and skill help text works better.
+
+3.37
+Documentation updates.
+Stat command will now return (correct) adjusted values for attack/defense.
+Equipment can now give bonuses to maxhp/maxep/attack/defense.
+New item "Dragon Helm", and changes to "Dragon Breastplate".
+Key bindings moved to an external file (settings.txt).
+
+3.36
+Better skill pictures.
+Changed inv interface to use tiles.
+Increased inv spaces from 10 to 28.
+Fixed python error with bombs.
+Code cleanup in shop.py and battle.py.
+Pgup/pgdn now switch buttons in inv.
+
+3.35
+Added new town. (Allison Marles)
+Map editor will save map to right place. (Allison Marles)
+Fixed town/wood_wall_e.png. (one pixel too wide)
+Changed shop to use item tiles.
+
+3.34
+Added new level. (Allison Marles)
+Map editor uses modes now. (Allison Marles)
+Added Jelly and Crab monsters.
+Pictures are included for all items.
+Map Editor works again. (Oops)
+Clarified license terms.
+
+3.33
+Dropped items are added to the map. (Allison Marles)
+Item code moved to new file, changed to a class.
+Moved item information into a directory from a single file.
+Can link pictures to items.
+Redid the quick refresh code for visual clarity.
+Started new savefile format.
+
+3.32
+Slightly refactored the yesno code.
+Added dialog scripting command.
+Changed loadgame from Tkinter to canvas buttons.
+Fixed items again.
+Adjusted main to use separate x and y canvas dimensions.
+Adjusted main so it fits in 800x600.
+
+3.31
+Changed yesno to canvas widget from Tkinter in main and inv.
+Allowed doubleclick in loadgame menu.
+Only refresh hero when moving into a wall.
+Moving around is *much* faster.
+Updated docs. (tiles.txt)
+
+3.30
+Items work in-editor. (Allison Marles)
+del_pix command added. (Allison Marles)
+Editor improvements. (Allison Marles)
+Can hold down mouse in-editor to draw larger areas.
+Can edit monster list in-editor.
+All items now work properly.
+Fixed python errors when using Bombs, Frenzy, and Dismember.
+Added hp/ep recovery scripts.
+Stat scripting command now understands player level.
+Added is_equipped scripting command.
+Added scrollbars to editor.
+Scrollwheel works in editor.
+Moved monsters to class from array.
+Put each monster in separate file.
+Updated the docs.
+Run scripting command works again.
+
+3.29
+Fixed resizing bug.
+Autoexit upon winning battle.
+Loading screen for start of game.
+Map editor can create nonsquare maps.
+Map Editor can deal with multiple modules.
+Map editor can now load and save maps without loss of information.
+All maps resaved in editor to get formatting consistant.
+
+3.28
+Included tiles.txt and Map_Editor shortcut. (Oops)
+Map editor does not define unused tiles.
+Map editor can create smaller maps.
+Map editor does not slow down after loading several files anymore.
+Map editor does not give python errors upon hitting cancel in select map.
+Map editor can toggle grid mode.
+Added xy scripting mode.
+
+3.27
+Added item abilities. (Allison Marles)
+Map editor. (Allison Marles)
+Allowed resizing the statusbox.
+Moved map from labels to canvas.
+(This gives a slight speed improvement, and makes transparancy easier.)
+Added addpix command.
+Added store interiors. (Allison Marles)
+Added many graphics. (Allison Marles)
+
+3.26
+Allowed continuing after winning.
+Fixed give gold bug.
+Expanded level 1.
+Added monster descriptions. (Allison Marles)
+Added sell item message. (Allison Marles)
+Game plays well with CVS now. (Allison Marles)
+Can see monster attack/defense.
+Loadgame screen works better with no saves.
+Better item/skill mouse control in battle.
+Moved inventory to main window.
+Moved game name to external file.
+Directory name no longer matters in modules.
+Placed new game dice in variables.txt.
+Allowed "\" line-continuation in items.txt.
+Put shop data in text file.
+Added addskill scripting command.
+Added attack and defense training.
+
+3.25
+Allowed subdirectories in the tiles directory.
+Allowed =,<,>,<=,>= in if command.
+Allowed +,-,= in set command.
+Added stat scripting command.
+Allowed multiple quests.
+Added underground tiles.
+Changed hero graphics.
+Enhanced level 2.
+Moved store/battle from window to frame. (Allison Marles)
+Added message scroller. (Allison Marles)
+Added monster picture ability. (Allison Marles)
+
+3.24
+Fixed bug with using items with full inventory.
+All screens can now be entirely controlled by keyboard.
+Can now move with mouse.
+Moved tiles to images/tiles
+Added button images.
+Allowed any picture for the off-screen area.
+
+3.23
+Fixed bugs with starting new games with loaded characters.
+Changed map scripting to onload, action sections.
+Added 1 more item, finished descriptions.
+Added numbers as allowable script commands.
+Allowed commands instead of numbers in some commands.
+Changed scripting to central file, to allow scripting in other places.
+Added levelup script.
+Added hp/ep bars.
+
+3.22
+Changed xp rewarding; deeper diving is now encouraged.
+Added run scripting command.
+Changed map difficulty from numerical to a list of monsters.
+Changed monster reward from calculated to manual.
+Centralized movement code.
+
+3.21
+Save directory will now be created properly.
+Player cannot walk around while inside a store anymore.
+Added newgame script.
+Added town graphics.
+Added refresh scripting command.
+Eased up on the difficulty somewhat.
+
+3.2
+Fixed focus bug in inventory.
+Fixed errors when trying to move in the newgame screen.
+Check for/create saves directory.
+Moved monster, map, and item lists to external files.
+Moved version info to fewer locations.
+Added a couple more item descriptions.
+Added scripting engine
+Increased hp/ep recovery time.
+Started 3.2 savefile style for scripting variables.
+Added a small story.
+
+3.1
+Added skillpoints/ep usage.
+Changed Save/load game item storage to use names, not id,
+ to increase compatability between versions.
+Started new savegame style, 3.1, to add skills and item names.
+Changed line length to < 80 characters throughout code.
+Gave starting characters more gold, less ep.
+Levelup gives more maxhp, less maxep.
+Moved item use to inside battle.py. There may be a couple
+ leftover variables from the move that need cleaning up.
+Fixed bug where game was not reset after dying.
+Fixed bug where the battle display would not update upon trying to run.
+Fixed bug where buy button would remain active after running out of money.
+
+3.0a
+added stores, save/load game ability, few other things
+
+3.0
+started from scratch, writing Dragon Hunt in Python this time,
+as 1) I don't have a Visual Basic compiler anymore, and 2) I
+am running Linux now, making it difficult for me to run one in
+any case, and 3) I needed to learn Python. Features are about
+the same as 2.0, though there are a few improvements that came
+along for the ride, along with a few incomplete areas.
