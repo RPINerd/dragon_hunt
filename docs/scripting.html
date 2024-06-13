@@ -1,0 +1,685 @@
+<html>
+  <head>
+    <title>Scripting Help</title>
+    <meta content="">
+    <style></style>
+  </head>
+<body>
+<a name="top">
+<h1> Scripting Documentation</h1>
+</a>
+
+<h2>Table of Contents</h2>
+<ul>
+    <li><a href="#scriptframework">Script Framework</a>
+    <ul>
+       <li><a href="#onloadaction">onload/action</a>
+       <li><a href="#xy">xy</a>
+    </ul>
+    <li><a href="#completelist">Complete List of Working Commands</a>
+    <ul>
+	<li><a href="#slash">\</a>
+	<li><a href="#actionembedded">~Variable~ embedded variables</a>
+	<li><a href="#battle_bg">battle_bg</a>
+	<li><a href="#hero_bg">hero_bg</a>
+	<li><a href="#level_under">level_under</a>
+	<li><a href="#level_">level_*</a>
+	<li><a href="#monster">monster</a>
+	<li><a href="#colon">:Letter or Number</a>
+	<li><a href="#number">Number</a>
+	<li><a href="#string">String</a>
+	<li><a href="#action">action</a>
+	<li><a href="#addpix">addpix</a>
+	<li><a href="#addoverpix">addoverpix</a>
+	<li><a href="#addskill">addskill</a>
+	<li><a href="#attack">attack</a>
+	<li><a href="#damage_monster">damage_monster</a>
+	<li><a href="#delpix">delpix</a>
+	<li><a href="#dialog">dialog</a>
+	<li><a href="#die">die</a>
+	<li><a href="#end">end</a>
+	<li><a href="#equip">equip</a>
+	<li><a href="#fade">fade</a>
+	<li><a href="#find">find</a>
+	<li><a href="#gamestat">gamestat</a>
+	<li><a href="#generic_dialog">generic_dialog</a>
+	<li><a href="#give">give</a>
+	<li><a href="#hero">hero</a>
+	<li><a href="#hurt">hurt</a>
+	<li><a href="#hurt_monster">hurt_monster</a>
+	<li><a href="#if">if/else/endif</a>
+	<li><a href="#info">info</a>
+	<li><a href="#inv">inv</a>
+	<li><a href="#inv_spot">inv_spot</a>
+	<li><a href="#is_equipped">is_equipped</a>
+	<li><a href="#item">item</a>
+	<li><a href="#lose">lose</a>
+	<li><a href="#mapspot">mapspot</a>
+	<li><a href="#mapstat">mapstat</a>
+	<li><a href="#monster_give_stat">monster_give_stat</a>
+	<li><a href="#monster_stat">monster_stat</a>
+	<li><a href="#monster_select">monster_select</a>
+	<li><a href="#move">move</a>
+	<li><a href="#onload">onload</a>
+	<li><a href="#pass">pass</a>
+	<li><a href="#pix">pix</a>
+	<li><a href="#printvars">printvars</a>
+	<li><a href="#question">question</a>
+	<li><a href="#refresh">refresh</a>
+	<li><a href="#rng">rng</a>
+	<li><a href="#run">run</a>
+	<li><a href="#set">set</a>
+	<li><a href="#skill">skill</a>
+	<li><a href="#stat">stat</a>
+	<li><a href="#store">store</a>
+	<li><a href="#take">take</a>
+	<li><a href="#var">var</a>
+	<li><a href="#walk">walk</a>
+	<li><a href="#wall">wall_n/wall_s/wall_w/wall_e</a>
+	<li><a href="#win">win</a>
+      </ul>
+    <li><a href="#otherinfo">Other Information</a>
+</ul>
+
+<h1><a name="scriptframework">Script Framework</a></h1>
+
+<h2><a name="onloadaction">onload/action:</a></H2>
+each tile has two scripts; one for when the map is entered (onload), and one
+for when the tile is touched by the player (action). The tile definition
+starts in onload mode, and can switch back and forth using "onload" and
+"action". There are two elements that need to be in the onload section;
+"pix", and "walk". Putting a few "if" statements in would also work.
+Commands like info, on the other hand, are a bad idea.<BR><BR>
+
+<a href="#top">[Top]</a>
+
+<h2><a name="xy">xy</a></H2>
+The "xy" command will switch from defining types of tiles, to specific
+tiles. For example, you could fill an area with grass, then add something
+to some of the grass squares. Use ":x, y" to give data for a certain xy coord.
+(again, the tile starts out in onload mode, and can move to/from action) and
+the "tiles" command to move back. THIS MAY NOT CURRENTLY WORK.<BR><BR>
+
+<a href="#top">[Top]</a>
+
+
+<h1><a name="completelist">Complete list of working commands:</a></H1>
+Each entry gives the syntax, then an example, then some comments on the
+command. Also see the files in the data directory for working examples of
+these commands.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="slash">\</a></H2>
+info \<BR>
+Display line.<BR>
+Not a real command, but if a line ends with \, it can continue to the
+next line.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="actionembedded">~Variable~ embedded variables</a></H2>
+set("name_var", "=", "Frank")<BR>
+info("~name_var~")<BR>
+(will print Frank)<BR>
+Also not a real command, but dialog, info, and question commands, when given
+two "~" characters with a variable between them, will replace it with the
+actual value of the variable (as returned by var()).
+As a side note, use ~~ to print the "~" symbol once.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="battle_bg">battle_bg=filename</a></H2>
+battle_bg=underground.png<BR>
+Note that this only goes between :def and the first tile definition.
+It specifies which picture to use for the background when in battle.
+Subdirectories should work, in the same way as tiles.
+All filenames are relative to images/backgrounds/.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="hero_bg">hero_bg=String</a></H2>
+hero_bg=_raft<BR>
+Note that this only goes between :def and the first tile definition.
+If given, then instead of using people/hero_n.png (for example) as the hero
+picture, people/hero_nString.png will be used. In the _raft example, the file
+people/hero_n_raft.png would be used whenever the hero moves north.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="level_under">level_under=String</a></H2>
+level_under=town1.txt<BR>
+Note that this only goes between :def and the first tile definition.
+It specifies the level that is "underneath" the current level. Basically, the
+game will draw the given level, then draw the current level on top of it, as
+if you specified the given level as the appropriate pix() commands, then the
+pix() commands of the current level as addpix() commands. For this to be useful,
+some of the tiles in the current level need to be transparent. Either not
+including a pix command, or setting the pix command to be a completely
+transparent tile (null.png is included for this) will make the level given
+here show through that tile. Also, note that there is a refresh problem when
+the player moves onto a square that has transparent areas in the current level.
+(This occurs when changing direction without moving.)
+<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="level_">level_*=String</a></H2>
+level_down=level2.txt<BR>
+Note that this only goes between :def and the first tile definition.
+It specifies the level that will be to the North, Northwest, West, Southwest...
+of the current level. You can use level_up, level_down, level_left, level_right,
+level_upleft, level_upright, level_downleft, level_downright.<br>
+The bordering levels that are specified using this method will replace the
+normal off-map areas, (which are a repeat of the closest tile) and will actually
+appear on the appropriate border of the level, just as if the two levels were
+one. The intended purpose for this command(s) is to allow the creation of
+worldmaps; areas that must function as a single map, but are too large to be
+held comfortably in memory.<P>
+
+Note that scripting on the very edge of levels will not run using this method.
+Make sure not to put anything important on the borders of maps using this.
+<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="monster">monster=String</a></H2>
+monster=Cave Bear<BR>
+Note that this only goes between :def and the first tile definition.
+It specifies the monsters available on the map. Use a monster more than
+once to weight the listings. (ie, Ant, Ant, and Spider will give Ants twice
+as often as Spiders.)<BR><BR>
+<a href="#top">[Top]</a>
+
+
+<h2><a name="colon">:Letter or Number</a></H2>
+:t<BR>
+Start defining a new tile. Note that case matters.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="number">Number</a></H2>
+3<BR>
+returns the given number. Useful for if statements.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="string">"String"</a></H2>
+"Hi there"<BR>
+returns the given string. Useful for if statements. Note that all strings must
+be surrounded by quotes. To insert an actual quote character, use \". Also,
+\n will create a newline in the dialog and question commands.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="action">action</a></H2>
+Switch to defining the action scripting, which is called when the player
+moves into or over the tile. Also see onload.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="addpix">addpix("Filename")</a></H2>
+addpix("potion.png")<BR>
+Places the given picture on top of the current tile. It is recommended to
+use a tile with transparent areas; otherwise, pix would give the same power
+with better performance. The same restrictions as the pix command
+apply.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="addoverpix">addoverpix("Filename")</a></H2>
+addoverpix("tree.png")<BR>
+Identical to addpix, only it will be placed over the player.
+The same restrictions as the pix command apply.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="addskill">addskill("String")</a></H2>
+addskill("Rage")<BR>
+Use skill("give", "String") instead.<BR>
+Gives the player the specified skill. Returns 1 on success, or 0 on failure.
+(Either through the player already having the skill, or the skill not
+existing.) Use Rage, Sneak Away, Dismember, Frenzy, or a skill defined in
+skills.txt.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="attack">attack("random", "Mapname") OR attack("String")</a></H2>
+attack("random", "level4.txt")<BR>
+attack("Ant")<BR>
+Attack either a random monster from the map Mapname, or the monster
+given with String. Returns 1 if the player won, 0 if the player ran, or
+ends the script and calls endgame.txt if the player loses.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="damage_monster">damage_monster() OR damage_monster(Number)</a></h2>
+damage_monster()<BR>
+damage_monster(stat("attack"))<BR>
+Only works in battle. In battle, it attacks the opposing monster, asking the
+player to select a monster if needed, either with the power of the currently
+held weapon (as if the player hit the "attack" button in-battle),
+or at a specified (Command) power. Returns 1 if the attack went
+through, or 0 if the player cancelled/no enemy exists to attack. It differs
+from hurt_monster in that it is not reduced by armor.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="delpix">delpix("Filename")</a></H2>
+delpix("items/light_healing_potion.png")<BR>
+Removes the given picture from the tile. Returns 1 if the picture existed,
+and 0 if the picture did not.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="dialog">dialog("String")</a></H2>
+dialog("This message will pop up.")<BR>
+This displays a message in a dialog box. Useful when giving a lot of
+information to a user, or when dealing with story information. This command
+can use ~Variable~ embedded variables.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="die">die()</a></H2>
+Die. This kills the player, and calls endgame.txt. Automatically called upon
+hp reaching 0.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="end">end()</a></H2>
+End processing the script. Note that this not only ends processing the script,
+but when attached to an item or something for sale in a store, prevents the
+item from being destroyed on use/paid for.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="equip">equip("String", "String")</a></H2>
+equip("has", "dagger")<BR>
+equip("in_slot", "boots")<BR>
+Adjust the equipment of the player. The first string can be "in_slot",
+"has", "take", or "give". If "in_slot", the second string can be "weapon",
+"armor", "shield", "helmet", "gloves", or "boots", and will return the name of
+the the item currently in that slot (or "" if empty).<BR>
+Otherwise, the second string is the name of the item to adjust. "has" returns
+1 if the item is being worn, or 0 otherwise. "take" attempts to remove the
+item in question from the equipment, destroying it. It returns 1 on success,
+and 0 on failure (item was not being worn). "give" will place the given item in
+the equipment (destroying the previous item in that slot).
+Assuming the item is appropriate, it will always return 1.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="fade">fade(0)</a></H2>
+fade(0)<BR>
+Fades to black. Note that the single argument must be 0 for now.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="find">find("String", "String")</a></H2>
+find("light healing potion", "a")<BR>
+find("gold", 30)<BR>
+Asks the player if they want to pick up the item. Returns 1 if the item was
+picked up, or 0 if it failed. The item either needs to be defined in
+items.txt, or be gold. If gold, list the amount of gold. Otherwise, list
+either a or an as the second argument. (It is used in the dialog "You found
+STRING2 STRING1.")<BR>
+Example:<BR>
+<pre>pix("grass.png")
+if(var("gold_1"), "=", 0)
+	addpix("items/gold.png")
+endif
+walk(1)
+Action
+if(var("gold_1"), "=", 0)
+	if(find("gold", 5), "=", 1)
+		set("gold_1", "=", 1)
+	endif
+endif</pre><br><br>
+<a href="#top">[Top]</a>
+<h2><a name="gamestat">gamestat("String")</a></H2>
+gamestat("loc")<BR>
+gamestat("difficulty")<BR>
+gamestat("gamename")<BR>
+Return the value of per-game variables. possible values for String: loc,
+difficulty, gamename, x, y, newx, newy, mapname.<BR>
+Loc returns either "battle", "inventory", "main", or "shop" depending
+on the current location of the player. As some script commands do not work
+except in battle, this can be used to prevent errors. Difficulty returns
+0 (easy), 1 (normal), or 2 (hard), and can be used to create difficulty levels
+outside of battles. (Difficulty levels within battles are created
+automatically.) Gamename will return the name of the game, as given by
+variables.txt, and displayed in the titlebar. x, y, and mapname returns the
+player's current position, as would be used by the move command.
+newx and newy are different from x and y in that they return the location
+the player is moving to when moving, instead of the player's current location.
+
+
+<h2><a name="generic_dialog">generic_dialog("String",
+"String", String", ...)</a></H2>
+generic_dialog("Attack?", "no.png", "yes.png")<BR>
+generic_dialog("Action?", "attack.png", "run.png", "skill.png")<BR>
+Creates a dialog with the text of the first argument, and a line of buttons
+as specified in the rest of the arguments. The text argument understands
+~Variable~ embedded variables, and \n newlines. The button arguments must be
+the filename of a button in module name/images/buttons, with a _sel version
+of the button also existing. There is a limit of 999 buttons, though the
+screen width also limits this. This function returns an int, starting at 0.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="give">give("String", number)</a></H2>
+give("maxhp", 5)<BR>
+give("gold", rng(9, 9))<BR>
+give("name", "Frank")<BR>
+Adjust stats; possible values for String: name, hp, ep, maxhp, maxep, attack,
+defense, adj_maxhp, adj_maxep, adj_attack, adj_defense, gold, exp,
+skillpoints. Note that Number can be either
+positive or negative.<BR>
+The exception is name, which must be a string. However, ~Variable~
+variables work with name.<BR>
+The difference between (eg) attack and adj_attack is that attack is
+permanent, while adj_attack only lasts until the end of battle.<BR><br>
+<a href="#top">[Top]</a>
+
+<h2><a name="hero">hero("Filename minus .png extension")</a></H2>
+hero("hero_w")<BR>
+Give a specific picture to the hero. While any picture can be used (that would
+work for pix()) it is recommended to use one of the hero_n (s, e, w) pictures.
+This lasts until the player moves. Filenames are relative to
+images/tiles/people<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="hurt">hurt(Number)</a></H2>
+hurt(10)<BR>
+hurt(rng(5, 5))<BR>
+Injure the player for Number or Action points, reduced by armor.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="hurt_monster">hurt_monster() OR hurt_monster(Number)</a></h2>
+hurt_monster()<BR>
+hurt_monster(stat("attack"))<BR>
+Only works in battle. In battle, it attacks the opposing monster, asking the
+player to select a monster if needed, either with the power of the currently
+held weapon (as if the player hit the "attack" button in-battle),
+or at a specified (Command) power. Returns 1 if the attack went
+through, or 0 if the player cancelled/no enemy exists to attack. It differs
+from damage_monster in that it is reduced by armor.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="if">if(Action1, "Comparison", Action2)</a><BR>
+Action3<BR>
+else<BR>
+Action4<BR>
+endif</H2>
+if(rng(4, 5), "&gt;", 2)<BR>
+attack("random", "level1.txt")<BR>
+else<BR>
+info("A narrow escape")<BR>
+give("exp", 5)<BR>
+endif<BR>
+Performs Action1 and Action2, (These can be any actions, though some are more
+useful than others) then compares them. (either use =, &lt;, &gt;, &lt;=, &gt;=, or !=)
+If the comparison is true, then perform Action3. Otherwise, perform Action4.
+Attack, Item, Rng, Question, Var, and Take are useful for the 1st/2nd
+actions.<BR>
+Note that actions 3 and 4 can actually be any number of commands, that
+beginning whitespace is ignored, the "else" portion does not need to be given,
+and If commands can be stacked indefinitely. (They should only be limited by
+Python's maximum stack size)<BR>
+For actions that may kill the player, (eg: Hurt, give("hp", -5) simply follow the
+action with others, and don't bother with If, as death ends the script anyway.
+For Attack, success is defined by destroying the monster, failure by
+running away. Death simply ends the script. (And calls endgame.txt)<BR>
+Note that if(12345) is equivalent to if(12345, "==", 1)<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="info">info("String")</a></H2>
+info("String ~variable~")<BR>
+info("Hi there!")<BR>
+set("rand_num", "=", rng(5, 5))<BR>
+info("Your random number is ~rand_num~")<BR>
+Put the given line into the message scroller. Note that if a line
+contains ~Variable~, it will be replaced by the value of the variable.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="inv">inv("String1", "String2")</a></H2>
+inv("take", "key")<BR>
+inv("give", "sword")<BR>
+Performs various actions with the inventory. String1 can be "has", "take",
+"give", "use", "type", "quality", "price", "value", "description",
+"picturename", "hp_bonus", "ep_bonus", "attack_bonus", or "defense_bonus".<BR>
+If "has", inv() returns 1 if the player has the item in the
+inventory. If "take", inv() attempts to remove (destroy) an inventory
+item, returning 1 on success, and 0 on failure. If "give", inv() attempts
+to give the player an item, returning 1 on success, and 0 on failure
+(full inventory). If "use", the effect of that item is performed. (This does
+not require the item to be in the inventory, and does not use it up if it is.)
+<BR>The rest of the possibilities returns the respective property for the item.
+<BR>In all cases, String2 gives the item to adjust.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="inv_spot">inv_spot(Number)</a></H2>
+inv_spot(5)<BR>
+Returns the name of the item in the given location in the inventory. Number
+must be between 0 and 27. Returns "" if there is nothing in the given spot.
+<BR><br><a href="#top">[Top]</a>
+
+<h2><a name="is_equipped">is_equipped("String")</a></H2>
+is_equipped("Dagger")<BR>
+Obsolete. Use equip("has", "String") instead.<BR>
+Checks to see if the given item is being worn, and, if so, returns 1.
+Otherwise returns 0.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="item">item("String")</a></H2>
+item("light healing potion")<BR>
+Obsolete: use inv("give", "String") instead.<BR>
+Give the player the item specified. (case-insensitive) Fails (returns 0
+instead of 1) if the inventory is full, so use with if to prevent trapping
+the player in an un-win-able state.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="lose">lose()</a></H2>
+Lose the game. Note that this does not call endgame.txt, differing it from
+die. Use die whenever possible; use lose only in endgame.txt.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="mapspot">mapspot("String", Number, Number, "String")</a></H2>
+mapspot("map.txt", 4, 3, "walk")<BR>
+mapspot("map2.txt", 9, 13, "num_of_addpix")<BR>
+Returns stats for the given tile. First 3 arguments specify a tile using
+mapname, x, y coords. The last argument gives the variable to return. This
+can be walk, pix, num_of_dropped, num_of_addpix, num_of_addoverpix, wall_n,
+wall_s, wall_w, wall_e, within_bounds, y_bound, or x_bound.<BR>
+walk, and wall_* return either 0 or 1, with the same meaning as the respective
+function. Pix returns a string, as accepted by pix(). The num_of_* variables
+return the size of the array in question. They are less useful, but included
+for completeness. within_bounds returns 1 if the xy coords given exists in
+the given map, or 0 otherwise. Finally, *_bound returns the size of the given
+map in the given direction. With this variable, the xy coords are useless.
+<BR><BR><a href="#top">[Top]</a>
+
+<h2><a name="mapstat">mapstat("String", "String")</a></H2>
+mapstat("addmonster", "Ant")<BR>
+mapstat("delmonster", "Ant")<BR>
+mapstat("hero_bg", "_raft")<BR>
+mapstat("hero_bg", "")<BR>
+mapstat("battle_bg", "underground.png")<BR>
+Adjust stats for the map. Allowed options for the first string are addmonster,
+delmonster, hero_bg, battle_bg and change_titlebar. The options for the second string are
+the same as the options for the relevant command mapstat enhances, with the
+addition that hero_bg works with an empty string.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="monster_give_stat">monster_give_stat(Monster_Sel, "Stat_Name", Number)</a></H2>
+monster_give_stat(monster_select(), "attack", -5)<BR>
+monster_give_stat("all", "defense", 1)<BR>
+Adjusts the stats of one or more monsters. Monster_Sel
+is either a number, or "all". If a number, the command applies to
+the given monster in the group. If "all", the effect will be applied to
+all monsters in the battle. Stat_Name is either name, hp, maxhp, attack,
+defense, gold, or exp.
+If "name", Command is a string, not a command, but ~~ embedded variables will
+work. Otherwise, if Stat_Name is any of the other strings, the given stat
+will be increased (or decreased) by the given amount.<br><Br>
+<a href="#top">[Top]</a>
+
+<h2><a name="monster_stat">monster_stat(Monster_Sel, "Stat_Name")</a></h2>
+monster_stat("select", "attack")<BR>
+Returns the stats of a monster. Monster_Sel
+is a number. (such as monster_select() returns) The "all" option does not work
+for this command.
+The command applies to the given monster in the group.
+Stat_Name is either name, hp, maxhp, attack, or defense.
+Only usable in battle.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="monster_select">monster_select()</a></h2>
+monster_select()<BR>
+Lets the player select a monster (if only one monster exists, returns the
+only attackable monster). monster_select returns -1 if the user cancelled, or
+a number suitable for monster_stat or any other command that uses Monster_Sel.
+Only usable in battle.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="move">move("mapname", x, y)</a></H2>
+move("town.txt", 4, 6)<BR>
+Move the player to the given location. mapname is the complete filename of the
+map, (subdirectories do not work yet) and x and y are the xy coordinates
+inside the map.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="onload">onload</a></H2>
+Switch to defining the onload scripting, which is called when the player
+enters the map. Also see the action command. The tile starts in onload mode,
+so this command gives no extra power, but can help convenience.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="pass">pass()</a></H2>
+Do nothing. Only useful with <a href="#if">If</a>.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="pix">pix("Filename")</a></H2>
+pix("rock.png")<BR>
+Change the picture to the given file. Only .png is supported,
+and the file must be in the images/tiles directory. One of these in the onload
+section of a tile is highly recommended. Note that subdirectories are
+supported.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="printvars">printvars()</a></H2>
+printvars()<BR>
+Used for debugging purposes. Prints out all the current variables to the
+console. Not pretty, but gives the needed information.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="question">question("String")</a></H2>
+question("Leave this area?")<BR>
+This creates a dialog box with a body of String and yes/no buttons.
+Use with the If command. Yes returns 1, and No returns 0. This command
+can use ~Variable~ embedded variables.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="refresh">refresh()</a></H2>
+Refresh the screen. This is useful if you want to move the player *then*
+show a dialog box.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="rng">rng(Number1, Number2)</a></H2>
+rng(4, 9)<BR>
+This creates a random number between 1 and Number2. (ie, if Number2 is 3, the
+possible values are 1, 2, or 3.) The number is then compared with Number1.
+If Number1 is higher or equal, the random number is returned. Otherwise,
+0 is returned. Note that the probability of >0 returning can be expressed
+as the fraction Number1/Number2. ie, rng(3, 4) will return True 3/4ths of
+the time. Also note that rng(5, 5) will return a random number between 1 and 5,
+which can be used in the give and hurt commands. Finally, note that rng(4, 5)
+will give a random number between 0 and 4.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="run">run("mapname", x, y)</a></H2>
+run("town.txt", 4, 6)<BR>
+This command runs the tile defined.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="set">set("String", "Operation", Number/String)</a></H2>
+set("have_entered", "=", "yes")<BR>
+set("num_attacked", "+" 1)<BR>
+set a variable. Use the var command to compare. This information is
+saved when saving the game, and is useful for one-time actions. Use either -,
+ +, *, /, %, ^, or = as the Operation (%=modulus, ^=exponent). The binary
+operators adjust the current value of the variable using the new number
+given. For example, set("varname", "/", 5) will take the current value
+of varname, divide it by 5, and store the result in varname.
+Strings only work when using the = operator;
+otherwise, a number must be used. Finally, set("varname", 12345) is
+equivalent to set("varname", "=", 12345)<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="skill">skill("Switch", "String")</a></H2>
+skill("give", "Rage")<BR>
+skill("has", "Cringe")<BR>
+Performs various actions with skills. Switch can be "has", "take",
+"give", or "use". If "has", skill() returns 1 if the player has the skill,
+or 0 otherwise.
+If "take", skill() attempts to remove a skill, returning 1
+on success, and 0 on failure. (Failure is if the player didn't know the skill
+in the first place.) If "give", skill() attempts to give the player a
+skill, returning 1 on success, and 0 on failure (skill already known). If
+"use", the skill is used. This only works in battle, does not cost the
+player any ep, and does not require the skill to be known.<BR>
+In all cases, String gives the skill to adjust.
+Use Rage, Sneak Away, Dismember, Frenzy, or a skill defined in
+skills.txt.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="stat">stat("String")</a></H2>
+stat("maxhp")<BR>
+Returns the value of the stat String. Possible values for String:
+hp, ep, maxhp, maxep, attack, defense, adj_maxhp, adj_maxep, adj_attack,
+adj_defense, gold, exp, level, skillpoints, name. Note that attack (for example) give the
+base attack value, before any equipment or battle bonuses, while adj_attack
+returns the modified attack value, as used in battle.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="store">store("String")</a></H2>
+store("a Weapons Store")<BR>
+Enter a store. Check shops.txt for the possible values.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="take">take("String")</a></H2>
+take("Key")<BR>
+Obsolete: use inv("take", "String") instead.<BR>
+Remove an item from the inventory. When used with If, can implement keys and
+the like. Returns 0 on failure, 1 on success.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="var">var("String")</a></H2>
+var("have_entered")<BR>
+returns the current value of String, or 0 if String is unset. Use with If.<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="walk">walk(Number)</a></H2>
+walk(1)<BR>
+Set the ability for the player to walk on it. The only values accepted are
+ 1 (can walk) and 0 (cannot walk)<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="wall">wall_Direction(Number)</a></H2>
+wall_n(1)<BR>
+wall_s(1)<BR>
+wall_e(1)<BR>
+wall_w(1)<BR>
+In the case where you have a tile with a wall (with a walk value of 1) and the
+tile on the other side of the wall has a walk value of 1, to prevent the hero
+from walking through the wall, you must specify a wall value.  So if the tile
+has a wall to the north, you would specify this with "wall_n(1)".  It is not
+necessary to specify a lack of walls since all wall values default to 0.
+(Though resetting a wall to 0 does work.) It is
+also unnecessary (although harmless) to specify a wall when the tile on the
+other side of the wall is not walkable. The only values accepted are 1 (wall in
+this direction) and 0 (no wall in this direction).<BR><BR>
+<a href="#top">[Top]</a>
+
+<h2><a name="win">win()</a></H2>
+Call wingame.txt.<BR><BR>
+<a href="#top">[Top]</a>
+
+
+<h2><a name="otherinfo">Other information:</a></H2>
+When debugging, run the game from the command line. All errors are sent that
+direction.<P>
+
+To create your own module, create a directory in modules, called whatever
+you want. (Make it fairly descriptive, though.) Include the needed files
+(copy-paste from another module would be the easy way to do this, though note
+that the save/ directory is unneeded) and everything should work.<P>
+
+Note that subdirectories in the tiles/ directory will work.<P>
+
+When drawing buttons, it is possible to change some widths and heights.
+Make sure the buttons form a rectangle after assembly, and you should be fine.<P>
+
+This file may not be entirely accurate. Check action.py in the code directory
+for the code behind this file. Tell me about any documentation errors found.
+(The functions are named script_*, where * is the name of the function in
+question.)<P>
+<a href="#top">[Top]</a>
+

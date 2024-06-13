@@ -1,0 +1,140 @@
+#Mapping basics:
+#Do the actual tiling in the Map Editor. That's what it's there for.
+#Use this file and the provided maps for help.
+#The outside "border" tiles also determine the tiles used for out-of-map areas,
+#ie a tile at xy (4, 0) also affects the "tile" at (4, -1), (4, -2); and so on.
+
+#Example map
+#comments are marked with #, spaces/caps don't matter in the def section.
+
+#This is the actual map. Use a fixed-width font to display/edit correctly.
+#"a" should be used as rock or whatever your border will be, but any letters,
+#numbers, or symbols can be used. Case matters here.  There must be *exactly*
+#one space between each symbol.  A "symbol" is whatever appears delimited by
+#the spaces, so you could, for example, substiture "hi" instead of "h" below.
+#It is suggested that you use the provided map editor for this part.
+
+a a a a a a a
+a 2 a a a a a
+a 0 0 0 0 h a
+a 0 0 0 a a a
+a 0 0 0 3 5 a
+a a a a a a a
+
+#After the map comes the definitions section.
+:def
+#This gives the monsters that inhabit the area. They are defined in
+#monster.txt
+monster=Ant
+monster=Rat
+
+#This gives the picture used as a background in battles. This must be a
+#file in images/backgrounds/.
+battle_bg=underground.png
+
+#This defines what the '0' character meant when used in the map.
+:0
+#Use the grass.png picture when displaying. Take a look at the
+#images/tiles directory for the list of usable pictures.
+pix("grass.png")
+#Yes, you can walk on it. Use either 1 (grass) or 0 (rock).
+walk(1)
+
+:a
+pix("rock.png")
+walk(0)
+
+:2
+#Example of stairs.
+pix("mine.png")
+walk(1)
+#the word action gives the commands that occur upon stepping on the tile.
+Action
+#This does the work, moving the player to map2.txt, xy coord. 5, 7
+move("map2.txt", 5, 7)
+
+:3
+pix("town.png")
+#if you have already attacked, let the player through.
+if(var("have_attacked"), "=", 1)
+	walk(0)
+else
+	walk(1)
+endif
+Action
+#If you have already attacked, stop the script
+if(var("have_attacked"), "=", 1)
+	end()
+endif
+#A dialog box will display this.
+info("Looks interesting.")
+#Ask the player to enter the hole. If they answer no, the script ends
+#(without allowing them to move). If they answer yes, the script continues.
+if(question("Enter this hole?"), "=", 0)
+	end()
+endif
+#Attack the player with an Ant. If they run, the script ends. If they die,
+#endgame.txt is processed. If they win, the script continues.
+if(attack("Ant"), "=", 0)
+	end()
+endif
+#set have_attacked, so it will only work once.
+set("have_attacked", "=", 1)
+#allow movement over this square after attacking.
+walk(1)
+
+:h
+pix("grass.png")
+walk(1)
+Action
+if(var("get_gold"), "=", 1)
+	info("You find an empty chest")
+else
+	info("You find some gold.")
+	give("gold", 50)
+	set("get_gold", "=", 1)
+endif
+
+#Displaying Items to be Found
+#To find items and allow player the option of picking them up or not
+#and display an image on the map for the item, use the following.
+#Note that if you have multiple of the same item on the same map
+#you will need to use different symbols and variables in order to
+#have it correctly keep track of whether or not the item has been
+#picked up.  Note that the spaces in the if are required for the
+#map editor to correctly display the item.
+:m
+#the underlying tile.
+pix("grass.png")
+walk(1)
+#the key_1 can be any string, but needs to be unique. I suggest ItemName_level
+#or ItemName_level_count if there is more than one.
+if(var("key_1"), "=", 0)
+	addpix("items/key.png")
+endif
+Action
+#check if they've already picked it up, if not, call find with
+#the name of the item in double quotes followed by the amount.
+#The amount should be a word for items and an integer for gold.
+#Three examples:
+#   find("old spell book", an)
+#   find("gold", 5)
+#   find("healing potion", a)
+if(var("key_1"), "=", 1)
+	end()
+endif
+#If they pick it up, set key_1 equal to one, and remove the picture.
+if(find("light healing potion", "a"), "=", 1)
+	set("key_1", "=", 1)
+	delpix("items/key.png")
+endif
+:5
+pix("exit.png")
+walk(1)
+Action
+#Note the \. That continues the line. Rephased, it would be:
+#info("You Win")
+info(\
+"You Win")
+#Call wingame.txt.
+win()

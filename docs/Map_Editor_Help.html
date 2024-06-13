@@ -1,0 +1,138 @@
+<html>
+  <head>
+    <title>Map Editor Help</title>
+    <meta content="">
+    <style></style>
+  </head>
+<body>
+
+To start the map editor for Dragon Hunt, either run the file Map_Editor, or
+run <tt>python map_editor.py</tt> from the code directory.<P>
+
+Once the map editor is started, you will see a simple map on the left-hand
+side, and some tiles on the right. This is the main view of the map editor.
+To change the current tile, click on one of the tiles to the right, (the border
+of the tile will turn red, and the filename of the tile will be displayed to
+the lower-right) then click on the portion of the map you want to change.
+The rest of this file describes the various menu options.<P>
+
+<h2>File (f)</h2><BR>
+The items in this menu are fairly self-explanatory. Still, there may be a few
+suprises in here.<P>
+<h3>New</h3><BR>
+Creates a new map, using the current values for background, border, and size.<P>
+<h3>Rename</h3><BR>
+Change the name to save the map under. This does not actually save the map.<P>
+<h3>Load (l)</h3><BR>
+Displays a list of all maps in the currently selected module. Upon selection,
+loads the map. Note that doing this closes your current map without saving.<P>
+<h3>Save (s)</h3><BR>
+Saves the map. Note that there is no confirmation dialog.<P>
+<h3>Quit (Esc)</h3><BR>
+Exits the editor. Make sure to save first.<P>
+
+<h2>Tileset (t)</h2><BR>
+The contents of this menu depend on the tiles in the current module. The first
+entry, default, lists all the tiles in the images/tiles/ directory. The rest
+of the entries list the subdirectories of that directory.<P>
+
+By clicking on an entry, the tiles in that directory will be placed to the
+right side of the editor window, to allow them to be placed in the map.<P>
+
+<h2>Map Settings (m)</h2><BR>
+This menu allows editing various settings of the map. Be careful in here, as
+it is quite possible to clear a map.<P>
+
+<h3>Map Mode</h3><BR>
+This controls the behaviour that occurs upon clicking the map. A setting
+chosen from here will remain in effect until another setting is chosen<BR>
+<li><B>Replace Tile (default, F1):</b> This will cause the base tile that was
+clicked on to be replaced by the new tile. Note that tiles added by the next
+option will remain even after the base tile was replaced.</li>
+<li><B>Add Tile (transparency, F2):</b> This allows multiple tiles to be layered;
+it is meant to work with partially transparent tiles. (In the tile display,
+transparency is indicated by the color black.)</li>
+<li><B>Reset Tile (clear to background, F3):</b> This setting does not care which
+tile is selected, but clears the clicked-on tile to whatever is set as the
+background tile. It is useful to remove tiles added using "Add Tile"</li>
+<li><B>Adjust walkable status (F4):</b> After chosing this, all tiles in the map
+will have a white or a black box in the middle. If the box is white, then the
+tile can be moved over by the player. If the box is black, then the player
+will treat it like a wall. By clicking on the tile, the walkable status will
+be changed from on to off or back again. Note that by using the "if" command or
+a few other tricks, it is possible to get a tile without a box at all. This is
+nothing to worry about.</li>
+<li><B>Edit Onload/Edit Action (F5, F6):</B> After choosing this, all tiles that have
+scripting will have a black and white box in the middle. (Large box for onload,
+little box with a dot in the middle for action.) Clicking on a tile
+will then allow you to create or edit the scripting commands for that tile.
+(Either onload or action, depending on your choice.
+Note that, first, you can click on any tile (not just the
+marked ones) and edit the scripting. The marks are just for convenience.
+Secondly, the file scripting.txt contains the information on the actual
+scripting commands that can be entered. Thirdly, if the envirnmental variable
+DH_EDITOR or EDITOR is set, the map editor will use that program to edit the
+scripting. (DH_EDITOR overrides EDITOR.)</li><P>
+<li><B>Add Overtile (transparency, F7):</b> This is similar to Add Tile, but
+the added tiles will be displayed over the player. You can see this effect in
+the town, when you travel behind a roof.</li>
+<li><B>Copy Tile (F8):</b>This copies all information about a tile to another
+space. This is useful when placing tiles that involve heavy scripting. To use,
+enter Copy Tile mode, shift-click on the tile to be copied, then click wherever
+you want it to be copied. To copy a different tile, shift-click on a different
+tile.</li>
+
+<h3>Map Size</h3><BR>
+This menu allows you to resize the map, to allow larger maps. The various
+15x15 (and similar) entries are shortcuts for chooseing "Custom Map Size..."
+and entering a width and height of 15 (or whatever). After selecting the new
+size, the editor will ask if you want to reset the border and background.
+If you have already started building the map, then you want to choose "no".<P>
+
+There is no arbitrary limit to the size of levels, but performance issues may
+come into play. Check the performance of anything significantly above 40x40.<P>
+
+<h3>Background and Border</h3><BR>
+These are a shortcut to changing either all of the interior tiles, or all of
+the border tiles of a map. Note that using either of these clears a portion of
+the map.<P>
+
+<h3>Edit Monsters</h3><BR>
+This brings up a window where you can specify what monsters can attack the
+player in the level. Enter one monster per line, chosen from
+monsters.txt. For example:<BR>
+<tt>Crawler<BR>
+Slime<BR>
+Cave Bear</tt><P>
+
+<h3>Battle Background</h3><BR>
+Specify which background is displayed in
+a battle. This must be a file in images/backgrounds/.<P>
+
+<h2>Grid (g)</h2><BR>
+Toggles the map grid. It either removes or replaces the one-pixel black border
+between tiles on the map. Having the border helps with positioning tiles;
+not having the border helps with making sure the map looks good.<P>
+
+<h2>Other</h2><BR>
+The editor_xsize, editor_ysize, and editor_tilesize entries in settings.txt
+can affect the size of the editor.<P>
+<h3>Shortcuts:</h3><BR>
+<b>Esc</b> is a shortcut for Quit.<BR>
+<b>f</b> is a shortcut for File.<BR>
+<b>t</b> is a shortcut for Tileset.<BR>
+<b>m</b> is a shortcut for Map Settings.<BR>
+<b>g</b> is a shortcut for Grid.<BR>
+<b>s</b> is a shortcut for Save.<BR>
+<b>l</b> is a shortcut for Load.<BR>
+<b>1,2,3...0,-,=,\,!,@,#..._,+,|</b> switch between the various tilesets.
+You can access the first 26 tilesets this way; the first 13 through 1-\, and the
+second 13 with the shift key.<BR>
+<b>F1-F8</b> switch between the map modes. (Replace, Add, Reset, Walkable,
+Onload, Action, Add Over, and Copy Tile)<BR>
+
+<P>
+
+
+</body>
+</html>
