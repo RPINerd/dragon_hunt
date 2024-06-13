@@ -1,0 +1,6 @@
+#!/bin/sh
+# This script is used to run the map editor from the source directory
+
+tempname=$(dirname "$0")
+cd "$tempname/code" || exit
+exec python map_editor.py "$@"
