@@ -1,48 +1,54 @@
 # Dragon Hunt
 
+A small but fun RPG. Investigate the rumors of monsters attacking a small town. (Hint: the rumors are true.)
+
+[Website](https://emhsoft.com/dh.html)
+
 Current Version - 3.56
 
 ## Latest Updates
 
-Changed the level loading code a bit. The world map in Dark Ages should now be faster.
-Fixed a couple small bugs. (Bugreports by Lukas Sabota)
-The game will use Psyco if available. This greatly speeds up loading time.
-Added options screen.
-Added joystick support. (Lukas Sabota for suggestion)
+- Changed the level loading code a bit
+- The world map in Dark Ages should now be faster
+- Fixed a couple small bugs. (Bugreports by Lukas Sabota)
+- The game will use Psyco if available; This greatly speeds up loading time
+- Added options screen
+- Added joystick support (Lukas Sabota for suggestion)
 
 ## Requirements
 
-Python - Being updated for 3.12
+Python - Being updated for 3.12  
 Pygame - Being updated for 2.5.2
 
 Game is built on Linux, but should work on Windows and Mac OSX as well provided the above requirements are met.
 
 ## Launching the Game
 
-### Linux
+Run the shell script `Play` from the root directory  
+or  
+Run `python rpg.py` from the `./code/` directory
 
-Run the shell scrip `Dragon_Hunt_Linux`
+## Map Editor
 
-### Other Platforms
+The map editor is a separate program that can be used to create maps for the game. It is not required to play the game, but can be used to create custom maps.
 
-In your terminal of choice, run `python rpg.py` from the code directory.
+Run the shell script `Editor` from the root directory  
+or  
+Run `python map_editor.py` from the `./code/` directory
 
 ## Controls
 
-Use the arrow keys for movement
-Enter for interact
-Esc for leaving a screen
-
-### Shortcuts
-
-`i` (or Enter): opens the inventory from the main screen
-`s`: saves in main screen
-`q`: quits in main screen
-`a`: attacks in battle
+Arrow keys  - Movement  
+Enter       - Interact  
+Esc         - Leave screen  
+`i`         - Inventory  
+`s`         - Save  
+`q`         - Quits  
+`a`         - Attack (in battle)
 
 ## Original Credits
 
-Evil Mr Henry
-Allison Marles
-George Tuosto
+Evil Mr Henry  
+Allison Marles  
+George Tuosto  
 Phil Bordelon
