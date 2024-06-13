@@ -1,0 +1,7 @@
+Name=Blue Crystal
+type=14
+quality=25
+price=20
+value=15
+description=A jagged blue crystal.
+picture=items/blue_crystal.png

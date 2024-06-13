@@ -1,0 +1,8 @@
+
+Name=Crab
+hp=40
+attack=10
+defense=15
+exp=20
+gold=10
+description=The tough shell on this crab will be difficult to get through.

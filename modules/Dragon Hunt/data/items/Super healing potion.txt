@@ -1,0 +1,7 @@
+Name=Super healing potion
+type=11
+quality=80
+price=25
+description=Able to cure most anything, this should be \
+saved for the most dire circumstances.
+picture=items/super_healing_potion.png

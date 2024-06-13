@@ -1,0 +1,20 @@
+#Various data about the module.
+game_name=Dragon Hunt 3.56
+default_player_name=Alfred
+hp=8d3
+ep=2d3
+attack=2d3+1
+defense=2d3
+gold=3d5
+tilesize=32
+
+
+name_name = Name
+hp_name = HP
+ep_name = EP
+attack_name = Attack
+defense_name = Defense
+gold_name = Gold
+skill_name = Skillpoints
+exp_name = XP
+level_name = Level

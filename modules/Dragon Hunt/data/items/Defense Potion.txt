@@ -1,0 +1,11 @@
+Name=Defense Potion
+type=16
+quality=1
+price=100
+value=100
+description=This potion will permanently raise your defense.
+:scripting
+give("defense", 1)
+info("You feel tougher.")
+:values
+picture=items/defense_potion.png

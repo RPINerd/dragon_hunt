@@ -1,0 +1,6 @@
+Name=Rusty Knife
+type=0
+quality=1
+price=5
+description=A rather useless knife.
+picture=items/rusty_knife.png

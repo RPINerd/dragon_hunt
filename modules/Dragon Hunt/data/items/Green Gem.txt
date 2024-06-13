@@ -1,0 +1,7 @@
+Name=Green Gem
+type=14
+quality=20
+price=15
+value=10
+description=A sparkling green gemstone.
+picture=items/green_gem.png

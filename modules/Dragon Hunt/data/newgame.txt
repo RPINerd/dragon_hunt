@@ -1,0 +1,41 @@
+#Called upon starting a new game. Any commands can be entered here,
+#but info, move, and item would likely be most useful.
+
+move("town.txt", 14, 7)
+
+#If the player is named script_test, move to the testing arena.
+set("temp_name1", "=", "script_test")
+if(stat("name"), "=", "script_test")
+	move("test_map.txt", 2, 5)
+endif
+
+#If the player is named testing123, give a lot of gold.
+set("temp_name1", "=", "testing123")
+if(stat("name"), "=", var("temp_name1"))
+	give("gold", 1000000)
+endif
+
+#god mode
+set("temp_name1", "=", "god")
+if(stat("name"), "=", var("temp_name1"))
+	give("gold", 1000000)
+	give("maxhp", 100)
+	give("maxep", 100)
+	give("hp", 100)
+	give("ep", 100)
+	give("attack", 100)
+	give("defense", 100)
+	give("skillpoints", 10)
+endif
+
+refresh()
+
+info("You have been seeking adventure for many years.")
+info("Recently, rumors have begun to circulate about huge monsters roaming")
+info("about the town of Portiton.")
+info("Packing your trusty knife and a drink, you set out on your")
+info("journey, and quickly arrive in the town. There shouldn't be anything too")
+info("tough here; nothing nastier than giant spiders has been seen in years.")
+item("rusty knife")
+item("light healing potion")
+give("skillpoints", 1)

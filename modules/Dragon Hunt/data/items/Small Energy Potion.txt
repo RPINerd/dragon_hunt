@@ -1,0 +1,11 @@
+Name=Small Energy Potion
+type=17
+quality=5
+price=10
+value=10
+description=This potion will rejuvenate you.
+:scripting
+give("ep", 5)
+info("You feel slightly rejuvenated.")
+:values
+picture=items/small_energy_potion.png

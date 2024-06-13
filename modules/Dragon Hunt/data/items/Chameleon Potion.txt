@@ -1,0 +1,10 @@
+Name=Chameleon Potion
+type=15
+quality=0
+price=5
+value=5
+description=This potion lets you escape from battle easier.
+:scripting
+skill("use", "Sneak Away")
+:values
+picture=items/small_energy_potion.png

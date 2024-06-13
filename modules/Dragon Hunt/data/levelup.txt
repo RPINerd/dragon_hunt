@@ -1,0 +1,15 @@
+#Called upon gaining a level. Any commands can be entered here, but give
+#would likely be useful
+
+
+give("maxhp", rng(4, 4))
+give("maxhp", 1)
+give("maxep", rng(1, 2))
+give("maxep", 1)
+give("skillpoints", 1)
+if(give("attack", rng(1, 2)), "=", 1)
+	info("You feel stronger.")
+endif
+if(give("defense", rng(1, 2)), "=", 1)
+	info("You feel tougher.")
+endif

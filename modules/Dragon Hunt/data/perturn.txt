@@ -1,0 +1,45 @@
+#this file is run every turn, using a different subrotine each time.
+#the first turn, :0 is run; the second turn :1 is run, and so on.
+#Turns :0 through :29 can be listed, after which they repeat.
+#This is meant to provide hp and ep recovery.
+#Events every 10, 5, 3, 2, and 1 turns work well.
+#:0, 10, 20 will activate every 10 turns,
+#:0, 5, 10, 15, 20, 25 every 5, and
+#:0, 3, 6, 9, 12, 15, 18, 21, 24, 27 every 3.
+
+:0, 5, 10, 15, 20, 25
+if(stat("level"), ">", 0)
+	give("hp", 1)
+endif
+
+if(stat("level"), ">", 2)
+	give("hp", 1)
+endif
+
+if(stat("level"), ">", 4)
+	give("ep", 1)
+endif
+
+give("hp", 2)
+
+:0, 6, 12, 18, 24
+if(stat("level"), ">", 1)
+	give("ep", 1)
+endif
+if(stat("level"), ">", 3)
+	give("ep", 1)
+endif
+if(stat("level"), ">", 5)
+	give("hp", 1)
+endif
+give("ep", 1)
+
+:1, 4, 7, 10, 13, 16, 19, 22, 25, 28
+if(stat("level"), ">", 6)
+	give("hp", 1)
+endif
+
+:2, 5, 8, 11, 14, 17, 10, 23, 26, 29
+if(stat("level"), ">", 7)
+	give("ep", 1)
+endif

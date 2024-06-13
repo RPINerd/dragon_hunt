@@ -1,0 +1,9 @@
+
+Name=Jelly
+hp=150
+attack=14
+defense=2
+exp=30
+gold=20
+description=This semi-transparent monster leaves behind a trail of \
+scorched vegetation as it moves towards you.

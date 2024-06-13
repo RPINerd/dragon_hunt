@@ -1,0 +1,496 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa ab ac ac ac ad ac ac ac ac ac ad ac ac ac ac ac ad ac ae aa 
+aa af ag ah ai aj aj aj ah ai ag ag ag ak al al am an ao ap ac 
+aa af aq ar as at au at av aw ag ag ag ax ay az aA ag aB ag aC 
+aa af ag aD aq ag ag aE aE aF ag ag aC aG aH aI aJ aC aB ag aC 
+aa af ag aD aK ag ag aL aM aF ag ag aC aN aO aP aQ aC aB ag aC 
+aa af ag aR aS aS aS aS aS aT aq ag aC aU aV aV aW aC aB ag aC 
+aa af ag aX as as aY as as aZ ag ag ag a0 a1 a2 a3 ag aB ag aC 
+aa af ag ag ag ag ag ag ag ak al am ag a4 a5 a6 a7 ag aB ag aC 
+aa af ak al al am ag ag ag ax a8 a9 ag ba aa bb af ag aB ag aC 
+aa af ax bc bd a9 ag ag aC aN be bf aC ap ad bg bh ag aB ag aC 
+aa af bi bj bk bl aC ag aC aU aV aW aC ag ag bm ag ag bn ag aC 
+aa af bo aV aV aW aC ag ag a0 a2 a3 ag ag ag bp bq bq bq bq bq 
+aa af a0 a2 br a3 ak al al am bs aC ag ag ag bm ag ag ao ag aC 
+aa af ag bt ag ag ax bu bv a9 bm ag ag ag ag bm ag ag aB ag aC 
+aa af ag bm ag aC bw bx by bl bz ag ag ag ag bm ag ag aB ag aC 
+aa af ag bm ag aC aU aV aV aW bA bq bq bq bq bB ag ag aB ag aC 
+aa af ag bC bD ag a0 bE a2 a3 bm ag ag ag ag ag ag ag aB ag aC 
+aa af an an bC bq bq bq bF bq bB an an an ag bG ag ag bn ag aC 
+aa bH a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 bI a5 a5 a5 a5 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa bb aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa bb aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa bb aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa bb aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa bb aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa bb aa aa aa aa 
+aa aa aa aa aa aa aa aa bJ bK bK bK bK bK bL aa bb aa aa aa aa 
+aa aa aa aa aa aa aa aa ax bv bv bd bd bd a9 ae bb aa aa aa aa 
+aa aa aa aa aa aa aa bM bi bN bk bO aO bP aJ bQ bR ae aa aa aa 
+aa aa aa aa aa aa bS bT aG aO aO bU aO bO aJ aC ag bV aa aa aa 
+aa aa aa aa aa aa bW bT aG bO aO bU aO bU aJ aC ag bX aa aa aa 
+aa aa aa aa aa aa bY bT aG bZ aO bZ aO bZ aJ aC ag ap ae aa aa 
+aa aa aa aa aa aa b0 bT bo aV aV aV aV aV b1 aC ag ag b2 aa aa 
+aa aa aa aa aa aa aa bW a0 b3 b4 b5 b6 b3 a3 ag ag b7 aa aa aa 
+aa aa aa aa aa aa aa b0 an an an b8 an an an an b7 aa aa aa aa 
+aa aa aa aa aa aa aa bY an an an an a4 a5 a5 b9 ca aa aa aa aa 
+aa aa aa aa aa aa aa bH b9 an a4 a5 cb aa cc aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa bW b2 aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("water/water.png")
+walk(0)
+:ab
+pix("water/land_se.png")
+walk(0)
+:ac
+pix("water/water_s3.png")
+walk(1)
+:ad
+pix("water/water_s.png")
+walk(1)
+:ae
+pix("water/land_sw.png")
+walk(0)
+:af
+pix("water/water_e.png")
+walk(0)
+:ag
+pix("grass.png")
+walk(1)
+:ah
+pix("stone_interior/wall_left_steps.png")
+walk(0)
+:ai
+pix("stone_interior/wall_right_steps.png")
+walk(0)
+:aj
+pix("stone_interior/wall_top_grass.png")
+walk(1)
+:ak
+pix("wood_interior/wood_wall_top_grass_w.png")
+walk(1)
+:al
+pix("wood_interior/wood_wall_top_grass.png")
+walk(1)
+:am
+pix("wood_interior/wood_wall_top_grass_e.png")
+walk(1)
+:an
+pix("water/grass.png")
+walk(1)
+:ao
+pix("town/fence_n.png")
+walk(0)
+:ap
+pix("water/water_sw.png")
+walk(1)
+:aq
+pix("stones.png")
+walk(1)
+:ar
+pix("stone_interior/wall_grass_nw.png")
+walk(0)
+:as
+pix("town/wall_s.png")
+walk(0)
+:at
+pix("stone_interior/wall_grass_window.png")
+walk(0)
+:au
+pix("stone_interior/wall_grass_doorway.png")
+walk(1)
+:av
+pix("town/wall_fountain.png")
+walk(0)
+:aw
+pix("stone_interior/wall_grass_ne.png")
+walk(0)
+:ax
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:ay
+pix("wood_interior/fireplace.png")
+walk(0)
+:az
+pix("wood_interior/weapons.png")
+walk(0)
+:aA
+pix("wood_interior/swords.png")
+walk(0)
+:aB
+pix("town/fence_ns.png")
+walk(0)
+:aC
+pix("grass.png")
+walk(0)
+:aD
+pix("stone_interior/wall_grass_w.png")
+walk(1)
+:aE
+pix("small_blue_flowers.png")
+walk(1)
+:aF
+pix("stone_interior/wall_grass_e.png")
+walk(1)
+:aG
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:aH
+pix("wood_interior/rug2.png")
+walk(1)
+:aI
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/treasure_chest.png")
+:aJ
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:aK
+pix("stone_interior/broken_wall.png")
+walk(0)
+:aL
+pix("grass.png")
+walk(1)
+if(var("smoke_bomb_found0"), "=", 0)
+	addpix("items/smoke_bomb.png")
+endif
+Action
+if(var("smoke_bomb_found0"), "=", 0)
+	if(find("smoke bomb", a), "=", 1)
+		set("smoke_bomb_found0", "=", 1)
+		delpix("items/smoke_bomb.png")
+	endif
+endif
+:aM
+pix("blue_flowers.png")
+walk(1)
+:aN
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+Action
+wall_w(1)
+:aO
+pix("wood_interior/woodfloor.png")
+walk(1)
+:aP
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("people/woman_s.png")
+Action
+store("Weapons Store")
+:aQ
+pix("grass.png")
+walk(1)
+addpix("wood_interior/wall_woodfloor_e.png")
+Action
+wall_e(1)
+:aR
+pix("stone_interior/wall_grass_sw.png")
+walk(1)
+:aS
+pix("stone_interior/wall_top_grass_s.png")
+walk(1)
+:aT
+pix("stone_interior/wall_grass_se.png")
+walk(1)
+:aU
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+Action
+wall_w(1)
+:aV
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:aW
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+Action
+wall_e(1)
+:aX
+pix("town/wall_sw.png")
+walk(0)
+:aY
+pix("town/wall_suit_of_armor.png")
+walk(0)
+:aZ
+pix("town/wall_se.png")
+walk(0)
+:a0
+pix("town/wood_wall_sw.png")
+walk(0)
+:a1
+pix("town/wood_sign_weapon.png")
+walk(0)
+:a2
+pix("road/end_wood_doorway.png")
+walk(1)
+:a3
+pix("town/wood_wall_se.png")
+walk(0)
+:a4
+pix("water/water_nw.png")
+walk(1)
+:a5
+pix("water/water_n.png")
+walk(0)
+:a6
+pix("road/end_bridge_n.png")
+walk(1)
+Action
+move("island_town.txt", 15, 8)
+hero("hero_s")
+:a7
+pix("water/water_ne.png")
+walk(0)
+:a8
+pix("wood_interior/painting2.png")
+walk(0)
+:a9
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:ba
+pix("water/water_w.png")
+walk(1)
+:bb
+pix("water/bridge_ns.png")
+walk(1)
+:bc
+pix("wood_interior/shields.png")
+walk(0)
+:bd
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+:be
+pix("wood_interior/bed.png")
+walk(0)
+:bf
+pix("wood_interior/rug.png")
+walk(1)
+Action
+wall_e(1)
+:bg
+pix("road/end_bridge_s.png")
+walk(1)
+:bh
+pix("water/water_se.png")
+walk(1)
+:bi
+pix("wood_interior/counter_left_wall.png")
+walk(1)
+:bj
+pix("wood_interior/counter_man.png")
+walk(0)
+Action
+store("Armory")
+:bk
+pix("wood_interior/counter_right.png")
+walk(1)
+:bl
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+Action
+wall_e(1)
+:bm
+pix("road/road_ns.png")
+walk(1)
+:bn
+pix("town/fence_s.png")
+walk(0)
+:bo
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:bp
+pix("road/right_t.png")
+walk(1)
+:bq
+pix("road/road_ew.png")
+walk(1)
+:br
+pix("town/wood_sign_armor.png")
+walk(0)
+:bs
+pix("road/road_ns.png")
+walk(0)
+Action
+move("island_town.txt", 10, 13)
+hero("hero_s")
+:bt
+pix("road/road_ns.png")
+walk(0)
+Action
+move("island_town.txt", 3, 14)
+hero("hero_s")
+:bu
+pix("wood_interior/painting.png")
+walk(0)
+:bv
+pix("wood_interior/potion_shelf.png")
+walk(0)
+:bw
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("people/old_woman_s.png")
+Action
+if(var("get_elixir"), "=", 1)
+	info("The old woman smiles at you.")
+else
+	info("The old woman feeds you a magic elixir.")
+	give("maxhp", 5)
+	give("hp", 5)
+	give("maxep", 2)
+	give("ep", 2)
+	give("defense", 2)
+	info("You feel a tingling sensation and feel more powerful.")
+	set("get_elixir", "=", 1)
+endif
+:bx
+pix("wood_interior/table.png")
+walk(0)
+:by
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("people/old_man_s.png")
+Action
+store("General Store")
+:bz
+pix("road/road_ns.png")
+walk(0)
+:bA
+pix("road/right_t.png")
+walk(0)
+:bB
+pix("road/road_nw.png")
+walk(1)
+:bC
+pix("road/road_ne.png")
+walk(1)
+:bD
+pix("road/road_sw.png")
+walk(1)
+:bE
+pix("town/wood_sign_general.png")
+walk(0)
+:bF
+pix("road/reverse_t.png")
+walk(0)
+Action
+move("island_town.txt", 8, 18)
+hero("hero_s")
+:bG
+pix("grass.png")
+walk(1)
+addpix("people/man_s.png")
+:bH
+pix("water/land_ne.png")
+walk(0)
+:bI
+pix("water/bridge_n.png")
+walk(1)
+:bJ
+pix("water/water.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:bK
+pix("water/water.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:bL
+pix("water/water.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:bM
+pix("water/water_se2.png")
+walk(0)
+:bN
+pix("wood_interior/counter_woman.png")
+walk(0)
+Action
+store("Tavern")
+:bO
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table_n.png")
+:bP
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("wood_interior/wood_stairs.png")
+Action
+info("These stairs lead to a locked door.")
+:bQ
+pix("water/water_sw.png")
+walk(0)
+:bR
+pix("water/bridge_s.png")
+walk(1)
+:bS
+pix("water/diag_2.png")
+walk(1)
+:bT
+pix("water/grass.png")
+walk(0)
+:bU
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table_middle.png")
+:bV
+pix("water/water_wu.png")
+walk(0)
+:bW
+pix("water/diag_3.png")
+walk(0)
+:bX
+pix("water/water_wl.png")
+walk(1)
+:bY
+pix("water/land_e.png")
+walk(0)
+:bZ
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table_s.png")
+:b0
+pix("water/subtle_land_e.png")
+walk(1)
+:b1
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:b2
+pix("water/water_wu2.png")
+walk(1)
+:b3
+pix("town/wood_window_s.png")
+walk(0)
+:b4
+pix("town/wood_sign_inn.png")
+walk(0)
+:b5
+pix("wood_interior/wall_woodfloor_doorway.png")
+walk(1)
+:b6
+pix("town/wood_sign_tavern.png")
+walk(0)
+:b7
+pix("water/diag_1.png")
+walk(0)
+:b8
+pix("water/grass.png")
+walk(1)
+Action
+move("island_town.txt", 11, 34)
+hero("hero_s")
+:b9
+pix("water/water_n2.png")
+walk(0)
+:ca
+pix("water/land_w.png")
+walk(0)
+:cb
+pix("water/land_nw.png")
+walk(0)
+:cc
+pix("water/island.png")
+walk(0)

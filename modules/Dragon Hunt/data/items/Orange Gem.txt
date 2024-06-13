@@ -1,0 +1,7 @@
+Name=Orange Gem
+type=14
+quality=12
+price=10
+value=8
+description=A milky orange jewel.
+picture=items/orange_gem.png

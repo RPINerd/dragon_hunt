@@ -1,0 +1,365 @@
+aa aa aa aa aa aa aa aa ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac
+ad aa ae aa ae aa aa aa aa af ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac
+ac ag ad aa aa aa ae aa aa ab ac ah ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac
+ac ac ac ag ad ad aa aa ae ab ai aj ak ac ac ac ac ac ac ac ac al am an ac ac ac ac ac ac
+ac ac ac ac ac ac ag ae ad ao ap aj aj aq ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac
+ac ac ah ar ac ac ac as at au av aw ax aj ak ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac
+ac ac ay ac ac ac ac ac ac az at aA ac aB aC ac ac ac ac ac aD aE ak ac ac ac ac ac ac ac
+ac ac ac ac ac ac ac ac ac az ac aD ak ac ac ac ac aD ak ac aF aG aH ak ac ac ac ac ac ac
+ac ac ac ac ac ac aD ak aD aI aE aJ aK ac ac ac ac at aA ac at aL aM aA ac ac ac ah ac ac
+ac ac ac ac ac aD aJ aN aO aj aj aj aP ac ac ac ac ac ac ac ac ac az ac ac ac ac ay ac ac
+ac ac ac aD ak ac aB aQ at aL aM aL aA ac ac ah ac ac ac ac ac ac az ac ac ac ac ac ac ac
+ac ac ac aF aN aR aO aH ak ac az ac aD aE aS aT ak ac ac ac ac aD aI ak ac ac ac ac ac ac
+ac ac ac at aA ac at aM aA ac az ac aF aj aU aw aA ac ac ac ac at aM aA ac ac ac ac ac ac
+ac ac ac ac ac ac ac az ac ac az ac at aM aL aA ac ac ac ac aD ak az ac ac ac ac ac ac ac
+ac ac ac ac ac ac aD aI ak ac az ac ac az ac ac ac aD aE aE aJ aH aI ak ac ac ac ac ac ac
+ac ac ac ac ac ac aF aj aN aR aV aR aR aV aR aR aR aO aj aj aj aj aW aQ ac ac ac ac ac ac
+ac ac ac ac ac ac at ax aQ ac az ac ac az ac ac ac at aL aL ax aj aX aK ac ac ac ac ac ac
+ac ac ac aD aE aE ak at aA ac az ac aD aI ak ac ac ac ac ac ac aB aj aP ac ac ah ac ac ac
+ac ac ac aF aY aj aN aR aR aR aV aR aO aj aQ ac ac ac ac ac ac aZ aj aQ ac aD aK ac ac ac
+ac ac aD aJ aj aj aQ ac ac ac az ac at aM aA ac ac ac ac ac ac ai aj aN aR aO aP ac ac ac
+ac ac ac a0 aj aj aK ac ac ac az ac ac az ac ac ac ar ac ac ai aj aw aA ac at aA ac ac ac
+ac ac a1 a2 a3 aC ac ac ac ac az ac aD aI ak ac ac ac ac at a4 a5 aQ ac ac ac ac ac ac ac
+ac ac ag a6 a7 a8 ac ac ac ac az aD aJ a9 aQ ac ac ac ac ba ae bb aA ac ac ac ac ac ac ac
+ac ac ac ac ay ac ac ac ac ac az at aL ax aH ak ac ac al ae ad ae bc ac ac ac ac ac ac ac
+ac ac ac ac ac ac ac ac ac ac az ac ac at aL aA ac ac ac as ac as ac a1 ac ac ac ac ac ac
+ac ac ac ac ac ac ac ac ac ac az ac ac ac ac ac ac ac ac ac ac ac ba ae bd bd af ac ac ac
+ac ac ac ac ac ac ac ac ac a2 aI aE ak ac ac ac ac aD aS aq ac al ae be aj bf bg af ac ac
+ac ac ac ac ac ac ac ac aZ aj aj aj aN aR aR aR aR aO aj aj aq ai bh aj bi bf ae ad an ac
+ac ac ac ac ac ac ac ac ac at aM ax aA ac ac ac ac ai aj aj aj bf bj a7 bk a6 bl ac ac ac
+ac ac ac ac ac ac ac ac ac ac az ac ac ac ac ac aZ aj aj aj aj aj bm aj bn a8 ac ac ac ac
+ac ac ac ac ac ac ac ac aD bo AI aE ak ac ac ac ac a0 aj aj aw av aj aC ay ac ac ac ac ac
+ac ac ac ac ac ac bp ac aF bq br bs aQ ac ac ac ac at aL aL aA ac ay ac ac ac ac ac ac ac
+ac ac ac ac ac ac ac ac at av bt bu aQ ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac
+ac ac ac ac ac ac ac ac ac at aL aL aA ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac
+ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac
+
+:def
+monster = Crab
+monster = Jelly
+battle_bg = island.png
+:a
+pix("hills/hills_n4.png")
+walk(0)
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("water_hills/hills_n3_w_water.png")
+walk(0)
+:ac
+pix("water/water.png")
+walk(0)
+:ad
+pix("water_hills/hills_s2_water.png")
+walk(0)
+:ae
+pix("hills/hills_center.png")
+walk(0)
+:af
+pix("water_hills/hills_n2_w_water.png")
+walk(0)
+:ag
+pix("water_hills/hills_w2_water.png")
+walk(0)
+:ah
+pix("water/land_s.png")
+walk(1)
+:ai
+pix("water/diag_2.png")
+walk(1)
+:aj
+pix("water/grass.png")
+walk(1)
+:ak
+pix("water/land_sw.png")
+walk(0)
+:al
+pix("water_hills/hills_w_water.png")
+walk(0)
+:am
+pix("water_hills/hills_e_w_water.png")
+walk(0)
+:an
+pix("water_hills/hills_e_double_water.png")
+walk(0)
+:ao
+pix("hills/mine_n.png")
+walk(1)
+Action
+move("level3.txt", 10, 8)
+hero("hero_s")
+:ap
+pix("hills/hills_e.png")
+walk(0)
+:aq
+pix("water/diag_4.png")
+walk(1)
+:ar
+pix("water/island.png")
+walk(0)
+:as
+pix("water_hills/hills_s_water.png")
+walk(0)
+:at
+pix("water/land_ne.png")
+walk(0)
+:au
+pix("water_hills/mine_bridge_water.png")
+walk(1)
+:av
+pix("water/water_ne.png")
+walk(0)
+:aw
+pix("water/water_nw.png")
+walk(1)
+:ax
+pix("water/water_n2.png")
+walk(0)
+:ay
+pix("water/land_n.png")
+walk(0)
+:az
+pix("water/bridge_ns.png")
+walk(1)
+:aA
+pix("water/land_nw.png")
+walk(0)
+:aB
+pix("water/diag_3.png")
+walk(0)
+:aC
+pix("water/diag_1.png")
+walk(0)
+:aD
+pix("water/land_se.png")
+walk(0)
+:aE
+pix("water/water_s.png")
+walk(1)
+:aF
+pix("water/water_e.png")
+walk(0)
+:aG
+pix("town.png")
+walk(1)
+Action
+move("island_town.txt", 18, 12)
+hero("hero_w")
+give("hp", stat("maxhp"))
+give("ep", stat("maxep"))
+:aH
+pix("water/water_sw.png")
+walk(1)
+:AI
+pix("water/bridge_s.png")
+walk(1)
+Action
+move("forest.txt", 13, 1)
+hero("hero_s")
+:aI
+pix("water/bridge_s.png")
+walk(1)
+:aJ
+pix("water/water_se.png")
+walk(1)
+:aK
+pix("water/water_wu.png")
+walk(0)
+:aL
+pix("water/water_n.png")
+walk(0)
+:aM
+pix("water/bridge_n.png")
+walk(1)
+:aN
+pix("water/bridge_w.png")
+walk(1)
+:aO
+pix("water/bridge_e.png")
+walk(1)
+:aP
+pix("water/water_wl.png")
+walk(1)
+:aQ
+pix("water/water_w.png")
+walk(1)
+:aR
+pix("water/bridge.png")
+walk(1)
+:aS
+pix("water/water_s2.png")
+walk(1)
+:aT
+pix("small_flowers.png")
+walk(1)
+:aU
+pix("grass.png")
+walk(1)
+if(var("light_healing_potion_found1"), "=", 0)
+	addpix("items/light_healing_potion.png")
+endif
+Action
+if(var("light_healing_potion_found1"), "=", 0)
+	if(find("light healing potion", "a"), "=", 1)
+		set("light_healing_potion_found1", "=", 1)
+		delpix("items/light_healing_potion.png")
+	endif
+endif
+:aV
+pix("water/bridge_cross.png")
+walk(1)
+:aW
+pix("small_shrub.png")
+walk(0)
+:aX
+pix("grass.png")
+walk(1)
+if(var("healing_potion_found0"), "=", 0)
+	addpix("items/healing_potion.png")
+endif
+Action
+if(var("healing_potion_found0"), "=", 0)
+	if(find("healing potion", "a"), "=", 1)
+		set("healing_potion_found0", "=", 1)
+		delpix("items/healing_potion.png")
+	endif
+endif
+:aY
+pix("stones.png")
+walk(1)
+:aZ
+pix("water/land_e.png")
+walk(0)
+:a0
+pix("water/water_e2.png")
+walk(0)
+:a1
+pix("water_hills/hills_n_double_water.png")
+walk(0)
+:a2
+pix("water/water_se2.png")
+walk(1)
+:a3
+pix("grass.png")
+walk(1)
+if(var("gold_found0"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_found0"), "=", 0)
+	if(find("gold", 10), "=", 1)
+		set("gold_found0", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:a4
+pix("hills/hills_n_double.png")
+walk(0)
+:a5
+pix("grass.png")
+walk(1)
+if(var("gold_found1"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_found1"), "=", 0)
+	if(find("gold", 10), "=", 1)
+		set("gold_found1", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:a6
+pix("water_hills/hills_e_w_lower_water.png")
+walk(0)
+:a7
+pix("hills/hills_e_double.png")
+walk(0)
+:a8
+pix("water/land_w.png")
+walk(0)
+:a9
+pix("grass.png")
+walk(1)
+if(var("light_healing_potion_found0"), "=", 0)
+	addpix("items/light_healing_potion.png")
+endif
+Action
+if(var("light_healing_potion_found0"), "=", 0)
+	if(find("light healing potion", "a"), "=", 1)
+		set("light_healing_potion_found0", "=", 1)
+		delpix("items/light_healing_potion.png")
+	endif
+endif
+:ba
+pix("water_hills/hills_n2_e_double_water.png")
+walk(0)
+:bb
+pix("hills/hills_n2_w.png")
+walk(0)
+:bc
+pix("water_hills/hills_e_water.png")
+walk(0)
+:bd
+pix("water_hills/hills_e_w_upper_water.png")
+walk(0)
+:be
+pix("hills/hills_e2.png")
+walk(0)
+:bf
+pix("hills/hills_w.png")
+walk(0)
+:bg
+pix("hills/hills_n_center.png")
+walk(0)
+:bh
+pix("hills/hills_n_s.png")
+walk(0)
+:bi
+pix("grass.png")
+walk(1)
+:bj
+pix("hills/mine_n.png")
+walk(1)
+Action
+if(var("been_to_fourth_level"), "=", 0)
+	info("A series of caverns lies before you. Echoes surround you, and shadows")
+	info("lurk everywhere. You light your torch, and step in.")
+	info("The cause of the monsters must lie inside.")
+endif
+move("level4.txt", 3, 19)
+hero("hero_s")
+set("been_to_fourth_level", "=", 1)
+:bk
+pix("hills/hills_n2_e_double.png")
+walk(0)
+:bl
+pix("water_hills/hills_e2_water.png")
+walk(0)
+:bm
+pix("hills/mine_s.png")
+walk(1)
+:bn
+pix("hills/hills_s.png")
+walk(1)
+:bo
+pix("water/water_s3.png")
+walk(1)
+:bp
+pix("water/water.png")
+hero("hero_w")
+:bq
+pix("tree2.png")
+walk(0)
+:br
+pix("water/grass.png")
+walk(1)
+:bs
+pix("treetop.png")
+walk(0)
+:bt
+pix("tree.png")
+walk(0)
+:bu
+pix("treetrunk.png")
+walk(0)

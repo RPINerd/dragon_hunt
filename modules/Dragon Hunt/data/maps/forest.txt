@@ -1,0 +1,295 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa ac ad ad ad ad ad ad ad ad ad ad ae ad ad ad ad ad ad ad ad ad ad af aa
+aa ag ah ai ai aj ai ai ai ak al am an ai ao ap aq ai ai ai ai ak al am ar aa
+aa ag ah as ai at an ai ai au av aw ax ai ai at ai as ai ai aj ai ax ai ar aa
+aa ag ay ai ai ai ax az ai ai aA ai ai ai ai aj au ai ai ai aB aw ai au ar aa
+aa ag ah aj au ai ai ai ai ai ai ai au ai ai at ai as ai ai aA ai ai ai ar aa
+aa ag ah aB aw ai ai an ao ap ap aq ai ai ai ai ai au ai ai ai ai as ai ar aa
+aa ag au aA ai as ai aC aD at at au ai an ai ai as ak al am ao ap aq ai ar aa
+aa ag ah ao ap aq ai aE au as au ai ai ax ao ap aq ai ax ai ai aB aw ay ar aa
+aa ag ai aF aB aw ai ai ai ai aG au ai ai ai aH aD au aI ai ai aA au aJ ar aa
+aa ag ai ai aA ai ai ai ai ao ap aq au ai ai aE ai ai as ai ai ai an as ar aa
+aa ag aK ai ai ai as ai ai au aB aw ai ai ai aj ai ai aL au ai ai ax aj ar aa
+aa ag ai ai as ai aF au as ai aA ai as ai ai at ak al am aK aM ai as at ar aa
+aa ag ai ai ai aj as as ai ai an as au as ai ai ai ax au ak al aN aK ai ar aa
+aa ag ai an ai at au ai ai ai av aw ai ay as ai an as au ai ax au ai ai ar aa
+aa ag ai ax au au ai ai ai aj aA ai ai ai ai ai aC aD ai ai ai ao ap aq ar aa
+aa ag au aO ai ai ai ai as at ai ai ai ai ai ai aA ai ai ai ai ai aB aw ar aa
+aa ag ao ap aq aP aL ai ai ai ao ap aq ai ak al am ao ap aq as aK aA ai aQ aa
+aa ag as at an as ai ai ai ai ai aH aD an aF av aw ai at ai au ai aR aS aT aa
+aa ag ai au ax au ai au ai ai au aE ai ax ai aE ai ai ai as ai ai aU aV aW aa
+aa ag ao ap aq ak al aX ai au ai ak al al am ao ap aq ai ai ai ai aY aW aZ aa
+aa a0 a1 aH aD aj ax as ai au ai an ax ax ai as aH aD as aF aj aY aW aa aa aa
+aa aa a0 aE ai at ai aK au as a2 ax ai ai au ai au au ai as at a3 aa aa aa aa
+aa aa aa a4 aY a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 a5 aW aa aa aa aa
+aa aa aa a0 aW aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+monster = Angry Tree
+monster = Tentacle Plant
+battle_bg = forest.png
+:a
+pix("water/water.png")
+walk(0)
+:aa
+pix("water/water.png")
+walk(0)
+:ab
+pix("water/bridge_ns.png")
+walk(1)
+Action
+move("island.txt", 10, 29)
+hero("hero_n")
+:ac
+pix("water/water_se2.png")
+walk(1)
+:ad
+pix("water/water_s3.png")
+walk(1)
+:ae
+pix("water/bridge_s.png")
+walk(1)
+:af
+pix("water/diag_4.png")
+walk(0)
+:ag
+pix("water/water_e.png")
+walk(0)
+:ah
+pix("water/grass.png")
+walk(1)
+:ai
+pix("grass.png")
+walk(1)
+:aj
+pix("treetop.png")
+walk(0)
+:ak
+pix("tree_left2.png")
+walk(1)
+:al
+pix("tree_center2.png")
+walk(0)
+:am
+pix("tree_right2.png")
+walk(1)
+:an
+pix("treetop2.png")
+walk(0)
+:ao
+pix("tree_left.png")
+walk(1)
+:ap
+pix("tree_center.png")
+walk(0)
+:aq
+pix("tree_right.png")
+walk(1)
+:ar
+pix("water/water_w.png")
+walk(0)
+:as
+pix("tree.png")
+walk(0)
+:at
+pix("treetrunk.png")
+walk(0)
+:au
+pix("tree2.png")
+walk(0)
+:av
+pix("double_tree2.png")
+walk(0)
+:aw
+pix("small_tree_right.png")
+walk(1)
+:ax
+pix("treetrunk2.png")
+walk(0)
+:ay
+pix("stones.png")
+walk(1)
+:az
+pix("red_flowers.png")
+walk(1)
+:aA
+pix("small_tree_bottom.png")
+walk(1)
+:aB
+pix("double_tree.png")
+walk(0)
+:aC
+pix("double_tree4.png")
+walk(0)
+:aD
+pix("small_tree_right2.png")
+walk(1)
+:aE
+pix("small_tree_bottom2.png")
+walk(1)
+:aF
+pix("small_shrub.png")
+walk(0)
+:aG
+pix("grass.png")
+walk(1)
+if(var("gold_found8"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_found8"), "=", 0)
+	if(find("gold", 2), "=", 1)
+		set("gold_found8", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:aH
+pix("double_tree3.png")
+walk(0)
+:aI
+pix("grass.png")
+if(var("gold_found0"), "=", 0)
+	addpix("items/gold.png")
+endif
+walk(1)
+Action
+if(var("gold_found0"), "=", 0)
+	if(find("gold", 3), "=" 1)
+		set("gold_found0", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:aJ
+pix("grass.png")
+walk(1)
+if(var("light_healing_potion_found0"), "=", 0)
+	addpix("items/light_healing_potion.png")
+endif
+Action
+if(var("light_healing_potion_found0"), "=", 0)
+	if(find("light healing potion", "a"), "=", 1)
+		set("light_healing_potion_found0", "=", 1)
+		delpix("items/light_healing_potion.png")
+	endif
+endif
+:aK
+pix("large_shrub.png")
+walk(0)
+:aL
+pix("small_blue_flowers.png")
+walk(1)
+:aM
+pix("grass.png")
+walk(1)
+if(var("gold_found5"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_found5"), "=", 0)
+	if(find("gold", 4), "=", 1)
+		set("gold_found5", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:aN
+pix("tree_right2.png")
+walk(1)
+Action
+if(var("gold_found2"), "=", 0)
+	if(find("gold", 4), "=", 1)
+		set("gold_found2," "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:aO
+pix("grass.png")
+walk(1)
+if(var("gold_found6"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_found6"), "=", 0)
+	if(find("gold", 2), "=", 1)
+		set("gold_found6", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:aP
+pix("blue_flowers.png")
+walk(1)
+:aQ
+pix("water/water_wu.png")
+walk(0)
+:aR
+pix("mixed_flowers.png")
+walk(1)
+:aS
+pix("small_flowers.png")
+walk(1)
+:aT
+pix("water/water_wl.png")
+walk(1)
+:aU
+pix("flowers.png")
+walk(1)
+:aV
+pix("water/water_nw.png")
+walk(1)
+if(var("farmhouse_key_found"), "=", 0)
+	addpix("items/key.png")
+endif
+Action
+if(var("farmhouse_key_found"), "=", 0)
+	if(find("key", "a"), "=", 1)
+		set("farmhouse_key_found", "=", 1)
+		delpix("items/key.png")
+	endif
+endif
+:aW
+pix("water/land_nw.png")
+walk(0)
+:aX
+pix("tree_right2.png")
+walk(1)
+Action
+if(var(light_healing_potion_found1), "=", 0)
+	if(find("light healing potion", a), "=", 1)
+		set("light_healing_potion_found1", "=", 1)
+		delpix("items/light_healing_potion.png")
+	endif
+endif
+:aY
+pix("water/water_nw.png")
+walk(1)
+:aZ
+pix("water/island.png")
+walk(0)
+:a0
+pix("water/land_ne.png")
+walk(0)
+:a1
+pix("water/water_ne.png")
+walk(0)
+:a2
+pix("grass.png")
+walk(1)
+if(var("gold_found7"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_found7"), "=", 0)
+	if(find("gold", 3), "=", 1)
+		set("gold_found7", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:a3
+pix("water/water_w.png")
+walk(1)
+:a4
+pix("water/water_e2.png")
+walk(0)
+:a5
+pix("water/water_n.png")
+walk(0)

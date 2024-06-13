@@ -1,0 +1,122 @@
+aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad ad ad ad ad ad
+aa aa aa aa aa aa aa aa aa aa aa ae af ac ad ad ad ad ad ad
+aa aa aa aa aa aa aa aa aa aa ab ag ah ad ad ad ad ad ad ad
+aa aa aa aa aa aa aa aa aa aa af ai ad ad ad ad aj ak ad ad
+ae ae aa aa aa aa aa aa aa af al am ad ad ad an al ao ac ad
+ap aq ar ae ae af ar as at al al ac ad ad ad an al am ad ad
+ad ad au ap ap ap aq al al al al ai av ad ad an al ac ad ad
+ad ad ad ad ad av aw al al al al al al ai av aw al ac ad ad
+ad ad ad ad aw ax ay az al ag ap aq al al al al al ai ad ad
+ad ad ad an ax aA aB af al ai ad an al al al al al al ac ad
+ad ad ad an ar af al al al al ac an al al al al ag ah ad ad
+ad ad ad ad au ah au aq ag ah ad ad au ap ap ah ad ad ad ad
+ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad
+ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad
+
+:def
+monster = Shadow
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_e.png")
+walk(0)
+:ac
+pix("underground/void_w.png")
+walk(0)
+:ad
+pix("underground/void.png")
+walk(0)
+:ae
+pix("underground/rock_s.png")
+walk(0)
+:af
+pix("underground/rock_se.png")
+walk(0)
+:ag
+pix("underground/void_nw.png")
+walk(0)
+:ah
+pix("underground/void_n_right.png")
+walk(0)
+:ai
+pix("underground/void_sw.png")
+walk(0)
+:aj
+pix("underground/void_top_left.png")
+walk(0)
+:ak
+pix("underground/void_top_right.png")
+walk(0)
+:al
+pix("underground/dirt.png")
+walk(1)
+:am
+pix("underground/void_nw2.png")
+walk(0)
+:an
+pix("underground/void_e.png")
+walk(0)
+:ao
+pix("underground/dirt.png")
+walk(1)
+if(var("red_gem_mine1.txt_0"), "=", 0)
+	addpix("items/red_gem.png")
+endif
+Action
+if(var("red_gem_mine1.txt_0"), "=", 0)
+	if(find("red gem", "a"), "=", 1)
+		set("red_gem_mine1.txt_0", "=", 1)
+		delpix("items/red_gem.png")
+	endif
+endif
+:ap
+pix("underground/void_n.png")
+walk(0)
+:aq
+pix("underground/void_ne.png")
+walk(0)
+:ar
+pix("underground/rock_sw.png")
+walk(0)
+:as
+pix("underground/water_exit.png")
+walk(0)
+Action
+if(var("raft_level2.txt_0"), "=" 1)
+	hero("hero_s_raft")
+	move("water_mine.txt", 7, 5)
+else
+	info("The water looks very deep.")
+endif
+:at
+pix("underground/rock_se.png")
+walk(1)
+:au
+pix("underground/void_n_left.png")
+walk(0)
+:av
+pix("underground/void_s.png")
+walk(0)
+:aw
+pix("underground/void_se.png")
+walk(0)
+:ax
+pix("underground/rock_nw.png")
+walk(0)
+:ay
+pix("underground/rock_n.png")
+walk(0)
+:az
+pix("underground/rock_ne.png")
+walk(0)
+:aA
+pix("underground/gem_rock.png")
+walk(0)
+:aB
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("minersland.txt", 11, 15)
+hero("hero_e")

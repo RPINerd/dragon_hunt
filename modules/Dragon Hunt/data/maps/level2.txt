@@ -1,0 +1,162 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac aa aa ac ac ac ac aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ac aa aa aa ad ae ae af ad ae ae ae ae af aa aa aa aa aa
+aa aa aa aa aa aa aa ad ae af ac ad ae ae ae ae ae ae ae ae ae ae af ac aa aa aa
+aa aa aa aa aa aa ad ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ag aa aa
+aa aa aa aa aa ah ae ae ae ae ae ae ae ae ae ai aj aj ak ae ae ae ae ai aa aa aa
+aa aa aa aa aa ah ae ae ae ae ae ae ae ae ae ag aa aa aa ak ae ai aj aa aa aa aa
+aa aa ac ac al ad ae ae ae ae ae ae ae ae ae ag aa aa aa aa aj aa aa aa aa aa aa
+aa ah ae ae ae ae ae ae ae ae ae ae ae ae ae ag aa aa am ac ac aa aa aa aa aa aa
+aa ah ae ae an ao ao ap ae ae ae ae ae ae ae af ac ad ae ae ae af aa aa aa aa aa
+ac ad ae ae aq ar ar as ae ae ae ae ae ae ae ae ae ae ae ae ae ae af aa aa aa aa
+ao ao ap ae aq ar ar as ae ae ae ae ae ae ae ae ae ae ae ae ae ae ai aa aa aa aa
+ar ar as at aq ar ar ar au ao ap ae ae ae ai aj aj aj ak ae ae ai aa aa aa aa aa
+ar ar av ae aq ar ar ar ar ar av ae ae ai aa aa aa aa aa aj aj aa aa aa aa aa aa
+ar as ae ae aq ar ar ar ar av ae ae ai aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+ar as ae ae aq ar ar ar as ae ae ae ag aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+ar as aw ae aq ar ar ar av ae ae ae ag aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+ar ar au ax ar ar ar av ay ae ai aj aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+ar ar ar ar ar ar as ai aj aj aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+ar ar ar ar ar ar as ag aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+monster = Rats
+monster = Snake
+battle_bg = underground.png
+:a
+pix("underground/rock.png")
+walk(0)
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/water_exit.png")
+walk(0)
+Action
+if(var("raft_level2.txt_0"), "=", 1)
+	hero("hero_s_raft")
+	move("lake.txt", 12, 4)
+else
+	info("The water looks very deep.")
+endif
+:ac
+pix("underground/rock_s.png")
+walk(0)
+:ad
+pix("underground/rock_se.png")
+walk(0)
+:ae
+pix("underground/dirt.png")
+walk(1)
+:af
+pix("underground/rock_sw.png")
+walk(0)
+:ag
+pix("underground/rock_w.png")
+walk(0)
+:ah
+pix("underground/rock_e.png")
+walk(0)
+:ai
+pix("underground/rock_nw.png")
+walk(0)
+:aj
+pix("underground/rock_n.png")
+walk(0)
+:ak
+pix("underground/rock_ne.png")
+walk(0)
+:al
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("level1.txt", 2, 12)
+hero("hero_s")
+:am
+pix("underground/rock_exit.png")
+walk(1)
+Action
+if(var("been_to_third_level"), "=", 0)
+	info("Looking out into the field, you are surprised to see several creatures")
+	info("thought to be extinct.")
+	info("This may be harder than you thought.")
+endif
+move("level3.txt", 4, 8)
+hero("hero_s")
+set("been_to_third_level", "=", 1)
+:an
+pix("underground/void_nw.png")
+walk(0)
+:ao
+pix("underground/void_n.png")
+walk(0)
+:ap
+pix("underground/void_ne.png")
+walk(0)
+:aq
+pix("underground/void_w.png")
+walk(0)
+:ar
+pix("underground/void.png")
+walk(0)
+:as
+pix("underground/void_e.png")
+walk(0)
+:at
+pix("underground/dirt.png")
+if(var("have_attacked_bear"), "=", 1)
+	walk(1)
+else
+	walk(0)
+	addpix("monsters/Cave Bear.png")
+endif
+Action
+if(var("have_attacked_bear"), "=", 1)
+	end()
+endif
+if(question("A cave bear lies here. It seems to be guarding something. Attack?"), "=", 1)
+	if(attack("cave bear"), "=" 1)
+		set("have_attacked_bear", "=", 1)
+		delpix("monsters/Cave Bear.png")
+		walk(1)
+	endif
+endif
+:au
+pix("underground/void_n_left.png")
+walk(0)
+:av
+pix("underground/void_se.png")
+walk(0)
+:aw
+pix("underground/dirt.png")
+walk(1)
+if(var("long_sword_level2.txt_0"), "=", 0)
+	addpix("items/long_sword.png")
+endif
+Action
+if(var("long_sword_level2.txt_0"), "=", 0)
+	if(find("long sword", "a"), "=", 1)
+		set("long_sword_level2.txt_0", "=", 1)
+	else
+		end()
+	endif
+endif
+delpix("items/long_sword.png")
+:ax
+pix("underground/void_n_right.png")
+walk(0)
+:ay
+pix("underground/dirt.png")
+walk(1)
+if(var("raft_level2.txt_0"), "=", 0)
+	addpix("items/raft.png")
+endif
+Action
+if(var("raft_level2.txt_0"), "=", 0)
+	if(find("raft", "a"), "=", 1)
+		set("raft_level2.txt_0", "=", 1)
+	else
+		end()
+	endif
+endif
+delpix("items/raft.png")

@@ -1,0 +1,194 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa ab ac ad ad ad ad ae aa aa aa 
+aa aa aa aa af ag ah ai aj ak al ak am ad ad ae aa 
+aa aa an ao ap aq ar as at au av at ak ak am aa aa 
+aa aa af aw as ax ay av av av av av aj ak au aa aa 
+aa aa af az az az az az av av av av at au af aa aa 
+aa af av aA aA aA aA aA av av av av av aB aa aa aa 
+aa af av aC aC aC aC aC av av av av av af aq aa aa 
+aa aB av aD aE aF aE aG av av av av av av aH aa aa 
+aa aa aB aI aJ aK aL aM av aN aO aP av aQ aB aa aa 
+aa aa af av av av av av av aR aS aS aT aU aV aa aa 
+aa aQ av av av av av av av aW aX aY aZ ay af aa aa 
+aa ax aQ av av av av av av aB av av av aB af aa aa 
+aa aa aU a0 af av av a1 ao a2 aB aB av af aa aa aa 
+aa aa a3 af aa aB af af aU aV af aa af aa aa aa aa 
+aa aa aa aa aa aa aa aa a3 aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("grass.png")
+walk(1)
+Action
+move("lake_islands.txt", 8, 16)
+hero("hero_n")
+:ac
+pix("rock_nw.png")
+walk(0)
+:ad
+pix("rock_n.png")
+walk(0)
+:ae
+pix("rock_ne.png")
+walk(0)
+:af
+pix("tree2.png")
+walk(0)
+:ag
+pix("tree_left.png")
+walk(0)
+:ah
+pix("tree_center.png")
+walk(0)
+:ai
+pix("tree_right.png")
+walk(1)
+:aj
+pix("rock_w.png")
+walk(0)
+:ak
+pix("rock.png")
+walk(0)
+:al
+pix("rock_s.png")
+walk(0)
+:am
+pix("rock_e.png")
+walk(0)
+:an
+pix("tree_left2.png")
+walk(0)
+:ao
+pix("tree_center2.png")
+walk(0)
+:ap
+pix("tree_right2.png")
+walk(1)
+:aq
+pix("treetop.png")
+walk(0)
+:ar
+pix("double_tree.png")
+walk(0)
+:as
+pix("small_tree_right.png")
+walk(1)
+:at
+pix("rock_sw.png")
+walk(0)
+:au
+pix("rock_se.png")
+walk(0)
+:av
+pix("grass.png")
+walk(1)
+:aw
+pix("double_tree2.png")
+walk(0)
+:ax
+pix("treetrunk2.png")
+walk(0)
+:ay
+pix("small_tree_bottom2.png")
+walk(1)
+:az
+pix("grass.png")
+addoverpix("roof_blue/roof_n_back.png")
+walk(1)
+:aA
+pix("roof_blue/roof_n_top.png")
+walk(0)
+:aB
+pix("tree.png")
+walk(0)
+:aC
+pix("roof_blue/roof_n_bot.png")
+walk(0)
+:aD
+pix("town/wall_w.png")
+walk(0)
+:aE
+pix("town/window.png")
+walk(0)
+:aF
+pix("town/wall.png")
+walk(0)
+:aG
+pix("town/wall_e.png")
+walk(0)
+:aH
+pix("treetrunk.png")
+walk(0)
+:aI
+pix("town/wall_sw.png")
+walk(0)
+:aJ
+pix("town/wall_fountain.png")
+walk(0)
+:aK
+pix("town/wall_door.png")
+walk(1)
+Action
+move("lake_gem_house_inside.txt", 5, 9)
+hero("hero_n")
+:aL
+pix("town/sign_gem.png")
+walk(0)
+:aM
+pix("town/wall_se.png")
+walk(0)
+:aN
+pix("water/water_nw.png")
+walk(1)
+:aO
+pix("water/water_n.png")
+walk(0)
+:aP
+pix("water/water_n2.png")
+walk(0)
+:aQ
+pix("treetop2.png")
+walk(0)
+:aR
+pix("water/water_w.png")
+walk(1)
+:aS
+pix("water/water.png")
+walk(0)
+:aT
+pix("water/water_e2.png")
+walk(0)
+:aU
+pix("double_tree4.png")
+walk(0)
+:aV
+pix("small_tree_right2.png")
+walk(0)
+:aW
+pix("water/water_sw.png")
+walk(1)
+:aX
+pix("water/water_s3.png")
+walk(1)
+:aY
+pix("water/water_s.png")
+walk(1)
+:aZ
+pix("water/water_se.png")
+walk(1)
+:a0
+pix("small_tree_right2.png")
+walk(1)
+:a1
+pix("tree_left2.png")
+walk(1)
+:a2
+pix("tree_right2.png")
+walk(0)
+:a3
+pix("small_tree_bottom2.png")
+walk(0)

@@ -1,0 +1,137 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa ab ab aa aa aa aa aa ab ab aa aa aa ab aa aa aa aa 
+aa aa aa aa aa aa aa ac ad ad ae aa af aa ac ad ad ae ag ac ad ae aa aa aa 
+aa aa aa aa aa aa ac ad ad ad ad ah aa ai ad ad ad ad ad ad ad aj aa aa aa 
+aa aa aa aa ab ac ad ad ad ad ad ah aa ac ad ad ad ad ad ad ad ah aa aa aa 
+aa aa aa ac ad ad ad ad ad ad ad ah ai ad ad ad ad ad ad ad ad ah aa aa aa 
+aa aa ac ad ad ad ad ad ad ad ad ae aa ak ad ad ad ad ad ad ad ah aa aa aa 
+aa ai ad ad ad ad ad ad ad ad ad ad ae aa ak ad ad ad ad ad aj aa aa aa aa 
+aa ai ad ad ad ad ad ad ad ad ad ad ad ae ac ad ad ad ad ad ae aa aa aa aa 
+aa ai ad ad ad ad ad ad aj al al ak ad ad ad ad ad ad aj ak ad ah aa aa aa 
+aa ai ad ad ad ad ad ad ae aa aa ai ad ad ad ad ad ad ah af al ab ab aa aa 
+aa ai ad ad ad ad ad ad ad ae aa aa ak ad ad ad ad ad ae ab ac ad ad ae aa 
+aa ai ad ad ad ad ad ad am an ah aa ac ad ad ad ad ad ad ad ad ad ad aj aa 
+aa ai ad ad ad ad am ao ap aq ah aa ak ad ad ad ad ad ad ad ad ad ad ah aa 
+aa ai ad ad ad ar ap ap ap aq ah aa aa ak ad ad ad ad ad ad ad ad ad ah aa 
+aa ai ad ad ad as ap ap ap aq ah af aa ai ad ad am an ad ad ad ad aj aa aa 
+aa ai ad ad ad ad as at at au ah aa aa aa ak ad as au ad ad av al aa aa aa 
+aa ai ad ad ad ad ad ad ad aj aa ai ae ab ac ad ad ad ad ad ad ae aw aa aa 
+aa ai ad ad ad ad ad aj al aa aa ac ad ad ad ad ad ad ad ad ad ad ad ah aa 
+aa ai ad ad ad ad aj aa aa aa ac ad ad ad ad aj al ak ad ad ad ad ad ah aa 
+aa ai ad ad ad ad ae af aa ac ad ax ad aj al aa aa aa ak aj ak ad ad ah aa 
+aa ai ad ad ad ad ad ae ai am an ad ad ae ac ae ab aa aa aa aa ak aj aa aa 
+aa ai ad ad ad ad ad av ac ay ap az aA an ad ad ad ae ab ab aa aa aa aa aa 
+aa ai ad ad ad ad ad ad ad as at ap ap aq ad ad ad ad ad ad ae aa aa aa aa 
+aa ai ad ad ad ad ad ad ad ad ad as at au ad ad ad ad ad ad ad ah aa af aa 
+aa ai ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad aj al al aa aa aa aa 
+aa aa ak ad ad aj ak ad ad ad ad ad ad ad ad ad ad ad ah aa aa aa aa aa aa 
+aa aa ai ad ad ae aa al ak ad ad ad ad ad ad ad ad ad ae aB aa aa aa aa aa 
+aa aa aa ak ad ad ae aa aa al ak ad ad ad ad ad ad ad ad ad ah aa aa aa aa 
+aa aa aa aa al al al aa aa aa aa al al al al al al ak aj al aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+monster=Shadow
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/rock_se.png")
+walk(0)
+:ad
+pix("underground/dirt.png")
+walk(1)
+:ae
+pix("underground/rock_sw.png")
+walk(0)
+:af
+pix("underground/gem_rock.png")
+walk(1)
+:ag
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("minersland.txt", 15, 8)
+hero("hero_s")
+:ah
+pix("underground/rock_w.png")
+walk(0)
+:ai
+pix("underground/rock_e.png")
+walk(0)
+:aj
+pix("underground/rock_nw.png")
+walk(0)
+:ak
+pix("underground/rock_ne.png")
+walk(0)
+:al
+pix("underground/rock_n.png")
+walk(0)
+:am
+pix("underground/void_nw.png")
+walk(0)
+:an
+pix("underground/void_ne.png")
+walk(0)
+:ao
+pix("underground/void_n_right.png")
+walk(0)
+:ap
+pix("underground/void.png")
+walk(0)
+:aq
+pix("underground/void_e.png")
+walk(0)
+:ar
+pix("underground/void_nw2.png")
+walk(0)
+:as
+pix("underground/void_sw.png")
+walk(0)
+:at
+pix("underground/void_s.png")
+walk(0)
+:au
+pix("underground/void_se.png")
+walk(0)
+:av
+pix("underground/rock_w_tip.png")
+walk(1)
+:aw
+pix("underground/desert_exit.png")
+walk(1)
+Action
+move("desert.txt", 6, 2)
+hero("hero_s")
+:ax
+pix("underground/dirt.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+Action
+if(var("found_mine3_treasure"), "=", 0)
+	if(find("gold", 150), "=", 1)
+		set("found_mine3_treasure", "=", 1)
+	endif
+else
+	info("You found an empty treasure chest.")
+endif
+:ay
+pix("underground/void_w.png")
+walk(0)
+:az
+pix("underground/void_n_left.png")
+walk(0)
+:aA
+pix("underground/void_n.png")
+walk(0)
+:aB
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("minersland.txt", 17, 11)
+hero("hero_e")

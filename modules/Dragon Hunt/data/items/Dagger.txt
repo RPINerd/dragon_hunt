@@ -1,0 +1,6 @@
+Name=Dagger
+type=0
+quality=2
+price=15
+description=A small but useful dagger.
+picture=items/dagger.png

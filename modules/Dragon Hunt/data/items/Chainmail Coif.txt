@@ -1,0 +1,6 @@
+Name=Chainmail Coif
+type=3
+quality=2
+price=15
+description=Slightly more protective, but still worrying.
+picture=items/chain_helmet.png

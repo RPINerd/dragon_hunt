@@ -1,0 +1,169 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad aa
+aa aa ae aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad aa
+aa af af aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad aa
+aa ag ah ai ae aa aa aa aa aa aa aa aa aa aa ab ac ad aa
+aa aj ah ah ai ae aa aa aa aa aa aa aa aa aa ab ac ad aa
+aa ak al ah ah ai ae af ae af ae af ae af ae ab ac ad aa
+aa af am ag ah ah an ac an ac an ac an ah an an ac ad aa
+aa ao ae al ah ap ah ah ac ac ac aq ao al ap ac ac ad aa
+aa ag an an ah ar ah as aj ac ac ac ah ai ae al ac ai aa
+aa al ac ap ac an ac ai ao ag ah ac ap ac ad ab ac aq aa
+aa at ak au av ac ac ac ac ac ah aw ae ao af ab ac aw aa
+aa aa af ao ae ag ac ac ap av as ae ab ac ac an ac ai aa
+aa at ag ac an ac ac aq am af ae au an ac ac ap ac aw aa
+aa aa ag ac ac ac av ac ai aj an ah ah ac aq am ak af aa
+aa ab av ah aq ao am ag ah ac ac ac ap as ak ae au as aa
+aa aa ae ag ah aq ab ah ah aq ao ao af ae af ab ac ad aa
+aa ax ab ah av aq ae aj ah ah ah ah ah an ac an ac ad aa
+aa aa af ao au ah an ah aw ao aj ah ah ac ap ah ac ad aa
+aa aa ag ah ah ah ah aq ab ah ah ah ah ah ai aj ac ad aa
+aa aa al av ah ah ap as af al ah ah av ah ah ah ah ai aa
+aa aa ae af al ah ai am aj an ah aq ae ay al ah ah aq aa
+aa at au ah ar ah aq af ag ah ah az aA aB aA aC aq ao aa
+aa af ag as ab ah ah ah ah ah aD aE aF aG aH aC ap ah an
+aa ak ag ai af ao ag ah ah aD aH aH aH aH aI aq af ag ah
+aa at ag ah ah ah ah ah aJ aK aH aI aL aI av as ao ag ah
+aa aa al ah ah ap ah ah ah aM aM ah ah aw am af al ah ah
+aa aa ab av aw ae ak ak ao ak ao ak ao ae af ao af ag ah
+aa ab ad aa aa aa aa ae ag an ah an ah an ah ah ah ah ah
+aa aa aa aa aa aa aa ab ah ah ah ah ah ah ah ah ah ah ah
+
+:def
+:a
+pix("hills/hills_n4.png")
+walk(0)
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("water_hills/hills_n3_w_water.png")
+walk(0)
+:ac
+pix("water/water.png")
+walk(0)
+:ad
+pix("water_hills/hills_n3_e_water.png")
+walk(0)
+:ae
+pix("hills/hills_center.png")
+walk(0)
+:af
+pix("water_hills/hills_s2_water.png")
+walk(0)
+:ag
+pix("water_hills/hills_e_water.png")
+walk(0)
+:ah
+pix("water_hills/water.png")
+walk(0)
+:ai
+pix("water_hills/hills_w2_water.png")
+walk(0)
+:aj
+pix("water_hills/hills_e_double_water.png")
+walk(0)
+:ak
+pix("water_hills/hills_n3_water.png")
+walk(0)
+:al
+pix("water_hills/hills_n2_w_water.png")
+walk(0)
+:am
+pix("hills/hills_n_center.png")
+walk(0)
+:an
+pix("water_hills/hills_s_water.png")
+walk(0)
+:ao
+pix("water_hills/hills_e_w_water.png")
+walk(0)
+:ap
+pix("water_hills/hills_n_double_water.png")
+walk(0)
+:aq
+pix("water_hills/hills_w_water.png")
+walk(0)
+:ar
+pix("water_hills/hills_ns_water.png")
+walk(0)
+:as
+pix("water_hills/hills_n2_e_water.png")
+walk(0)
+:at
+pix("hills/hills_n4_double.png")
+walk(0)
+:au
+pix("water_hills/hills_e2_water.png")
+walk(0)
+:av
+pix("water_hills/hills_n_water.png")
+walk(0)
+:aw
+pix("water_hills/hills_n2_e_double_water.png")
+walk(0)
+:ax
+pix("hills/hills_n4.png")
+walk(0)
+:ay
+pix("water_hills/hills_e_w_upper_water.png")
+walk(0)
+:az
+pix("water/land_e.png")
+walk(0)
+:aA
+pix("hills/hills_s.png")
+walk(1)
+:aB
+pix("water/grass.png")
+walk(1)
+if(var("leather_armor_found0"), "=", 0)
+	addpix("items/leather_armor.png")
+endif
+Action
+if(var("leather_armor_found0"), "=", 0)
+	if(find("leather armor", "some"), "=", 1)
+		 set("leather_armor_found0", "=", 1)
+	else
+		end()
+	endif
+endif
+delpix("items/leather_armor.png")
+:aC
+pix("water/land_w.png")
+walk(0)
+:aD
+pix("water/diag_2.png")
+walk(0)
+:aE
+pix("water_hills/hills_w_water_land.png")
+walk(0)
+:aF
+pix("hills/hills_e.png")
+walk(0)
+:aG
+pix("grass.png")
+walk(1)
+:aH
+pix("water/grass.png")
+walk(1)
+:aI
+pix("water/diag_1.png")
+walk(0)
+:aJ
+pix("water/beach_landing.png")
+walk(1)
+addpix("items/raft.png")
+Action
+move("river.txt", 8, 26)
+hero("hero_w_raft")
+:aK
+pix("water/beach_landing_grass.png")
+walk(1)
+:aL
+pix("water/diag_3.png")
+walk(0)
+:aM
+pix("water/land_n.png")
+walk(0)

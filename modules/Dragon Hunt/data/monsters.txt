@@ -1,0 +1,77 @@
+:Angry Tree
+monster=Angry Tree
+
+:Ant
+monster=Ant
+
+:Ants
+x_pos = 40, 160
+y_pos = 10, 10
+monster=Ant
+monster=Ant
+
+:Boar
+monster=Boar
+
+:Cave Bear
+monster=Cave Bear
+
+:Crab
+monster=Crab
+
+:Crawler
+monster=Crawler
+
+:Dragon
+monster=Dragon
+
+:Great Dragon
+x_pos = 40, 100, 160
+y_pos = 10, 15, 10
+monster=Dragon
+monster=Great Dragon
+monster=Dragon
+
+:Jelly
+monster=Jelly
+
+:Jellyfish
+monster=Jellyfish
+
+:Rats
+attack=You are attacked by a swarm of rats.
+x_pos = 40, 100, 160
+y_pos = 10, 15, 10
+monster=Rat
+monster=Rat
+monster=Rat
+
+:Skeletons
+attack=Some skeletons rise from the ground.
+x_pos = 60, 140
+y_pos = 10, 10
+monster=Skeleton
+monster=Skeleton
+
+:Slime
+monster=Slime
+
+:Snake
+monster=Snake
+
+:Spider
+monster=Spider
+
+:Tentacle Plant
+monster= Tentacle Plant
+
+:Warriors
+attack=A group of warriors ambushes you.
+x_pos = 40, 100, 160
+y_pos = 10, 15, 10
+monster=Warrior
+monster=Warrior
+monster=Warrior
+
+:Shadow
+monster=Shadow

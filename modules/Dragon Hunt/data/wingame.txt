@@ -1,0 +1,8 @@
+#Called upon winning. Any commands can be entered here, but info would
+#likely be most useful. End the game completely with the lose command.
+#(Yes, I know it's a bit weird. Deal with it.)
+
+
+if(question("You have defeated the evil within this land! Return to main menu for a breather?"), "=", 1)
+	lose()
+endif

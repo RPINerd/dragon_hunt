@@ -1,0 +1,11 @@
+
+Name=Spider
+hp=20
+attack=4
+defense=4
+exp=4
+gold=4
+description=The Spider is a nasty creature, with poisoned fangs and blood \
+red eyes.  It scuttles quickly on its eight legs and hides a hard carapace \
+under its tufted grey fur.  The Spider is very tenacious in battle and often \
+proves difficult to dispatch.

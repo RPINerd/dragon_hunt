@@ -1,0 +1,7 @@
+Name=Chainmail Gauntlets
+type=4
+quality=3
+price=40
+description=Made of interlocking rings, this will stop \
+many blows.
+picture=items/chain_gauntlets.png

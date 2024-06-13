@@ -1,0 +1,7 @@
+Name=Tower Shield
+type=2
+quality=6
+price=80
+description=A huge shield, large enough to completely \
+hide behind.
+picture=items/tower_shield.png

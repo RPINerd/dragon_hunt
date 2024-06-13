@@ -1,0 +1,221 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa ab aa ab ab ac ab ac ab ac ab ac ad ac ad ac ab ac ab ac ab ae ab aa aa
+aa ab aa ad af ag ah ag ah ag ah ag ai ab aj ab ak ag ah ag ah al ad ac ad aa
+aa aa ab ad am ah ah ah an ah ah ah ah al ab ae ab ao ap ah ah ai ab aj ad aa
+aa aa aa ad am ah ah ah ah ah ah ah ah ah al ab af ah ah aq ah ah ar ab ad aa
+aa aa ab ad am ah ah ah ah ah ah ah ah ah ah ag ah ah ah ah ah ai ab ac ad aa
+aa aa aa ad ao ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah as ai ad aa
+aa aa ab ad am ah ah ah ah ah ah ah at ah ah ah ah ah ah ah ah au av aw ax ax
+aa ab aa ad am ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ai aa ad aa
+aa aa aa ab am ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah al ad aa
+aa ae ad af ah ah ay ah ah ah ah az ah ah ah aA ah ah ah ah ah ah ah ai ad aa
+aa aa aB ao ah ah ah ah ah ah ah aC ah ah ah ah ah ah ah ah ah ah aw ai ad aa
+aa aD aE ah ah ah ah ah ah aF ah ah ah aG ah aG aw ah ah ah ah ai ab aj ad aa
+aa ab ak ah ah ah ah ah ah ah ah ah ai ab aj ab ad ao ah ah ah ah ar ab ad aa
+aa ac ad ao ah ah ah ah ah ah ah ah ah al ad ac ad am ah ah ah ai ab ae ab aa
+aa aH ab am ah ah ah ah ah ah ah ah ah ai ab aH ab am ah ah ah ah ar ab aa aa
+aa am ag ah aI aJ aK ah ah ah ah ah ah ah ag ah ag ah ah ah ah aL ab aa ab aa
+aa am ah ah ah aM aN ah ah ah ah ah ah ah ah ah ah ah aO ah ai ab ae ab aa aa
+aa am ah ah aP aQ ah ah ah aw ah aw ah aG ah ah ah ah ah ah ah al ad aa aa aa
+aa am ah ah ah ah ah ah aR ab aj ab aj ab am ah ah ah aG ah aG aR ab aa aa aa
+aa ak ah aG ah aG ah aL ab aa ab aa ab aD ah ah ah ai ab aj ab aa aa aa ab aa
+aa ab aH ab aH ab aj ab aa ab aa ab aa ab ak ah aG ah ar aa aa ab aa aa aa aa
+aa af ay ag ah al ab aa aa aa ab aa ae aa ab aj ab aj aa aa aa aa aa aa ad aa
+aa ak aS aG aT aG ar ad aa ab aa ab aa ab aa ab aa ab aa ab ae ab aa ab ad aa
+aa ab aj ab aj ab aa ab ad ae ab ae ab ae ab aa ab ae ab ae ab aa ab aa ab aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+monster=Ant
+monster=Spider
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("hills/hills_center.png")
+walk(0)
+:ac
+pix("hills/hills_s2.png")
+walk(0)
+:ad
+pix("hills/hills_n_center.png")
+walk(0)
+:ae
+pix("hills/hills_n4_double.png")
+walk(0)
+:af
+pix("hills/hills_e2.png")
+walk(0)
+:ag
+pix("hills/hills_s.png")
+walk(1)
+:ah
+pix("grass.png")
+walk(1)
+:ai
+pix("hills/hills_w.png")
+walk(0)
+:aj
+pix("hills/hills_n3.png")
+walk(0)
+:ak
+pix("hills/hills_n2_w.png")
+walk(0)
+:al
+pix("hills/hills_w2.png")
+walk(0)
+:am
+pix("hills/hills_e.png")
+walk(0)
+:an
+pix("house.png")
+walk(0)
+Action
+if(var("have_attacked_house"), "=" 1)
+	end()
+endif
+if(question("You see a house, with a large snake sunning itself in front. A farmer yells curses at the snake from a window. Attack?"), "=", 1)
+	if(attack("snake"), "=", 1)
+		info("With the snake dead, the farmer thanks you,")
+		info("hands you a pile of gold coins, then runs to the safety of the town.")
+		info("Taken: 50 gold.")
+		give("gold", 50)
+		set("have_attacked_house", "=", 1)
+	endif
+endif
+:ao
+pix("hills/hills_e_double.png")
+walk(0)
+:ap
+pix("grass.png")
+walk(1)
+if(var("light_healing_potion_level1.txt_0"), "=", 0)
+	addpix("items/light_healing_potion.png")
+endif
+Action
+#testing
+if(var("light_healing_potion_level1.txt_0"), "=", 0)
+	if(find("light healing potion", "a"), "=", 1)
+		set("light_healing_potion_level1.txt_0", "=", 1)
+	else
+		end()
+	endif
+endif
+delpix("items/light_healing_potion.png")
+:aq
+pix("large_shrub.png")
+walk(0)
+:ar
+pix("hills/hills_n3_e.png")
+walk(0)
+:as
+pix("hills/hills_s.png")
+walk(1)
+Action
+set("town_enter_from", "=", 1)
+:at
+pix("flowers.png")
+walk(1)
+:au
+pix("grass.png")
+walk(1)
+Action
+set("town_enter_from", "=", 0)
+:av
+pix("town.png")
+walk(1)
+Action
+if(var("town_enter_from"), "=", 1)
+	move("town.txt", 11, 1)
+	hero("hero_s")
+else
+	move("town.txt", 1, 9)
+	hero("hero_e")
+endif
+give("hp", stat("maxhp"))
+give("ep", stat("maxep"))
+:aw
+pix("hills/hills_n_double.png")
+walk(0)
+:ax
+pix("hills/hills_n_s.png")
+walk(0)
+:ay
+pix("mixed_flowers.png")
+walk(1)
+:az
+pix("treetop2.png")
+walk(0)
+:aA
+pix("red_flowers.png")
+walk(1)
+:aB
+pix("hills/mine_n.png")
+walk(1)
+Action
+move("level2.txt", 4, 8)
+hero("hero_s")
+:aC
+pix("treetrunk.png")
+walk(0)
+:aD
+pix("hills/hills_n3_w.png")
+walk(0)
+:aE
+pix("hills/mine_s.png")
+walk(1)
+:aF
+pix("tree.png")
+walk(0)
+:aG
+pix("hills/hills_n.png")
+walk(0)
+:aH
+pix("hills/hills_e_w.png")
+walk(0)
+:aI
+pix("tree_left2.png")
+walk(1)
+:aJ
+pix("tree_center2.png")
+walk(0)
+:aK
+pix("tree_right2.png")
+walk(1)
+:aL
+pix("hills/hills_n2_e_double.png")
+walk(0)
+:aM
+pix("double_tree2.png")
+walk(0)
+:aN
+pix("small_tree_right.png")
+walk(1)
+:aO
+pix("grass.png")
+walk(1)
+if(var("gold_level1.txt_0"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_level1.txt_0"), "=", 0)
+	if(find("gold", 5), "=", 1)
+		set("gold_level1.txt_0", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:aP
+pix("stones.png")
+walk(1)
+:aQ
+pix("small_tree_bottom.png")
+walk(1)
+:aR
+pix("hills/hills_n2_e.png")
+walk(0)
+:aS
+pix("small_flowers.png")
+walk(1)
+:aT
+pix("small_blue_flowers.png")
+walk(1)

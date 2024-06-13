@@ -1,0 +1,10 @@
+
+Name=Tentacle Plant
+hp=45
+attack=14
+defense=9
+exp=20
+gold=25
+description=The Tentacle Plant is a vicious carnivorous plant that attempts \
+to entrap its prey with its strong, sticky tentacles.  The leaves have a \
+pleasant odour to attract the unwary traveller.

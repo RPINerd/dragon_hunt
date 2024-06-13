@@ -1,0 +1,7 @@
+Name=Flamberge
+type=0
+quality=8
+price=500
+description=A formidable weapon.
+picture=items/flamberge.png
+

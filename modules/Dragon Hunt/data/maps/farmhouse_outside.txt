@@ -1,0 +1,173 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ac ad ab ab ab ab ab ab ab ac ad ab ab aa 
+aa ab ae af ag ah ab ab ab ab ab ae af ag ah ab aa 
+aa ab ai aj ak al am am am am am ai aj an al ab aa 
+aa ab ai aj an al ao ao ao ao ao ai aj an al ab aa 
+aa ab ai aj an al ap ap ap ap ap ai aj an al ab aa 
+aa ab ai aj an al aq aq aq ar as ai aj an al ab aa 
+aa ab ai aj an al at au av aw ax ai aj an al ab aa 
+aa ab ai aj an al ay az aA aB ax ai aj an al ab aa 
+aa ab ai aj an al ab ab ab ab ab ai aj an al ab aa 
+aa ab ai aC aD al am am am am am ai aC aD al ab aa 
+aa ab aE aF aF aG ao ao ao ao ao aE aF aF aG ab aa 
+aa ab aH aF aF aI ap ap ap ap ap aH aJ aJ aI ab aa 
+aa ab aK aL aq aq aq aL aM aL aq aq aq aq as ab aa 
+aa ab ab ab ab ab ab ab aN ab ab ab ab ab ab ab aa 
+aa aa aa aa aa aa aa aa aO aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("grass.png")
+walk(1)
+Action
+move("level3.txt", 20, 16)
+hero("hero_w")
+:ab
+pix("grass.png")
+walk(1)
+:ac
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw_top.png")
+:ad
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne_top.png")
+:ae
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw.png")
+:af
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_w_top.png")
+:ag
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_e_top.png")
+:ah
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:ai
+pix("roof_red/roof_w_bot.png")
+walk(0)
+:aj
+pix("roof_red/roof_w_top.png")
+walk(0)
+:ak
+pix("roof_red/roof_e_top.png")
+walk(0)
+Action
+info("The door is securely locked.")
+:al
+pix("roof_red/roof_e_bot.png")
+walk(0)
+:am
+pix("roof_red/roof_n_back.png")
+walk(0)
+:an
+pix("roof_red/roof_e_top.png")
+walk(0)
+:ao
+pix("roof_red/roof_n_top.png")
+walk(0)
+:ap
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:aq
+pix("town/wood_wall_s.png")
+walk(0)
+:ar
+pix("town/wood_wall_door.png")
+walk(1)
+:as
+pix("town/wood_wall_se.png")
+walk(0)
+:at
+pix("small_shrub.png")
+walk(0)
+:au
+pix("tree_left2.png")
+walk(0)
+:av
+pix("tree_center2.png")
+walk(0)
+:aw
+pix("tree_right2.png")
+walk(0)
+:ax
+pix("grass.png")
+walk(0)
+:ay
+pix("tree.png")
+walk(0)
+:az
+pix("small_flowers.png")
+walk(0)
+:aA
+pix("treetrunk.png")
+walk(0)
+:aB
+pix("mixed_flowers.png")
+walk(0)
+:aC
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw.png")
+:aD
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se.png")
+:aE
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:aF
+pix("town/wood_wall.png")
+walk(0)
+:aG
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:aH
+pix("town/wood_wall_w.png")
+walk(0)
+:aI
+pix("town/wood_wall_e.png")
+walk(0)
+:aJ
+pix("town/wood_window.png")
+walk(0)
+:aK
+pix("town/wood_wall_sw.png")
+walk(0)
+:aL
+pix("town/wood_window_s.png")
+walk(0)
+:aM
+pix("road/end_wood_door.png")
+walk(0)
+Action
+if(var("farmhouse_key_found"), "=", 0)
+	info("The farmhouse door is locked.")
+	info("A sign on the door reads 'Too many monsters. Left the valley.'")
+else
+	hero("hero_n")
+	move("farmhouse.txt", 7, 13)
+	if(take("Key"), "=", 1)
+		info("You unlock the door with your key.")
+		set("farmhouse_key_found", "=", 1)
+	endif
+endif
+:aN
+pix("road/road_ns.png")
+walk(1)
+:aO
+pix("road/road_ns.png")
+walk(1)
+Action
+move("level3.txt", 20, 16)
+hero("hero_w")

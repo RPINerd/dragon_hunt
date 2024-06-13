@@ -1,0 +1,6 @@
+Name=Chainmail Leggings
+type=5
+quality=2
+price=50
+description= The perfect accessory for today's knight.
+picture=items/chain_boots.png

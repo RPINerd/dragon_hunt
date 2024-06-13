@@ -1,0 +1,249 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa ab ab ab ab ab ab ab aa aa aa aa aa aa ac ac ac ac ac ac ac ac 
+ab ab ab ad ae ae ae ae ae ae ae af ag ab ab ab ah ai aj aj aj aj aj aj aj 
+ak al ak am an an ao ak ak ak ak ak ap ak ak ak aq ar ar aj aj aj aj aj aj 
+ak as ak at au av aw ak ax ak ak ak ak ak ak ak ak ae ae ay ar aj aj aj aj 
+ak as ak az aA aB aC ak ak ak ak ak ak ak ak ak ak ae ae ae ae ay ar aj aj 
+ak as ak aD aE aE aF ak ak ak ak ak aG ak ak ak ak ae ae ae ae ae ae aH aj 
+ak as ak aI aJ aJ aK ak ak ak ak ak ak ak ak ak ak ae ae ae ae aL aM aj aj 
+ak aN ak aO aP aQ aR ak ak ak ak ak ak ak ak ak ak ae ae aS aT aj aj aj aj 
+ak ak ak ak ak aU ak ak ak ak ak ak ak ak ak ak ak aS aV aT aj aj aj aj aj 
+ak al ak ak ak ak ak ak ak ak ak ak aW aX an ao ak aY aj aj aj aj aj aj aj 
+ak as ak ak ak ak ak ak ak ak ak ak aZ a0 a1 a2 ak aY aj aj aj aj aj aj aj 
+ak as ak ak ak ak ak ak a3 ak ak ak az a4 a5 a6 ak aY aj aj aj aj aj aj aj 
+ak as ak ak ak ak ak ak ak ak ak ak a7 aJ aJ aK ak aY aj aj aj aj aj aj aj 
+ak as ak ak ak ak ak ak ak ak ak ak aO a8 aQ aR ak aY aj aj aj aj aj aj aj 
+ak as ak ak ak ak ak ak ak ak ak ak ak ak a9 ak ak ba aj aj aj aj aj aj aj 
+ak as ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak bb aj aj aj aj aj aj aj 
+ak as ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae aT aj aj aj aj aj aj aj 
+ak as ak ak ak ak ak ak ak ak ak ak ak ak ak bc bd aH aj aj aj aj aj aj aj 
+ak as ak ak ak ak ak ak ak ak ak ak aS aV aV aT aj aj aj aj aj aj aj aj aj 
+ak as ak ak ak aS aV aV aV aV aV aV aT aj aj aj aj aj aj aj aj aj aj aj aj 
+ak aN ak ak aS aT aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj 
+ak aS aV aV aT aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj 
+ak be aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj 
+ak be ak ak ak ak ak ak ak ak aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj 
+
+:def
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("hills/hills_s2.png")
+walk(0)
+:ac
+pix("water_hills/hills_s2_water.png")
+walk(0)
+:ad
+pix("hills/hills_e2.png")
+walk(0)
+:ae
+pix("grass.png")
+walk(1)
+:af
+pix("hills/hills_w2.png")
+walk(0)
+:ag
+pix("hills/hills_center.png")
+walk(0)
+:ah
+pix("water_hills/hills_e2_water.png")
+walk(0)
+:ai
+pix("water_hills/water.png")
+walk(0)
+:aj
+pix("water/water.png")
+walk(0)
+:ak
+pix("grass.png")
+walk(0)
+:al
+pix("town/fence_n.png")
+walk(0)
+:am
+pix("wood_interior/wood_wall_top_grass_w.png")
+walk(0)
+:an
+pix("wood_interior/wood_wall_top_grass.png")
+walk(0)
+:ao
+pix("wood_interior/wood_wall_top_grass_e.png")
+walk(0)
+:ap
+pix("hills/hills_s.png")
+walk(0)
+:aq
+pix("water/diag_4.png")
+walk(0)
+:ar
+pix("water/land_s.png")
+walk(1)
+:as
+pix("town/fence_ns.png")
+walk(0)
+:at
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+addpix("furnishings/tree_painting.png")
+:au
+pix("wood_interior/wood_to_grass_window.png")
+walk(0)
+:av
+pix("wood_interior/painting.png")
+walk(0)
+addpix("wood_interior/fireplace.png")
+:aw
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+addpix("furnishings/ladder.png")
+:ax
+pix("small_shrub.png")
+walk(0)
+:ay
+pix("water/diag_4.png")
+walk(1)
+:az
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:aA
+pix("wood_interior/table.png")
+walk(0)
+:aB
+pix("wood_interior/rug2.png")
+walk(1)
+:aC
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("people/old_man_s.png")
+Action
+info("'The gems you find around here are valuable,' says the old man.")
+info("'They have power against the monsters.  Only the gem lady will give you'")
+info("'a fair price.'")
+:aD
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/blue_couch.png")
+:aE
+pix("wood_interior/woodfloor.png")
+walk(1)
+:aF
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:aG
+pix("red_flowers.png")
+walk(1)
+:aH
+pix("water/land_w.png")
+walk(0)
+:aI
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(0)
+addpix("furnishings/blue_chair2.png")
+:aJ
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:aK
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:aL
+pix("water/water_wu2.png")
+walk(1)
+:aM
+pix("water/land_n.png")
+walk(0)
+:aN
+pix("town/fence_s.png")
+walk(0)
+:aO
+pix("town/wood_wall_sw.png")
+walk(0)
+:aP
+pix("town/wood_window_s.png")
+walk(0)
+:aQ
+pix("wood_interior/wall_woodfloor_doorway.png")
+walk(1)
+:aR
+pix("town/wood_wall_se.png")
+walk(0)
+:aS
+pix("water/water_nw.png")
+walk(1)
+:aT
+pix("water/land_nw.png")
+walk(0)
+:aU
+pix("grass.png")
+walk(0)
+Action
+move("lake_houses.txt", 5, 9)
+hero("hero_s")
+:aV
+pix("water/water_n.png")
+walk(0)
+:aW
+pix("wood_interior/wood_wall_top_grass_w.png")
+walk(1)
+:aX
+pix("wood_interior/wood_wall_top_grass.png")
+walk(1)
+:aY
+pix("water/water_w.png")
+walk(0)
+:aZ
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:a0
+pix("wood_interior/painting.png")
+walk(0)
+:a1
+pix("wood_interior/potion_shelf.png")
+walk(0)
+:a2
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:a3
+pix("mixed_flowers.png")
+walk(1)
+:a4
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("people/old_woman_s.png")
+Action
+store("General Store")
+:a5
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:a6
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:a7
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:a8
+pix("town/wood_sign_general.png")
+walk(0)
+:a9
+pix("grass.png")
+walk(0)
+Action
+move("lake_houses.txt", 14, 15)
+hero("hero_s")
+:ba
+pix("water/water_wu.png")
+walk(0)
+:bb
+pix("water/water_wl.png")
+walk(0)
+:bc
+pix("water/water_nw.png")
+walk(0)
+:bd
+pix("water/water_n2.png")
+walk(0)
+:be
+pix("water/water_w.png")
+walk(1)

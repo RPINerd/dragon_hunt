@@ -1,0 +1,7 @@
+Name=Dragon Breastplate
+type=1
+quality=10
+price=150
+description=(+10 to EP) The scales glitter with power.
+picture=items/dragon_armor.png
+ep_bonus=10

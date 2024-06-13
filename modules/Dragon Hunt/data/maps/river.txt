@@ -1,0 +1,202 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ae ad aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ae ad aa
+aa aa af aa aa aa aa aa aa aa aa aa aa aa aa ab ae ad aa
+aa ag ag aa aa aa aa aa aa aa aa aa aa aa aa ab ae ad aa
+aa ah ai aj af aa aa aa aa aa aa aa aa aa aa ab ae ad aa
+aa ak al al aj af aa aa aa aa aa aa aa aa aa ab ae ad aa
+aa am an al al aj af ag af ag af ag af ag af ab ae ad aa
+aa ag ao ah al al ap ae ap ae ap ae ap al ap ap ae ad aa
+aa aq af an al ar al al ae ae ae as aq an ar ae ae ad aa
+aa ah ap ap al at al au ak ae ae ae al aj af an ae aj aa
+aa an ae ar ae ap ae aj aq ah al ae ar ae ad ab ae as aa
+aa av am aw ax ae ae ae ae ae al ay af aq ag ab ae ay aa
+aa aa ag aq af ah ae ae ar ax au af ab ae ae ap ae aj aa
+aa av ah ae ap ae ae as ao ag af aw ap ae ae ar ae ay aa
+aa aa ah ae ae ae ax ae aj ak ap al al ae as ao am ag aa
+aa ab ax az as aq ao ah al ae ae ae ar au am af aw au aa
+aa aa af ah al as ab al al as aq aq ag af ag ab ae ad aa
+aa aa ab al ax as af ak al al al al al ap ae ap ae ad aa
+aa aa ag aq aw al ap al ay aq ak al al ae ar al ae ad aa
+aa aa ah al al al al as ab al al al al al aj ak ae ad aa
+aa aa an ax al al ar au ag an al al ax al al al al aj aa
+aa aa af ag an al aj ao ak ap al as af aA an al al as aa
+aa av aw al at al as ag ah al al aB aC aD aC aE as aq aa
+aa ag ah au ab al al al al al aF aG aH aI aJ aE ar aK aL
+aa am ah aj ag aq ah al al aF aJ aJ aJ aJ aM as ag ah aK
+aa av ah al al al al al aN aO aJ aM aP aM ax au aq ah aK
+aa aa an al al ar al al al aQ aQ al al ay ao ag an aK aK
+aa aa ab ax ay af am am aq am aq am aq af ag aq ag ah aK
+aa ab ad aa aa aa aa af ah aL aK aL aK aL aK aK aK aK aK
+aa aa aa aa aa aa aa ab aK aK aK aK aK aK aK aK aK aK aK
+
+:def
+monster = crab
+monster = jellyfish
+battle_bg = water.png
+hero_bg = _raft
+:a
+pix("hills/hills_n4.png")
+walk(0)
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("water_hills/hills_n3_w_water.png")
+walk(0)
+:ac
+pix("water/water.png")
+walk(1)
+Action
+move("lake.txt", 24, 30)
+hero("hero_n_raft")
+:ad
+pix("water_hills/hills_n3_e_water.png")
+walk(0)
+:ae
+pix("water/water.png")
+walk(1)
+:af
+pix("hills/hills_center.png")
+walk(0)
+:ag
+pix("water_hills/hills_s2_water.png")
+walk(0)
+:ah
+pix("water_hills/hills_e_water.png")
+walk(0)
+:ai
+pix("water_hills/water.png")
+walk(1)
+if(var("green_gem_found0"), "=", 0)
+	addpix("items/green_gem.png")
+endif
+Action
+if(var("green_gem_found0"), "=", 0)
+	if(find("green gem", "a"), "=", 1)
+		set("green_gem_found0", "=", 1)
+	else
+		end()
+	endif
+endif
+delpix("items/green_gem.png")
+:aj
+pix("water_hills/hills_w2_water.png")
+walk(0)
+:ak
+pix("water_hills/hills_e_double_water.png")
+walk(0)
+:al
+pix("water_hills/water.png")
+walk(1)
+:am
+pix("water_hills/hills_n3_water.png")
+walk(0)
+:an
+pix("water_hills/hills_n2_w_water.png")
+walk(0)
+:ao
+pix("hills/hills_n_center.png")
+walk(0)
+:ap
+pix("water_hills/hills_s_water.png")
+walk(1)
+:aq
+pix("water_hills/hills_e_w_water.png")
+walk(0)
+:ar
+pix("water_hills/hills_n_double_water.png")
+walk(0)
+:as
+pix("water_hills/hills_w_water.png")
+walk(0)
+:at
+pix("water_hills/hills_ns_water.png")
+walk(0)
+:au
+pix("water_hills/hills_n2_e_water.png")
+walk(0)
+:av
+pix("hills/hills_n4_double.png")
+walk(0)
+:aw
+pix("water_hills/hills_e2_water.png")
+walk(0)
+:ax
+pix("water_hills/hills_n_water.png")
+walk(0)
+:ay
+pix("water_hills/hills_n2_e_double_water.png")
+walk(0)
+:az
+pix("water_hills/water.png")
+walk(1)
+if(var("pink_gem_found0"), "=", 0)
+	addpix("items/pink_gem.png")
+endif
+Action
+if(var("pink_gem_found0"), "=", 0)
+	if(find("pink gem", "a"), "=", 1)
+		set("pink_gem_found0", "=", 1)
+	else
+		end()
+	endif
+endif
+delpix("items/pink_gem.png")
+:aA
+pix("water_hills/hills_e_w_upper_water.png")
+walk(0)
+:aB
+pix("water/land_e.png")
+walk(0)
+:aC
+pix("hills/hills_s.png")
+walk(0)
+:aD
+pix("water/grass.png")
+walk(0)
+if(var("leather_armor_found0"), "=", 0)
+	addpix("items/leather_armor.png")
+endif
+:aE
+pix("water/land_w.png")
+walk(0)
+:aF
+pix("water/diag_2.png")
+walk(0)
+:aG
+pix("water_hills/hills_w_water_land.png")
+walk(0)
+:aH
+pix("hills/hills_e.png")
+walk(0)
+:aI
+pix("grass.png")
+walk(0)
+:aJ
+pix("water/grass.png")
+walk(0)
+:aK
+pix("water_hills/water.png")
+walk(0)
+:aL
+pix("water_hills/hills_s_water.png")
+walk(0)
+:aM
+pix("water/diag_1.png")
+walk(0)
+:aN
+pix("water/beach_landing.png")
+walk(1)
+:aO
+pix("water/beach_landing_grass.png")
+walk(0)
+Action
+move("river_island.txt", 9, 26)
+hero("hero_e")
+:aP
+pix("water/diag_3.png")
+walk(0)
+:aQ
+pix("water/land_n.png")
+walk(1)

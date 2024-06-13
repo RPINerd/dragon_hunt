@@ -1,0 +1,10 @@
+
+Name=Boar
+hp=55
+attack=8
+defense=5
+exp=12
+gold=8
+description=The Boar has huge, lethal tusks which it uses to gouge opponents. \
+It is protected by a tough, leathery skin. The boar is very speedy and will \
+fend off blows with its tusks, making it tricky to hit.

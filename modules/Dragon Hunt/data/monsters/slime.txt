@@ -1,0 +1,11 @@
+
+Name=Slime
+hp=100
+attack=10
+defense=1
+exp=18
+gold=20
+description=The Slime is a disgusting being that oozes a poisonous gel \
+and envelops its victims in a slimy cocoon. Fortunately it is very \
+vulnerable, having no armor; it requires complete dispersion to be \
+defeated.

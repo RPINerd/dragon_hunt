@@ -1,0 +1,7 @@
+Name=Poison bomb
+type=12
+quality=30
+price=20
+description=A foul-looking potion enclosed in highly \
+breakable glass.
+picture=items/poison_bomb.png

@@ -1,0 +1,7 @@
+Name=Plate Gauntlets
+type=4
+quality=5
+price=80
+description=There is nothing quite like encasing your \
+hands in solid steel to armor yourself.
+picture=items/plate_gauntlets.png

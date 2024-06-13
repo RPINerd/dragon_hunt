@@ -1,0 +1,287 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa ab aa ab ac ad ae ab ae ab ac ab ae ab ae ab ae ab ae ab ae ab ae ab aa aa 
+aa ad aa ab aa ab aa af ag ah ai ab aj ah ak ah ag ah ag ah ak ah ag al ag am aa 
+aa ad ab aa ab ae ab af ah ah ah ai an ao ab af ah ah ah ap ab aq ar ag ap ad aa 
+aa ad ae ab as ah ag ah ah ah ah ah at ah ag ah ah ah ah ah ag ai ab af ap ad aa 
+aa ad af ag ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah ag ah ap ad aa 
+aa ad au ah ah ah ah ah ah ah ah ah ah ah ah ah ah ah av aw ah ah ah ah ap ad aa 
+aa ad af ah ah ah ah ah ah ah ah ah ah ah ah ah ah av ax ay aw ah ah ah ap ad aa 
+aa ad af ar ah ah ah ah ah ah ah ah ah ah ah ah ah az aA aB aC ah ah ah ap ad aa 
+aa ad aD ae af ah ah ah ah ah ah ah ah ah ah ah ah ah ah aE ah ah ah ah ap ad aa 
+aa ab ae au ah ah ah ah ah aF aG aw ah ah ah av aH ah ah ah ar ah ah ah ap ad aa 
+aa aa af ah ah ah ah ah aI aJ aJ aK aw ah av aL aK aM aN aN ab af ah ah ap ad aa 
+aa aa af ah ah ah ah ah aO aP aJ aQ aR aS aT aQ aQ aQ aU aJ aV aW ah ah aX ab aa 
+aa aa au ah ah ah ah ah aI aJ aQ aQ aY ah aZ a0 aQ a1 aJ a2 a3 ah ah ap ab aa aa 
+aa ab af ah ah ah ah ah aF aJ a4 a5 a6 a7 ah ai a8 ab a9 aJ ba ah ah ah ag am aa 
+aa aa af ah ah ah ah bb aQ aQ aK aw ah ah ah ah ah ag aE bc a6 ah ah ah ap ab aa 
+aa ad au ah ah ah bd aF aQ be bf bg bh ah ah ah ah ah ah ah ah ah ah ah ah am aa 
+aa ad au ah ah aF bi bj bk bl bm aQ bn ah ah ah ah ah ah ah ah ah ah ah ap ab aa 
+aa ad af ah ah bc a1 bo bp bq aQ bn ah ah ah ah ah ah ah ah ah ah ah ah ar am aa 
+aa ad af ah ah ap ab br bs a1 bn ah ah ah ah ah ah ah ah ah ah ah ah ap ae ab aa 
+aa ad af ah ah ah ai ab a8 ab aq ah ah ah ah ah ah ah ah ah ah ap af ah al am aa 
+aa ad af ah ah ah ah ag ah ai ab af ah ah ah ah ah ah ah ah ah ah ah ap ad aa aa 
+aa ab af ah ah ah ah ah ah aX aj ah ar ah ah ah ah ah al ah ah ah ah ap ae aa aa 
+aa aj ar ah al ah al al ap ad as aX ab aq ah al ah al ag al ah al ah ah ah am aa 
+aa aa ad aD ad aD ad ad aD ad aD ad aa ad aD ad aD ad aD ad aD ad aq ar ah am aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aj ah am aa 
+
+:def
+:a
+pix("hills/hills_n4.png")
+walk(0)
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("hills/hills_center.png")
+walk(0)
+:ac
+pix("hills/hills_n4_double.png")
+walk(0)
+:ad
+pix("hills/hills_n_center.png")
+walk(0)
+:ae
+pix("water_hills/hills_s2_water.png")
+walk(0)
+:af
+pix("water_hills/hills_e_water.png")
+walk(0)
+:ag
+pix("water_hills/hills_s_water.png")
+walk(0)
+:ah
+pix("water/water.png")
+walk(0)
+:ai
+pix("water_hills/hills_w2_water.png")
+walk(0)
+:aj
+pix("water_hills/hills_n3_w_water.png")
+walk(0)
+:ak
+pix("water_hills/hills_ns_water.png")
+walk(0)
+:al
+pix("water_hills/hills_n_water.png")
+walk(0)
+:am
+pix("water_hills/hills_n3_e_water.png")
+walk(0)
+:an
+pix("hills/mine_n.png")
+walk(0)
+:ao
+pix("water_hills/hills_e_w_water.png")
+walk(0)
+:ap
+pix("water_hills/hills_w_water.png")
+walk(0)
+:aq
+pix("water_hills/hills_n2_w_water.png")
+walk(0)
+:ar
+pix("water_hills/hills_n_double_water.png")
+walk(0)
+:as
+pix("water_hills/hills_e2_water.png")
+walk(0)
+:at
+pix("water_hills/water_cave.png")
+walk(0)
+:au
+pix("water_hills/hills_e_double_water.png")
+walk(0)
+:av
+pix("water/land_se.png")
+walk(0)
+:aw
+pix("water/land_sw.png")
+walk(0)
+:ax
+pix("water/water_se.png")
+walk(0)
+:ay
+pix("water/water_sw.png")
+walk(0)
+:az
+pix("water/land_ne.png")
+walk(0)
+:aA
+pix("water/water_n2.png")
+walk(0)
+:aB
+pix("water/grass.png")
+walk(0)
+:aC
+pix("water/water_wu2.png")
+walk(0)
+:aD
+pix("water_hills/hills_n3_water.png")
+walk(0)
+:aE
+pix("water/land_n.png")
+walk(0)
+:aF
+pix("water/diag_2.png")
+walk(0)
+:aG
+pix("water/water_s.png")
+walk(1)
+:aH
+pix("water/land_sw.png")
+walk(1)
+:aI
+pix("water/subtle_land_e.png")
+walk(0)
+:aJ
+pix("water/grass.png")
+walk(1)
+:aK
+pix("water/water_sw.png")
+walk(1)
+:aL
+pix("water/water_se.png")
+walk(1)
+:aM
+pix("water_hills/hills_w_water_land.png")
+walk(0)
+:aN
+pix("water_hills/hills_e_w_upper_water.png")
+walk(0)
+:aO
+pix("water/beach_landing.png")
+walk(1)
+addpix("items/raft.png")
+Action
+move("lake.txt", 8, 12)
+hero("hero_w_raft")
+:aP
+pix("water/beach_landing_grass.png")
+walk(1)
+:aQ
+pix("grass.png")
+walk(1)
+:aR
+pix("water/bridge_w.png")
+walk(1)
+:aS
+pix("water/bridge.png")
+walk(1)
+:aT
+pix("water/bridge_e.png")
+walk(1)
+:aU
+pix("house.png")
+walk(0)
+Action
+move("lake_houses.txt", 1, 9)
+hero("hero_e")
+:aV
+pix("hills/hills_s.png")
+walk(1)
+:aW
+pix("water/land_w.png")
+walk(0)
+:aX
+pix("water_hills/hills_n2_e_double_water.png")
+walk(0)
+:aY
+pix("water/water_w.png")
+walk(0)
+:aZ
+pix("water/water_e.png")
+walk(0)
+:a0
+pix("hills/hills_n_double.png")
+walk(0)
+:a1
+pix("hills/hills_n.png")
+walk(0)
+:a2
+pix("house.png")
+walk(0)
+Action
+move("lake_houses.txt", 8, 2)
+hero("hero_s")
+:a3
+pix("water/water_wu.png")
+walk(0)
+:a4
+pix("water/water_nw.png")
+walk(1)
+:a5
+pix("water/water_n.png")
+walk(0)
+:a6
+pix("water/land_nw.png")
+walk(0)
+:a7
+pix("water/island.png")
+walk(0)
+:a8
+pix("water_hills/hills_e_w_lower_water.png")
+walk(0)
+:a9
+pix("hills/hills_e.png")
+walk(0)
+:ba
+pix("water/water_wl.png")
+walk(1)
+:bb
+pix("water/land_e.png")
+walk(0)
+:bc
+pix("water/diag_3.png")
+walk(0)
+:bd
+pix("water/land_s.png")
+walk(0)
+:be
+pix("rock_nw.png")
+walk(1)
+:bf
+pix("rock_n.png")
+walk(1)
+:bg
+pix("rock_ne.png")
+walk(1)
+:bh
+pix("water/diag_4.png")
+walk(0)
+:bi
+pix("tree2.png")
+walk(0)
+:bj
+pix("small_shrub.png")
+walk(0)
+:bk
+pix("house.png")
+walk(0)
+Action
+move("lake_gem_house.txt", 7, 2)
+hero("hero_s")
+:bl
+pix("rock_sw.png")
+walk(0)
+:bm
+pix("rock_se.png")
+walk(0)
+:bn
+pix("water/diag_1.png")
+walk(0)
+:bo
+pix("tree_left2.png")
+walk(0)
+:bp
+pix("tree_center2.png")
+walk(0)
+:bq
+pix("tree_right2.png")
+walk(1)
+:br
+pix("hills/hills_n2_w.png")
+walk(0)
+:bs
+pix("treetrunk2.png")
+walk(0)

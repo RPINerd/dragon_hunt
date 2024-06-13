@@ -1,0 +1,7 @@
+Name=Bastard Sword
+type=0
+quality=4
+price=50
+description=Halfway between a one-handed sword and a \
+two-handed sword, it can be wielded with either one or two hands.
+picture=items/bastard_sword.png

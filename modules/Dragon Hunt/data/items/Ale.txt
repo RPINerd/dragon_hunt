@@ -1,0 +1,13 @@
+Name=Ale
+type=17
+quality=1
+price=2
+value=2
+description=What is a tavern without something to drink? This substance is \
+apparently ale, but it doesn't look quite right.
+:scripting
+give("hp", 5)
+give("ep", -2)
+info("You feel slightly better, but a bit dizzy.")
+:values
+picture=items/drink.png

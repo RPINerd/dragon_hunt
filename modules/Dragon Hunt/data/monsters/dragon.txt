@@ -1,0 +1,33 @@
+
+Name=Dragon
+hp=200
+attack=19
+defense=15
+exp=0
+gold=0
+description=The Dragon is a fearsome beast with leathery skin, giant wings, \
+and breath of fire.  It will protect its hoard of gold and treasure at any \
+cost, attacking anyone who approaches too near.
+
+:on_death
+#Give the player one of the dragon items.
+if(equip("has", "Dragon Breastplate"), "=", 0)
+	info("You create a Dragon Breastplate out of the remains of the Dragon!")
+	item("Dragon Breastplate")
+	info("You get 40 experience.")
+	give("exp", 40)
+	end()
+endif
+if(equip("has", "Dragon Helm"), "=", 0)
+	info("You create a Dragon Helm out of the remains of the Dragon!")
+	item("Dragon Helm")
+	info("You get 40 experience.")
+	give("exp", 40)
+	end()
+endif
+
+#If the player has both a breastplate and helm, give them a standard reward.
+info("You find 150 gold,")
+give("gold", 150)
+info("and get 40 experience.")
+give("exp", 40)

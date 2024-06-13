@@ -1,0 +1,9 @@
+
+Name=Jellyfish
+hp=30
+attack=13
+defense=13
+exp=20
+gold=10
+description=The electric jellyfish stings on contact, but has very little defense \
+other than its darting speed.  Avoid becoming entangled in the toxic strands.

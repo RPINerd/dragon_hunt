@@ -1,0 +1,6 @@
+Name=Small Shield
+type=2
+quality=2
+price=20
+description=A durable and reliable shield.
+picture=items/shield.png

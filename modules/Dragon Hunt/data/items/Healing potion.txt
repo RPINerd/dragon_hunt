@@ -1,0 +1,6 @@
+Name=Healing potion
+type=11
+quality=25
+price=10
+description=Healing energy radiates out from the container.
+picture=items/healing_potion.png

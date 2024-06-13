@@ -1,0 +1,7 @@
+Name=Leather armor
+type=1
+quality=2
+price=25
+description=This will give you some protection, while \
+still allowing you to move freely.
+picture=items/leather_armor.png

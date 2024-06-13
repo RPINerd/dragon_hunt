@@ -1,0 +1,10 @@
+
+Name=Ant
+hp=15
+attack=5
+defense=2
+exp=4
+gold=4
+description=The Ant is a vicious creature that stabs with its legs and bites \
+with its teeth.  It has a weak exoskeleton making it easy to defeat, but be \
+careful not to underestimate the power of an angry ant colony.

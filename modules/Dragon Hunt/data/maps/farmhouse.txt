@@ -1,0 +1,345 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa ab ac ac ac ac ac ac ac ac ac ac ac ad aa 
+aa ae af ag ah ai ae aj ak al am an ao ap aa 
+aa aq ar as as as at au av aw aq au ax ay aa 
+aa aq az as aA aB aC aD aE aF aG aB aB aH aa 
+aa aG aB aB aH aI aI aI aJ aI aK aL af al aa 
+aa aM aN aO aP aQ aR aS aT aU aV as aW aX aa 
+aa aq as as aY aU aZ a0 a1 aU a2 as as a3 aa 
+aa aq as a4 a5 a6 a6 a6 a6 a6 a7 as ar ay aa 
+aa a8 aB aB aH af a9 ba bb ag aq as bc ay aa 
+aa bd be bf a9 bg bh bi bj bk bl as az ay aa 
+aa aG aB aB aB aB aB aB aB aB aB aB bm aH aa 
+aa bn bo aI aI aI bo bp bo aI aI aI aI bq aa 
+aa aa aa aa aa aa aa br aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("wood_interior/wood_wall_top_grass_w.png")
+walk(0)
+:ac
+pix("wood_interior/wood_wall_top_grass.png")
+walk(0)
+:ad
+pix("wood_interior/wood_wall_top_grass_e.png")
+walk(0)
+:ae
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:af
+pix("wood_interior/fireplace.png")
+walk(0)
+:ag
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("furnishings/tree_painting2.png")
+:ah
+pix("wood_interior/wood_to_grass_doorway.png")
+walk(1)
+Action
+move("farmhouse_outside.txt", 4, 4)
+hero("hero_n")
+info("The door closes behind you and you hear the lock catch.")
+:ai
+pix("wood_interior/painting.png")
+walk(0)
+:aj
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("wood_interior/shelf.png")
+:ak
+pix("wood_interior/wood_to_grass_window.png")
+walk(0)
+:al
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:am
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(1)
+addpix("furnishings/ladder.png")
+Action
+move("farmhouse_upstairs.txt", 10, 6)
+hero("hero_s")
+:an
+pix("wood_interior/shelf.png")
+walk(0)
+addpix("wood_interior/wood_to_grass_window.png")
+:ao
+pix("wood_interior/drawers.png")
+walk(0)
+:ap
+pix("wood_interior/treasure_chest.png")
+walk(0)
+Action
+if(var("treasure_found"), "=", 0)
+	if(find("gold", 15), "=", 1)
+		set("treasure_found", "=", 1)
+		end()
+	endif
+endif
+:aq
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:ar
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table_n.png")
+:as
+pix("wood_interior/woodfloor.png")
+walk(1)
+:at
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:au
+pix("wood_interior/bed.png")
+walk(0)
+:av
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:aw
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:ax
+pix("wood_interior/rug2.png")
+walk(1)
+:ay
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:az
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table_s.png")
+:aA
+pix("wood_interior/woodfloor_se_corner.png")
+walk(1)
+:aB
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:aC
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+wall_w(1)
+if(var("healing_potion_farmhouse1"), "=", 0)
+	addpix("items/healing_potion.png")
+endif
+Action
+if(var("healing_potion_farmhouse1"), "=", 0)
+	if(find("healing potion", "a"), "=", 1)
+		set("healing_potion_farmhouse1", "=", 1)
+		delpix("items/healing_potion.png")
+	endif
+endif
+:aD
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+:aE
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:aF
+pix("wood_interior/wall_woodfloor_se.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:aG
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:aH
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:aI
+pix("town/wood_wall_s.png")
+walk(0)
+:aJ
+pix("wood_interior/wall_woodfloor_doorway.png")
+walk(1)
+:aK
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+addpix("furnishings/flower_painting.png")
+:aL
+pix("wood_interior/interior_door.png")
+walk(1)
+:aM
+pix("wood_interior/interior_door_w.png")
+walk(1)
+:aN
+pix("wood_interior/shields.png")
+walk(0)
+:aO
+pix("wood_interior/weapons.png")
+walk(0)
+:aP
+pix("wood_interior/swords.png")
+walk(0)
+:aQ
+pix("small_shrub.png")
+walk(0)
+:aR
+pix("tree_left2.png")
+walk(1)
+if(var("poison_bomb_found0"), "=", 0)
+	addpix("items/poison_bomb.png")
+endif
+Action
+if(var("poison_bomb_found0"), "=", 0)
+	if(find("poison bomb", "a"), "=", 1)
+		set("poison_bomb_found0", "=", 1)
+		delpix("items/poison_bomb.png")
+	endif
+endif
+:aS
+pix("tree_center2.png")
+walk(0)
+:aT
+pix("tree_right2.png")
+walk(1)
+:aU
+pix("grass.png")
+walk(1)
+:aV
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/blue_chair.png")
+:aW
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:aX
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/green_chair.png")
+:aY
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+Action
+wall_e(1)
+:aZ
+pix("small_flowers.png")
+walk(1)
+:a0
+pix("treetrunk2.png")
+walk(0)
+:a1
+pix("mixed_flowers.png")
+walk(1)
+:a2
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/blue_couch.png")
+:a3
+pix("wood_interior/rug.png")
+walk(1)
+:a4
+pix("wood_interior/table.png")
+walk(0)
+:a5
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:a6
+pix("wood_interior/wood_wall_top_grass.png")
+walk(1)
+:a7
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:a8
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(0)
+addpix("furnishings/blue_chair2.png")
+:a9
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+:ba
+pix("wood_interior/wood_to_grass_doorway.png")
+walk(1)
+:bb
+pix("wood_interior/potion_shelf.png")
+walk(0)
+:bc
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table_middle.png")
+:bd
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+addpix("furnishings/ladder.png")
+Action
+move("farmhouse_upstairs.txt", 1, 11)
+hero("hero_n")
+:be
+pix("wood_interior/interior_door.png")
+walk(1)
+wall_w(1)
+:bf
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("furnishings/flower_painting2.png")
+:bg
+pix("wood_interior/woodfloor_border_w.png")
+walk(1)
+:bh
+pix("wood_interior/woodfloor.png")
+walk(1)
+if(var("light_healing_potion_found0"), "=", 0)
+	addpix("items/light_healing_potion.png")
+endif
+Action
+if(var("light_healing_potion_found0"), "=", 0)
+	if(find("light healing potion", "a"), "=", 1)
+		set("light_healing_potion_found0", "=", 1)
+		delpix("items/light_healing_potion.png")
+	endif
+endif
+:bi
+pix("wood_interior/counter_left.png")
+walk(1)
+:bj
+pix("wood_interior/counter.png")
+walk(0)
+:bk
+pix("wood_interior/counter_right.png")
+walk(1)
+:bl
+pix("wood_interior/wall_woodfloor_w_end.png")
+walk(1)
+wall_w(1)
+:bm
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+if(var("chain_boots_found0"), "=", 0)
+	addpix("items/chain_boots.png")
+endif
+Action
+if(var("chain_boots_found0"), "=", 0)
+	if(find("Chainmail Leggings", "some"), "=", 1)
+		set("chain_boots_found0", "=", 1)
+		delpix("items/chain_boots.png")
+	endif
+endif
+:bn
+pix("town/wood_wall_sw.png")
+walk(0)
+:bo
+pix("town/wood_window_s.png")
+walk(0)
+:bp
+pix("road/end_wood_doorway.png")
+walk(1)
+:bq
+pix("town/wood_wall_se.png")
+walk(0)
+:br
+pix("road/road_ns.png")
+walk(1)
+Action
+move("farmhouse_outside.txt", 8, 16)
+hero("hero_s")

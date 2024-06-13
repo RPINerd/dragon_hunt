@@ -1,0 +1,10 @@
+Name=Smoke bomb
+type=15
+quality=10
+price=5
+description=Smoke billows inside the container.
+picture=items/smoke_bomb.png
+:scripting
+if(damage_monster(10), "=", 0)
+	end()
+endif

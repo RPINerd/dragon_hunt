@@ -1,0 +1,7 @@
+Name=Violet Gem
+type=14
+quality=10
+price=8
+value=6
+description=A sparkling violet gemstone.
+picture=items/violet_gem.png

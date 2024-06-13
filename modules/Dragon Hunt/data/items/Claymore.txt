@@ -1,0 +1,7 @@
+Name=Claymore
+type=0
+quality=7
+price=250
+description=This huge sword can behead lesser creatures \
+with one stroke.
+picture=items/claymore.png

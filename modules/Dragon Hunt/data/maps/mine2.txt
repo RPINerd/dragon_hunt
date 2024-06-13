@@ -1,0 +1,150 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa ab aa aa aa ac aa aa ab ab aa aa 
+aa aa aa aa aa ad ae aa aa ab aa aa ad af af ag aa 
+aa aa aa aa ah af af ag ad af ag ad af af af ae aa 
+aa aa aa aa ah af af af af af af af af af af ae aa 
+aa aa aa aa aa ai af aj ai af aj ai af af ak aj aa 
+aa aa aa aa aa aa al aa ah af ag ah am an am aa aa 
+aa aa aa aa aa aa aa aa ah af af ao ap aq ar aa aa 
+aa aa aa aa aa aa aa aa aa ai af ao aa ap as aa aa 
+aa aa aa aa aa aa aa ac aa ah af ao aa aa aa aa aa 
+aa aa aa aa aa aa aa aa ab ad af ag ab aa aa aa aa 
+aa aa aa aa aa aa aa aa ai af af af af ag aa aa aa 
+aa aa aa aa at ab ad ag aa ai af af af af ag aa aa 
+aa aa aa ad af af au aj aa ad af af af af aj aa aa 
+aa aa ah af af aj al aa ah af af aj ai aj ab aa aa 
+aa aa ah af af ao ac aa ad af af ag av ad af ao aa 
+aa aa ah af af ag ab ad af af af af af af af ao aa 
+aa aa ah af af af af af af af af af af af af ao aa 
+aa aa ah af af af aj ai af af af aj al ai af ao aa 
+aa aa ah af af af ag ad af af aj aa aa ad af ao aa 
+aa aa aa ai af af af af af af ag ab aa ai aj aa aa 
+aw aw aw aw ax an af af af af af ay ag ab aa ac aa 
+aq aq aq aq aq az af af af af af af af af ag aa aa 
+aq aq aq aq aq aq aA an af af af af af af am aw aw 
+aq aq aq aq aq aq aq aq aA ax ax ax ax aB aq aq aq 
+aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq 
+
+:def
+monster=Shadow
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/gem_rock.png")
+walk(1)
+:ad
+pix("underground/rock_se.png")
+walk(0)
+:ae
+pix("underground/rock_w_tip.png")
+walk(1)
+:af
+pix("underground/dirt.png")
+walk(1)
+:ag
+pix("underground/rock_sw.png")
+walk(0)
+:ah
+pix("underground/rock_e.png")
+walk(0)
+:ai
+pix("underground/rock_ne.png")
+walk(0)
+:aj
+pix("underground/rock_nw.png")
+walk(0)
+:ak
+pix("underground/dirt.png")
+walk(1)
+if(var("gold_mine2.txt_1"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_mine2.txt_1"), "=", 0)
+	if(find("gold", 5), "=", 1)
+		set("gold_mine2.txt_1", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:al
+pix("underground/rock_n.png")
+walk(0)
+:am
+pix("underground/void_nw.png")
+walk(0)
+:an
+pix("underground/void_ne.png")
+walk(0)
+:ao
+pix("underground/rock_w.png")
+walk(0)
+:ap
+pix("underground/rock_void_ne.png")
+walk(1)
+:aq
+pix("underground/void.png")
+walk(0)
+:ar
+pix("underground/rock_void_w.png")
+walk(1)
+:as
+pix("underground/rock_void_nw.png")
+walk(1)
+:at
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("minersland.txt", 15, 2)
+hero("hero_s")
+:au
+pix("underground/dirt.png")
+walk(1)
+if(var("gold_mine2.txt_0"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_mine2.txt_0"), "=", 0)
+	if(find("gold", 12), "=", 1)
+		set("gold_mine2.txt_0", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:av
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("minersland.txt", 15, 2)
+hero("hero_e")
+:aw
+pix("underground/void_n2.png")
+walk(1)
+:ax
+pix("underground/void_n.png")
+walk(0)
+:ay
+pix("underground/dirt.png")
+walk(1)
+if(var("super_healing_potion_mine2.txt_0"), "=", 0)
+addpix("items/super_healing_potion.png")
+endif
+Action
+if(var("super_healing_potion_mine2.txt_0"), "=", 0)
+	if(find("super healing potion", "a"), "=", 1)
+		set("super_healing_potion_mine2.txt_0", "=", 1)
+		delpix("items/super_healing_potion.png")
+	endif
+endif
+:az
+pix("underground/void_e.png")
+walk(0)
+:aA
+pix("underground/void_n_left.png")
+walk(0)
+:aB
+pix("underground/void_n_right.png")
+walk(0)

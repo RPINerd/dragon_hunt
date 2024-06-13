@@ -1,0 +1,6 @@
+Name=Reinforced Helmet
+type=3
+quality=5
+price=160
+description=A helmet sporting some reinforcing bars.
+picture=items/big_helmet.png

@@ -1,0 +1,70 @@
+
+:Cringe
+:data
+Level = 2
+Price = 10
+Type = 4
+Description = Increases your health and defense
+Picture = items/tower_shield.png
+:scripting
+info("You ready your defenses.")
+give("hp", 2)
+give("hp", stat("level"))
+give("adj_defense", 2)
+give("adj_defense", stat("level"))
+:data
+
+:Healing
+:data
+Level = 1
+Price = 1
+Type = 5
+Description = Heals a few wounds using surrounding plants
+Picture = items/healing.png
+:scripting
+info("You heal some damage.")
+give("hp", stat("level"))
+give("hp", 1)
+:data
+
+:Testing_skill
+:data
+Level = 1
+Price = 5
+Type = 4
+Description=Testing skill for damage_monster, monster_select, monster_stat.
+:scripting
+set("mon_num", "=", monster_select())
+info("You selected monster ~mon_num~.")
+#info("Monster 0 info: ~monster_stat 0 name~, ~monster_stat 0 hp~/\
+#~monster_stat 0 maxhp~, ~monster_stat 0 attack~, ~monster_stat 0 defense~")
+#info("attack a monster:")
+#damage_monster()
+#info("and again:")
+#damage_monster(rng(100, 100))
+set("mon_attack", "=", monster_stat(var("mon_num"), "attack"))
+info("Monster attack value is ~mon_attack~")
+monster_give_stat(var("mon_num"), "attack", -5)
+set("new_mon_attack", "=", monster_stat(var("mon_num"), "attack"))
+set("mon_attack", "-", 5)
+
+info("Monster attack value is now ~new_mon_attack~. It should be ~mon_attack~")
+#Just a test of everything
+monster_give_stat(var("mon_num"), "attack", -5)
+monster_give_stat(var("mon_num"), "defense", -5)
+monster_give_stat(var("mon_num"), "hp", -20)
+monster_give_stat(var("mon_num"), "maxhp", 500)
+monster_give_stat(var("mon_num"), "gold", 500)
+monster_give_stat(var("mon_num"), "exp", 500)
+:data
+
+:Testing_skill2
+:data
+Level = 1
+Type = 4
+Price = 5
+Description=Testing skill for inv.
+:scripting
+inv("use", "light healing potion")
+question("I wonder if this will work from battle?")
+:data

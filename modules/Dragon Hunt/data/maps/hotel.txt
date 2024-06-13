@@ -1,0 +1,215 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa ab ad ae af ag aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa ae ah ai aj ak aa aa 
+aa aa aa aa aa aa ab ac ac ac ac ad aa al am an ao ak aa aa 
+aa aa aa aa aa aa ap aq ag ar as ag aa at au av aw ax aa aa 
+aa aa aa aa aa aa ay az aA aB aC ak aa aa aa at aD aE aa aa 
+aa aa aa aa aa aa av aF aw ax av ax aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa at au au au aD aE aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa ab ac ac ac ad ac ac ad aa aa aa aa aa aa 
+aa aa aa aa aa aa ae aG ah aG ag aH as aI aa aa aa aa aa aa 
+aa ab ac aJ aa aa aK aL aM aN aO aP aQ aR aa aa aa aa aa aa 
+aa ae ah aS aa aa aT aU aU aU aV aW aU ak aa aa aa aa aa aa 
+aa aX aY aS aa aa av aw aw aw ax av aw aZ aa aa aa aa aa aa 
+aa aX a0 aS aa aa at a1 aD au au au au aE aa aa aa aa aa aa 
+aa aX a0 aS ac ad aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aT a2 a3 as ag aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aT aU aU a4 ak aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa av aw aw aw ax aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa at au au au aE aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("grass.png")
+walk(1)
+:ab
+pix("stone_interior/wall_top_grass_w.png")
+walk(1)
+:ac
+pix("stone_interior/wall_top_grass.png")
+walk(1)
+:ad
+pix("stone_interior/wall_top_grass_e.png")
+walk(1)
+:ae
+pix("stone_interior/wall_nw.png")
+walk(0)
+:af
+pix("stone_interior/painting2.png")
+walk(0)
+:ag
+pix("stone_interior/wall_ne.png")
+walk(0)
+:ah
+pix("stone_interior/fireplace.png")
+walk(0)
+:ai
+pix("stone_interior/flagstone_border_w.png")
+walk(1)
+:aj
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table_n.png")
+:ak
+pix("stone_interior/wall_e.png")
+walk(1)
+:al
+pix("stone_interior/wall_sw.png")
+walk(1)
+addpix("furnishings/blue_chair2.png")
+:am
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+addpix("furnishings/blue_rug.png")
+:an
+pix("stone_interior/wall_sw_corner.png")
+walk(1)
+:ao
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table_s.png")
+:ap
+pix("stone_interior/wall_nw.png")
+walk(0)
+addpix("furnishings/flower_painting.png")
+:aq
+pix("stone_interior/shelf.png")
+walk(0)
+:ar
+pix("stone_interior/wall_nw.png")
+walk(0)
+addpix("furnishings/dresser.png")
+:as
+pix("stone_interior/flagstone_to_grass_door.png")
+walk(1)
+:at
+pix("town/wall_sw.png")
+walk(0)
+:au
+pix("town/wall_s.png")
+walk(0)
+:av
+pix("stone_interior/wall_sw.png")
+walk(1)
+:aw
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:ax
+pix("stone_interior/wall_se.png")
+walk(1)
+:ay
+pix("stone_interior/wall_w.png")
+walk(1)
+addpix("furnishings/blue_bed.png")
+:az
+pix("stone_interior/bed.png")
+walk(0)
+:aA
+pix("stone_interior/wall_ne_corner.png")
+walk(1)
+addpix("furnishings/green_bed.png")
+:aB
+pix("stone_interior/wall_nw_corner.png")
+walk(1)
+:aC
+pix("stone_interior/wall_sw_corner.png")
+walk(1)
+addpix("furnishings/red_rug.png")
+:aD
+pix("town/wall_door.png")
+walk(1)
+:aE
+pix("town/wall_se.png")
+walk(0)
+:aF
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+:aG
+pix("stone_interior/fireplace_burnt_out.png")
+walk(0)
+:aH
+pix("stone_interior/wall_nw.png")
+walk(0)
+addpix("furnishings/tree_painting.png")
+:aI
+pix("stone_interior/wall_ne.png")
+walk(0)
+addpix("furnishings/tree_painting2.png")
+:aJ
+pix("stone_interior/wall_grass_sw_convex.png")
+walk(1)
+:aK
+pix("stone_interior/counter_left_wall.png")
+walk(1)
+:aL
+pix("stone_interior/counter_gap.png")
+walk(1)
+:aM
+pix("stone_interior/counter_woman.png")
+walk(0)
+:aN
+pix("stone_interior/counter_man.png")
+walk(0)
+:aO
+pix("stone_interior/counter_right_wall.png")
+walk(1)
+:aP
+pix("stone_interior/wall_w.png")
+walk(1)
+addpix("furnishings/blue_chair2.png")
+:aQ
+pix("stone_interior/rug2.png")
+walk(1)
+:aR
+pix("stone_interior/wall_e.png")
+walk(1)
+addpix("furnishings/green_chair.png")
+:aS
+pix("stone_interior/wall_grass_ne_concave.png")
+walk(1)
+:aT
+pix("stone_interior/wall_w.png")
+walk(1)
+:aU
+pix("stone_interior/flagstone.png")
+walk(1)
+:aV
+pix("stone_interior/wall_e_corners.png")
+walk(1)
+:aW
+pix("stone_interior/wall_w_corners.png")
+walk(1)
+:aX
+pix("stone_interior/wall_w.png")
+walk(1)
+addpix("furnishings/red_rug.png")
+:aY
+pix("stone_interior/flagstone_border_e.png")
+walk(1)
+addpix("furnishings/bathtub.png")
+addpix("furnishings/bathtub.png")
+:aZ
+pix("stone_interior/wall_se.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:a0
+pix("stone_interior/flagstone_border_e.png")
+walk(1)
+addpix("furnishings/bathtub.png")
+:a1
+pix("stone_interior/grass_flagstone_window.png")
+walk(0)
+:a2
+pix("stone_interior/flagstone_border_e.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:a3
+pix("stone_interior/wall_fountain.png")
+walk(0)
+:a4
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/blue_rug.png")

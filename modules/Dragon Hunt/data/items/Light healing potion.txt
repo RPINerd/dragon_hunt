@@ -1,0 +1,6 @@
+Name=Light healing potion
+type=11
+quality=15
+price=5
+description=Healing liquid sloshes around in the vial.
+picture=items/light_healing_potion.png

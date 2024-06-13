@@ -1,0 +1,6 @@
+Name=Ladder
+type=10
+quality=0
+price=0
+description=A collapsible wooden ladder.
+picture=items/ladder.png

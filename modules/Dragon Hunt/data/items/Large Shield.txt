@@ -1,0 +1,7 @@
+Name=Large Shield
+type=2
+quality=4
+price=45
+description=It leaves your legs exposed, but is great \
+otherwise.
+picture=items/large_shield.png

@@ -1,0 +1,7 @@
+Name=Short Sword
+type=0
+quality=3
+price=35
+description=Longer than a dagger, but shorter than a \
+longsword, a short sword is mainly used for stabbing.
+picture=items/short_sword.png

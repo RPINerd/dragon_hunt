@@ -1,0 +1,7 @@
+Name=Pink Gem
+type=14
+quality=5
+price=4
+value=3
+description=A pearly pink gem.
+picture=items/pink_gem.png

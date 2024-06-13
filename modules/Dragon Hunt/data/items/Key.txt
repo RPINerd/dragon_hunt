@@ -1,0 +1,6 @@
+Name=Key
+type=10
+quality=0
+price=0
+description=A small, rusty key.
+picture=items/key.png

@@ -1,0 +1,7 @@
+Name=Helmet
+type=3
+quality=3
+price=50
+description=There are still some dents in this helmet \
+from the previous owner.
+picture=items/helmet.png

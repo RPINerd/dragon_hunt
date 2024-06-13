@@ -1,0 +1,7 @@
+Name=Leather Gloves
+type=4
+quality=1
+price=12
+description=Made of reinforced leather, this offers cheap \
+protection.
+picture=items/leather_gloves.png

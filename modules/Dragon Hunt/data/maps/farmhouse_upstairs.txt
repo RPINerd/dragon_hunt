@@ -1,0 +1,234 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa ab aa aa aa aa aa ab aa aa ab ab ab ab aa 
+aa aa aa aa aa aa ab ab ab aa aa aa aa aa aa 
+aa ac ad ad ae ab ab ab ab ab ac ad ad ae aa 
+aa af ag ah ai aj aj aj aj aj ak al am ai aa 
+aa an ao ap aq ar ar ar ar ar as at au av aa 
+aa an ao ap aq aw aw aw aw aw an at at aq aa 
+aa ax ay az aq aA aA aA aB aC an at at aq aa 
+aa aD al an aq aE aF aG aH aa ax ay aI aq aa 
+aa aJ aK aL aq aM aN aO aP aa af aQ aR aq aa 
+aa an at at aq aa ab ab ab aa an aS ax aT aa 
+aa an at at aq aj aj aj aj aj an aU aV aW aa 
+aa aX ay ay aT ar ar ar ar ar ax ay ay aT aa 
+aa aY aZ aZ a0 aw aw aw aw aw aY a1 a1 a0 aa 
+aa a2 a3 aA aA aA a3 a4 a3 aA aA aA aA aC aa 
+aa aa aa aa aa aa aa a5 aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("grass.png")
+walk(1)
+:ac
+pix("wood_interior/wood_wall_top_grass_w.png")
+walk(0)
+:ad
+pix("wood_interior/wood_wall_top_grass.png")
+walk(0)
+:ae
+pix("wood_interior/wood_wall_top_grass_e.png")
+walk(0)
+:af
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+addpix("furnishings/sink.png")
+:ag
+pix("wood_interior/fireplace2.png")
+walk(0)
+:ah
+pix("wood_interior/wood_to_grass_window.png")
+walk(0)
+:ai
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:aj
+pix("roof_red/roof_n_back.png")
+walk(0)
+:ak
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:al
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("furnishings/dresser.png")
+:am
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("wood_interior/fireplace2.png")
+:an
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:ao
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/bathtub.png")
+:ap
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/red_rug.png")
+:aq
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:ar
+pix("roof_red/roof_n_top.png")
+walk(0)
+:as
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+addpix("furnishings/trapdoor.png")
+Action
+move("farmhouse.txt", 10, 4)
+hero("hero_s")
+:at
+pix("wood_interior/woodfloor.png")
+walk(1)
+:au
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:av
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/green_chair.png")
+:aw
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:ax
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:ay
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:az
+pix("wood_interior/woodfloor_sw_corner.png")
+walk(1)
+addpix("furnishings/red_rug.png")
+:aA
+pix("town/wood_wall_s.png")
+walk(0)
+:aB
+pix("wood_interior/wall_woodfloor_doorway.png")
+walk(1)
+:aC
+pix("town/wood_wall_se.png")
+walk(0)
+:aD
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+addpix("furnishings/tree_painting2.png")
+:aE
+pix("small_shrub.png")
+walk(0)
+:aF
+pix("tree_left2.png")
+walk(0)
+:aG
+pix("tree_center2.png")
+walk(0)
+:aH
+pix("tree_right2.png")
+walk(0)
+:aI
+pix("wood_interior/woodfloor_sw_corner.png")
+walk(1)
+:aJ
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+if(var("gold_found_farm"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_found_farm"), "=", 0)
+	if(find("gold", 20), "=", 1)
+		set("gold_found_farm", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:aK
+pix("wood_interior/woodfloor_border_e.png")
+walk(1)
+:aL
+pix("wood_interior/wall_woodfloor_w_end.png")
+walk(1)
+wall_w(1)
+:aM
+pix("tree.png")
+walk(0)
+:aN
+pix("small_flowers.png")
+walk(0)
+:aO
+pix("treetrunk2.png")
+walk(0)
+:aP
+pix("mixed_flowers.png")
+walk(0)
+:aQ
+pix("wood_interior/potion_shelf.png")
+walk(0)
+:aR
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+if(var("super_healing_potion_found1"), "=", 0)
+	addpix("items/super_healing_potion.png")
+endif
+Action
+if(var("super_healing_potion_found1"), "=", 0)
+	if(find("super healing potion", "a"), "=", 1)
+		set("super_healing_potion_found1", "=", 1)
+		delpix("items/super_healing_potion.png")
+	endif
+endif
+:aS
+pix("wood_interior/woodfloor_border_e.png")
+walk(0)
+addpix("furnishings/bathtub.png")
+:aT
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:aU
+pix("wood_interior/woodfloor_border_e.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+:aV
+pix("wood_interior/interior_door_left.png")
+walk(1)
+wall_w(1)
+:aW
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+addpix("furnishings/flower_painting.png")
+:aX
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+addpix("furnishings/trapdoor.png")
+Action
+move("farmhouse.txt", 1, 12)
+hero("hero_s")
+:aY
+pix("town/wood_wall_w.png")
+walk(0)
+:aZ
+pix("town/wood_wall.png")
+walk(0)
+:a0
+pix("town/wood_wall_e.png")
+walk(0)
+:a1
+pix("town/wood_window.png")
+walk(0)
+:a2
+pix("town/wood_wall_sw.png")
+walk(0)
+:a3
+pix("town/wood_window_s.png")
+walk(0)
+:a4
+pix("road/end_wood_door.png")
+walk(1)
+:a5
+pix("road/road_ns.png")
+walk(1)

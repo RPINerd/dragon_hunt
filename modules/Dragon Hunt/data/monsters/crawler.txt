@@ -1,0 +1,8 @@
+
+Name=Crawler
+hp=40
+attack=15
+defense=4
+exp=15
+gold=10
+description=Little more than a brainless mouth, this creature devours anything in its path.

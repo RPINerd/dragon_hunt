@@ -1,0 +1,7 @@
+Name=Red Gem
+type=14
+quality=8
+price=6
+value=4
+description=A radiant red jewel.
+picture=items/red_gem.png

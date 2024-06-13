@@ -1,0 +1,186 @@
+#Data for the shops.
+#Start a new shop with :Shop String (use String to access the shop)
+#Start a new item with :Item String
+#List description with description=String
+#List cost with cost=Number
+#List power with power=Number
+#List cost type with buytype=(skill/gold)
+#List picture to use with picture=picture_name.png
+#If un-listed, data will be taken from the items directory.
+#Scripting commands can be entered. The "end" command will prevent the
+#item from being bought.
+
+:Shop Small Weapons Store
+:Item Rusty Knife
+#The scripting here does the exact same thing as any of the other entries.
+#It is provided for infomative purposes.
+:Item Dagger
+cost=15
+power=2
+picture=items/dagger.png
+description=A small but useful dagger
+buytype=gold
+if(item("dagger"), "=", 1)
+	pass()
+else
+	end()
+endif
+info("You buy a Dagger.")
+:Item Short Sword
+:Item Bastard Sword
+:Item Long Sword
+
+
+:Shop Weapons Store
+
+:Item Short Sword
+:Item Bastard Sword
+:Item Long Sword
+:Item Claymore
+:Item Flamberge
+:Item Slasher Sword
+:Item Flame Sword
+:Item Diamond blade
+
+:Shop Small Armory
+:Item Leather Coif
+:Item Chainmail Coif
+:Item Leather Gloves
+:Item Chainmail Gauntlets
+:Item Leather armor
+:Item Leather Leggings
+:Item Chainmail Leggings
+:Item Small Shield
+:Item Large Shield
+
+:Shop Armory
+:Item Chainmail Coif
+:Item Helmet
+:Item Reinforced Helmet
+:Item Chainmail Gauntlets
+:Item Plate Gauntlets
+:Item Leather armor
+:Item Chain Breastplate
+:Item Chainmail Leggings
+:Item Steel Plate Boots
+:Item Large Shield
+:Item Tower Shield
+
+:Shop General Store
+:Item Light healing potion
+:Item Healing potion
+:Item Super healing potion
+:Item Poison bomb
+:Item Smoke bomb
+:Item Small Energy Potion
+
+:Shop Gem Shop
+:Item Blue Crystal
+:Item Blue Gem
+:Item Green Gem
+:Item Orange Gem
+:Item Pink Gem
+:Item Red Gem
+:Item Violet Gem
+
+
+:Shop Training Hall
+:Item Rage
+cost=1
+picture=items/rage.png
+buytype=skill
+power=-1
+description=Gives you increased damage for the rest of a battle
+if(addskill("Rage"), "=", 1)
+  pass()
+else
+  end()
+endif
+info("You buy the Rage skill.")
+
+:Item Sneak Away
+cost=1
+picture=items/sneak_away.png
+buytype=skill
+power=-1
+description=Attempts to leave a battle.
+if(addskill("Sneak Away"), "=", 1)
+  pass()
+else
+  end()
+endif
+info("You buy the Sneak Away skill.")
+
+:Item Dismember
+cost=2
+picture=items/bastard_sword.png
+buytype=skill
+power=-1
+description=Your next attack will do maximum damage, and ignore armor
+if(addskill("Dismember"), "=", 1)
+  pass()
+else
+  end()
+endif
+info("You buy the Dismember skill.")
+
+:Item Frenzy
+cost=3
+picture=items/frenzy.png
+buytype=skill
+power=-1
+description=Your next attack will try to hit more than once
+if(addskill("Frenzy"), "=", 1)
+  pass()
+else
+  end()
+endif
+info("You buy the Frenzy skill.")
+
+:Item Cringe
+cost=1
+picture=items/tower_shield.png
+buytype=skill
+power=-1
+description=Increases your health and defense
+if(addskill("Cringe"), "=", 1)
+  pass()
+else
+  end()
+endif
+info("You buy the Cringe skill.")
+
+:Item Healing
+cost=1
+picture=items/healing.png
+buytype=skill
+power=-1
+description=Heals a few wounds using surrounding plants
+if(addskill("Healing"), "=", 1)
+  pass()
+else
+  end()
+endif
+info("You buy the Healing skill.")
+
+:Item Attack Training
+cost=1
+picture=items/dagger.png
+buytype=skill
+power=1
+description=Training to use your sword more effectively.
+give("attack", 1)
+info("You buy attack training.")
+
+:Item Defense Training
+cost=1
+picture=items/large_shield.png
+buytype=skill
+power=1
+description=Training to use your armor more effectively.
+give("defense", 1)
+info("You buy defense training.")
+
+:Shop Tavern
+:Item Light healing potion
+:Item Ale

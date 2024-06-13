@@ -1,0 +1,110 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa ab ab aa aa aa 
+aa aa aa aa aa aa aa aa ab ac ad ae ae af aa aa 
+aa aa aa aa ab aa aa ad ae ae ae ae ae ae ag aa 
+aa aa aa ah ae af ad ae ae ae ae ae ae ae ag aa 
+aa aa aa aa ai ae ae ae ae ae ae ae ae ae ag aa 
+aa aa aa aa aa ai ae ae ae ae ae ae ae ae ag aa 
+aa aa aa aa aa aa ai ae ae ae ae aj ak ak al am 
+aa aa aa aa aa aa ah ae ae ae ae an ao ao ao ao 
+aa aa aa aa aa aa ad ap ak ak aq ao ao ao ao ao 
+aa aa aa aa aa ad ar as ao ao ao ao ao ao ao ao 
+aa aa aa aa aa ae ae ae at ao ao ao ao ao ao ao 
+aa aa aa aa ah ae ae ae ae at au au av at au au 
+aa aa aa aa aa ai ae ae ae ae ae ae ae aw ax ax 
+aa aa aa aa aa aa ai ae ae ae ay ae aw aa aa aa 
+aa aa aa aa aa aa aa ax ax ax ax ax aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+monster=Shadow
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("minersland.txt", 19, 3)
+hero("hero_s")
+:ad
+pix("underground/rock_se.png")
+walk(0)
+:ae
+pix("underground/dirt.png")
+walk(1)
+:af
+pix("underground/rock_sw.png")
+walk(0)
+:ag
+pix("underground/rock_w.png")
+walk(0)
+:ah
+pix("underground/rock_e.png")
+walk(0)
+:ai
+pix("underground/rock_ne.png")
+walk(0)
+:aj
+pix("underground/void_nw.png")
+walk(0)
+:ak
+pix("underground/void_n.png")
+walk(0)
+:al
+pix("underground/void_n2.png")
+walk(0)
+:am
+pix("underground/void_n2.png")
+walk(1)
+:an
+pix("underground/void_w.png")
+walk(0)
+:ao
+pix("underground/void.png")
+walk(0)
+:ap
+pix("underground/void_nw.png")
+walk(1)
+addpix("furnishings/ladder.png")
+:aq
+pix("underground/void_n_right.png")
+walk(0)
+:ar
+pix("underground/rock_w_tip.png")
+walk(1)
+:as
+pix("underground/void_top_right.png")
+walk(1)
+addpix("furnishings/ladder.png")
+:at
+pix("underground/void_sw.png")
+walk(0)
+:au
+pix("underground/void_s.png")
+walk(0)
+:av
+pix("underground/void_se.png")
+walk(0)
+:aw
+pix("underground/rock_nw.png")
+walk(0)
+:ax
+pix("underground/rock_n.png")
+walk(0)
+:ay
+pix("underground/dirt.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+Action
+if(var("found_ladder"), "=", 0)
+	if(find("ladder", "a"), "=", 1)
+		set("found_ladder", "=", 1)
+	endif
+else
+	info("You found an empty treasure chest.")
+endif

@@ -1,0 +1,7 @@
+Name=Dragon Helm
+type=3
+quality=8
+price=150
+description=(+15 to HP) This helmet glows faintly.
+picture=items/dragon_helm.png
+hp_bonus=15

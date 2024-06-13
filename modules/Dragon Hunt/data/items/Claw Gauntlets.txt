@@ -1,0 +1,8 @@
+Name=Claw Gauntlets
+type=4
+quality=6
+price=150
+description=(+4 to attack) These gauntlets are tipped with razor-sharp \
+spikes, making them useful for both attack and defense.
+picture=items/plate_gauntlets.png
+attack_bonus=4

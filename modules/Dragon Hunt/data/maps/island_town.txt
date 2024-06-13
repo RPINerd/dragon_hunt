@@ -1,0 +1,472 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa ab ac ac ac ad ac ac ac ac ac ad ac ac ae af ac ad ac ag aa 
+aa ah ai aj ak al al al aj ak ai ai ai am an ao ap ai aq ar ac 
+aa ah as at au av aw av ax ay ai ai ai az aA aB aC ai aD ai aE 
+aa ah ai aF as ai ai aG aG aH ai ai ai az aA aB aC ai aD ai aE 
+aa ah ai aF aI ai ai aJ aK aH ai ai ai az aL aM aC ai aD ai aE 
+aa ah ai aN aO aO aO aO aO aP as ai ai aQ aR aS aT ai aD ai aE 
+aa ah ai aU au au aV au au aW ai ai ai aX aY aZ a0 ai aD ai aE 
+aa ah ai ai ai ai ai ai ai ai ai ai ai a1 a2 a3 a4 ai aD ai aE 
+aa ah ai ai ai ai ai ai ai a5 a5 a5 ai a6 aa a7 ah ai aD ai aE 
+aa ah a5 a5 a5 a5 ai ai ai a8 a8 a8 ai ar ad a9 ba ai aD ai aE 
+aa ah a8 a8 a8 a8 ai ai ai bb bb bb ai ai ai bc ai ai bd ai aE 
+aa ah bb bb bb bb ai be bf aX bg a0 ai ai ai bh bi bi bi bj bi 
+aa ah aX bk bl a0 am an ao bm bc ai ai ai ai bc ai ai aq ai aE 
+aa ah ai bc ai ai az aA aB aC bc ai ai ai ai bc ai ai aD ai aE 
+aa ah ai bc ai ai az bn aM aC bc ai ai ai ai bc ai ai aD ai aE 
+aa ah ai bc ai ai bo aS aR bp bh bi bi bi bi bq ai ai aD ai aE 
+aa ah ai br bs ai aX bt bu a0 bc ai ai ai ai ai ai ai aD ai aE 
+aa ah bv bv br bi bi bi bw bi bq bv bv bv bv bx ai ai bd ai aE 
+aa by a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 bz a2 a2 a2 a2 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa a7 aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa a7 aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa a7 aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa bA aa aa aa aa a7 aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa bB bC bD aa aa aa a7 aa aa aa aa 
+aa aa aa aa aa aa aa aa aa bB bE bC bF bD aa aa a7 aa aa aa aa 
+aa aa aa aa aa aa aa aa bB bG bE bC bF bH bD aa a7 aa aa aa aa 
+aa aa aa aa aa aa aa aa bI bE bE bC bF bF bJ ag a7 aa aa aa aa 
+aa aa aa aa aa aa aa bK bI bE bE bC bF bF bJ ar bL ag aa aa aa 
+aa aa aa aa aa aa bM bv bI bG bE bN bF bH bJ bv bv bO aa aa aa 
+aa aa aa aa aa aa bP bv bI bE bQ aS bR bF bJ bv bv bS aa aa aa 
+aa aa aa aa aa aa bT bv bI bQ aR aR aR bR bJ bv bv ar ag aa aa 
+aa aa aa aa aa aa bU bv bV aR aR aR aR aR bW bv bv bv bX aa aa 
+aa aa aa aa aa aa aa bP aX bY bZ b0 b1 bY a0 bv bv b2 aa aa aa 
+aa aa aa aa aa aa aa b3 ai ai ai ai bv bv bv bv b2 aa aa aa aa 
+aa aa aa aa aa aa aa bT ai ai ai ai a1 a2 a2 b4 b5 aa aa aa aa 
+aa aa aa aa aa aa aa by b4 bv a1 a2 b6 aa b7 aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa bP bX aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("water/water.png")
+walk(0)
+:ab
+pix("water/land_se.png")
+walk(0)
+:ac
+pix("water/water_s3.png")
+walk(1)
+:ad
+pix("water/water_s.png")
+walk(1)
+:ae
+pix("water/water_s3.png")
+walk(1)
+addoverpix("roof_red/roof_nw_top.png")
+:af
+pix("water/water_s3.png")
+walk(1)
+addoverpix("roof_red/roof_ne_top.png")
+:ag
+pix("water/land_sw.png")
+walk(0)
+:ah
+pix("water/water_e.png")
+walk(0)
+:ai
+pix("grass.png")
+walk(1)
+:aj
+pix("stone_interior/wall_left_steps.png")
+walk(0)
+:ak
+pix("stone_interior/wall_right_steps.png")
+walk(0)
+:al
+pix("stone_interior/wall_top_grass.png")
+walk(1)
+:am
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw.png")
+:an
+pix("grass.png")
+addoverpix("roof_red/roof_w_top.png")
+walk(1)
+:ao
+pix("grass.png")
+addoverpix("roof_red/roof_e_top.png")
+walk(1)
+:ap
+pix("water/grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:aq
+pix("town/fence_n.png")
+walk(0)
+:ar
+pix("water/water_sw.png")
+walk(1)
+:as
+pix("stones.png")
+walk(1)
+:at
+pix("stone_interior/wall_grass_nw.png")
+walk(0)
+:au
+pix("town/wall_s.png")
+walk(0)
+:av
+pix("stone_interior/wall_grass_window.png")
+walk(0)
+:aw
+pix("stone_interior/wall_grass_doorway.png")
+walk(1)
+:ax
+pix("town/wall_fountain.png")
+walk(0)
+:ay
+pix("stone_interior/wall_grass_ne.png")
+walk(0)
+:az
+pix("roof_red/roof_w_bot.png")
+walk(0)
+:aA
+pix("roof_red/roof_w_top.png")
+walk(0)
+:aB
+pix("roof_red/roof_e_top.png")
+walk(0)
+:aC
+pix("roof_red/roof_e_bot.png")
+walk(0)
+:aD
+pix("town/fence_ns.png")
+walk(0)
+:aE
+pix("grass.png")
+walk(0)
+:aF
+pix("stone_interior/wall_grass_w.png")
+walk(1)
+wall_w(1)
+:aG
+pix("small_blue_flowers.png")
+walk(1)
+:aH
+pix("stone_interior/wall_grass_e.png")
+walk(1)
+wall_e(1)
+:aI
+pix("stone_interior/broken_wall.png")
+walk(0)
+:aJ
+pix("grass.png")
+walk(1)
+if(var("smoke_bomb_found0"), "=", 0)
+	addpix("items/smoke_bomb.png")
+endif
+Action
+if(var("smoke_bomb_found0"), "=", 0)
+	if(find("smoke bomb", "a"), "=", 1)
+		set("smoke_bomb_found0", "=", 1)
+		delpix("items/smoke_bomb.png")
+	endif
+endif
+:aK
+pix("blue_flowers.png")
+walk(1)
+:aL
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw.png")
+:aM
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se.png")
+:aN
+pix("stone_interior/wall_grass_sw.png")
+walk(1)
+wall_w(1)
+:aO
+pix("stone_interior/wall_top_grass_s.png")
+walk(1)
+:aP
+pix("stone_interior/wall_grass_se.png")
+walk(1)
+wall_e(1)
+:aQ
+pix("town/wood_wall_w.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:aR
+pix("town/wood_wall.png")
+walk(0)
+:aS
+pix("town/wood_window.png")
+walk(0)
+:aT
+pix("town/wood_wall_e.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:aU
+pix("town/wall_sw.png")
+walk(0)
+:aV
+pix("town/wall_suit_of_armor.png")
+walk(0)
+:aW
+pix("town/wall_se.png")
+walk(0)
+:aX
+pix("town/wood_wall_sw.png")
+walk(0)
+:aY
+pix("town/wood_sign_weapon.png")
+walk(0)
+:aZ
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("island_shops.txt", 15, 7)
+hero("hero_n")
+:a0
+pix("town/wood_wall_se.png")
+walk(0)
+:a1
+pix("water/water_nw.png")
+walk(1)
+:a2
+pix("water/water_n.png")
+walk(0)
+:a3
+pix("road/end_bridge_n.png")
+walk(1)
+:a4
+pix("water/water_ne.png")
+walk(0)
+:a5
+pix("roof_red/roof_n_back.png")
+walk(0)
+:a6
+pix("water/water_w.png")
+walk(1)
+:a7
+pix("water/bridge_ns.png")
+walk(1)
+:a8
+pix("roof_red/roof_n_top.png")
+walk(0)
+:a9
+pix("road/end_bridge_s.png")
+walk(1)
+:ba
+pix("water/water_se.png")
+walk(1)
+:bb
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:bc
+pix("road/road_ns.png")
+walk(1)
+:bd
+pix("town/fence_s.png")
+walk(0)
+:be
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw_top.png")
+:bf
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne_top.png")
+:bg
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("island_shops.txt", 10, 12)
+hero("hero_n")
+:bh
+pix("road/right_t.png")
+walk(1)
+:bi
+pix("road/road_ew.png")
+walk(1)
+:bj
+pix("road/road_ew.png")
+walk(1)
+Action
+move("island.txt", 22, 7)
+hero("hero_s")
+:bk
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("island_shops.txt", 3, 13)
+hero("hero_n")
+:bl
+pix("town/wood_sign_armor.png")
+walk(0)
+:bm
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:bn
+pix("town/wood_roof_sw.png")
+walk(0)
+addpix("roof_red/roof_sw.png")
+:bo
+pix("town/wood_roof_sw.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:bp
+pix("town/wood_roof_se.png")
+walk(0)
+addpix("roof_red/roof_se.png")
+:bq
+pix("road/road_nw.png")
+walk(1)
+:br
+pix("road/road_ne.png")
+walk(1)
+:bs
+pix("road/road_sw.png")
+walk(1)
+:bt
+pix("town/wood_sign_general.png")
+walk(0)
+:bu
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("island_shops.txt", 8, 17)
+hero("hero_n")
+:bv
+pix("water/grass.png")
+walk(1)
+:bw
+pix("road/reverse_t.png")
+walk(1)
+:bx
+pix("grass.png")
+walk(0)
+addpix("people/man_s.png")
+Action
+info("'Look out for the forested island,' says the man. 'I hear it's dangerous.'")
+info("'A whole family disappeared there not too long ago.'")
+:by
+pix("water/land_ne.png")
+walk(0)
+:bz
+pix("water/bridge_n.png")
+walk(1)
+:bA
+pix("water/water.png")
+walk(0)
+addpix("roof_blue/roof_mid_n.png")
+:bB
+pix("water/water.png")
+walk(0)
+addpix("roof_blue/roof_nw.png")
+:bC
+pix("roof_blue/roof_mid.png")
+walk(0)
+:bD
+pix("water/water.png")
+walk(0)
+addpix("roof_blue/roof_ne.png")
+:bE
+pix("roof_blue/roof_w.png")
+walk(0)
+:bF
+pix("roof_blue/roof_e.png")
+walk(0)
+:bG
+pix("roof_blue/roof_n.png")
+walk(0)
+addpix("roof_blue/roof_nw.png")
+:bH
+pix("roof_blue/roof_n.png")
+walk(0)
+addpix("roof_blue/roof_ne.png")
+:bI
+pix("roof_blue/roof_w_bot.png")
+walk(0)
+:bJ
+pix("roof_blue/roof_e_bot.png")
+walk(0)
+:bK
+pix("water/water_se2.png")
+walk(1)
+:bL
+pix("water/bridge_s.png")
+walk(1)
+:bM
+pix("water/diag_2.png")
+walk(1)
+:bN
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_mid_s.png")
+:bO
+pix("water/water_wu.png")
+walk(0)
+:bP
+pix("water/diag_3.png")
+walk(0)
+:bQ
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_sw.png")
+:bR
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_se.png")
+:bS
+pix("water/water_wl.png")
+walk(1)
+:bT
+pix("water/land_e.png")
+walk(0)
+:bU
+pix("water/subtle_land_e.png")
+walk(1)
+:bV
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_sw_bot.png")
+:bW
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_se_bot.png")
+:bX
+pix("water/water_wu2.png")
+walk(0)
+:bY
+pix("town/wood_window_s.png")
+walk(0)
+:bZ
+pix("town/wood_sign_inn.png")
+walk(0)
+:b0
+pix("town/wood_wall_door.png")
+walk(1)
+Action
+move("island_shops.txt", 11, 33)
+hero("hero_n")
+info("Strangely, the fishy smell surrounding the village is stronger")
+info(" inside this building.")
+:b1
+pix("town/wood_sign_tavern.png")
+walk(0)
+:b2
+pix("water/diag_1.png")
+walk(0)
+:b3
+pix("water/subtle_land_e.png")
+walk(0)
+:b4
+pix("water/water_n2.png")
+walk(0)
+:b5
+pix("water/land_w.png")
+walk(0)
+:b6
+pix("water/land_nw.png")
+walk(0)
+:b7
+pix("water/island.png")
+walk(0)

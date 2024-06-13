@@ -1,0 +1,168 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa ab ac ad ad ae af ag ad ad ah ai aj ak aa 
+aa al am am am am an am am am am ah ai ao aa 
+aa ap am am am aq ar am am am am am ah as aa 
+aa ap am at am au av am am am am am am ah aa 
+aa ap aw am am au ax ar am am am am ay ah aa 
+aa ap at am am au ax av am am am am am ah aa 
+aa ap am am aq ax ax ac am am am am am ah aa 
+aa ap am aq ax ax av am am am am am am ah aa 
+aa ap aq ax ax ax ac am am am am am am ah aa 
+aa ap au ax ax ac am am am az aA ap am ah aa 
+aa ap aB aC ac am am aD az aE aa ap am ah aa 
+aa ap aF am am am ak aE ao aE aE ap aG ah aa 
+aa aA aA aA aA aA ao ai aH ai aI aA aJ az aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("desert/hills_n4_desert.png")
+walk(0)
+:ab
+pix("desert/hills_n2_e_desert.png")
+walk(0)
+:ac
+pix("desert/desert_grass_se.png")
+walk(1)
+:ad
+pix("desert/hills_s_desert_grass.png")
+walk(1)
+:ae
+pix("desert/hills_w2_desert_grass.png")
+walk(0)
+:af
+pix("desert/mine_n_desert.png")
+walk(0)
+Action
+move("mine3.txt", 22, 18)
+hero("hero_s")
+:ag
+pix("desert/hills_e2_desert2.png")
+walk(0)
+:ah
+pix("desert/hills_w2_desert_grass.png")
+walk(1)
+:ai
+pix("desert/hills_center_desert.png")
+walk(0)
+:aj
+pix("desert/hills_n3_w_desert_grass.png")
+walk(0)
+:ak
+pix("desert/hills_n3_e_desert_grass.png")
+walk(0)
+:al
+pix("desert/desert_grass_se.png")
+walk(0)
+:am
+pix("desert/desert_grass.png")
+walk(1)
+:an
+pix("desert/mine_s_desert_grass.png")
+walk(1)
+:ao
+pix("desert/hills_n4_double_desert.png")
+walk(0)
+:ap
+pix("desert/hills_e2_desert.png")
+walk(0)
+:aq
+pix("desert/desert_grass_nw.png")
+walk(1)
+:ar
+pix("desert/desert_grass_ne.png")
+walk(1)
+:as
+pix("desert/hills_e_w_desert.png")
+walk(0)
+:at
+pix("desert/cactus.png")
+walk(0)
+:au
+pix("desert/desert_grass_w.png")
+walk(1)
+:av
+pix("desert/desert_grass_e.png")
+walk(1)
+:aw
+pix("desert/desert_grass.png")
+walk(1)
+if(var("gold_desert.txt_1"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_desert.txt_1"), "=", 0)
+	if(find("gold", "5"), "=", 1)
+		set("gold_desert.txt_1", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:ax
+pix("desert/hills_desert.png")
+walk(1)
+:ay
+pix("desert/desert_grass.png")
+walk(1)
+if(var("small_energy_potion_desert.txt_0"), "=", 0)
+	addpix("items/small_energy_potion.png")
+endif
+Action
+if(var("small_energy_potion_desert.txt_0"), "=", 0)
+	if(find("small energy potion", "a"), "=", 1)
+		set("small_energy_potion_desert.txt_0", "=", 1)
+		delpix("items/small_energy_potion.png")
+	endif
+endif
+:az
+pix("desert/hills_n2_e_double_desert_grass.png")
+walk(0)
+:aA
+pix("desert/hills_n3_desert_grass.png")
+walk(0)
+:aB
+pix("desert/desert_grass_sw.png")
+walk(1)
+:aC
+pix("desert/desert_grass_s.png")
+walk(1)
+:aD
+pix("desert/hills_n_double_desert_grass.png")
+walk(0)
+:aE
+pix("desert/hills_n_center_desert.png")
+walk(0)
+:aF
+pix("desert/desert_grass.png")
+walk(1)
+if(var("orange_gem_desert.txt_0"), "=", 0)
+	addpix("items/orange_gem.png")
+endif
+Action
+if(var("orange_gem_desert.txt_0"), "=", 0)
+	if(find("orange gem", "an"), "=", 1)
+		set("orange_gem_desert.txt_0", "=", 1)
+		delpix("items/orange_gem.png")
+	endif
+endif
+:aG
+pix("desert/desert_grass.png")
+walk(1)
+if(var("gold_desert.txt_0"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_desert.txt_0"), "=", 0)
+	if(find("gold", "10"), "=", 1)
+		set("gold_desert.txt_0", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:aH
+pix("desert/hills_n2_e_double_desert.png")
+walk(0)
+:aI
+pix("desert/hills_n2_w_desert.png")
+walk(0)
+:aJ
+pix("desert/hills_n2_w_desert_grass.png")
+walk(0)

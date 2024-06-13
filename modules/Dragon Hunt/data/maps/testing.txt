@@ -1,0 +1,223 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ac ad ae af ag ah ai aj ak ak ak ak ak ak ak aa
+aa ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak aa
+aa ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak aa
+aa ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak aa
+aa ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak aa
+aa ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak aa
+aa ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak aa
+aa ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak aa
+aa ak ak ak ak ak ak ak ak ak ak ak ak ak ak al am aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:a
+pix("underground/rock.png")
+walk(0)
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("mine.png")
+walk(1)
+Action
+if(1, "=", 1)
+	pass()
+else
+	info("if 1 does not work")
+endif
+if(0, "=", 1)
+	info("if(0 does not work")
+endif
+if(1, "=", 1)
+	pass()
+else
+	info("if 1, "=", 1 does not work")
+endif
+if(0, "=", 0)
+	pass()
+else
+	info("if 0, "=", 0 does not work")
+endif
+if(1, ">", 0)
+	pass()
+else
+	info("if 1>0 does not work")
+endif
+if(0, "<", 1)
+	pass()
+else
+	info("if 0<1 does not work")
+endif
+if(1, ">=", 0)
+	pass()
+else
+info("if 1>=0 does not work")
+endif
+if(0, ">=", 0)
+	pass()
+else
+	info("if 0>=0 does not work")
+endif
+if(0, "<=", 0)
+	pass()
+else
+	info("if 0<=0 does not work")
+endif
+if(0, "<=", 1)
+	pass()
+else
+	info("if 0<=1 does not work")
+endif
+if(1)
+	pass()
+else
+	info("if 1 does not work")
+endif
+if(0)
+	info("if 0 does not work")
+endif
+set("tempvar", "=", 123)
+info("This should display 123: ~tempvar~")
+info("This should display tilde: ~~")
+set("tempvar2", 1234)
+info("This should display 1234: ~tempvar2~")
+:ac
+pix("mine.png")
+walk(1)
+Action
+if(var("unset_gfdgfdc"), "=", 0)
+	pass()
+else
+	info("if unset does not work")
+endif
+if(var("unset_qweqweweq"))
+	info("if unset does not work")
+endif
+set("set_var", "=", 1)
+if(var("set_var"), ">", 0)
+	pass()
+else
+	info("if set does not work")
+endif
+if(var("set_var"))
+	pass()
+else
+	info("if set does not work")
+endif
+info("Should be 0: ~testing_var~")
+set("testing_var", "=", "~set_var~")
+info("Should be 1: ~testing_var~")
+set("testing_var", "+", var("set_var"))
+info("Should be 2: ~testing_var~")
+set("testing_var", "-", var("set_var"))
+info("Should be 1: ~testing_var~")
+set("testing_var", "+", 5)
+info("Should be 6: ~testing_var~")
+set("testing_var", "=", "~set_var~")
+info("Should be 1: ~testing_var~")
+:ad
+pix("mine.png")
+walk(1)
+Action
+take("Dagger")
+take("Dagger")
+if(take("Dagger"), "=", 0)
+	pass()
+else
+	info("if take does not work")
+endif
+if(item("Dagger"), "=", 1)
+	pass()
+else
+	info("if give does not work")
+endif
+info("You should have a dagger.")
+:ae
+pix("mine.png")
+walk(1)
+Action
+if(equip("has", "rusty Knife"), "=", 1)
+	info("you have a rusty knife equipped")
+else
+	info("you do not have a rusty knife equipped")
+endif
+if(equip("has", "dagger"), "=", 1)
+info("you have a dagger equipped")
+else
+info("you do not have a dagger equipped")
+endif
+:af
+pix("mine.png")
+walk(1)
+Action
+info("running dagger tile")
+run("testing.txt", 3, 1)
+:ag
+pix("mine.png")
+walk(1)
+Action
+question("Short Question")
+question("Packing your trusty knife and a drink, you set out on your info journey, and quickly arrive in the town. There shouldn't be anything too info tough here; nothing nastier than giant spiders has been seen in years.")
+question("Longer Question Longer Question Longer Question Longer Question Longer  Question L onger Question Longer Question vm Longer  Question Longer Question Longer Question Longer Questiocbcvn Longe r Question Longer Qgfduestion Longer Question L ongebn vr Question  Longer Question Longer Qu estion L onger Que stion Longer Questigon Longer Question Longeghdr Question Longer Quenfhstion  Longer Question Longer Quest ion Lo nger Qu estion Lo nger Question Longer dfgQu estion Longer Question Long  er Question Longer bvQuestiogdfn Longer Questi on Longer Question Longer Questiobvcn Longer Question Lonbvge r Question Longer Q uestion Longer Que stion Longer Question Longer Question Longer Question Longer Question hg")
+dialog("testing")
+dialog("Longer Question Longer Question Longer Question Longer Question Longer  Question L onger Question Longer Question vm Longer  Question Longer Question Longer Question Longer Questiocbcvn Longe r Question Longer Qgfduestion Longer Question L ongebn vr Question  Longer Question Longer Qu estion L onger Que stion Longer Questigon Longer Question Longeghdr Question Longer Quenfhstion  Longer Question Longer Quest ion Lo nger Qu estion Lo nger Question Longer dfgQu estion Longer Question Long  er Question Longer bvQuestiogdfn Longer Questi on Longer Question Longer Questiobvcn Longer Question Lonbvge r Question Longer Q uestion Longer Que stion Longer Question Longer Question Longer Question Longer Question hg")
+:ah
+pix("mine.png")
+walk(1)
+Action
+set("name_var", "=", "qwerty")
+info("Your name is:")
+info(stat("name"))
+give("name", "Frank")
+info("Your name should be Frank.")
+info("Your name is:")
+info(stat("name"))
+give("name", "~name_var~")
+info("Your name should be qwerty.")
+info("Your name is:")
+info(stat("name"))
+:ai
+pix("mine.png")
+walk(1)
+Action
+mapstat("addmonster", "Ant")
+mapstat("battle_bg", "underground.png")
+info("You can now be attacked by Ants.")
+mapstat("hero_bg", "_raft")
+:aj
+pix("mine.png")
+walk(1)
+Action
+mapstat("delmonster", "Ant")
+info("You can no longer be attacked by Ants.")
+mapstat("hero_bg", "")
+:ak
+pix("underground/dirt.png")
+walk(1)
+:al
+pix("underground/dirt.png")
+walk(1)
+if(var("key_testing.txt_0"), "=", 0)
+	addpix("items/key.png")
+endif
+Action
+if(var("key_testing.txt_0"), "=", 0)
+	if(find("key", "a"), "=", 1)
+		set("key_testing.txt_0", "=", 1)
+		delpix("items/key.png")
+	endif
+endif
+:am
+pix("underground/dirt.png")
+walk(1)
+if(var("chain_gauntlets_testing.txt_0"), "=", 0)
+	addpix("items/chain_gauntlets.png")
+endif
+Action
+if(var("chain_gauntlets_testing.txt_0"), "=", 0)
+	if(find("chain gauntlets", "a"), "=", 1)
+		set("chain_gauntlets_testing.txt_0", 1)
+		delpix("items/chain_gauntlets.png")
+	endif
+endif

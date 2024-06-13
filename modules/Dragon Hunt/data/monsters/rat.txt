@@ -1,0 +1,10 @@
+
+Name=Rat
+hp=30
+attack=4
+defense=2
+exp=6
+gold=3
+description=The Rat lashes with its leathery tail and punctures with its \
+sharp teeth and claws.  The rat also brings with it a rancid odour of rotting \
+garbage that makes concentration difficult.

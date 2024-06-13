@@ -1,0 +1,119 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ab aa aa aa aa aa aa ac ac
+aa aa ac aa ab aa aa aa aa ad aa ab aa ae af ag
+ac ac ah ac ad ac ac ai ac ac ad ac ae af af ag
+af af aj aj ak al al am al al an ao ap aj aj ag
+ag af aq ah ad ar al al al al aq ac ad ao aj ag
+af af aj as ak al al al al al al al at au ar ag
+af ag av ad ac aw al al al al al al an ac aw ag
+af aq ad ae al al al al al al al ap ag ap aj ag
+af ag an aw al al al al al al al ak ax ad aw ag
+ag ag av ah aw ay al al al al av ac ac ae aj ag
+af ag az aq ao ap al al al av ad aw aj al al ag
+af ag al aq ad ac ao ax aA ab ae al al al al ag
+ag ag ag ag az aq ac aa ad ae ag ag af ag ag ag
+ag ag ag ag ag ag ag az az ag ag ag ag ag ag ag
+ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag
+ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag
+
+:def
+hero_bg = _raft
+
+:a
+pix("hills/hills_n4.png")
+walk(0)
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("hills/hills_n4_double.png")
+walk(0)
+:ac
+pix("water_hills/hills_s2_water.png")
+walk(0)
+:ad
+pix("hills/hills_center.png")
+walk(0)
+:ae
+pix("water_hills/hills_e2_water.png")
+walk(0)
+:af
+pix("water_hills/water.png")
+walk(0)
+:ag
+pix("water_hills/water.png")
+walk(1)
+:ah
+pix("water_hills/hills_e_w_water.png")
+walk(0)
+:ai
+pix("hills/mine_n.png")
+walk(1)
+Action
+move("mine1.txt", 7, 6)
+hero("hero_s")
+:aj
+pix("water/water.png")
+walk(0)
+:ak
+pix("water_hills/hills_ns_water.png")
+walk(0)
+:al
+pix("water/water.png")
+walk(1)
+:am
+pix("water_hills/water_cave.png")
+walk(1)
+:an
+pix("water_hills/hills_w2_water.png")
+walk(0)
+:ao
+pix("water_hills/hills_n2_w_water.png")
+walk(0)
+:ap
+pix("water_hills/hills_n_double_water.png")
+walk(0)
+:aq
+pix("water_hills/hills_w_water.png")
+walk(0)
+:ar
+pix("water_hills/hills_e_double_water.png")
+walk(0)
+:as
+pix("water_hills/hills_n_water.png")
+walk(0)
+:at
+pix("water_hills/hills_n3_e_water.png")
+walk(0)
+:au
+pix("hills/hills_n_center.png")
+walk(0)
+:av
+pix("water_hills/hills_n2_e_double_water.png")
+walk(0)
+:aw
+pix("water_hills/hills_e_water.png")
+walk(0)
+:ax
+pix("water_hills/hills_n2_e_water.png")
+walk(0)
+:ay
+pix("water/water.png")
+walk(1)
+if(var("blue_gem_water_mine.txt_0"), "=", 0)
+	addpix("items/blue_gem.png")
+endif
+Action
+if(var("blue_gem_water_mine.txt_0"), "=", 0)
+	if(find("blue gem", "a"), "=", 1)
+		set("blue_gem_water_mine.txt_0", "=", 1)
+		delpix("items/blue_gem.png")
+	endif
+endif
+:az
+pix("water_hills/hills_s_water.png")
+walk(0)
+:aA
+pix("water_hills/hills_n3_water.png")
+walk(0)

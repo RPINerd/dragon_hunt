@@ -1,0 +1,11 @@
+
+Name=Angry Tree
+hp=65
+attack=12
+defense=15
+exp=20
+gold=25
+description=The Angry Tree is a wild, unpredictable creature that wields \
+its branches like clubs.  Legends say that they are manifested spirits of dead trees \
+that bear a grudge against all humans.  The only way to \
+defeat them is to hack them to pieces.

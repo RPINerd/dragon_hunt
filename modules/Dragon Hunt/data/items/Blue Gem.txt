@@ -1,0 +1,7 @@
+Name=Blue Gem
+type=14
+quality=15
+price=10
+value=8
+description=A sparkling blue jewel.
+picture=items/blue_gem.png

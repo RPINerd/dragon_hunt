@@ -1,0 +1,7 @@
+Name=Leather Coif
+type=3
+quality=1
+price=5
+description=Although offering no real protection, this is \
+still better than nothing.
+picture=items/leather_helmet.png

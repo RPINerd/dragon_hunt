@@ -1,0 +1,6 @@
+Name=Leather Leggings
+type=5
+quality=1
+price=20
+description=They look chewed on
+picture=items/leather_boots.png

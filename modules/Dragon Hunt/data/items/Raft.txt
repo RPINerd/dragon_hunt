@@ -1,0 +1,6 @@
+Name=Raft
+type=10
+quality=0
+price=0
+description=A portable wooden raft.
+picture=items/raft.png

@@ -1,0 +1,436 @@
+aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa ac ad
+aa ae af af af ag ah af af af ai aj ak af af af af af af af af af af ai ac ad
+aa al aa aa am an ao ap aa aa aa aj aa aa aa aq aq aq aq aq aq aq aq aa ac ad
+aa al aa ar as at au av aa aa aa aj aa aa aa aw aw aw aw aw aw aw aw aa ac ad
+aa al aa ax as at au av aa aa aa aj aa aa aa ay az ay ay ay ay az ay aa ac ad
+aa al aA aB as aC aD av aa aa aa aj aE aa aa aF aG aF aF aF aF aG aF aa ac ad
+aa al aH aI aJ aK aL aM aN aO aO aP aO aO aQ aR aS aT aU aU aV aW aX aa ac ad
+aa al aY aZ a0 a1 a2 a3 aj aa aa aa aa aa a4 aO aP aO aO aO aO a5 aa aa aa a6
+aa a7 aa aa aa aa a4 aO a5 aa aa aa aa aa aj aa aa aa aa aa aa aa aa aa aa a8
+a9 aO aO aO aO aO ba aa aa aa bb aa aa aa aj aa aa aa aa aa aa aa aa aa ac ad
+aa bc aa aa aa aa aj aa aa bd be bf aa aa aj aa aa aa aa aa aa aa aa aa ac ad
+aa al aa aa aa aa aj aa bd bg be bh bf aa aj aa aa aa aB aa aa aa aa aa ac ad
+aa al aa aa aa aa aj aa bi bj bk bl bm aa aj aa aa aa aa aa bn aa aa aa ac ad
+aa al aa aB aa aa aj aa bi bj bk bl bm aa aj aa aa aA aa aa aa aa aa aa ac ad
+aa al aa aa aa aa aj aa bi bj aG bl bm aa aj aa aa aa aa aa aa aa aa aa ac ad
+aa al aa aa aa aa aj aa bi bo bp bq bm aa aj br br br br br br br br aa bs ad
+aa al aa aa aa aa aj aa bt bu bu bu bv aa aj bw bw bw bw bw bx by bw ac bz ad
+aa al aa aa aa aa aj aa aR bA bB bC aX aa aj bD bD bD bD bE at au bF ac ad ad
+aa al aa aa aa aa aj aa aa aa a4 aO aO aO a5 a0 bG bH bI as aC aD av ac ad ad
+aa al aa aa aa aa bJ aO aO aO a5 aa aa aa aa aa aa aa aa bK aL aL aM ac ad ad
+aa al aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aI aa a0 bL bL a3 ac ad ad
+aa al aa aa aa aa aa aa aa aa aa aa aa bM aa aa aa aa aa aa aa aa aa bs ad ad
+aa al aa aa aa aa aa aa aa aa aa aa aa bN aa aa aa aa aa aa aa aa aa bO bP ad
+aa al aI aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa bQ bR ad ad ad
+aa a7 ac bS bT aa bU a8 bU a8 bU bU a8 bU bU a8 bU bU bU a8 bU bU bP ad ad ad
+bU bU bU bO bU bs ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad
+ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad
+ad ad ad ad bz ad ad ad ad ad ad ad ad ad ad ad ad bz ad ad ad bz bV ad bz ad
+ad ad ad ad ad ad ad ad ad ad ad ad bz ad ad ad bz ad ad ad ad ad ad ad ad ad
+ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad
+
+:def
+:aa
+pix("grass.png")
+walk(1)
+:ab
+pix("road/road_ns.png")
+walk(1)
+Action
+if(var("been_to_first_level"), "=", 0)
+info("You are attacked by a spider. This shouldn't be too hard.")
+attack("spider")
+set("been_to_first_level", "=", 1)
+endif
+move("level1.txt", 22, 6)
+hero("hero_n")
+set("town_enter_from", "=", 1)
+:ac
+pix("hills/hills_w.png")
+walk(0)
+:ad
+pix("hills/hills_n4.png")
+walk(0)
+:ae
+pix("town/fence_es.png")
+walk(0)
+:af
+pix("town/fence_ew.png")
+walk(0)
+:ag
+pix("town/fence_ew.png")
+walk(0)
+addpix("roof_red/roof_nw_top.png")
+:ah
+pix("town/fence_ew.png")
+walk(0)
+addpix("roof_red/roof_ne_top.png")
+:ai
+pix("town/fence_w.png")
+walk(0)
+:aj
+pix("road/road_ns.png")
+walk(1)
+:ak
+pix("town/fence_e.png")
+walk(0)
+:al
+pix("town/fence_ns.png")
+walk(0)
+:am
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw.png")
+:an
+pix("grass.png")
+addoverpix("roof_red/roof_w_top.png")
+walk(1)
+:ao
+pix("grass.png")
+addoverpix("roof_red/roof_e_top.png")
+walk(1)
+:ap
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:aq
+pix("roof_blue/roof_n_back.png")
+walk(0)
+:ar
+pix("treetop2.png")
+walk(0)
+:as
+pix("roof_red/roof_w_bot.png")
+walk(0)
+:at
+pix("roof_red/roof_w_top.png")
+walk(0)
+:au
+pix("roof_red/roof_e_top.png")
+walk(0)
+:av
+pix("roof_red/roof_e_bot.png")
+walk(0)
+:aw
+pix("roof_blue/roof_n_top.png")
+walk(0)
+:ax
+pix("treetrunk2.png")
+walk(0)
+:ay
+pix("roof_blue/roof_n.png")
+walk(0)
+:az
+pix("roof_blue/roof_n.png")
+walk(0)
+addpix("roof_blue/roof_mid_n.png")
+:aA
+pix("tree.png")
+walk(0)
+:aB
+pix("small_flowers.png")
+walk(1)
+:aC
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw.png")
+:aD
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se.png")
+:aE
+pix("garden.png")
+walk(1)
+:aF
+pix("roof_blue/roof_n_bot.png")
+walk(0)
+:aG
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_mid_s.png")
+:aH
+pix("blue_flowers.png")
+walk(1)
+:aI
+pix("mixed_flowers.png")
+walk(1)
+:aJ
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:aK
+pix("town/wood_wall.png")
+walk(0)
+:aL
+pix("town/wood_window.png")
+walk(0)
+:aM
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:aN
+pix("road/road_se.png")
+walk(1)
+:aO
+pix("road/road_ew.png")
+walk(1)
+:aP
+pix("road/reverse_t.png")
+walk(1)
+:aQ
+pix("road/road_sw.png")
+walk(1)
+:aR
+pix("town/wall_sw.png")
+walk(0)
+:aS
+pix("road/end_door.png")
+walk(1)
+Action
+move("shops.txt", 16, 6)
+info("You enter an Armory.")
+hero("hero_n")
+:aT
+pix("town/sign_armor.png")
+walk(0)
+:aU
+pix("town/wall_s.png")
+walk(0)
+:aV
+pix("town/sign_weapon.png")
+walk(0)
+:aW
+pix("road/end_door.png")
+walk(1)
+Action
+move("shops.txt", 21, 6)
+info("You enter a Weapons Store.")
+hero("hero_n")
+:aX
+pix("town/wall_se.png")
+walk(0)
+:aY
+pix("red_flowers.png")
+walk(1)
+:aZ
+pix("garden.png")
+walk(1)
+Action
+info("'Get out of my garden!' shouts someone from inside the shop.")
+:a0
+pix("town/wood_wall_sw.png")
+walk(0)
+:a1
+pix("town/wood_sign_general.png")
+walk(0)
+:a2
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shops.txt", 6, 7)
+info("You enter a General Store.")
+hero("hero_n")
+:a3
+pix("town/wood_wall_se.png")
+walk(0)
+:a4
+pix("road/right_t.png")
+walk(1)
+:a5
+pix("road/road_nw.png")
+walk(1)
+:a6
+pix("hills/hills_s.png")
+walk(0)
+Action
+info("A narrow trail leads out of this valley, and back to civilization.")
+info("You have work to do here, however. You turn back.")
+:a7
+pix("town/fence_s.png")
+walk(0)
+:a8
+pix("hills/hills_n_double.png")
+walk(0)
+:a9
+pix("road/road_ew.png")
+walk(1)
+Action
+if(var("been_to_first_level"), "=", 0)
+info("You are attacked by a spider. This shouldn't be too hard.")
+attack("spider")
+set("been_to_first_level", "=", 1)
+endif
+move("level1.txt", 21, 7)
+hero("hero_w")
+set("town_enter_from", "=", 0)
+:ba
+pix("road/left_t.png")
+walk(1)
+:bb
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_mid_n.png")
+:bc
+pix("town/fence_n.png")
+walk(0)
+:bd
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_nw.png")
+:be
+pix("grass.png")
+addoverpix("roof_blue/roof_mid.png")
+walk(1)
+:bf
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_ne.png")
+:bg
+pix("grass.png")
+addoverpix("roof_blue/roof_w.png")
+walk(1)
+:bh
+pix("grass.png")
+addoverpix("roof_blue/roof_e.png")
+walk(1)
+:bi
+pix("roof_blue/roof_w_bot.png")
+walk(0)
+:bj
+pix("roof_blue/roof_w.png")
+walk(0)
+:bk
+pix("roof_blue/roof_mid.png")
+walk(0)
+:bl
+pix("roof_blue/roof_e.png")
+walk(0)
+:bm
+pix("roof_blue/roof_e_bot.png")
+walk(0)
+:bn
+pix("tree2.png")
+walk(0)
+:bo
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_sw.png")
+:bp
+pix("town/empty_window.png")
+walk(0)
+:bq
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_se.png")
+:br
+pix("roof_red/roof_n_back.png")
+walk(0)
+:bs
+pix("hills/hills_n2_e.png")
+walk(0)
+:bt
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_sw_bot.png")
+:bu
+pix("town/wall.png")
+walk(0)
+:bv
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_se_bot.png")
+:bw
+pix("roof_red/roof_n_top.png")
+walk(0)
+:bx
+pix("roof_red/roof_n_top.png")
+walk(0)
+addpix("roof_red/roof_nw_top.png")
+:by
+pix("roof_red/roof_n_top.png")
+walk(0)
+addpix("roof_red/roof_ne_top.png")
+:bz
+pix("hills/hills_n4_double.png")
+walk(0)
+:bA
+pix("town/wall_poster_s.png")
+walk(0)
+Action
+info("The poster has some nonsense about a giant dragon.")
+info("Bah! It's just a legend that mothers use to frighten their")
+info("children into behaving.")
+:bB
+pix("road/end_door.png")
+walk(1)
+Action
+move("shops.txt", 10, 17)
+info("You enter a Training Hall.")
+hero("hero_n")
+:bC
+pix("town/sign_training.png")
+walk(0)
+:bD
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:bE
+pix("roof_red/roof_n.png")
+walk(0)
+addpix("roof_red/roof_nw.png")
+:bF
+pix("roof_red/roof_n.png")
+walk(0)
+addpix("roof_red/roof_ne.png")
+:bG
+pix("town/wood_wall_door.png")
+walk(1)
+Action
+move("shops.txt", 16, 18)
+info("You enter a Tavern.")
+hero("hero_n")
+:bH
+pix("town/wood_sign_tavern.png")
+walk(0)
+:bI
+pix("town/wood_sign_inn.png")
+walk(0)
+:bJ
+pix("road/road_ne.png")
+walk(1)
+:bK
+pix("town/wood_wall_w.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:bL
+pix("town/wood_wall_s.png")
+walk(0)
+:bM
+pix("treetop.png")
+walk(0)
+:bN
+pix("treetrunk.png")
+walk(0)
+:bO
+pix("hills/hills_n_s.png")
+walk(0)
+:bP
+pix("hills/hills_n3_e.png")
+walk(0)
+:bQ
+pix("small_shrub.png")
+walk(0)
+:bR
+pix("hills/hills_n2_e_double.png")
+walk(0)
+:bS
+pix("hills/hills_n3.png")
+walk(0)
+:bT
+pix("hills/hills_e_double.png")
+walk(0)
+:bU
+pix("hills/hills_n.png")
+walk(0)
+:bV
+pix("hills/hills_n_center.png")
+walk(0)

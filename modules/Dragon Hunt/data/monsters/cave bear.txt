@@ -1,0 +1,11 @@
+
+Name=Cave Bear
+hp=70
+attack=10
+defense=3
+exp=14
+gold=10
+description=The Cave Bear boasts long razor-sharp claws and a jaw capable of \
+tearing a human in half. It attacks with beserker-like fury, ignoring its \
+wounds. The cave bear usually hides in the shadows in or near its rocky \
+habitat.

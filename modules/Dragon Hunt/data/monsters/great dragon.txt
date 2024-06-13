@@ -1,0 +1,10 @@
+
+Name=Great Dragon
+hp=250
+attack=25
+defense=15
+exp=100
+gold=1000
+description=The Great Dragon, once thought legendary, breathes white-hot \
+flames, lashes with a spiked tail, and has razor-sharp claws and teeth. \
+The Great Dragon is monstrous in size and well-armored with tough scales.

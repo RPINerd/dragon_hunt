@@ -1,0 +1,195 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad
+aa aa aa aa ae af af af af af af af aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad
+aa aa ag ah ai aj ak al am af af af aa aa aa aa aa aa aa aa aa aa aa aa aa ab ac ad
+aa aa an ao ap ac ac aq af af af af aa aa aa aa aa aa aa aa aa aa aa aa ar as at ad
+aa aa au av aw ax ay az af af af af aa aa aa aa aa aa aa aa aa aa aa aa au ac ac ac
+aa ab ax aA ax ax aq af af af af af aa aa aa aa aa aa aa aa aa aa aa aa aB ac ac ac
+aa ab aC aD aE ax al aa af af af af aa aa aa aa aa aa aa aa aa aa aa aa aa aB ac ac
+aa aa aF aG aH ax ax aI aJ af af af aa aa aa aa aa aa aa aa aa aa aa aa aa aK aL ac
+aa aa aM aN aO aP ax ax aQ aR aR aR aR aR aR aR aR aR aS aR aR aR aR aR aR aT ac ac
+aa ag aU aV aW at aX ax aY af af af aa aa aa aa aa aa aa aa aa aa aa aa aa aK ac ac
+aa an aY aa aZ a0 aB aq af af af af aa aa aa aa aa aa aa aa aa aa aa aa am aK ac ac
+aa aa aa aa a1 af af af af af af af aa aa aa aa aa aa aa aa aa aa aa aa aa a2 ac ac
+aa aa aa aa af af af af af af af af aa aa aa aa aa aa aa aa aa aa aa aa aM ac ac ac
+aa aa aa aa af af af af af af af af aa aa aa aa aa aa aa aa aa aa aa aa an ac ac ac
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa a2 ac a3 ac
+
+:def
+monster = Ant
+:a
+pix("water/water.png")
+walk(0)
+:aa
+pix("water/water.png")
+walk(0)
+:ab
+pix("water/subtle_land_e.png")
+walk(1)
+:ac
+pix("grass.png")
+walk(1)
+:ad
+pix("hills/foothills_w.png")
+walk(1)
+:ae
+pix("water/bridge_ns_destroyed.png")
+walk(1)
+:af
+pix("water/water.png")
+walk(1)
+:ag
+pix("water/land_se.png")
+walk(0)
+:ah
+pix("water/water_s3.png")
+walk(1)
+:ai
+pix("water/bridge_s.png")
+walk(1)
+:aj
+pix("water/water_s.png")
+walk(1)
+:ak
+pix("water/water_s2.png")
+walk(1)
+:al
+pix("water/diag_4.png")
+walk(1)
+:am
+pix("water/island.png")
+walk(0)
+:an
+pix("water/land_ne.png")
+walk(0)
+:ao
+pix("rock_nw.png")
+walk(1)
+:ap
+pix("rock_n.png")
+walk(1)
+:aq
+pix("water/diag_1.png")
+walk(0)
+:ar
+pix("water_hills/hills_w_water.png")
+walk(0)
+:as
+pix("water_hills/hills_e_w_upper_water.png")
+walk(0)
+:at
+pix("hills/hills_e.png")
+walk(0)
+:au
+pix("water/diag_2.png")
+walk(1)
+:av
+pix("rock_sw.png")
+walk(0)
+:aw
+pix("mine_w.png")
+walk(1)
+Action
+move("level4.txt", 8, 2)
+hero("hero_s")
+:ax
+pix("water/grass.png")
+walk(1)
+:ay
+pix("small_blue_flowers.png")
+walk(1)
+:az
+pix("water/land_w.png")
+walk(0)
+:aA
+pix("small_flowers.png")
+walk(1)
+:aB
+pix("water/water_e2.png")
+walk(0)
+:aC
+pix("tree_left.png")
+walk(1)
+:aD
+pix("tree_center.png")
+walk(0)
+:aE
+pix("tree_right.png")
+walk(1)
+:aF
+pix("water/diag_3.png")
+walk(0)
+:aG
+pix("double_tree.png")
+walk(0)
+:aH
+pix("small_tree_right.png")
+walk(1)
+:aI
+pix("water/water_sw.png")
+walk(1)
+:aJ
+pix("water/land_sw.png")
+walk(0)
+:aK
+pix("water/water_e.png")
+walk(0)
+:aL
+pix("garden.png")
+walk(1)
+:aM
+pix("water/land_e.png")
+walk(0)
+:aN
+pix("small_tree_bottom2.png")
+walk(1)
+:aO
+pix("hills/hills_n_double.png")
+walk(0)
+:aP
+pix("mixed_flowers.png")
+walk(1)
+:aQ
+pix("water/bridge_w_shipyard_smal.png")
+walk(1)
+:aR
+pix("water/bridge.png")
+walk(1)
+:aS
+pix("water/bridge.png")
+walk(1)
+Action
+move("minersland.txt", 1, 6)
+hero("hero_e")
+:aT
+pix("water/bridge_e.png")
+walk(1)
+:aU
+pix("water_hills/hills_w_water_land.png")
+walk(1)
+:aV
+pix("water_hills/hills_e_w_lower_water.png")
+walk(0)
+:aW
+pix("hills/hills_n4.png")
+walk(0)
+:aX
+pix("small_shrub.png")
+walk(0)
+:aY
+pix("water/land_nw.png")
+walk(0)
+:aZ
+pix("water_hills/hills_n3_e_water.png")
+walk(0)
+:a0
+pix("water_hills/hills_e_water.png")
+walk(0)
+:a1
+pix("water_hills/hills_s_water.png")
+walk(0)
+:a2
+pix("water/water_se2.png")
+walk(1)
+:a3
+pix("stones.png")
+walk(1)

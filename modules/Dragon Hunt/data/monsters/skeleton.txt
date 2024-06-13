@@ -1,0 +1,10 @@
+
+Name=Skeleton
+hp=40
+attack=11
+defense=10
+exp=12
+gold=15
+description=The Skeleton is a dangerous being that is difficult to injure due \
+to its insubstantial nature.  It inflicts hard blows with its giant sword, \
+hacking in a half-blind manner and wailing an ear-piercing shriek.

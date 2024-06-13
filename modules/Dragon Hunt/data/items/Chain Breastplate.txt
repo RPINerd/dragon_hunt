@@ -1,0 +1,7 @@
+Name=Chain Breastplate
+type=1
+quality=4
+price=75
+description=Made of interlocking rings, this is a \
+must-have for an adventurer.
+picture=items/chain_armor.png

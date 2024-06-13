@@ -1,0 +1,159 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa ab ac ab ac ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ad ae af ag af ah ab ai ab aa ab aa aa aa aa ai aa aa aa aa aa aa aa aa
+aa ad aj af af af af ak ab aa ab ai ab aa aa aa aa aa aa aa aa aa aa aa aa
+aa ad aj af af af al ab ac ab aa ab aa ab aa aa aa aa aa aa aa ai aa aa aa
+aa ad am an af af af ag ao ak ab ai ab aa ab aa aa aa ai aa aa aa aa aa aa
+aa ad ap ab aq af af af al ab aa ab aa ad aa aa aa aa aa aa aa aa aa aa aa
+aa ab ad ac ar aj af af af ah as ac ad aa ab ai aa aa aa ai aa aa aa aa aa
+aa aa ab aq at af af af af af at al ad aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab aa ab am af af af af af af au ab aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa ab av af aw af an af af al ab aa ab aa aa aa aa aa aa aa ai aa aa aa
+aa ab aa ab ap ab ap ab am af af ak ab aa aa aa aa ai aa aa aa aa aa aa aa
+aa ac ab ac ab aa ab ae af af al ab aa aa aa aa aa aa aa aa aa aa ai aa aa
+aa aq ag ax ah ab ae af af af af ak ab aa ab aa ab ac ab aa ab ai aa ad aa
+aa ad aj af af ag af af af af al ab aa aa aa aa ae af ah ab ac ab ac ab aa
+aa ad am af af af af af af af af ah ab aa aa ab aj af af ag af ag ay ak aa
+aa ad aq af an af aw af aw af af af ah ad ab av af af af af af az al ab aa
+aa ad ab ap ab ap ad aA ad aq af af al ab ac ab am af af af aw af af ak aa
+aa ad ai ab aa ab ab ap ab ac am af af ag af ag af af af al ab aq al ab aa
+aa ac ab ac ab ac ac ab ae af af af af af af af af af af af ak ab ap ab aa
+aa aj ag af ag af af ag af af af af af af af af af af af aB ab ai aa aa aa
+aa aj af af af af af af af af af af af af an af aw af au ab ai ad aa aa aa
+aa aj af af aC af af af af af af af af aB ab ap ab ap ad aa ab aa aa ai aa
+aa aq aw aw aw aw aw aw aw aw aw aw au ab aa ab aa ai ab aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+monster = Crawler
+monster = Slime
+monster = Cave Bear
+:a
+pix("hills/hills_n4.png")
+walk(0)
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("hills/hills_center.png")
+walk(0)
+:ac
+pix("hills/hills_s2.png")
+walk(0)
+:ad
+pix("hills/hills_n_center.png")
+walk(0)
+:ae
+pix("hills/hills_e2.png")
+walk(0)
+:af
+pix("grass.png")
+walk(1)
+:ag
+pix("hills/hills_s.png")
+walk(1)
+:ah
+pix("hills/hills_w2.png")
+walk(0)
+:ai
+pix("hills/hills_n4_double.png")
+walk(0)
+:aj
+pix("hills/hills_e.png")
+walk(0)
+:ak
+pix("hills/hills_n3_e.png")
+walk(0)
+:al
+pix("hills/hills_w.png")
+walk(0)
+:am
+pix("hills/hills_e_double.png")
+walk(0)
+:an
+pix("hills/hills_n_double.png")
+walk(0)
+:ao
+pix("grass.png")
+walk(1)
+if(var("gold_3"), "=", 0)
+	addpix("items/gold.png")
+endif
+Action
+if(var("gold_3"), "=", 0)
+	if(find("gold", 10), "=", 1)
+		set("gold_3", "=", 1)
+		delpix("items/gold.png")
+	endif
+endif
+:ap
+pix("hills/hills_n3.png")
+walk(0)
+:aq
+pix("hills/hills_n2_w.png")
+walk(0)
+:ar
+pix("hills/mine_n.png")
+walk(1)
+Action
+move("level2.txt", 18, 9)
+hero("hero_s")
+:as
+pix("hills/mine_n.png")
+walk(1)
+Action
+move("island.txt", 9, 5)
+hero("hero_s")
+:at
+pix("hills/mine_s.png")
+walk(1)
+:au
+pix("hills/hills_n2_e.png")
+walk(0)
+:av
+pix("hills/hills_n3_w.png")
+walk(0)
+:aw
+pix("hills/hills_n.png")
+walk(0)
+:ax
+pix("grass.png")
+walk(1)
+if(var("healing_potion_3"), "=", 0)
+	addpix("items/healing_potion.png")
+endif
+Action
+if(var("healing_potion_3"), "=", 0)
+	if(find("healing potion", "a"), "=", 1)
+		set("healing_potion_3", "=", 1)
+		delpix("items/healing_potion.png")
+	endif
+endif
+:ay
+pix("grass.png")
+walk(0)
+:az
+pix("house.png")
+walk(0)
+Action
+move("farmhouse_outside.txt", 8, 16)
+hero("hero_n")
+:aA
+pix("hills/hills_e_w.png")
+walk(0)
+:aB
+pix("hills/hills_n2_e_double.png")
+walk(0)
+:aC
+pix("grass.png")
+walk(1)
+if(var("super_healing_potion_found0"), "=", 0)
+	addpix("items/super_healing_potion.png")
+endif
+Action
+if(var("super_healing_potion_found0"), "=", 0)
+	if(find("super healing potion", "a"), "=", 1)
+		set("super_healing_potion_found0", "=", 1)
+		delpix("items/super_healing_potion.png")
+	endif
+endif

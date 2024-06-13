@@ -1,0 +1,8 @@
+Name=Slasher Sword
+type=0
+quality=9
+price=650
+description=Able to pass through almost all armor, the \
+blade narrows to a pinpoint edge
+picture=items/slasher_sword.png
+

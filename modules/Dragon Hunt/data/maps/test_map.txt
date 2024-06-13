@@ -1,0 +1,690 @@
+aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ac ab aa ad ab ae aa af ab ab aa ab ab ab aa ab ab ab aa ag ab ab aa ab ah ai aa ab aj ab aa ak al am aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa an ab ab aa ao ab ap aa aq ab ar aa as ab ab aa ab ab ab aa at ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa au ab ab aa av ab ab ab aa
+aa aw ab ax aa ay ab az aa aA ab aB aa aC ab ab aa aD ab ab aa aE ab aF aa ab ab ab aa ab ab ab aa ab ab ab aa aG ab ab aa aH ab ab aa aI ab ab ab aa
+aa aa aJ aa aK aa aL aa aM aa aN aa aa aa aO aa aa aa aP aa aa aa aQ aa aa aa aR aa aa aa aS aa aa aa aT aa aa aa aU aa aa aa aV aa aW aa aX aa aa aY
+ab ac ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ac ab
+aa aa aZ aa aa aa a0 aa aa aa a1 aa aa aa a2 aa aa aa a3 aa aa aa a4 aa aa aa a5 aa aa aa a6 aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa a7 aa aa aa
+aa a8 ab ab aa ab ab a9 aa ba ab bb aa bc ab bd aa be ab bf aa bg ab ab aa bh ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa bi ab ab aa ab ab bj aa bk ab ab aa bl ab ab aa bm ab bn aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa ab ab ab aa ab ab bo aa bp ab ab aa ab ab ab aa ab bq br aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa bs ab ab bt aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa bu ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa aa bv aa bw aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa bx aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa by aa ab aa aa aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa bz aa aa aa bA aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa ab aa aa aa
+aa ab ab ab aa bB ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa ab ab ab aa bC ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa ab ab bD aa bE ab bF aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab aa ab ab ab ab aa
+aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ac ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/dirt.png")
+walk(1)
+:ac
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Edge of map test. This should stop the player,")
+info("but not give any python tracebacks.")
+:ad
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Add non-existant skill: this should not crash DH, but should")
+info("return a useful message.")
+addskill("qwertyuiop")
+:ae
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("Just for allowing test of addskill command: Attack!")
+attack("Ant")
+:af
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("attack random from safe map")
+set("attack_return", "=", attack("random", "town.txt"))
+info("returned: ~attack_return~")
+:ag
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+dialog("This is a much longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer longer message")
+:ah
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+die()
+:ai
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+give("hp", -999)
+dialog("This should not display")
+:aj
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+end()
+info("This should not display")
+:ak
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Test non-existant item:")
+set("temp_var", "=", find("Doesnt_exist", "a"))
+info("Returned ~temp_var~.")
+:al
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Test normal item:")
+set("temp_var", "=", find("Dagger", "a"))
+info("Returned ~temp_var~.")
+:am
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Test gold:")
+set("temp_var", "=", find("gold", 5))
+info("Returned ~temp_var~. Test evil gold:")
+set("temp_var", "=", find("gold", -5))
+info("Returned ~temp_var~.")
+:an
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("A non-existant tile will be added. This will not work,")
+info("but should not crash DH. A useful error message would also be good.")
+addpix("non_existant_tile")
+:ao
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Add scripted skill Cringe")
+addskill("Cringe")
+info("Add testing skill")
+skill("give", "Testing_skill2")
+:ap
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Have a chameleon potion")
+inv("give", "Chameleon Potion")
+:aq
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+addpix("furnishings/green_rug.png")
+Action
+info("Attack random from level 1.")
+set("attack_return", "=", attack("random", "level1.txt"))
+info("returned: ~attack_return~")
+:ar
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Attack specific non-existant monster")
+set("attack_return", "=", attack("non_exist"))
+info("returned: ~attack_return~")
+:as
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Test it out:")
+attack("Ants")
+:at
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+dialog("This is a longerlongerlongerlongerlongerlongerlongerlongerlongerlonger message")
+:au
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+give("gold", -999)
+give("exp", -99)
+:av
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+hero("nonexistant_tile")
+:aw
+pix("underground/dirt.png")
+walk(1)
+addpix("house_trans.png")
+addpix("small_tree_bottom_trans.png")
+addpix("furnishings/sink.png")
+Action
+info("addpix test: should display house, tree bottom, and sink.")
+:ax
+pix("underground/dirt.png")
+walk(1)
+addoverpix("town_trans.png")
+:ay
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Add Rage skill")
+addskill("Rage")
+:az
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("test", skill("give", "Cringe"))
+info("~test~")
+set("test", skill("has", "Cringe"))
+info("~test~")
+set("test", skill("take", "Cringe"))
+info("~test~")
+set("test", skill("has", "Cringe"))
+info("~test~")
+:aA
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("attacking existing monster: Ant")
+set("attack_return", "=", attack("Ant"))
+info("returned: ~attack_return~")
+:aB
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("attack random from non-existant map")
+set("attack_return", "=", attack("random", "non_exist"))
+info("returned: ~attack_return~")
+:aC
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Prep: giving Testing_skill")
+addskill("Testing_skill")
+:aD
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("This should remove the rug")
+delpix("furnishings/green_rug.png")
+:aE
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+dialog("This is a short message")
+:aF
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+dialog("This is a \n newline separated message")
+:aG
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("tempvar", "=", gamestat("loc"))
+info("location is ~tempvar~")
+set("tempvar", "=", gamestat("difficulty"))
+info("difficulty is ~tempvar~")
+set("tempvar", "=", gamestat("gamename"))
+info("Game name is ~tempvar~")
+set("tempvarx", "=", gamestat("x"))
+set("tempvary", "=", gamestat("y"))
+info("XY coords are ~tempvarx~, ~tempvary~")
+set("tempvar", "=", gamestat("mapname"))
+info("Mapname is ~tempvar~")
+:aH
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+addpix("furnishings/green_rug.png")
+Action
+give("maxhp", -999)
+give("maxep", 99999)
+give("name", "Frank the Weasel")
+:aI
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+hero("man_s")
+:aJ
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for addpix, and out-of-bounds areas to the north.")
+:aK
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("test_map.txt", 4, 15)
+:aL
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for addskill")
+:aM
+pix("underground/desert_exit.png")
+walk(1)
+Action
+move("testing.txt", 6, 6)
+:aN
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area of attack command")
+:aO
+pix("underground/dirt.png")
+walk(1)
+Action
+info("battle scripting testing area")
+:aP
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area of delpix command")
+:aQ
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area of Dialog command")
+:aR
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for die command")
+:aS
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for end command")
+:aT
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for find command")
+:aU
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for gamestat")
+:aV
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for give")
+:aW
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("test_map.txt", 44, 15)
+:aX
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for hero")
+:aY
+pix("underground/rock.png")
+walk(0)
+Action
+info("This should display (check off-by-one errors)")
+:aZ
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for hurt")
+:a0
+pix("underground/dirt.png")
+walk(1)
+Action
+info("testing area for if")
+:a1
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for info")
+:a2
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for equip")
+:a3
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for item/inv")
+:a4
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for lose")
+:a5
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Move inv() commands")
+:a6
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Reserved for later use")
+:a7
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for mapstat")
+:a8
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+hurt(5)
+:a9
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("Broken scripting test")
+if(1, "==", 1)
+:ba
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("Undefined variable: ~undefined_4324455433~")
+:bb
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("This is a really really really really really really really really really really really really really really really really really really really really really really really really really really really really really really long line")
+:bc
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("Non-existant item:")
+set("tempvar", "=", equip("has", "non-existant"))
+info("~tempvar~")
+:bd
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Here, have a dagger:")
+item("Dagger")
+:be
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+info("Bad item")
+set("tempvar", "=", item("nonexistant"))
+info("~tempvar~")
+:bf
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+inv("give", "Dagger")
+info("You should now have a dagger")
+:bg
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+lose()
+:bh
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("temp1", inv("price", "dagger"))
+set("temp2", inv("picturename", "dagger"))
+set("temp3", inv("description", "dagger"))
+set("temp4", inv("type", "dagger"))
+info("dagger info: type: ~temp4~, price: ~temp1~, pix: ~temp2~,")
+info("and description: ~temp3~")
+:bi
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+hurt(-6)
+:bj
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("Broken scripting test")
+endif
+:bk
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("Unmatched ~ character")
+:bl
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+set("tempvar", "=", equip("has", "Dagger"))
+info("Do you have a dagger equipped? ~tempvar~")
+:bm
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+#10
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+#20
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+item("Dagger")
+set("tempvar", "=", item("Dagger"))
+info("You now have a full inventory and then some")
+info("~tempvar~")
+:bn
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("temp", inv("has", "Dagger"))
+info("~temp~")
+info("Hurting you")
+set("temp", stat("maxhp"))
+set("temp", "-", 1)
+set("temp", "*", -1)
+give("hp", var("temp"))
+info("Healing you")
+inv("use", "light healing potion")
+info("Testing bad item")
+inv("use", "smoke bomb")
+:bo
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("Broken scripting test")
+else
+:bp
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+info("Show ~~ character")
+:bq
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+set("temp", inv_spot(0))
+info("Loc 0: ~temp~")
+set("temp", inv_spot(27))
+info("Loc 27: ~temp~")
+:br
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+inv("take", "Dagger")
+:bs
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+wall_s(1)
+addpix("small_tree_bottom_trans.png")
+Action
+set("temp", mapspot(gamestat("mapname"), gamestat("newx"), gamestat("newy"), "wall_s"))
+info("Should be 1: ~temp~")
+set("temp", mapspot(gamestat("mapname"), gamestat("newx"), gamestat("newy"), "walk"))
+info("Should be 1: ~temp~")
+set("temp", mapspot(gamestat("mapname"), gamestat("newx"), gamestat("newy"), "num_of_addpix"))
+info("Should be 2: ~temp~")
+:bt
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("temp", "Hi Mom!")
+mapstat("change_titlebar", "~temp~")
+:bu
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("tempvar", "=", question("This is a question"))
+info("you answered ~tempvar~")
+set("tempvar", "=", question("This is a \n newline separated question"))
+info("you answered ~tempvar~")
+:bv
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for move")
+:bw
+pix("underground/water_exit.png")
+walk(1)
+Action
+move("test_map.txt", 4, 5)
+:bx
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for question")
+:by
+pix("underground/water_exit.png")
+walk(1)
+Action
+move("test_map.txt", 44, 5)
+:bz
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for generic_dialog")
+:bA
+pix("underground/dirt.png")
+walk(1)
+Action
+info("Testing area for equip()")
+:bB
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("temp", equip("has", "dagger"))
+info("Should be 0: ~temp~")
+equip("give", "Dagger")
+info("You now have a dagger")
+set("temp", equip("has", "dagger"))
+info("You now have a dagger; should be 1: ~temp~")
+:bC
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("temp", equip("take", "dagger"))
+info("should be 1: ~temp~")
+set("temp", equip("take", "dagger"))
+info("should be 0: ~temp~")
+:bD
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("temp1", "abcdefg")
+set("temp", generic_dialog("~temp1~\nprevious line should be abcdefg", "no.png", "yes.png", "run.png", "quit.png"))
+info("~temp~")
+:bE
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+Action
+set("temp", equip("in_slot", "weapon"))
+info("your weapon is: ~temp~")
+:bF
+pix("underground/dirt.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+Action
+equip("give", "qwewqe")

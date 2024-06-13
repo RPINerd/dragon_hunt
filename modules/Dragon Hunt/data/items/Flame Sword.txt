@@ -1,0 +1,7 @@
+Name=Flame Sword
+type=0
+quality=12
+price=1100
+description=Flames dance along the edge of the blade.
+picture=items/flame_sword.png
+

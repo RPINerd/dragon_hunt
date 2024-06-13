@@ -1,0 +1,12 @@
+
+Name=Shadow
+hp=75
+attack=15
+defense=18
+exp=40
+gold=60
+description=Cloaked in darkness, Shadows are quite mysterious. The few tales \
+of their power that slip back to civilization describe a malignant beast, \
+living in the deepest reaches of the earth, and preying on any foolish enough \
+to draw near. The shadows that surround them frustrate attempts to injure \
+them, while allowing attack from any angle.

@@ -1,0 +1,5 @@
+#Called upon losing. Any commands can be entered here, but info would
+#likely be most useful. End the game with the Lose command.
+
+dialog("This has been quite a bad day.")
+lose()

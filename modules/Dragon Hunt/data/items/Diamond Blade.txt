@@ -1,0 +1,7 @@
+Name=Diamond Blade
+type=0
+quality=16
+price=2500
+description=Only the greatest armor in existence has a \
+chance of stopping a blow from this sword.
+picture=items/diamond_blade.png

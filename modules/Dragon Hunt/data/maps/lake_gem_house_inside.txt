@@ -1,0 +1,215 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa ab ac ac ac ac ad aa aa aa 
+aa aa aa aa ae af ag ah ai aj ak aj al ac ac ad aa 
+aa aa am an ao ap aq ar as at aa as aj aj al aa aa 
+aa aa ae au ar av aw aa aa aa aa aa ai aj at aa aa 
+aa aa ae ax ay ay ay az aa aa aa aa as at ae aa aa 
+aa ae aa aA aB aC aD aE aa aa aa aa aa aF aa aa aa 
+aa ae aa aG aH aI aJ aK aa aa aa aa aa ae ap aa aa 
+aa aF aa aL aM aM aN aO aa aa aa aa aa aa av aa aa 
+aa aa aF aP aQ aR aS aT aa aU aV aW aa aX aF aa aa 
+aa aa ae aa aa aY aa aa aa aZ a0 a0 a1 a2 a3 aa aa 
+aa aX aa aa aa aa aa aa aa a4 a5 a6 a7 aw ae aa aa 
+aa a8 aX aa aa aa aa aa aa aF aa aa aa aF ae aa aa 
+aa aa a2 a3 ae aa aa am an ao aF aF aa ae aa aa aa 
+aa aa aw ae aa aF ae ae a2 a3 ae aa ae aa aa aa aa 
+aa aa aa aa aa aa aa aa aw aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("rock_nw.png")
+walk(0)
+:ac
+pix("rock_n.png")
+walk(0)
+:ad
+pix("rock_ne.png")
+walk(0)
+:ae
+pix("tree2.png")
+walk(0)
+:af
+pix("tree_left.png")
+walk(0)
+:ag
+pix("tree_center.png")
+walk(0)
+:ah
+pix("tree_right.png")
+walk(0)
+:ai
+pix("rock_w.png")
+walk(0)
+:aj
+pix("rock.png")
+walk(0)
+:ak
+pix("rock_s.png")
+walk(0)
+:al
+pix("rock_e.png")
+walk(0)
+:am
+pix("tree_left2.png")
+walk(0)
+:an
+pix("tree_center2.png")
+walk(0)
+:ao
+pix("tree_right2.png")
+walk(0)
+:ap
+pix("treetop.png")
+walk(0)
+:aq
+pix("double_tree.png")
+walk(0)
+:ar
+pix("small_tree_right.png")
+walk(0)
+:as
+pix("rock_sw.png")
+walk(0)
+:at
+pix("rock_se.png")
+walk(0)
+:au
+pix("double_tree2.png")
+walk(0)
+:av
+pix("treetrunk.png")
+walk(0)
+:aw
+pix("small_tree_bottom2.png")
+walk(0)
+:ax
+pix("stone_interior/wall_top_grass_w.png")
+walk(0)
+addpix("small_tree_bottom_trans.png")
+:ay
+pix("stone_interior/wall_top_grass.png")
+walk(0)
+:az
+pix("stone_interior/wall_top_grass_e.png")
+walk(0)
+:aA
+pix("stone_interior/wall_nw.png")
+walk(0)
+addpix("furnishings/flower_painting2.png")
+:aB
+pix("stone_interior/flagstone_grass_window.png")
+walk(0)
+:aC
+pix("stone_interior/wall_floor_chest.png")
+walk(0)
+:aD
+pix("stone_interior/drawers.png")
+walk(0)
+:aE
+pix("stone_interior/wall_ne.png")
+walk(0)
+:aF
+pix("tree.png")
+walk(0)
+:aG
+pix("stone_interior/wall_w.png")
+walk(1)
+:aH
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:aI
+pix("stone_interior/counter_left.png")
+walk(1)
+:aJ
+pix("stone_interior/counter_woman.png")
+walk(0)
+Action
+store("Gem Shop")
+:aK
+pix("stone_interior/counter_right_wall.png")
+walk(1)
+:aL
+pix("stone_interior/wall_sw.png")
+walk(1)
+addpix("furnishings/stone_trapdoor.png")
+Action
+move("under_gem_house.txt", 4, 8)
+hero("hero_s")
+:aM
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:aN
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:aO
+pix("stone_interior/wall_se.png")
+walk(1)
+:aP
+pix("town/wall_sw.png")
+walk(0)
+:aQ
+pix("town/wall_fountain.png")
+walk(0)
+:aR
+pix("stone_interior/wall_flagstone_doorway.png")
+walk(1)
+:aS
+pix("town/sign_gem.png")
+walk(0)
+:aT
+pix("town/wall_se.png")
+walk(0)
+:aU
+pix("water/water_nw.png")
+walk(0)
+:aV
+pix("water/water_n.png")
+walk(0)
+:aW
+pix("water/water_n2.png")
+walk(0)
+:aX
+pix("treetop2.png")
+walk(0)
+:aY
+pix("grass.png")
+walk(0)
+Action
+move("lake_gem_house.txt", 5, 10)
+hero("hero_s")
+:aZ
+pix("water/water_w.png")
+walk(0)
+:a0
+pix("water/water.png")
+walk(0)
+:a1
+pix("water/water_e2.png")
+walk(0)
+:a2
+pix("double_tree4.png")
+walk(0)
+:a3
+pix("small_tree_right2.png")
+walk(0)
+:a4
+pix("water/water_sw.png")
+walk(0)
+:a5
+pix("water/water_s3.png")
+walk(0)
+:a6
+pix("water/water_s.png")
+walk(0)
+:a7
+pix("water/water_se.png")
+walk(0)
+:a8
+pix("treetrunk2.png")
+walk(0)

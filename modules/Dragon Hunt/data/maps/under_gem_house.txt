@@ -1,0 +1,128 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa ab ab aa aa aa aa aa aa aa aa aa aa
+aa aa ac aa ad ae ae af aa aa aa aa aa aa aa aa aa
+aa aa aa ad ae ae ae ae af aa aa ac aa aa ac aa aa
+aa ab ad ae ae ae ae ae ae af ab ab ab ac aa aa aa
+aa ag ae ae ae ah ag ae ae ae ae ae ae af aa aa aa
+ai ai aj ah ak ac al ae ae ae ah ag ae ae af aa aa
+am am an af ao ab ad ae ae ae ap aa ag ae ae ap aa
+am am aq ae ae ae ae ae ae ae ap aa al ae ae ap aa
+am am ar aj as at at aj ae ae af aa ac ag ae ap aa
+au aq av au au au au aq ae ae ae ap aa al ae ap aa
+ak ag ae ae ae ae ae ae ae ae ae ap aa ad ae ap aa
+aa al ae as at aw ar aj ae ae ah ac ad ae ae ap aa
+aa al ae ax am am au aq ae ae aa ad ay ae ah aa aa
+aa al az av am am ar aj ae ah aa ag ae ah ac aa aa
+aa aa ak ag ax am am an ah aa aa aa ak aa aa aa aa
+aa aa aa al ax am am an ap aa aa aa aa aa aa aa aa
+
+:def
+:a
+pix("underground/rock.png")
+walk(0)
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/gem_rock.png")
+walk(1)
+:ad
+pix("underground/rock_se.png")
+walk(0)
+:ae
+pix("underground/dirt.png")
+walk(1)
+:af
+pix("underground/rock_sw.png")
+walk(0)
+:ag
+pix("underground/rock_ne.png")
+walk(0)
+:ah
+pix("underground/rock_nw.png")
+walk(0)
+:ai
+pix("underground/void_n2.png")
+walk(1)
+:aj
+pix("underground/void_ne.png")
+walk(0)
+:ak
+pix("underground/rock_n.png")
+walk(0)
+:al
+pix("underground/rock_e.png")
+walk(0)
+:am
+pix("underground/void.png")
+walk(0)
+:an
+pix("underground/void_e.png")
+walk(0)
+:ao
+pix("underground/rock_s.png")
+walk(0)
+addpix("furnishings/ladder.png")
+Action
+move("lake_gem_house_inside.txt", 4, 8)
+hero("hero_e")
+:ap
+pix("underground/rock_w.png")
+walk(0)
+:aq
+pix("underground/void_se.png")
+walk(0)
+:ar
+pix("underground/void_n_left.png")
+walk(0)
+:as
+pix("underground/void_nw.png")
+walk(0)
+:at
+pix("underground/void_n.png")
+walk(0)
+:au
+pix("underground/void_s.png")
+walk(0)
+:av
+pix("underground/void_sw.png")
+walk(0)
+:aw
+pix("underground/void_n_right.png")
+walk(0)
+:ax
+pix("underground/void_w.png")
+walk(0)
+:ay
+pix("underground/dirt.png")
+walk(1)
+if(var("violet_gems_found0"), "=", 0)
+	addpix("items/violet_gem.png")
+endif
+Action
+if(var("violet_gems_found0"), "=", 0)
+	if(find("violet gem", "a"), "=", 1)
+		set("violet_gems_found0", "=", 1)
+	else
+		end()
+	endif
+endif
+delpix("items/violet_gem.png")
+:az
+pix("underground/dirt.png")
+walk(1)
+if(var("blue_crystal_found0"), "=", 0)
+	addpix("items/blue_crystal.png")
+endif
+Action
+if(var("blue_crystal_found0"), "=", 0)
+	if(find("blue crystal", "a"), "=", 1)
+		set("blue_crystal_found0", "=", 1)
+	else
+		end()
+	endif
+endif
+delpix("items/blue_crystal.png")

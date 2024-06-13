@@ -1,0 +1,231 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa ab ac ad ad ad ad ad aa aa aa aa aa aa ae ae ae ae ae ae ae ae 
+ad ad ad af ag ah ai aj aj aj aj ak al ad ad ad am an ao ao ao ao ao ao ao 
+aj ap aj aq ag ah ar aj aj aj aj aj as aj aj aj at au au ao ao ao ao ao ao 
+aj av aj aw ax ay az aj aA aj aj aj aj aj aj aj aj aB aB aC au ao ao ao ao 
+aj av aj aw aD aE az aj aj aj aj aj aj aj aj aj aj aB aB aB aB aC au ao ao 
+aj av aj aF aG aG aH aj aj aj aj aj aI aj aj aj aj aB aB aB aB aB aB aJ ao 
+aj av aj aK aL aL aM aj aj aj aj aj aj aj aj aj aj aB aB aB aB aN aO ao ao 
+aj aP aj aQ aR aS aT aj aj aj aj aj aj aj aj aj aj aB aB aU aV ao ao ao ao 
+aW aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aU aX aV ao ao ao ao ao 
+aj ap aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aY ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj aj aj aj aj aZ aZ aZ aZ aj aY ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj a0 aj aj aj a1 a1 a1 a1 aj aY ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj aj aj aj aj a2 a2 a2 a2 aj aY ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj aj aj aj aj aQ a3 a4 aT aj aY ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj a5 ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj a6 ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aV ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj aj aj aj aj aj aj aj aU a7 aJ ao ao ao ao ao ao ao 
+aj av aj aj aj aj aj aj aj aj aj aj aU aX aX aV ao ao ao ao ao ao ao ao ao 
+a8 av aj aj aj aU aX aX aX aX aX aX aV ao ao ao ao ao ao ao ao ao ao ao ao 
+a8 aP aj aj aU aV ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao 
+a8 aU aX aX aV ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao 
+a8 aY ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao 
+a8 aY ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao ao 
+
+:def
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("hills/hills_s2.png")
+walk(0)
+addpix("roof_red/roof_nw_top.png")
+:ac
+pix("hills/hills_s2.png")
+walk(0)
+addpix("roof_red/roof_ne_top.png")
+:ad
+pix("hills/hills_s2.png")
+walk(0)
+:ae
+pix("water_hills/hills_s2_water.png")
+walk(0)
+:af
+pix("hills/hills_e2.png")
+walk(0)
+addpix("roof_red/roof_nw.png")
+:ag
+pix("grass.png")
+addoverpix("roof_red/roof_w_top.png")
+walk(1)
+:ah
+pix("grass.png")
+addoverpix("roof_red/roof_e_top.png")
+walk(1)
+:ai
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:aj
+pix("grass.png")
+walk(1)
+:ak
+pix("hills/hills_w2.png")
+walk(0)
+:al
+pix("hills/hills_center.png")
+walk(0)
+:am
+pix("water_hills/hills_e2_water.png")
+walk(0)
+:an
+pix("water_hills/water.png")
+walk(0)
+:ao
+pix("water/water.png")
+walk(0)
+:ap
+pix("town/fence_n.png")
+walk(0)
+:aq
+pix("grass.png")
+addoverpix("roof_red/roof_w_bot.png")
+walk(1)
+:ar
+pix("grass.png")
+addoverpix("roof_red/roof_e_bot.png")
+walk(1)
+:as
+pix("hills/hills_s.png")
+walk(1)
+:at
+pix("water/diag_4.png")
+walk(0)
+:au
+pix("water/land_s.png")
+walk(1)
+:av
+pix("town/fence_ns.png")
+walk(0)
+:aw
+pix("roof_red/roof_w_bot.png")
+walk(0)
+:ax
+pix("roof_red/roof_w_top.png")
+walk(0)
+:ay
+pix("roof_red/roof_e_top.png")
+walk(0)
+:az
+pix("roof_red/roof_e_bot.png")
+walk(0)
+:aA
+pix("small_shrub.png")
+walk(0)
+:aB
+pix("water/grass.png")
+walk(1)
+:aC
+pix("water/diag_4.png")
+walk(1)
+:aD
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw.png")
+:aE
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se.png")
+:aF
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:aG
+pix("town/wood_window.png")
+walk(0)
+:aH
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:aI
+pix("red_flowers.png")
+walk(1)
+:aJ
+pix("water/land_w.png")
+walk(0)
+:aK
+pix("town/wood_wall_w.png")
+walk(0)
+:aL
+pix("town/wood_wall.png")
+walk(0)
+:aM
+pix("town/wood_wall_e.png")
+walk(0)
+:aN
+pix("water/water_wu2.png")
+walk(1)
+:aO
+pix("water/land_n.png")
+walk(0)
+:aP
+pix("town/fence_s.png")
+walk(0)
+:aQ
+pix("town/wood_wall_sw.png")
+walk(0)
+:aR
+pix("town/wood_window_s.png")
+walk(0)
+:aS
+pix("town/wood_wall_door.png")
+walk(1)
+Action
+move("lake_shops.txt", 5, 8)
+hero("hero_n")
+:aT
+pix("town/wood_wall_se.png")
+walk(0)
+:aU
+pix("water/water_nw.png")
+walk(1)
+:aV
+pix("water/land_nw.png")
+walk(0)
+:aW
+pix("grass.png")
+walk(1)
+Action
+move("lake_islands.txt", 17, 12)
+hero("hero_w")
+:aX
+pix("water/water_n.png")
+walk(0)
+:aY
+pix("water/water_w.png")
+walk(1)
+:aZ
+pix("roof_red/roof_n_back.png")
+walk(0)
+:a0
+pix("mixed_flowers.png")
+walk(1)
+:a1
+pix("roof_red/roof_n_top.png")
+walk(0)
+:a2
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:a3
+pix("town/wood_sign_general.png")
+walk(0)
+:a4
+pix("town/wood_wall_door.png")
+walk(1)
+Action
+move("lake_shops.txt", 14, 14)
+hero("hero_n")
+:a5
+pix("water/water_wu.png")
+walk(0)
+:a6
+pix("water/water_wl.png")
+walk(1)
+:a7
+pix("water/water_n2.png")
+walk(0)
+:a8
+pix("grass.png")
+walk(0)

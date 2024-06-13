@@ -1,0 +1,11 @@
+
+Name=Snake
+hp=40
+attack=7
+defense=3
+exp=8
+gold=6
+description=The Snake bites with a paralysing venom before crushing its \
+victims with its powerful coils.  Its patterned skin makes it hard to spot in \
+the long grass.  A whistling hiss is usually the only warning before it \
+attacks.

@@ -1,0 +1,11 @@
+
+Name=Warrior
+hp=50
+attack=14
+defense=15
+exp=18
+gold=35
+description=The Warrior is a formidable opponent, highly skilled in all the \
+arts of fighting.  Armed with a nearly unbreakable sword and almost \
+impenetrable armor, the Warrior is unbeatable except by the most experienced \
+and skilled hero.
