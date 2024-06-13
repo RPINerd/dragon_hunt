@@ -1,0 +1,7 @@
+Name=Axe
+type=0
+quality=6
+price=350
+description=This axe is well-worn from many years of service, but will serve \
+faithfully.
+picture=items/axe.png

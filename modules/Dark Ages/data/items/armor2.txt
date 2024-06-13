@@ -1,0 +1,8 @@
+Name=Tunic
+type=1
+quality=1
+price=25
+description=Although technically just a shirt, this piece of clothing \
+has been made of thicker cloth than normal, allowing for use as armor in a \
+pinch.
+picture=items/tunic.png

@@ -1,0 +1,230 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+aa ab ab ab ab ab aa ab ab ab ab ab ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+aa ab ab ab ab ab ab ab aa ab aa ab ab aa ab ab ac ad ad ad ad ad ad ad ae aa aa ab
+aa ab ab ab aa ab aa ab ab ab ab ab ab aa ab aa af ag ag ag ag ah ai ah aj aa ab ab
+aa ab ab ab ab ab ab ab ab ab aa aa aa aa ab aa ak al al al am an ao an ap aa ab ab
+aa ab ab ab ab ab ab aa ab ab aa ab ab ab ab aa ak al al al aq ar as ar at aa ab ab
+aa ab ab ab aa ab ab ab ab aa aa ab aa ab ab aa ak al al al ao ao ao ao ap aa ab ab
+aa ab ab ab ab ab ab ab ab ab aa ab ab ab ab aa au av av av av av av av aw aa ab ab
+aa ab aa aa aa aa aa aa aa aa aa ab ab ab ab aa ax ay az aA aB aC az ay aD aa ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aE ab ab ab ab ab ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+aa ab aa ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aF aG aG aG aH ab ab ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aI aJ aK aJ aL aa ab ab ab
+aa ab aa ab ab ab aa ab ab ab ab aa aa ab ab ab ab ab aa aM aN aN aN aO aa ab ab ab
+aa ab ab ab ab aa aa aa aa aa aa aa aa aa ab ab ab ab aa aP aQ aR aS aO aa ab ab aa
+aa ab aa ab ab aa aa aa aa aa aa aa aa aa ab ab ab ab aa aP aN aT aN aO aa ab ab ab
+aa ab aa ab ab aa aa aa aa aa aa aa aa aa ab ab ab ab aa aP aN aT aN aO aa ab ab ab
+aa ab aa ab ab aa aa aa aa aa aa aa aa aa ab ab ab ab aa aU aV aV aV aW aa ab ab ab
+aa ab aa ab ab aa aa aa aa aa aa aa aa aa ab ab ab ab ab aX aY aZ aY a0 ab ab ab ab
+aa ab aa ab ab ab ab ab aa aa aa aa aa aa ab ab aa ab ab aa ab a1 ab ab ab ab ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+
+:def
+:aa
+pix("underground/void.png")
+walk(0)
+:ab
+pix("underground/void.png")
+walk(1)
+:ac
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:af
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:ag
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+:ah
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+:ai
+pix("wood_interior/shields.png")
+walk(0)
+:aj
+pix("wood_interior/swords.png")
+walk(0)
+:ak
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:al
+pix("wood_interior/woodfloor.png")
+walk(1)
+addoverpix("bookcase.png")
+wall_s(1)
+:am
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("people/old_man_s2.png")
+Action
+store("Arcane Training")
+:an
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+:ao
+pix("wood_interior/woodfloor.png")
+walk(1)
+:ap
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:aq
+pix("wood_interior/counter_left.png")
+walk(1)
+:ar
+pix("wood_interior/counter.png")
+walk(0)
+:as
+pix("wood_interior/counter_old_woman.png")
+walk(0)
+Action
+store("Whilhelm's Swords and Shields")
+:at
+pix("wood_interior/counter_right_wall.png")
+walk(1)
+:au
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:av
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:aw
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:ax
+pix("town/wood_wall_sw.png")
+walk(0)
+:ay
+pix("town/wood_wall_s.png")
+walk(0)
+:az
+pix("town/wood_window_s.png")
+walk(0)
+:aA
+pix("town/wood_sign_training.png")
+walk(0)
+:aB
+pix("road/end_wood_doorway.png")
+walk(1)
+:aC
+pix("town/wood_sign_armor.png")
+walk(0)
+:aD
+pix("town/wood_wall_se.png")
+walk(0)
+:aE
+pix("underground/void.png")
+walk(1)
+Action
+move("town7.txt", 20, 11)
+hero("hero_s")
+:aF
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_w_trans.png")
+:aG
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_trans.png")
+:aH
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:aI
+pix("stone_interior/wall_nw.png")
+walk(0)
+:aJ
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("stone_interior/trans_window.png")
+:aK
+pix("stone_interior/fireplace_burnt_out.png")
+walk(0)
+:aL
+pix("stone_interior/wall_ne.png")
+walk(0)
+:aM
+pix("stone_interior/wall_w.png")
+walk(0)
+addpix("stone_interior/stone_stairs.png")
+Action
+dialog("You should pay for a room first.")
+:aN
+pix("stone_interior/flagstone.png")
+walk(1)
+:aO
+pix("stone_interior/wall_e.png")
+walk(1)
+:aP
+pix("stone_interior/wall_w.png")
+walk(1)
+:aQ
+pix("stone_interior/counter_left.png")
+walk(1)
+:aR
+pix("stone_interior/counter_woman.png")
+walk(0)
+Action
+if(question("Rooms are 50 gold a night. Interested?"), "=", 1)
+	if(stat("gold"), ">=", 50)
+		give("gold", -50)
+		give("hp", stat("maxhp"))
+		give("ep", stat("maxep"))
+		info("You awake, rested.")
+	else
+		dialog("How odd. You don't have enough money.")
+	endif
+endif
+:aS
+pix("stone_interior/counter_right.png")
+walk(1)
+:aT
+pix("stone_interior/rug.png")
+walk(1)
+:aU
+pix("stone_interior/wall_sw.png")
+walk(1)
+:aV
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:aW
+pix("stone_interior/wall_se.png")
+walk(1)
+:aX
+pix("town/wall_sw.png")
+walk(0)
+addpix("town/empty_window_trans.png")
+:aY
+pix("town/sign_inn.png")
+walk(0)
+:aZ
+pix("road/end_stone_doorway.png")
+walk(1)
+:a0
+pix("town/wall_se.png")
+walk(0)
+addpix("town/empty_window_trans.png")
+:a1
+pix("underground/void.png")
+walk(1)
+Action
+move("town7.txt", 21, 25)
+hero("hero_s")

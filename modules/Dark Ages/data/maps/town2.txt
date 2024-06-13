@@ -1,0 +1,465 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad aa aa 
+aa aa ae af af af af af af af af af af af af af af af af af af af af af af af af af af af af af af af af af af ag aa aa 
+aa aa ae ah ai aj ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak al ai am ag aa aa 
+aa an ae ag ao ap ap ap ap ap ap ap ap ap ap ap ap ap ap aq ar ap ap ap ap ap ap ap ap ap ap ap ap ap ap ao ae ag an aa 
+aa an ae ag ao ap ap ap ap ap ap ap ap ap ap ap ap ap as at au av ap ap ap ap ap ap ap ap ap ap ap ap ap ao ae ag an aa 
+aa an ae ag aw ax ax ax ax ay ax ax ax ax ax ax az ax aA at au aB ax az ax ax ax ax ax ax ay ax ax ax ax aw ae ag an aa 
+aa aa ae ag an an an an an an an an an an an an an an aA at au aB an an an an an an an aC an an an an an an ae ag aa aa 
+aa aa ae ag an an an an an aD an an an an an an an an aA at au aB an an an an an an an an an an an an an an ae ag aa aa 
+aa aa ae ag an aC an an an an an an an an an aC an an aA at au aB an an an an aE an an an an aF an an an an ae ag aa aa 
+aa aa ae ag an an an an an an an an an an an an an an aA aG aH aB an an an an an an an an an an an an an an ae ag aa aa 
+aa aa ae ag an an an an an an an aI an an an an an an aJ aK aK aL an an an an an an an an an an an an an an ae ag aa aa 
+aa aa ae ag aM aM aM aM aM aM an an an an an an an an aN aO aP aQ an an aR aR aR aR aR aR aR aR aR aR an an ae ag aa aa 
+aa aa ae ag aS aS aS aS aS aT an an an an an aU an an an an an an an an aV aV aV aV aV aV aV aV aV aW an an ae ag aa aa 
+aa aa ae ag aX aX aX aX aX aY an an an an an an an aZ a0 a0 a0 a0 a1 an a2 a2 a2 a2 a2 a2 a2 a2 a2 a3 an an ae ag aa aa 
+aa aa ae ag a4 a4 a4 a4 a4 a5 an an an an an an an a6 af af af af a7 an a8 a8 a8 a8 a8 a8 a8 a8 a8 a8 an an ae ag aa aa 
+aa aa ae ag ax ax ax a9 ba aQ an an an an an an an a6 af af af af a7 an bb bc bd bc bd be bf bd bc bg an an ae ag aa aa 
+aa aa ae ag an an an an an an an an an an an an an a6 af af af af a7 an an an an an an an an an an an an an ae ag an aa 
+aa aa ae ag an an an an an an bh an an an an an an a6 af af af af a7 an an an an an an an an an an an an an ae ag aa aa 
+aa aa ae ag an an an an an an an an an an bi an an bj bk af af bk bl an an aE an an an an an an an an an an ae ag aa aa 
+aa aa ae ag an an an an an an an an an an an an an an an a6 a7 an an an an an an an an bh aI an an an an an ae ag aa aa 
+aa aa ae ag an bm an an an an an an an an an an an an an a6 a7 an an an an an an an an an an an an an aF an ae ag aa aa 
+aa aa ae ag an an an an an an bn an an an an an bo an an a6 a7 an an an an an an an an an an an an an an an ae ag aa aa 
+aa aa ae ag an an an an an aE an an an an an an bp an an a6 a7 an an an bq an an an an an an an an an an an ae ag aa aa 
+aa aa ae ag an an an an an an an an bi an an an an an bq a6 a7 an an an an an an an an bh an an an an an an ae ag aa aa 
+aa aa ae ag an aU br an an an an an an an an an an an an a6 a7 bo an an an an bi an an an an an an an an an ae ag aa aa 
+aa aa ae ag an bo bs bt bu an an an an an an an an an an a6 a7 bp an an an an an an an an an an an an an an ae ag aa aa 
+aa aF ae ag an bp bv bp an an an an an bh an an an an an a6 a7 an an an an an an an aE an an an an an an an ae ag aa aa 
+aa aa ae ag an aE an bw an an bm an an an an an an an an a6 a7 an an bi an an an an an an aF an an an an an ae ag aa aa 
+aa aa ae ag an bo bx an aI aE an an an an bi bq an an an a6 a7 an an an an an an an an an an an by an an an ae ag aa aa 
+aa aa ae ag an bz bA by an an bh an an an an an an an an a6 a7 an an an an an an bq an an an an bB bC an an ae ag aa aa 
+aa aa ae ag an an bm bD an an an an an aE an an an an bE bF bG bH an aI an an an an an an an an an an an an ae ag aa aa 
+aa aa ae ag bI ab ac ac ac ac ac ac ac ac ac ac ac ac bJ bK bL bM ac ac ac ac ac ac ac ac ac ac ac ac ad bI ae ag aa aa 
+aa aa ae ai af af af af af af af af af af af af af af af af af af af af af af af af af af af af af af af af ai ag aa aa 
+aa aa bN ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak ak bO aa aa 
+aa an bP ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap bQ an aa 
+aa an bP ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap ap bQ an aa 
+aa an aN ax ax ax ax ax ax ax ax ax ax ax ax ax ax ax ax bR bR ax ax ax ax ax ax ax ax ax ax ax ax ax ax ax ax aQ an aa 
+aa an an an an an an an an an an an an an an an an an an bS bS an an an an an an an an an an an an an an an an an an aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa bS bS aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("grass.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_nw.png")
+:ac
+pix("grass.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_n.png")
+:ad
+pix("grass.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_ne.png")
+:ae
+pix("stone_interior/flagstone.png")
+walk(1)
+wall_w(1)
+addpix("castle/castle_w.png")
+:af
+pix("stone_interior/flagstone.png")
+walk(1)
+:ag
+pix("stone_interior/flagstone.png")
+walk(1)
+wall_e(1)
+addpix("castle/castle_e.png")
+:ah
+pix("stone_interior/flagstone.png")
+walk(1)
+addoverpix("castle/castle_e_part.png")
+:ai
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("people/warrior_s.png")
+:aj
+pix("stone_interior/flagstone.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_nw.png")
+:ak
+pix("stone_interior/flagstone.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_n.png")
+:al
+pix("stone_interior/flagstone.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_ne.png")
+:am
+pix("stone_interior/flagstone.png")
+walk(1)
+addoverpix("castle/castle_w_part.png")
+:an
+pix("grass.png")
+walk(1)
+:ao
+pix("town/wall.png")
+walk(0)
+addpix("furnishings/ladder.png")
+:ap
+pix("town/wall.png")
+walk(0)
+:aq
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_nw_top.png")
+:ar
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_ne_top.png")
+:as
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_nw.png")
+:at
+pix("roof_blue/roof_w_top.png")
+walk(0)
+:au
+pix("roof_blue/roof_e_top.png")
+walk(0)
+:av
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_ne.png")
+:aw
+pix("town/wall_s.png")
+walk(0)
+addpix("furnishings/ladder.png")
+Action
+dialog("The grumpy-looking guard looks unlikely to let you proceed.")
+:ax
+pix("town/wall_s.png")
+walk(0)
+:ay
+pix("town/wall_fountain.png")
+walk(0)
+:az
+pix("town/wall_suit_of_armor.png")
+walk(0)
+:aA
+pix("roof_blue/roof_w_bot.png")
+walk(0)
+:aB
+pix("roof_blue/roof_e_bot.png")
+walk(0)
+:aC
+pix("grass.png")
+walk(1)
+addpix("small_blue_flowers.png")
+:aD
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("town2_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("town2_rock", 1)
+endif
+:aE
+pix("large_shrub.png")
+walk(0)
+:aF
+pix("stones.png")
+walk(1)
+:aG
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_sw.png")
+:aH
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_se.png")
+:aI
+pix("tree2.png")
+walk(0)
+:aJ
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_sw_bot.png")
+:aK
+pix("town/empty_window.png")
+walk(0)
+:aL
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_se_bot.png")
+:aM
+pix("roof_red/roof_n_back.png")
+walk(0)
+:aN
+pix("town/wall_sw.png")
+walk(0)
+:aO
+pix("town/wall_door.png")
+walk(1)
+Action
+move("shop2.txt", 19, 12)
+hero("hero_n")
+:aP
+pix("town/wall_door.png")
+walk(1)
+Action
+move("shop2.txt", 20, 12)
+hero("hero_n")
+:aQ
+pix("town/wall_se.png")
+walk(0)
+:aR
+pix("roof_green/roof_n_back.png")
+walk(0)
+:aS
+pix("roof_red/roof_n_top.png")
+walk(0)
+:aT
+pix("roof_red/roof_n_top_right.png")
+walk(0)
+:aU
+pix("blue_flowers.png")
+walk(1)
+:aV
+pix("roof_green/roof_n_top.png")
+walk(0)
+:aW
+pix("roof_green/roof_n_top_right.png")
+walk(0)
+:aX
+pix("roof_red/roof_n.png")
+walk(0)
+:aY
+pix("roof_red/roof_n_right.png")
+walk(0)
+:aZ
+pix("stone_interior/flagstone_border_nw.png")
+walk(1)
+:a0
+pix("stone_interior/flagstone_border_n.png")
+walk(1)
+:a1
+pix("stone_interior/flagstone_border_ne.png")
+walk(1)
+:a2
+pix("roof_green/roof_n.png")
+walk(0)
+:a3
+pix("roof_green/roof_n_right.png")
+walk(0)
+:a4
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:a5
+pix("roof_red/roof_n_bot_right.png")
+walk(0)
+:a6
+pix("stone_interior/flagstone_border_w.png")
+walk(1)
+:a7
+pix("stone_interior/flagstone_border_e.png")
+walk(1)
+:a8
+pix("roof_green/roof_n_bot.png")
+walk(0)
+:a9
+pix("town/sign_weapon.png")
+walk(0)
+:ba
+pix("town/wall_door.png")
+walk(1)
+Action
+move("shop2.txt", 8, 16)
+hero("hero_n")
+:bb
+pix("town/wood_wall_sw.png")
+walk(0)
+:bc
+pix("town/wood_window_s.png")
+walk(0)
+:bd
+pix("town/wood_wall_s.png")
+walk(0)
+:be
+pix("town/wood_wall_door.png")
+walk(1)
+Action
+move("shop2.txt", 29, 16)
+hero("hero_n")
+:bf
+pix("town/wood_sign_inn.png")
+walk(0)
+:bg
+pix("town/wood_wall_se.png")
+walk(0)
+:bh
+pix("red_flowers.png")
+walk(1)
+:bi
+pix("mixed_flowers.png")
+walk(1)
+:bj
+pix("stone_interior/flagstone_border_sw.png")
+walk(1)
+:bk
+pix("stone_interior/flagstone_border_s.png")
+walk(1)
+:bl
+pix("stone_interior/flagstone_border_se.png")
+walk(1)
+:bm
+pix("tree.png")
+walk(0)
+:bn
+pix("grass.png")
+walk(0)
+addpix("people/old_man_s.png")
+Action
+if(var("shop2_spider_2"), "=", 1)
+	dialog("Now I can trade without fear of losing my life in the mountains!")
+else
+	dialog("I support the Lord entirely. I cannot risk another season trying \
+	to cross the mountain passes.")
+endif
+:bo
+pix("treetop.png")
+walk(0)
+:bp
+pix("treetrunk.png")
+walk(0)
+:bq
+pix("garden.png")
+walk(1)
+:br
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 1)
+:bs
+pix("tree_left.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+	info("As you step into this grove, the noise of civilization melts away.")
+endif
+:bt
+pix("tree_center.png")
+walk(0)
+:bu
+pix("tree_right.png")
+walk(1)
+:bv
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 0)
+:bw
+pix("small_shrub.png")
+walk(0)
+:bx
+pix("grass.png")
+walk(0)
+addpix("people/woman_s.png")
+Action
+store("Quinine Tower Royal Magic")
+:by
+pix("treetop2.png")
+walk(0)
+:bz
+pix("double_tree4.png")
+walk(0)
+:bA
+pix("small_tree_right2.png")
+walk(1)
+:bB
+pix("double_tree2.png")
+walk(0)
+:bC
+pix("small_tree_right.png")
+walk(1)
+:bD
+pix("treetrunk2.png")
+walk(0)
+:bE
+pix("grass.png")
+walk(0)
+addpix("people/warrior_s.png")
+Action
+dialog("Welcome to Quinine Tower.")
+:bF
+pix("stone_interior/flagstone_border_w.png")
+walk(0)
+Action
+move("world1x0.txt", 7, 7)
+hero("hero_s")
+:bG
+pix("stone_interior/flagstone_border_e.png")
+walk(0)
+Action
+move("world1x0.txt", 7, 7)
+hero("hero_s")
+:bH
+pix("grass.png")
+walk(0)
+addpix("people/warrior_s.png")
+Action
+if(var("shop2_spider_2"), "=", 1)
+	dialog("The spiders are gone! And best of all, I get two weeks vacation!")
+else
+	dialog("My squad will be leaving for the cave soon. I might not be here \
+	the next time you visit.")
+endif
+:bI
+pix("grass.png")
+walk(1)
+wall_s(1)
+:bJ
+pix("large_shrub.png")
+walk(0)
+wall_s(1)
+addoverpix("castle/castle_n.png")
+:bK
+pix("stone_interior/flagstone_border_w.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_n.png")
+:bL
+pix("stone_interior/flagstone_border_e.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_n.png")
+:bM
+pix("tree2.png")
+walk(0)
+wall_s(1)
+addoverpix("castle/castle_n.png")
+:bN
+pix("stone_interior/flagstone.png")
+walk(1)
+wall_s(1)
+addpix("castle/castle_w.png")
+addoverpix("castle/castle_nw.png")
+:bO
+pix("stone_interior/flagstone.png")
+walk(1)
+wall_s(1)
+addoverpix("castle/castle_n.png")
+addpix("castle/castle_e.png")
+:bP
+pix("town/wall_w.png")
+walk(0)
+:bQ
+pix("town/wall_e.png")
+walk(0)
+:bR
+pix("road/through_wall.png")
+walk(1)
+:bS
+pix("road/road_ns.png")
+walk(1)

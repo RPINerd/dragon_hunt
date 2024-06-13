@@ -1,0 +1,664 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa ab ac ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ae ab aa 
+aa ab af ag ah ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ah ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ah ag ag ag ag ag ag ag ag ah ag ag ag ag ag ag ag ag ai aj ab aa 
+aa ab ak al am ag am an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an an ao ag ao ap aj ab aa 
+aa ab ak aj aq ar aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq as at aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq ar aq ak aj ab aa 
+aa ab ak aj au av au aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw ax ay az aA aw aw aw aw aw aw aw aw aw aw aw aw aw aB aw aw aw aw aw aw aw au av au ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab aC ab ab aC ab ab ab ab ab ab aD aE aF aG aH aI ab ab ab ab ab ab ab ab ab ab ab aJ aK aL ab ab ab aM ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab aN ab ab ab ab aC aO aP aQ aR aE aF aG aH aS ab ab ab ab ab ab ab ab aT ab aJ aU aK aV aL ab ab ab ab ab ab ab ab aW aj ab aa 
+aa ab ak aj ab ab ab ab ab aM ab ab aX ab ab ab ab ab aY aN ab aN aC ab aN aZ a0 a1 a2 a3 a4 a5 a6 ab ab ab ab ab ab ab ab ab aJ aU aU aK aV aV aL ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab a7 ab ab aT aY a8 aY ab ab aY ab ab a1 a2 a3 a4 a5 a6 ab ab ab ab ab ab ab ab ab a9 ba ba bb bc bc bd ab ab ab ab be ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aC aO aP aQ ab ab aN a1 a2 a3 a4 a5 a6 ab ab ab ab bf ab ab ab ab a9 ba ba bb bc bc bd ab bg ab bh bi bh ab ak aj ab aa 
+aa ab ak aj ab ab bj bj bj bj bj bj bj bj bj bj bj bj bj ab ab ab aZ a0 aM aC aY a1 a2 bk bl a5 a6 ab ab ab ab ab ab ab ab ab a9 ba ba bb bc bc bd ab ab ab aC ab aC ab ak aj ab aa 
+aa ab aW aj ab ab bm bm bm bm bm bm bm bm bm bm bm bm bn ab ab aC ab ab aC ab ab a1 bk aq aq bl a6 ab ab ab ab ab ab ab ab ab a9 ba ba bb bc bc bd ab ab bo ab bp ab bo ak aj ab aa 
+aa ab ak aj ab ab bq bq bq bq bq bq bq bq bq bq bq bq br ab ab ab aX ab ab aN ab bs aq bt bt aq bu ab ab ab ab ab ab ab ab ab a9 ba ba bb bc bc bd ab ab ab aC bv aC ab ak aj ab aa 
+aa ab ak aj ab ab bw bw bw bw bw bw bw bw bw bw bw bw bx ab ab aC ab ab ab aY ab by aq aq aq aq bz ab ab ab ab ab ab ab ab ab a9 ba ba bA bc bc bd ab ab ab ab bB ab ab ak aj ab aa 
+aa ab ak aj ab ab bC bD aw bD aw bD aw bE aw bD aw bD bF aO aP aQ ab aN aC ab ab bG bH bI bJ bH bK ab ab ab ab ab ab ab ab ab a9 ba bL aq bM bc bd ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aY aX ab aY ab ab ab bN bO bP bP bO bQ ab ab ab ab ab ab ab ab ab a9 bL aq aq aq bM bd ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bN ag ag ag ag ag ag bQ ab ab ab ab ab ab ab ab bR aq aq aq aq aq bS ab ab ab ab ab ab ab aW aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aC ab ab bT bU ag bV bV bV bV ag bW bT ab ab ab ab ab ab ab bC aw aw bX aw aw bF ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bY ab ab ab ab bU bW bY bZ a7 aM bU bW ab ab ab ab ab ab ab ab b0 ab b0 ab b0 ab b0 ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab bf ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bU bW b0 aM bf b0 bU bW ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bY ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bU bW b1 bY b2 bZ bU bW ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab bY ab ab ab ab ab bf ab ab ab ab bT bU ag bP bP bP bP ag bW bT ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab b3 ag ag ag ag ag ag b4 ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bf ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab b5 ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab b3 ag ag ag ag b4 ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab aJ aK aL ab ab aX ab ab ab ab ab ab ab ab ab ab ab ab ab ab b3 ag ag b4 ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab aJ aU aK aV aL ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bU bW ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab aJ aU aU aK aV aV aL ab ab ab ab bf ab ab ab ab ab ab ab ab ab ab bT bU bW bT ab ab ab ab bf ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aW aj ab aa 
+aa ab ak aj ab aJ aU aU aU aK aV aV aV aL ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bU bW ab ab ab ab ab ab ab ab ab ab ab ab ab aM ab ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab a9 ba ba ba bb bc bc bc bd ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bU bW ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aX ab ab ab ak aj ab aa 
+aa ab ak aj ab a9 ba ba ba bb bc bc bc bd ab ab ab ab ab ab ab ab ab ab ab ab ab ab bT bU bW bT ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab a9 ba ba ba bb bc bc bc bd ab ab ab aT ab ab ab ab ab ab ab ab ab ab ab bU bW ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aT ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab ak aj ab a9 ba ba ba bb bc bc bc bd ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bU bW ab ab ab a7 ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab aW aj ab a9 ba ba ba bb bc bc bc bd ab ab ab ab a7 ab ab ab ab ab ab ab ab ab bT bU bW bT ab ab ab ab ab ab ab ab b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 ab ak aj ab aa 
+aa ab ak aj ab a9 ba ba ba bA bc bc bc bd ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bU bW ab ab ab ab ab ab bY ab ab b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 b6 ab ak aj ab aa 
+aa ab ak aj ab a9 ba ba bL aq bM bc bc bd ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bU bW ab ab ab ab ab ab ab ab ab b7 b7 b7 b7 b7 b7 b7 b7 b7 b7 b7 b7 b7 b7 b8 ab ak aj ab aa 
+aa ab ak aj ab a9 ba bL aq aq aq bM bc bd ab ab ab aM ab ab ab ab ab ab ab ab ab ab bT bU bW bT ab ab ab ab ab ab ab ab b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 ca ab ak aj ab aa 
+aa ab ak aj ab a9 bL aq aq bt aq aq bM bd ab ab ab ab ab ab ab aX ab ab ab ab ab ab ab bU bW ab ab ab ab ab ab ab ab ab b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 b9 ca ab ak aj ab aa 
+aa ab ak aj ab bR aq aq aq aq aq aq aq bS ab ab ab ab ab ab ab ab ab ab ab ab ab b0 ab bU bW ab b0 ab ab ab ab ab ab ab cb cb cb cb cb cb cb cb cb cb cb cb cb cb cc ab aW aj ab aa 
+aa ab ak aj ab bG cd bH ce cf ce bH cd bK ab ab ab ab ab ab ab ab ab ab ab ab ab ab bN ag ag bQ ab ab ab ab ab ab ab ab bG cd cd bH cd cd bH cd cd bH cg ch cg bH bK ab ak aj ab aa 
+aa ab ak aj ab ab ab ab bN bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP ag ag ag ag bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bP bQ ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab b3 bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV ag ag ag ag bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV bV b4 ab ab ab ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab bf ab ab ab ab ab ab ab ab ab ab ab ab ab ab b3 ag ag b4 ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bf ab ak aj ab aa 
+aa ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bY ab ab ab ab ab ab ab b0 ab bU bW ab b0 ab ab ab ab ab ab ab ab ab ab ab ab a7 ab ab ab ab ab ab ab ab ab ab ak aj ab aa 
+aa ab aW aj ci ab cj ck ck ck ck ck ck ck ck ck ck ck ck ck ck ck cl ab ab ab ab ab ab bU bW ab ab ab ab ab ab cm ck ck ck ck ck ck ck ck ck ck ck ck ck ck ck ci ab cj ak aj ab aa 
+aa ab ak cn co co co co co co co co co co co co co co co cp co co cq ab ab ab ab ab ab bU bW ab ab ab bY ab ab cr co co co cp co co co co co co co co co co co co co cp cn aj ab aa 
+aa ab cs ct ct ct ct ct ct ct ct ct ct ct ct ct ct ct ct ct cu ap aj ab ab ab aX ab ab bU bW ab ab ab ab ab ab ak al cv ct ct ct ct ct ct ct ct ct ct ct ct ct ct ct ct ct cw ab aa 
+aa ab by aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq ak aj ab ab ab ab ab ab bU bW ab ab ab ab ab ab ak aj aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq bz ab aa 
+aa ab bC aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw ak aj ab ab ab ab ab ab bU bW ab ab ab ab ab ab ak aj aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw aw bF ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab ab ab ab ab ab bU bW ab ab ab bf ab ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab ab ab ab ab ab bU bW ab cx ab ab ab ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab ab ab ab ab ab bU bW ab ab ab ab ab ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ab ab ab ab ab ab bU bW ab ab ab ab ab ab ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak aj ci ck ck ck ck ck cy cz ck ck ck ck ck ci ak aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ak ai co co co co co cp co co co co co co co co ai aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab cs ct ct ct ct ct ct ct cA cA ct ct ct ct ct ct ct cw ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab by aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq bz ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bC aw aw aw aw au aw au cB cB au aw au aw aw aw aw bF ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab cC cC ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa 
+aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa ab ab ab ab ab cC cC ab ab aa ab ab ab ab ab ab ab aa ab ab ab ab ab aa ab ab ab ab aa ab ab ab ab ab ab ab 
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("grass.png")
+walk(1)
+:ac
+pix("grass.png")
+walk(1)
+addpix("castle/castle_nw.png")
+addpix("castle/castle_w_part.png")
+:ad
+pix("grass.png")
+walk(1)
+addpix("castle/castle_n.png")
+:ae
+pix("grass.png")
+walk(1)
+addpix("castle/castle_ne.png")
+addpix("castle/castle_e_part.png")
+:af
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_w.png")
+:ag
+pix("stone_interior/flagstone.png")
+walk(1)
+:ah
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("people/warrior_s.png")
+:ai
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/warrior_s.png")
+:aj
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_e.png")
+:ak
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_w.png")
+:al
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_e_part.png")
+:am
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_nw.png")
+:an
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_n.png")
+:ao
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_ne.png")
+:ap
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_w_part.png")
+:aq
+pix("town/wall.png")
+walk(0)
+:ar
+pix("town/wall.png")
+walk(0)
+addpix("furnishings/ladder.png")
+:as
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_nw_top.png")
+:at
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_ne_top.png")
+:au
+pix("town/wall_suit_of_armor.png")
+walk(0)
+:av
+pix("town/wall_s.png")
+walk(0)
+addpix("furnishings/ladder.png")
+:aw
+pix("town/wall_s.png")
+walk(0)
+:ax
+pix("town/wall_s.png")
+walk(0)
+addpix("roof_blue/roof_nw.png")
+:ay
+pix("town/wall_s.png")
+walk(0)
+addoverpix("roof_blue/roof_w_top.png")
+:az
+pix("town/wall_s.png")
+walk(0)
+addoverpix("roof_blue/roof_e_top.png")
+:aA
+pix("town/wall_s.png")
+walk(0)
+addpix("roof_blue/roof_ne.png")
+:aB
+pix("town/wall_s.png")
+walk(0)
+addoverpix("roof_red/roof_mid_n.png")
+:aC
+pix("tree.png")
+walk(0)
+:aD
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_nw.png")
+:aE
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_w.png")
+:aF
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_w_top.png")
+:aG
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_e_top.png")
+:aH
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_e.png")
+:aI
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_ne.png")
+:aJ
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw.png")
+:aK
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_mid.png")
+:aL
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:aM
+pix("red_flowers.png")
+walk(1)
+:aN
+pix("treetop.png")
+walk(0)
+:aO
+pix("tree_left.png")
+walk(1)
+:aP
+pix("tree_center.png")
+walk(0)
+:aQ
+pix("tree_right.png")
+walk(1)
+:aR
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_w_bot.png")
+:aS
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_e_bot.png")
+:aT
+pix("stones.png")
+walk(1)
+:aU
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_w.png")
+:aV
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_e.png")
+:aW
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_w.png")
+addpix("people/warrior_s.png")
+:aX
+pix("small_shrub.png")
+walk(0)
+:aY
+pix("treetrunk.png")
+walk(0)
+:aZ
+pix("double_tree.png")
+walk(0)
+:a0
+pix("small_tree_right.png")
+walk(1)
+:a1
+pix("roof_blue/roof_w_bot.png")
+walk(0)
+:a2
+pix("roof_blue/roof_w.png")
+walk(0)
+:a3
+pix("roof_blue/roof_w_top.png")
+walk(0)
+:a4
+pix("roof_blue/roof_e_top.png")
+walk(0)
+:a5
+pix("roof_blue/roof_e.png")
+walk(0)
+:a6
+pix("roof_blue/roof_e_bot.png")
+walk(0)
+:a7
+pix("blue_flowers.png")
+walk(1)
+:a8
+pix("grass.png")
+walk(0)
+addpix("people/old_man_s.png")
+Action
+dialog("(Senile Gardener) Hello Greybeard, you ol' shit, you. Why'd you shave \
+that beard o' yours...Wait a sec, you're not Greybeard. What'd you do with \
+Greybeard?")
+dialog("(Without any noticeable transition...) See these trees here? I've been \
+growing them since I was a boy. They're special trees, \
+they're...err..um...special trees.")
+
+if(var("firewand"), "=", 5)
+    dialog("('Are they Ironwood?' you ask.) Yes! Yes! That's what they are. \
+    Strongest wood known to man. That's how they got their name.")
+    dialog("(You politely ask for some ironwood and the senile old man picks \
+    up a fallen branch.) Here you go, Greybeard. It's all yours. You looked \
+    better with the beard, in case you needed to know.")
+    set("firewand", 6)
+endif
+:a9
+pix("roof_red/roof_w_bot.png")
+walk(0)
+:ba
+pix("roof_red/roof_w.png")
+walk(0)
+:bb
+pix("roof_red/roof_mid.png")
+walk(0)
+:bc
+pix("roof_red/roof_e.png")
+walk(0)
+:bd
+pix("roof_red/roof_e_bot.png")
+walk(0)
+:be
+pix("grass.png")
+walk(0)
+addpix("big_rocks.png")
+:bf
+pix("garden.png")
+walk(1)
+:bg
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("townC_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("townC_rock", 1)
+endif
+:bh
+pix("large_shrub.png")
+walk(0)
+:bi
+pix("grass.png")
+walk(0)
+addpix("people/old_woman_s.png")
+Action
+store("Royal Magic")
+:bj
+pix("roof_blue/roof_n_back.png")
+walk(0)
+:bk
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_sw.png")
+:bl
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_se.png")
+:bm
+pix("roof_blue/roof_n_top.png")
+walk(0)
+:bn
+pix("roof_blue/roof_n_top_right.png")
+walk(0)
+:bo
+pix("tree2.png")
+walk(0)
+:bp
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 0)
+:bq
+pix("roof_blue/roof_n.png")
+walk(0)
+:br
+pix("roof_blue/roof_n_right.png")
+walk(0)
+:bs
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_sw_bot.png")
+:bt
+pix("town/wall.png")
+walk(0)
+addpix("town/empty_window_trans.png")
+:bu
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_se_bot.png")
+:bv
+pix("grass.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+    info("As you step into this grove, the noise of civilization melts away.")
+endif
+:bw
+pix("roof_blue/roof_n_bot.png")
+walk(0)
+:bx
+pix("roof_blue/roof_n_bot_right.png")
+walk(0)
+:by
+pix("town/wall_w.png")
+walk(0)
+:bz
+pix("town/wall_e.png")
+walk(0)
+:bA
+pix("town/wall.png")
+walk(0)
+addpix("roof_red/roof_mid_s.png")
+:bB
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 1)
+:bC
+pix("town/wall_sw.png")
+walk(0)
+:bD
+pix("town/wall_s.png")
+walk(0)
+addpix("town/empty_window_trans.png")
+:bE
+pix("town/wall_door.png")
+walk(0)
+Action
+dialog("The royal barracks are off-limits.")
+:bF
+pix("town/wall_se.png")
+walk(0)
+:bG
+pix("town/wall_bot_w.png")
+walk(0)
+:bH
+pix("town/wall_bot.png")
+walk(0)
+addpix("town/empty_window_trans.png")
+:bI
+pix("town/wall_bot.png")
+walk(0)
+addpix("castle/door.png")
+Action
+move("shopC.txt", 29, 15)
+hero("hero_n")
+:bJ
+pix("town/wall_bot.png")
+walk(0)
+addpix("castle/door.png")
+Action
+move("shopC.txt", 30, 15)
+hero("hero_n")
+:bK
+pix("town/wall_bot_e.png")
+walk(0)
+:bL
+pix("town/wall.png")
+walk(0)
+addpix("roof_red/roof_sw.png")
+:bM
+pix("town/wall.png")
+walk(0)
+addpix("roof_red/roof_se.png")
+:bN
+pix("stone_interior/flagstone_border_nw.png")
+walk(1)
+:bO
+pix("stone_interior/flagstone_border_n.png")
+walk(0)
+addpix("people/warrior_s.png")
+:bP
+pix("stone_interior/flagstone_border_n.png")
+walk(1)
+:bQ
+pix("stone_interior/flagstone_border_ne.png")
+walk(1)
+:bR
+pix("town/wall.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:bS
+pix("town/wall.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:bT
+pix("grass.png")
+walk(0)
+addpix("castle/column.png")
+:bU
+pix("stone_interior/flagstone_border_w.png")
+walk(1)
+:bV
+pix("stone_interior/flagstone_border_s.png")
+walk(1)
+:bW
+pix("stone_interior/flagstone_border_e.png")
+walk(1)
+:bX
+pix("town/wall_door.png")
+walk(0)
+Action
+dialog("This is the royal treasure hold. It is also off-limits.")
+:bY
+pix("flowers.png")
+walk(1)
+:bZ
+pix("small_flowers.png")
+walk(1)
+:b0
+pix("grass.png")
+walk(0)
+addpix("people/warrior_s.png")
+:b1
+pix("small_blue_flowers.png")
+walk(1)
+:b2
+pix("mixed_flowers.png")
+walk(1)
+:b3
+pix("stone_interior/flagstone_border_sw.png")
+walk(1)
+:b4
+pix("stone_interior/flagstone_border_se.png")
+walk(1)
+:b5
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_mid_n.png")
+:b6
+pix("roof_green/roof_n_back.png")
+walk(0)
+:b7
+pix("roof_green/roof_n_top.png")
+walk(0)
+:b8
+pix("roof_green/roof_n_top_right.png")
+walk(0)
+:b9
+pix("roof_green/roof_n.png")
+walk(0)
+:ca
+pix("roof_green/roof_n_right.png")
+walk(0)
+:cb
+pix("roof_green/roof_n_bot.png")
+walk(0)
+:cc
+pix("roof_green/roof_n_bot_right.png")
+walk(0)
+:cd
+pix("town/wall_bot.png")
+walk(0)
+:ce
+pix("town/wall_bot.png")
+walk(0)
+addpix("town/sign_weapon_trans.png")
+:cf
+pix("town/wall_bot.png")
+walk(1)
+addpix("castle/door.png")
+Action
+move("shopC.txt", 9, 39)
+hero("hero_n")
+:cg
+pix("town/wall_bot.png")
+walk(0)
+addpix("town/sign_inn_trans.png")
+:ch
+pix("town/wall_bot.png")
+walk(1)
+addpix("castle/door.png")
+Action
+move("shopC.txt", 51, 39)
+hero("hero_n")
+:ci
+pix("grass.png")
+walk(1)
+addoverpix("castle/castle_ne.png")
+:cj
+pix("grass.png")
+walk(1)
+addoverpix("castle/castle_nw.png")
+:ck
+pix("grass.png")
+walk(1)
+addoverpix("castle/castle_n.png")
+:cl
+pix("grass.png")
+walk(1)
+addoverpix("castle/castle_ne.png")
+addoverpix("castle/castle_e_part.png")
+:cm
+pix("grass.png")
+walk(1)
+addoverpix("castle/castle_nw.png")
+addoverpix("castle/castle_w_part.png")
+:cn
+pix("stone_interior/flagstone.png")
+walk(0)
+:co
+pix("grass.png")
+walk(1)
+addoverpix("stone_interior/flagstone.png")
+:cp
+pix("grass.png")
+walk(1)
+addoverpix("stone_interior/flagstone.png")
+addoverpix("people/warrior_s.png")
+:cq
+pix("grass.png")
+walk(1)
+addoverpix("stone_interior/flagstone.png")
+addoverpix("castle/castle_e.png")
+:cr
+pix("grass.png")
+walk(1)
+addoverpix("stone_interior/flagstone.png")
+addoverpix("castle/castle_w.png")
+:cs
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_w.png")
+addpix("castle/castle_nw.png")
+:ct
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_n.png")
+:cu
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_ne.png")
+:cv
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_nw.png")
+:cw
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_e.png")
+addpix("castle/castle_ne.png")
+:cx
+pix("grass.png")
+walk(0)
+addpix("people/warrior_s.png")
+Action
+dialog("Welcome to Castle Garrison.")
+:cy
+pix("stone_interior/flagstone_border_w.png")
+walk(1)
+addoverpix("castle/castle_n.png")
+:cz
+pix("stone_interior/flagstone_border_e.png")
+walk(1)
+addoverpix("castle/castle_n.png")
+:cA
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_n.png")
+Action
+move("world3x3.txt", 9, 15)
+hero("hero_s")
+:cB
+pix("road/end_stone_doorway.png")
+walk(1)
+:cC
+pix("road/road_ns.png")
+walk(1)

@@ -1,0 +1,8 @@
+
+Name=Orc
+hp=10
+attack=2
+defense=0
+exp=10
+gold=10
+description=Orc

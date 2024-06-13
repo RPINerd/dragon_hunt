@@ -1,0 +1,95 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ab ab aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa ab ab aa aa aa aa ac aa aa ad ae ae ae af aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ad ag ag ae ae ah aa ab ai ae af ab ai ae aj ak ab aa ab aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa al ae ae ag ae ae ae am ae ae ae af aa an ad ae af aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa an ak aa ak ak an aa an ak ao ab ai ae af an aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa ab ai ae ah ab ab ad ae am ae am ae ae ae ae am ae af aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ad ae ae ae ae ae ae am ae af an aa ae aj ak ak aa an aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ad ae aj ao ao ak ao aa an ad ae am ae af aa aa ai ae af aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ad ae am ae ae ag ae am ae am ae ag ae af aa ai ae ae af aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ad ae am ae aj aa an ai ae ah ao ai ae ah ai ae ae aj aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ad ae af an aa ad ae ae ae ae ae ae ae ae ae ae ae af aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ai ae am ae af ad ae aj an ak ao ak ao ak ao ak ao ab aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ad ae ae af an aa aa an ad ae am ae ag ae am ae ag ae ae af aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa an ak ad ae ag am ae af an aa ak aa an aa ak aa ak an aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ad ae af ab ao aa ai ae am ae af ab ai ae af aa aa ad ae af aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ad ae am ae ae ag ae ae am ae ag ae ae ae ah ab aa aa an aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa an aa an ao aa ao ak aa an aa ak al ae ae ae af ad ae af aa aa aa aa aa aa aa
+aa aa aa aa aa aa ap ai ae am ae ae ag ae af ad ae ah aa ab ak ao ak aa ai ae af aa aa aa aa aa aa aa
+aa aa aa aa aa ad ae ae ae af ak ak aa an aa ad ae ae ag ae ag ae ag ag ae ae af aa aa aa aa aa aa aa
+aa aa aa aa aa aa ak ak ak aa aa aa aa ak aa aa ak ak aa ak aa ak aa aa ak ak aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+monster=Gold Dragon
+monster=Gold Dragon
+monster=Gold Dragon
+monster=Lost Soul
+monster=Lost Soul
+monster=Lost Soul
+monster=Lost Soul
+monster=Ice Dragon
+monster=Ice Dragon
+monster=Platinum Golem
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("world4x3.txt", 19, 1)
+hero("hero_w")
+:ad
+pix("underground/rock_e.png")
+walk(0)
+:ae
+pix("underground/dirt.png")
+walk(1)
+:af
+pix("underground/rock_w.png")
+walk(0)
+:ag
+pix("underground/dirt_ew.png")
+walk(1)
+:ah
+pix("underground/rock_sw.png")
+walk(0)
+:ai
+pix("underground/rock_se.png")
+walk(0)
+:aj
+pix("underground/rock_nw.png")
+walk(0)
+:ak
+pix("underground/rock_n.png")
+walk(0)
+:al
+pix("underground/rock_ne.png")
+walk(0)
+:am
+pix("underground/rock_ew.png")
+walk(0)
+:an
+pix("underground/dirt_ns.png")
+walk(1)
+:ao
+pix("underground/rock_ns.png")
+walk(0)
+:ap
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("rift2.txt", 7, 17)
+hero("hero_s")

@@ -1,0 +1,8 @@
+
+Name=Troll
+hp=130
+attack=25
+defense=25
+exp=225
+gold=200
+description=Troll

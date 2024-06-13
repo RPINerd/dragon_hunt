@@ -1,0 +1,7 @@
+Name=Shortsword
+type=0
+quality=8
+price=900
+description=The design of this sword has remained unchanged for centuries. \
+It is well-suited for battle.
+picture=items/short_sword.png

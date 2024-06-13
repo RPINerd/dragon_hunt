@@ -1,0 +1,7 @@
+Name=Magic Axe
+type=0
+quality=17
+price=7500
+description=This razor-sharp blade is covered in runes, and is strangely \
+light.
+picture=items/magic_axe.png

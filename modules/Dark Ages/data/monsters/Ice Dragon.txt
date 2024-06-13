@@ -1,0 +1,8 @@
+
+Name=Ice Dragon
+hp=325
+attack=50
+defense=50
+exp=450
+gold=750
+description=Ice Dragon

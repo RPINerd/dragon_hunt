@@ -1,0 +1,419 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa ac ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae af ag ag ag ag ag ag ag ag ag ag ah ai aj ag ag ag ag ag ag ag ag ag ah ae ak ad ad ad 
+al al ae al al al al al al ae ae am ae ae ae ae ae ae ae an ao ap ap aq ae ae ae an ae ae ae ae ae ae ae ak ad ad ad ad 
+al al ae al al al al al al ae ae am ae ae ae ar as at ae ae ai aj ag ag ag ah ae ae ae ae au ae av ae ac ad ad ad ad ad 
+al al ae al al al al al al ae ae am ae aw ae ae ax ae ae ae ai ae ae ae ae ae ae ae ae ae ae ae ae ae ac ad ay ad ad ad 
+al al ae al al al al al al ae ae am ae ae az ae ae aA ae ae ai ae ae ae ae ae ae ae ae ae ae az ae ae ac ad ad ad ad ad 
+al al ae al al al al al al ae ae am ae ae ae ae ae ae ae ae ai ae aB ae ae ae aC ae aD ae ae ae ae ae ae aE ad ad ad ad 
+al al ae al al al al al al ae ae am ae ae ae ae ae ae ae ae ai ae aF ae ae ae ae ae ae ae ae aG ae aw ae aH aI ad ad ad 
+al al ae al al al al al al ae ae am ae ae aD ae ae az ae ae ai ae ae ae ae ae ae ae ae ae ae ae ae ae ac ad ad ad ad ad 
+al al ae al al al al al al ae ae am ae au ae ae ae ae ae ae ai ae aJ aJ aJ aJ aJ aJ aJ aJ aJ ae ae ae ak ad aK ad ad ad 
+al al ae al al al al al al ae ae am ae ae ae ae ae ae ae ae ai ae aL aL aL aL aL aL aL aL aM ae ae ac ad ad aN ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am an ae ae ae aw ae ae ae ai ae aO aO aO aO aO aO aO aO aP ae ae ac ad ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ao ap aQ aA ae ae ae ae ai ae aR aS aS aS aT aU aS aS aV ae aW ac ad ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ai aX aY ap ap ap aZ ap a0 ap ap ap ap ap aq ae ae ae ae ae ae ac ad ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae a1 ai am ae ae ae ae ai ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae a2 ad ad ad ad ad 
+ap ap ap ap ap ap ap ap ap ap a3 ap a4 am ae ae ae aW ai ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae a2 ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae aX ai am ae ae ae ae ai ar as at ae ae ae ae ae ae aD ae ae ae au ae ae ae aE ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ai a1 ae ae ae ae aY aQ ax ae ae ae ae az ae ae ae ae ae ae ae ae ae ae ae a2 ad ad 
+aa ae ae ae ae ae ae ae ar as at am aY ap ap aQ aC ae av ai ae ae ae ae ae ae ae ae a5 a6 a7 ae ae ae ae ae ae ac ad ad 
+aa ae ae ae ae ae ae ae ae ax ae am an ae ae aY ap ap ap a4 ae ae ae ae ae ae ae ae ae aF ae ae ae ae aA ae ae ak ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae ae ae ae ae a8 ae ai ae ae ae aB ae ae ae ae ae aC ae ae ae ae ae ae ac ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae ae ae ae a9 ba bb ai aw ae ae aF ae ae ae ae ae ae ae ae ae ae ae ae ak ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae ae ae ae bc bd be ai ae ae ae ae ae ae ae ae ae ae ae aW ae ae ae bf ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae ae ae ae bc bg be ai ae ae ae ae ae av ae ae ae ae ae ae ae ae ac ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae ae ae ae bh bi bj ai ae ae ae ae ae bk bk bk bk bk ae ae ae ae bf ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae ae ae ae bl bm bn ai ae ae ae ae ae bo bo bo bo bp ae ae ae ac ad ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am aC ae ae ae ae ae ae ai ae ae ae ae ae bq bq bq bq br ae ae ae ae a2 ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae ae ae ae bs ae ae aY aZ ap ap ap aQ bt bt bt bt bu ae ae ae az ae aI ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae ae ae aw bv bw ae ae ai ae ae ae ai bx bi by bi bz ae ae ae bA ac ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am aw ae au ae bB ax au ae ai ae ae ae ai bl bC bD bE bn ae ae ae ae ae bF bG bH ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae aC bw ae ae ae bI ae ai a5 a6 a7 aY ap ap aZ aq ae ae ae bJ ae ae aI ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am aB ae ax bK a5 a6 a7 bw aY aQ aF ae ae ae ae ai ae ae ae aw ae ae ac ad ay ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am aF aw ae aw ae aF au ax ae ai ae ae ae bL ae ai ae ae ae ae ae aD ac ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae bM au ae ae bK aD ae ae ai ae ae ae ae ae ai ae bJ ae ae ae ae ac ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am az ae ae aC aB au ae ae ae ai aj ag ag ag ah ai ae ae ae ae az ae ac ad ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae am ae au bN ae aF ae ae ae an aY ap ap aZ ap ap aq an ae ae ae ae ae ae aE ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae bO ag ag ag ag ag ag ag ag ag ag ag ah ai aj ag ag ag ag ag ag ag ag ah ac ad ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae bP ae ae ae ae ae ae ae ae ae ae ae a2 ad ad ad 
+aa ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ai ae ae ae ae ae ae ae ae ae ae ae ac ad ad ad 
+aa aa aa aa aa aa al al al al aa aa al al al al aa aa al al al al aa aa ai aa aa aa aa aa aa aa aa aa aa aa ac ad ad ad 
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("road/road_ns.png")
+walk(1)
+Action
+move("world1x4.txt", 11, 3)
+set("temp1", 1)
+hero("hero_n")
+:ac
+pix("water/water_w.png")
+walk(1)
+:ad
+pix("water/water.png")
+walk(0)
+:ae
+pix("grass.png")
+walk(1)
+:af
+pix("town/fence_es.png")
+walk(0)
+:ag
+pix("town/fence_ew.png")
+walk(0)
+:ah
+pix("town/fence_w.png")
+walk(0)
+:ai
+pix("road/road_ns.png")
+walk(1)
+:aj
+pix("town/fence_e.png")
+walk(0)
+:ak
+pix("water/diag_1.png")
+walk(0)
+:al
+pix("farmland.png")
+walk(1)
+:am
+pix("town/fence_ns.png")
+walk(0)
+:an
+pix("grass.png")
+walk(0)
+addpix("people/warrior_s.png")
+:ao
+pix("road/road_se.png")
+walk(1)
+:ap
+pix("road/road_ew.png")
+walk(1)
+:aq
+pix("road/road_nw.png")
+walk(1)
+:ar
+pix("tree_left2.png")
+walk(1)
+:as
+pix("tree_center2.png")
+walk(0)
+:at
+pix("tree_right2.png")
+walk(1)
+:au
+pix("tree2.png")
+walk(0)
+:av
+pix("flowers.png")
+walk(1)
+:aw
+pix("tree.png")
+walk(0)
+:ax
+pix("treetrunk2.png")
+walk(0)
+:ay
+pix("water/island.png")
+walk(0)
+:az
+pix("garden.png")
+walk(1)
+:aA
+pix("blue_flowers.png")
+walk(1)
+:aB
+pix("treetop.png")
+walk(0)
+:aC
+pix("mixed_flowers.png")
+walk(1)
+:aD
+pix("large_shrub.png")
+walk(0)
+:aE
+pix("water/diag_4.png")
+walk(0)
+:aF
+pix("treetrunk.png")
+walk(0)
+:aG
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("town9_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("town9_rock", 1)
+endif
+:aH
+pix("water/water_n.png")
+walk(1)
+:aI
+pix("water/land_w.png")
+walk(1)
+:aJ
+pix("roof_red/roof_n_back.png")
+walk(0)
+:aK
+pix("water/land_s.png")
+walk(1)
+:aL
+pix("roof_red/roof_n_top.png")
+walk(0)
+:aM
+pix("roof_red/roof_n_top_right.png")
+walk(0)
+:aN
+pix("water/land_n.png")
+walk(0)
+:aO
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:aP
+pix("roof_red/roof_n_bot_right.png")
+walk(0)
+:aQ
+pix("road/road_sw.png")
+walk(1)
+:aR
+pix("town/wall_sw.png")
+walk(0)
+:aS
+pix("town/wall_s.png")
+walk(0)
+:aT
+pix("road/end_door.png")
+walk(0)
+Action
+dialog("The sign above the door reads 'Barracks keep out'. While an argument \
+could be made that, as you are not a barracks, you can enter, it is unlikely \
+that the soldiers here would accept the logic in that statement.")
+:aU
+pix("town/wall_poster_s.png")
+walk(0)
+:aV
+pix("town/wall_se.png")
+walk(0)
+:aW
+pix("red_flowers.png")
+walk(1)
+:aX
+pix("town/fence_n.png")
+walk(0)
+:aY
+pix("road/road_ne.png")
+walk(1)
+:aZ
+pix("road/road_t.png")
+walk(1)
+:a0
+pix("road/reverse_t.png")
+walk(1)
+:a1
+pix("town/fence_s.png")
+walk(0)
+:a2
+pix("water/water_sw.png")
+walk(1)
+:a3
+pix("road/road_ew.png")
+walk(1)
+Action
+move("world1x4.txt", 10, 4)
+set("temp1", 0)
+hero("hero_w")
+:a4
+pix("road/left_t.png")
+walk(1)
+:a5
+pix("tree_left.png")
+walk(1)
+:a6
+pix("tree_center.png")
+walk(0)
+:a7
+pix("tree_right.png")
+walk(1)
+:a8
+pix("grass.png")
+walk(1)
+addoverpix("town/wood_roof_nmid_trans.png")
+:a9
+pix("grass.png")
+walk(1)
+addoverpix("town/wood_roof_nw_trans.png")
+:ba
+pix("grass.png")
+walk(1)
+addoverpix("town/wood_roof_mid.png")
+:bb
+pix("grass.png")
+walk(1)
+addoverpix("town/wood_roof_ne_trans.png")
+:bc
+pix("town/wood_roof_w.png")
+walk(0)
+:bd
+pix("town/wood_roof_mid.png")
+walk(0)
+:be
+pix("town/wood_roof_e.png")
+walk(0)
+:bf
+pix("water/water_nw.png")
+walk(1)
+:bg
+pix("town/wood_roof_smid.png")
+walk(0)
+:bh
+pix("town/wood_roof_sw.png")
+walk(0)
+:bi
+pix("town/wood_window.png")
+walk(0)
+:bj
+pix("town/wood_roof_se.png")
+walk(0)
+:bk
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_n_back.png")
+:bl
+pix("town/wood_wall_sw.png")
+walk(0)
+:bm
+pix("town/wood_wall_door.png")
+walk(0)
+Action
+dialog("The door is locked")
+:bn
+pix("town/wood_wall_se.png")
+walk(0)
+:bo
+pix("roof_blue/roof_n_top.png")
+walk(0)
+:bp
+pix("roof_blue/roof_n_top_right.png")
+walk(0)
+:bq
+pix("roof_blue/roof_n.png")
+walk(0)
+:br
+pix("roof_blue/roof_n_right.png")
+walk(0)
+:bs
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 1)
+:bt
+pix("roof_blue/roof_n_bot.png")
+walk(0)
+:bu
+pix("roof_blue/roof_n_bot_right.png")
+walk(0)
+:bv
+pix("grass.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+    info("As you step into this grove, the noise of civilization melts away.")
+endif
+:bw
+pix("treetop2.png")
+walk(0)
+:bx
+pix("town/wood_wall_w.png")
+walk(0)
+:by
+pix("town/wood_wall.png")
+walk(0)
+:bz
+pix("town/wood_wall_e.png")
+walk(0)
+:bA
+pix("grass.png")
+walk(0)
+addpix("people/old_man_s2.png")
+Action
+if(question("Need to cross the channel? I'm headed that way, so I won't \
+charge you."), "=", 1)
+    move("world1x4.txt", 22, 4)
+    hero("hero_e")
+endif
+:bB
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 0)
+:bC
+pix("town/wood_window_s.png")
+walk(0)
+:bD
+pix("town/wood_sign_inn.png")
+walk(0)
+:bE
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shop9.txt", 28, 29)
+hero("hero_n")
+:bF
+pix("water/bridge_w2.png")
+walk(1)
+:bG
+pix("water/bridge.png")
+walk(1)
+:bH
+pix("water/bridge_e_end.png")
+walk(1)
+:bI
+pix("small_shrub.png")
+walk(0)
+:bJ
+pix("stones.png")
+walk(1)
+:bK
+pix("small_blue_flowers.png")
+walk(1)
+:bL
+pix("grass.png")
+walk(0)
+addpix("people/dwarf_s.png")
+Action
+if(var("horn"), "=", 1)
+    dialog("Yes, I can help you get to the City of Dwarves. It is magically \
+    hidden to keep humans out, but the urgency of your mission allows me to \
+    help you. Seek Bonebreaker in one of the northern towns to get the magical \
+    horn.")
+    set("horn", 2)
+else
+    dialog("Not all dwarves live underground. In fact, generations ago dwarves \
+    lived above ground with humans. Today our peoples do not get along well, \
+    but my love for agriculture keeps me above ground.")
+endif
+:bM
+pix("grass.png")
+walk(0)
+addpix("people/woman_s2.png")
+Action
+store("Irene's Incredible Incantations")
+:bN
+pix("small_flowers.png")
+walk(1)
+:bO
+pix("town/fence_en.png")
+walk(0)
+:bP
+pix("road/road_ns.png")
+walk(1)
+Action
+move("world1x4.txt", 11, 5)
+set("temp1", 3)
+hero("hero_s")

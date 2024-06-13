@@ -1,0 +1,614 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+aa aa aa aa aa aa aa aa aa ac ad aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+aa aa aa ae af af af af ag ah ai aj af af af af af af af af af af af af af af af af af af af af ak ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa am an ao ap aq ar aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa as at ah ai au av aa aa aa aa aa aa aa aa aa aa aa aa aw aa aa aa aa ax aa al ab ab ab ab ab ab ab 
+aa aa aa al ay aa aa as at ah ai au av aa az aa aA aa aa aa aa aa aa aa aa aa aB aa aa aa aC aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa as at ah ai au av aa aa aa aa aa aD aD aD aD aD aD aE aF aG aa aH aa aw aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa as at ah ai au av aa aa aa aa aa aI aI aI aI aI aJ aa aK aa aL aa aM aN aO al ab ab ab ab aB ab ab 
+aa aa aa al aa aa aa as at ah aP au av aa aa aa aa aa aQ aQ aQ aQ aQ aR aa ax aa aa aC aa aS aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa as at aT aU aV av aa aa aW aa aa aX aX aX aX aX aY aa aa aZ aN aO aa aa aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa as aT a0 a0 aU a1 aa aa aa aa aa a2 a3 a4 a5 a6 a7 aa ax aa aS aa aH aL aa al ab a8 ab ab ab ab ab 
+aa aa aa al aa aa aa a9 ba ba ba ba bb aa aa aa aa aa aa aa bc aa aa aa aa aa a8 aa bd aa aB aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa a2 a6 be bf a6 a7 aa aa aa ay aa aa aa bc aa aa aa aa aa aa aE aF aG aa aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa bg aa aa aa bc aa aa aa aa aC aa aa aa aa bc aa az aa aa aa aa aa aK aa aH aa al ab ab ab ab ab ab ab 
+aa aa aL al aa aa bd aa aa aa bc aa aa aa aa aa aa aa aa aa bc aa aa aa aa ay aa aa aa aa aa aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa aa aa ax bc aa bh ax aa aa aa aa bi aa bc aa aa aa aa aa aa aa aa aa aa aa al ab ab aB ab ab ab ab 
+aa aa aa al aa aa aa aa aa aa bj bk bl bm bn bn bo bn bn bn bp aa aa aa aa aa aa aa aa aa aa aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa aB aa aa bq br bl bs bt aa bc aa aa aa aa aa aa aa aa aa aa aw aa aa bu aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa aa aa bv br br bl bs bs bt bc aa aa aa aa aC aa aa aa aa aa aa aa aa aa aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa aa aa bw bx by bz bA bB bC bc aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa al ab ab bD ab ab ab ab 
+aa aa aa al aC aa aa aa aa bw by by bz bA bA bC bc aa aa aa aa aa aa aa bE aa bE aa aa aa aa aa al ab ab aK ab ab ab ab 
+aa aa aa al aa aa aa aa ay bw by by bz bA bA bC bc aa bF bF bF bF bF aa bG bH bG aa aa aa aa az al ab ab ab ab ax ab ab 
+aa aa aa al aa aa aa aa aa bw by by bz bA bA bC bc aa bI bI bI bI bJ aa bK aa bK aa aa aa aa aa al ab ab ab ab ab ab ab 
+aa aa aa al aa bd aa aa aa bw bx by bL bA bB bC bc aa bM bM bM bM bN aa aa aa aa aa aa aa aa aa al ab ab ab ab ab ab ab 
+aa aa aa al aa aa aa aa aa bw by bO ba bP bA bC bc aa bQ bQ bQ bQ bR aa bE aa bE aa aa aa aa aa al ab ab ab ab ab ab ab 
+ab ab ab al aa aa aa aa aa bw bO ba a0 ba bP bC bc aa a2 bS bT a6 a7 aa bG aa bG bU aa aa aa aa al ab ab ab ab ab ab ab 
+ab ab ab al aa aL aa aa aa bV ba ba ba ba ba bW bc aa aa aa bc aa aa aa bK aa bK aa aa aa aa aa al ab ab ab ab ab ab ab 
+ab ab ab al aa aa aa aa aa a3 bX bY a6 a3 a6 a7 bc aa aw aa bc aa aa aa aa aa aa aa aa aa aa aa al ab ab ab ab ab ab ab 
+ab ab ab al aa aa aa aW aa aa bc aa aa aa aa aa bZ bn bn bn bp aa aa aa aa aa ay aa aa aa aa aa al ab ab aB ab ab ab ab 
+ab ab ab al aa aa aa aa aa aa bc aa aa aa az aa bc aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa al ab ab ab ab ab ab ab 
+ab ax ab al aa aa aC aa aa aa bj bn bn bn bn bn b0 b1 aw aa aa aa aa aa ay aa aa aa aL aa ax aa al ab ab ab ab ab ab ab 
+ab ab ab al aa aa aa aa aa aa aa aa aa aa aa aa bc aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa al ab ab ab ab ab ab ab 
+ab ab ab b2 af af af af af af af af af af af b3 bc b4 af af af af af af af af af af af af af af b5 ab ab ab ab ab ab ab 
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab b6 ab ab ab ab ab ab ab ab ab aa aa aa ab ab ab ab ab ab aC ab ab ab ab 
+ab ab ab ab ab ab ab ab ab ab ab az ab ab ab ab bc ab ab ab ax ab ab ab ab ab ab aC ab ab ab ab ab ab ab ab ab ab ab ab 
+ab ab ab ab ab ab ab ab ab aC ab ab ab ab ab ab bc ab ab ab ab ab ab ab b7 ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bc ab ab ab ab ab ab ab ab az ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+ab ab ab ab ab ab ab ab ab ab ab ab ab ax ab ab bc ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aC ab ab ab b8 ab ab ab 
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bc ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aS ab ab ab 
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bc ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+
+:def
+:aa
+pix("grass.png")
+walk(1)
+:ab
+pix("grass.png")
+walk(0)
+:ac
+pix("grass.png")
+walk(1)
+addpix("roof_red/roof_nw_top.png")
+:ad
+pix("grass.png")
+walk(1)
+addpix("roof_red/roof_ne_top.png")
+:ae
+pix("town/fence_es.png")
+walk(0)
+:af
+pix("town/fence_ew.png")
+walk(0)
+:ag
+pix("town/fence_ew.png")
+walk(0)
+addpix("roof_red/roof_nw.png")
+:ah
+pix("roof_red/roof_w_top.png")
+walk(0)
+:ai
+pix("roof_red/roof_e_top.png")
+walk(0)
+:aj
+pix("town/fence_ew.png")
+walk(0)
+addpix("roof_red/roof_ne.png")
+:ak
+pix("town/fence_ws.png")
+walk(0)
+:al
+pix("town/fence_ns.png")
+walk(0)
+:am
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw.png")
+:an
+pix("grass.png")
+addoverpix("roof_red/roof_w.png")
+walk(1)
+:ao
+pix("grass.png")
+addoverpix("roof_red/roof_w_top.png")
+walk(1)
+:ap
+pix("grass.png")
+addoverpix("roof_red/roof_e_top.png")
+walk(1)
+:aq
+pix("grass.png")
+addoverpix("roof_red/roof_e.png")
+walk(1)
+:ar
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:as
+pix("roof_red/roof_w_bot.png")
+walk(0)
+:at
+pix("roof_red/roof_w.png")
+walk(0)
+:au
+pix("roof_red/roof_e.png")
+walk(0)
+:av
+pix("roof_red/roof_e_bot.png")
+walk(0)
+:aw
+pix("garden.png")
+walk(1)
+:ax
+pix("small_flowers.png")
+walk(1)
+:ay
+pix("flowers.png")
+walk(1)
+:az
+pix("mixed_flowers.png")
+walk(1)
+:aA
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("town1_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("town1_rock", 1)
+endif
+:aB
+pix("small_shrub.png")
+walk(0)
+:aC
+pix("stones.png")
+walk(1)
+:aD
+pix("roof_blue/roof_n_back.png")
+walk(0)
+:aE
+pix("tree_left.png")
+walk(1)
+:aF
+pix("tree_center.png")
+walk(0)
+:aG
+pix("tree_right.png")
+walk(1)
+:aH
+pix("tree2.png")
+walk(0)
+:aI
+pix("roof_blue/roof_n_top.png")
+walk(0)
+:aJ
+pix("roof_blue/roof_n_top_right.png")
+walk(0)
+:aK
+pix("treetrunk.png")
+walk(0)
+:aL
+pix("small_blue_flowers.png")
+walk(1)
+:aM
+pix("tree_left2.png")
+walk(0)
+addpix("people/child_s.png")
+Action
+if(var("town1_bridge3"), "=", 1)
+	set("dialog1", generic_dialog("My mommy says I can't talk to strangers. \n \
+	(1) But cousin Mert sent me. \n \
+	(2) Bye.", "1.png", "2.png"))
+	if(var("dialog1"), "=", 0)
+		set("dialog1", generic_dialog("Then I guess it's o.k. to talk to you. \
+		What do you need? \n \
+		(1) I was looking for a key your cousin lost around here. \n \
+		(2) Nothing. Bye", "1.png", "2.png"))
+		if(var("dialog1"), "=", 0)
+			set("town1_bridge4", 1)
+			dialog("I found it on the ground and I gave it to Tyren as he was \
+			heading to the tavern.")
+		endif
+	endif
+else
+	dialog("My mommy says I can't talk to strangers.")
+endif
+:aN
+pix("tree_center2.png")
+walk(0)
+:aO
+pix("tree_right2.png")
+walk(1)
+:aP
+walk(0)
+pix("roof_red/roof_e_top.png")
+:aQ
+pix("roof_blue/roof_n.png")
+walk(0)
+:aR
+pix("roof_blue/roof_n_right.png")
+walk(0)
+:aS
+pix("treetrunk2.png")
+walk(0)
+:aT
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw.png")
+:aU
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se.png")
+:aV
+walk(0)
+pix("roof_red/roof_e.png")
+:aW
+pix("blue_flowers.png")
+walk(1)
+:aX
+pix("roof_blue/roof_n_bot.png")
+walk(0)
+:aY
+pix("roof_blue/roof_n_bot_right.png")
+walk(0)
+:aZ
+pix("tree_left2.png")
+walk(1)
+:a0
+pix("town/wood_window.png")
+walk(0)
+:a1
+walk(0)
+pix("roof_red/roof_e_bot.png")
+:a2
+pix("town/wood_wall_sw.png")
+walk(0)
+:a3
+pix("town/wood_wall_s.png")
+walk(0)
+:a4
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shop1.txt", 20, 10)
+hero("hero_n")
+:a5
+pix("town/wood_sign_weapon.png")
+walk(0)
+:a6
+pix("town/wood_window_s.png")
+walk(0)
+:a7
+pix("town/wood_wall_se.png")
+walk(0)
+:a8
+pix("tree.png")
+walk(0)
+:a9
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:ba
+pix("town/wood_wall.png")
+walk(0)
+:bb
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:bc
+pix("road/road_ns.png")
+walk(1)
+:bd
+pix("red_flowers.png")
+walk(1)
+:be
+pix("town/wood_sign_training.png")
+walk(0)
+:bf
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shop1.txt", 10, 12)
+hero("hero_n")
+:bg
+pix("grass.png")
+walk(0)
+addpix("people/old_man_s.png")
+Action
+if(var("town1_bridge2"), "=", 1)
+	set("dialog1", generic_dialog("Hello, I'm Mert. Reyd the carpenter's \
+	assistant. \n \
+	(1) What did you do with the key? \n \
+	(2) Bye.", "1.png", "2.png"))
+	if(var("dialog1"), "=", 0)
+		set("town1_bridge3", 1)
+		set("dialog1", generic_dialog("I don't know. I put it in my pocket \
+		right before I took my little cousin, Emma, outside to play. The next \
+		time I looked in my pocket it was gone. \n \
+		(1) Where's Emma? \n \
+		(2) Bye.", "1.png", "2.png"))
+		if(var("dialog1"), "=", 0)
+			dialog("She's probably still in the park behind the tavern.")
+		endif
+	endif
+else
+	dialog("Hello, I'm Mert. Reyd the carpenter's assistant.")
+endif
+:bh
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_mid_n.png")
+:bi
+pix("grass.png")
+walk(0)
+addpix("people/man_s.png")
+Action
+if(var("town1_bridge7"), "=", 1)
+	dialog("My key!  Thanks, I'll get started on  the bridge right away.")
+		set("town1_bridge8", "=", 1)
+	end()
+endif
+if(var("town1_bridge1"), "=", 1)
+	set("dialog1", "=", generic_dialog("Hi, I'm Reyd the carpenter. Need a \
+	house built? Or maybe a chair? \n \
+	(1) I need a bridge built to get to Quinine Tower. \n \
+	(2) Bye.", "1.png", "2.png"))
+	if(var("dialog1"), "=", 0)
+		set("town1_bridge2", "=", 1)
+		set("dialog1", "=", generic_dialog("I'd love to do it for you, but my \
+		assistant, Mert, lost the key to my storage shed. I can't get my tools. \
+		If you can find that key, I'll build the bridge for you. \n \
+		(1) How do I find the key? \n \
+		(2) Never mind.", "1.png", "2.png"))
+		if(var("dialog1"), "=", 0)
+			dialog("Ask around town. I suggest starting with Mert.")
+		endif
+	endif
+else
+	dialog("Hi, I'm Reyd the carpenter. Need a house built? Or maybe a chair?")
+endif
+:bj
+pix("road/road_ne.png")
+walk(1)
+:bk
+pix("road/road_ew.png")
+walk(1)
+addoverpix("roof_green/roof_nw.png")
+:bl
+pix("grass.png")
+addoverpix("roof_green/roof_mid.png")
+walk(1)
+:bm
+pix("road/road_ew.png")
+walk(1)
+addoverpix("roof_green/roof_ne.png")
+:bn
+pix("road/road_ew.png")
+walk(1)
+:bo
+pix("road/road_t.png")
+walk(1)
+:bp
+pix("road/road_nw.png")
+walk(1)
+:bq
+pix("garden.png")
+walk(1)
+addoverpix("roof_green/roof_nw.png")
+:br
+pix("grass.png")
+addoverpix("roof_green/roof_w.png")
+walk(1)
+:bs
+pix("grass.png")
+addoverpix("roof_green/roof_e.png")
+walk(1)
+:bt
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_ne.png")
+:bu
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+:bv
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_nw.png")
+:bw
+pix("roof_green/roof_w_bot.png")
+walk(0)
+:bx
+pix("roof_green/roof_n_top.png")
+walk(0)
+addpix("roof_green/roof_nw.png")
+:by
+pix("roof_green/roof_w.png")
+walk(0)
+:bz
+pix("roof_green/roof_mid.png")
+walk(0)
+:bA
+pix("roof_green/roof_e.png")
+walk(0)
+:bB
+pix("roof_green/roof_n_top.png")
+walk(0)
+addpix("roof_green/roof_ne.png")
+:bC
+pix("roof_green/roof_e_bot.png")
+walk(0)
+:bD
+pix("treetop.png")
+walk(0)
+:bE
+pix("grass.png")
+walk(0)
+addpix("furnishings/table_n.png")
+:bF
+pix("roof_red/roof_n_back.png")
+walk(0)
+:bG
+pix("grass.png")
+walk(0)
+addpix("furnishings/table_middle.png")
+:bH
+pix("grass.png")
+walk(0)
+addpix("people/man2_s.png")
+Action
+if(var("town1_bridge6"), "=", 1)
+	set("dialog1", generic_dialog("Vell helloo der! A new adventurur, I see. Joost \
+	like meself. Vhat can I do fur ye? \n \
+	(1) Do you have any battle tips? \n \
+	(2) Just passing by, thanks.", "1.png", "2.png"))
+	if(var("dialog1"), "=", 0)
+		dialog("Me un gut tip is to gain lefels. Lefels make de diffrense in big \
+		battles. If ye can't vin in a battle, gain lefels und try again.")
+	endif
+	end()
+endif
+if(var("town1_bridge5"), "=", 1)
+	set("dialog1", generic_dialog("Vell helloo der! A new adventurur, I see. Joost \
+	like meself. Vhat can I do fur ye? \n \
+	(1) Do you have any battle tips? \n \
+	(2) I need an ale for Tyren. \n \
+	(3) Just passing by, thanks.", "1.png", "2.png", "3.png"))
+	if(var("dialog1"), "=", 0)
+		dialog("Me un gut tip is to gain lefels. Lefels make de diffrense in big \
+		battles. If ye can't vin in a battle, gain lefels und try again.")
+	endif
+	if(var("dialog1"), "=", 1)
+		if(stat("level"), ">", 2)
+			dialog("Ye vill be gut varrior, ya? I buy ye ale now.")
+			set("town1_bridge6", 1)
+		else
+			dialog("Vell der, jung un, ye look scruny. Fight und gain lefels. \
+			Denn come back.")
+		endif
+	endif
+else
+	set("dialog1", generic_dialog("Vell helloo der! A new adventurur, I see. Joost \
+	like meself. Vhat can I do fur ye? \n \
+	(1) Do you have any battle tips? \n \
+	(2) Just passing by, thanks.", "1.png", "2.png"))
+	if(var("dialog1"), "=", 0)
+		dialog("Me un gut tip is to gain lefels. Lefels make de diffrense in big \
+		battles. If ye can't vin in a battle, gain lefels und try again.")
+	endif
+endif
+:bI
+pix("roof_red/roof_n_top.png")
+walk(0)
+:bJ
+pix("roof_red/roof_n_top_right.png")
+walk(0)
+:bK
+pix("grass.png")
+walk(0)
+addpix("furnishings/table_s.png")
+:bL
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_mid_s.png")
+:bM
+pix("roof_red/roof_n.png")
+walk(0)
+:bN
+pix("roof_red/roof_n_right.png")
+walk(0)
+:bO
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_sw.png")
+:bP
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_se.png")
+:bQ
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:bR
+pix("roof_red/roof_n_bot_right.png")
+walk(0)
+:bS
+pix("town/wood_sign_tavern.png")
+walk(0)
+:bT
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shop1.txt", 20, 25)
+hero("hero_n")
+:bU
+pix("grass.png")
+walk(0)
+addpix("people/man3_s.png")
+Action
+if(var("town1_bridge7"), "=", 1)
+	dialog("Go away, I'm trying to drink here!")
+	end()
+endif
+if(var("town1_bridge5"), "=", 1)
+	if(var("town1_bridge6"), "=", 1)
+		set("dialog1", generic_dialog("Got my ale? \n \
+		(1) Yep.  Here you go. \n \
+		(2) Bye.", "1.png", "2.png"))
+		if(var("dialog1"), "=", 0)
+			dialog("Here's your key.  Now let me drink in peace.")
+			set("town1_bridge7", 1)
+		endif
+	else
+		dialog("Where's my ale? You don't get the key until I get my ale!")
+	endif
+else
+	if(var("town1_bridge4"), "=", 1)
+		set("dialog1", generic_dialog("Go away, I'm trying to drink here! \n \
+		(1) But I need to know if you have a  certain key. \n \
+		(2) Bye.", "1.png", "2.png"))
+		if(var("dialog1"), "=", 0)
+			set("dialog1", generic_dialog("Yes, I have the key. But seeing that \
+			you need it, it must be worth something. Since I'm out of money, \
+			why don't you just buy me another ale and I'll give you the key. \
+			Sound fair? \n \
+			(1) O.K.  I'll be right back.", "1.png"))
+			set("town1_bridge5", 1)
+		endif
+	else
+		dialog("Go away, I'm trying to drink here!")
+	endif
+endif
+:bV
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_sw_bot.png")
+:bW
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_se_bot.png")
+:bX
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shop1.txt", 10, 27)
+hero("hero_n")
+:bY
+pix("town/wood_sign_inn.png")
+walk(0)
+:bZ
+pix("road/right_t.png")
+walk(1)
+:b0
+pix("road/left_t.png")
+walk(1)
+:b1
+pix("grass.png")
+walk(0)
+addpix("wood_sign.png")
+Action
+dialog("Welcome to Meadow")
+:b2
+pix("town/fence_en.png")
+walk(0)
+:b3
+pix("town/fence_w.png")
+walk(0)
+:b4
+pix("town/fence_e.png")
+walk(0)
+:b5
+pix("town/fence_wn.png")
+walk(0)
+:b6
+pix("road/road_ns.png")
+walk(1)
+Action
+move("world1x0.txt", 18, 10)
+hero("hero_s")
+:b7
+pix("large_shrub.png")
+walk(0)
+:b8
+pix("treetop2.png")
+walk(0)

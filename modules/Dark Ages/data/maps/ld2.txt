@@ -1,0 +1,100 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ac aa ad aa aa aa aa aa aa aa aa ad aa aa aa aa aa ad aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ae af ag ah ai aa aa aa ad aa aa ae ah ag ag ag ag ag ah ai aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aj ae ah ag ag ag ag ah ak aa aa al aa aa aa aa aa al aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aj aa aa ad ae ah af ag ag ah ai ab aa aa aa al aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ae ag ag ag ag ah ai aj aj aa aa am aa aa ad aa an af ai aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ad aa aa ab aa al ae ag ag ag ag ah ai ae ah ag af ah ai aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ae ah ak aa aa an af ak aa ad ad ae af ak aa al aa aj aj aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ae ah ah af ag af ah af ag af ah ao ah af ag ah ai aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ap af aq ad aj aj aj ad ap af ai aj am aa al aa aa aa ab aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa al ae ah ag ag ag ah ao ah ag ag ah ao af ak ad aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa al aa al aa aa aa al aa al aa aa al ae ah af ah ai aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa al aa al aa ab ae ah ag ah ai ae af ak am aj al aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aj ad aj aa ad aa aj aa aj ab ae ah af ah ai al aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa ae ah ag ag ah ai aa ad ad aa aa am aj al aa al aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ad an af ai ae ah ag ag ah af ag ag ah ai al aa al aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ae ah af ah ai ab aj aa ae af aq aa aa al aa al aa al aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa al aj aj aa aa aa aa aa al aa aa aa al aa al aa al aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa al ae ag ag ag ag ag ag ah ai ab aa al ad al ad al ad ar aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa al aa aa aa aa aa aa aa aj aa aa ae ah ah ah ah ah af af ai aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aj aa aa aa aa aa aa aa aa aa aa aa aj aj aj aj aj aj aj aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+monster=Death Knight
+monster=Death Knight
+monster=Troll
+monster=Troll
+monster=Troll
+monster=Troll
+monster=Troll
+monster=Troll
+monster=Bronze Golem
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/gem_rock.png")
+walk(0)
+:ac
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("ld3.txt", 8, 6)
+hero("hero_s")
+:ad
+pix("underground/rock_s.png")
+walk(0)
+:ae
+pix("underground/rock_e.png")
+walk(0)
+:af
+pix("underground/dirt.png")
+walk(1)
+:ag
+pix("underground/dirt_ew.png")
+walk(1)
+:ah
+pix("underground/dirt.png")
+walk(1)
+:ai
+pix("underground/rock_w.png")
+walk(0)
+:aj
+pix("underground/rock_n.png")
+walk(0)
+:ak
+pix("underground/rock_sw.png")
+walk(0)
+:al
+pix("underground/dirt_ns.png")
+walk(1)
+:am
+pix("underground/rock_ns.png")
+walk(0)
+:an
+pix("underground/rock_se.png")
+walk(0)
+:ao
+pix("underground/rock_ew.png")
+walk(0)
+:ap
+pix("underground/rock_ne.png")
+walk(0)
+:aq
+pix("underground/rock_nw.png")
+walk(0)
+:ar
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("ld1.txt", 25, 22)
+hero("hero_s")

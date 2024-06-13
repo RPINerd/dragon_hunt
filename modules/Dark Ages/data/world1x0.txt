@@ -1,0 +1,407 @@
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+ab ab ac ac ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+ab ad ae ae af ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+ag ah ai aj ak ag ag ag al ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab 
+am an ao ao ak am am am am ag ag al ab ab ab ab ab ab ap ag al ab ab ab 
+ah ao ao ao ak am am aq am am am ar ab ab ab ab ap ag am am ar ab ab ab 
+an ao ao ao ak am am am am am am as ab ap ag ag am am am am am al ab ab 
+at ao ao au am am am am am am as ab ab av am am am am am am am am al ab 
+an ao ao ak am am am am am ar ab ab ap am am am am am aw am am am am ag 
+ao ao ao ak am am am am am ar ab ap am am am am am am am am am am am am 
+ax ay ao ak am am am am am az aA aB am am am am am am am am am am am am 
+ah ao ao aC am am am am am as ab av am am aD aE aE aF am am am am am am 
+ah ao ao ao aC am aG aG as ab ab av am am aH aI aI aJ am am am am am am 
+aG aK ax ao ao aL ab ab ab ab ap am am am aM aN aI aJ am am am am am am 
+ab ab aO ao ao aP ab ap al ab av am am am am aH aI aQ aF am am am am am 
+ab ab aR ao ao aS ag am ar ab aT aG am am am aM aN aI aJ am am am am am 
+ab ab aU ao ao ak am am ar ab ab ab aT am am am aH aI aJ am am am am am 
+ap ag an ao aV am am am am ag al ab ab av am am aM aW aX am am am am as 
+av an ao ao ak am am am am am am al ab av am am am am am am am am as ab 
+aY ao ao ao ak am am am am am am ar ab aT aG aG aG aG aG am am as ab ab 
+an ao ao aV am am am am am am am ar ab ab ab ab ab ab ab aT as ab ab ab 
+ao ao aV am am am am am am am am am ag ag ag ag ag al ab ab ab ab ab ab 
+ao aV am am am am am am am am am am am am am am aG as ab ab ab ab ab ab 
+
+:def
+battle_bg=generic.png
+level_left=world0x0.txt
+level_right=world2x0.txt
+level_down=world1x1.txt
+level_downleft=world0x1.txt
+level_downright=world2x1.txt
+:aa
+pix("water/water.png")
+walk(0)
+if(stat("level"), "<", 2)
+	mapstat("addmonster", "Orc")
+	end()
+endif
+if(stat("level"), "<", 4)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	end()
+endif
+if(stat("level"), "<", 6)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	end()
+endif
+if(stat("level"), "<", 8)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Acid Slime")
+	end()
+endif
+if(stat("level"), "<", 10)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Giant Spider")
+	end()
+endif
+if(stat("level"), "<", 12)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Wizard")
+	end()
+endif
+if(stat("level"), "<", 14)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Goblin")
+	end()
+endif
+if(stat("level"), "<", 16)
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Skeleton")
+	end()
+endif
+if(stat("level"), "<", 18)
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Troll")
+	end()
+endif
+if(stat("level"), "<", 20)
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Death Knight")
+	end()
+endif
+if(stat("level"), "<", 22)
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Bronze Golem")
+	end()
+endif
+if(stat("level"), "<", 24)
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Dark Goblin")
+	end()
+endif
+if(stat("level"), "<", 26)
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Iron Golem")
+	end()
+endif
+if(stat("level"), "<", 28)
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Gold Dragon")
+	end()
+endif
+if(stat("level"), "<", 28)
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Lost Soul")
+	mapstat("addmonster", "Lost Soul")
+	end()
+endif
+if(stat("level"), "<", 30)
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Lost Soul")
+	mapstat("addmonster", "Ice Dragon")
+	mapstat("addmonster", "Ice Dragon")
+	end()
+endif
+if(stat("level"), "<", 32)
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Lost Soul")
+	mapstat("addmonster", "Ice Dragon")
+	mapstat("addmonster", "Platinum Golem")
+	mapstat("addmonster", "Platinum Golem")
+	end()
+endif
+if(stat("level"), "<", 34)
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Lost Soul")
+	mapstat("addmonster", "Ice Dragon")
+	mapstat("addmonster", "Platinum Golem")
+	mapstat("addmonster", "Black Dragon")
+	mapstat("addmonster", "Black Dragon")
+	end()
+endif
+#above level 34:
+mapstat("addmonster", "Iron Golem")
+mapstat("addmonster", "Gold Dragon")
+mapstat("addmonster", "Lost Soul")
+mapstat("addmonster", "Ice Dragon")
+mapstat("addmonster", "Platinum Golem")
+mapstat("addmonster", "Black Dragon")
+mapstat("addmonster", "Black Dragon")
+:ab
+pix("water/water.png")
+walk(0)
+:ac
+pix("water_hills/hills_n_water.png")
+walk(0)
+:ad
+pix("water/water_se2.png")
+walk(0)
+addpix("hills/hills_w_trans.png")
+:ae
+walk(0)
+pix("hills/hills_n4.png")
+:af
+pix("water/water_sw.png")
+walk(0)
+addpix("hills/hills_e_trans.png")
+:ag
+pix("water/water_s.png")
+walk(1)
+:ah
+pix("hills/hills_w.png")
+walk(0)
+:ai
+walk(0)
+pix("hills/hills_n4_double.png")
+:aj
+walk(0)
+pix("hills/hills_n_center.png")
+:ak
+pix("hills/hills_e.png")
+walk(0)
+:al
+pix("water/water_sw.png")
+walk(1)
+:am
+pix("grass.png")
+walk(1)
+:an
+pix("hills/hills_n2_e.png")
+walk(0)
+:ao
+pix("hills/hills_n4.png")
+walk(0)
+:ap
+pix("water/water_se.png")
+walk(1)
+:aq
+pix("town.png")
+walk(1)
+Action
+move("town2.txt", 20, 30)
+hero("hero_n")
+:ar
+pix("water/water_w.png")
+walk(1)
+:as
+pix("water/water_nw.png")
+walk(1)
+:at
+pix("hills/mine_w.png")
+walk(1)
+:au
+pix("hills/mine_e.png")
+walk(1)
+Action
+if(var("shop2_spider1"), "=", 1)
+	if(var("shop2_spider2"), "=", 0)
+		dialog("The soldier allows you to pass. 'I'd go with you, but I'm \
+		afraid of spiders'")
+	endif
+	move("dungeon1.txt", 15, 15)
+else
+	dialog("A worried-looking soldier guards the entrance. 'Sorry Sir, but no \
+	one is allowed in the tunnel untill we clear it out.'")
+:av
+pix("water/water_e.png")
+walk(1)
+:aw
+pix("town.png")
+walk(1)
+Action
+move("town1.txt", 16, 32)
+hero("hero_n")
+:ax
+pix("hills/hills_w2.png")
+walk(0)
+:ay
+pix("hills/hills_n4.png")
+walk(0)
+addpix("hills/hills_n4_double.png")
+:az
+walk(1)
+if(var("town1_bridge8"), "=", 1)
+	pix("grass.png")
+else
+	pix("water/water_w.png")
+endif
+:aA
+if(var("town1_bridge8"), "=", 1)
+	pix("water/bridge_ew.png")
+	walk(1)
+else
+	pix("water/water.png")
+	walk(0)
+endif
+:aB
+walk(1)
+if(var("town1_bridge8"), "=", 1)
+	pix("grass.png")
+else
+	pix("water/water_e.png")
+endif
+:aC
+pix("hills/hills_n2_w.png")
+walk(0)
+:aD
+pix("forest_nw2.png")
+walk(1)
+:aE
+pix("forest_n.png")
+walk(1)
+:aF
+pix("forest_ne.png")
+walk(1)
+:aG
+pix("water/water_n.png")
+walk(1)
+:aH
+pix("forest_w.png")
+walk(1)
+:aI
+pix("forest.png")
+walk(1)
+:aJ
+pix("forest_e.png")
+walk(1)
+:aK
+pix("hills/hills_s.png")
+walk(1)
+addpix("water/water_n_trans.png")
+:aL
+pix("water/water_nw.png")
+walk(0)
+addpix("hills/hills_e_trans.png")
+:aM
+pix("forest_sw.png")
+walk(1)
+:aN
+pix("forest_sw2.png")
+walk(1)
+:aO
+pix("water/diag_3.png")
+walk(0)
+addpix("hills/hills_w_trans.png")
+:aP
+pix("water/water.png")
+walk(0)
+addpix("hills/hills_e_trans.png")
+:aQ
+pix("forest_ne2.png")
+walk(1)
+:aR
+pix("water/water.png")
+walk(0)
+addpix("hills/hills_w_trans.png")
+:aS
+pix("water/water_se.png")
+walk(0)
+addpix("hills/hills_e_trans.png")
+:aT
+pix("water/water_ne.png")
+walk(1)
+:aU
+pix("water/land_s.png")
+walk(0)
+addpix("hills/hills_w_trans.png")
+:aV
+pix("hills/hills_e2.png")
+walk(0)
+:aW
+pix("forest_s.png")
+walk(1)
+:aX
+pix("forest_se.png")
+walk(1)
+:aY
+pix("hills/hills_w.png")
+walk(0)
+addpix("water/water_e_trans.png")

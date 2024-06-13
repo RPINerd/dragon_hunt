@@ -1,0 +1,8 @@
+
+Name=Iron Golem
+hp=250
+attack=40
+defense=40
+exp=365
+gold=550
+description=Iron Golem

@@ -1,0 +1,8 @@
+
+Name=Giant Spider
+hp=45
+attack=10
+defense=10
+exp=50
+gold=40
+description=Giant Spider

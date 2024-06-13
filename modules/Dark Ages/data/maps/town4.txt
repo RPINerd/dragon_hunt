@@ -1,0 +1,428 @@
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ac ab ab ab ab ab ab ab ab ab aa
+ad ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae af ae ae ae ae ae ae ae ae ae ag
+ad ae ae ae ae ae ae ae ae ah ae ae ae ae ae ah ae ai ae ae ae ai ae ae aj ah ak ae ae af ae ae ae ae ae ae ae ae ae ag
+ad ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae ae al am ae ae ae an ae ae ae ae ae ae af ae ae ao ap ae ae ae ae ae ag
+ad ae ae ae aq ae ae an ae ae an ae ae ae ai ae ar as at au ae ae ai ae ae ae ae ae an af ae ae ae ae ae ae ae ae ae ag
+ad ae ae ae ae ae ae ae ae ae ae ae ae an ae ae av aw ax ay ae ae ae ah ae ae ae ae ae af ae az ae ae ae ae ai ae ae ag
+ad ae an ai aq ae ae ae ae ai ae ae ae ae ae ae av aw ax ay ae ae ae ae ae ae aA ae ae af ae ae ae ae ae ah ae ae ae ag
+ad ae ae ae ae ae ae an ae ae ae ak ae ae ae ae av aw ax ay ae ae ae ae ae ae ae ae ae af ae ae ae ae ae ae ae ae ae ag
+ad ae ae ae ae ae ae ae ae ae ai ae ae ae ai ae av aB aC ay ae ae ae ae ae an ae ae az af aD aD aD aE ae ae ae ae ae ag
+ad an ae ae ae ae ai ai ae aq ae ae an ae ae ae aF aG aG aH ai ae ah ae ae ae ae ae ae af aI aI aI aJ ae ae ae ae ae ag
+ad ae ae an ae ae ae ae ae ae ae ae ae aq ae ae aK aL aM aN ae ae ao ae ae ae ae ae ae af aK aO aP aN ae ae ao ae ae ag
+ad ae ae ae ae ae ae ai ae ae ae aQ ae ae ae ai ae ae ae ae ae ae ae ae ae ah ap ae ae af ae ae ae ae ae ae ae ae ai ag
+ad ae ae ae an ae ae ae ah ae ae aR aS aT aU aU aU aU aU aU aU aU aU aU aU aU aU aU aU aV ae ae aW aW aW aW ae ae ae ag
+aX aU aU aY ae ak ae ae ap aT aU aU aU aZ ae ae ae ak aQ ae ao ae ae ae ae ae ae an ae a0 aY ae a1 a1 a1 a2 ae ae ae ag
+ad ae aj a0 aU aU aY ae aQ af ae ap ae ae a3 ae ae ae aR aS ae ae ae ai an ae ae ae ae aA af ae a4 a4 a4 a5 ae ae ae ag
+ad ae ae aQ ae ai af ae a6 af ae ae ae ae an ae ae ae ae ae a7 ae ae ae ae ae ae ae ae ae af ae aK a8 a8 aN ae ae ak ag
+ad ae ae aR aS aA a0 aU aU aZ aQ ae ak ae ae ae a7 ae ae ae a9 ba ae ae ae ae ae an ae ae af ae ae ae ae ae ae ae ai ag
+ad ae ae ap ae ae ah ae ae ae aR aS ae ae ae aQ bb ae ae ah ae ak ae ae ae ae ae ae an ae af ae ak ae ae ae ae ae ae ag
+ad ae ae ae ae a7 ae ae aQ ae ae ap ae ai ae aR aS ae ai ae ae ae ae ae ae ae ae ae ao ae af ae ae ae ae ae ae ae aj ag
+ad ae ae ae ae a9 ba ae aR aS ae ae ae az ae ae az ae ae ae ae ae az ae ae ae ae ae ae ae af ae ae ae ae ap az ae ae ag
+ad ap ae ae ae ae ae ae az ae az ae ae ae a7 ae ae ae ae ae a7 ae ah ae ae aT aU aU bc aU bd aU aU aU aU aU aU aU aU be
+ad ae ae ae ai ae ae a7 ae ai ae a7 ae ap bb an ae ae ai ae a9 ba ae ae ae af ai bf bg bh ae ae az ae ae ae ae ae ae ag
+ad ae ae ae ae ae ae a9 ba bi ae a9 ba aQ ae ae ae ae ae ae ae ae ae ae ae af ae bj bk bl ae ae ap ae ae ae ak ae ae ag
+ad ae ae ae az ae ap ai ae ae ae ae az a6 an ae ap ae an ae ae ae ae ae ae af ae bj bk bl ae ae an ae ae ae ae ae ae ag
+ad aQ ae ae ae ae ae ae an a7 ae aq ae bm bn bo ae ae ae ae ae ae ae ae ae af ae bj bp bl ae ae ae ae ae ae ae ap ae ag
+ad aR aS ae ap ae ak ae ae bb an ak ae ae az ae ae ae ae a7 ae ae ap ae ae af ae bq br bs ae ae ae ae ae aA ae ao ae ag
+ad ae ae ai ae a7 ae ai ae ae ae a7 az a7 ae bt ae ae ae a9 ba ae ae ae ae af ae bu bv bw ae ae ae ae an ae ae ae ae ag
+ad ae ae ae ae a9 ba ae ae ae ap bb ae a9 ba ae ap ae ae ae az ae ae ae ae af bx by bz by bA ae ae ae ae ae ae ae ae ag
+ad ae ae ae ae ae ae ae ae ae ae ae ae ae a7 ae ae ae ae ae ae ae ae ae ae af bB bC bD bE bF bG ae ae ae ae ae ae ae ag
+ad ae ae ae az ae ae ak aq ae an ae ah ap bb ae ae ae a7 ae ae ae ae aq ae af bH bI bI bI bJ ae ae ae ae ae ae ae ae ag
+ad ae aQ ae ae ae a7 ae ae ae ae ae ae ae ae ap ae az a9 ba ae ae ae ae ae af ae ae ae ae ae ae ae ae ao ae ae an ae ag
+ad ae aR aS ae ai bb aQ ae az ae ai ae ae aQ ae ae ae ae ae ae az ae aA ae af ae ae ae ae ae ae ai ae ae ae ae ae ao ag
+ad ae ae ae ae ae ae aR aS ae ae ae ae ae aR aS ae ae ae ae ae ae ae ae ae af ae ae ae ae ae ah ae ae ae az ae ae ae ag
+ad ae ae ae ae ah ae ae ae ae ae ae ae aq ae ae ae ai ae ae ae ae ae ae ah af ae ae aq ae ae ae ae ae ae ae ae ae ae ag
+ad ae ae az ae ae ae ae ae an ae az ae ae ae aQ ae ae ae ae ae ae ae ae ai af an ae ae ae ae ae ae ae ae ae ae ae ae ag
+ad ak ae ae aQ ae ae ak ae ae ae ae ae ae ae aR aS ae ak ae an ae ae az aT aZ ae ae ae ae ae ap ae ae ae an ae ae ae ag
+ad ae ae ae aR aS ae ae ae ae ae ae an ae ae ae ae aq ae ae ae ae ae ae af ae ae ae az ae ao ae ae aq aq ae ae ae ae ag
+ad ae ae ae ae ae ae aQ ae ae ae ae ae ae ae ae ae ae ae ae ae aj aA ae af ao ae ae ae ae ae ae ae ae ae ae ae ai ae ag
+ad ae ae ae ak ae ae aR aS ae ae ae ae ak ae ae ae ae ae ai ae aq ae ae af ae ae ai ae ae ae ae ae ae ae ae ae ae ae ag
+aa bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bK bL bK bK bK bK bK bK bK bK bK bK bK bK bK bK aa
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("grass.png")
+walk(1)
+Action
+move("world1x3.txt", 18, 8)
+hero("hero_n")
+set("temp1", 1)
+:ac
+pix("road/road_ns.png")
+walk(1)
+Action
+move("world1x3.txt", 18, 8)
+hero("hero_n")
+set("temp1", 1)
+:ad
+pix("grass.png")
+walk(1)
+Action
+move("world1x3.txt", 17, 9)
+hero("hero_w")
+set("temp1", 0)
+:ae
+pix("grass.png")
+walk(1)
+:af
+pix("road/road_ns.png")
+walk(1)
+:ag
+pix("grass.png")
+walk(1)
+Action
+move("world1x3.txt", 19, 9)
+hero("hero_e")
+set("temp1", 2)
+:ah
+pix("small_blue_flowers.png")
+walk(1)
+:ai
+pix("tree2.png")
+walk(0)
+:aj
+pix("grass.png")
+walk(0)
+addpix("wood_sign.png")
+Action
+dialog("Welcome to Tristen")
+:ak
+pix("stones.png")
+walk(1)
+:al
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw_top.png")
+:am
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne_top.png")
+:an
+pix("tree.png")
+walk(0)
+:ao
+pix("red_flowers.png")
+walk(1)
+:ap
+pix("large_shrub.png")
+walk(0)
+:aq
+pix("small_flowers.png")
+walk(1)
+:ar
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw.png")
+:as
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_w_top.png")
+:at
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_e_top.png")
+:au
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:av
+walk(0)
+pix("roof_red/roof_w_bot.png")
+:aw
+walk(0)
+pix("roof_red/roof_w_top.png")
+:ax
+walk(0)
+pix("roof_red/roof_e_top.png")
+:ay
+walk(0)
+pix("roof_red/roof_e_bot.png")
+:az
+pix("small_shrub.png")
+walk(0)
+:aA
+pix("garden.png")
+walk(1)
+:aB
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw.png")
+:aC
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se.png")
+:aD
+pix("roof_red/roof_n_mid.png")
+walk(0)
+:aE
+pix("roof_red/roof_n_mid_right.png")
+walk(0)
+:aF
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:aG
+pix("town/wood_wall.png")
+walk(0)
+:aH
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:aI
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:aJ
+pix("roof_red/roof_n_bot_right.png")
+walk(0)
+:aK
+pix("town/wood_wall_sw.png")
+walk(0)
+:aL
+pix("town/wood_sign_gem.png")
+walk(0)
+:aM
+pix("town/wood_wall_door.png")
+walk(1)
+Action
+move("shop4.txt", 18, 10)
+:aN
+pix("town/wood_wall_se.png")
+walk(0)
+:aO
+pix("town/wood_wall_door.png")
+walk(1)
+Action
+move("shop4.txt", 31, 10)
+:aP
+pix("town/wood_sign_inn.png")
+walk(0)
+:aQ
+pix("treetop.png")
+walk(0)
+:aR
+pix("double_tree3.png")
+walk(0)
+:aS
+pix("small_tree_right2.png")
+walk(1)
+:aT
+pix("road/road_se.png")
+walk(1)
+:aU
+pix("road/road_ew.png")
+walk(1)
+:aV
+pix("road/left_t.png")
+walk(1)
+:aW
+pix("roof_blue/roof_n_back.png")
+walk(0)
+:aX
+pix("road/road_ew.png")
+walk(1)
+Action
+move("world1x3.txt", 17, 9)
+hero("hero_w")
+set("temp1", 0)
+:aY
+pix("road/road_sw.png")
+walk(1)
+:aZ
+pix("road/road_nw.png")
+walk(1)
+:a0
+pix("road/road_ne.png")
+walk(1)
+:a1
+pix("roof_blue/roof_n_top.png")
+walk(0)
+:a2
+pix("roof_blue/roof_n_top_right.png")
+walk(0)
+:a3
+pix("grass.png")
+walk(0)
+addpix("people/warrior_s.png")
+Action
+dialog("Watch your hit points in battle and cast healing spells if needed.")
+:a4
+pix("roof_blue/roof_n_bot.png")
+walk(0)
+:a5
+pix("roof_blue/roof_n_bot_right.png")
+walk(0)
+:a6
+pix("treetrunk.png")
+walk(0)
+:a7
+pix("treetop2.png")
+walk(0)
+:a8
+pix("town/wood_wall_door.png")
+walk(0)
+Action
+dialog("The door is locked")
+:a9
+pix("double_tree2.png")
+walk(0)
+:ba
+pix("small_tree_right.png")
+walk(1)
+:bb
+pix("treetrunk2.png")
+walk(0)
+:bc
+pix("road/road_ew.png")
+walk(1)
+addoverpix("roof_green/roof_mid_n.png")
+:bd
+pix("road/reverse_t.png")
+walk(1)
+:be
+pix("road/road_ew.png")
+walk(1)
+Action
+move("world1x3.txt", 19, 9)
+hero("hero_e")
+set("temp1", 2)
+:bf
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_nw.png")
+:bg
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_mid.png")
+:bh
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_ne.png")
+:bi
+pix("grass.png")
+walk(0)
+addpix("people/woman_s.png")
+Action
+store("Tristen Magical Training")
+:bj
+pix("roof_green/roof_w_bot.png")
+walk(0)
+:bk
+pix("roof_green/roof_mid.png")
+walk(0)
+:bl
+pix("roof_green/roof_e_bot.png")
+walk(0)
+:bm
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 0)
+:bn
+pix("grass.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+	info("As you step into this grove, the noise of civilization melts away.")
+endif
+:bo
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 1)
+:bp
+pix("town/wall.png")
+walk(0)
+addpix("roof_green/roof_mid_s.png")
+:bq
+pix("town/wall.png")
+walk(0)
+addpix("roof_green/roof_sw_bot.png")
+:br
+pix("town/wall.png")
+walk(0)
+addpix("town/sign_weapon_trans.png")
+:bs
+pix("town/wall.png")
+walk(0)
+addpix("roof_green/roof_se_bot.png")
+:bt
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("town4_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("town4_rock", 1)
+endif
+:bu
+pix("town/wall_sw.png")
+walk(0)
+:bv
+pix("town/wall_door.png")
+walk(1)
+:bw
+pix("town/wall_se.png")
+walk(0)
+:bx
+pix("stone_interior/flagstone_border_nw.png")
+walk(1)
+:by
+pix("stone_interior/flagstone_border_n.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+:bz
+pix("stone_interior/flagstone_border_n.png")
+walk(1)
+:bA
+pix("stone_interior/flagstone_border_ne.png")
+walk(1)
+:bB
+pix("stone_interior/flagstone_border_w.png")
+walk(1)
+:bC
+pix("stone_interior/counter_left.png")
+walk(1)
+:bD
+pix("stone_interior/counter_man.png")
+walk(0)
+Action
+store("Alfred's Discount Armor")
+:bE
+pix("stone_interior/counter_right.png")
+walk(1)
+:bF
+pix("stone_interior/flagstone_border_e.png")
+walk(1)
+:bG
+pix("grass.png")
+walk(0)
+addpix("people/warrior_s.png")
+Action
+dialog("A man by the name of Gawain knows where to find the Magic Sword.")
+:bH
+pix("stone_interior/flagstone_border_sw.png")
+walk(1)
+:bI
+pix("stone_interior/flagstone_border_s.png")
+walk(1)
+:bJ
+pix("stone_interior/flagstone_border_se.png")
+walk(1)
+:bK
+pix("grass.png")
+walk(1)
+Action
+move("world1x3.txt", 18, 10)
+hero("hero_s")
+set("temp1", 3)
+:bL
+pix("road/road_ns.png")
+walk(1)
+Action
+move("world1x3.txt", 18, 10)
+hero("hero_s")
+set("temp1", 3)

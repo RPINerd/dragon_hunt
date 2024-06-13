@@ -1,0 +1,7 @@
+Name=Plate Helm
+type=3
+quality=3
+price=300
+description=The primary advantage to this design is the protection given to \
+the face and cheeks.
+picture=items/big_helmet.png

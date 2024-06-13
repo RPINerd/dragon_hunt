@@ -1,0 +1,349 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa ab ab ac ad ad ad ad ae aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa ab af ag ag ag ag ah ab aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa ab ai aj ak al ak am ab aa aa aa aa ac ad ad ad ad ae ab
+aa aa aa aa aa aa ab an ao ao ao ao ap ab aa aa aa ab af aq ag ag ar ah ab
+aa aa aa aa aa aa ab an ao ao ao ao ap ab aa aa aa ab an as aj at au ap ab
+aa aa aa aa aa aa ab an av ao ao aw ap ab aa aa aa ab an ax ao ao ay ap ab
+aa aa aa aa aa aa ab an ao ao ao ao ap ab aa aa aa ab az aA aA aA aA aB ab
+aa aa aa aa aa aa ab an aC ao ao aD ap ab aa aa aa ab aE aF aG aH aI aJ ab
+aa aa aa aa aa aa ab az aA aA aA aA aB ab aa aa aa aa aa aa aK aa aa aa ab
+aa aa aa aa aa aa ab aE aI aL aG aI aJ ab aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa ab aa aa aa aM aa aa aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa aa aN aO aO aO aO aO aP aa aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa ab af aQ af aR ah aQ ah ab aa aa aa aa aa aa aa ab
+aa aa aa aa aa aa aa aa ab aS ao aT aU aV aW aX ab aa aN aO aO aO aP aa ab
+aa aa aa aa aa aa aa aa ab az aA aY aA aB aZ aB ab ab af a0 a0 a0 ah ab ab
+aa aa aa aa aa aa aa aa ab a1 ag ag a2 ag a2 ah ab ab a3 as a4 aj am ab ab
+aa aa aa aa aa aa aa aa ab an a5 aA aA aA aA aB ab ab an ao ao ao ap ab ab
+aa aa aa aa aa aa aa aa ab an ap ag a2 ah a2 ah ab ab az aA aA aA aB ab ab
+aa aa aa aa aa aa aa aa ab a6 ap aW ao aX aW aX ab ab aE a7 aG aI aJ ab ab
+aa aa aa aa aa aa aa aa ab az aB aZ aA aB aZ aB ab aa aa aa a8 aa aa aa ab
+aa aa aa aa aa aa aa aa ab aF aG a9 aI aF aI aJ ab aa aa aa aa aa aa aa ab
+ab ab ab ab ab ab ab ab ab ab ba ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+
+:def
+:aa
+pix("underground/void.png")
+walk(1)
+:ab
+pix("underground/void.png")
+walk(0)
+:ac
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:af
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:ag
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+:ah
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:ai
+pix("wood_interior/counter_left_wall.png")
+walk(1)
+:aj
+pix("wood_interior/counter.png")
+walk(0)
+:ak
+pix("wood_interior/counter.png")
+walk(0)
+addpix("furnishings/books.png")
+:al
+pix("wood_interior/counter_man.png")
+walk(0)
+Action
+store("Meadow Magical Training")
+:am
+pix("wood_interior/counter_right_wall.png")
+walk(1)
+:an
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:ao
+pix("wood_interior/woodfloor.png")
+walk(1)
+:ap
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:aq
+pix("wood_interior/shields.png")
+walk(0)
+:ar
+pix("wood_interior/weapons.png")
+walk(0)
+:as
+pix("wood_interior/counter_left.png")
+walk(1)
+:at
+pix("wood_interior/counter_old_man.png")
+walk(0)
+Action
+store("The Armory")
+:au
+pix("wood_interior/counter_right.png")
+walk(1)
+:av
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("monsters/Giant Spider.png")
+Action
+dialog("'Ah, the giant spider. Got this one while guarding the miners over to \
+the west. Probably a whole nest of them in that mountain.'")
+:aw
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("monsters/Jelly.png")
+Action
+dialog("'That, my friend, is th--DON'T TOUCH THAT!--Ah, er, death slime. \
+Sorry about that, but it's still active in some form, though without the \
+magical gem it uses as a brain, it can't go anywhere. Really should put a \
+warning up sometime.'")
+:ax
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+Action
+info("This chest contains a variety of armor pieces.")
+:ay
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+Action
+info("This chest contains a variety of weapons.")
+:az
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:aA
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:aB
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:aC
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("monsters/Crawler.png")
+Action
+dialog("'Killed that beast over in the Hegio desert. Still don't know what it's \
+called.'")
+:aD
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("monsters/Angry Tree.png")
+Action
+dialog("'You want my advice? If you ever see a treefiend, run away. Those things \
+can bat you halfway across the forest in the time it takes you to draw your \
+sword. Of course, they aren't native to these parts.'")
+:aE
+pix("town/wood_wall_sw.png")
+walk(0)
+:aF
+pix("town/wood_wall_s.png")
+walk(0)
+:aG
+pix("road/end_wood_doorway.png")
+walk(1)
+:aH
+pix("town/wood_sign_weapon.png")
+walk(0)
+:aI
+pix("town/wood_window_s.png")
+walk(0)
+:aJ
+pix("town/wood_wall_se.png")
+walk(0)
+:aK
+pix("underground/void.png")
+walk(1)
+Action
+move("town1.txt", 20, 11)
+hero("hero_s")
+:aL
+pix("town/wood_sign_training.png")
+walk(0)
+:aM
+pix("underground/void.png")
+walk(1)
+Action
+move("town1.txt", 10, 13)
+hero("hero_s")
+:aN
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:aO
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:aP
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:aQ
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("wood_interior/trans_window.png")
+:aR
+pix("wood_interior/wood_to_grass_window.png")
+walk(0)
+:aS
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/blue_bed.png")
+:aT
+pix("wood_interior/wall_woodfloor_w.png")
+wall_w(1)
+walk(1)
+:aU
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+:aV
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:aW
+pix("wood_interior/woodfloor.png")
+wall_w(1)
+walk(1)
+:aX
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/blue_bed.png")
+:aY
+pix("wood_interior/wall_woodfloor_sw.png")
+wall_w(1)
+walk(1)
+:aZ
+pix("wood_interior/wall_woodfloor.png")
+wall_w(1)
+walk(1)
+:a0
+pix("wood_interior/potion_shelf.png")
+walk(0)
+:a1
+pix("wood_interior/interior_door_w.png")
+walk(1)
+:a2
+pix("wood_interior/interior_door.png")
+walk(1)
+:a3
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/trapdoor.png")
+Action
+dialog("The barkeep scowls at you. 'Employees only!'")
+:a4
+pix("wood_interior/counter_man.png")
+walk(0)
+Action
+if(var("shop1_bar_dia1"), "=", 1)
+	set("dialog1", generic_dialog("Hey there adventurer! What can I do for you? \n \
+	(1) What do you know of the Mystic Medallion? \n \
+	(2) How 'bout some ale? \n \
+	(3) Why not just use a boat to cross the ocean? \n \
+	(4) Where can I find the pieces? \n \
+	(5) Nothing. I'm just looking around.", "1.png", "2.png", "3.png", "4.png", \
+	"5.png"))
+	if(var("dialog1"), "=", 0)
+		dialog("Legend says that the evil Warlord Greyor created the medallion by \
+		magical means and used it to split the world into two continents--ours \
+		and his, which he is using to build army of evil creatures that will \
+		conquer the world so he can proclaim himself ruler. Of course, this legend \
+		is over a thousand years old. No one could live that long.  But, then \
+		again, monsters are roaming the land in greater numbers lately. \
+		If I remember right, it is said that after the land was split, the \
+		medallion broke into three pieces and was scattered throughout our \
+		continent. The only way to stop Greyor would be to find the three pieces \
+		and rejoin the continents.")
+	endif
+	if(var("dialog1"), "=", 1)
+		dialog("Sorry, you're underage.  Come back in a few years.")
+	endif
+	if(var("dialog1"), "=", 2)
+		dialog("Many people have tried to cross, none have ever returned. \
+		Only crazy people try to travel that way.")
+	endif
+	if(var("dialog1"), "=", 3)
+		dialog("I don't know where the pieces are, but maybe someone in Quinine \
+		Tower can help you. It is to the west across the river, but the bridge \
+		was washed out during the spring flood. You'll have to speak to Reyd \
+		the carpenter to have a new one built.")
+		set("town1_bridge1", 1)
+	endif
+else
+	set("dialog1", generic_dialog("Hey there adventurer! What can I do for you? \n \
+	(1) What do you know of the Mystic Medallion? \n \
+	(2) How 'bout some ale? \n \
+	(3) Nothing. I'm just looking around.", "1.png", "2.png", "3.png"))
+	if(var("dialog1"), "=", 0)
+		dialog("Legend says that the evil Warlord Greyor created the medallion by \
+		magical means and used it to split the world into two continents--ours \
+		and his, which he is using to build army of evil creatures that will \
+		conquer the world so he can proclaim himself ruler. Of course, this legend \
+		is over a thousand years old. No one could live that long.  But, then \
+		again, monsters are roaming the land in greater numbers lately. \
+		If I remember right, it is said that after the land was split, the \
+		medallion broke into three pieces and were scattered throughout our \
+		continent. The only way to stop Greyor would be to find the three pieces \
+		and rejoin the continents.")
+		set("shop1_bar_dia1", "=", 1)
+	endif
+	if(var("dialog1"), "=", 1)
+		dialog("Sorry, you're underage.  Come back in a few years.")
+	endif
+endif
+:a5
+pix("wood_interior/woodfloor_se_corner.png")
+walk(1)
+:a6
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("people/old_woman_s.png")
+Action
+if(question("Rooms are 10 gold a night. Interested?"), "=", 1)
+	if(stat("gold"), ">=", 10)
+		give("gold", -10)
+		give("hp", stat("maxhp"))
+		give("ep", stat("maxep"))
+		info("You awake, rested.")
+	else
+		dialog("How odd. You don't have enough money.")
+	endif
+endif
+:a7
+pix("town/wood_sign_tavern.png")
+walk(0)
+:a8
+pix("underground/void.png")
+walk(1)
+Action
+move("town1.txt", 20, 26)
+hero("hero_s")
+:a9
+pix("town/wood_sign_inn.png")
+walk(0)
+:ba
+pix("underground/void.png")
+walk(1)
+Action
+move("town1.txt", 10, 28)
+hero("hero_s")

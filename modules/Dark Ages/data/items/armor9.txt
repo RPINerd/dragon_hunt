@@ -1,0 +1,7 @@
+Name=Full Plate
+type=1
+quality=8
+price=9000
+description=Plate armor is the pinnacle of protection; it leaves no exposed \
+areas, and can deflect most blows.
+picture=items/plate_armor.png

@@ -1,0 +1,8 @@
+
+Name=Ferocious Armless
+hp=25
+attack=5
+defense=5
+exp=25
+gold=20
+description=Ferocious Armless

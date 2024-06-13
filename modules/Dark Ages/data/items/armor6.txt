@@ -1,0 +1,7 @@
+Name=Scale Mail
+type=1
+quality=5
+price=1300
+description=This armor is quite protective, as long as you can keep anyone \
+from hitting you between the scales.
+picture=items/scale_mail.png

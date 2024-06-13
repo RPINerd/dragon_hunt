@@ -1,0 +1,9 @@
+Name=Halberd
+type=0
+quality=15
+price=5000
+description=This weapon is superbly crafted. The length strikes a perfect \
+balance between power and maneuverability, while the blades are balanced \
+exactly. A small enchantment rounds out the package, enabling it to find \
+the weak spots in any armor.
+picture=items/halberd.png

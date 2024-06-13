@@ -1,0 +1,6 @@
+Name=Spear
+type=0
+quality=5
+price=85
+description=A stick with a pointy end.
+picture=items/spear.png

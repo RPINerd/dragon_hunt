@@ -1,0 +1,8 @@
+Name=Magic Shield
+type=2
+quality=5
+price=2200
+description=Oddly, it is possible to see through the middle of this shield. \
+The shimmering film seems to work quite well, though, while being almost \
+weightless.
+picture=items/magic_shield.png

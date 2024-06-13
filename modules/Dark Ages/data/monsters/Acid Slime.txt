@@ -1,0 +1,8 @@
+
+Name=Acid Slime
+hp=35
+attack=14
+defense=14
+exp=40
+gold=20
+description=Acid Slime

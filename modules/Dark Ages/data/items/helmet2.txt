@@ -1,0 +1,6 @@
+Name=Leather Cap
+type=3
+quality=1
+price=10
+description=This cap of hardened leather is cheap and useful.
+picture=items/leather_helmet.png

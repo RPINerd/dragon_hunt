@@ -1,0 +1,8 @@
+
+Name=Goblin
+hp=65
+attack=18
+defense=18
+exp=150
+gold=100
+description=Goblin

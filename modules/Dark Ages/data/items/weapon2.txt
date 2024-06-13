@@ -1,0 +1,6 @@
+Name=Dagger
+type=0
+quality=1
+price=10
+description=A rather useless knife.
+picture=items/dagger.png

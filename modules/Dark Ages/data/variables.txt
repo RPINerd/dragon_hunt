@@ -1,0 +1,22 @@
+#Various data about the module.
+game_name=Dark Ages 1.01
+default_player_name=Alfred
+hp=10d1
+ep=2d1
+attack=2d1
+defense=0d1
+gold=50d1
+tilesize=32
+
+
+name_name = Name
+hp_name = HP
+ep_name = MP
+attack_name = Attack
+defense_name = Armor
+gold_name = Gold
+skill_name = Skillpoints
+exp_name = XP
+level_name = Level
+
+exp_list = 19 39 100 219 349 599 899 1499 2499 3999 5699 7599 9599 11799 14199 16799 19999 23199 26399 29599 32999 36399 39999 43599 47399 51199

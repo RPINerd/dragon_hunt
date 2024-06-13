@@ -1,0 +1,362 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa ab ac ad ad ad ad ad ad ae ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa ab af ag ah af ai ah aj ai ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa ab ak al al am an al al ao ab aa aa aa aa aa aa aa ap aq aq aq aq ar aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa ab as at au av aw ax ay az ab aa aa aa aa aa aa ab aA aB aC aD aB aE ab aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa ab aF aG aG aH aI aG aG aJ ab aa aa aa aa aa aa ab aK aL aM aN aO aP ab aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aQ aR aS aT aU aS aR aV ab aa aa aa aa aa aa ab aW aX aX aX aX aY ab aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aZ aa aa aa aa aa aa aa aa aa aa aa aa a0 a1 a2 a3 a4 a5 aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa a6 aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa a7 a8 a8 a8 a9 aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa ab af ah ah ah ai ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa ab as ba al bb az ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa ab as al al al az ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa ap aq aq aq aq ar aa aa aa ab bc bd be bf bg ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa ab aA aB bh bh aB aE ab aa aa ab as al al al az ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa ab aK bi bj bj bj bk ab aa aa ab bc bl be bm bg ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa ab aW aX aX aX aX aY ab aa aa ab aF aG aG aG aJ ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa ab a0 a1 a1 bn a3 a5 ab aa aa aa aQ aR aT aR aV aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa bo aa aa aa aa aa aa aa bp aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("underground/void.png")
+walk(1)
+:ab
+pix("underground/void.png")
+walk(0)
+:ac
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:af
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:ag
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("furnishings/tree_painting2.png")
+:ah
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+:ai
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:aj
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("furnishings/tree_painting.png")
+:ak
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:al
+pix("wood_interior/woodfloor.png")
+walk(1)
+:am
+pix("wood_interior/woodfloor_border_w.png")
+walk(1)
+:an
+pix("wood_interior/woodfloor_border_e.png")
+walk(0)
+addpix("people/woman_s.png")
+Action
+if(question("Rooms are 40 gold a night. Interested?"), "=", 1)
+	if(stat("gold"), ">=", 40)
+		give("gold", -40)
+		give("hp", stat("maxhp"))
+		give("ep", stat("maxep"))
+		info("You awake, rested.")
+	else
+		dialog("How odd. You don't have enough money.")
+	endif
+endif
+:ao
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/blue_bed.png")
+:ap
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_w_trans.png")
+:aq
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_trans.png")
+:ar
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:as
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:at
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:au
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/green_chair.png")
+:av
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+wall_w(1)
+:aw
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+wall_e(1)
+:ax
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/blue_couch.png")
+:ay
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+:az
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:aA
+pix("stone_interior/wall_nw.png")
+walk(0)
+:aB
+pix("stone_interior/flagstone_grass_window.png")
+walk(0)
+:aC
+pix("stone_interior/shields2.png")
+walk(0)
+:aD
+pix("stone_interior/swords.png")
+walk(0)
+:aE
+pix("stone_interior/wall_ne.png")
+walk(0)
+:aF
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:aG
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:aH
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+wall_w(1)
+:aI
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+wall_e(1)
+:aJ
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:aK
+pix("stone_interior/wall_w.png")
+walk(1)
+:aL
+pix("stone_interior/flagstone.png")
+walk(1)
+:aM
+pix("stone_interior/counter_left.png")
+walk(1)
+:aN
+pix("stone_interior/counter_woman.png")
+walk(0)
+Action
+store("Wisp Royal Armory")
+:aO
+pix("stone_interior/counter_right.png")
+walk(1)
+:aP
+pix("stone_interior/wall_e.png")
+walk(1)
+:aQ
+pix("town/wood_wall_sw.png")
+walk(0)
+:aR
+pix("town/wood_window_s.png")
+walk(0)
+:aS
+pix("town/wood_wall_s.png")
+walk(0)
+:aT
+pix("road/end_wood_doorway.png")
+walk(1)
+:aU
+pix("town/wood_sign_inn.png")
+walk(0)
+:aV
+pix("town/wood_wall_se.png")
+walk(0)
+:aW
+pix("stone_interior/wall_sw.png")
+walk(1)
+:aX
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:aY
+pix("stone_interior/wall_se.png")
+walk(1)
+:aZ
+pix("underground/void.png")
+walk(1)
+Action
+move("town3.txt", 8, 17)
+hero("hero_s")
+:a0
+pix("town/wall_sw.png")
+walk(0)
+:a1
+pix("town/wall_s.png")
+walk(0)
+:a2
+pix("town/sign_weapon.png")
+walk(0)
+:a3
+pix("road/end_stone_doorway.png")
+walk(1)
+:a4
+pix("town/sign_armor.png")
+walk(0)
+:a5
+pix("town/wall_se.png")
+walk(0)
+:a6
+pix("underground/void.png")
+walk(1)
+Action
+move("town3.txt", 24, 18)
+hero("hero_s")
+:a7
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:a8
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:a9
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:ba
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("stone_interior/suit_of_armor.png")
+Action
+dialog("Suit of Armor. Enlightened Period.")
+:bb
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("people/old_woman_s.png")
+Action
+dialog("Welcome to the museum. We have many rare historical artifacts. One is \
+	missing, however. We used to have an actual piece of Greyor's medallion \
+	trapped in a slab of magic crystal. But it was stolen from us by a group \
+	of dwarves. They brought it to their hidden city. I'm afraid we'll never \
+	see it again.")
+:bc
+pix("wood_interior/counter_left_wall.png")
+walk(1)
+:bd
+pix("wood_interior/counter.png")
+walk(0)
+addpix("items/fire_wand.png")
+Action
+dialog("Magical devices of Ithis, Lord of the Northern Reaches.")
+:be
+pix("wood_interior/counter_gap.png")
+walk(1)
+:bf
+pix("wood_interior/counter.png")
+walk(0)
+:bg
+pix("wood_interior/counter_right_wall.png")
+walk(1)
+:bh
+pix("stone_interior/wall_floor.png")
+walk(0)
+:bi
+pix("stone_interior/counter_left.png")
+walk(0)
+addpix("people/man2_s.png")
+Action
+dialog("Hello and welcome to my humble shop. I deal in jewelry. I can make or repair.")
+if(var("medallion"), ">", 2)
+    if(var("fixed_amulet"), "=", 0)
+        dialog("You have all the pieces of Greyor's medallion! Yes I can repair \
+        it, but it will be some time. This is a delicate situation.")
+        dialog("(After 3 days you return to the small shop.) It is done. I suggest \
+        you destroy it again when you are done. Such evil should not exist in this \
+        world, even if it is to be used for good.")
+        set("fixed_amulet", 1)
+    endif
+endif
+:bj
+pix("stone_interior/counter.png")
+walk(0)
+addpix("furnishings/jewels.png")
+Action
+dialog("Various jewels and pieces of jewellery line this counter, none very \
+	valuable.")
+:bk
+pix("stone_interior/counter_right_wall.png")
+walk(1)
+:bl
+pix("wood_interior/counter.png")
+walk(0)
+addpix("items/ice_wand.png")
+Action
+dialog("Do not touch! Highly explosive. Rumored to cause chronic impotence, too.")
+:bm
+pix("wood_interior/counter.png")
+walk(0)
+addpix("items/buckler.png")
+addpix("items/short_sword.png")
+Action
+dialog("Sword and Shield of Feigling the Quick to Run Away. The intricate \
+	straps on the back of the shield allowed Feigling to swing the shield \
+	around to cover his back.")
+:bn
+pix("town/sign_gem.png")
+walk(0)
+:bo
+pix("underground/void.png")
+walk(1)
+Action
+move("town3.txt", 7, 34)
+hero("hero_s")
+:bp
+pix("underground/void.png")
+walk(1)
+Action
+move("town3.txt", 15, 34)
+hero("hero_s")

@@ -1,0 +1,7 @@
+Name=Magic Sword
+type=0
+quality=20
+price=0
+description=The blade glows an eerie blue. Placing your hand upon the hilt \
+sends a warm shock through your arm.
+picture=items/magic_blade.png

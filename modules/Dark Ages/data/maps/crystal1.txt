@@ -1,0 +1,297 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa ac aa ac ad ab aa aa aa aa ae ac aa ac aa aa ac aa ac aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa af ag ah ai ai aj ac ac ak af ai ag ah al am af ag ah ag aj aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa af ag aj an an af ag ag ai aj an an af ag ag ao ag aj ap aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa af ag aj aq ac af ag ar an as aa ac ac at ag ao ag ao al aa au aa aa aa ab aa aa 
+aa aa aa aa aa aa av aw ag ao ai ag aj ap ax af ai ah ag ag ao ai ao ag ao ai ah ai aj aa aa aa aa aa 
+aa aa aa aa aa af ai ai ai aj at ag ao ag al ay an aa an ap aa an az ap ac an aa an aa aa aa aa aa aa 
+aa aa aa aa aa aa an an an aa aA ap af ag ag ai aj aa aa ap aB af ai ag ag aj aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aC af ai al ab an an an aa aD aw ag al aE an at ag aF aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa af ag aj an an ab aa aa aG af ai ai ag ag ag ah ao ag al aH aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa ab ap aa aa aI ac ac af ag aj aJ an aJ an an aa aa at ai ai aj aa aa aa aa aa aa 
+aa aa aa aa aa aa aa af ag aj af ai ai ag ao ag ao ag ah al aK aa aL aa aM an an aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa ab ap aa ac an at ag ah ag ao ag ao ai ai ao ag ah ai aj aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa af ag ah ag ah ah ag ao ag aj ap aN an an aa aJ aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa an ac aJ ab aa an aO an af ag ai aj aP aw al aQ aa aR aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aS aw ai ai aF aT af ai ah ah ag ar af ai ai ag ai ao ag aj aa aa aa aa aa aa aa 
+aa aa aa aa aa aa af ai ai ai ai ai ag aj an aa aU ap aa aV an an ap an af ag aj aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa at al an an at ag aj aW af ai ai ao ag aj af ag aj af ag aj aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa ab ap aa aX af ag ao ag aF an aJ af ag aj aY ap ab af ag aj aZ aa aa aa aa aa aa 
+aa aa aa aa aa aa aa af ag ah ag ah ai ao ag ag ah ag ah ag ao ai al a0 af ai ah ai aj aa aa aa aa aa 
+aa aa aa aa aa aa aa aa an aa an aa an aa an an aa an aa an aa at ai ai aj an aa an aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa an an aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock.png")
+walk(0)
+:ac
+pix("underground/rock_s.png")
+walk(0)
+:ad
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 15, 6)
+hero("hero_s")
+:ae
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 14, 9)
+hero("hero_s")
+:af
+pix("underground/rock_e.png")
+walk(0)
+:ag
+pix("underground/dirt.png")
+walk(1)
+:ah
+pix("underground/dirt_ew.png")
+walk(1)
+:ai
+pix("underground/dirt.png")
+walk(1)
+:aj
+pix("underground/rock_w.png")
+walk(0)
+:ak
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 11, 5)
+hero("hero_s")
+:al
+pix("underground/rock_w_tip.png")
+walk(1)
+:am
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 27, 8)
+hero("hero_s")
+:an
+pix("underground/rock_n.png")
+walk(0)
+:ao
+pix("underground/rock_ew.png")
+walk(0)
+:ap
+pix("underground/dirt_ns.png")
+walk(1)
+:aq
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("world3x4.txt", 14, 5)
+hero("hero_w")
+:ar
+pix("underground/rock_nw.png")
+walk(0)
+:as
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 15, 10)
+hero("hero_s")
+:at
+pix("underground/rock_ne.png")
+walk(0)
+:au
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 21, 6)
+hero("hero_s")
+:av
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 10, 11)
+hero("hero_s")
+:aw
+pix("underground/rock_se.png")
+walk(0)
+:ax
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 17, 5)
+hero("hero_s")
+:ay
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 16, 8)
+hero("hero_s")
+:az
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 20, 11)
+hero("hero_s")
+:aA
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 6, 9)
+hero("hero_s")
+:aB
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 22, 10)
+hero("hero_s")
+:aC
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 7, 19)
+hero("hero_s")
+:aD
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 15, 13)
+hero("hero_s")
+:aE
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 22, 15)
+hero("hero_s")
+:aF
+pix("underground/rock_sw.png")
+walk(0)
+:aG
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 17, 12)
+hero("hero_s")
+:aH
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 24, 15)
+hero("hero_s")
+:aI
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 18, 17)
+hero("hero_s")
+:aJ
+pix("underground/rock_ns.png")
+walk(0)
+:aK
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 20, 18)
+hero("hero_s")
+:aL
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 21, 12)
+hero("hero_s")
+:aM
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 26, 13)
+hero("hero_s")
+:aN
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 11, 14)
+hero("hero_s")
+:aO
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 12, 19)
+hero("hero_s")
+:aP
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 20, 15)
+hero("hero_s")
+:aQ
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 23, 23)
+hero("hero_s")
+:aR
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 21, 22)
+hero("hero_s")
+:aS
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 8, 12)
+hero("hero_s")
+:aT
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 14, 18)
+hero("hero_s")
+:aU
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 14, 21)
+hero("hero_s")
+:aV
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 10, 22)
+hero("hero_s")
+:aW
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 16, 20)
+hero("hero_s")
+:aX
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 19, 20)
+hero("hero_s")
+:aY
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal1.txt", 25, 18)
+hero("hero_s")
+:aZ
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("crystal2.txt", 8, 6)
+hero("hero_s")
+:a0
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("crystal1.txt", 23, 18)
+hero("hero_s")

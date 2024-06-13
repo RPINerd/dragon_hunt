@@ -1,0 +1,96 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa ac ad ae aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa af af ag ad ah af af aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ac ad ad ad ad ad ad ad ae aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ac ad ai ad ad ad ai ad ae aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ac ad ad aj ak aj ad ad ae aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ac ad ai ad ad ad ai ad ae aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ac ad ad ad ad ad ad ad ae aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa al al al al al al al aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("rift2.txt", 13, 11)
+hero("hero_w")
+:ac
+pix("underground/rock_e.png")
+walk(0)
+:ad
+pix("underground/dirt.png")
+walk(1)
+:ae
+pix("underground/rock_w.png")
+walk(0)
+:af
+pix("underground/rock_s.png")
+walk(0)
+:ag
+pix("underground/rock_se.png")
+walk(0)
+:ah
+pix("underground/rock_sw.png")
+walk(0)
+:ai
+pix("underground/dirt.png")
+walk(0)
+addpix("castle/column.png")
+:aj
+pix("underground/dirt.png")
+walk(0)
+addpix("castle/fire.png")
+:ak
+pix("underground/dirt.png")
+walk(0)
+addpix("furnishings/altar.png")
+Action
+set("dialog1", generic_dialog("Before you is a dark altar. Eternal flames \
+surround it. There is a \
+slight depression in the center and you notice that it fits the medallion. \
+This is it, you decide. Are you ready? \n \
+(1) Place the medallion. \n \
+(2) Finish some other things first.", "1.png", "2.png"))
+if(var("dialog1"), "=", 1)
+	end()
+endif
+dialog("There is a brilliant flash and you pass out...")
+dialog("You come around to a great quaking inside the cave. The walls start to \
+collapse. You quickly shake off your stupor and rush out of the cave. \n \n \
+The cave collapses behind you just as you escape. You look around. The \
+world is suffering the ravages of the earthquake. You rush to the shore and \
+look in the distance.")
+dialog("It is there and it is moving swiftly. Greyor's continent. The one that \
+he separated years ago. In a few hours it is done. You've rejoined the \
+continents.")
+dialog("But there is one more thing to be done. You must stop Greyor. You \
+return to the Northern Post to rest and gather supplies.")
+give("hp", stat("maxhp"))
+give("ep", stat("maxep"))
+dialog("You cross over to Greyor's side. His castle towers high in the \
+distance. Hideous screams erupt from within.")
+dialog("A chill travels down your spine as you approach. The only vision in \
+your mind is your own gruesome death.")
+move("rift_final.txt", 10, 7)
+hero("hero_n")
+refresh()
+dialog("You ascend the keep's steps to find Greyor in his chamber at the top.")
+dialog("'So you're the one who has ruined my plans. It seems I must kill you \
+now.' \n \n With that, he summons two black dragons!")
+run("rift_final.txt", 0, 0)
+:al
+pix("underground/rock_n.png")
+walk(0)

@@ -1,0 +1,253 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ae ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac af ac ac ac ac ag ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac af ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ah ac ac ac ac ac ac ac ac af ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ai ac ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac aj ak ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac al am an ao ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac ah ac ac ac ac ac ac ac ac al ap am an aq ao ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac ac af ac ac ac ac ac ac al ap ap am an aq aq ao ac ac ac ac ac ag ac ac ac ac ar ar ar ar ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac al ap ap ap am an aq aq aq ao ac ac ac ac ac ac ac ac ac ar ar ar ar ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac al as at ap ap am an aq aq au av ao ac ac ac ac ac ac ac ac ar ar ar ar ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac aw ax ay ay ay az aA aB aB aB aC aD ac ac ac ac ac af ac ac ar ar ar ar ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac aw ay ay ay ay az aA aB aB aB aB aD ac ac ac ac ac ac ac ac ar ar ar ar ac ad
+ab ac ac ac ac ac ag ac ac ac ac ac ac ac aw ay ay ay ay az aA aB aB aB aB aD ac ac ac ac ac ac ac ac ar ar ar ar ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac aw ay ay ay ay az aA aB aB aB aB aD ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac aE aE aE aE aE aE ac ac ac aw aF aG ay ay az aA aB aB aH aI aD ac ac ac ac ac ac ac ac ac ae ac ac ac ad
+ab aJ ac ac ac aE aE aE aE aE aE ac ac ac aw ax ay ay ay az aA aB aB aB aC aD ac ac ac ac aK ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac aE aE aE aE aE aE ac ac ac aw ay ay ay ay az aA aB aB aB aB aD ac ac ac ac ac ac ac ac ac ac ac af ac ad
+ab ac ac ac ac aE aE aE aE aE aE ac ac ac aw ay ay ay ay az aA aB aB aB aB aD ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac aE aE aE aE aE aE ac ac ac aw ay ay ay ay aL aM aB aB aB aB aD ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac aE aE aE aE aE aE ac ac ac aw aF aG ay aL aN aN aM aB aH aI aD ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac aE aE aE aE aE aE ac aK ac aw ax ay aL aN aN aN aN aM aB aC aD ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac aE aE aE aE aE aE ac ac ac aw ay aL aN aN aN aN aN aN aM aB aD ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac aE aE aE aE aE aE ac ac ac aw aL aN aN aN aN aN aN aN aN aM aD ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac aO aN aN aN aN aN aN aN aN aN aN aP ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac aQ aR aS aR aS aT aU aS aR aS aR aV ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac ah ac ac ac af ac ac ac ac ac ac ac ac ac ac ac ac aW ac ac ac ac ac ac ac aE aE aE aE aE aE ac ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac aX ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac aE aE aE ac ac aY ac ac ac ac ac ac ai ac aX ac ac ac ac ac ac ac ac ac ac ac ac ac ac aK ac ad
+ab ac ac ai ac ac ac ac aE aE aE ac ac ac ac ac ac ac ac ac ac ac aX ac ac aJ ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac aE aE aE ac ac ac ac ac ac ac aE aE ac ac aX ac ac ac ac ac ac ac ac ac ai ac ac ac ac ac ac ad
+ab ac ac ac ac ac aJ ac aE aE aE ac ac ac ac ac ac ac aE aE ac ac aX ac ac ac ac ac aK ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac aE aE aE ac ac ac ac ac ac ac aE aE ac ac aX ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab ac ac ac ac ac ac ac aE aE aE ac ac ac ac ac ac ac aE aE ac ac aX ac ac ac ac ac ac ac ac ac ac ac ac ac aJ ac ac ad
+ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac aX ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad
+ab aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ a0 aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ aZ ad
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+Action
+move("world2x2.txt", 21, 7)
+hero("hero_n")
+:ab
+pix("grass.png")
+walk(0)
+Action
+move("world2x2.txt", 20, 8)
+hero("hero_w")
+:ac
+pix("grass.png")
+walk(1)
+:ad
+pix("grass.png")
+walk(0)
+Action
+move("world2x2.txt", 22, 8)
+hero("hero_e")
+:ae
+pix("tree.png")
+walk(0)
+:af
+pix("mixed_flowers.png")
+walk(1)
+:ag
+pix("tree2.png")
+walk(0)
+:ah
+pix("garden.png")
+walk(1)
+:ai
+pix("large_shrub.png")
+walk(0)
+:aj
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_nw_top.png")
+:ak
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_ne_top.png")
+:al
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_nw.png")
+:am
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_w_top.png")
+:an
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_e_top.png")
+:ao
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_ne.png")
+:ap
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_w.png")
+:aq
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_e.png")
+:ar
+pix("farmland2.png")
+walk(1)
+:as
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_n_top.png")
+:at
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_n_top.png")
+addoverpix("roof_blue/roof_nw.png")
+:au
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_n_top.png")
+addoverpix("roof_blue/roof_ne.png")
+:av
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_n_top_right.png")
+:aw
+pix("roof_blue/roof_w_bot.png")
+walk(0)
+:ax
+pix("roof_blue/roof_n.png")
+walk(0)
+addpix("roof_blue/roof_nw.png")
+:ay
+pix("roof_blue/roof_w.png")
+walk(0)
+:az
+pix("roof_blue/roof_w_top.png")
+walk(0)
+:aA
+pix("roof_blue/roof_e_top.png")
+walk(0)
+:aB
+pix("roof_blue/roof_e.png")
+walk(0)
+:aC
+pix("roof_blue/roof_n_right.png")
+walk(1)
+addpix("roof_blue/roof_ne.png")
+:aD
+pix("roof_blue/roof_e_bot.png")
+walk(0)
+:aE
+pix("farmland.png")
+walk(1)
+:aF
+pix("roof_blue/roof_n_top.png")
+walk(0)
+:aG
+pix("roof_blue/roof_n_top.png")
+walk(0)
+addpix("roof_blue/roof_nw.png")
+:aH
+pix("roof_blue/roof_n_top.png")
+walk(0)
+addpix("roof_blue/roof_ne.png")
+:aI
+pix("roof_blue/roof_n_top_right.png")
+walk(0)
+:aJ
+pix("small_shrub.png")
+walk(0)
+:aK
+pix("red_flowers.png")
+walk(1)
+:aL
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_sw.png")
+:aM
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_se.png")
+:aN
+pix("town/wall.png")
+walk(0)
+:aO
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_sw_bot.png")
+:aP
+pix("town/wall.png")
+walk(0)
+addpix("roof_blue/roof_se_bot.png")
+:aQ
+pix("town/wall_sw.png")
+walk(0)
+:aR
+pix("town/wall_s.png")
+walk(0)
+addpix("town/empty_window_trans.png")
+:aS
+pix("town/wall_s.png")
+walk(0)
+:aT
+pix("town/wall_door.png")
+walk(1)
+Action
+move("shopB.txt", 19, 28)
+hero("hero_n")
+:aU
+pix("town/wall_door.png")
+walk(1)
+Action
+move("shopB.txt", 20, 28)
+hero("hero_n")
+:aV
+pix("town/wall_se.png")
+walk(0)
+:aW
+pix("grass.png")
+walk(1)
+addpix("road/end_n.png")
+:aX
+pix("road/road_ns.png")
+walk(1)
+:aY
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("townB_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("townB_rock", 1)
+endif
+:aZ
+pix("grass.png")
+walk(0)
+Action
+move("world2x2.txt", 21, 9)
+hero("hero_s")
+:a0
+pix("road/road_ns.png")
+walk(0)
+Action
+move("world2x2.txt", 21, 9)
+hero("hero_s")

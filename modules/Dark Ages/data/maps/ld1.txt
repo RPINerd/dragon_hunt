@@ -1,0 +1,160 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab aa aa aa ab ab ab ab ab aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ac ad ae ae ae ae ae ae af ag aa ad ae af ae ae ae ah aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ae ae af ae aj ae ae af ag ai ae ae ae af ae af ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ak al am ae ae ae af ae ah ad ae ae ae ae ae ae ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ah aa ad ae ak am ae ae ae ae ae ae ae ae ae af ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ae ae ae ae ah ad ae ae ak am ae ae ak al am ae af ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ak am ae ae ae ae ae af ah ad aj ae ag aa ai af ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ah ad af ae ae ae af aj ae ae an ae ah ab ad ae ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ae ae ae ae ae ae ae ae ak am ae ae ae ae ae af ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ao ap aq ae aj ae ae ae ah ad af ae af an ae aj ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai aj ar as at ae an af ae ae ae ae ae af ae af af ae ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ae ae ae ae af an ae an ak am ae ae ae au ae af ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa am ae an ae ae ae af ae ae ah ad af ae ak am af ae ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ai ae ae ae ak al am ae ae ae ae aj af ah ad ae ae ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ad ae ae ae ag aa ai ae ak al am ae ae ae ae af ae aj ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai af ak am ae ah aa ai ae ah aa ai ae ae ak am ae ae ak aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ah ad ae af ag ai ae af ag aa am ae ah ad ae ak aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai ae ae ae ae ae ah ad af ae ah ab ad ae ae af ae ag av aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ai af ae ae aj ae ae ae af ae ae ae ae ae af ae ae aw ae ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa al al al al al al al al al al al al al al al al aa al aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+monster=Death Knight
+monster=Death Knight
+monster=Troll
+monster=Troll
+monster=Troll
+monster=Troll
+monster=Troll
+monster=Troll
+monster=Bronze Golem
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("world0x4.txt", 16, 1)
+hero("hero_e")
+:ad
+pix("underground/rock_se.png")
+walk(0)
+:ae
+pix("underground/dirt.png")
+walk(1)
+:af
+pix("underground/dirt.png")
+walk(0)
+addpix("underground/stalag1.png")
+:ag
+pix("underground/rock_w.png")
+walk(0)
+:ah
+pix("underground/rock_sw.png")
+walk(0)
+:ai
+pix("underground/rock_e.png")
+walk(0)
+:aj
+pix("underground/dirt.png")
+walk(1)
+addpix("water/pool.png")
+:ak
+pix("underground/rock_nw.png")
+walk(0)
+:al
+pix("underground/rock_n.png")
+walk(0)
+:am
+pix("underground/rock_ne.png")
+walk(0)
+:an
+pix("underground/dirt.png")
+walk(0)
+addpix("underground/stalag2.png")
+:ao
+pix("underground/void_nw.png")
+walk(0)
+:ap
+pix("underground/void_n.png")
+walk(0)
+:aq
+pix("underground/void_ne.png")
+walk(0)
+:ar
+pix("underground/void_sw.png")
+walk(0)
+:as
+pix("underground/void_s.png")
+walk(0)
+:at
+pix("underground/void_se.png")
+walk(0)
+:au
+pix("underground/dirt.png")
+walk(0)
+if(var("ld1_pool"), "=", 0)
+    addpix("water/magic_pool.png")
+else
+    addpix("water/pool.png")
+endif
+Action
+if(var("ld1_pool"), "=", 0)
+    dialog("The water in this pool sparkles with energy. As you drink some of \
+        it, your body pules with new life")
+    give("maxhp", 5)
+    give("hp", 10)
+    set("ld1_pool", 1)
+    addpix("water/pool.png")
+    delpix("water/magic_pool.png")
+    refresh()
+else
+    dialog("Just a normal pool")
+endif
+:av
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("ld2.txt", 26, 22)
+hero("hero_s")
+:aw
+pix("underground/dirt.png")
+if(var("ld1_icewall"), "=", 0)
+	walk(0)
+	addpix("underground/icewall.png")
+else
+	walk(1)
+	addpix("underground/icewall_open.png")
+endif
+Action
+if(var("firewand"), "<", 18)
+    dialog("You encounter a magical block of ice. No matter how much you chip at \
+    it with your weapon, it still reforms. You need to find something that will \
+    remove the barrier.")
+    if(var("firewand"), "=", 0)
+        set("firewand", 1)
+    endif
+    end()
+endif
+
+if(var("ld1_icewall"), "=", 0)
+    dialog("You blast through the wall with your wand.")
+    set("ld1_icewall", 1)
+    walk(1)
+    addpix("underground/icewall_open.png")
+    delpix("underground/icewall.png")
+endif

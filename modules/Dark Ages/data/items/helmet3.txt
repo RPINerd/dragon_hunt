@@ -1,0 +1,6 @@
+Name=Chain Coif
+type=3
+quality=2
+price=80
+description=Slightly more protective than leather.
+picture=items/chain_helmet.png

@@ -1,0 +1,273 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa ab ab ab ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ac ab ab ab ad ae ae ae ae af ab ab ab ab ab ab ab ag ag ag aa ab ab ab ab ab aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah ae ai ai ai ai aj ai ai ai ai ai ai ai ai ai ai ai af ab ab ah ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah aj ai ai ai ai ai ai ai ai ai ai ai ai ai al ai ai ai ai ai am ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah al ai ai ai ai ai ai ai an ao ao ao ao ao ao ao ap ai ai ai am ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai ai aq ai al ai ai ai am ai ai ai ar ai ai ai am ai ai ai am ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ad ai ai ai ai ai ai ai ai am ai ai ai ai ai ai ai am ai ai ai af ao ao as ao at aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa ah ae ai ai ai aj ai ai ai ai am ai ai au ai au ai ai am ai al ai ai ai aj ai aj ak ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa ah ae ai an ao ao ao ao ap ai am ai ai au ai au ai ai am ai ai ai ai ai ai ai ai ak ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa ah ae ai am ai ai ai ai am ai af ao aa ao as ao aa ao ad aj ai ai ai ai ai ai ai ak ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa ah ae ai am ai ai ai ai am ai ai ai am ai ai ai am al ai ai ai ai ai ai al ai ai ak ag aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ap ai am ai aq ai ai av ai ai aj am ai ae ai am ai ai ai ai ai an ao ao as ao ab ab aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai am ai ai ai ai am ai ai ai am ai ai ai am ai ai ai ai ai am ai ai ai ai ai ae af aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah al am ai ai ai ai am ai ai ai af ao as ao ad ai ai ai aj ai am ai ai ai ai ai ae ae ak aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai af ao ao ao ao ad ai ai ai ai ai ai ai ai ai ai ai ai ai am ai ai aw ai ai ae ae ak aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai ai ai ai ai al ai ai ai ai ai ai ai ai ai ai ai ai ai ai am ai ai ai ai ai ae an aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai ai ai ai ai ai ai ai ai ai ai ai ai ai al ai ai ai ai ai af ao ao ao ao ao at aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai aj ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ag ap ai ai ai ai ai ai ai ai ai al ai ax ai ai ai ai ai ai ai ai ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ag ah ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ag ah ai ai al ai ai ai ai ai ai ai ai ai ai ai ai ai ai aj ai ai ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ag ah ai ai ai an ao ao ao ao ao ap ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ag ah ai ai ai am ai ai ai ai ai am ai ai ai ai ai ai ai ai ai ai ai ai ai ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ag ad aj ai ai am ay ai ai ai ai am ai ai ai ai ai ai ai ai ai ai ai ai ai ai aj ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah aj aj al ai am ai ai ai ai ai av ai ai ai ai al al ai ai ai an ao ao ap ai aj ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah aj az ai ai am ai ai ai ai ai am ai ai ai ai ai ai ai ai ai am ai ai am ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai ai ai ai af ao ao ao ao ao ad aj ai ai ai ai ai ai ai ai am ax ai av ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai ai ai ai ai al ai ai ai ai ai ai ai ai ai ai ai ai ai ai am ai ai am ai ai ak aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ap ai aA ai ai ai ai ai ai ai ai ai ai ai ai ai ai aw ai ai af ao ao ad al aj af aB aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ag ap ai aC aD ai aA ai ai ai aj ai an at at at at ap ai ai ai ai ai aj al ae ae aE aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa at ap ae aF ae aG aH an at at aa aa aa aa aa aa ap ae ae an at at at at at at aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa at at at at at aa aa aa aa aa aa aa aa aa aa at at aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/stair_down.png")
+walk(0)
+Action
+if(var("helpdwarf"), ">", 1)
+    dialog("Why would I want to go down there again?")
+    end()
+endif
+
+move("dwarf2.txt", 8, 6)
+hero("hero_s")
+:ad
+pix("underground/rock_se.png")
+walk(0)
+:ae
+pix("underground/dirt.png")
+walk(1)
+:af
+pix("underground/rock_sw.png")
+walk(0)
+:ag
+pix("underground/rock.png")
+walk(0)
+:ah
+pix("underground/rock_e.png")
+walk(0)
+:ai
+pix("underground/dirt.png")
+walk(1)
+:aj
+pix("underground/dirt.png")
+walk(0)
+addpix("underground/stalag1.png")
+:ak
+pix("underground/rock_w.png")
+walk(0)
+:al
+pix("underground/dirt.png")
+walk(1)
+addpix("water/pool.png")
+:am
+pix("underground/rock_ew.png")
+walk(0)
+:an
+pix("underground/rock_nw.png")
+walk(0)
+:ao
+pix("underground/rock_ns.png")
+walk(0)
+:ap
+pix("underground/rock_ne.png")
+walk(0)
+:aq
+pix("underground/dirt.png")
+walk(0)
+addpix("people/old_dwarf_s.png")
+Action
+dialog("I don't know why any dwarves would want to live above ground, but some \
+of them do.")
+:ar
+pix("underground/dirt.png")
+walk(0)
+addpix("people/old_dwarf2_s.png")
+Action
+if(var("helpdwarf"), "=", 0)
+    dialog("So Bonebreaker allowed you to enter. As much as I trust his \
+    judgement, I don't have time for your problems. We have problems of our \
+    own down here.")
+    dialog("Our caves have always been infested with Greyor's hideous \
+    creatures. We didn't care. It was still better than living above ground \
+    with you humans and your greed, plagues, wars, and violent natures.")
+    dialog("As a result, our people became the greatest fighters on this \
+    planet. But even that isn't enough. Each year the creatures get stronger \
+    and stronger, and each year our population suffers.")
+    dialog("We don't know the source of these creatures, but they are stronger \
+    in the depths below us. None of the fighters we send down ever return. \
+    That is why we stole the piece of medallion.")
+    set("dialog1", generic_dialog("We need the piece to stop the beasts. \
+    I know the medallion may not \
+    help at all, but we must try something! I've said enough. You are \
+    dismissed and may return to the surface. \n \
+    (1) Wait! If I stop the creatures, will you return the medallion? \n \
+    (2) I'm out of here!", "1.png", "2.png"))
+    if(var("dialog1"), "=", 0)
+        dialog("Certainly. The medallion would be worthless to us if you could \
+        end our troubles. Not that it matters, the medallion is encased in a \
+        crystal even our strongest warriors cannot break.")
+        set("helpdwarf", 1)
+    endif
+endif
+if(var("helpdwarf"), "=", 1)
+        dialog("End the perils that exist within our caves, and the medallion \
+        is yours.")
+endif
+if(var("helpdwarf"), "=", 2)
+    dialog("Thank you for saving my people. Our bargain holds and you may have \
+    the medallion piece. Since it is encased in a magical crystal, you cannot \
+    possibly carry it.")
+    dialog("Monsters still inhabit the upper caves. They must be the result of \
+    some other disturbance. We can handle them ourselves, but you should be \
+    wary of them when traveling out of the caves.")
+    set("helpdwarf", 3)
+endif
+if(var("helpdwarf"), "<", 7)
+    if(var("helpdwarf"), ">", 2)
+        dialog("Return when you have discovered a way to break the crystal to \
+        claim your reward.")
+    endif
+endif
+if(var("helpdwarf"), "=", 7)
+    dialog("(You show your device to the Dwarven King. Together you ascend the \
+    tunnels to the light of the outer world. You position the apparatus, aim \
+    the beam, and shatter the magical barrier. The second medallion piece is \
+    yours.)")
+    dialog("(You return to the caves below.) The piece is yours to keep, as \
+    was the bargain. You may keep the magic horn given to you and you are \
+    welcome in our caves whenever you desire to return.")
+    set("medallion", "+", 1)
+    set("helpdwarf", 8)
+endif
+if(var("helpdwarf"), "=", 8)
+    dialog("Good journey brave warrior!")
+endif
+:as
+pix("underground/dirt_ns.png")
+walk(1)
+:at
+pix("underground/rock_n.png")
+walk(0)
+:au
+pix("underground/dirt.png")
+walk(0)
+addpix("people/dwarf2_s.png")
+Action
+dialog("Stay out of trouble, human!")
+:av
+pix("underground/dirt_ew.png")
+walk(1)
+:aw
+pix("underground/dirt.png")
+addpix("people/old_dwarf_s.png")
+walk(0)
+Action
+dialog("I don't know why any dwarves would want to live above ground, but some \
+of them do.")
+:ax
+pix("underground/dirt.png")
+addpix("people/dwarf2_s.png")
+walk(0)
+Action
+dialog("Stay out of trouble, human!")
+:ay
+pix("underground/dirt.png")
+walk(0)
+addpix("people/dwarf_woman_s.png")
+Action
+if(question("I can bandage your wounds for 50 gold. Interested?"), "=", 1)
+    if(stat("gold"), ">=", 50)
+        give("gold", -50)
+        give("hp", stat("maxhp"))
+        give("ep", stat("maxep"))
+        info("You are healed")
+    else
+        dialog("How odd. You don't have enough money.")
+    endif
+endif
+:az
+pix("underground/dirt.png")
+walk(1)
+if(var("dwarf_pool"), "=", 0)
+    addpix("water/magic_pool.png")
+else
+    addpix("water/pool.png")
+endif
+Action
+if(var("dwarf_pool"), "=", 0)
+    dialog("The water in this pool sparkles with energy. As you drink some of \
+        it, your body pules with new life")
+    give("maxhp", 5)
+    give("hp", 10)
+    set("dwarf_pool", 1)
+    addpix("water/pool.png")
+    delpix("water/magic_pool.png")
+    refresh()
+else
+    dialog("Just a normal pool")
+endif
+:aA
+pix("underground/dirt.png")
+walk(1)
+addpix("stones3.png")
+:aB
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("dwarf1.txt", 8, 5)
+hero("hero_s")
+:aC
+pix("underground/dirt.png")
+walk(1)
+addpix("stones2.png")
+:aD
+pix("underground/dirt.png")
+walk(0)
+addpix("big_rocks.png")
+:aE
+pix("underground/rock_w_tip.png")
+walk(1)
+:aF
+pix("underground/dirt.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("dwarftown_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("dwarftown_rock", 1)
+endif
+:aG
+pix("underground/dirt.png")
+walk(1)
+addpix("stones2.png")
+:aH
+pix("underground/dirt.png")
+walk(0)
+addpix("big_rocks.png")

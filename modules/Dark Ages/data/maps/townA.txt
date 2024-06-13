@@ -1,0 +1,549 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa ab ab ab ab ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa ab ac ad ad ae ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa af ag ag ah aa aa aa
+aa ab ab ab ab ai aj aj ak ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab al aj aj am ab ab aa
+aa ab ab ab ab al aj aj an ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ao aj aj ak ab ab aa
+aa ab ab ab ab ap aq aq ar aj aj aj aj aj aj aj aj aj aj aj as aj aj aj aj aj aj aj aj aj aj aj aj ap aq aq ar ab ab aa
+aa ab ab ab ab at au au av aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj at au au av ab ab aa
+aa ab ab ab ab aw ax ax ay as az aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aA as aB ax ax ay ab ab aa
+aa ab ab ab ab al aj aj aC aD au au au au au au au au au au au au au au au au au au au au au au aD aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC aD au au au au au au au au au au au au au au au au au au au au au au aD aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC aD au au au au au au au au au au au au au au au au au au au au au au aD aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC aF aG aG aG aG aG aG aG aG aG aG aG aG aG aG aG aG aG aG aG aG aG aG aF aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC ab ab ab aH ab aI ab ab ab ab ab aJ ab aK aL aM ab ab ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC ab aN ab ab ab aO aP aQ ab ab ab ab ab aR aS ab ab ab ab aT aU ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC ab ab ab aJ aV ab ab ab ab ab aW ab ab ab ab aX ab ab ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab al as aj aC ab aY ab ab ab ab aZ ab ab ab ab ab ab ab aZ ab ab ab ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC ab a0 a1 a1 a1 a1 a1 a1 a1 a1 a1 a1 a1 a1 a1 ab aU ab aQ ab aI ab aH ab aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC ab ab a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a3 ab ab ab ab ab aS ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC ab ab a4 a4 a4 a4 a4 a4 a4 a4 a4 a4 a4 a4 a5 a6 ab ab ab ab ab aQ ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC ab ab a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a7 a8 a9 ba ab ab ab ab ab ab ab aE aj as ak ab ab aa
+aa ab ab ab ab al aj aj aC ab ab bb bc bd bc bd bc be bf be bc bd bg bh a9 bi ba ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab al aj aj aC aV ab ab ab ab ab ab ab ab bj ab ab ab bk bh bl bm bn ab ab bo ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab bp aj aj aC ab ab ab bq ab ab ab ab ab bj ab br ab bk bh bl bm bn ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab bp aj aj bs ab ab ab ab ab ab ab ab ab bj ab ab ab bk bh bt bm bn ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab bp aj aj bs ab ab ab ab ab ab aH ab ab bj ab ab ab bk bu bv bw bn ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab bp aj aj bs ab aQ ab ab ab ab ab ab ab bj ab ab ab bx bv by bv bz ab ab ab ab aI ab aE aj aj ak ab ab aa
+aa ab ab ab ab bA aj aj bs ab ab ab ab ab ab ab ab ab bB bC ab ab bb bD bE bD bF ab ab ab ab aS ab aE aj aj ak ab ab aa
+aa ab ab ab ab bp aj aj bs ab ab ab ab ab ab aI ab ab ab bB bG bG bH bH bI ab ab ab aH ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab bp aj aj bs ab ab ab bo ab ab aS ab ab bJ ab bj bj ab ab ab ab ab ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab bK aq aq bL ab ab ab ab ab ab ab ab ab ab ab bj bj ab ab ab ab ab ab ab ab ab ab ab bM aq aq bN ab ab aa
+aa ab ab ab ab al aj aj aC ab ab ab ab ab ab ab aQ ab ab ab bj bj ab ab ab ab ab ab ab ab ab ab ab aE aj aj ak ab ab aa
+aa ab ab ab ab ai aj aj bO ab bP bQ bQ bQ bQ bQ bQ bQ bQ bQ bR bR bQ bQ bQ bQ bQ bQ bQ bQ bQ bS ab bT aj aj am ab ab aa
+aa ab ab ab ab ap aq aq bU bV bW bW bW bW bW bW bW bW bW bW bX bX bW bW bW bW bW bW bW bW bW bW bV bY bZ bZ b0 ab ab aa
+aa ab ab ab ab at au au av aj aj aj aj aj aj aj aj aj aj bW bW bW bV aj aj aj aj aj aj aj aj aj aj at au au av ab ab aa
+aa ab ab ab ab at b1 b1 au aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq aq au b1 b1 av ab ab aa
+aa ab ab ab ab at au au au au au au au au au au au au au au au au au au au au au au au au au au au au au au av ab ab aa
+aa ab ab ab ab at au au au au au au au au au au au au au au au au au au au au au au au au au au au au au au av ab ab aa
+aa ab ab ab ab at au au au au au au au au au au au au au au au au au au au au au au au au au au au au au au av ab ab aa
+aa ab ab ab ab b2 aG aG aG aG aG aG aG aG aG aG aG aG aG aG b3 b3 aG aG aG aG aG aG aG aG aG aG aG aG aG aG b4 ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bj bj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bj bj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab aa bj bj aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+:ab
+pix("grass.png")
+walk(1)
+:ac
+pix("grass.png")
+walk(1)
+addpix("castle/castle_n.png")
+addpix("castle/castle_w_part.png")
+:ad
+pix("grass.png")
+walk(1)
+addpix("castle/castle_n.png")
+:ae
+pix("grass.png")
+walk(1)
+addpix("castle/castle_ne.png")
+addpix("castle/castle_e_part.png")
+:af
+pix("grass.png")
+walk(0)
+addpix("castle/castle_n.png")
+addpix("castle/castle_w_part.png")
+:ag
+pix("grass.png")
+walk(0)
+addpix("castle/castle_n.png")
+:ah
+pix("grass.png")
+walk(0)
+addpix("castle/castle_ne.png")
+addpix("castle/castle_e_part.png")
+:ai
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_w.png")
+addpix("people/warrior_s.png")
+:aj
+pix("stone_interior/flagstone.png")
+walk(1)
+:ak
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_e.png")
+:al
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_w.png")
+:am
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_e.png")
+addpix("people/warrior_s.png")
+:an
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_e.png")
+addpix("furnishings/stone_trapdoor.png")
+:ao
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_w.png")
+addpix("furnishings/stone_trapdoor.png")
+:ap
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_w.png")
+addpix("castle/castle_nw.png")
+:aq
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_n.png")
+:ar
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_e.png")
+addpix("castle/castle_ne.png")
+:as
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("people/warrior_s.png")
+:at
+pix("town/wall_w.png")
+walk(0)
+:au
+pix("town/wall.png")
+walk(0)
+:av
+pix("town/wall_e.png")
+walk(0)
+:aw
+pix("stone_interior/wall_floor_w.png")
+walk(1)
+addpix("castle/castle_w_part.png")
+:ax
+pix("stone_interior/inner_flagstone_doorway.png")
+walk(1)
+:ay
+pix("stone_interior/wall_floor_e.png")
+walk(1)
+addpix("castle/castle_e_part.png")
+:az
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_nw.png")
+:aA
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_ne.png")
+:aB
+pix("stone_interior/wall_floor_w.png")
+walk(0)
+addpix("castle/castle_w_part.png")
+:aC
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_e.png")
+:aD
+pix("town/wall.png")
+walk(0)
+addpix("furnishings/ladder.png")
+:aE
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_w.png")
+:aF
+pix("town/wall_s.png")
+walk(0)
+addpix("furnishings/ladder.png")
+Action
+dialog("A grumpy-looking soldier guards the ladder")
+:aG
+pix("town/wall_s.png")
+walk(0)
+:aH
+pix("flowers.png")
+walk(1)
+:aI
+pix("treetop.png")
+walk(0)
+:aJ
+pix("garden.png")
+walk(1)
+:aK
+pix("tree_left.png")
+walk(1)
+:aL
+pix("tree_center.png")
+walk(0)
+:aM
+pix("tree_right.png")
+walk(1)
+:aN
+pix("stones.png")
+walk(1)
+:aO
+pix("double_tree3.png")
+walk(0)
+:aP
+pix("small_tree_right2.png")
+walk(1)
+:aQ
+pix("red_flowers.png")
+walk(1)
+:aR
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("townA_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("townA_rock", 1)
+endif
+:aS
+pix("treetrunk.png")
+walk(0)
+:aT
+pix("grass.png")
+walk(1)
+addpix("stones3.png")
+:aU
+pix("small_flowers.png")
+walk(1)
+:aV
+pix("large_shrub.png")
+walk(0)
+:aW
+pix("grass.png")
+walk(1)
+addpix("stones2.png")
+:aX
+pix("tree.png")
+walk(0)
+:aY
+pix("treetop2.png")
+walk(0)
+:aZ
+pix("small_shrub.png")
+walk(0)
+:a0
+pix("treetrunk2.png")
+walk(0)
+:a1
+pix("roof_blue/roof_n_back.png")
+walk(0)
+:a2
+pix("roof_blue/roof_n_top.png")
+walk(0)
+:a3
+pix("roof_blue/roof_n_top_right.png")
+walk(0)
+:a4
+pix("roof_blue/roof_n.png")
+walk(0)
+:a5
+pix("roof_blue/roof_n_right.png")
+walk(0)
+:a6
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_mid_n.png")
+:a7
+pix("roof_blue/roof_n_bot.png")
+walk(0)
+:a8
+pix("roof_blue/roof_n_bot_right.png")
+walk(0)
+addpix("roof_green/roof_nw.png")
+:a9
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_mid.png")
+:ba
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_ne.png")
+:bb
+pix("town/wood_wall_sw.png")
+walk(0)
+:bc
+pix("town/wood_window_s.png")
+walk(0)
+:bd
+pix("town/wood_wall_s.png")
+walk(0)
+:be
+pix("town/wood_sign_weapon.png")
+walk(0)
+:bf
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shopA.txt", 18, 20)
+hero("hero_n")
+:bg
+pix("town/wood_window_s.png")
+walk(0)
+addpix("roof_green/roof_nw.png")
+:bh
+pix("roof_green/roof_w.png")
+walk(0)
+:bi
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_e.png")
+:bj
+pix("road/road_ns.png")
+walk(1)
+:bk
+pix("roof_green/roof_w_bot.png")
+walk(0)
+:bl
+pix("roof_green/roof_mid.png")
+walk(0)
+:bm
+pix("roof_green/roof_e.png")
+walk(0)
+:bn
+pix("roof_green/roof_e_bot.png")
+walk(0)
+:bo
+pix("mixed_flowers.png")
+walk(1)
+:bp
+walk(0)
+pix("stone_interior/flagstone.png")
+addpix("castle/castle_w.png")
+:bq
+pix("grass.png")
+walk(0)
+addpix("big_rocks.png")
+:br
+pix("grass.png")
+walk(0)
+addpix("people/dwarf2_s.png")
+Action
+if(var("horn"), "<", 2)
+    dialog("(Bonebreaker) Surprised? Who did you expect? Only a dwarf would \
+    have the strategic capabilites to run a fort like this.")
+    end()
+endif
+
+if(var("horn"), "=", 2)
+    dialog("(Bonebreaker) So you need to get into the city... \n \n \
+    First, you have to prove yourself. There's a goblin raiding party coming \
+    to attack. You must help us defend this fort. Go to the inn and rest. Come \
+    back when you're ready to fight.")
+    set("horn", 3)
+    end()
+endif
+
+if(var("horn"), "=", 3)
+    dialog("(Bonebreaker) Get ready, here they come!")
+    set("temp1", 0)
+    set("temp1", "+", attack("Goblin"))
+    set("temp1", "+", attack("Goblin"))
+    set("temp1", "+", attack("Goblin"))
+    set("temp1", "+", attack("Goblin"))
+    set("temp1", "+", attack("Goblin"))
+
+    if(var("temp1"), "<", 5)
+        dialog("(Bonebreaker) We held them off, but too many got away. You \
+        will have to help us when they return.")
+        end()
+    endif
+
+    dialog("(Bonebreaker) You held them off! Great job! Here's the horn, as I \
+    promised. Rest up then speak with me to find out how to use it.")
+    set("horn", 4)
+    end()
+endif
+
+dialog("Thank you for your help. The Dwarven Tunnels are in the southern part \
+of the continent. Just blow the horn to enter.")
+set("horn", 5)
+:bs
+walk(0)
+pix("stone_interior/flagstone.png")
+addpix("castle/castle_e.png")
+:bt
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_mid_s.png")
+:bu
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_sw.png")
+:bv
+pix("town/wood_window.png")
+walk(0)
+:bw
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_se.png")
+:bx
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_sw_bot.png")
+:by
+pix("town/wood_wall.png")
+walk(0)
+:bz
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_se_bot.png")
+:bA
+walk(0)
+pix("stone_interior/flagstone.png")
+addpix("castle/castle_w.png")
+addpix("people/warrior_s.png")
+:bB
+pix("road/road_ne.png")
+walk(1)
+:bC
+pix("road/road_sw.png")
+walk(1)
+:bD
+pix("town/wood_sign_inn.png")
+walk(0)
+:bE
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shopA.txt", 24, 26)
+hero("hero_n")
+:bF
+pix("town/wood_wall_se.png")
+walk(0)
+:bG
+pix("road/road_t.png")
+walk(1)
+:bH
+pix("road/road_ew.png")
+walk(1)
+:bI
+pix("road/road_nw.png")
+walk(1)
+:bJ
+pix("grass.png")
+walk(0)
+addpix("people/man3_s.png")
+Action
+dialog("Welcome to the Northern Post.")
+:bK
+pix("town/wall.png")
+walk(0)
+addpix("stone_interior/flagstone.png")
+addpix("castle/castle_w.png")
+addpix("castle/castle_nw.png")
+addpix("castle/castle_w_part.png")
+:bL
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_e.png")
+addpix("castle/castle_ne.png")
+addpix("castle/castle_e_part.png")
+:bM
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_w.png")
+addpix("castle/castle_n.png")
+addpix("castle/castle_w_part.png")
+:bN
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/castle_e.png")
+addpix("castle/castle_ne.png")
+addpix("castle/castle_e_part.png")
+:bO
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_e.png")
+addpix("furnishings/stone_trapdoor.png")
+:bP
+pix("grass.png")
+walk(1)
+addoverpix("castle/castle_nw.png")
+:bQ
+pix("grass.png")
+walk(1)
+addoverpix("castle/castle_n.png")
+:bR
+pix("road/road_ns.png")
+walk(1)
+addoverpix("castle/castle_n.png")
+:bS
+pix("grass.png")
+walk(1)
+addoverpix("castle/castle_ne.png")
+:bT
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_w.png")
+addpix("furnishings/stone_trapdoor.png")
+:bU
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/castle_e.png")
+addpix("castle/castle_ne.png")
+:bV
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/warrior_s.png")
+:bW
+pix("stone_interior/flagstone.png")
+walk(0)
+:bX
+pix("grass.png")
+walk(1)
+addoverpix("stone_interior/flagstone.png")
+Action
+move("world4x1.txt", 17, 21)
+hero("hero_s")
+:bY
+pix("town/wall.png")
+walk(1)
+addpix("stone_interior/flagstone.png")
+addpix("castle/castle_w.png")
+addpix("castle/castle_nw.png")
+:bZ
+pix("town/wall.png")
+walk(0)
+addpix("stone_interior/flagstone.png")
+addpix("castle/castle_n.png")
+:b0
+pix("town/wall.png")
+walk(0)
+addpix("stone_interior/flagstone.png")
+addpix("castle/castle_e.png")
+addpix("castle/castle_ne.png")
+:b1
+pix("town/window.png")
+walk(0)
+:b2
+pix("town/wall_sw.png")
+walk(0)
+:b3
+pix("road/through_wall.png")
+walk(1)
+:b4
+pix("town/wall_se.png")
+walk(0)

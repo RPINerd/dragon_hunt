@@ -1,0 +1,353 @@
+aa ab ab ab ab ab ab ab ab ac ad ae ab ab ab ab ab af ag ag ah ab ab ab 
+ab ab ab ab ab ab ab ab ab ac ad ai ab ab ab ab af ag ag ag ah ab ab ab 
+ab ab ab ab ab ab ab ab ab ac ad ad ae ab ab af ag ag ag ag ah ab ab ab 
+ab ab ab ab ab ab ab ab ab ab aj ad ae ab ab ak ag ag ag ag ah ab ab ab 
+ab ab ab ab ab ab ab ab ab ab ac ad ai al ab ak ag ag ag ag ah am ab ab 
+ab ab ab ab ab ab ab ab ab ab ac ad ad ad ae an ag ag ag ag ao ap aq ab 
+ab ab ab ab ab ab ab ab ab ab ab ar aj ad ai as ag ag ag ag ag ao ab ab 
+ab ab ab ab ab ab ab ab ab ab ab ab ac ad ad at au av ag ag ag ag ah aw 
+ab ab ab ab ab ab ab ab ab ab ab ab ab ar ar ar ax ag ag ag ag ay ac ad 
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ax ag ag ag ah ac ad 
+ao ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab az ag ag ay ab aw ad 
+ag ah ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aA aA am aB ad ad 
+ag ao ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab al al al al aC ad ad 
+ag aD ao ab ab ab ab ab ab ab al al al al al al aw ad ad ad ad ad ad ad 
+aA aE aF ab ab al al al al aw ad ad ad ad ad ad ad ad ad ad ad ad ad ad 
+aG aG ay al aw ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad 
+ag aF aw ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad 
+at at ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad 
+ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad 
+ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad 
+ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad 
+ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad 
+
+:def
+battle_bg=generic.png
+level_left=world2x4.txt
+level_right=world4x4.txt
+level_up=world3x3.txt
+level_upleft=world2x3.txt
+level_upright=world4x3.txt
+:aa
+pix("grass.png")
+walk(1)
+if(stat("level"), "<", 2)
+	mapstat("addmonster", "Orc")
+	end()
+endif
+if(stat("level"), "<", 4)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	end()
+endif
+if(stat("level"), "<", 6)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	end()
+endif
+if(stat("level"), "<", 8)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Acid Slime")
+	end()
+endif
+if(stat("level"), "<", 10)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Giant Spider")
+	end()
+endif
+if(stat("level"), "<", 12)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Wizard")
+	end()
+endif
+if(stat("level"), "<", 14)
+	mapstat("addmonster", "Orc")
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Goblin")
+	end()
+endif
+if(stat("level"), "<", 16)
+	mapstat("addmonster", "Ferocious Armless")
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Skeleton")
+	end()
+endif
+if(stat("level"), "<", 18)
+	mapstat("addmonster", "Highway Bandit")
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Troll")
+	end()
+endif
+if(stat("level"), "<", 20)
+	mapstat("addmonster", "Acid Slime")
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Death Knight")
+	end()
+endif
+if(stat("level"), "<", 22)
+	mapstat("addmonster", "Giant Spider")
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Bronze Golem")
+	end()
+endif
+if(stat("level"), "<", 24)
+	mapstat("addmonster", "Wizard")
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Dark Goblin")
+	end()
+endif
+if(stat("level"), "<", 26)
+	mapstat("addmonster", "Goblin")
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Iron Golem")
+	end()
+endif
+if(stat("level"), "<", 28)
+	mapstat("addmonster", "Skeleton")
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Gold Dragon")
+	end()
+endif
+if(stat("level"), "<", 28)
+	mapstat("addmonster", "Troll")
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Lost Soul")
+	mapstat("addmonster", "Lost Soul")
+	end()
+endif
+if(stat("level"), "<", 30)
+	mapstat("addmonster", "Death Knight")
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Lost Soul")
+	mapstat("addmonster", "Ice Dragon")
+	mapstat("addmonster", "Ice Dragon")
+	end()
+endif
+if(stat("level"), "<", 32)
+	mapstat("addmonster", "Bronze Golem")
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Lost Soul")
+	mapstat("addmonster", "Ice Dragon")
+	mapstat("addmonster", "Platinum Golem")
+	mapstat("addmonster", "Platinum Golem")
+	end()
+endif
+if(stat("level"), "<", 34)
+	mapstat("addmonster", "Dark Goblin")
+	mapstat("addmonster", "Iron Golem")
+	mapstat("addmonster", "Gold Dragon")
+	mapstat("addmonster", "Lost Soul")
+	mapstat("addmonster", "Ice Dragon")
+	mapstat("addmonster", "Platinum Golem")
+	mapstat("addmonster", "Black Dragon")
+	mapstat("addmonster", "Black Dragon")
+	end()
+endif
+#above level 34:
+mapstat("addmonster", "Iron Golem")
+mapstat("addmonster", "Gold Dragon")
+mapstat("addmonster", "Lost Soul")
+mapstat("addmonster", "Ice Dragon")
+mapstat("addmonster", "Platinum Golem")
+mapstat("addmonster", "Black Dragon")
+mapstat("addmonster", "Black Dragon")
+:ab
+pix("grass.png")
+walk(1)
+:ac
+pix("water/water_w.png")
+walk(1)
+:ad
+pix("water/water.png")
+walk(0)
+:ae
+pix("water/water_e.png")
+walk(1)
+:af
+pix("hills/hills_n2_e.png")
+walk(0)
+:ag
+pix("hills/hills_n4.png")
+walk(0)
+:ah
+pix("hills/hills_e.png")
+walk(0)
+:ai
+pix("water/water_ne.png")
+walk(1)
+:aj
+pix("water/water_sw.png")
+walk(1)
+:ak
+pix("hills/hills_n3_e.png")
+walk(0)
+:al
+pix("water/water_n.png")
+walk(1)
+:am
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 1)
+:an
+pix("hills/mine_w.png")
+walk(0)
+Action
+if(var("helpdwarf"), "<", 3)
+    dialog("You see no reason to enter.")
+else
+    move("crystal1.txt", 10, 8)
+    hero("hero_s")
+endif
+:ao
+pix("hills/hills_n2_w.png")
+walk(0)
+:ap
+pix("town.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+	move("town6.txt", 18, 1)
+	hero("hero_s")
+endif
+if(var("temp1"), "=", 2)
+	move("town6.txt", 38, 12)
+	hero("hero_w")
+endif
+:aq
+pix("grass.png")
+walk(1)
+Action
+set("temp1", 2)
+:ar
+pix("water/water_s.png")
+walk(1)
+:as
+pix("hills/hills_n2_e_double.png")
+walk(0)
+:at
+pix("water_hills/hills_s_water.png")
+walk(0)
+:au
+pix("water_hills/hills_ns_water.png")
+walk(0)
+:av
+pix("water_hills/hills_n3_e_water.png")
+walk(0)
+:aw
+pix("water/water_nw.png")
+walk(1)
+:ax
+pix("hills/hills_w2.png")
+walk(0)
+:ay
+pix("hills/hills_e2.png")
+walk(0)
+:az
+pix("hills/hills_w.png")
+walk(0)
+:aA
+pix("hills/hills_s.png")
+walk(1)
+:aB
+pix("town.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+	move("town7.txt", 2, 20)
+	hero("hero_e")
+endif
+if(var("temp1"), "=", 2)
+	move("town7.txt", 17, 36)
+	hero("hero_n")
+endif
+:aC
+pix("water/water_nw.png")
+walk(1)
+Action
+set("temp1", 2)
+:aD
+pix("hills/hills_n4_double.png")
+walk(0)
+:aE
+pix("hills/mine_w.png")
+walk(0)
+Action
+if(var("horn"), "<", 5)
+    dialog("From a distance, you see a strange cave. But when you get closer, \
+    it mysteriously vanishes.")
+else
+    dialog("You see the Dwarven Caves in the distance. When you get close, \
+    they seem to disappear. You pull Bonebreaker's horn from your pack and \
+    belt a long, low note. The entrance appears!")
+    move("dwarf1.txt", 35, 32)
+    hero("hero_s")
+endif
+:aF
+pix("hills/hills_n3_w.png")
+walk(0)
+:aG
+pix("hills/hills_n3.png")
+walk(0)

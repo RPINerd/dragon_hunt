@@ -1,0 +1,242 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa ac ad aa aa ae af ag aa aa aa aa aa aa aa aa ah ad aa aa aa aa
+aa ah ai aa aj aa ac ak al af am an an an an ai aa aa aa aa aa aa aa aa aa
+aa aa aj aa ac an ak ak al af am ak ak ak ak ao ah an ap ad ah an ad aq aa
+aa aa aa ac ar ak ak ak al as am ak ak ak ak ad aa aj aa aa aa aj ah ai aa
+aa at au av ak ak ak ak aw ax ay ak ak ak az aa aa aa aa aa aa aa ah ao aa
+aa at aA aA aB ak ak ak aC aD aE ak ak ak ak ad aa aa ah an ad aa aa aa aa
+aa at aA aA aB ak ak ak ak ak ak ak ak aF ak ai aa aa ah ak ad aa aa aa aa
+aa at aA aG ak ak ak ak ak ak ak ak ak aH ak ak ai aa ah ak ad aa aa aa aa
+aa aa aI aB ak ak aF ak ak ak ak ak ak ak ak ak ak ad aa aj aa aa aa aa aa
+aa aa aa aJ ak ak aH ak ak ak ak ak ak ak ak ak ak ai aa aa aa aa aa aa aa
+aa aa aa ac ak ak ak ak aK ak ak ak ak ak ak ak ak ak aL aa aa aa aa aa aa
+aa aa ah ak ak ak aM aM aM aM aM ak ak ak ak ak ak ak ak ai aa aa aa aa aa
+aa aa aa aJ ak ak aM aM aM aM aM ak ak ak aN ak ak ak ak ak ad aa aa aa aa
+aa aa aa ah ak ak aM aM aM aM aM ak ak ak ak ak ak ak ak ak ad ah ap ad aa
+aa aa aa ah ak ak aM aM aM aM aM ak ak ak ak ak ak ak ak az aa ah ai aa aa
+aa ah ad aa aJ ak aM aM aM aM aM ak ak ak aO aO aO ak ak ak ad ah ak ai aa
+aa aa aa aa ah aP ak aN ak ak aQ aQ ak ak aO aO aO ak ak ak ad aa aJ aR aa
+aa aa ah ad aa aa aJ aQ aQ ao aa aa aJ ak aO aO aO ak aS ak ai aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aJ aQ ak ak ak ak ak ak ad aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aJ aQ ak aQ aQ ao aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aj aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("hills/hills_n4.png")
+walk(0)
+:ab
+pix("hills/hills_n4.png")
+walk(0)
+addpix("roof_red/roof_mid_n.png")
+:ac
+pix("hills/hills_e2.png")
+walk(0)
+:ad
+pix("hills/hills_n3_e.png")
+walk(0)
+:ae
+pix("hills/hills_e2.png")
+walk(0)
+addpix("roof_red/roof_nw.png")
+:af
+pix("roof_red/roof_mid.png")
+walk(0)
+:ag
+pix("hills/hills_w2.png")
+walk(0)
+addpix("roof_red/roof_ne.png")
+:ah
+pix("hills/hills_n3_w.png")
+walk(0)
+:ai
+pix("hills/hills_w2.png")
+walk(0)
+:aj
+pix("hills/hills_n3.png")
+walk(0)
+:ak
+pix("grass.png")
+walk(1)
+:al
+pix("roof_red/roof_w_bot.png")
+walk(0)
+:am
+pix("roof_red/roof_e_bot.png")
+walk(0)
+:an
+pix("hills/hills_s.png")
+walk(1)
+:ao
+pix("hills/hills_n2_e.png")
+walk(0)
+:ap
+pix("hills/hills_n_s.png")
+walk(0)
+:aq
+pix("hills/hills_n_center.png")
+walk(0)
+:ar
+pix("grass.png")
+walk(0)
+if(var("crystal_pool"), "=", 0)
+    addpix("water/magic_pool.png")
+else
+    addpix("water/pool.png")
+endif
+Action
+if(var("crystal_pool"), "=", 0)
+    dialog("The water in this pool sparkles with energy. As you drink some of \
+        it, your body pules with new life")
+    give("maxhp", 5)
+    give("hp", 10)
+    set("crystal_pool", 1)
+    addpix("water/pool.png")
+    delpix("water/magic_pool.png")
+    refresh()
+else
+    dialog("Just a normal pool")
+endif
+:as
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_mid_s.png")
+:at
+pix("water_hills/hills_n3_w_water.png")
+walk(0)
+:au
+pix("water_hills/hills_s_water.png")
+walk(0)
+:av
+pix("grass.png")
+walk(1)
+addpix("water/water_ne_trans.png")
+:aw
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:ax
+pix("town/wood_window.png")
+walk(0)
+:ay
+pix("town/wood_wall_e.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:az
+pix("hills/hills_w.png")
+walk(0)
+:aA
+pix("water/water.png")
+walk(0)
+:aB
+pix("grass.png")
+walk(1)
+addpix("water/water_e_trans.png")
+:aC
+pix("town/wood_wall_sw.png")
+walk(0)
+:aD
+pix("town/wood_wall_door.png")
+walk(0)
+Action
+dialog("The door is locked.")
+:aE
+pix("town/wood_wall_se.png")
+walk(0)
+:aF
+pix("treetop.png")
+walk(0)
+:aG
+pix("grass.png")
+walk(1)
+addpix("water/water_se_trans.png")
+:aH
+pix("treetrunk.png")
+walk(0)
+:aI
+pix("water_hills/hills_n2_w_water.png")
+walk(0)
+:aJ
+pix("hills/hills_n2_w.png")
+walk(0)
+:aK
+pix("grass.png")
+walk(0)
+addpix("people/old_man_s2.png")
+Action
+if(var("helpdwarf"), ">", 5)
+    dialog("Good luck in your quest!")
+    end()
+endif
+
+dialog("Well, what have we here? It's been two years since the last visitor! \
+Surprised to find someone living up here? Hehehe. I don't think I could leave \
+if I wanted to.")
+dialog("At least the monsters don't come here because of the sunlight and I can \
+grow all the food I need over there. Why, this is probably the perfect \
+existence.")
+dialog("(You finally manage to quell his incessant ramblings long enough to \
+ask about the Diamant.) Diamant? Hehehe. 50 years ago, I came here to escape \
+the world.")
+dialog("Little did I know that the world would seek me out. Year after year, \
+brave young adventurers would venture into these caves searching for the prized \
+Diamant. None of them ever found it.")
+dialog("It is the stuff of legends! Ever wonder why no one has seen it in \
+centuries? Because it doesn't exist, right? Ahh, but it does! I've combed \
+these caves all these years. I know them backward and forward. And I also know \
+how to get the Diamant!")
+
+if(var("helpdwarf"), "<", 5)
+    set("helpdwarf", 5)
+endif
+
+dialog("(You hurredly ask where to find the Diamant.) Hehehe. Need it, do you? \
+Ahh, but I'm not so senile in all these years. You, like all the other \
+adventurers, must play the game.")
+dialog("It's quite simple, just a riddle. Tell me my name, and I will tell you \
+where to find the Diamant.")
+
+if(var("know_name"), "=", 1)
+    dialog("Your name is Einsiedler. \n \n \n \
+    Hehehe! Correct! In 50 years, not one soul guessed it! I'll tell you where \
+    the Diamant is.")
+    dialog("(He reaches into his robe and pulls out a sparkling jewel.) Here \
+    it is. Diamant is the rarest substance in the world. It takes millenia to \
+    form just one small crystal.")
+    dialog("This is the only Diamant in these caverns. It took me half my life \
+    to find it. It's yours now. Use it wisely. Farewell!")
+    set("helpdwarf", 6)
+else
+    dialog("Frank? Greg? Mork? Henry? ... \n \n \n \
+    Incorrect! The Diamant remains mine!")
+endif
+:aL
+pix("hills/mine_w.png")
+walk(1)
+Action
+move("crystal2.txt", 18, 12)
+hero("hero_s")
+:aM
+pix("farmland.png")
+walk(1)
+:aN
+pix("tree.png")
+walk(0)
+:aO
+pix("farmland2.png")
+walk(1)
+:aP
+pix("hills/hills_n_double.png")
+walk(0)
+:aQ
+pix("hills/hills_n.png")
+walk(0)
+:aR
+pix("hills/hills_n2_e_double.png")
+walk(0)
+:aS
+pix("small_shrub.png")
+walk(0)

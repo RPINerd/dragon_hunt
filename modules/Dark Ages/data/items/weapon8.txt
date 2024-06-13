@@ -1,0 +1,7 @@
+Name=Great Axe
+type=0
+quality=10
+price=2000
+description=The massive head on this axe gives it enough power to deeply \
+embed itself in a foe.
+picture=items/great_axe.png

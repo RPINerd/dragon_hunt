@@ -1,0 +1,344 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+aa ab ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ac ad aa 
+aa ae af af af af af af af af ag af af af af af af af af af af af af af af af af af af ae ah af ah af af ah af ah ag aa 
+aa ai aj aj aj aj aj aj aj aj ak aj aj aj aj al al al al al al al al al al aj aj aj aj am an an an an an an an an ao aa 
+aa ai ap aj aj ap aj aj ap aj ak aj aj aj aj ae af ae af ae ag af ag af ag aj aj aj aj aq aj aj aj aj aj aj aj aj ar aa 
+aa ai as aj aj as aj at as aj ak aj au aj aj av aw aq aj aq ak aj ak aj ak aj aj au aj aq aj aj aj aj ax aj aj aj ar aa 
+aa ai as aj aj as aj aj as aj ak aj aj aj aj ay az aA al aA aB al aB al aB aj aj aj aj aq aj aj aj aj aj aj aj aj ar aa 
+aa ai as aj aj as aj aj as aj ak aj aj aj aj aC aD af aE af aE aE af aF aG aj aj aj aj aq aj aj aj aj aj aj aj aj ar aa 
+aa ai as aj aj as aj aj as aj ak aj au aj aj al aH al al al al al al al al aj aj au aj aq aj aI an an an an an aJ ar aa 
+aa ai as aj aj as aj aj as aj ak aj aj aj aj ae aF ae aF af ae aK ag aE ag aL aj aj aj aq aj aj aj aj aj aj aj aj ar aa 
+aa ai as aj aj as aj aj as aj ak aj aj aj aj aq aj aq aj aj aq aM ak aj ak aj aj aj aj aq aj aj aj aj aj aj aj aj ar aa 
+aa ai as aj aj as aj aj as aj ak aj au aj aj aA al aA al al aA al aB al aB aj aj au aj aq aj aj aj aj aj aj aj aj ar aa 
+aa ai aN aj aj aN aj aj aN aj ak aj aj aj aj aC af af af af af af af af aG aj aj aj aj aq aI an an an an an an an ao aa 
+aa aO al al al al al al al al aB aj aj aj aj aj aj aj aP aP aP aP aj aj aj aj aj aj aj aA al al al al al al al al aQ aa 
+aa ae af af af af af af af aF aG aj au aj aj aj au aj aj aj aj aj aj au aj aj aj au aj aC aF af af af af af af af ag aa 
+aa ai aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj ar aa 
+aa ai aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj ar aa 
+aa ai aj aj au aj aj au aj aj au aj aj au aj aj au aj aj aj aj aj aj au aj aj au aj aj au aj aj au aj aj au aj aj ar aa 
+aa aO aH al al al al al al al al al al al al al aH al al al al al al al al al al al al al al al al al al al al al aQ aa 
+aa ae aR af af af af af af af af af af af af af aR af ae aF aF ag af aF af af af af af af af af af af af af af aF ag aa 
+aa ai aS aj aj aj aj aj aj aj aj aj aj aj aj aj aS aj aq aj aj ak aj aj aT aU aT aU aT aU aT aU aT aU aT aU aT aj ar aa 
+aa ai aj aj aj aj aj aj aV aj aW aj aj aU aj aj aj aj aq aj aj ak aj aj aT aj aT aj aT aj aT aj aT aj aT aj aT aj ar aa 
+aa ai aj aj aj aX aj aj aj aY aj aj aj aj aj aj aj aj aq aj aj ak aj aj aT aj aT aj aT aj aT aj aT aj aT aj aT aj ar aa 
+aa ai aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aq aj aj ak aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj aj ar aa 
+aa ai aj aj aj aj aj aj aX aj aj aj aj aZ aj aj aW aj aq aj aj ak aj aj aT aj aT aj aT aj aT aj aT aj aT aj aT aj ar aa 
+aa ai aj aX aj aj aj aj aj aj aj aj aX aj ap aj aj aj aq aj aj ak aj aj aT aj aT aj aT aj aT aj aT a0 aT aj aT aj ar aa 
+aa ai aj aj aj aV aj aj aj aj aW aj aj aj aN aj aj aj aq aj aj ak aj aj aT aj aT aj aT aj aT aj aT aj aT aj aT aj ar aa 
+aa aO al al al al al al al al al al al al al al al al aA al al aB al al al al al al al al al al al al al al al al aQ aa 
+aa a1 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a3 a3 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a2 a4 aa 
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa 
+
+:def
+monster=Dark Goblin
+monster=Goblin
+battle_bg=castle.png
+:aa
+pix("castle/grass_night.png")
+walk(0)
+:ab
+pix("castle/grass_night.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_w_trans.png")
+:ac
+pix("castle/grass_night.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_trans.png")
+:ad
+pix("castle/grass_night.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:ae
+pix("stone_interior/wall_nw.png")
+walk(0)
+:af
+pix("stone_interior/wall_floor.png")
+walk(0)
+:ag
+pix("stone_interior/wall_ne.png")
+walk(0)
+:ah
+pix("stone_interior/wall_fountain.png")
+walk(0)
+:ai
+pix("stone_interior/wall_w.png")
+walk(1)
+:aj
+pix("stone_interior/flagstone.png")
+walk(1)
+:ak
+pix("stone_interior/wall_e.png")
+walk(1)
+wall_e(1)
+:al
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:am
+pix("stone_interior/counter_left_wall.png")
+walk(1)
+wall_w(1)
+:an
+pix("stone_interior/counter.png")
+walk(0)
+:ao
+pix("stone_interior/counter_right_wall.png")
+walk(1)
+:ap
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table_n.png")
+:aq
+pix("stone_interior/wall_w.png")
+walk(1)
+wall_w(1)
+:ar
+pix("stone_interior/wall_e.png")
+walk(1)
+:as
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table_middle.png")
+:at
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("monsters/Dark Goblin.png")
+Action
+if(var("firewand"), "!=", 11)
+	dialog("Stupid human. Go back to cell.")
+	end()
+endif
+set("dialog1", generic_dialog("You want necklace? 100 gold. Ok? \n \
+(1) Yes. \n \
+(2) No way ugly bastard!", "1.png", "2.png"))
+if(var("dialog1"), "=", 0)
+	if(stat("gold"), ">=", 100)
+		give("gold", -100)
+		dialog("Her, You takes it, then.")
+		set("firewand", 12)
+	else
+		dialog("You no have 'nuf gold. You no get necklace. Now go.")
+	endif
+endif
+:au
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/column.png")
+:av
+pix("stone_interior/wall_w.png")
+walk(1)
+wall_w(1)
+addpix("stones3.png")
+:aw
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("goblin_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("goblin_rock", 1)
+endif
+:ax
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("monsters/Dark Goblin.png")
+Action
+if(var("firewand"), "<", 9)
+	dialog("I'm not cooking you today, human. Get back in your cell.")
+	end()
+endif
+if(var("firewand"), ">", 12)
+	dialog("I'm not cooking you today, human. Get back in your cell.")
+	end()
+endif
+dialog("(You ask for food for the guard) No! I will not cook for him. He is \
+in Glarg's patrol. Glarg got mad and killed my servants! I no cook for his \
+patrol unless he give his necklace.")
+if(var("firewand"), "=", 9)
+	set("firewand", 10)
+endif
+if(var("firewand"), "=", 12)
+	dialog("Oooo! The necklace. Ok. I cook now. Here is food for guard.")
+	set("firewand", 13)
+endif
+:ay
+pix("stone_interior/wall_sw.png")
+walk(1)
+wall_w(1)
+addpix("stones3.png")
+:az
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+addpix("stones2.png")
+Action
+set("temp1", 0)
+:aA
+pix("stone_interior/wall_sw.png")
+walk(1)
+wall_w(1)
+:aB
+pix("stone_interior/wall_se.png")
+walk(1)
+wall_e(1)
+:aC
+pix("stone_interior/wall_floor_w.png")
+walk(0)
+:aD
+pix("stone_interior/inner_flagstone_doorway.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+	info("It appears that the goblins tried to keep a powerful mage in this \
+	cell,")
+	info("if the rubble and bloodstains are any indication.")
+endif
+:aE
+pix("stone_interior/jail_door.png")
+walk(0)
+:aF
+pix("stone_interior/inner_flagstone_doorway.png")
+walk(1)
+:aG
+pix("stone_interior/wall_floor_e.png")
+walk(0)
+:aH
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+Action
+set("temp1", 1)
+:aI
+pix("stone_interior/counter_left.png")
+walk(1)
+:aJ
+pix("stone_interior/counter_right.png")
+walk(1)
+:aK
+pix("stone_interior/jail_door.png")
+walk(0)
+Action
+dialog("Get me out of here! They're gonna eat me soon. And it stinks of piss \
+in here. I can hardly breath. Get the key from the guard around the corner.")
+if(var("firewand"), "=", 14)
+	set("firewand", 15)
+	dialog("You've got the key! Great! Get me out of here!")
+	move("town8.txt", 35, 15)
+	refresh()
+	dialog("You escape with Gawain and hurry back to Aaryak in the dark. The \
+	Guild Master was waiting to meet you at the gate.")
+	dialog("Thank you! Come talk to me in the morning. But for now, get some \
+	rest.")
+endif
+:aL
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("monsters/Dark Goblin.png")
+Action
+dialog("Human out of cell? No matter. Who care? Not me. Me hungry. Can't get \
+no food, though. Cook no make food.")
+dialog("(You manage to strike a deal...) Sure! You can have key if you get me \
+dinner! Food more important than shiny piece of metal.")
+if(var("firewand"), "=", 8)
+	set("firewand", 9)
+endif
+if(var("firewand"), "=", 13)
+	set("firewand", 14)
+	dialog("(You give the guard his meal.) Food! Deal is deal. Here da key.")
+endif
+:aM
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("people/man2_s.png")
+:aN
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table_s.png")
+:aO
+pix("stone_interior/wall_sw.png")
+walk(1)
+:aP
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/stone_trapdoor.png")
+Action
+dialog("This passageway leads to the main goblin den. You don't want to go down there.")
+:aQ
+pix("stone_interior/wall_se.png")
+walk(1)
+:aR
+pix("stone_interior/inner_flagstone_doorway.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+	info("This room appears to be used for storage.")
+endif
+:aS
+pix("stone_interior/flagstone.png")
+walk(1)
+Action
+set("temp1", 0)
+:aT
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/blue_bed.png")
+:aU
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+Action
+dialog("This chest is empty.")
+:aV
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:aW
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:aX
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table.png")
+:aY
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/blue_couch.png")
+:aZ
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/dresser.png")
+:a0
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("monsters/Dark Goblin.png")
+Action
+if(var("firewand"), "<", 10)
+	dialog("Go back to cell, human. I no feel like killing you now.")
+	end()
+endif
+if(var("firewand"), ">", 12)
+	dialog("Go back to cell, human. I no feel like killing you now.")
+	end()
+endif
+dialog("Cook want necklace? Then give food? \n \n \
+*GROAN* \n \n \
+I lost necklace in gambling  with Thrash. Get necklace and give to Cook. \
+I hungry.")
+if(var("firewand"), "=", 10)
+	set("firewand", 11)
+endif
+:a1
+pix("town/wall_bot_w.png")
+walk(0)
+:a2
+pix("town/wall_bot.png")
+walk(0)
+:a3
+pix("town/wall_bot.png")
+walk(1)
+addpix("castle/doorway.png")
+Action
+move("world4x4.txt", 20, 10)
+hero("hero_s")
+:a4
+pix("town/wall_bot_e.png")
+walk(0)

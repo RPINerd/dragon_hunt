@@ -1,0 +1,149 @@
+aa aa aa ab ac ac ac ac ac ac ac ac ad ae ae ae ae ae af ac ag ae ae ae
+ah ah ah ai ab ac ac ac ac ac ac ac ac aj ae ae ae ae ak ac al ae ae am
+ah ah ah ah ai aa aa ab ac ac ac ac ac ad ae ae ae ae ae an an ae ae ak
+ah ah ah ah ah ah ah ao ac ac ac ac ac ad ae ae ae ae ae ae ae ae ae ap
+ah ah ah ah ah ah aq ar ac ac ac ac ac ac aj ae ae ae ae ae ae ap as at
+ah ah ah ah ah ah ai ab ac ac ac ac au au av ae ae ap as as as at at at
+ah ah ah ah ah ah ah ao ac ac ac ac au aw at as as at at at at at at at
+ah ah ah ah ah ah ah ao ac ac ac ac aw at at at at at at at at at at at
+ah ah ah ah ah ah ah ai ab ac ac ax at at at at at at at at at at at at
+ah ah ah ah ah ah ah ah ao ac ac ax at at at at at at at at at at at at
+ah ah ah ah ah ah ah ah ao ac ac aw at at at at at at at at at at at at
+ah ah ah ah ah ah ah aq ar ac ax at at at ay az az aA at at at at at at
+ah ah ah ah ah ah ah ao ac ac ax at at ay ac aB aa ab az aA at at at at
+aC aC aC aC aC aC aC ar ac ac aw at at aD ac aE ah ao ac ax at at at at
+ac ac ac ac ac ac ac ac aF aw at at at aD ac aG aC ar ac aw at at at at
+ac ac ac ac ac ac ac aw at at at at at aH ac ac ac ac ax at at at at at
+ac ac ac ac aF aF aw at at at at at at at aD ac ac ac ax at at at ay az
+ac ac aF aw at at at at at at at at at at aD ac ac ac aw at at ay ac ac
+ac aw at at at at at at at at at at at at aH ac ac ax at at at aD ac ac
+ax at at at at at at ay az aA at at at at at aD ac ax at at ay ac ac ac
+ax at at at at at at aD ac ac aA at at at at aH aF aw at at aD ac ac ac
+ax at at at at at ay ac ac ac ac az aA at at at at at at ay ac ac ac ac
+ax at at at at at aD ac ac ac ac ac ac aA at at at at at aD ac ac ac ac
+ac aA at at at at aD ac ac ac ac ac ac ac az az az az az ac ac ac ac ac
+
+:def
+battle_bg=generic.png
+level_left=world3x3.txt
+level_right=world5x3.txt
+level_down=world4x4.txt
+level_up=world4x2.txt
+level_downleft=world3x4.txt
+level_upleft=world3x2.txt
+level_upright=world5x2.txt
+level_downright=world5x4.txt
+:aa
+pix("forest_n.png")
+walk(1)
+:ab
+pix("forest_ne.png")
+walk(1)
+:ac
+pix("grass.png")
+walk(1)
+:ad
+pix("hills/hills_w.png")
+walk(0)
+:ae
+pix("hills/hills_n4.png")
+walk(0)
+:af
+pix("hills/hills_e.png")
+walk(0)
+:ag
+pix("hills/hills_n2_e_double.png")
+walk(0)
+:ah
+pix("forest.png")
+walk(1)
+:ai
+pix("forest_ne2.png")
+walk(1)
+:aj
+pix("hills/hills_w2.png")
+walk(0)
+:ak
+pix("hills/hills_n2_w.png")
+walk(0)
+:al
+pix("hills/mine_w.png")
+walk(0)
+Action
+if(var("fixed_amulet"), "!=" 1)
+	dialog("The Rift Cave is rather famous, but mostly for killing anyone who \
+	enters. There is no reason to go in just yet.")
+else
+	dialog("You heave a heavy sigh and stare into the black abyss that is the \
+	Rift Cave. It will all be over soon, you tell yourself. You rest a moment \
+	more then enter the murky darkness.")
+	move("rift1.txt", 16, 6)
+	hero("hero_s")
+endif
+:am
+pix("hills/hills_e2.png")
+walk(0)
+:an
+pix("hills/hills_n3.png")
+walk(0)
+:ao
+pix("forest_e.png")
+walk(1)
+:ap
+pix("water_hills/hills_e2_water.png")
+walk(0)
+:aq
+pix("forest_se2.png")
+walk(1)
+:ar
+pix("forest_se.png")
+walk(1)
+:as
+pix("water_hills/hills_s_water.png")
+walk(0)
+:at
+pix("water/water.png")
+walk(0)
+:au
+pix("water/grass.png")
+walk(1)
+:av
+pix("water/water_nw.png")
+walk(0)
+addpix("hills/hills_w_trans.png")
+:aw
+pix("water/water_nw.png")
+walk(1)
+:ax
+pix("water/water_w.png")
+walk(1)
+:ay
+pix("water/water_se.png")
+walk(1)
+:az
+pix("water/water_s.png")
+walk(1)
+:aA
+pix("water/water_sw.png")
+walk(1)
+:aB
+pix("forest_nw2.png")
+walk(1)
+:aC
+pix("forest_s.png")
+walk(1)
+:aD
+pix("water/water_e.png")
+walk(1)
+:aE
+pix("forest_w.png")
+walk(1)
+:aF
+pix("water/water_n.png")
+walk(1)
+:aG
+pix("forest_sw.png")
+walk(1)
+:aH
+pix("water/water_ne.png")
+walk(1)

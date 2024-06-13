@@ -1,0 +1,37 @@
+#Called upon winning. Any commands can be entered here, but info would
+#likely be most useful. End the game completely with the lose command.
+#(Yes, I know it's a bit weird. Deal with it.)
+
+
+dialog("'No! You couldn't have! I'll finish you off myself!' \n \n \
+With that he lifts his arm to send a  bolt of energy through your heart.")
+dialog("There's no way you can get to him in time. Desperately you turn and \
+smash the crystal ball, hoping for a distraction.")
+dialog("'Noooooooo! You've killed us both!' The air in the room starts to \
+thicken and flicker with sparks. You dive down the stairs just as the top of \
+the keep explodes into a ball of flame.")
+dialog("You rush out of the keep as it crumbles behind you. As you run, \
+debris rains down from above. Battered and bleeding, you stagger out of the \
+dark castle. With a heavy sigh, you black out...")
+dialog("You wake up some time later. Your head hurts and you notice it is \
+bandaged. You're moving. You open your eyes and see General Ryldar walking \
+beside the horse over which your body is slung.")
+dialog("'We mustered up a force the moment you joined the continents, but it \
+looks like you beat us to Greyor. It's a good thing we found you. You might \
+have bled to death. Get some rest, it's a long journey.'")
+
+move("shopC.txt", 29, 13)
+hero("hero_n")
+refresh()
+
+dialog("A week later, you kneel before the throne of the King.")
+set("name_var", stat("name"))
+dialog("Thank you for reuniting the planet and ending the evil brought forth \
+by Greyor. As a gift to you, I pronounce you: Sir ~name_var~")
+
+dialog("Your name shall be remembered until the end of time.")
+dialog("You return to your quaint farm outside of Meadow.")
+dialog("You have done it, the world is safe. It seems your adventures have ended.")
+dialog("Only time will tell...")
+
+lose()

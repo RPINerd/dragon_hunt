@@ -1,0 +1,143 @@
+
+:Heal
+Level = 2
+Price = 50
+Description = Repairs minor nicks and cuts (+5 HP).
+Picture = items/healing1.png
+Type = 6
+:scripting
+info("Gained 5 HP.")
+give("hp", 5)
+:data
+
+:Burn
+Level = 5
+Price = 150
+Description = Set a target on fire.
+Type = 4
+Picture = items/fire1.png
+:scripting
+info("The monster is burned for 10 damage.")
+damage_monster(10)
+:data
+
+
+:Great Heal
+Level = 7
+Price = 350
+Description = Heals most injuries (+30 HP).
+Picture = items/healing2.png
+Type = 6
+:scripting
+info("Gained 30 HP.")
+give("hp", 30)
+:data
+
+#This is not accurate to the original, but the engine doesn't track accuracy.
+:Blindness
+Level = 5
+Price = 500
+Description = Cloud the eyes of an enemy.
+Type = 4
+Picture = items/blind.png
+:scripting
+set("monst_sel", monster_select())
+if(var("monst_sel"), "=", -1)
+	end()
+endif
+info("The creature loses sight of you.")
+set("monster_attack", monster_stat(var("monst_sel"), "attack"))
+set("monster_attack", "*", 1)
+set("monster_attack", "/", -4)
+monster_give_stat(var("monst_sel"), "attack", var("monster_attack"))
+:data
+
+:Firebomb
+Level = 10
+Price = 750
+Description = Cause a large explosion.
+Type = 4
+Picture = items/fire2.png
+:scripting
+info("The monster is burned for 25 damage.")
+damage_monster(25)
+:data
+
+:Massive Heal
+Level = 12
+Price = 1000
+Description = Cures almost all wounds (+60 HP).
+Picture = items/healing3.png
+Type = 6
+:scripting
+info("Gained 60 HP.")
+give("hp", 60)
+:data
+
+:Acid Rain
+Level = 18
+Price = 1500
+Description = Shower a monster with acid.
+Type = 4
+Picture = items/acid.png
+:scripting
+info("The monster is burned for 50 damage.")
+damage_monster(50)
+:data
+
+:Melt Flesh
+Level = 25
+Price = 2000
+Description = Shower a monster with a lot of acid.
+Type = 4
+Picture = items/skeleton.png
+:scripting
+info("The monster is burned for 80 damage.")
+damage_monster(80)
+:data
+
+:Full Heal
+Level = 20
+Price = 3000
+Description = Restore the caster to full health.
+Picture = items/healing4.png
+Type = 6
+:scripting
+info("Gained full HP.")
+give("hp", stat("adj_maxhp"))
+:data
+
+:Death
+Level = 30
+Price = 3500
+Description = Attempt to drive the very life from an enemy.
+Type = 4
+Picture = items/death.png
+:scripting
+set("monst_sel", monster_select())
+if(var("monst_sel"), "=", -1)
+	end()
+endif
+if(rng(1, 2), ">", 0)
+	info("The monster slows, staggers...then recovers!")
+else
+	info("The creature crumbles to dust.")
+	monster_give_stat(var("monst_sel"), "hp", -9999)
+endif
+
+:data
+
+
+#Note that the travel spell now takes you to a level that allows access to
+#any of the cities.
+:Travel
+Level = 15
+Price = 4000
+Description = Takes you to the Plane of Travel.
+Type = 5
+Picture = items/door.png
+:scripting
+move("travel.txt", 22, 34)
+info("Reality fades, then reapears.")
+:data
+

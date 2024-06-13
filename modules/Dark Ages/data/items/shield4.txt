@@ -1,0 +1,6 @@
+Name=Large Shield
+type=2
+quality=3
+price=550
+description=This metal shield offers protection against most attacks.
+picture=items/large_shield.png

@@ -1,0 +1,371 @@
+#Data for the shops.
+#Start a new shop with :Shop String (use String to access the shop)
+#Start a new item with :Item String
+#List description with description=String
+#List cost with cost=Number
+#List power with power=Number
+#List cost type with buytype=(skill/gold)
+#List picture to use with picture=picture_name.png
+#If un-listed, data will be taken from the items directory.
+#Scripting commands can be entered. The "end" command will prevent the
+#item from being bought.
+
+#
+# Meadow
+#
+:Shop The Armory
+:Item Dagger
+:Item Club
+:Item Tunic
+:Item Leather Vest
+:Item Buckler
+
+
+:Shop Meadow Magical Training
+:Item Heal
+cost=50
+picture=items/healing1.png
+buytype=gold
+power=-1
+description=Repairs minor nicks and cuts (+5 HP).
+if(addskill("Heal"), "=", 0)
+  end()
+endif
+info("You learn how to cast Heal.")
+
+:Item Burn
+cost=150
+picture=items/fire1.png
+buytype=gold
+power=-1
+description=Set a target on fire.
+if(skill("has", "Heal"), "=", 0)
+	info("You are not strong enough. Learn Heal first.")
+	end()
+endif
+if(skill("give", "Burn"), "=", 0)
+  end()
+endif
+info("You learn how to cast Burn.")
+
+#
+# Quinine Tower
+#
+:Shop Quinine Tower Royal Weapons
+:Item Club
+:Item Mace
+:Item Spear
+
+:Shop Quinine Tower Royal Armor
+:Item Leather Vest
+:Item Studded Leather
+:Item Small Shield
+:Item Leather Cap
+
+:Shop Quinine Tower Royal Magic
+:Item Burn
+cost=150
+picture=items/fire1.png
+buytype=gold
+power=-1
+description=Set a target on fire.
+if(skill("has", "Heal"), "=", 0)
+	info("You are not strong enough. Learn Heal first.")
+	end()
+endif
+if(skill("give", "Burn"), "=", 0)
+  end()
+endif
+info("You learn how to cast Burn.")
+
+:Item Great Heal
+cost=350
+picture=items/healing2.png
+buytype=gold
+power=-1
+description=Heals most injuries (+30 HP).
+if(skill("has", "Burn"), "=", 0)
+	info("You are not strong enough. Learn Heal first.")
+	end()
+endif
+if(skill("give", "Great Heal"), "=", 0)
+  end()
+endif
+info("You learn how to cast Great Heal.")
+
+#
+# Wisp
+#
+:Shop Wisp Royal Armory
+:Item Axe
+:Item Chain Coif
+:Item Scale Mail
+:Item Large Shield
+
+#
+#Tristen
+#
+:Shop Alfred's Discount Armor
+:Item Dagger
+:Item Spear
+:Item Long Sword
+:Item Tunic
+:Item Ring Mail
+:Item Chain Mail
+
+:Shop Tristen Magical Training
+:Item Massive Heal
+cost=1000
+picture=items/healing3.png
+buytype=gold
+power=-1
+description=Cures almost all wounds (+60 HP).
+if(skill("has", "Firebomb"), "=", 0)
+	info("You are not strong enough. Learn Firebomb first.")
+	end()
+endif
+if(skill("give", "Massive Heal"), "=", 0)
+  end()
+endif
+info("You learn how to cast Massive Heal.")
+
+:Item Full Heal
+cost=3000
+picture=items/healing4.png
+buytype=gold
+power=-1
+description=Restore the caster to full health.
+if(skill("has", "Melt Flesh"), "=", 0)
+	info("You are not strong enough. Learn Melt Flesh first.")
+	end()
+endif
+if(skill("give", "Full Heal"), "=", 0)
+  end()
+endif
+info("You learn how to cast Full Heal.")
+
+#
+# Trok
+#
+:Shop Armormart
+:Item Shortsword
+:Item Buckler
+:Item Small Shield
+
+
+
+#
+# Rhoeyce
+#
+:Shop Whilhelm's Swords and Shields
+:Item Shortsword
+:Item Buckler
+:Item Small Shield
+:Item Large Shield
+:Item Magic Shield
+
+:Shop Arcane Training
+:Item Firebomb
+cost=750
+picture=items/fire2.png
+buytype=gold
+power=-1
+description=Cause a large explosion.
+if(skill("has", "Blindness"), "=", 0)
+	info("You are not strong enough. Learn Blindness first.")
+	end()
+endif
+if(skill("give", "Firebomb"), "=", 0)
+  end()
+endif
+info("You learn how to cast Firebomb.")
+
+:Item Acid Rain
+cost=1500
+picture=items/acid.png
+buytype=gold
+power=-1
+description=Shower a monster with acid.
+if(skill("has", "Massive Heal"), "=", 0)
+	info("You are not strong enough. Learn Massive Heal first.")
+	end()
+endif
+if(skill("give", "Acid Rain"), "=", 0)
+  end()
+endif
+info("You learn how to cast Acid Rain.")
+
+#
+# Aaryak
+#
+:Shop Alix's Axes
+:Item Great Axe
+:Item Halberd
+
+:Shop Royal Outfitters of Aaryak
+:Item Full Plate
+:Item Magic Armor
+:Item Plate Helm
+
+:Shop Mad Mork's Magical Market
+:Item Blindness
+cost=500
+picture=items/blind.png
+buytype=gold
+power=-1
+description=Cloud the eyes of an enemy.
+if(skill("has", "Great Heal"), "=", 0)
+	info("You are not strong enough. Learn Great Heal first.")
+	end()
+endif
+if(skill("give", "Blindness"), "=", 0)
+  end()
+endif
+info("You learn how to cast Blindness.")
+
+:Item Full Heal
+cost=3000
+picture=items/healing4.png
+buytype=gold
+power=-1
+description=Restore the caster to full health.
+if(skill("has", "Melt Flesh"), "=", 0)
+	info("You are not strong enough. Learn Melt Flesh first.")
+	end()
+endif
+if(skill("give", "Full Heal"), "=", 0)
+  end()
+endif
+info("You learn how to cast Full Heal.")
+
+#
+# Amber
+#
+:Shop Royal Armory of Amber
+:Item Axe
+:Item Chain Mail
+
+#
+# Laendlich
+#
+:Shop Irene's Incredible Incantations
+:Item Blindness
+cost=500
+picture=items/blind.png
+buytype=gold
+power=-1
+description=Cloud the eyes of an enemy.
+if(skill("has", "Great Heal"), "=", 0)
+    info("You are not strong enough. Learn Great Heal first.")
+    end()
+endif
+if(skill("give", "Blindness"), "=", 0)
+  end()
+endif
+info("You learn how to cast Blindness.")
+
+:Item Melt Flesh
+cost=2000
+picture=items/skeleton.png
+buytype=gold
+power=-1
+description=Shower a monster with a lot of acid.
+if(skill("has", "Acid Rain"), "=", 0)
+    info("You are not strong enough. Learn Acid Rain first.")
+    end()
+endif
+if(skill("give", "Melt Flesh"), "=", 0)
+  end()
+endif
+info("You learn how to cast Melt Flesh.")
+
+#
+# Northern Post
+#
+:Shop Looted goblin weapons
+:Item Mace
+:Item Axe
+:Item Great Axe
+:Item Scale Mail
+:Item Chain Coif
+
+
+#
+# Castle Garrison
+#
+
+:Shop Royal Armory
+:Item Long Sword
+:Item Magic Axe
+:Item Partial Plate
+:Item Full Plate
+:Item Plate Helm
+:Item Magic Helm
+
+
+:Shop Royal Magic
+:Item Firebomb
+cost=750
+picture=items/fire2.png
+buytype=gold
+power=-1
+description=Cause a large explosion.
+if(skill("has", "Blindness"), "=", 0)
+    info("You are not strong enough. Learn Blindness first.")
+    end()
+endif
+if(skill("give", "Firebomb"), "=", 0)
+  end()
+endif
+info("You learn how to cast Firebomb.")
+
+
+:Item Massive Heal
+cost=1000
+picture=items/healing3.png
+buytype=gold
+power=-1
+description=Cures almost all wounds (+60 HP).
+if(skill("has", "Firebomb"), "=", 0)
+    info("You are not strong enough. Learn Firebomb first.")
+    end()
+endif
+if(skill("give", "Massive Heal"), "=", 0)
+  end()
+endif
+info("You learn how to cast Massive Heal.")
+
+#
+# Floating City
+#
+
+:Shop Tower Spells
+:Item Death
+cost=3500
+picture=items/death.png
+buytype=gold
+power=-1
+description=Attempt to drive the very life from an enemy.
+if(skill("has", "Full Heal"), "=", 0)
+    info("You are not strong enough. Learn Full Heal first.")
+    end()
+endif
+if(skill("give", "Death"), "=", 0)
+  end()
+endif
+info("You learn how to cast Death.")
+
+:Item Travel
+cost=4000
+picture=items/door.png
+buytype=gold
+power=-1
+description=Takes you to the Plane of Travel.
+if(skill("has", "Death"), "=", 0)
+    info("You are not strong enough. Learn Death first.")
+    end()
+endif
+if(skill("give", "Travel"), "=", 0)
+  end()
+endif
+info("You learn how to cast Travel.")

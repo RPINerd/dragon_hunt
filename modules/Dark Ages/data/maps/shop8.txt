@@ -1,0 +1,433 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa ab ab ab
+aa aa aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab
+aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa ab aa aa aa aa aa aa aa aa aa aa ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab ab ac ad ad ad ad ad ae aa ab ab ab ab ab ab af ag ag ag ag ag ag ah ab ab aa ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab aa ai aj aj aj aj ak al aa ab ab ab ab ab aa am an ao an an ao an ap aa ab aa ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab aa aq ar ar ar ar as at aa ab ab ab ab ab aa au av aw ax ay av az aA aa ab aa ab aa
+aa aa aa aa aa ab ab ab ab ab ab ab aa aB aC aC aC aD aE aF aa ab ab ab ab ab aa au av av av av av av aA aa ab aa ab aa
+aa aa ab ab ab ab ab ab ab aa ab ab aa aG aH aH aH aH aH aI aa ab ab ab ab ab aa aJ aK aK aK aK aK aK aL aa ab aa ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab aa aM aN aO aP aQ aN aR aa ab ab ab ab ab aa aS aT aU aU aU aU aT aV aa ab aa aa aa
+aa aa aa aa aa ab ab ab ab ab ab ab aa ab ab ab aW ab ab ab ab ab aa ab ab ab ab ab aX ab ab ab ab aY ab ab ab aa ab aa
+aa aa aa aa aa ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab aa
+aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab aa ab aa
+aa aa aa aa aa aa ab ab ab ab ab ab ab ab aZ ag ag ag ag ag ag ag ag ah ab ab ab ab ab ab ab ab ab ab aa ab ab aa ab aa
+aa aa aa aa aa aa ab ab ab ab ab ab aa aa am an an a0 a0 a0 a0 an an ap aa ab ab ab ab ab ab ab ab ab ab ab ab aa ab aa
+aa aa aa aa aa aa ab ab ab ab ab ab ab aa au a1 aw a2 a2 a3 a2 ay a1 aA aa ab ab ab ab aa ab ab ab ab ab ab ab aa aa ab
+aa aa aa aa aa aa ab ab ab ab ab ab ab aa au a4 av av av av av a5 a4 aA aa ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa
+aa aa aa aa aa aa ab ab aa ab ab ab ab aa aJ aK a6 a1 av av a1 a7 aK aL aa ab ab ab ab ab ab ab ab ab ab ab aa ab aa aa
+aa aa aa aa aa aa ab ab ab ab ab ab ab aa a8 a8 au a4 av av a4 aA a8 a8 aa ab ab ab aa ab ab ab ab ab ab aa aa ab aa aa
+aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab aa au a9 av av av aA aa ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab aa aa
+aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab aa au a1 av av a1 aA aa ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab aa
+aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab aa au a4 av av a4 aA aa ab ab ab ab ab ab ab aa ab ab ab ab aa ab ab ab ab
+aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab aa aJ aK aK aK aK aL aa ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab
+aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab aa aS ba bb bb ba aV aa ab ab aa ab aa ab ab ab ab ab ab ab aa ab ab ab ab
+aa aa aa aa aa ab ab ab ab ab ab ab ab aa ab aa ab bc ab ab bd ab aa ab ab ab ab aa ab ab ab ab ab ab ab aa ab ab ab ab
+aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab aa ab ab ab ab
+aa aa aa aa aa aa ab ab ab aa ab ab ab aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab aa
+aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab aa aa ab aa ab ab aa ab ab ab aa
+aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab af be bf ab ab ab ab aa ab aa ab aa
+aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab aa am an ap aa ab ab ab aa ab ab ab aa
+aa aa aa aa aa aa aa aa ab ab ab ab ab ac ad ad ad ad ad bg aa ab aa ab ab ab ab aa bh bi bj aa ab ab ab aa ab ab ab aa
+aa aa aa aa aa aa aa aa aa ab ab ab aa ai ak bk ak bl bk al aa ab ab ab ab ab ab aa aJ aK aL aa ab ab ab aa ab ab ab aa
+aa aa aa aa aa aa aa aa aa ab ab ab aa aq bm bn bm bo bp bq aa ab ab ab ab ab ab aa aS ba aV aa ab ab ab aa ab aa ab aa
+aa aa aa aa aa aa aa aa aa ab ab ab aa aG aH aH aH aH aH aI aa ab ab ab ab ab ab ab ab br ab ab ab ab ab aa ab ab ab aa
+aa aa aa aa aa aa aa aa aa ab ab ab aa ai bs ak al bt bt aR aa ab ab ab ab ab aa ab aa ab ab ab ab ab ab aa ab ab ab aa
+aa aa aa aa aa aa ab ab aa ab ab ab aa bu aD bv aF aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab aa ab ab ab aa
+aa aa aa aa aa aa aa ab ab ab ab ab aa aG aH aH aI aa ab aa ab ab ab aa aa aa aa aa aa aa aa aa aa ab ab aa ab aa ab aa
+aa aa aa aa aa aa aa ab ab aa ab ab aa aM aP bw aR aa ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab aa ab aa aa aa ab aa
+aa aa aa aa aa aa aa aa ab ab ab ab ab bx by aa bx ab ab ab ab aa aa aa aa aa ab ab aa ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa ab ab ab aa ab aa aa aa aa aa
+
+:def
+:aa
+pix("underground/void.png")
+walk(0)
+:ab
+pix("underground/void.png")
+walk(1)
+:ac
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:af
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:ag
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:ah
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:ai
+pix("stone_interior/wall_nw.png")
+walk(0)
+:aj
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+:ak
+pix("stone_interior/wall_floor.png")
+walk(0)
+:al
+pix("stone_interior/wall_ne.png")
+walk(0)
+:am
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:an
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+:ao
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("wood_interior/trans_window.png")
+:ap
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:aq
+pix("stone_interior/wall_w.png")
+walk(1)
+:ar
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("bookcase.png")
+wall_s(1)
+:as
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+:at
+pix("stone_interior/wall_e.png")
+walk(1)
+:au
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:av
+pix("wood_interior/woodfloor.png")
+walk(1)
+:aw
+pix("wood_interior/counter_left.png")
+walk(1)
+:ax
+pix("wood_interior/counter_man.png")
+walk(0)
+Action
+if(var("firewand"), "<", 7)
+    dialog("Welcome to the Miner's Guild. Not much is happening around town \
+    right now. Feel free to explore and check out the various shops in town.")
+    end()
+endif
+if(var("firewand"), ">", 15)
+    dialog("Welcome to the Miner's Guild. Not much is happening around town \
+    right now. Feel free to explore and check out the various shops in town.")
+    end()
+endif
+
+
+if(var("firewand"), "<", 15)
+    dialog("You've come looking for sulfur. I'd be happy to sell some to you, but \
+    I haven't got any right now. Sulfur is mined in the hills to the east. But \
+    dark goblins live there. They don't like us miners.")
+    dialog("We mine anyway and a small regiment of guards protects us. \
+    Unfortunately, the guards were caught by surprise in a raid on our last trip. \
+    The captain, Gawain, was captured.")
+    dialog("Without him to lead the guards we cannot mine in the hills. If you \
+    could rescue him, we could continue mining. You should be able to sneak into \
+    the goblin stronghold at night.")
+
+    if(var("firewand"), "=", 7)
+        set("firewand", 8)
+    endif
+    end()
+endif
+if(var("firewand"), "=", 15)
+    dialog("Thank you for saving Gawain. He's already back on patrol. And here \
+    is some sulfur from the latest shipment. You can have it for free.")
+    dialog("He also left this note: \n \
+    'I know that to beat Greyor takes a lot of courage. But it also requires a \
+    good weapon. The Magic Sword is just that weapon. It was owned by one of \
+    my ancestors, a great warrior.")
+    dialog("During a great battle he was slain. The magic in the sword lifted \
+    a great mountain over his body. That mountain still exists today. It is \
+    surrounded by a small forest. Search in those tress to find the sword.")
+    dialog("Looking in the right spot will reveal the sword. Good luck on your \
+    journey.'")
+    set("firewand", 16)
+endif
+:ay
+pix("wood_interior/counter_right.png")
+walk(1)
+:az
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/trapdoor.png")
+Action
+dialog("Judging from the smell, sulfur was stored down here at one point.")
+:aA
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:aB
+pix("stone_interior/wall_w.png")
+walk(0)
+addpix("people/old_man_s2.png")
+Action
+store("Mad Mork's Magical Market")
+:aC
+pix("stone_interior/flagstone.png")
+walk(1)
+addoverpix("bookcase.png")
+wall_s(1)
+:aD
+pix("stone_interior/counter_left.png")
+walk(1)
+:aE
+pix("stone_interior/counter_old_man.png")
+walk(0)
+Action
+store("Royal Outfitters of Aaryak")
+:aF
+pix("stone_interior/counter_right_wall.png")
+walk(1)
+:aG
+pix("stone_interior/wall_sw.png")
+walk(1)
+:aH
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:aI
+pix("stone_interior/wall_se.png")
+walk(1)
+:aJ
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:aK
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:aL
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:aM
+pix("town/wall_sw.png")
+walk(0)
+:aN
+pix("town/wall_s.png")
+walk(0)
+addpix("town/empty_window_trans.png")
+:aO
+pix("town/sign_gem.png")
+walk(0)
+:aP
+pix("road/end_stone_doorway.png")
+walk(1)
+:aQ
+pix("town/sign_weapon.png")
+walk(0)
+:aR
+pix("town/wall_se.png")
+walk(0)
+:aS
+pix("town/wood_wall_sw.png")
+walk(0)
+:aT
+pix("wood_interior/wall_woodfloor_doorway.png")
+walk(1)
+:aU
+pix("town/wood_wall_s.png")
+walk(0)
+:aV
+pix("town/wood_wall_se.png")
+walk(0)
+:aW
+pix("underground/void.png")
+walk(1)
+Action
+move("town8.txt", 16, 9)
+hero("hero_s")
+:aX
+pix("underground/void.png")
+walk(1)
+Action
+move("town8.txt", 28, 9)
+hero("hero_s")
+:aY
+pix("underground/void.png")
+walk(1)
+Action
+move("town8.txt", 33, 9)
+hero("hero_s")
+:aZ
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:a0
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("furnishings/potion_shelf.png")
+:a1
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table_n.png")
+:a2
+pix("wood_interior/counter.png")
+walk(0)
+:a3
+pix("wood_interior/counter_old_woman.png")
+walk(0)
+Action
+dialog("Welcome to the Lion's Den! If you're looking for news, see the Miner's \
+Guild. They govern this town.")
+:a4
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table_s.png")
+:a5
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("people/man2_s.png")
+Action
+dialog("Pull up a chair and we'll drink 'til we're drunk!")
+:a6
+pix("wood_interior/woodfloor_sw_corner.png")
+walk(1)
+:a7
+pix("wood_interior/woodfloor_se_corner.png")
+walk(1)
+:a8
+pix("town/wood_wall.png")
+walk(0)
+:a9
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("people/old_man_s.png")
+Action
+dialog("Oh. It's you.")
+:ba
+pix("road/end_wood_doorway.png")
+walk(1)
+:bb
+pix("town/wood_sign_tavern.png")
+walk(0)
+:bc
+pix("underground/void.png")
+walk(1)
+Action
+move("town8.txt", 17, 23)
+hero("hero_s")
+:bd
+pix("underground/void.png")
+walk(1)
+Action
+move("town8.txt", 20, 23)
+hero("hero_s")
+:be
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:bf
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:bg
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:bh
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("people/warrior_s.png")
+Action
+store("Alix's Axes")
+:bi
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/blue_bed.png")
+:bj
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+:bk
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("stone_interior/trans_window.png")
+:bl
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("furnishings/flower_painting2.png")
+:bm
+pix("stone_interior/flagstone.png")
+walk(1)
+:bn
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/dresser2.png")
+:bo
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/treasure_chest.png")
+:bp
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+:bq
+pix("stone_interior/wall_e.png")
+walk(1)
+addpix("furnishings/green_bed.png")
+:br
+pix("underground/void.png")
+walk(1)
+Action
+move("town8.txt", 29, 32)
+hero("hero_s")
+:bs
+pix("stone_interior/inner_flagstone_doorway.png")
+walk(1)
+:bt
+pix("town/wall_s.png")
+walk(0)
+:bu
+pix("stone_interior/wall_w.png")
+walk(0)
+addpix("stone_interior/stone_stairs.png")
+Action
+dialog("Guests only.")
+:bv
+pix("stone_interior/counter_woman.png")
+walk(0)
+Action
+if(question("Rooms are 100 gold a night. Interested?"), "=", 1)
+	if(stat("gold"), ">=", 100)
+		give("gold", -100)
+		give("hp", stat("maxhp"))
+		give("ep", stat("maxep"))
+		info("You awake, rested.")
+	else
+		dialog("How odd. You don't have enough money.")
+	endif
+endif
+:bw
+pix("town/sign_inn.png")
+walk(0)
+:bx
+pix("underground/void.png")
+walk(0)
+Action
+dialog("The sign bills this inn as the 'Seabreeze Hotel', with an ocean view \
+	and unmatched scenery")
+:by
+pix("underground/void.png")
+walk(0)
+Action
+move("town8.txt", 14, 37)
+hero("hero_s")

@@ -1,0 +1,225 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa aa aa aa aa aa ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ac ad ad ad ad ad ad ad ad ad ad ae ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa af ag ag ag ah ai af aj ak aj ak ai aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa al am am am am an al am am am am an aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab aa ab ab ab ab ab ab aa al am am am am an al am ao am ap an aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa al am am am am an al ap aq am am an aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa ar as as as at au av as as as as au aa ab ab ab ab ab ab ab ab aa ab ab ab aa
+aa aa ab ab ab ab ab ab ab ab ab ab ab aa af ag af ag aw ag ag ax ag ai ag ai aa ab ab ab aa ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa al ay av as az am am as as aA am aB aa ab ab ab aa ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa al ap aC ax ai am am af ax aD aE an aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa al am am am an am am al ao am am aB aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa al aF aF aF an am am al am ap aE an aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab aa aa al aF aF aF an am am al aG am am aB aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa al aF aF aF an am am al am aH ao an aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa al aF aF aF an ao ao aI am aE am aB aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa ar as as as aA as as av as as as au aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa aJ aK aL aK aL aM aM aL aK aL aK aN aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aO aP ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab aa
+aa ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa ab aa ab ab ab ab ab ab ab ab ab ab ab aa ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa ab ab ab ab ab ab ab ab aa ab ab ab aa aa ab aa
+aa ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa ab ab ab ab aa aa ab ab ab ab ab ab aa ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab aa aa ab ab ab ab aa ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab aa aa aa aa ab aa aa aa aa
+
+:def
+:aa
+pix("underground/void.png")
+walk(0)
+:ab
+pix("underground/void.png")
+walk(1)
+:ac
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:af
+pix("stone_interior/wall_nw.png")
+walk(0)
+:ag
+pix("stone_interior/wall_floor.png")
+walk(0)
+:ah
+pix("stone_interior/fireplace_burnt_out.png")
+walk(0)
+:ai
+pix("stone_interior/wall_ne.png")
+walk(0)
+:aj
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("furnishings/potion_shelf.png")
+:ak
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+:al
+pix("stone_interior/wall_w.png")
+walk(1)
+wall_w(1)
+:am
+pix("stone_interior/flagstone.png")
+walk(1)
+:an
+pix("stone_interior/wall_e.png")
+walk(1)
+wall_e(1)
+:ao
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/red_rug.png")
+:ap
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table.png")
+:aq
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/old_man_s2.png")
+Action
+dialog("This temple is a resting place for soldiers traveling to and from the \
+Northern Post.")
+:ar
+pix("stone_interior/wall_sw.png")
+walk(1)
+:as
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:at
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+Action
+set("temp1", 0)
+:au
+pix("stone_interior/wall_se.png")
+walk(1)
+:av
+pix("stone_interior/wall_sw.png")
+walk(1)
+wall_w(1)
+:aw
+pix("stone_interior/inner_flagstone_doorway.png")
+walk(1)
+Action
+if(var("temp1"), "=", 1)
+    info("This room has been disused for some time.")
+endif
+:ax
+pix("stone_interior/inner_flagstone_doorway.png")
+walk(1)
+:ay
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/old_man_s3.png")
+Action
+dialog("As a priest, my duties are very important. I know many skills other \
+than healing.")
+if(var("firewand"), "=", 17)
+    dialog("(You show him the firewand.) Yes, I can activate that for you. Here \
+    you go. It should work now.")
+    set("firewand", 18)
+endif
+:az
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+Action
+set("temp1", 1)
+:aA
+pix("stone_interior/wall_se.png")
+walk(1)
+wall_e(1)
+:aB
+pix("stone_interior/wall_e.png")
+walk(0)
+wall_e(1)
+addpix("furnishings/green_bed.png")
+:aC
+pix("stone_interior/wall_floor_w.png")
+walk(0)
+:aD
+pix("stone_interior/wall_floor_e.png")
+walk(0)
+:aE
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:aF
+pix("stone_interior/flagstone.png")
+walk(1)
+addoverpix("bookcase.png")
+wall_s(1)
+:aG
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/old_man_s3.png")
+Action
+if(question("Welcome! For a small donation--50 gold--I can heal you."), "=", 1)
+#Note that this works even if you don't have enough money. This is on purpose.
+    give("gold", -50)
+    give("hp", stat("maxhp"))
+    give("ep", stat("maxep"))
+    info("You awake, rested.")
+endif
+:aH
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table.png")
+addpix("furnishings/books3.png")
+:aI
+pix("stone_interior/wall_w.png")
+walk(0)
+wall_w(1)
+addpix("furnishings/blue_couch.png")
+:aJ
+pix("town/wall_sw.png")
+walk(0)
+:aK
+pix("town/wall_s.png")
+walk(0)
+addpix("town/empty_window_trans.png")
+:aL
+pix("town/wall_s.png")
+walk(0)
+:aM
+pix("stone_interior/wall_flagstone_doorway.png")
+walk(1)
+:aN
+pix("town/wall_se.png")
+walk(0)
+:aO
+pix("underground/void.png")
+walk(1)
+Action
+move("townB.txt", 19, 29)
+hero("hero_s")
+:aP
+pix("underground/void.png")
+walk(1)
+Action
+move("townB.txt", 20, 29)
+hero("hero_s")

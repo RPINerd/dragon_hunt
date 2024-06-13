@@ -1,0 +1,272 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa ab aa
+aa aa ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab aa
+aa aa ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ac ad ad ad ad ad ad ad ad ad ad ae aa ab ab ab ab ab aa
+aa aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa af ag ah ai ah ai ah ai ah ai ah ai aa ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab aa aj ak al am al am al am al am al am aa ab ab ab ab ab aa
+aa aa aa aa ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab aa an ao ap ao ap ao ap ao ap ao ap aq aa ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa af ar as ar as ar as ar as ar at au aa ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa an ap ap ap ap ap ap ap ap ap ap aq aa ab aa ab ab ab aa
+aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab ab aa av aw ax aw ax aw ax ay az ax aw aA aa ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab ab ab aa ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aB ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab ab ab aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa ab ab aa aa ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab aa
+aa aa aa ab aa aa aa aa aa ab aa ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa ab aC aD aD aD aE ab aa ab ab aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa ab aa ab ab aa
+aa aa aa aa aF aG aH aI aJ ab aa ab ab ab aa aa aa aa aa ab ab ab ab aa aa aa aa ab ab ab ab ab aa aa aa aa ab ab ab aa
+aa aa aa aa aK aL aM aN aO aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa ab ab ab ab ab aa aa aa aa aa ab ab aa
+aa aa aa aa aK aP aQ aP aO aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa ab ab ab ab ab ac ad ad ad ae ab ab aa
+aa aa aa aa aK aQ aQ aQ aO aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa ab ab ab ab aa af aR aR aR ai aa ab aa
+aa aa aa aa aS aT aT aT aU aa aa ab ab ab ab ab ab aa ab ab ab aa ab ab ab aa aa aa aa ab ab aa aV aW aW aW aX aa ab aa
+aa aa aa aa aY aZ a0 aZ a1 aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa ab aa aa ab aa aj a2 a2 a2 aX aa ab aa
+aa aa aa aa ab ab a3 ab ab ab ab aa aa aa aa ab aa aa aa aa ab ab ab ab ab ab ab ab aa aa ab aa aj aW a4 a5 aX aa ab aa
+aa aa aa ab ab ab aa ab ab ab ab ab ab ab ab aa aa ab aa aa aa ab aa ab ab ab ab ab aa aa ab aa an ap ap ap aq aa ab aa
+aa aa aa ab ab ab ab ab ab ab ab ab aa ab ab ab ab aa ab aa aa ab ab ab ab ab ab aa aa ab ab aa av ax ay ax aA aa ab aa
+aa aa aa ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab aa aa ab ab aa ab ab a6 aa ab ab aa aa
+aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab aa ab ab ab aa aa ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab ab ab ab ab aa aa ab aa ab ab ab ab ab ab ab ab ab ab ab aa aa ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa ab ab ab ab aa aa aa aa aa aa aa aa aa aa aa ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa aa aa ab ab ab ab ab ab ab ab ab aa aa aa aa aa ab ab aa ab ab ab ab aa ab ab ab ab ab aa ab ab ab ab ab aa
+aa aa aa aa aa aa aa ab ab ab aa ab ab ab ab aa aa aa aa ab aa aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab aa
+aa aa aa aa aa aa aa aa aa aa ab ab aa ab ab aa aa aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa aa ab aa
+aa aa aa aa aa aa aa aa aa aa aa ab ab ab ab ab ab aa aa aa aa ab ab ab ab ab ab aa aa aa aa aa aa ab aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa ab ab ab ab aa aa aa aa aa aa aa aa ab aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("underground/void.png")
+walk(0)
+:ab
+pix("underground/void.png")
+walk(1)
+:ac
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(0)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:af
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:ag
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+addpix("furnishings/ladder.png")
+Action
+dialog("The ladder is marked 'Employees Only'")
+:ah
+pix("wood_interior/wood_to_grass_window.png")
+walk(0)
+:ai
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:aj
+pix("wood_interior/wall_woodfloor_w.png")
+walk(1)
+:ak
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+wall_e(1)
+:al
+pix("wood_interior/woodfloor.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:am
+pix("wood_interior/wall_woodfloor_e.png")
+walk(0)
+addpix("furnishings/blue_bed.png")
+:an
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:ao
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+wall_e(1)
+:ap
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:aq
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:ar
+pix("wood_interior/interior_door.png")
+walk(1)
+:as
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+:at
+pix("wood_interior/interior_door.png")
+walk(0)
+wall_w(1)
+addpix("people/man_s.png")
+Action
+if(question("Rooms are 50 gold a night. Interested?"), "=", 1)
+	if(stat("gold"), ">=", 50)
+		give("gold", -50)
+		give("hp", stat("maxhp"))
+		give("ep", stat("maxep"))
+		info("You awake, rested.")
+	else
+		dialog("How odd. You don't have enough money.")
+	endif
+endif
+:au
+pix("wood_interior/treasure_chest.png")
+walk(0)
+:av
+pix("town/wood_wall_sw.png")
+walk(0)
+:aw
+pix("town/wood_window_s.png")
+walk(0)
+:ax
+pix("town/wood_wall_s.png")
+walk(0)
+:ay
+pix("road/end_wood_doorway.png")
+walk(1)
+:az
+pix("town/wood_sign_inn.png")
+walk(0)
+:aA
+pix("town/wood_wall_se.png")
+walk(0)
+:aB
+pix("underground/void.png")
+walk(1)
+Action
+move("town6.txt", 28, 11)
+hero("hero_s")
+:aC
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_w_trans.png")
+:aD
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_trans.png")
+:aE
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:aF
+pix("stone_interior/wall_nw.png")
+walk(0)
+:aG
+pix("stone_interior/flagstone_grass_window.png")
+walk(0)
+:aH
+pix("stone_interior/shields2.png")
+walk(0)
+:aI
+pix("stone_interior/wall_floor_chest.png")
+walk(0)
+:aJ
+pix("stone_interior/wall_ne.png")
+walk(0)
+:aK
+pix("stone_interior/wall_w.png")
+walk(1)
+:aL
+pix("stone_interior/counter_left.png")
+walk(1)
+:aM
+pix("stone_interior/counter_old_woman.png")
+walk(0)
+Action
+store("Royal Armory of Amber")
+:aN
+pix("stone_interior/counter_right.png")
+walk(1)
+:aO
+pix("stone_interior/wall_e.png")
+walk(1)
+:aP
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("stone_interior/suit_of_armor.png")
+:aQ
+pix("stone_interior/flagstone.png")
+walk(1)
+:aR
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+:aS
+pix("stone_interior/wall_sw.png")
+walk(1)
+:aT
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:aU
+pix("stone_interior/wall_se.png")
+walk(1)
+:aV
+pix("wood_interior/wall_woodfloor_w.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:aW
+pix("wood_interior/woodfloor.png")
+walk(1)
+:aX
+pix("wood_interior/wall_woodfloor_e.png")
+walk(1)
+:aY
+pix("town/wall_sw.png")
+walk(0)
+:aZ
+pix("town/sign_armor.png")
+walk(0)
+:a0
+pix("road/end_stone_doorway.png")
+walk(1)
+:a1
+pix("town/wall_se.png")
+walk(0)
+:a2
+pix("wood_interior/woodfloor.png")
+walk(1)
+addoverpix("bookcase.png")
+wall_s(1)
+:a3
+pix("underground/void.png")
+walk(0)
+Action
+move("town6.txt", 6, 23)
+hero("hero_s")
+:a4
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("people/old_man_s2.png")
+Action
+
+if(var("horn"), "=", 0)
+    set("horn", 1)
+endif
+dialog("I know a way to find the underground  city of dwarves. The entrance to \
+their caves is magically hidden. You can only enter by blowing the magic horn. \
+A dwarf in Laendlich can help you.")
+:a5
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table.png")
+addpix("furnishings/books2.png")
+:a6
+pix("underground/void.png")
+walk(0)
+Action
+move("town6.txt", 34, 26)
+hero("hero_s")

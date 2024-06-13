@@ -1,0 +1,8 @@
+
+Name=Black Dragon
+hp=400
+attack=60
+defense=60
+exp=550
+gold=1000
+description=Black Dragon

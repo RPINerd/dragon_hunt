@@ -1,0 +1,7 @@
+Name=Magic Armor
+type=1
+quality=10
+price=13600
+description=This armor relies on the same construction methods as scale mail, \
+but uses dragon scales instead of metal.
+picture=items/dragon_armor.png

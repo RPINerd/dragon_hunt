@@ -1,0 +1,6 @@
+Name=Studded Leather
+type=1
+quality=3
+price=300
+description=The studs in this leather vest reinforce critical areas of the armor.
+picture=items/studded_leather.png

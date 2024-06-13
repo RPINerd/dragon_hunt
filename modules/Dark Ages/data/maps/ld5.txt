@@ -1,0 +1,111 @@
+aa aa aa aa aa aa ab ac ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ae af aa aa aa aa aa aa
+aa ag ag ag ag ag ab ac ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ae af ag ag ag ag ag aa
+aa ag ag ag ag ag ab ah ad ad ad ad ad ad ad ad ad ad ad ai ad ad ad ad ad ad ae af ag ag ag ag ag aa
+aa ag ag ag ag ag ag aj ah ad ad ad ad ad ad ad ad ad ak al ah ad ad ad ad ai ak af ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag aj ah ai ai ai ai ai ai ai ak am am am ah ai ai ak an ao ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ao aj am an ao ao aj am am am am am am am an ao aa ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ao ag aa aa ab am ap am am am ap am af aa aa ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag aa aa ab am am am am am am am af aa aa ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag aa aa ab am am am am am am am af aa aa ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag aa aq ar am ap am am am ap am as at aa ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ab am am am am am am am am am am am af ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ab am am am am am am am am am am am af ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag aa ao aj am ap am am am ap am an ao ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag aa aa aa ao ao ao ao ao ao ao ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_e.png")
+walk(0)
+:ac
+pix("underground/void_w.png")
+walk(0)
+:ad
+pix("underground/void.png")
+walk(0)
+:ae
+pix("underground/void_e.png")
+walk(0)
+:af
+pix("underground/rock_w.png")
+walk(0)
+:ag
+pix("underground/rock.png")
+walk(1)
+:ah
+pix("underground/void_sw.png")
+walk(0)
+:ai
+pix("underground/void_s.png")
+walk(0)
+:aj
+pix("underground/rock_ne.png")
+walk(0)
+:ak
+pix("underground/void_se.png")
+walk(0)
+:al
+pix("underground/dirt.png")
+walk(0)
+addpix("furnishings/altar.png")
+if(var("got_ld_medal"), "!=", 1)
+	addpix("furnishings/magic_crystal.png")
+endif
+Action
+if(var("got_ld_medal"), "=", 1)
+	dialog("You already have the medallion piece. All that remains on the \
+	podium is some glowing astral residue left behind by the piece.")
+else
+	set("medallion", "+", 1)
+	set("got_ld_medal", "=", 1)
+	delpix("furnishings/magic_crystal.png")
+	refresh()
+	dialog("You behold on the alter the third peice of Greyor's evil \
+	medallion. Gently, you remove it from its resting place. After a moment's \
+	reverence, you decide it's time to hurry out of this hellish pit.")
+endif
+:am
+pix("underground/dirt.png")
+walk(1)
+:an
+pix("underground/rock_nw.png")
+walk(0)
+:ao
+pix("underground/rock_n.png")
+walk(0)
+:ap
+pix("underground/dirt.png")
+walk(0)
+addpix("castle/column.png")
+:aq
+pix("underground/rock_s.png")
+walk(0)
+:ar
+pix("underground/rock_se.png")
+walk(0)
+:as
+pix("underground/rock_sw.png")
+walk(0)
+:at
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("ld4.txt", 6, 22)
+hero("hero_s")

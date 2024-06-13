@@ -1,0 +1,8 @@
+
+Name=Gold Dragon
+hp=275
+attack=44
+defense=44
+exp=390
+gold=600
+description=Gold Dragon

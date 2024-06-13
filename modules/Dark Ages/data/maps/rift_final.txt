@@ -1,0 +1,130 @@
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ab ac ad ad ad ad ad ad ad ad ad ad ad ad ad ad ae ab ab
+ab ab af ag ah ai ag ag aj ah ak ag al ah am ag ag an ab ab
+ab ab ao ap ap ap ap ap ap ap ap ap ap ar ap ap ap aq ab ab
+ab ab ao ap ap ap ap ap ap ap ap ap ap as ap ap ap aq ab ab
+ab ab ao ap ap ap ap ap ap ap ap ap ap at ap ap ap aq ab ab
+ab ab ao ap ap ap ap as ap ap ap ap ap ap ap ap ap aq ab ab
+ab ab ao ap ap ap as au as ap ap ap ap ap ap ap ap aq ab ab
+ab ab ao ap ap ap ap as ap ap ap ap ap ap ap ap ap aq ab ab
+ab ab ao ap ap ap ap ap ap ap ap ap ap av av av av aq ab ab
+ab ab ao ap ap ap ap ap ap ap ap ap ap av av av av aq ab ab
+ab ab ao ap ap ap ap ap ap aw ap ap ap av av av av aq ab ab
+ab ab ax ay ay ay ay ay ay ay ay ay ay ay ay ay ay az ab ab
+ab ab aA aB aB aB aB aB aB aB aB aB aB aB aB aB aB aC ab ab
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+
+:def
+battle_bg=castle.png
+:aa
+pix("underground/void.png")
+walk(0)
+Action
+set("temp1", attack("Black Dragons"))
+if(var("temp1"), "=", 0)
+	dialog("Greyor laughs. 'Running won't work here!'")
+	run("rift_final.txt", 0, 0)
+else
+	win()
+endif
+:ab
+pix("underground/void.png")
+walk(0)
+:ac
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:af
+pix("stone_interior/wall_nw.png")
+walk(0)
+:ag
+pix("stone_interior/wall_floor.png")
+walk(0)
+:ah
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("furnishings/potion_shelf.png")
+:ai
+pix("stone_interior/wall_fountain.png")
+walk(0)
+:aj
+pix("stone_interior/painting2.png")
+walk(0)
+:ak
+pix("stone_interior/fireplace.png")
+walk(0)
+:al
+pix("stone_interior/painting.png")
+walk(0)
+:am
+pix("stone_interior/wall_floor_chest.png")
+walk(0)
+:an
+pix("stone_interior/wall_ne.png")
+walk(0)
+:ao
+pix("stone_interior/wall_w.png")
+walk(1)
+:ap
+pix("stone_interior/flagstone.png")
+walk(1)
+:aq
+pix("stone_interior/wall_e.png")
+walk(1)
+:ar
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("castle/orb.png")
+:as
+pix("stone_interior/rug.png")
+walk(1)
+:at
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("monsters/Wizard.png")
+:au
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/blue_bed.png")
+:av
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("bookcase.png")
+:aw
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/stone_trapdoor.png")
+:ax
+pix("stone_interior/wall_sw.png")
+walk(1)
+:ay
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:az
+pix("stone_interior/wall_se.png")
+walk(1)
+:aA
+pix("town/wall_bot_w.png")
+walk(0)
+Action
+set("temp1", attack("Black Dragons"))
+if(var("temp1"), "=", 0)
+	dialog("Greyor laughs. 'Running won't work here!'")
+	run("rift_final.txt", 0, 0)
+else
+	win()
+endif
+:aB
+pix("town/wall_bot.png")
+walk(0)
+:aC
+pix("town/wall_bot_e.png")
+walk(0)

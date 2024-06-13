@@ -1,0 +1,8 @@
+
+Name=Lost Soul
+hp=300
+attack=47
+defense=47
+exp=425
+gold=700
+description=Lost Soul

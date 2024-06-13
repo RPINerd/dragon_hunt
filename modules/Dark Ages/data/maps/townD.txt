@@ -1,0 +1,501 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ab ab ab ab ac ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ad ae ab ab ab ab ab aa
+aa ab ab ab ab aa af ag ag ag ag ag ag ag ag ag ag ag ag ah af ai aj ai aj ai aj ai aj ai aj ai aj ah aa ab ab ab ab aa
+aa ab ab ab ab aa ak al am al am al am al am al am al am an ao al al al al al al al al al al al al ap aa ab ab ab ab aa
+aa ab ab ab ab aa ak am al al al al al al al al al aq al an ao al ar al al ar as at au at av ar al ap aa ab ab ab ab aa
+aa ab ac ad ad aw ax ay ay ay ay ay ay ay ay ay ay ay ay az aA ay ay ay ay ay ay ay ay ay ay ay ay az aw ad ad ae ab aa
+aa aa af ai ag aj ag ai ah ag ag aB ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag ag aB ag ag af ag ag ag ag ag ah ab aa
+aa aa aC aD aD aD aD aD aE al al al al al al al al al al al al al al al al al al al al al al aF aG aG av aH al ap aa aa
+aa aa ak al al al al al an al al al al ay ay ay ay ay ay ay ay ay ay ay ay ay ay al al al al ao al aI al aI al ap aa aa
+aa aa ak al al al ar al an al aJ al al af aK ag ag aK ag aL aL ag aK ag ag aK ah al al aJ al ao aM al al al aM ap aa aa
+aa aa ak ar al aN al al an al al al al ao al al al al al al al al al al al al an al al al al ao aH aO al aI al ap aa aa
+aa aa ak al al al al al an al aJ al al ao al al al al al al aP al al al al al an al al aJ al ao al al aH al al ap aa aa
+aa aa aC aD aD aD av al an al al al al ao aJ al al aJ aQ al al al aJ al al aJ an al al al al ao al aH al as aR aS aa aa
+aa aa ax ay ay ay ay ay aT al aJ al al ao al al al al al aU aV al al aW al al an al al aJ al aA ay ay ay ay ay az aa aa
+aa aa af ag aX ag ah aB aY al al al al ao al al al al al al al al al al al al an al al al al aZ aB af aj aj aj ah aa aa
+aa aa ak a0 a1 a2 an al al al al al al ao ar a3 a4 a3 ar a3 a3 ar a3 a5 a3 ar an al al al al al al ao a6 al a4 ap aa aa
+aa aa ax ay ay ay aT ay ay ay al al al ao al al al aW al al al al al al al al an al al al ay ay ay aA ay ay ay az aa aa
+aa aa af a7 ah aB af a8 ag ah al al al ao al al al al al al al al al al al al an al al al af ag ag ag aB ag ag ah aa aa
+aa aa a9 a2 an al ao a2 a0 an al al al ao aJ al al aJ al ba ba al aJ al al aJ an al al al ao bb bb bb al bb bb ap aa aa
+aa aa ak a1 an al ao al a1 an al al al ao al al al al al al al al al al al al an al al al ao bb bb bb al bb bb ap aa aa
+aa aa ak al an al aA ay ay aT al al al ao al al al al al al al al al al al al an al al al ao bb bb bb al bb bb ap aa aa
+aa aa ax ay aT al aZ aB ag bc al al al ao aJ al al aJ al ba ba al aJ al al aJ an al al al ao bb bb bb al bb bb ap aa aa
+aa aa af aB aY al al al bd an al al al ao al al al al al al al al al al al al an al al al ao bb bb bb al bb bb ap aa aa
+aa aa ax ay ay as aD be bf aE al al al ao al al al al al al al al al al al al an al al al ao bb bb bb al bb bb ap aa aa
+aa aa af aB bc al al bg al an al al al ao aJ al al aJ al ba ba al aJ al al aJ an al al al aA ay ay ay ay ay ay az aa aa
+aa aa bh al an bi ay ay ay aT al al al ao al al al al al al al al al al al al an al al al af aB bj bk bl bm bn ah aa aa
+aa aa ak al an al af aB a8 bc al al al ao al al al al al al al al al al al al an al al al ao bo al al al al al ap aa aa
+aa aa ak a3 an al ao al a3 bp al al al ao aJ al al aJ al ba ba al aJ al al aJ an al al al ao al aU al ar al a4 ap aa aa
+aa aa bq al an bi ao al al br al al al aA ay ay ay ay ay ay ay ay ay ay ay ay aT al al al ao al bs al al al al ap aa aa
+aa aa ax ay aT ay aA ay ay aT al al al aZ ag ag ag ag ag aB aB ag ag ag ag ag aY al al al aA ay ay ay ay ay ay az aa aa
+aa ab bt af ag aB ag ag ag aY al al al al al al al al al al al al al al al al al al al al aZ ag aB ag ag aB ah bu aa aa
+aa ab aa ak al al al al al al al al al al al aJ al al al al al al al al aJ al al al al al al al al al al al ap aa ab aa
+aa ab aa ak al al al al al al al al al al al al al al al al al al al al al al al al al al al al al al al al ap aa ab aa
+aa ab aa ax ay ay ay ay ay ay ay ay ay ay bv aJ al al al al al al bw al aJ bx ay ay ay ay ay ay ay ay ay ay az aa ab aa
+aa ab ab bt by by by by by by by by by by ak al al al al bz bz al al al al ap by by by by by by by by by by bu aa ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa ax ay ay ay ay ay ay ay ay ay ay az aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab bt by by by by by by by by by by bu ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("underground/void.png")
+walk(0)
+:ab
+pix("underground/void.png")
+walk(1)
+:ac
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(1)
+addpix("stone_interior/wall_top_grass_e_trans.png")
+:af
+pix("stone_interior/wall_nw.png")
+walk(0)
+:ag
+pix("stone_interior/wall_floor.png")
+walk(0)
+:ah
+pix("stone_interior/wall_ne.png")
+walk(0)
+:ai
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("furnishings/potion_shelf.png")
+:aj
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+:ak
+pix("stone_interior/wall_w.png")
+walk(1)
+:al
+pix("stone_interior/flagstone.png")
+walk(1)
+:am
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/portal.png")
+Action
+info("This portal is closed.")
+:an
+pix("stone_interior/wall_e.png")
+walk(1)
+wall_e(1)
+:ao
+pix("stone_interior/wall_w.png")
+walk(1)
+wall_w(1)
+:ap
+pix("stone_interior/wall_e.png")
+walk(1)
+:aq
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/wizard_s.png")
+Action
+dialog("These portals lead to the private rooms of the resident wizards.")
+:ar
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table.png")
+:as
+pix("stone_interior/counter_left.png")
+walk(1)
+:at
+pix("stone_interior/counter.png")
+walk(0)
+addpix("furnishings/magic_crystal.png")
+:au
+pix("stone_interior/counter_old_woman.png")
+walk(0)
+Action
+store("Tower Spells")
+:av
+pix("stone_interior/counter_right.png")
+walk(1)
+:aw
+pix("underground/void.png")
+walk(0)
+addpix("stone_interior/wall_top_grass_trans.png")
+:ax
+pix("stone_interior/wall_sw.png")
+walk(1)
+:ay
+pix("stone_interior/wall_flagstone.png")
+walk(1)
+:az
+pix("stone_interior/wall_se.png")
+walk(1)
+:aA
+pix("stone_interior/wall_sw.png")
+walk(1)
+wall_w(1)
+:aB
+pix("stone_interior/inner_flagstone_doorway.png")
+walk(1)
+:aC
+pix("stone_interior/counter_left_wall.png")
+walk(1)
+:aD
+pix("stone_interior/counter.png")
+walk(0)
+:aE
+pix("stone_interior/counter_right_wall.png")
+walk(1)
+wall_e(1)
+:aF
+pix("stone_interior/counter_left_wall.png")
+walk(1)
+wall_w(1)
+:aG
+pix("stone_interior/counter.png")
+walk(0)
+addpix("furnishings/jewels.png")
+Action
+dialog("Shards of glass litter this counter")
+:aH
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("big_rocks.png")
+:aI
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("stones2.png")
+:aJ
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("castle/column.png")
+:aK
+pix("stone_interior/wall_suit_of_armor.png")
+walk(0)
+:aL
+pix("stone_interior/wall_fountain.png")
+walk(0)
+:aM
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("stones3.png")
+:aN
+pix("stone_interior/flagstone.png")
+if(var("firewand"), "<", 4)
+    walk(1)
+    end()
+endif
+walk(0)
+addpix("people/old_man_s2.png")
+Action
+if(var("firewand"), "<", 4)
+    end()
+endif
+
+
+dialog("Wonderful! You're here!")
+
+if(var("firewand"), "<", 6)
+	dialog("It seems they cleaned out my lab after I was banished, so you'll \
+	need to pickup some supplies for me. The first is Ironwood. It's the only \
+	wood strong enough to handle the stress of magic. Find it and bring it \
+	back here.")
+	set("firewand", 5)
+	end()
+endif
+
+if(var("firewand"), "=", 16)
+	dialog("(You give the sulfur to Mizrak. You must wait several hours before \
+	the wand is made. When it is finished, he hands it to you and says...) \n \
+	To activate the wand, you will need a priest's blessing. Good luck.")
+	set("firewand", 17)
+endif
+
+if(var("firewand"), "<", 17)
+	dialog("Great! You found the ironwood. Now I'll need some sulfur. It is \
+	mined from the hills near Aaryak. I suggest you visit the town and speak \
+	with the Miners' Guild.")
+	if(var("firewand"), "=", 6)
+		set("firewand", 7)
+	endif
+	end()
+endif
+:aO
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("townD_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("townD_rock", 1)
+endif
+:aP
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/wizard_s2.png")
+Action
+dialog("(Head of Council) Sorry, but I'm really busy at this time. \
+Come back later.")
+if(var("firewand"), "=", 2)
+	dialog("What! You've come to ask for Mizrak's return? Are you mad or \
+	just stupid? His experiments with fire spells nearly blew the city out of \
+	the Astral Plane!")
+	dialog("(After much begging...) Very well. He may return to his lab as \
+	long as his fire experiments are restricted to the wand he is making for \
+	you.")
+	set("firewand", 3)
+endif
+:aQ
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/wizard_s.png")
+Action
+dialog("Have you visited the Great Library? Thousands of volumes are contained \
+in its lower vaults. You can peruse some of the volumes on display.")
+:aR
+pix("stone_interior/counter.png")
+walk(0)
+addpix("furnishings/books3.png")
+Action
+dialog("This journal details the attempt of the wizard Mizrak to create an \
+extremely powerful explosive device. The last page is scorched beyond \
+recognition, except for the word 'Success!', scribbled over the burn marks.")
+:aS
+pix("stone_interior/counter_right_wall.png")
+walk(1)
+:aT
+pix("stone_interior/wall_se.png")
+walk(1)
+wall_e(1)
+:aU
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table.png")
+addpix("furnishings/books3.png")
+:aV
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table.png")
+addpix("furnishings/magic_crystal.png")
+:aW
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/old_man_s3.png")
+Action
+dialog("Please do not disturb me. This is a delicate experiment.")
+:aX
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("furnishings/flower_painting2.png")
+:aY
+pix("stone_interior/wall_floor_e.png")
+walk(0)
+:aZ
+pix("stone_interior/wall_floor_w.png")
+walk(0)
+:a0
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:a1
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/blue_rug.png")
+:a2
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:a3
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/green_rug.png")
+:a4
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table.png")
+addpix("furnishings/books.png")
+:a5
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/table.png")
+addpix("furnishings/books2.png")
+:a6
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("people/old_man_s2.png")
+:a7
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("furnishings/tree_painting.png")
+:a8
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("furnishings/tree_painting2.png")
+:a9
+pix("stone_interior/wall_w.png")
+walk(0)
+addpix("furnishings/green_bed.png")
+:ba
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/red_rug.png")
+:bb
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("bookcase.png")
+:bc
+pix("stone_interior/wall_ne.png")
+walk(0)
+wall_e(1)
+:bd
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("furnishings/treasure_chest.png")
+:be
+pix("stone_interior/counter_woman.png")
+walk(0)
+Action
+if(question("Rooms are 90 gold a night. Interested?"), "=", 1)
+	if(stat("gold"), ">=", 90)
+		give("gold", -90)
+		give("hp", stat("maxhp"))
+		give("ep", stat("maxep"))
+		info("You awake, rested.")
+	else
+		dialog("How odd. You don't have enough money.")
+	endif
+endif
+:bf
+pix("stone_interior/counter.png")
+walk(0)
+addpix("furnishings/books3.png")
+:bg
+pix("stone_interior/rug2.png")
+walk(1)
+:bh
+pix("stone_interior/wall_w.png")
+walk(0)
+addpix("furnishings/dresser2.png")
+:bi
+pix("stone_interior/rug.png")
+walk(1)
+:bj
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+Action
+dialog("Theory of The Breaking, by Gelehrt \n \
+...believed that Greyor split the world by creating a medallion that \
+mimicked the natural astral powers inside the planet. By focusing astral \
+power from the strongest source, The Rift, and breaking the medallion, \
+Greyor thus broke the world. The Rift was the necessary location, as it is \
+where the flow of astral powers inside the earth are the strongest... \n \n \
+By rejoining the medallion pieces, one could reunite the continents. \
+However, the fixed piece of jewelry must be returned to The Rift, so the \
+natural healing powers of the planet can undo the evil spell. \n \n \
+...Unfortunately, the tremors of The Breaking caused great mountains above \
+The Rift. Only by journeying through the caves to the pits below, can one \
+reach The Rift...")
+:bk
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+Action
+dialog("Proof of the Existence of Diamant -- by Einsiedler \n \
+Although no proof has ever been given as to the actual existence of Diamant, \
+my research leads me to believe it exists inside the Crystal Mountains. \
+I may be chasing myths, but I feel this \
+mystery must be solved. I am preparing an expeditionary force to explore the \
+caves. Included in my group are great scientists such as... \n \
+(The book tapers off into the details of the expedition.)")
+set("know_name", 1)
+:bl
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+Action
+dialog("A Tale of Magic! \n \
+A young wizard must travel a kingdom of turmoil, \
+in order to find the five legendary artifacts to reunite the forces of good. \
+\n \n \
+Somehow, you doubt reading this book will prove useful.")
+:bm
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+Action
+dialog("Garnod's Book of Poetry \n \
+Technically this book only contains one poem, but it is still quite \
+remarkable; this is mostly due to the use of magic to find over 400 rhymes \
+with orange...")
+:bn
+pix("stone_interior/wall_floor.png")
+walk(0)
+addpix("bookcase.png")
+Action
+dialog("The Art of Magic. \n \
+An informative, yet boring book on how to focus sharply the intricacies of \
+spellcasting.")
+:bo
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/warrior_s.png")
+Action
+dialog("Sorry. Tower residents only.")
+:bp
+pix("stone_interior/wall_e.png")
+walk(0)
+wall_e(1)
+addpix("furnishings/dresser2.png")
+:bq
+pix("stone_interior/wall_w.png")
+walk(0)
+addpix("furnishings/blue_bed.png")
+:br
+pix("stone_interior/wall_e.png")
+walk(0)
+wall_e(1)
+addpix("furnishings/blue_bed.png")
+:bs
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/wizard_s.png")
+Action
+dialog("The name Floating City of Mages is rather misleading. The city does \
+not actually float above the world. Instead it drifts along the astral plane \
+where us mages can practice our magic with the least astral friction.")
+:bt
+pix("town/wall_bot_w.png")
+walk(0)
+:bu
+pix("town/wall_bot_e.png")
+walk(0)
+:bv
+pix("stone_interior/wall_sw_corner.png")
+walk(1)
+:bw
+pix("stone_interior/flagstone.png")
+walk(0)
+addpix("people/wizard_s2.png")
+Action
+dialog("These portals are the physical link between this city and the world. \
+Pass through them to return.")
+:bx
+pix("stone_interior/wall_se_corner.png")
+walk(1)
+:by
+pix("town/wall_bot.png")
+walk(0)
+:bz
+pix("stone_interior/flagstone.png")
+walk(1)
+addpix("furnishings/portal.png")
+Action
+move("world5x3.txt", 6, 14)

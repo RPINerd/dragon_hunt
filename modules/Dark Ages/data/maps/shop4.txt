@@ -1,0 +1,184 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab aa
+aa ab ab ab ab ab ab aa ab ab aa ab ab ab aa ab ac ad ad ae ab ab aa ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab aa ab aa af ag ag ah aa ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab aa ab ab aa
+aa ab aa aa ab ab ab ab ab aa ab ab ab ab ab aa ai aj ak al aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab aa ai am am al aa ab ab ab ab ab ab ab ab ab ac ad ad ae ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab aa ab ab ab aa aa ai an ao al aa ab ab ab ab aa ab ab aa aa ap aq ar as aa ab ab ab ab aa
+aa aa ab ab ab ab aa aa ab ab ab ab aa ab ab aa at au au av aa ab ab ab ab ab ab ab ab aa at au aw av aa ab ab ab ab aa
+aa ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa ax ay az aA aa ab ab ab ab ab ab ab ab aa ax az aB aA aa ab ab ab ab aa
+aa ab ab ab ab ab ab aa ab ab ab aa ab ab ab aa ab ab aC ab ab ab ab ab ab ab aa ab ab ab ab aD ab ab ab ab ab ab aa aa
+aa ab ab ab aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa ab ab ab aa
+aa ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab aa ab ab ab ab aa aa aa aa ab ab ab aa
+aa ab ab ab ab ab ab ab aa ab ab aa ab ab aa ab ab ab aa ab ab ab ab aa aa ab ab ab ab ab ab ab aa aa aa aa ab ab ab aa
+aa ab ab aa ab aa ab ab aa ab ab ab ab ab aa ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa ab ab ab aa
+aa ab ab aa ab ab ab ab ab ab aa ab ab ab ab ab aa ab ab ab aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab aa aa
+aa ab ab aa ab ab ab ab ab ab aa ab ab ab ab aa aa ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab aa ab ab aa ab ab aa ab aa ab aa ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab aa ab ab aa ab ab ab ab aa ab ab aa ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab aa aa ab ab aa
+aa aa ab ab ab ab ab ab aa ab aa ab ab ab aa ab ab ab ab ab aa ab ab ab ab ab ab ab aa aa ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab aa ab ab aa ab aa ab aa ab aa aa aa ab ab aa ab aa ab ab ab ab ab aa aa aa aa ab ab aa ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab aa ab aa ab aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa ab ab aa ab ab ab ab ab ab aa
+aa ab ab ab aa ab aa aa ab ab ab ab aa aa aa ab aa ab aa ab ab ab ab ab ab ab ab aa aa aa ab ab aa ab ab ab ab ab ab aa
+aa aa ab ab ab ab ab ab aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa aa aa ab ab ab ab ab ab ab aa ab aa
+aa aa ab ab aa ab ab ab ab aa aa ab ab ab aa ab ab ab ab aa ab ab aa ab ab ab ab aa aa aa ab ab ab ab ab ab ab ab ab aa
+aa ab ab aa ab aa ab aa ab ab ab aa aa aa ab ab ab ab ab aa ab ab ab ab ab ab ab aa aa aa ab ab ab ab aa ab ab ab ab aa
+aa ab ab ab ab aa ab ab ab ab aa aa ab aa ab ab aa ab ab ab aa ab ab ab ab ab aa aa aa aa aa aa ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa aa aa aa aa aa aa ab ab ab ab ab ab aa
+aa ab ab ab aa ab ab ab ab ab aa ab ab aa aa ab ab ab aa ab ab ab ab ab ab ab aa aa aa aa aa aa ab ab ab ab ab ab ab aa
+aa ab aa ab ab ab aa ab ab ab ab ab ab ab ab aa ab aa aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab aa
+aa ab aa ab ab aa aa aa ab aa ab aa ab ab aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab aa ab ab ab ab ab aa ab aa ab ab ab aa ab ab ab ab ab ab ab ab aa ab aa ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab aa ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab aa ab ab aa ab ab ab ab ab ab ab aa ab ab ab aa ab ab ab aa
+aa ab ab ab aa ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa ab aa
+aa ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab aa ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("underground/void.png")
+walk(0)
+:ab
+pix("underground/void.png")
+walk(1)
+:ac
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_w_trans.png")
+:ad
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_trans.png")
+:ae
+pix("underground/void.png")
+walk(1)
+addpix("wood_interior/wood_wall_top_grass_e_trans.png")
+:af
+walk(0)
+pix("wood_interior/wall_woodfloor_nw.png")
+:ag
+walk(0)
+pix("wood_interior/wood_wall_floor.png")
+addpix("bookcase.png")
+:ah
+walk(0)
+pix("wood_interior/wall_woodfloor_ne.png")
+:ai
+walk(1)
+pix("wood_interior/wall_woodfloor_w.png")
+:aj
+walk(1)
+pix("wood_interior/woodfloor.png")
+:ak
+walk(0)
+pix("wood_interior/woodfloor.png")
+addpix("furnishings/table.png")
+addpix("furnishings/books.png")
+:al
+walk(1)
+pix("wood_interior/wall_woodfloor_e.png")
+:am
+walk(0)
+pix("bookcase.png")
+:an
+pix("wood_interior/woodfloor.png")
+walk(0)
+addpix("furnishings/table.png")
+addpix("furnishings/books.png")
+:ao
+pix("wood_interior/woodfloor.png")
+walk(0)
+if(var("firewand"), ">", 3)
+    walk(1)
+    end()
+endif
+addpix("people/old_man_s2.png")
+Action
+if(var("firewand"), ">", 3)
+    end()
+endif
+if(var("firewand"), "=", 3)
+    dialog("Thank you! I'll leave today. Meet me in my lab in the Floating \
+    City. You can't miss it. It's the building in the northwest corner of the \
+    city.")
+    set("firewand", 4)
+    end()
+endif
+dialog("(Mizrak the Wizard) \n \
+I didn't always live here. Years ago, I was the greatest magical engineer \
+in The Floating City of Mages. I could build any magical device.")
+if(var("firewand"), "=", 0)
+    end()
+endif
+dialog("(You tell him of the magic ice blocking the passage in the dungeon.) \n \
+Aha! I know just the thing! A firewand could temporarily break that spell. \
+But I would need to get at my lab. \n \
+It's in the Floating City. Unless you can get me back into the city, I'm \
+afraid I can't help you.")
+set("firewand", 2)
+:ap
+pix("wood_interior/wall_woodfloor_nw.png")
+walk(0)
+:aq
+pix("wood_interior/wood_wall_floor.png")
+walk(0)
+:ar
+pix("wood_interior/fireplace.png")
+walk(0)
+:as
+pix("wood_interior/wall_woodfloor_ne.png")
+walk(0)
+:at
+pix("wood_interior/wall_woodfloor_sw.png")
+walk(1)
+:au
+pix("wood_interior/wall_woodfloor.png")
+walk(1)
+:av
+pix("wood_interior/wall_woodfloor_se.png")
+walk(1)
+:aw
+pix("wood_interior/wall_woodfloor.png")
+walk(0)
+addpix("people/old_woman_s.png")
+Action
+if(question("Rooms are 50 gold a night. Interested?"), "=", 1)
+	if(stat("gold"), ">=", 50)
+		give("gold", -50)
+		give("hp", stat("maxhp"))
+		give("ep", stat("maxep"))
+		info("You awake, rested.")
+	else
+		dialog("How odd. You don't have enough money.")
+	endif
+endif
+:ax
+pix("town/wood_wall_sw.png")
+walk(0)
+:ay
+pix("town/wood_sign_gem.png")
+walk(0)
+:az
+pix("wood_interior/wall_woodfloor_doorway.png")
+walk(1)
+:aA
+pix("town/wood_wall_se.png")
+walk(0)
+:aB
+pix("town/wood_sign_inn.png")
+walk(0)
+:aC
+pix("underground/void.png")
+walk(1)
+Action
+move("town4.txt", 18, 11)
+:aD
+pix("underground/void.png")
+walk(1)
+Action
+move("town4.txt", 31, 11)

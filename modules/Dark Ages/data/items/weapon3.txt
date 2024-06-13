@@ -1,0 +1,6 @@
+Name=Club
+type=0
+quality=2
+price=30
+description=A big stick.
+picture=items/club.png

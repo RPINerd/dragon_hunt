@@ -1,0 +1,8 @@
+
+Name=Death Knight
+hp=150
+attack=28
+defense=28
+exp=300
+gold=280
+description=Death Knight

@@ -1,0 +1,286 @@
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ac ac ac ac ac ab ab ab ab ab ab ab ab ab ab ab ab ab ac ac ac ac ac ac ac ac ac ac ac ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ad ae af af af af ag ab ab ab ab ab ah ab ab ab ab ab ad af af af af af af af af af af ai ag ab ab ah ab ac ac ac ac ac ab ab ab ab
+ab ab ab ac ac ac ac ac ac ac ac ac ac ac ab ab ab aj aj aj aj ak af af al ab ab ab ab ab ab ab ab ab am af af an aj aj aj aj ak ai an aj aj aj ab ab ab ad af af af ae ae al ab ab ab
+ab ab ad af af af af af af af af af af af ag ab ab ab ab ab ab am af af al ab ab ab ab ac ab ab ab ab ab ak af al ab ab ab ab ab aj ab ac ac ac ac ac ad af af af af af an ab ab ab ab
+ab am af af af af af af af af af af af af af al ab ab ab ab ab am af af ag ab ab ab am ai ag ab ab ab ab am af al ab ab ab ab ab ac ad af af af af af af af ao ap af af al ab ab ab ab
+ab am af an aj ak af af af af af af af af af ag ac ac ac ac ac ad af af af ag ac ac ad af af ag ac ac ac ad af ag ac ac ac ac ad af af af af af af af af af aq ar af af al ab ab ab ab
+ab am af ab ab am af af af af af af ai af af af af af af af af af af af ai af af af af af af af af af af af af af af af af af af ae af af af af af af af af as at af af ag ab ab ab ab
+ab am af al ab am af af an ak af af af af af af af af af af af af af af af af af af af af af af af af ai af af af af af af af af af af af af af af af af af ae af af af af al ab ab ab
+ab am af al ab am af af ag ad af af af af af af af af af af af af af af af af af af af af ai an aj aj aj aj ak af af af af af an aj aj aj ak af af af af af af af af af af al ab ab ab
+ab am af al ah am af af af af af af an ak af af af af af af af af af af af af af an aj aj aj ab ab ab ab ab ab aj aj aj aj aj ab ab ab ab ab ak af af af af af af af af af al ab ab ab
+ab am af al ab am af af af af af af ag ad af af af af af af af af af af af an aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab am af af af af af af af af af al ab ab ab
+ab am af al ab am ae af af af af af af af ai an aj aj aj aj aj aj aj aj aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ac ac ab ab ab ah ab ab am af af af af af af af af an ab ab ab ab
+ab am af ag ab ab aj aj aj aj aj aj aj aj aj ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ac ac ac ac ad af af ag ac ac ac ac ac ad ai af af af af af af af al ab ab ab ab
+ab am af af al ab ac ac ac ac ac ac ac ac ac ab ab ab ab ac ab ab ab ab ab ab ab ab ab ab ab ab ab ad ai ai af af af af af af af af af af ai af af af af af af af af an ab ab ab ab ab
+ab am af af ab am au ai af af af av af af af ag ac ac ad ae ag ab ab ah ab ab ab ab ab ac ab ab am ai af af af af af af af af af af af af af af af af af af af ai an ab ab ab ab ab ab
+ab am af af al am aw ai af af af af af af af af af af af af af af ag ac ac ac ac ac ad af al ab am af af af af af af af af af af af af af af af af af af af af af al ab ab ab ab ab ab
+ab ab ak af al am af af af af af af af af af af af af af af af af af af af af af af af af al ab am af af af af af af af af af af af af af af af af af af af af af al ab ab ab ab ab ab
+ab ab ab aj ab am af af af af af af af af af af af af af af af af af af af af af af af an ab ab am af af af af af af af af af af af af ai af af af af af af af af al ab ab ab ab ab ab
+ab ab ab ab ab ad af af af af af af af af af af ai af af af af ai af af af af af an aj ab ab ab am af af af af an aj aj ak af af af af an aj aj aj ak af af af af al ab ab ab ab ab ab
+ab ab ab ab am af af af af af af af af af af af af af an aj aj aj ak af af af af ab ab ab ab ab am af ae af an ab ab ab ab ak af af af al ab ah ab am af af af af al ab ab ab ab ab ab
+ab ab ab ac ad af af af af af af af af af an aj aj aj ab ab ab ab am af af af af ag ab ab ab ac ad af af af al ab ab ab ab am af af af al ab ab ab am af af af af al ab ab ab ab ab ab
+ab ab ad af af af af af af af af af an aj ab ab ab ab ab ab ab ab ab ak af af af af ag ac ad af af af af af ag ac ab ab ab ad af af af ag ac ac ac ad af af af af al ab ab ab ab ab ab
+ab am af af af af af af af af af af al ab ab ab ab ab ab ab ab ab ab am af ae af af af af af af af af af af af af ag ab ad ao ax ap ae af af af af af af af af af al ab ab ab ab ab ab
+ab am af af af af af af af ai af af al ab ab ab ab ab ab ab ab ab ab ad af af af af af af af af af af af af af af ao ax ay az az ar af af af af af af af af af af al ah ab ab ab ab ab
+ab am af af af af af af ai af af af al ab ab ah ab ab ac ac ac ac ad af af af af af af af af af af af af af ao ay az az az az az ar af af af af af af af af af af al ab ab ab ab ab ab
+ab am af af af af af af af af af af al ab ab ab ab am af ae af af af af af af af af af af af af af af ao ay az az az az az az az ar af af af af af af af af af af al ab ab ab ab ab ab
+ab am af af af an aj ak af af af af al ab ab ab ab am af af af af af af af af af ae af af af af af af aq az az az az az az az az ar af af af af af af af af af af al ab ab ab ab ab ab
+ab am af af af al ah am af af af af al ab ab ab ab ab ak af an aj aj aj ak af af af af af af af af af aq az az az az az az az az ar af af af af ai af af af af af al ab ab ab ab ab ab
+ab am af af af ag ac ad af af af af ag ab ab ab ab ab ab aj ab ab ab ab am af af af af ao ax ap af af aq az az az az az az az az ar af af af af ai ai af af af ai ag ac ac ac aA ab ab
+ab am af af af af af af af af af af af al ab ab ab ab ab ab ab ab ab ab ad af af af aB az az at af af aq az az az az az az az az ar af af af ao ax ax ap af af ae ai af af af af al ab
+ab am af af af af af af af af af af af ag ab ab ab ab ab ab ab ab ab am ae af af af aq az ar af af af aq az az az az az az az az ar af af af aq az az ar af af af af af af af af al ab
+ab am af af af af an ab ak af af af af af al ab ab ab ab ab ab ab ab am ae af af af aq az ar ai af av as az az az az az az az az ar af af af as aC aC at af af af an aj aj aj aj ab ab
+ab am af af af af al ab ab ak af af af af al ab ab ab ab ah ab ab ab am ai af af af aq az ar af af af af as az az az az az az az at af af af af af af af af af an ab ab ab ab ab ab ab
+ab am af af af af al ab ab am af af af af al ab ab ab ab ab ab ab ab am af af af af as aC at af af af af af aq az az az az az at af af af af af af af af af af al ab ab ab ab ab ab ab
+ab am af af af ai ag ab ab am af ae af af al ab ab ab ab ab ab ab ab am af af af af af af af af af af af af aq az az az az ar af ae af af af af af af af af af al ab ab ab ab ab ab ab
+ab am af af af af af al ab am af af af af al ab ab ab ab ab ab ab ab am af af af af af af af af af af af af aq az az az az ar af af af af af af af af af af af al ab ab ab ab ab ab ab
+ab am ae af af af af al ab am af af af af al ab ab ab ab ab ac ac ac ad af af af af ai af af af af af af af as az az az az ar af af af af af af af af af af af ag ab ab ab ab ab ab ab
+ab ab ak af af af af al ab am af aD af af al ab ab ab ab ad af af af av af af af af af af af af af af af af af as az az az ar af af af af ai af af af af af af ai al ab ab ab ab ab ab
+ab ab am af af af af al ab am af af af af al ab ab ab ab aj aj aj aj aj ak af af an aj aj ak af af af af af ai af aq az az ar af af af af af af an aj aj ak af an ab ab ab ab ab ab ab
+ab ab am af af af af al ab am af af af ai al ab ab ab ab ab ab ab ab ab ab aj aj ab ab ab ab aj aj aj ak af af af aq az az ar af af af af af an ab ab ab ab aj ab ab ab ab ab ab ab ab
+ab ab ab ak af af an ab ab am af af af af al ab ab ab ab ab ab ab ab ab ab ac ac ac ac ac ac ac ac ab am af af af aq az az at af af af af af al ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ab ab am af af al ab ab ab ak af af af al ab ab ab ab ab ab ab ab ab am ai af af af af aE ae ai al am af af af as aC at af af af af af af al ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ah ab am af af al ab ab ab ab aj ak af al ab ab ab ab ab ab ah ab ab ad af af af ae an ak af ae al am af af af af af af af af af af af af al ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ab ab am af af ag ab ab ab ab ab am af ag ac ab ab ab ab ab ab ab am af af af aF af ag ad af af al am ae af af af af af af af af af af an ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ab ab ad af af af ag ac ab ab ab am af af af ag ab ab ab ab ab ab ad af af aG aH aI af af af af ag ab aj ak af af af af af an aj aj aj ab ab ab ab ab ab ab ab ab ab ab ah ab ab ab
+ab ab ad af af af ai af af ag ab ab am af af af af ag ab ab ab ab ad af af aJ aH aH aH aI af af af af ag ab ab ak af af af af al ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ab ak ai af af af af af af al ab am af af af af af al ab ab am af af af aJ aH aH aH aH aI af af af af ag ab ab ak af af af al ab ab ah ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab
+ab ab ab ak aK an aj ak af af al ab ab aj aj ak af an ab ab ab am af af af af aL aH aH aH aH aM af af af ai al ab am af af af ag ac ac ac ac ac ac ac ac ac ac ac ac ac ab ab ab ab ab
+ab ab ab ab aj ab ab am af af al ab ab ab ab am an ab ab ab ab ad af af an ak aJ aH aH aH aH aM af af af af al ab am ae af af af af af af af ai af af af ai af af af af ag ab ab ab ab
+ab ab ab ab ab ab ab am af af al ab ah ab ab am al ab ab ab am af af af ag ad aJ aH aH aH aN af af af af af al ab am af av af af af af ai af af af ai af af af af af af af ag ab ab ab
+ab ab ab ab ab ab ab am af af al ab ab ab ab am al ab ab ab am ai af af af af af aL aH aN af af af af af af al ab am af ae af af an aj aj aj aj aj aj aj aj aj ak af af af af al ab ab
+ab ab ab ab ab ab ab am af af al ab ab ab ab am ag ab ab ab am av af af af af af af aO af af af ai af af af ag ab am af af af af ag ac ac ac ac ac ac ac ac ab ab ak af af af al ab ab
+ab ab aP ac ac ac ac ad af af al ab ab ab ab am af ag ab ab am af af af af af af af af af af af af af af af af al am af af af af af af af af af af af ai af ag ab am af ai af al ab ab
+ab am af af af aQ af af af af al ab ab ab ab am af af ag ac ad ai af af af af af af af ae af af af af af af ae al ab ak af af af af af af af af af af af av af al am af ai af al ab ab
+ab ab aj aj aj aj aj aj ak af ag ab ab ab ab am af af ao ax ax ax ax ap af af af af af af af af af af af af af al ab ab aj aj aj aj aj aj aj aj aj aj aj ak af ag ad af ai af al ab ab
+ab ab ab ab ab ab ab ab am af ai al ab ab ac ad af av aq az az az az aR af af af af af af af af af af af af af ag ac ac ac ac ac ac ac ac ac ac ac ac ac ad av af af af af af al ab ab
+ab ab ab ab ab ab ab ab am af ai al ab ad af af af af aq az az az az az aS ax ax ap af af af af ai af af af af af af af af af af af af af af af af af af af af af af af af af al ab ab
+ab ab ab ab ab ah ab ab am av af al am af af af af af aq az az az az az az az az aR af af af af af av af af af an aj aj aj aj aj ak af af af af af af af af af af af af af af al ab ab
+ab ab ab ab ab ab ab ab am af av al am af af af ai af aq az az az az az az az az az aS ax ax ax ap ae ai an aj ab ab ab ab ab ab ab ak ao ax ax ax ax ax ax ax ax ax ax ax ap al ab ab
+ab ab ab ab ab ab ab ab am af af al am af af af af af aq az az az az az az az az az az az az az ar aT aU ab ab ab ab ab ab ab ab ab am aq az az az az az az az az az az az ar al ab ab
+
+:def
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+if(var("shop2_spider2"), "=", 0)
+	mapstat("addmonster", "Giant Spider")
+else
+	mapstat("delmonster", "Giant Spider")
+endif
+:ab
+pix("underground/rock.png")
+walk(0)
+:ac
+pix("underground/rock_s.png")
+walk(0)
+:ad
+pix("underground/rock_se.png")
+walk(0)
+:ae
+pix("underground/dirt.png")
+walk(1)
+addpix("water/pool.png")
+:af
+pix("underground/dirt.png")
+walk(1)
+:ag
+pix("underground/rock_sw.png")
+walk(0)
+:ah
+pix("underground/gem_rock.png")
+walk(0)
+:ai
+pix("underground/dirt.png")
+walk(0)
+addpix("underground/stalag1.png")
+:aj
+pix("underground/rock_n.png")
+walk(0)
+:ak
+pix("underground/rock_ne.png")
+walk(0)
+:al
+pix("underground/rock_w.png")
+walk(0)
+:am
+pix("underground/rock_e.png")
+walk(0)
+:an
+pix("underground/rock_nw.png")
+walk(0)
+:ao
+pix("underground/void_nw.png")
+walk(0)
+:ap
+pix("underground/void_ne.png")
+walk(0)
+:aq
+pix("underground/void_w.png")
+walk(0)
+:ar
+pix("underground/void_e.png")
+walk(0)
+:as
+pix("underground/void_sw.png")
+walk(0)
+:at
+pix("underground/void_se.png")
+walk(0)
+:au
+pix("underground/dirt.png")
+walk(0)
+if(var("dungeon1_pool"), "=", 0)
+    addpix("water/magic_pool.png")
+else
+    addpix("water/pool.png")
+endif
+Action
+if(var("dungeon1_pool"), "=", 0)
+    dialog("The water in this pool sparkles with energy. As you drink some of \
+        it, your body pules with new life")
+    give("maxhp", 5)
+    give("hp", 10)
+    set("dungeon1_pool", 1)
+    addpix("water/pool.png")
+    delpix("water/magic_pool.png")
+    refresh()
+else
+    dialog("Just a normal pool")
+endif
+:av
+pix("underground/dirt.png")
+walk(0)
+addpix("underground/stalag2.png")
+:aw
+pix("underground/dirt.png")
+walk(1)
+addpix("underground/stalag1.png")
+Action
+info("There is just enough room to fit between these stalagmites.")
+:ax
+pix("underground/void_n.png")
+walk(0)
+:ay
+pix("underground/void_n_right.png")
+walk(0)
+:az
+pix("underground/void.png")
+walk(0)
+:aA
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("world1x0.txt", 4, 8)
+hero("hero_e")
+:aB
+pix("underground/void_nw2.png")
+walk(0)
+:aC
+pix("underground/void_s.png")
+walk(0)
+:aD
+pix("underground/dirt.png")
+walk(1)
+addpix("underground/stalag2.png")
+:aE
+pix("underground/dirt.png")
+walk(1)
+Action
+if(var("dungeon1_coins"), "=", 0)
+	dialog("You find a small bag of grimy coins.")
+	give("gold", 53)
+	set("dungeon1_coins", 1)
+endif
+:aF
+pix("underground/dirt.png")
+walk(1)
+addpix("water/water_n_trans.png")
+:aG
+pix("underground/dirt.png")
+walk(1)
+addpix("water/water_nw_trans.png")
+:aH
+pix("water/water.png")
+walk(0)
+:aI
+pix("underground/dirt.png")
+walk(1)
+addpix("water/water_ne_trans.png")
+:aJ
+pix("underground/dirt.png")
+walk(1)
+addpix("water/water_w_trans.png")
+:aK
+pix("underground/dirt.png")
+if(var("shop2_spider2"), "=", 1)
+	walk(1)
+else
+	walk(0)
+	addpix("people/warrior_s.png")
+endif
+Action
+if(var("shop2_spider2"), "=", 0)
+	dialog("I don't think I can defeat it. Drink this magic potion. It will \
+	restore all your hit points and magic points.")
+	give("hp", stat("maxhp"))
+	give("ep", stat("maxep"))
+endif
+:aL
+pix("underground/dirt.png")
+walk(1)
+addpix("water/water_sw_trans.png")
+:aM
+pix("underground/dirt.png")
+walk(1)
+addpix("water/water_e_trans.png")
+:aN
+pix("underground/dirt.png")
+walk(1)
+addpix("water/water_se_trans.png")
+:aO
+pix("underground/dirt.png")
+walk(1)
+addpix("water/water_s_trans.png")
+:aP
+pix("underground/rock_exit.png")
+walk(1)
+Action
+move("world0x0.txt", 22, 8)
+hero("hero_w")
+:aQ
+pix("underground/dirt.png")
+if(var("shop2_spider2"), "=", 1)
+	walk(1)
+else
+	walk(0)
+	addpix("monsters/Demon Spider.png")
+endif
+Action
+if(var("shop2_spider2"), "=", 1)
+    end()
+endif
+if(question("The demon spider waits here. It completely fills the corridor, \
+poison drips from its fangs, and its eyes glow hungrily. Attack?"), "=", 1)
+    if(attack("demon spider"), "=" 1)
+        set("shop2_spider2", "=", 1)
+        set("medallion", "=", 1)
+        delpix("monsters/Demon Spider.png")
+        walk(1)
+        dialog("The spider shrieks, curls up, and disappears.")
+    endif
+endif
+:aR
+pix("underground/void_e_bot.png")
+walk(0)
+:aS
+pix("underground/void_n_left.png")
+walk(0)
+:aT
+pix("underground/dirt.png")
+walk(0)
+:aU
+pix("underground/rock_w_tip.png")
+walk(0)

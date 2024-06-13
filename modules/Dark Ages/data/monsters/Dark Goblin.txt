@@ -1,0 +1,8 @@
+
+Name=Dark Goblin
+hp=200
+attack=37
+defense=37
+exp=340
+gold=450
+description=Dark Goblin

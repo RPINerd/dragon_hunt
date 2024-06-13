@@ -1,0 +1,86 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa ab ab ab aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa ac ad ad ad ae aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa af ac ad ad ad ad ad ag aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ah ai ad ad ad aj ad ad ag aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ak al ad ad ad ad ad ag aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa al ad ad ad am aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa ak ak ak aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+battle_bg=underground.png
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/rock_se.png")
+walk(0)
+:ad
+pix("underground/dirt.png")
+walk(1)
+:ae
+pix("underground/rock_sw.png")
+walk(0)
+:af
+pix("underground/stair_up.png")
+walk(0)
+Action
+if(var("helpdwarf"), "=", 2)
+    move("dwarftwn.txt", 8, 5)
+    hero("hero_s")
+else
+    dialog("Do not turn back now!")
+endif
+:ag
+pix("underground/rock_w.png")
+walk(0)
+:ah
+pix("underground/rock_e.png")
+walk(0)
+:ai
+pix("underground/dirt.png")
+walk(1)
+:aj
+pix("underground/dirt.png")
+walk(0)
+addpix("furnishings/portal.png")
+Action
+if(var("helpdwarf"), "=", 2)
+    dialog("The portal is closed. In your seemingly infinite geniosity, you \
+    concoct the thought that perhaps you should get your ass out of this \
+    dungeon before the remaining creatures recover and pummel you senseless.")
+    end()
+endif
+
+dialog("Before you is a portal to a gruesome  world. Spewing from it are the \
+fiends that plague these caves. You hack your way through the creatures and \
+smash the gemstones from which the portal arises.")
+dialog("The portal shudders, then evaporates. The frame remains, but never \
+again will the portal be opened.")
+set("helpdwarf", 2)
+
+addpix("furnishings/dead_portal.png")
+delpix("furnishings/portal.png")
+refresh()
+:ak
+pix("underground/rock_n.png")
+walk(0)
+:al
+pix("underground/rock_ne.png")
+walk(0)
+:am
+pix("underground/rock_nw.png")
+walk(0)

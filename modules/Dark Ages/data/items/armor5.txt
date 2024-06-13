@@ -1,0 +1,8 @@
+Name=Ring Mail
+type=1
+quality=4
+price=600
+description=Although well-made, someone appears to have left this armor in a \
+back room for the last twenty years. Fortunately, the rust appears to only \
+be superficial.
+picture=items/ring_mail.png

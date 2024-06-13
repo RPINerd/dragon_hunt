@@ -1,0 +1,7 @@
+Name=Chain Mail
+type=1
+quality=6
+price=2900
+description=Chain mail is flexible enough to allow movement, while blocking \
+most blows.
+picture=items/chain_armor.png

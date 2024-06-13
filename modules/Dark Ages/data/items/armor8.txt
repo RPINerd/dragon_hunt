@@ -1,0 +1,8 @@
+Name=Partial Plate
+type=1
+quality=7
+price=5500
+description=This armor is a version of plate with some of the armor \
+portions removed. This allows for cheaper construction, as well as a lighter \
+weight. The only problem is with the lesser protection it provides.
+picture=items/partial_plate.png

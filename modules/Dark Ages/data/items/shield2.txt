@@ -1,0 +1,7 @@
+Name=Buckler
+type=2
+quality=1
+price=15
+description=While poor against arrows, this shield is useful for deflecting \
+other weaponry.
+picture=items/buckler.png

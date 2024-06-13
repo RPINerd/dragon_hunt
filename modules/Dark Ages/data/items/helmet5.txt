@@ -1,0 +1,7 @@
+Name=Magic Helm
+type=3
+quality=5
+price=650
+description=The only obvious difference in this helmet is the large gem \
+in the forehead area. Still, this helmet feels more "solid", somehow.
+picture=items/magic_helm.png

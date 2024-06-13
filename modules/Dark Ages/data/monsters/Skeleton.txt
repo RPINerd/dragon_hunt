@@ -1,0 +1,8 @@
+
+Name=Skeleton
+hp=90
+attack=20
+defense=20
+exp=200
+gold=150
+description=Skeleton

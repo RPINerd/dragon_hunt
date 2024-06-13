@@ -1,0 +1,86 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ab aa ab ab ab ab aa ac aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ad ae af ae ae ae ae af ag ah aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ai ad ae ae aj ak aa ak aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ad ae al ae am ab aa ab ab aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ai ad ae ae ae af ae ae ah aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa ai aa ai ak ak aa an ae ah aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa ad ae al ag ao ap aa ad ae ao aq aa aa aa aa aa aa
+aa aa aa aa aa aa ap ar ae al ag ag ag ah ad ag ag ag ah aa aa aa aa aa
+aa aa aa aa aa ad ag ag ag ah ak ak ak aa aa ak ak ak aa aa aa aa aa aa
+aa aa aa aa aa aa ak ak ak aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+battle_bg=underground.png
+monster=Troll
+monster=Skeleton
+:aa
+pix("underground/rock.png")
+walk(0)
+:ab
+pix("underground/rock_s.png")
+walk(0)
+:ac
+pix("underground/stair_up.png")
+walk(1)
+Action
+move("dwarfB.txt", 8, 12)
+hero("hero_s")
+:ad
+pix("underground/rock_e.png")
+walk(0)
+:ae
+pix("underground/dirt.png")
+walk(1)
+:af
+pix("underground/dirt_ew.png")
+walk(1)
+:ag
+pix("underground/dirt.png")
+walk(1)
+:ah
+pix("underground/rock_w.png")
+walk(0)
+:ai
+pix("underground/dirt_ns.png")
+walk(1)
+:aj
+pix("underground/rock_nw.png")
+walk(0)
+:ak
+pix("underground/rock_n.png")
+walk(0)
+:al
+pix("underground/rock_ew.png")
+walk(0)
+:am
+pix("underground/rock_w_tip.png")
+walk(1)
+:an
+pix("underground/rock_ne.png")
+walk(0)
+:ao
+pix("underground/rock_sw.png")
+walk(0)
+:ap
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("dwarfA.txt", 8, 6)
+hero("hero_s")
+:aq
+pix("underground/stair_down.png")
+walk(1)
+Action
+move("dwarfE.txt", 8, 9)
+hero("hero_s")
+:ar
+pix("underground/rock_se.png")
+walk(0)

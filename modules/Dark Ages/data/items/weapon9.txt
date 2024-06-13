@@ -1,0 +1,6 @@
+Name=Long Sword
+type=0
+quality=12
+price=3500
+description=The weapon of the warrior.
+picture=items/long_sword.png

@@ -1,0 +1,364 @@
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ac ab ab ab ab ab ab ab aa
+aa ab ab ab ac ab ab ab ab ab ab ad ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ae ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ae ab ab ab aa
+aa ab ab ab ab ab ab af ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab af ab ab ab ag ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ah ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ag ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ai ai ai ai ai ai ai ai ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab aj aj aj aj aj aj aj ak ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab al ab ab ab ab ab ab ab aa
+aa ab ab ab ab am am am am am am am an ab ab ab ab ab ab ab ab ao ao ao ao ao ao ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ap ap ap ap ap ap ap aq ab ab ab ab ab ar ab ab as as as as as at ab ab ab ab ab ab ab ab au ab ab ab aa
+aa ab ad ab ab av aw ax ay az ax aw aA ab ab al ab ab ab ab ab aB aB aB aB aB aC ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab ab aE aF aG aH aI aJ ab ab ah ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab au ab aK aL aL aM aL aL aL aL aL aL aL aL aL aL aL aL aN ab ab ab ab ab ab ae ab ab ab ac ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab aD ab ab aO ab ab ab ab ab au ab ab ab aD ab ab ad ab ab ab ab ab ab ab ab ag ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ab ab ae ab af ab ab ab aD ab ab ab aP ab ab ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab al ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab aD ab ab aQ aR aS ab ab ab ae ab ab ab aD ab af ab ab ab ab ab ab ab ab aT ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab aD ab aQ aU aR aV aS ab ab ab ab ab ab aD ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa ab ab ac ab ab ab ab ab ab ab aD ab aW aX aY aZ a0 ab ab ab ab ab ab aD ab ab ab ab ab af ab ab ab ab aP ab ab ab aa
+aa ab ab ab ab ab ab al ab ab ab aD ab aW aX aY aZ a0 ab ab ab ab ab ab aD ab ab a1 ab ab ab ab ab ab aQ a2 aS ab ab aa
+aa ab ab ab ab ah ab ab ab ab ab aD ab aW aX aY aZ a0 ab ad ab ab ab ab aD ab a3 a4 a5 ab ab ab ab ab aW aY a0 ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab aD ab aW aX aY aZ a0 ab ab ab au ab ab aD ab a6 a7 a8 ab ab ab ab ab aW a9 a0 ab ab aa
+aa ab ab ao ao ao ao ao ao ab ab aD ab aW aX a9 aZ a0 ab ab ab ab ab ab aD ab a6 ba a8 ab ab ab ab ab bb bc bd ab ab aa
+aa ab ab as as as as as at ab ab aD ab aW be bf bg a0 ab ab ab ab ab ab aD ab bh bc bi ab al ab bj ab av bk aA ab ab aa
+aa ab ab aB aB aB aB aB aC ab ab aD ab bb bf bf bf bd ab ab ab ab ab ab aD ab av bk aA ab ab bl bm bn ab aD ab ab ab aa
+aa ab ab aE aF aF bo bp aJ ab ab aD ab av aw bq aw aA ab ab ab af ab ab aD ab ab aD ab br ab bs bt bu ab aD ab ab ab aa
+aa ab ab ab ab ab ab aK aL aL aL bv aL aL aL bv aL aL aL aL aL aL aL aL aN ab ab aD ab ab ab bs bw bu ab aD ab ab ah aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aD ab ab aD ab ae ab bx bc by ab aD ab ab ab aa
+aa ab ab au ab ab ab ab ab ab ab ab ag ab ab ab ab ab ab ab ab ab ab ab aD ag ab aD ab ab ab av bk aA ab aD ac ab ab aa
+aa ab ab ab ab ab ab ab ab al ab ab ab ab ab ab ab ab ac ab ab ah ab ab aK aL aL bv aL aL aL aL bv aL aL bz ab ab ab aa
+aa ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab bA ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab ab aa
+aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa aa
+
+:def
+:aa
+pix("grass.png")
+walk(0)
+Action
+move("world0x0.txt", 16, 13)
+:ab
+pix("grass.png")
+walk(1)
+:ac
+pix("small_shrub.png")
+walk(0)
+:ad
+pix("large_shrub.png")
+walk(0)
+:ae
+pix("mixed_flowers.png")
+walk(1)
+:af
+pix("small_flowers.png")
+walk(1)
+:ag
+pix("tree2.png")
+walk(0)
+:ah
+pix("stones.png")
+walk(1)
+:ai
+pix("roof_green/roof_n_back.png")
+walk(0)
+:aj
+pix("roof_green/roof_n_top.png")
+walk(0)
+:ak
+pix("roof_green/roof_n_top_right.png")
+walk(0)
+:al
+pix("small_blue_flowers.png")
+walk(1)
+:am
+pix("roof_green/roof_n.png")
+walk(0)
+:an
+pix("roof_green/roof_n_right.png")
+walk(0)
+:ao
+pix("roof_red/roof_n_back.png")
+walk(0)
+:ap
+pix("roof_green/roof_n_bot.png")
+walk(0)
+:aq
+pix("roof_green/roof_n_bot_right.png")
+walk(0)
+:ar
+pix("flowers.png")
+walk(1)
+:as
+pix("roof_red/roof_n_top.png")
+walk(0)
+:at
+pix("roof_red/roof_n_top_right.png")
+walk(0)
+:au
+pix("garden.png")
+walk(1)
+:av
+pix("town/wood_wall_sw.png")
+walk(0)
+:aw
+pix("town/wood_window_s.png")
+walk(0)
+:ax
+pix("town/wood_wall_s.png")
+walk(0)
+:ay
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shop3.txt", 8, 16)
+hero("hero_n")
+:az
+pix("town/wood_sign_inn.png")
+walk(0)
+:aA
+pix("town/wood_wall_se.png")
+walk(0)
+:aB
+pix("roof_red/roof_n_bot.png")
+walk(0)
+:aC
+pix("roof_red/roof_n_bot_right.png")
+walk(0)
+:aD
+pix("road/road_ns.png")
+walk(1)
+:aE
+pix("town/wall_sw.png")
+walk(0)
+:aF
+pix("town/wall_s.png")
+walk(0)
+:aG
+pix("town/sign_weapon.png")
+walk(0)
+:aH
+pix("road/end_door.png")
+walk(1)
+Action
+move("shop3.txt", 24, 17)
+hero("hero_n")
+:aI
+pix("town/sign_armor.png")
+walk(0)
+:aJ
+pix("town/wall_se.png")
+walk(0)
+:aK
+pix("road/road_ne.png")
+walk(1)
+:aL
+pix("road/road_ew.png")
+walk(1)
+:aM
+pix("road/road_t.png")
+walk(1)
+:aN
+pix("road/left_t.png")
+walk(1)
+:aO
+pix("blue_flowers.png")
+walk(1)
+:aP
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_mid_n.png")
+:aQ
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_nw.png")
+:aR
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_mid.png")
+:aS
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_ne.png")
+:aT
+pix("grass.png")
+walk(1)
+addpix("small_rock.png")
+Action
+if(var("town3_rock"), "=", 0)
+    give("maxhp", 2)
+    give("hp", 2)
+    set("town3_rock", 1)
+endif
+:aU
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_w.png")
+:aV
+pix("grass.png")
+walk(1)
+addoverpix("roof_blue/roof_e.png")
+:aW
+pix("roof_blue/roof_w_bot.png")
+walk(0)
+:aX
+pix("roof_blue/roof_w.png")
+walk(0)
+:aY
+pix("roof_blue/roof_mid.png")
+walk(0)
+:aZ
+pix("roof_blue/roof_e.png")
+walk(0)
+:a0
+pix("roof_blue/roof_e_bot.png")
+walk(0)
+:a1
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_mid_n.png")
+:a2
+pix("grass.png")
+addoverpix("roof_blue/roof_mid.png")
+walk(1)
+:a3
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_nw.png")
+:a4
+pix("grass.png")
+addoverpix("roof_green/roof_mid.png")
+walk(1)
+:a5
+pix("grass.png")
+walk(1)
+addoverpix("roof_green/roof_ne.png")
+:a6
+pix("roof_green/roof_w_bot.png")
+walk(0)
+:a7
+pix("roof_green/roof_mid.png")
+walk(0)
+:a8
+pix("roof_green/roof_e_bot.png")
+walk(0)
+:a9
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_mid_s.png")
+:ba
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_mid_s.png")
+:bb
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_sw_bot.png")
+:bc
+pix("town/wood_window.png")
+walk(0)
+:bd
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_se_bot.png")
+:be
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_sw.png")
+:bf
+pix("town/wood_wall.png")
+walk(0)
+:bg
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_blue/roof_se.png")
+:bh
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_sw_bot.png")
+:bi
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_green/roof_se_bot.png")
+:bj
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_mid_n.png")
+:bk
+pix("road/end_wood_door.png")
+walk(0)
+Action
+dialog("The door is locked")
+:bl
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_nw.png")
+:bm
+pix("grass.png")
+addoverpix("roof_red/roof_mid.png")
+walk(1)
+:bn
+pix("grass.png")
+walk(1)
+addoverpix("roof_red/roof_ne.png")
+:bo
+pix("town/sign_gem.png")
+walk(0)
+:bp
+pix("road/end_door.png")
+walk(1)
+Action
+move("shop3.txt", 7, 33)
+hero("hero_n")
+:bq
+pix("road/end_wood_door.png")
+walk(1)
+Action
+move("shop3.txt", 15, 33)
+hero("hero_n")
+:br
+pix("grass.png")
+walk(0)
+addpix("people/man2_s.png")
+Action
+dialog("The Northern Post protects our northeaster coast from pirates.")
+:bs
+pix("roof_red/roof_w_bot.png")
+walk(0)
+:bt
+pix("roof_red/roof_mid.png")
+walk(0)
+:bu
+pix("roof_red/roof_e_bot.png")
+walk(0)
+:bv
+pix("road/reverse_t.png")
+walk(1)
+:bw
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_mid_s.png")
+:bx
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_sw_bot.png")
+:by
+pix("town/wood_wall.png")
+walk(0)
+addpix("roof_red/roof_se_bot.png")
+:bz
+pix("road/road_nw.png")
+walk(1)
+:bA
+pix("grass.png")
+walk(0)
+addpix("people/child_s.png")
+Action
+dialog("Welcome to Wisp! Be sure to visit our museum located in the center of the city.")

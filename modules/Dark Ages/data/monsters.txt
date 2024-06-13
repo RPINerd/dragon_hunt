@@ -1,0 +1,63 @@
+:Orc
+monster=Orc
+
+:Ferocious Armless
+monster=Ferocious Armless
+
+:Highway Bandit
+monster=Highway Bandit
+
+:Acid Slime
+monster=Acid Slime
+
+:Giant Spider
+monster=Giant Spider
+
+:Wizard
+monster=Wizard
+
+:Goblin
+monster=Goblin
+
+:Skeleton
+monster=Skeleton
+
+:Troll
+monster=Troll
+
+:Death Knight
+monster=Death Knight
+
+:Bronze Golem
+monster=Bronze Golem
+
+:Dark Goblin
+monster=Dark Goblin
+
+:Iron Golem
+monster=Iron Golem
+
+:Gold Dragon
+monster= Gold Dragon
+
+:Lost Soul
+monster=Lost Soul
+
+:Ice Dragon
+monster=Ice Dragon
+
+:Platinum Golem
+monster=Platinum Golem
+
+:Black Dragon
+monster=Black Dragon
+
+:Black Dragons
+x_pos = 40, 160
+y_pos = 50, 50
+monster=Black Dragon
+monster=Black Dragon
+
+:Demon Spider
+monster=Demon Spider
+
