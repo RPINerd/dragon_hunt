@@ -11,7 +11,7 @@ import inv
 import new_game
 import pygame
 import shop
-from player import *
+from player import player
 
 # size, in tiles, of the main screen. While this is adjustable,
 # odd numbers would work much better. (To keep the player centered.)
@@ -375,7 +375,7 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
 
 
 def debug_print_level():
-    if g.debug == True:
+    if g.debug:
         pygame.image.save(map_canvas, "templevel.bmp")
         print("saved level to templevel.bmp")
 

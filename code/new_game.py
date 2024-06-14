@@ -28,7 +28,7 @@ import loadgame
 import main
 import options
 import pygame
-from player import *
+from player import player
 
 # main stats for character. Taken from g.hp etc.
 global name_stat

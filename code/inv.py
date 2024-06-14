@@ -23,7 +23,7 @@ import g
 import item
 import main
 import pygame
-from player import *
+from player import player
 
 # width/height of inv canvas, in tiles.
 # (g.tilesize + the 3 pixel border)

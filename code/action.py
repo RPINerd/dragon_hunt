@@ -22,7 +22,7 @@ import battle
 import g
 import main
 import monster
-from player import *
+from player import player
 
 debug = 0
 if debug == 1:

@@ -35,7 +35,7 @@ import monster
 import pygame
 
 # player info
-from player import *
+from player import player
 
 # needed for scripting
 from scripting import *

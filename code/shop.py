@@ -23,7 +23,7 @@ import g
 import item
 import main
 import pygame
-from player import *
+from player import player
 
 # location of the store in the g.shops[] array
 global store_num

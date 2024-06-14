@@ -24,7 +24,7 @@ import inv
 import main
 import monster
 import pygame
-from player import *
+from player import player
 
 mon_index = 0
 
