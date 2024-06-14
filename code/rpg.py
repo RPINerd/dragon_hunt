@@ -1,7 +1,6 @@
 """
-This file is the first file accessed upon game start.
-It allows the player to select the module, or, if there is only one,
-automatically selects for the player.
+    This file is the first file accessed upon game start.
+    It allows the player to select the module, or, if there is only one, automatically selects for the player.
 """
 
 import pygame
