@@ -39,7 +39,8 @@ import pygame
 from player import player
 
 # needed for scripting
-from scripting import g, maps, read_maps, read_scripts, read_shops
+# from scripting import g, maps, read_maps, read_scripts, read_shops, newgame_act
+from scripting import *
 
 # This will be displayed on the Title screen and Main screen.
 game_name = ""
@@ -141,8 +142,6 @@ def savegame(save_file):
         mkdir(g.mod_directory + "/saves")
     save_loc = g.mod_directory + "/saves/" + save_file
     savefile = open(save_loc, "w")
-    # savefile version; update whenever the data saved changes.
-    pickle.dump("dh3.3", savefile)
     pickle.dump(player.name, savefile)
     pickle.dump(player.hp, savefile)
     pickle.dump(player.ep, savefile)
