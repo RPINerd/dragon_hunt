@@ -1,22 +1,6 @@
-# options.py
-# Copyright (C) 2005 Free Software Foundation
-# This file is part of Dragon Hunt.
-
-# Dragon Hunt is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# Dragon Hunt is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with Dragon Hunt; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-# This file controls the options screen.
+"""
+This file controls the options screen.
+"""
 
 from os import path
 

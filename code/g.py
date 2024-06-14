@@ -25,6 +25,7 @@
 
 # needed for save/load game
 import pickle
+import sys
 from os import mkdir, path, remove, walk
 from random import random
 
@@ -33,12 +34,10 @@ import item
 import main
 import monster
 import pygame
-
 # player info
 from player import player
-
 # needed for scripting
-from scripting import *
+from scripting import g, maps, read_maps, read_scripts, read_shops
 
 # This will be displayed on the Title screen and Main screen.
 game_name = ""
@@ -189,9 +188,6 @@ def savegame(save_file):
 def loadgame(save_file):
     save_loc = g.mod_directory + "/saves/" + save_file
     savefile = open(save_loc, "r")
-    version = pickle.load(savefile)
-    if version != "dh3.3":
-        return loadgame_31(save_file)
     player.name = pickle.load(savefile)
     player.hp = pickle.load(savefile)
     player.ep = pickle.load(savefile)
@@ -222,7 +218,7 @@ def loadgame(save_file):
     ygrid = pickle.load(savefile)
     global zgrid
     zgrid = pickle.load(savefile)
-    if str(zgrid).isdigit() != True:
+    if not str(zgrid).isdigit():
         zgrid = mapname2zgrid(str(zgrid))
     skill_len = pickle.load(savefile)
     for i in range(skill_len):
@@ -232,53 +228,6 @@ def loadgame(save_file):
     timestep = pickle.load(savefile)
     global var_list
     var_list = pickle.load(savefile)
-    savefile.close()
-
-
-def loadgame_31(save_file):
-    save_loc = g.mod_directory + "/saves/" + save_file
-    savefile = open(save_loc, "r")
-    version = pickle.load(savefile)
-    if version != "dh3.2":
-        print("Old savefile version. Try an earlier version of DH.")
-        return -1
-    player.name = pickle.load(savefile)
-    player.hp = pickle.load(savefile)
-    player.ep = pickle.load(savefile)
-    player.maxhp = pickle.load(savefile)
-    player.maxep = pickle.load(savefile)
-    player.attack = pickle.load(savefile)
-    player.defense = pickle.load(savefile)
-    player.gold = pickle.load(savefile)
-    player.exp = pickle.load(savefile)
-    player.level = pickle.load(savefile)
-    player.skillpoints = pickle.load(savefile)
-
-    # equipment is stored by name to increase savefile compatability.
-    equip_len = pickle.load(savefile)
-    for i in range(equip_len):
-        player.equip[i] = item.finditem(pickle.load(savefile))
-        if item.item[player.equip[i]].name == "Ignore":
-            player.equip[i] = -1
-    global inv
-    inv_len = pickle.load(savefile)
-    for i in range(inv_len):
-        item.inv[i] = item.finditem(pickle.load(savefile))
-        if item.item[item.inv[i]].name == "Ignore":
-            item.inv[i] = -1
-    global xgrid
-    xgrid = pickle.load(savefile)
-    global ygrid
-    ygrid = pickle.load(savefile)
-    global zgrid
-    zgrid = pickle.load(savefile)
-    skill_len = pickle.load(savefile)
-    for i in range(skill_len):
-        player.skill[findskill(pickle.load(savefile))][5] = 1
-    global timestep
-    timestep = pickle.load(savefile)
-    global cur_mon_hp
-    cur_mon_hp = pickle.load(savefile)
     savefile.close()
 
 
@@ -833,8 +782,8 @@ def load_sounds():
         return 0
     try:
         pygame.mixer.init()
-    except:
-        print("Unable to init sound.")
+    except pygame.error as message:
+        print(f"Error: Unable to init sound (pygame message: {message})")
         nosound = 1
         return 0
 
@@ -850,13 +799,13 @@ def load_sounds():
                     base_name = root[i:] + "/" + tmp_name
                 else:  # if image is in root dir
                     base_name = tmp_name
-                if not sounds.has_key(base_name):
+                if base_name not in sounds:
                     sounds[base_name] = {}
                 sounds[base_name][tmp_number] = pygame.mixer.Sound(root + "/" + soundname)
 
 
 def play_sound(sound_name):
-    if not sounds.has_key(sound_name):
+    if sound_name not in sounds:
         print("missing sound set " + sound_name)
     dict_size = len(sounds[sound_name])
 

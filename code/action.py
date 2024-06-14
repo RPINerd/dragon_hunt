@@ -488,7 +488,7 @@ def script_addpix(x, y, z, argument_array):  # add a picture to the tile.
     if check_types_args(argument_array, [1], "addpix") == 0:
         return "bad"
 
-    if not g.tiles.has_key(argument_array[0][0][1:-1]):
+    if argument_array[0][0][1:-1] not in g.tiles:
         print("Tile " + argument_array[0][0][1:-1] + " does not exist in map " + g.maps[z].name)
         return 0
     g.maps[z].field[y][x].add_pix(g.tiles[argument_array[0][0][1:-1]])
@@ -1306,7 +1306,7 @@ def script_set(x, y, z, argument_array):  # set variable (in g.var_list)
         return "bad"
 
     # Make sure the var to change exists.
-    if g.var_list.has_key(command2) == 0:
+    if command2 in g.var_list:
         g.var_list[command2] = 0
 
     # Make sure the var to change is a number.
@@ -1454,7 +1454,7 @@ def script_var(x, y, z, argument_array):  # return variable (in g.var_list)
 
     # Strip beginning/ending quotes.
     command2 = argument_array[0][0][1:-1].lower().strip()
-    if g.var_list.has_key(command2):
+    if command2 in g.var_list:
         try:
             if g.var_list[command2].isdigit():
                 return int(g.var_list[command2])

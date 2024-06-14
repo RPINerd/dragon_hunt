@@ -493,9 +493,9 @@ def change_scripting(x, y, modetype):
     scripting_list.append("")
 
     editor = ""
-    if os.environ.has_key("EDITOR"):
+    if "EDITOR" in os.environ:
         editor = os.environ["EDITOR"]
-    if os.environ.has_key("DH_EDITOR"):
+    if "DH_EDITOR" in os.environ:
         editor = os.environ["DH_EDITOR"]
     if editor != "":
         for line_num in range(len(scripting_list)):

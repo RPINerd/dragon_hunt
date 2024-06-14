@@ -246,7 +246,7 @@ def refreshhero():
     for picture in findtile(g.xgrid, g.ygrid, g.zgrid):
         g.screen.blit(picture, ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize))
 
-    if not g.tiles.has_key(player.cur_hero):
+    if player.cur_hero not in g.tiles:
         print("hero " + player.cur_hero + " not found")
         return 0
     g.screen.blit(g.tiles[player.cur_hero], ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize))
@@ -402,12 +402,13 @@ def redisplay_map(x=0, y=0):
                     g.screen_size[1],
                 ),
             )
-            if g.tiles.has_key(player.cur_hero[:-4] + "_" + str(i % 2) + player.cur_hero[-4:]):
+            tmp_key = player.cur_hero[:-4] + "_" + str(i % 2) + player.cur_hero[-4:]
+            if tmp_key in g.tiles:
                 g.screen.blit(
-                    g.tiles[player.cur_hero[:-4] + "_" + str(i % 2) + player.cur_hero[-4:]],
+                    g.tiles[tmp_key],
                     ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize),
                 )
-            elif g.tiles.has_key(player.cur_hero):
+            elif player.cur_hero in g.tiles:
                 g.screen.blit(g.tiles[player.cur_hero], ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize))
             g.screen.blit(
                 map_over_canvas,

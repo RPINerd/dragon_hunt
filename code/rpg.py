@@ -20,7 +20,7 @@ pygame.display.set_caption("Loading")
 tmp_icon = pygame.image.load("../modules/default/images/buttons/icon.png")
 pygame.display.set_icon(tmp_icon)
 
-g.screen_size = (640, 480)
+g.screen_size = (1024, 768)
 
 if g.fullscreen == 1:
     g.screen = pygame.display.set_mode(g.screen_size, pygame.FULLSCREEN)
@@ -118,7 +118,7 @@ def refresh_module_info():
         if len(array_mods) <= tmp + i:
             savetext = ""
         else:
-            savetext = array_mods[tmp + i]
+            savetext = array_mods[int(tmp) + i]
         g.print_string(
             g.screen,
             savetext,
