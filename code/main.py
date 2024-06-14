@@ -11,7 +11,6 @@ import inv
 import new_game
 import pygame
 import shop
-import thread
 from player import *
 
 # size, in tiles, of the main screen. While this is adjustable,
@@ -702,7 +701,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     # Move the array of button names to a global array. We'll need it later.
     global button_array2
     button_array2 = ["no.png", "yes.png"]
-    usable_chars = "`~!@#$%^&*()-_=+\|[{]};:'\",<.>/? \t"
+    usable_chars = "`~!@#$%^&*()-_=+|[{]};:'\",<.>/? \t"
     if extra_restrict == 1:
         usable_chars = "!-_,. "
 

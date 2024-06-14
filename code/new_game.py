@@ -144,7 +144,7 @@ def name_key_handler(key_name):
 def adjust_name(input_char):
     global name_stat
     global curr_name_loc
-    usable_chars = "`~!@#$%^&*()-_=+\|[{]};:'\",<.>/? "
+    usable_chars = "`~!@#$%^&*()-_=+|[{]};:'\",<.>/? "
     c = input_char
     if c == "":
         return

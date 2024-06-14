@@ -22,15 +22,8 @@
 import g
 import item
 import main
-
-# from Tkinter import *
 import pygame
 from player import *
-
-##needed for the buttons.
-# import ImageTk
-# import Image
-
 
 # location of the store in the g.shops[] array
 global store_num

@@ -19,17 +19,9 @@
 import re
 
 import action
-
-# import tkMessageBox
 import g
 import item
 import main
-
-# This file controls the inventory screen.
-# from Tkinter import *
-# needed for the buttons.
-# import ImageTk
-# import Image
 import pygame
 from player import *
 

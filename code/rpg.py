@@ -5,14 +5,6 @@
 
 import pygame
 
-try:
-    import psyco
-
-    psyco.full()
-except ImportError:
-    print("Psyco not found. Installing Psyco will increase performance.")
-
-
 pygame.init()
 pygame.font.init()
 

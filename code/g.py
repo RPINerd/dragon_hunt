@@ -32,10 +32,6 @@ import action
 import item
 import main
 import monster
-
-# from Tkinter import *
-# import ImageTk
-# needed for die_roll
 import pygame
 
 # player info
@@ -750,7 +746,7 @@ def load_tiles():
     global tiles
     temp_images = read_images("/images/tiles/")
     tiles = {}
-    for image_name, image in temp_images.iteritems():
+    for image_name, image in temp_images.items():
         tiles[image_name] = image
 
 
@@ -762,7 +758,7 @@ def load_backgrounds():
     global backgrounds
     temp_images = read_images("/images/backgrounds/")
     backgrounds = {}
-    for image_name, image in temp_images.iteritems():
+    for image_name, image in temp_images.items():
         backgrounds[image_name] = image
 
 
@@ -774,7 +770,7 @@ def load_buttons():
     global buttons
     temp_images = read_images("/images/buttons/")
     buttons = {}
-    for image_name, image in temp_images.iteritems():
+    for image_name, image in temp_images.items():
         buttons[image_name] = image
 
 
@@ -786,7 +782,7 @@ def load_icons():
     global icons
     temp_images = read_images("/images/icons/")
     icons = {}
-    for image_name, image in temp_images.iteritems():
+    for image_name, image in temp_images.items():
         icons[image_name] = image
 
 

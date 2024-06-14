@@ -23,11 +23,6 @@ import g
 import inv
 import main
 import monster
-
-# from Tkinter import *
-# needed for the buttons.
-# import ImageTk
-# import Image
 import pygame
 from player import *
 

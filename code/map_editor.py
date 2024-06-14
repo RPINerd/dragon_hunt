@@ -20,17 +20,10 @@
 # Author: Allison Marles
 # Date: Sept.1, 2004
 
-# import re
 import os
-
-# import tkMessageBox
 import re
 import sys
 
-# from Tkinter import *
-# needed for the tiles.
-# import ImageTk
-# import Image
 import pygame
 
 pygame.init()
