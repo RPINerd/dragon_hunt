@@ -189,6 +189,7 @@ def show_details(event=0, sel_item=-1):
         sel_item = curr_item
     if curr_focus == 0:  # inv
         if sel_item < len(item.inv):
+            print(sel_item)
             if item.inv[sel_item] != -1:
                 tempitem = item.item[item.inv[sel_item]]
                 if tempitem.type == 14 and g.shops[store_num].name == "a Gem Shop":
@@ -510,7 +511,7 @@ def mouse_sel_shop(xy):
 
     temp_num = which_box(xy[0] - canvas_x_start, xy[1] - canvas_y_start)
     if temp_num != -1:
-        curr_item = temp_num
+        curr_item = int(temp_num)
         curr_focus = 0
         cur_button = 0
         refresh_shop()
@@ -519,7 +520,7 @@ def mouse_sel_shop(xy):
 
     temp_num = which_box(xy[0] - canvas_x_start - temp_canvas_width * 2, xy[1] - canvas_y_start)
     if temp_num != -1:
-        curr_item = temp_num
+        curr_item = int(temp_num)
         curr_focus = 1
         cur_button = 2
         refresh_shop()
