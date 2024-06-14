@@ -474,8 +474,8 @@ These were mostly preserved as-is, with only minor formatting/spacing changes
 ### Version - 3.0
 
     started from scratch
-    writing Dragon Hunt in Python this time	as 
+    writing Dragon Hunt in Python this time as 
         1) I don't have a Visual Basic compiler anymore
-        2) I am running Linux now, making it difficult for me to run one in	any case
+        2) I am running Linux now, making it difficult for me to run one in any case
         3) I needed to learn Python.
     Features are about the same as 2.0, though there are a few improvements that came along for the ride, along with a few incomplete areas.

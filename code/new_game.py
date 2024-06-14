@@ -541,9 +541,6 @@ def init_window():
                 if event.button == 1:
                     if key_handler(pygame.K_RETURN) == 1:
                         return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            key_handler(tmpjoy)
 
 
 def refresh_new_game():

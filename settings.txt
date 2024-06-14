@@ -36,19 +36,3 @@ editor_tilesize = 24
 
 #Is the game screen fullscreen, (or windowed)?
 fullscreen=0
-
-#Should we use the joystick?
-usejoystick=1
-
-#Which joystick should we use? (If more than one)
-#(May not work. I can't test it...)
-joystick_number = 0
-
-#Which joystick buttons are used for action and cancel
-joystick_action=0
-joystick_cancel=1
-
-#Which axis' to use for left-right, and up-down movement.
-joystick_lr_axis=0
-joystick_ud_axis=1
-

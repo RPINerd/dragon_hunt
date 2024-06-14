@@ -838,12 +838,6 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
                     elif active_button == 0:
                         g.unclean_screen = True
                         return -1
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            # This is a bit odd, but I don't have a keypress function for
-            # the dialog.
-            pygame.event.post(pygame.event.Event(pygame.KEYDOWN, key=tmpjoy))
-            pygame.event.post(pygame.event.Event(pygame.KEYUP, key=tmpjoy))
 
         if g.unclean_screen:
             g.unclean_screen = False
@@ -973,12 +967,6 @@ def show_popup(line="", button_array=[], allow_move=1, input_width=-1):
                     g.allow_move = 1
                     g.screen.blit(restore_surface, ((g.screen_size[0] - surface_width) / 2, 0))
                     return active_button
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            # This is a bit odd, but I don't have a keypress function for
-            # the dialog.
-            pygame.event.post(pygame.event.Event(pygame.KEYDOWN, key=tmpjoy))
-            pygame.event.post(pygame.event.Event(pygame.KEYUP, key=tmpjoy))
         if g.unclean_screen:
             pygame.display.flip()
 
@@ -1136,11 +1124,6 @@ def init_window_main(is_new_game=0):
                 mouse_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if mouse_handler(event.pos) == 1:
-                    return
-        if g.joystick != 0:
-            tmpjoy = g.run_joystick(150)
-            if tmpjoy != 0:
-                if key_handler(tmpjoy) == 1:
                     return
         # this is after the event loop, as otherwise, moving from map to map
         # creates a timing bug that fires this once too much.

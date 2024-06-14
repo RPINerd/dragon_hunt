@@ -7,7 +7,7 @@ from os import path
 import g
 import pygame
 
-# -1=none, 0=fullscreen, 1=difficulty, 2=custom key, 3=use joy, 4=custom joy
+# -1=none, 0=fullscreen, 1=difficulty, 2=custom key
 # 5=save, 6=reset, 7=cancel
 # 9=none, 10=Up, 11=Right, 12=Down, 13=Left, 14=Action, 15=Cancel, 16=reset,
 # 17=back
@@ -15,8 +15,6 @@ global curr_button
 curr_button = 1
 global tmp_keys
 tmp_keys = {}
-global tmp_joy
-tmp_joy = {}
 
 
 # unfocused, inactive=gray; focused, inactive=green; focused, active=red
@@ -65,23 +63,6 @@ def refresh_window():
     if curr_button == 2:
         focused = True
     box_with_text((x_start, y_start + 50), "Customize Keyboard", focused)
-
-    # use joystick
-    joystick_img = "check_sel.png"
-    if tmp_joystick == 0:
-        joystick_img = "check.png"
-    in_color = "light_gray"
-    if curr_button == 3:
-        in_color = "dh_green"
-    g.create_norm_box((x_start + 2, y_start + 77), (x_width - 4, 23), inner_color=in_color)
-    g.screen.blit(g.buttons[joystick_img], (x_start + 7, y_start + 78))
-    g.print_string(g.screen, "Use Joystick", g.font, (x_start + 27, y_start + 85))
-
-    # custom joystick
-    focused = False
-    if curr_button == 4:
-        focused = True
-    box_with_text((x_start, y_start + 100), "Customize Joystick", focused)
 
     # save setttings
     focused = False
@@ -168,56 +149,6 @@ def refresh_key_window(adjusting=False):
     pygame.display.flip()
 
 
-def refresh_joy_window(adjusting=False):
-    # create the window
-    x_start = g.tilesize * g.main.mapsizex / 2 - 90
-    y_start = g.tilesize * g.main.mapsizey / 2 - 80
-    x_width = 180
-    g.create_norm_box((x_start, y_start), (x_width, 212))
-
-    # left/right
-    tmp_string = "Left/Right Axis: " + str(tmp_joy["lr"])
-    focused = False
-    if curr_button == 20:
-        focused = True
-    box_with_text((x_start, y_start), tmp_string, focused, adjusting)
-
-    # up/down
-    tmp_string = "Up/Down Axis: " + str(tmp_joy["ud"])
-    focused = False
-    if curr_button == 21:
-        focused = True
-    box_with_text((x_start, y_start + 25), tmp_string, focused, adjusting)
-
-    # action
-    tmp_string = "Action: " + str(tmp_joy["action"])
-    focused = False
-    if curr_button == 22:
-        focused = True
-    box_with_text((x_start, y_start + 50), tmp_string, focused, adjusting)
-
-    # Cancel
-    tmp_string = "Cancel: " + str(tmp_joy["cancel"])
-    focused = False
-    if curr_button == 23:
-        focused = True
-    box_with_text((x_start, y_start + 75), tmp_string, focused, adjusting)
-
-    # reset setttings
-    focused = False
-    if curr_button == 24:
-        focused = True
-    box_with_text((x_start, y_start + 160), "Reset Settings", focused)
-
-    # leave
-    focused = False
-    if curr_button == 25:
-        focused = True
-    box_with_text((x_start, y_start + 185), "Back", focused)
-
-    pygame.display.flip()
-
-
 # All keypresses pass through here. Based on the key name,
 # give the right action. ("etc", "left", "right", "up", "down", "return")
 def key_handler(switch):
@@ -225,15 +156,8 @@ def key_handler(switch):
     global tmp_fullscreen
     global tmp_difficulty
     global tmp_keys
-    global tmp_joystick
-    global tmp_joy
     if switch == g.bindings["cancel"]:
         cancel_settings()
-    # elif (switch == g.bindings["left"] or switch == g.bindings["right"]):
-    # global cur_button
-    # if cur_button == 0: cur_button = 1
-    # else: cur_button = 0
-    # refresh_buttons()
     elif switch == g.bindings["up"]:
         curr_button -= 1
         if curr_button <= -1:
@@ -259,15 +183,6 @@ def key_handler(switch):
             curr_button = 10
             custom_key()
             curr_button = 2
-        elif curr_button == 3:  # joystick
-            if tmp_joystick == 0:
-                tmp_joystick = 1
-            else:
-                tmp_joystick = 0
-        elif curr_button == 4:  # custom joy
-            curr_button = 20
-            custom_joy()
-            curr_button = 4
         elif curr_button == 5:  # save
 
             # apply settings to the game
@@ -275,7 +190,6 @@ def key_handler(switch):
                 pygame.display.toggle_fullscreen()
             g.fullscreen = tmp_fullscreen
             g.difficulty = tmp_difficulty
-            g.use_joy = tmp_joystick
             g.bindings["up"] = tmp_keys["up"]
             g.bindings["down"] = tmp_keys["down"]
             g.bindings["right"] = tmp_keys["right"]
@@ -300,10 +214,6 @@ def key_handler(switch):
                     g.bindings["inv"] = 0
                 if g.bindings[binding] == pygame.K_BACKQUOTE:
                     g.bindings["load_console"] = 0
-            g.joy_axis0 = tmp_joy["lr"]
-            g.joy_axis1 = tmp_joy["ud"]
-            g.joykey_action = tmp_joy["action"]
-            g.joykey_cancel = tmp_joy["cancel"]
 
             # save the settings to disk
             options_file_text = []
@@ -336,16 +246,6 @@ def key_handler(switch):
                     options_file_text[linenum] = command + "=" + str(g.difficulty) + "\n"
                 if command == "fullscreen":
                     options_file_text[linenum] = command + "=" + str(g.fullscreen) + "\n"
-                if command == "usejoystick":
-                    options_file_text[linenum] = command + "=" + str(g.use_joy) + "\n"
-                if command == "joystick_action":
-                    options_file_text[linenum] = command + "=" + str(g.joykey_action) + "\n"
-                if command == "joystick_cancel":
-                    options_file_text[linenum] = command + "=" + str(g.joykey_cancel) + "\n"
-                if command == "joystick_lr_axis":
-                    options_file_text[linenum] = command + "=" + str(g.joy_axis0) + "\n"
-                if command == "joystick_ud_axis":
-                    options_file_text[linenum] = command + "=" + str(g.joy_axis1) + "\n"
 
             optionfile.close()
             optionfile = open(g.mod_directory + "/../../settings.txt", "w")
@@ -355,7 +255,6 @@ def key_handler(switch):
         elif curr_button == 6:  # reset
             tmp_fullscreen = 0
             tmp_difficulty = 1
-            tmp_joystick = 1
             tmp_keys = {}
             tmp_keys["up"] = pygame.K_UP
             tmp_keys["down"] = pygame.K_DOWN
@@ -363,11 +262,6 @@ def key_handler(switch):
             tmp_keys["left"] = pygame.K_LEFT
             tmp_keys["action"] = pygame.K_RETURN
             tmp_keys["cancel"] = pygame.K_ESCAPE
-            tmp_joy = {}
-            tmp_joy["lr"] = 0
-            tmp_joy["ud"] = 1
-            tmp_joy["action"] = 0
-            tmp_joy["cancel"] = 1
         elif curr_button == 7:
             cancel_settings()  # cancel
     refresh_window()
@@ -386,31 +280,6 @@ def bind_new_key(start_key):
             elif event.type == pygame.KEYDOWN:
                 return event.key
     return start_key
-
-
-def bind_new_joy(joytype):
-    pygame.time.wait(150)
-    while True:
-        pygame.time.wait(30)
-        g.clock.tick(30)
-        if g.break_one_loop > 0:
-            g.break_one_loop -= 1
-            break
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return -1
-            elif event.type == pygame.KEYDOWN:
-                if event.key == tmp_keys["cancel"]:
-                    return -1
-        if joytype == "axis":
-            for axisnum in range(g.joystick.get_numaxes()):
-                if abs(g.joystick.get_axis(axisnum)) > 0.5:
-                    return axisnum
-        elif joytype == "button":
-            for buttonnum in range(g.joystick.get_numbuttons()):
-                if abs(g.joystick.get_button(buttonnum)) == 1:
-                    return buttonnum
-    return -1
 
 
 # key handler for the key customizer window.
@@ -459,56 +328,6 @@ def key_key_handler(switch):
     refresh_key_window()
 
 
-# key handler for the joystick customizer window.
-def joy_key_handler(switch):
-    global curr_button
-    global tmp_joy
-    if switch == g.bindings["cancel"]:
-        cancel_settings()
-    elif switch == g.bindings["up"]:
-        curr_button -= 1
-        if curr_button <= 19:
-            curr_button = 25
-    elif switch == g.bindings["down"]:
-        curr_button += 1
-        if curr_button > 25:
-            curr_button = 20
-    elif switch == g.bindings["action"]:
-        if curr_button == 20:  # left/right
-            refresh_joy_window(True)
-            tmp = bind_new_joy("axis")
-            if tmp != -1:
-                tmp_joy["lr"] = tmp
-            pygame.time.wait(150)
-        if curr_button == 21:  # up/down
-            refresh_joy_window(True)
-            tmp = bind_new_joy("axis")
-            if tmp != -1:
-                tmp_joy["ud"] = tmp
-            pygame.time.wait(150)
-        if curr_button == 22:  # action
-            refresh_joy_window(True)
-            tmp = bind_new_joy("button")
-            if tmp != -1:
-                tmp_joy["action"] = tmp
-            pygame.time.wait(150)
-        if curr_button == 23:  # cancel
-            refresh_joy_window(True)
-            tmp = bind_new_joy("button")
-            if tmp != -1:
-                tmp_joy["cancel"] = tmp
-            pygame.time.wait(150)
-        if curr_button == 24:  # reset
-            tmp_joy = {}
-            tmp_joy["lr"] = g.joy_axis0
-            tmp_joy["ud"] = g.joy_axis1
-            tmp_joy["action"] = g.joykey_action
-            tmp_joy["cancel"] = g.joykey_cancel
-        if curr_button == 25:  # back
-            cancel_settings()
-    refresh_joy_window()
-
-
 def custom_key():
     refresh_key_window()
     while True:
@@ -523,40 +342,11 @@ def custom_key():
             elif event.type == pygame.KEYDOWN:
                 key_key_handler(event.key)
                 repeat_key = 0
-            # elif event.type == pygame.KEYUP:
-            # key_handler_up(event.key)
             elif event.type == pygame.MOUSEMOTION:
                 mouse_handler_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if mouse_handler_down(event.pos) == 1:
                     return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            key_key_handler(tmpjoy)
-
-
-def custom_joy():
-    refresh_joy_window()
-    while True:
-        pygame.time.wait(30)
-        g.clock.tick(30)
-        if g.break_one_loop > 0:
-            g.break_one_loop -= 1
-            break
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return
-            elif event.type == pygame.KEYDOWN:
-                joy_key_handler(event.key)
-                repeat_key = 0
-            elif event.type == pygame.MOUSEMOTION:
-                mouse_handler_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if mouse_handler_down(event.pos) == 1:
-                    return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            joy_key_handler(tmpjoy)
 
 
 def mouse_handler_move(pos):
@@ -570,7 +360,6 @@ def mouse_handler_move(pos):
     ):
         if curr_button >= 19:
             curr_button = 19
-            refresh_joy_window()
         elif curr_button >= 9:
             curr_button = 9
             refresh_key_window()
@@ -592,7 +381,6 @@ def mouse_handler_move(pos):
             curr_button = 24
         elif pos[1] < 210:
             curr_button = 25
-        refresh_joy_window()
     elif curr_button >= 9:
         if pos[1] < 25:
             curr_button = 10
@@ -637,9 +425,7 @@ def mouse_handler_move(pos):
 
 def mouse_handler_down(pos):
     global curr_button
-    if curr_button >= 19:
-        joy_key_handler(pygame.K_RETURN)
-    elif curr_button >= 9:
+    if curr_button >= 9:
         key_key_handler(pygame.K_RETURN)
     else:
         key_handler(pygame.K_RETURN)
@@ -652,11 +438,8 @@ def init_window_options():
     global tmp_fullscreen
     global tmp_difficulty
     global tmp_keys
-    global tmp_joystick
-    global tmp_joy
     tmp_fullscreen = g.fullscreen
     tmp_difficulty = g.difficulty
-    tmp_joystick = g.use_joy
     tmp_keys = {}
     tmp_keys["up"] = g.bindings["up"]
     tmp_keys["down"] = g.bindings["down"]
@@ -664,11 +447,6 @@ def init_window_options():
     tmp_keys["left"] = g.bindings["left"]
     tmp_keys["action"] = g.bindings["action"]
     tmp_keys["cancel"] = g.bindings["cancel"]
-    tmp_joy = {}
-    tmp_joy["lr"] = g.joy_axis0
-    tmp_joy["ud"] = g.joy_axis1
-    tmp_joy["action"] = g.joykey_action
-    tmp_joy["cancel"] = g.joykey_cancel
     refresh_window()
     while True:
         pygame.time.wait(30)
@@ -682,16 +460,11 @@ def init_window_options():
             elif event.type == pygame.KEYDOWN:
                 key_handler(event.key)
                 repeat_key = 0
-            # elif event.type == pygame.KEYUP:
-            # key_handler_up(event.key)
             elif event.type == pygame.MOUSEMOTION:
                 mouse_handler_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if mouse_handler_down(event.pos) == 1:
                     return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            key_handler(tmpjoy)
 
 
 def cancel_settings():

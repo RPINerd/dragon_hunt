@@ -482,14 +482,6 @@ def init_window_loadgame():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if mouse_handler_down(event.pos) == 1:
                     return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            if tmpjoy != g.bindings["left"] and tmpjoy != g.bindings["right"]:
-                global cur_button
-                if cur_button != 0:
-                    cur_button = 0
-                    refresh_buttons()
-                key_handler(tmpjoy)
 
         if g.unclean_screen:
             pygame.display.flip()

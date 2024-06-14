@@ -322,12 +322,6 @@ def select_monster():
     # bindings
     bind_attack_keys()
 
-    # Don't want an inv box in the way:
-    # inv.leave_inner()
-    # 	if main.canvas_map.winfo_exists():
-    # 		main.canvas_map.delete("skill")
-    # 		main.canvas_map.delete("use")
-
     refresh()
     pygame.display.flip()
     # wait. Continue after activate_yesno() is run.
@@ -354,12 +348,6 @@ def select_monster():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 monster_mouse_move(event.pos)
                 g.break_one_loop = 1
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            # This is a bit odd, but I don't have a keypress function for
-            # the dialog.
-            pygame.event.post(pygame.event.Event(pygame.KEYDOWN, key=tmpjoy))
-            pygame.event.post(pygame.event.Event(pygame.KEYUP, key=tmpjoy))
 
         if g.break_one_loop > 0:
             g.break_one_loop -= 1
@@ -627,9 +615,6 @@ def open_item_menu():
                 item_mouse_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 item_mouse_click(event.pos)
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            item_key_handler(tmpjoy)
         if g.unclean_screen:
             pygame.display.flip()
     g.screen.blit(tmp_surface, (170, 0))
@@ -669,9 +654,6 @@ def open_skill_menu():
                 skill_mouse_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 skill_mouse_click(event.pos)
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            skill_key_handler(tmpjoy)
         if g.unclean_screen:
             pygame.display.flip()
     g.screen.blit(tmp_surface, (170, 0))
@@ -1248,9 +1230,6 @@ def begin(mon_index_input):
                 mouse_handler_move(event.pos)
                 if key_handler(pygame.K_RETURN) == 1:
                     break
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            key_handler(tmpjoy)
         if g.unclean_screen:
             pygame.display.flip()
 

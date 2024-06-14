@@ -277,39 +277,14 @@ def read_game_name() -> str:
 new_game_dice = []
 
 
-global joystick
-joystick = 0
-
-global use_joy
-use_joy = 1
-
-global joy_num
-joy_num = 0
-
-global joykey_action
-joykey_action = 0
-global joykey_cancel
-joykey_cancel = 1
-global joy_axis0
-joy_axis0 = 0
-global joy_axis1
-joy_axis1 = 1
-
-
 # get the key bindings from settings.txt
 def read_settings():
     global bindings
     global message_lines
     global difficulty
-    global use_joy
     global editor_xy
     global editor_tilesize
     global fullscreen
-    global joy_num
-    global joykey_action
-    global joykey_cancel
-    global joy_axis0
-    global joy_axis1
     editor_xy = (640, 480)
     editor_tilesize = 15
     fullscreen = 0
@@ -337,18 +312,6 @@ def read_settings():
             editor_tilesize = int(line.split("=", 1)[1].strip())
         elif line.split("=", 1)[0].strip() == "fullscreen":
             fullscreen = int(line.split("=", 1)[1].strip())
-        elif line.split("=", 1)[0].strip() == "usejoystick":
-            use_joy = int(line.split("=", 1)[1].strip())
-        elif line.split("=", 1)[0].strip() == "joystick_number":
-            joy_num = int(line.split("=", 1)[1].strip())
-        elif line.split("=", 1)[0].strip() == "joystick_action":
-            joykey_action = int(line.split("=", 1)[1].strip())
-        elif line.split("=", 1)[0].strip() == "joystick_cancel":
-            joykey_cancel = int(line.split("=", 1)[1].strip())
-        elif line.split("=", 1)[0].strip() == "joystick_lr_axis":
-            joy_axis0 = int(line.split("=", 1)[1].strip())
-        elif line.split("=", 1)[0].strip() == "joystick_ud_axis":
-            joy_axis1 = int(line.split("=", 1)[1].strip())
         else:
             bind_line = line.split("=", 1)[0].strip()
             bindings[bind_line] = int(line.split("=", 1)[1].strip())
@@ -931,46 +894,3 @@ def print_multiline(surface, string_to_print, font, width, xy, color="black") ->
         surface.blit(temp_text, xy)
         xy = (xy[0] + temp_size[0], xy[1])
     return num_of_lines
-
-
-global last_joy_times
-last_joy_times = {}
-last_joy_times["lr"] = 0
-last_joy_times["ud"] = 0
-last_joy_times["a"] = 0
-last_joy_times["b"] = 0
-
-
-def run_joystick(delay_time=400):
-    if g.joystick == 0 or use_joy == 0:
-        return 0
-
-    global last_joy_times
-    if abs(g.joystick.get_axis(g.joy_axis0)) < 0.2:
-        last_joy_times["lr"] = 0
-    if abs(g.joystick.get_axis(g.joy_axis1)) < 0.2:
-        last_joy_times["ud"] = 0
-    if not g.joystick.get_button(g.joykey_action):
-        last_joy_times["a"] = 0
-    if not g.joystick.get_button(g.joykey_cancel):
-        last_joy_times["b"] = 0
-
-    if joystick.get_axis(0) < -0.5 and pygame.time.get_ticks() - last_joy_times["lr"] > delay_time:
-        last_joy_times["lr"] = pygame.time.get_ticks()
-        return bindings["left"]
-    if joystick.get_axis(0) > 0.5 and pygame.time.get_ticks() - last_joy_times["lr"] > delay_time:
-        last_joy_times["lr"] = pygame.time.get_ticks()
-        return bindings["right"]
-    if joystick.get_axis(1) < -0.5 and pygame.time.get_ticks() - last_joy_times["ud"] > delay_time:
-        last_joy_times["ud"] = pygame.time.get_ticks()
-        return bindings["up"]
-    if joystick.get_axis(1) > 0.5 and pygame.time.get_ticks() - last_joy_times["ud"] > delay_time:
-        last_joy_times["ud"] = pygame.time.get_ticks()
-        return bindings["down"]
-    if joystick.get_button(g.joykey_action) and pygame.time.get_ticks() - last_joy_times["a"] > delay_time:
-        last_joy_times["a"] = pygame.time.get_ticks()
-        return bindings["action"]
-    if joystick.get_button(g.joykey_cancel) and pygame.time.get_ticks() - last_joy_times["b"] > delay_time:
-        last_joy_times["b"] = pygame.time.get_ticks()
-        return bindings["cancel"]
-    return 0

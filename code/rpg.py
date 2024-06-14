@@ -27,20 +27,6 @@ if g.fullscreen == 1:
 else:
     g.screen = pygame.display.set_mode(g.screen_size)
 
-tmpjoycount = pygame.joystick.get_count()
-if pygame.joystick.get_init() == 0:
-    pygame.joystick.init()
-
-g.joystick = 0
-if tmpjoycount > g.joy_num:
-    g.joystick = pygame.joystick.Joystick(g.joy_num)
-    g.joystick.init()
-elif tmpjoycount > 0:
-    print("Bad joystick_number detected. Did you unplug a joystick recently?")
-    print("Switching to first joystick.")
-    g.joystick = pygame.joystick.Joystick(0)
-    g.joystick.init()
-
 import new_game
 
 global array_mods
@@ -388,14 +374,6 @@ def init_window():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_handler_move(event.pos)
                 mouse_handler_down(event.pos)
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            if tmpjoy != g.bindings["left"] and tmpjoy != g.bindings["right"]:
-                global cur_button
-                if cur_button != 0:
-                    cur_button = 0
-                    refresh_buttons()
-                key_handler(tmpjoy)
 
         if g.unclean_screen:
             g.unclean_screen = False

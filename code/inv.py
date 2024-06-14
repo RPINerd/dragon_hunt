@@ -118,9 +118,6 @@ def open_use_item():
     g.cur_window = "inventory_use"
     refresh_use()
     refresh_use_buttons()
-    # 	g.window_main.wait_variable(back_to_inv)
-    # 	if main.canvas_map.winfo_exists():
-    # 		main.canvas_map.delete("use")
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -135,10 +132,6 @@ def open_use_item():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if use_mouse_click(event.pos) == 1:
                     return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            if use_key_handler(tmpjoy) == 1:
-                return
     menu_bind_keys()
     menu_bind_keys()
 
@@ -149,9 +142,6 @@ def open_drop_item():
     g.cur_window = "inventory_drop"
     refresh_drop()
     refresh_drop_buttons()
-    # 	g.window_main.wait_variable(back_to_inv)
-    # 	if main.canvas_map.winfo_exists():
-    # 		main.canvas_map.delete("drop")
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -166,10 +156,6 @@ def open_drop_item():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if drop_mouse_click(event.pos) == 1:
                     return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            if drop_key_handler(tmpjoy) == 1:
-                return
     menu_bind_keys()
 
 
@@ -202,12 +188,6 @@ def open_equip_item():
                     if curr_item >= inv_width * inv_height:
                         curr_item = 0
                     return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            if equip_key_handler(tmpjoy) == 1:
-                if curr_item >= inv_width * inv_height:
-                    curr_item = 0
-                return
     menu_bind_keys()
 
 
@@ -233,10 +213,6 @@ def open_skill_menu():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if skill_mouse_click(event.pos) == 1:
                     return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            if skill_key_handler(tmpjoy) == 1:
-                return
     menu_bind_keys()
 
 
@@ -1369,11 +1345,6 @@ def init_window_inv():
                 menu_mouse_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if menu_mouse_click(event.pos) == 1:
-                    return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            if tmpjoy != g.bindings["left"] and tmpjoy != g.bindings["right"]:
-                if menu_key_handler(tmpjoy) == 1:
                     return
 
 

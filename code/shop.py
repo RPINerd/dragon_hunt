@@ -649,8 +649,6 @@ def init_window_shop(store_type_input):
     show_details()
 
     pygame.display.flip()
-    g.last_joy_times["ud"] = pygame.time.get_ticks()
-    g.last_joy_times["lr"] = pygame.time.get_ticks()
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -665,7 +663,3 @@ def init_window_shop(store_type_input):
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if mouse_sel_shop(event.pos) == 1:
                     return
-        tmpjoy = g.run_joystick()
-        if tmpjoy != 0:
-            if key_handler(tmpjoy) == 1:
-                return
