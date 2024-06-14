@@ -26,8 +26,8 @@ iconsize = 20
 # msg_font = tkFont.Font ( family="Helvetica", size=10, weight="bold" )
 
 # division is nasty. Only do it once. Used for centering items on the player.
-half_mapx = mapsizex / 2
-half_mapy = mapsizey / 2
+half_mapx = int(mapsizex / 2)
+half_mapy = int(mapsizey / 2)
 
 # used for yes/no dialog boxes.
 active_button = 0
