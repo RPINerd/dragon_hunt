@@ -22,9 +22,6 @@ width = 20
 tilesize = 32
 iconsize = 20
 
-# bold_font = tkFont.Font ( family="Helvetica", size=10, weight="bold" )
-# msg_font = tkFont.Font ( family="Helvetica", size=10, weight="bold" )
-
 # division is nasty. Only do it once. Used for centering items on the player.
 half_mapx = int(mapsizex / 2)
 half_mapy = int(mapsizey / 2)
@@ -227,10 +224,6 @@ def refresh_bars():
     g.create_norm_box((start_width, start_height + 5), (epbar_width, 6), "black", "ep_blue")
 
 
-# 	pygame.display.flip()
-# 	pygame.time.wait(2000)
-
-
 # given x and y (absolute coods.) refresh the given tile. (ADJUST FOR PARTIAL)
 def refresh_tile(x, y, input_zgrid, xshift=0, yshift=0):
     for picture in findtile(x, y, input_zgrid):
@@ -367,7 +360,6 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
     if g.maps[input_zgrid].downright_level != "" and recurse:  # downright
         downright_zgrid = g.mapname2zgrid(g.maps[input_zgrid].downright_level)
         process_onload(False, downright_zgrid, 7, input_zgrid)
-    # pygame.image.save(map_canvas, "temp_canvas.bmp")
     global free_move
     free_move = 1
     if g.debug:
@@ -423,16 +415,10 @@ def redisplay_map(x=0, y=0):
             g.screen.blit(tmp_msg_scroller, (0, 416))
             g.screen.blit(tmp_stat_box, (580, 329))
             pygame.display.flip()
-    # 			g.clock.tick(60)
     g.screen.blit(map_canvas, (-(g.xgrid + 1) * tilesize, -(g.ygrid + 1) * tilesize))
     g.screen.blit(map_over_canvas, (-(g.xgrid + 1) * tilesize, -(g.ygrid + 1) * tilesize))
     refreshhero()
     g.unclean_screen = True
-
-
-# re-display stats.
-# def recalc_stats():
-# 	refresh_bars()
 
 
 # Return an array of pictures that the given tile should display.
@@ -515,7 +501,6 @@ def move_hero(x, y):
     # check for either the main window not existing, or a current dialog
     if action.has_dialog == 1:
         return
-    # tempclock = clock()
     # check for any objects of interest. Called before moving, in case
     # the scripting changes the walkable status.
     testing_time = pygame.time.get_ticks()
@@ -545,7 +530,6 @@ def move_hero(x, y):
             if already_refreshed == 1:
                 refreshhero()
                 already_refreshed = 0
-                # print clock() - tempclock
                 return
 
             # quick refresh.
@@ -601,7 +585,7 @@ def move_hero(x, y):
                 )
                 player.cur_hero = "people/hero_s"
                 redisplay_later = True
-        if redisplay_later == True:
+        if redisplay_later:
             player.cur_hero += g.maps[g.zgrid].hero_suffix + ".png"
             redisplay_map(x, y)
             refresh_inv_icon()
@@ -621,7 +605,6 @@ def move_hero(x, y):
         g.allow_change_hero = 1
         refreshhero()
         g.unclean_screen = True
-        # refresh_bars()
     g.allow_move = 1
     g.allow_change_hero = 1
 
@@ -728,7 +711,6 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     for i in range(len(button_array2)):
         button_width_array.append(button_width_array[i] + g.buttons[button_array2[i]].get_width())
     text_width = 300
-    # if text_width < 300: text_width = 300
     if input_width != -1:
         text_width = input_width
 
@@ -752,10 +734,6 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
         (text_width, line_height),
         inner_color="dh_green",
     )
-    # create text box
-    # 	g.create_norm_box(((g.screen_size[0]-text_width)/2+5,
-    # 			(g.screen_size[1]+line_height)/2), (text_width-10,
-    # 			17), inner_color="light_gray")
     global button_height
     button_height = (g.screen_size[1] - line_height) / 2 + line_height - 1
 
@@ -921,7 +899,6 @@ def show_popup(line="", button_array=[], allow_move=1, input_width=-1):
     for i in range(len(button_array2)):
         button_width_array.append(button_width_array[i] + g.buttons[button_array2[i]].get_width())
     text_width = 300
-    # if text_width < 300: text_width = 300
     if input_width != -1:
         text_width = input_width
 
@@ -1048,12 +1025,7 @@ def decrease_button():
 # execute it.
 def load_console():
     # Only let cheaters access the console.
-    if (
-        player.name != "testing123"
-        and player.name != "god"
-        and player.name != "script_test"
-        and player.name != "ghostie"
-    ):
+    if player.name not in ["god", "testing123", "script_test", "ghostie"]:
         return 0
     global console_text
     console_text = ""
@@ -1070,17 +1042,11 @@ def load_console():
 
 # If the main window is destroyed unexpectedly, try to prevent the worst errors.
 def cleanup(event=None):
-    # activate_yesno()
-    # 	battle.back_to_main.set("2")
     g.break_one_loop = 50
     try:
         inv.leave_inv()
     except AttributeError:
         pass
-    # 	try: stats.leave_stats()
-    # 	except AttributeError: pass
-    # 	shop.leave_shop()
-    # 	new_game.loadgame.return_from_loadgame.set(1)
     action.has_dialog = 0
 
 
@@ -1190,12 +1156,6 @@ def init_window_main(is_new_game=0):
             repeat_key = 0
         if g.unclean_screen:
             pygame.display.flip()
-
-    # 	g.window_main.protocol("WM_DELETE_WINDOW", close_window)
-
-    pygame.display.flip()
-    # 	pygame.time.wait(5000)
-    return 0
 
 
 # this binds keys to the appropriate commands. Needs to be called after

@@ -79,16 +79,9 @@ def sel_mod(selected_mod):
         "light_gray",
     )
 
-    # 	g.main.canvas_map.create_rectangle(g.tilesize*g.main.mapsizex/4,
-    # 		g.tilesize*g.main.mapsizey/3, g.tilesize*g.main.mapsizex*3/4,
-    # 		g.tilesize*g.main.mapsizey/3+140+g.buttons["load.png"].get_height(),
-    # 		fill="#e3e3e3", tags="loadgame")
-
     g.print_string(g.screen, "Loading. Please wait", g.font, (g.screen_size[0] / 2, g.screen_size[1] / 2), align=1)
-    # 	g.main.canvas_map.create_text(, text="Loading. Please wait")
     pygame.display.set_caption("Loading")
     pygame.display.flip()
-    # 	g.window_main.update_idletasks()
     g.init_data()
     new_game.init_window()
     quit_game()
@@ -128,9 +121,6 @@ def refresh_module_info():
                 g.tilesize * g.main.mapsizey / 3 + g.buttons["loadgame_down.png"].get_height() + 3 + i * 20,
             ),
         )
-
-
-# 		g.main.canvas_map.itemconfigure("load_module"+str(i), text=savetext)
 
 
 # All keypresses pass through here. Based on the key name,
@@ -216,11 +206,6 @@ def mouse_handler_move(xy):
 def mouse_handler_down(xy):
     global cur_button
     global module_pos
-    # up arrow:
-    # 	if mouse_over(xy, g.tilesize*g.main.mapsizex/4,
-    # 		g.tilesize*g.main.mapsizey/3,
-    # 		g.tilesize*g.main.mapsizex/4+g.buttons["loadgame_up.png"].get_width(),
-    # 		g.tilesize*g.main.mapsizey/3+g.buttons["loadgame_up.png"].get_height()):
     if cur_button == 2:
         tmp = module_pos - (module_pos % 5) - 5
         if tmp < 0:
@@ -232,10 +217,6 @@ def mouse_handler_down(xy):
         refresh_module_info()
 
     # down arrow:
-    # 	if mouse_over(xy, g.tilesize*g.main.mapsizex/4,
-    # 		g.tilesize*g.main.mapsizey/3+140-g.buttons["loadgame_down.png"].get_height(),
-    # 		g.tilesize*g.main.mapsizex/4+g.buttons["loadgame_down.png"].get_width(),
-    # 		g.tilesize*g.main.mapsizey/3+140):
     if cur_button == 3:
         tmp = module_pos - (module_pos % 5) + 5
         if tmp >= len(array_mods):
@@ -331,7 +312,6 @@ def refresh_buttons():
 
 
 def init_window():
-    # 	g.window_main.protocol("WM_DELETE_WINDOW", quit_game)
     global array_mods
     array_mods = listdir("../modules/")
 
@@ -346,14 +326,9 @@ def init_window():
             i += 1
 
     g.screen.fill(g.colors["purple"])
-    # 	g.main.canvas_map = Canvas(g.window_main, width=g.tilesize*g.main.mapsizex,
-    # 		height=g.tilesize*g.main.mapsizey, highlightthickness=0,
-    # 		background="#606090")
-    # 	g.main.canvas_map.grid(column=0, row=0)
-
     g.load_buttons()
 
-    # if there is only one module, run it.
+    # If there is only one module, run it.
     if len(sys.argv) > 1:
         sys.argv.pop(0)
         for arg in sys.argv:
@@ -375,23 +350,12 @@ def init_window():
         sel_mod(array_mods[0])
         return 0
 
-    # global window_sel_game
-
     # g.window_main.title("Select module")
     pygame.display.set_caption("Select module")
     g.mod_directory = "../modules/default/"
 
-    # 	window_sel_game.resizable(0, 0)
-    # 	window_sel_game.maxsize(900, 900)
-    # 	window_sel_game.wm_geometry("+%d+%d" % (20, 20))
-
     # black bar
     g.create_norm_box((0, g.tilesize * g.main.mapsizey / 2), (g.tilesize * g.main.mapsizex, 30), inner_color="black")
-    # 	g.main.canvas_map.create_rectangle(0,
-    # 		g.tilesize*g.main.mapsizey/2,
-    # 		g.tilesize*g.main.mapsizex,
-    # 		g.tilesize*g.main.mapsizey/2+30,
-    # 		fill="#000000", tags="loadgame")
     g.print_string(
         g.screen,
         "You have multiple modules installed. Pick one to play.",
@@ -399,10 +363,6 @@ def init_window():
         (g.tilesize * g.main.mapsizex / 2 + 10, g.tilesize * g.main.mapsizey / 2 + 15),
         color=g.colors["white"],
     )
-    # 	g.main.canvas_map.create_text(g.tilesize*g.main.mapsizex/2,
-    # 		g.tilesize*g.main.mapsizey/2+15,
-    # 		text="You have multiple modules installed. Pick one to play.",
-    # 		anchor=W, tags=("module"), fill="#FFFFFF")
 
     # box for listbox
     g.create_norm_box(
@@ -441,7 +401,5 @@ def init_window():
             g.unclean_screen = False
             pygame.display.flip()
 
-
-# 	g.window_main.mainloop()
 
 init_window()

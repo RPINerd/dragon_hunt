@@ -38,8 +38,6 @@ global attack_stat
 global defense_stat
 global gold_stat
 
-# help_text = StringVar()
-
 # distance from the top of the button canvas each button should be placed.
 # Values are added in init_window. begin is not needed; always zero.
 reroll_height = 0
@@ -58,8 +56,6 @@ curr_name_loc = -1
 # give new stats for the character. Called when pressing the
 # "Reroll stats" button.
 def reroll_stats():
-    # player.name = "Alfred"
-    # name.get()
 
     # actual re-rolling
     global name_stat
@@ -88,7 +84,6 @@ def rename_character():
     repeat_key = 0
     global key_down
     key_down = ""
-    # 	refresh_name()
     tmp = main.ask_for_string("What is your name?", name_stat, 20, 1)
     if tmp != -1:
         name_stat = tmp
@@ -282,7 +277,6 @@ def begin_game(loadgame_name=""):
     g.break_one_loop = 0
 
     # after returning to this screen, reset everything.
-    # 	reroll_stats()
     init_window()
     return 1
 
@@ -304,8 +298,6 @@ def load_game():
 
 def show_options():
     # bring the options window up.
-    # global new_game
-    # load_game = 0
     temp_surface = pygame.Surface((400, 300))
     temp_surface.blit(g.screen, (0, 0), (100, 100, 400, 300))
     options.init_window_options()
@@ -318,7 +310,6 @@ def quit_game():
 
 # refresh the buttons.
 def refresh_buttons():
-    # 	if g.window_main.winfo_exists() == 0: return
     if cur_button > 4:
         g.screen.blit(g.buttons["begin.png"], (inner_new_game_width, inner_button_start))
         g.screen.blit(g.buttons["skill.png"], (inner_rename_width, inner_button_start))
@@ -327,22 +318,17 @@ def refresh_buttons():
         if cur_button == 5:
             g.screen.blit(g.buttons["begin_sel.png"], (inner_new_game_width, inner_button_start))
             refresh_help("Begin a new game")
-        # 			main.canvas_map.itemconfigure("help_text", text="Begin a new game")
         if cur_button == 6:
             g.screen.blit(g.buttons["skill_sel.png"], (inner_rename_width, inner_button_start))
             refresh_help("Change your name")
-        # 			main.canvas_map.itemconfigure("help_text", text="Change your name")
         if cur_button == 7:
             g.screen.blit(g.buttons["reroll_sel.png"], (inner_reroll_width, inner_button_start))
             refresh_help("Reroll your statistics")
-        # 			main.canvas_map.itemconfigure("help_text", text="Reroll your statistics")
         if cur_button == 8:
             g.screen.blit(g.buttons["leave_sel.png"], (inner_quit_width, inner_button_start))
             refresh_help("Back to the main menu")
-        # 			main.canvas_map.itemconfigure("help_text", text="Back to the main menu")
         if cur_button == 9:
             refresh_help("")
-    # 			main.canvas_map.itemconfigure("help_text", text="")
 
     else:
         g.screen.blit(g.buttons["begin.png"], (new_game_width, button_start))
@@ -423,18 +409,6 @@ def key_handler(key_name):
     refresh_buttons()
 
 
-# def key_handler_esc(event=0): key_handler("esc")
-# def key_handler_left(event=0): key_handler("left")
-# def key_handler_right(event=0): key_handler("right")
-# def key_handler_down(event=0): key_handler("down")
-# def key_handler_up(event=0): key_handler("up")
-# def key_handler_return(event=0): key_handler("return")
-
-
-# def mouse_handler_click(event=0):
-# 	key_handler("return")
-
-
 def mouse_handler_move(xy):
     global cur_button
     prev_button = cur_button
@@ -513,19 +487,12 @@ def back_from_new_game():
 
 # called upon game start
 def init_window():
-    # global g.window_main
-    # 	g.window_main = Toplevel()
 
     pygame.display.set_caption(g.game_name)
-    # 	g.window_main.title(g.game_name)
 
     global bgcolour
     bgcolour = "lightgrey"
 
-    # 	global canvas_map
-    # 	main.canvas_map = Canvas(g.window_main, width=g.tilesize*main.mapsizex,
-    # 		height=g.tilesize*main.mapsizey, highlightthickness=0)
-    # 	main.canvas_map.grid(column=0, row=0)
     g.screen.fill(g.colors["black"])
     g.screen.blit(g.backgrounds["new_game.png"], (0, 0))
 
@@ -550,16 +517,11 @@ def init_window():
     quit_width = options_width + g.buttons["load.png"].get_width()
     final_width = quit_width + g.buttons["quit.png"].get_width()
 
-    # 	g.print_string(g.screen, 15, button_start+button_height/2, anchor=W,
-    # 		text="", tags="help_text", fill="#ffffff")
-
     global cur_button
     cur_button = 0
     refresh_buttons()
 
     pygame.display.flip()
-    # 	#give basic values.
-    # 	reroll_stats()
 
     while True:
         pygame.time.wait(30)

@@ -1,22 +1,8 @@
-# file: scripting.py
-# Copyright (C) 2005 Free Software Foundation
-# This file is part of Dragon Hunt.
+"""
+    action.py
 
-# Dragon Hunt is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# Dragon Hunt is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with Dragon Hunt; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-# This file controls the datafile scripting, both loading and executing.
+    Placeholder documentation
+"""
 
 import battle
 import g
@@ -33,11 +19,18 @@ global has_dialog
 has_dialog = 0
 
 
-# given a string such as info or question uses, interpret all ~Action~
-# embedded variables, and return the displayable string.
-def interpret_line(message):
+def interpret_line(message: str) -> str:
+    """
+    Given a string such as info or question uses, interpret all ~Action~
+    embedded variables, and return the displayable string.
+
+    :param message: string to interpret
+    :return: displayable string
+    """
+
     # The ~Variable~ sequence enables variables to be inserted into info.
     num_of_tildes = message.count("~")
+
     # Check for no ~'s. This should be most common.
     if num_of_tildes == 0:
         return message
@@ -52,7 +45,7 @@ def interpret_line(message):
     endstring = ""  # The interpreted string.
     while cur_str_pos <= len(message):
         start_tilde = message.find("~", cur_str_pos + 1)
-        if start_tilde == -1:
+        if not start_tilde:
             endstring += message[cur_str_pos + 1 :]
             break
         endstring += message[cur_str_pos + 1 : start_tilde]
@@ -60,23 +53,32 @@ def interpret_line(message):
         if start_tilde + 1 == end_tilde:
             endstring += "~"
 
-        # we now know that message[start_tilde+1:end_tilde] is a variable
+        # We now know that message[start_tilde+1:end_tilde] is a variable
         else:
             line_return = script_var(g.xgrid, g.ygrid, g.zgrid, [['"' + message[start_tilde + 1 : end_tilde] + '"', 1]])
             # Add the returned data into the end string.
-            if type(line_return) == str or type(line_return) == unicode:
+            if isinstance(line_return, str):
                 line_return = line_return[1:-1]
             endstring += str(line_return)
         cur_str_pos = end_tilde
     return endstring
 
 
-# given an array of commands, run them. See scripting.txt for details.
-# x and y are absolute values.
-# Returns 1 if the scripting completed, or 0 if it ended somewhere.
-def activate_lines(x, y, z, commands):
+def activate_lines(x, y, z, commands: list) -> int:
+    """
+    Given an array of commands, run them. See scripting.txt for details.
+    Note that x and y are absolute values.
+    Returns 1 if the scripting completed, or 0 if it ended somewhere.
+
+    :param x: x coordinate
+    :param y: y coordinate
+    :param z: z coordinate
+    :param commands: array of commands
+    :return: 1 if the scripting completed, or 0 if it ended somewhere.
+    """
+
     i = 0
-    # go through all action lines.
+    # Go through all action lines.
     while i < len(commands):
         temp = run_command(x, y, z, commands[i])
         if temp == "end":
@@ -137,7 +139,7 @@ def find_if_else_block(commands, corrector):
 
 # Given a string/command, return either 0 (if the command is a number),
 # 1 (if it is a string), or 2 (if it is an actual command).
-def command_type(command):
+def command_type(command) -> int:
     command = command.strip()
 
     # Note that this only checks the first character. This is purposeful, as
@@ -223,8 +225,13 @@ def match_quotes(command):
     return -1
 
 
-# Given a string, replace the sequence \n with the actual newline character.
-def insert_newlines(command):
+def insert_newlines(command: str) -> str:
+    """
+    Given a string, replace the sequence \n with the actual newline character.
+
+    :param command: string
+    :return: string
+    """
     return command.replace("\\n", "\n")
 
 
@@ -454,25 +461,45 @@ def run_command(x, y, z, command):
     print(arg_list)
 
 
-# Make sure the number of arguments to a function is good.
-def check_num_args(num_of_args, lower_num, upper_num, command_name):
+def check_num_args(num_of_args: int, lower_num: int, upper_num: int, command_name: str) -> int:
+    """
+    Make sure the number of arguments to a function is good.
+
+    :param num_of_args: number of arguments
+    :param lower_num: lower number of arguments
+    :param upper_num: upper number of arguments
+    :param command_name: name of the command
+    :return: 1 if the number of arguments is good, 0 otherwise
+    """
+
     if num_of_args < lower_num or num_of_args > upper_num:
-        print(command_name + " called with wrong number of arguments.")
+        print(
+            f"{command_name} called with wrong number of arguments.\
+                Expected {lower_num} to {upper_num}, got {num_of_args}."
+        )
         return 0
     return 1
 
 
-# Make sure the script arguments are of the right type.
-# (0=number, 1=string, 2=don't care)
-# Note that all "command" arguments should have disappeared by the time this
-# function is called.
-def check_types_args(args, arg_types, command_name, quiet=0):
+def check_types_args(args: list, arg_types: list, command_name: str, quiet: int = 0) -> int:
+    """
+    Make sure the script arguments are of the right type.
+    (0=number, 1=string, 2=don't care)
+    Note that all 'command' arguments should have disappeared by the time this function is called.
+
+    :param args: list of arguments
+    :param arg_types: list of argument types
+    :param command_name: name of the command
+    :param quiet: quiet flag
+    :return: 1 if the script arguments are of the right type, 0 otherwise
+    """
+
     for i in range(len(arg_types)):
         if args[i] == "bad":
             return 0
         if args[i][1] != arg_types[i] and arg_types[i] != 2:
             if quiet == 0:
-                print(command_name + " called with wrong type of arguments:")
+                print(f"{command_name} called with wrong type of arguments:")
                 print(args)
             return 0
     return 1
@@ -1101,7 +1128,7 @@ def script_monster_give_stat(x, y, z, argument_array):
         print("monster_stat called outside of battle.")
         return -1
 
-    if type(argument_array[0][0]) == "str" and argument_array[0][0].lower() == '"all"':
+    if isinstance(argument_array[0][0], str) and argument_array[0][0].lower() == '"all"':
         for i in range(len(battle.monster_list)):
             if battle.monster_list[i].hp > 0:
                 tmp = [[i][0]]
@@ -1310,7 +1337,7 @@ def script_set(x, y, z, argument_array):  # set variable (in g.var_list)
         g.var_list[command2] = 0
 
     # Make sure the var to change is a number.
-    if type(g.var_list[command2]) == str:
+    if isinstance(g.var_list[command2], str):
         if (g.var_list[command2].isdigit() == 1) or (
             g.var_list[command2][0] == "-" and g.var_list[command2][1:].isdigit() == 1
         ):

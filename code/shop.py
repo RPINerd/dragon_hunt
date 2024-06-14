@@ -74,110 +74,59 @@ temp_button_width = 0
 temp_button_y = 0
 
 
-# back_to_main = StringVar()
-
-
-# refresh the button canvas
 def refresh_buttons():
     global prev_button
 
     if prev_button == cur_button:
         return
     prev_button = cur_button
-
-    # 	main.canvas_map.delete("shop_buttons")
     g.create_norm_box((temp_button_x, temp_button_y), (temp_button_width, g.buttons["sell.png"].get_height()))
 
-    # 	main.canvas_map.create_rectangle(temp_button_x, temp_button_y,
-    # 				temp_button_x+temp_button_width,
-    # 				temp_button_y+g.buttons["sell.png"].get_height(), fill=bgcolour,
-    # 				tags=("shop_buttons", "shop"))
     if cur_button == 0:
         g.screen.blit(g.buttons["sell_sel.png"], (temp_button_x, temp_button_y))
-    # 		 main.canvas_map.create_image(
-    # 						temp_button_x, temp_button_y, anchor=NW,
-    # 						image=g.buttons["sell_sel.png"],
-    # 						tags=("shop_buttons", "shop"))
     else:
         g.screen.blit(g.buttons["sell.png"], (temp_button_x, temp_button_y))
-    # 		 main.canvas_map.create_image(temp_button_x, temp_button_y, anchor=NW,
-    # 						image=g.buttons["sell.png"],
-    # 						tags=("shop_buttons", "shop"))
 
     if cur_button == 1:
         g.screen.blit(g.buttons["leave_shop_sel.png"], (temp_button_x + leave_height, temp_button_y))
-    # 		 main.canvas_map.create_image(
-    # 						temp_button_x+leave_height, temp_button_y,
-    # 						anchor=NW, image=g.buttons["leave_shop_sel.png"],
-    # 						tags=("shop_buttons", "shop"))
     else:
         g.screen.blit(g.buttons["leave_shop.png"], (temp_button_x + leave_height, temp_button_y))
-    # 		 main.canvas_map.create_image(temp_button_x+leave_height,
-    # 						temp_button_y, anchor=NW,
-    # 						image=g.buttons["leave_shop.png"],
-    # 						tags=("shop_buttons", "shop"))
 
     if cur_button == 2:
         g.screen.blit(g.buttons["buy_sel.png"], (temp_button_x + buy_height, temp_button_y))
-    # 		 main.canvas_map.create_image(
-    # 						temp_button_x+buy_height, temp_button_y, anchor=NW,
-    # 						image=g.buttons["buy_sel.png"],
-    # 						tags=("shop_buttons", "shop"))
     else:
         g.screen.blit(g.buttons["buy.png"], (temp_button_x + buy_height, temp_button_y))
-    # 		 main.canvas_map.create_image(temp_button_x+buy_height,
-    # 						temp_button_y, anchor=NW,
-    # 						image=g.buttons["buy.png"],
-    # 						tags=("shop_buttons", "shop"))
+
     pygame.display.flip()
-
-
-# refresh the inventory canvas
-# def refresh_inv():
-# 	canvas_inv.delete("inv")
 
 
 # Actually sets the info in the middle of the shop screen.
 def set_details(name, cost, value, costtype, power, description, inv_or_shop):
-    # 	main.canvas_map.delete("shop_details")
 
     g.screen.fill(g.colors["light_gray"], (canvas_x_start + temp_canvas_width, canvas_y_start + 25, 137, 190))
 
     g.print_string(g.screen, name, g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 25))
-
-    # 	main.canvas_map.create_text(canvas_x_start+temp_canvas_width+5,
-    # 		canvas_y_start+25, anchor=W, text=name, tags=("shop_details", "shop"))
 
     if inv_or_shop == "shop":
         if cost != "":
             g.print_string(
                 g.screen, "Cost: " + str(cost), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
             )
-    # 				main.canvas_map.create_text(canvas_x_start+temp_canvas_width+5,
-    # 				canvas_y_start+40, anchor=W, text="Cost: "+str(cost),
-    # 				tags=("shop_details", "shop"))
     elif inv_or_shop == "inv":
         if value != "":
             g.print_string(
                 g.screen, "Value: " + str(value), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
             )
-    # 			main.canvas_map.create_text(canvas_x_start+temp_canvas_width+5,
-    # 			canvas_y_start+40, anchor=W, text="Value: "+str(value),
-    # 			tags=("shop_details", "shop"))
+
     if power == "" or power == "-1":
         pass
     else:
         g.print_string(
             g.screen, "Power: " + str(power), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 55)
         )
-    # 		 main.canvas_map.create_text(canvas_x_start+temp_canvas_width+5,
-    # 		canvas_y_start+55, anchor=W, text="Power: "+str(power),
-    # 		tags=("shop_details", "shop"))
 
     g.print_multiline(g.screen, description, g.font, 130, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 70))
-    # 	main.canvas_map.create_text(canvas_x_start+temp_canvas_width+5,
-    # 		canvas_y_start+70, anchor=NW, width=130, text=description,
-    # 		tags=("shop_details", "shop"))
+
     pygame.display.flip()
 
 
@@ -236,16 +185,8 @@ def show_details(event=0, sel_item=-1):
 
 # place appropriate items into the store.
 def refresh_shop():
-    # 	main.canvas_map.delete("item")
+
     invpos = 0
-    # 		main.canvas_map.create_rectangle(
-    # 			canvas_x_start+temp_canvas_width*2+(curr_item%shop_width)*g.tilesize + 2 *
-    # 												((curr_item%shop_width)+1),
-    # 			canvas_y_start+(curr_item/shop_width)*g.tilesize + 2 *
-    # 												((curr_item/shop_width)+1),
-    # 			canvas_x_start+temp_canvas_width*2+((curr_item%shop_width)+1)*(g.tilesize + 2),
-    # 			canvas_y_start+((curr_item/shop_width)+1)*(g.tilesize + 2),
-    # 											fill=g.fill_sel_colour, tags=("item", "shop"))
 
     # per-item borders
     for y in range(shop_height):
@@ -295,12 +236,6 @@ def refresh_shop():
                     canvas_y_start + (invpos / shop_width) * g.tilesize + 2 * ((invpos / shop_width) + 1),
                 ),
             )
-            # 			main.canvas_map.create_image(
-            # 				canvas_x_start+temp_canvas_width*2+(invpos%shop_width)*g.tilesize + 2 *
-            # 													((invpos%shop_width)+1),
-            # 				canvas_y_start+(invpos/shop_width)*g.tilesize + 2 * ((invpos/shop_width)+1),
-            # 				image=g.tiles[g.shops[store_num].itemlist[i].picture],
-            # 				anchor="nw", tags=("item", "shop"))
             invpos += 1
     invpos = 0
     # if the inv is selected, draw a selection box around the current item.
@@ -313,14 +248,6 @@ def refresh_shop():
             (g.tilesize, g.tilesize),
             inner_color="dark_green",
         )
-    # 		main.canvas_map.create_rectangle(
-    # 				canvas_x_start+(curr_item%shop_width)*g.tilesize +
-    # 							2 * ((curr_item%shop_width)+1),
-    # 				canvas_y_start+(curr_item/shop_width)*g.tilesize +
-    # 							2 * ((curr_item/shop_width)+1),
-    # 				canvas_x_start+((curr_item%shop_width)+1)*(g.tilesize + 2),
-    # 				canvas_y_start+((curr_item/shop_width)+1)*(g.tilesize + 2),
-    # 							fill=g.fill_sel_colour, tags=("item", "shop"))
 
     # draw the item pictures.
     for i in range(len(item.inv)):
@@ -332,11 +259,6 @@ def refresh_shop():
                     canvas_y_start + (i / shop_width) * g.tilesize + 2 * ((i / shop_width) + 1),
                 ),
             )
-            # 			main.canvas_map.create_image(canvas_x_start+(i%shop_width)*g.tilesize + 2 *
-            # 												((i%shop_width)+1),
-            # 				canvas_y_start+(i/shop_width)*g.tilesize + 2 * ((i/shop_width)+1),
-            # 				image=g.tiles[item.item[item.inv[i]].picturename],
-            # 				anchor="nw", tags=("item", "shop"))
             invpos += 1
 
     # set gold and skillpoints
@@ -358,14 +280,6 @@ def refresh_shop():
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 11),
     )
 
-    # 	main.canvas_map.create_text(canvas_x_start+temp_canvas_width+5,
-    # 		canvas_y_start+temp_canvas_height-20, anchor=SW,
-    # 		text=g.gold_name+": "+str(player.gold), tags=("item", "shop"))
-    # 	main.canvas_map.create_text(canvas_x_start+temp_canvas_width+5,
-    # 		canvas_y_start+temp_canvas_height-2, anchor=SW,
-    # 		text=g.skill_name+": "+str(player.skillpoints), tags=("item", "shop"))
-    # 	curr_gold.set("Gold: " + str(player.gold))
-    # 	curr_skill.set("Skillpoints: " + str(player.skillpoints))
     main.refresh_inv_icon()
     main.refresh_bars()
 
@@ -399,7 +313,6 @@ def sell_item():
 
     # remove the item
     item.drop_inv_item(curr_item)
-    # refresh_inv()
     refresh_shop()
     show_details()
 
@@ -446,7 +359,6 @@ def buy_item():
                 if temp == 1:
                     player.give_stat("skillpoints", -1 * int(g.shops[store_num].itemlist[curr_item].cost))
 
-    # refresh_inv()
     refresh_shop()
     show_details()
 
@@ -488,7 +400,6 @@ def mouse_sel_inv(xy):
         return
     curr_item = temp_num
     curr_focus = 0
-    # refresh_inv()
     refresh_shop()
     show_details()
 
@@ -541,13 +452,6 @@ def mouse_sel_shop(xy):
         else:
             buy_item()
         refresh_buttons()
-
-
-# def leave_shop(xy):
-# 	try:
-# 		back_to_main.set(1)
-# 	except TclError:
-# 		pass
 
 
 def mouse_handler_dbl(xy):
@@ -604,7 +508,6 @@ def key_handler(switch):
     global curr_focus
     # switch based on keycode
     if switch == g.bindings["cancel"]:
-        # leave_shop()
         return 1
     elif switch == g.bindings["action"]:
         if curr_focus == 1 and cur_button == 2:
@@ -612,7 +515,6 @@ def key_handler(switch):
         elif curr_focus != 1 and cur_button == 0:
             sell_item()
         elif cur_button == 1:
-            # leave_shop()
             return 1
     elif switch == g.bindings["left"]:
         if curr_item % shop_width == 0:  # move between lists
@@ -643,7 +545,6 @@ def key_handler(switch):
         if curr_item >= shop_width * shop_height:
             curr_item -= shop_width * shop_height
 
-    # refresh_inv()
     refresh_shop()
     refresh_buttons()
     show_details()
@@ -737,23 +638,14 @@ def init_window_shop(store_type_input):
         align=1,
     )
 
-    # 	main.canvas_map.create_text(canvas_x_start+(temp_canvas_width*1)/2,
-    # 		 canvas_y_start-1, anchor=S, text="Inventory", tags="shop")
-    # 	main.canvas_map.create_text(canvas_x_start+(temp_canvas_width*5)/2,
-    # 		 canvas_y_start-1, anchor=S, text=g.shops[store_num].name, tags="shop")
-
     global leave_height
     leave_height = g.buttons["sell.png"].get_width()
     global buy_height
     buy_height = leave_height + g.buttons["leave.png"].get_width()
 
     # get data in listboxes
-    # 	refresh_inv()
     refresh_shop()
     refresh_buttons()
-
-    # 	main.canvas_map.unbind("<Motion>")
-    # main.canvas_map.unbind("<Button-1>")
     show_details()
 
     pygame.display.flip()

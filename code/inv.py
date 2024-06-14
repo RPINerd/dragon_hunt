@@ -16,8 +16,6 @@
 # along with Dragon Hunt; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-import re
-
 import action
 import g
 import item
@@ -1056,7 +1054,6 @@ def menu_mouse_click(xy):
 def inner_mouse_click(xy, button):
     # decide if the mouse is within one of the boxes.
     global curr_item
-    # global curr_focus
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
     if (
         (xy[0] > tmp_menu_x_base)
@@ -1067,7 +1064,6 @@ def inner_mouse_click(xy, button):
         if xy[0] < tmp_menu_x_base + g.buttons[button + ".png"].get_width():
             return 2
         else:
-            # leave_inner()
             return 1
     else:
         curr_item = temp_num
@@ -1106,7 +1102,6 @@ def skill_mouse_click(xy):
 def equip_mouse_click(xy):
     # decide if the mouse is within one of the boxes.
     global curr_item
-    # global curr_focus
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
     # If the click was outside of the inv area.
     if temp_num == -1:
@@ -1121,7 +1116,6 @@ def equip_mouse_click(xy):
             if xy[0] < tmp_menu_x_base + g.buttons["equip.png"].get_width():
                 wear_item()
             else:
-                # leave_inner()
                 return 1
         # If the click was inside the equip area.
         elif (
@@ -1151,7 +1145,6 @@ def inner_mouse_dbl_click(xy):
 def equip_mouse_dbl_click(xy):
     # decide if the mouse is within one of the boxes.
     global curr_item
-    # global curr_focus
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
     # If the click was outside of the inv area.
     if temp_num == -1:
@@ -1283,7 +1276,6 @@ def skill_mouse_move(xy):
 
 # This creates the inv area within the map canvas.
 def init_window_inv():
-    # 	main.canvas_map.delete("inv")
     global cur_button
     cur_button = 0
     global oldbutton
@@ -1316,8 +1308,9 @@ def init_window_inv():
     inv_canvas_width = (g.tilesize * inv_width) + ((inv_width + 1) * 2) + 1
     inv_canvas_height = (g.tilesize * inv_height) + ((inv_height + 1) * 2) + 1
 
-    start_x = (g.tilesize * main.mapsizex) / 2
-    start_y = (g.tilesize * main.mapsizey - total_height) / 2
+    # start_x = (g.tilesize * main.mapsizex) / 2
+    # start_y = (g.tilesize * main.mapsizey - total_height) / 2
+
     # Create the main inv box.
     # The +20 is just "wiggle room", to prevent the length of the name
     # affecting the dimensions.

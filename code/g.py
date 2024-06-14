@@ -55,12 +55,9 @@ debug = False
 faststart = False
 
 # fill colour
-fill_colour = "#b9e5ad"
-fill_sel_colour = "#7aa96e"
-outline_colour = "#70a662"
-# fill_colour = "#5050ff"
-# fill_sel_colour = "#A0A0ff"
-# outline_colour = "#202090"
+# fill_colour = "#b9e5ad"
+# fill_sel_colour = "#7aa96e"
+# outline_colour = "#70a662"
 
 # default tile width. Set in variables.txt, or default to 32.
 tilesize = 32
@@ -234,59 +231,46 @@ def loadgame(save_file):
 
 # this calls scripting.py to read the datafiles.
 def init_data():
+    """
+    Initialize all the data files for the game, originally had a lot of loading screens but
+    is now way too fast to even percieve
+    """
+
     screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading Settings", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
+    print_string(screen, "Loading ...", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
     pygame.display.flip()
     read_settings()
-    screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading Backgrounds", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
-    pygame.display.flip()
     load_backgrounds()
-    screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading Scripts", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
-    pygame.display.flip()
     read_scripts()
-    screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading Items", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
-    pygame.display.flip()
     item.read_items()
-    screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading Skills", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
-    pygame.display.flip()
     read_skills()
-    screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading Monsters", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
-    pygame.display.flip()
     monster.read_monster()
     global game_name
     game_name = read_game_name()
     read_variables()
-    screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading Shops", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
-    pygame.display.flip()
     read_shops()
     read_perturn()
-    screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading Images", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
-    pygame.display.flip()
     load_buttons()
     load_icons()
     load_sounds()
 
 
-# Get the name of the module from the variables.txt file. Note that this
-# does not set the game name, only returns it. This lets it be used in rpg.py
-def read_game_name():
-    file = open(mod_directory + "/data/variables.txt", "r")
-    line = file.readline()
-    while line != "":
-        line = line.strip()
-        if line[:1] == "#" or line[:1] == "":
-            line = file.readline()
-            continue
-        if line.split("=", 1)[0].strip() == "game_name":
-            return line.split("=", 1)[1].strip()
-        line = file.readline()
+def read_game_name() -> str:
+    """
+    Get the name of the game from the variables.txt file
+    Note that this does not set the game name, only returns it. This lets it be used in rpg.py
+
+    :return: The name of the game
+    """
+
+    with open(mod_directory + "/data/variables.txt", "r") as file:
+        for line in file:
+            line = line.strip()
+            if line[:1] == "#" or line[:1] == "":
+                continue
+            if line.split("=", 1)[0].strip() == "game_name":
+                return line.split("=", 1)[1].strip()
+    return "ERROR: Game name not found"
 
 
 # What dice to roll when starting a new game. 2d array.
@@ -817,33 +801,33 @@ def play_sound(sound_name):
 font = pygame.font.Font(None, 14)
 
 # colors:
-colors = {}
+colors = {
+    "white": (255, 255, 255, 255),
+    "black": (0, 0, 0, 255),
+    "hp_red": (238, 5, 5, 255),
+    "hp_green": (5, 187, 5, 255),
+    "ep_blue": (5, 5, 238, 255),
+    "dark_red": (125, 0, 0, 255),
+    "dark_green": (122, 169, 110, 255),
+    "dark_blue": (0, 0, 125, 255),
+    "light_red": (255, 50, 50, 255),
+    "light_green": (50, 255, 50, 255),
+    "light_blue": (50, 50, 255, 255),
+    "purple": (96, 96, 144, 255),
+    "light_gray": (227, 227, 227, 255),
+    "very_dark_blue": (32, 32, 47, 255),
+    "dh_green": (185, 229, 173, 255),
+}
 
 
-def fill_colors():
-    colors["white"] = (255, 255, 255, 255)
-    colors["black"] = (0, 0, 0, 255)
-    colors["hp_red"] = (238, 5, 5, 255)
-    colors["hp_green"] = (5, 187, 5, 255)
-    colors["ep_blue"] = (5, 5, 238, 255)
-    colors["dark_red"] = (125, 0, 0, 255)
-    colors["dark_green"] = (122, 169, 110, 255)
-    colors["dark_blue"] = (0, 0, 125, 255)
-    colors["light_red"] = (255, 50, 50, 255)
-    colors["light_green"] = (50, 255, 50, 255)
-    colors["light_blue"] = (50, 50, 255, 255)
-    colors["purple"] = (96, 96, 144, 255)
-    colors["light_gray"] = (227, 227, 227, 255)
-    colors["very_dark_blue"] = (32, 32, 47, 255)
-    colors["dh_green"] = (185, 229, 173, 255)
+def read_images(dir_name: str) -> dict:
+    """
+    Read all images in the given directory and its subdirectories
 
+    :param dir_name: The directory to read images from
+    :return: A dictionary of all images in the directory
+    """
 
-fill_colors()
-
-
-# given a directory relative to g.mod_directory, will return a dictionary
-# of all images in that directory, and all subdirectories.
-def read_images(dir_name):
     if pygame.image.get_extended() == 0:
         print("Error: SDL_image required. Exiting.")
         sys.exit()
@@ -874,8 +858,18 @@ def inner_read_images(dir_name, image_dictionary):
     return image_dictionary
 
 
-# creates a box, as used throughout the game.
-def create_norm_box(xy, size, outline_color="black", inner_color="light_gray"):
+def create_norm_box(xy: list, size: list, outline_color: str = "black", inner_color: str = "light_gray") -> None:
+    """
+    Create a box on the screen with the given parameters.
+
+    :param xy: The xy coordinates of the box
+    :param size: The size of the box
+    :param outline_color: The color of the outline of the box
+    :param inner_color: The color of the inside of the box
+
+    :return: None
+    """
+
     screen.fill(colors[outline_color], (xy[0], xy[1], size[0], size[1]))
     screen.fill(colors[inner_color], (xy[0] + 1, xy[1] + 1, size[0] - 2, size[1] - 2))
 
@@ -898,12 +892,24 @@ def print_string(surface, string_to_print, font, xy, color=colors["black"], alig
         surface.blit(temp_text, xy)
 
 
-# Used to display descriptions and such. Automatically wraps the text to fit
-# within a certain width.
-# Note that \n can be used for newlines, but it must be used as
-# line1 \\n line2 in code, (separated by spaces, with the \ escaped), or as
-# line1 \n line2 in scripts.
-def print_multiline(surface, string_to_print, font, width, xy, color="black"):
+def print_multiline(surface, string_to_print, font, width, xy, color="black") -> int:
+    """
+    Print a string to the screen, wrapping it to fit within a certain width
+    Used to display descriptions and such.
+
+    Note that bkshl+n can be used for newlines, but it must be used as
+    `line1 \\n line2` in code, separated by spaces, with the bkshl escaped)
+    Escape not needed in scripts.
+
+    :param surface: The surface to print to
+    :param string_to_print: The string to print
+    :param font: The font to use
+    :param width: The width to wrap the text to
+    :param xy: The xy coordinates to print the text at
+    :param color: The color to print the text in
+
+    :return: The number of lines printed
+    """
     string_to_print = string_to_print.replace("\t", "     ")
     start_xy = xy
     string_array = string_to_print.split(" ")

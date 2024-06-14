@@ -21,8 +21,11 @@
 import g
 
 
-# player definition.
 class player_class:
+    """
+    This class is used to store all the player's information.
+    """
+
     def __init__(self):
         self.name = ""
         self.hp = 0
@@ -36,8 +39,9 @@ class player_class:
         self.level = 0
         self.skillpoints = 1
 
-        # stores attack/defense/hp/ep, adjusted by equipment.
-        # kept correct by main.refreshmap(). Use these for calculations.
+        # Values adjusted by equipment.
+        # Kept correct by main.refreshmap().
+        # Use these for calculations.
         self.adj_attack = 0
         self.adj_defense = 0
         self.adj_maxhp = 0
@@ -65,18 +69,31 @@ class player_class:
         for x in range(6):
             self.equip.append(-1)
 
-    # Gives the player the specified amount of experience; also handles level gains.
-    def add_exp(self, input_exp):
+    def add_exp(self, input_exp) -> None:
+        """
+        Adds experience to the player and handles level gains.
+
+        :param input_exp: The amount of experience to add.
+        :return: None
+        """
+
         self.exp = int(self.exp) + int(input_exp)
         if 1 > self.exp:
             self.exp = 0
+
         # Has the player gained a level?
         if self.exp_till_level() <= 0:
             self.level = self.level + 1
-            g.main.print_message("You gain a level.")
+            g.main.print_message("You gain a level!")
             g.action.activate_lines(g.xgrid, g.ygrid, g.zgrid, g.levelup_act)
 
-    def exp_till_level(self):
+    def exp_till_level(self) -> int:
+        """
+        Returns the amount of experience needed to reach the next level.
+
+        :return: Exp needed
+        """
+
         if g.exp_list == "":
             return_val = int(10 * (self.level + 1) * (self.level + 1)) - int(self.exp)
         else:
