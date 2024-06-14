@@ -123,7 +123,7 @@ def open_use_item():
     # 	g.window_main.wait_variable(back_to_inv)
     # 	if main.canvas_map.winfo_exists():
     # 		main.canvas_map.delete("use")
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         for event in pygame.event.get():
@@ -154,7 +154,7 @@ def open_drop_item():
     # 	g.window_main.wait_variable(back_to_inv)
     # 	if main.canvas_map.winfo_exists():
     # 		main.canvas_map.delete("drop")
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         for event in pygame.event.get():
@@ -186,7 +186,7 @@ def open_equip_item():
     g.cur_window = "inventory_equip"
     refresh_equip()
     refresh_equip_buttons()
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         for event in pygame.event.get():
@@ -218,7 +218,7 @@ def open_skill_menu():
     g.cur_window = "inventory_skill"
     refresh_skill("skill")
     refresh_skill_buttons()
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         for event in pygame.event.get():
@@ -1363,7 +1363,7 @@ def init_window_inv():
     menu_bind_keys()
     refresh_menu_buttons()
     refresh_stat_display()
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         for event in pygame.event.get():

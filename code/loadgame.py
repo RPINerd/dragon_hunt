@@ -463,7 +463,7 @@ def init_window_loadgame():
     repeat_key = 0
     global key_down
     key_down = ""
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:

@@ -34,8 +34,10 @@ import item
 import main
 import monster
 import pygame
+
 # player info
 from player import player
+
 # needed for scripting
 from scripting import g, maps, read_maps, read_scripts, read_shops
 
@@ -751,7 +753,7 @@ def read_script_file(file_name, from_editor=0):
 # and line-continuation, to properly interpret the scripting.
 def interpret_lines(temp_array):
     cur_line = 0
-    while 1:
+    while True:
         if cur_line >= len(temp_array):
             break
         # strip out spaces/tabs

@@ -758,7 +758,7 @@ def init_window_shop(store_type_input):
     pygame.display.flip()
     g.last_joy_times["ud"] = pygame.time.get_ticks()
     g.last_joy_times["lr"] = pygame.time.get_ticks()
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         for event in pygame.event.get():

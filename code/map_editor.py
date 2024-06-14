@@ -506,7 +506,7 @@ def change_scripting(x, y, modetype):
         tmp = os.spawnlp(os.P_WAIT, editor, editor, "temp_editor_script.txt")
         tmp_file = open("temp_editor_script.txt", "r")
         scripting_list = []
-        while 1:
+        while True:
             tmp_line = tmp_file.readline()
             if tmp_line == "":
                 break
@@ -514,7 +514,7 @@ def change_scripting(x, y, modetype):
                 tmp_line = tmp_line[:-1]
             scripting_list.append(tmp_line)
 
-    while 1:
+    while True:
         if editor != "":
             break
         tmp = select_from_list(scripting_list, False, True, True)
@@ -1033,7 +1033,7 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
     g.screen.blit(g.buttons["load_sel.png"], (10, 360))
     g.screen.blit(g.buttons["quit.png"], (10 + g.buttons["load_sel.png"].get_width(), 360))
     listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -1286,7 +1286,7 @@ def map_menu():
         for monster_name in cur_map.monster:
             monster_list.append(monster_name)
         monster_list.append("")
-        while 1:
+        while True:
             tmp = select_from_list(monster_list, False, True)
             if tmp == -1:
                 break
@@ -1336,7 +1336,7 @@ def sel_mod(selected_mod):
     pygame.display.flip()
     mouse_button_down = False
     last_square = (0, 0)
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:

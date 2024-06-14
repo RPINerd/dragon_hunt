@@ -331,7 +331,7 @@ def select_monster():
     refresh()
     pygame.display.flip()
     # wait. Continue after activate_yesno() is run.
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         for event in pygame.event.get():
@@ -382,7 +382,7 @@ def select_monster():
 def choose_monster_prev():
     global active_button
     i = active_button
-    while 1:
+    while True:
         i -= 1
         if i == -1:
             i = len(monster_list) - 1
@@ -401,7 +401,7 @@ def choose_monster_prev():
 def choose_monster_next():
     global active_button
     i = active_button
-    while 1:
+    while True:
         i += 1
         if i == len(monster_list):
             i = 0
@@ -611,7 +611,7 @@ def open_item_menu():
     # 	g.window_main.update_idletasks()
     inv.refresh_inv_display("use")
     inv.refresh_inner_buttons("use")
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -653,7 +653,7 @@ def open_skill_menu():
     # 	g.window_main.update_idletasks()
     refresh_skill_display("skill")
     inv.refresh_inner_buttons("skill")
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -1229,7 +1229,7 @@ def begin(mon_index_input):
     refresh()
     refresh_buttons()
 
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:

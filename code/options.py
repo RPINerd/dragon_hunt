@@ -374,7 +374,7 @@ def key_handler(switch):
 
 
 def bind_new_key(start_key):
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -390,7 +390,7 @@ def bind_new_key(start_key):
 
 def bind_new_joy(joytype):
     pygame.time.wait(150)
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -511,7 +511,7 @@ def joy_key_handler(switch):
 
 def custom_key():
     refresh_key_window()
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -537,7 +537,7 @@ def custom_key():
 
 def custom_joy():
     refresh_joy_window()
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -670,7 +670,7 @@ def init_window_options():
     tmp_joy["action"] = g.joykey_action
     tmp_joy["cancel"] = g.joykey_cancel
     refresh_window()
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:

@@ -770,7 +770,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     refresh_buttons()
     g.unclean_screen = True
 
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -961,7 +961,7 @@ def show_popup(line="", button_array=[], allow_move=1, input_width=-1):
     action.has_dialog = 0
     refresh_buttons()
 
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
@@ -1151,7 +1151,7 @@ def init_window_main(is_new_game=0):
     repeat_key = 0
     global key_down
     key_down = [False, False, False, False]
-    while 1:
+    while True:
         pygame.time.wait(10)
         repeat_key += g.clock.tick()
         if g.break_one_loop > 0:

@@ -412,7 +412,7 @@ def init_window():
 
     refresh_module_info()
     refresh_buttons()
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:

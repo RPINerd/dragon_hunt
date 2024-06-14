@@ -561,7 +561,7 @@ def init_window():
     # 	#give basic values.
     # 	reroll_stats()
 
-    while 1:
+    while True:
         pygame.time.wait(30)
         g.clock.tick(30)
         if g.break_one_loop > 0:
