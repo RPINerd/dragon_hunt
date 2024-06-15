@@ -18,12 +18,13 @@
 
 # this file controls the battle window.
 
+import pygame
+
 import action
 import g
 import inv
 import main
 import monster
-import pygame
 from player import player
 
 mon_index = 0
@@ -100,8 +101,8 @@ def refresh():
     g.screen.fill(
         g.colors["black"],
         (
-            main.tilesize * main.half_mapx - background_pic.get_width() / 2 - 2,
-            main.tilesize * main.half_mapy - background_pic.get_height() / 2 - 2,
+            config.TILESIZE * main.half_mapx - background_pic.get_width() / 2 - 2,
+            config.TILESIZE * main.half_mapy - background_pic.get_height() / 2 - 2,
             background_pic.get_width() + 2,
             background_pic.get_height() + 2,
         ),
@@ -109,8 +110,8 @@ def refresh():
     g.screen.blit(
         background_pic,
         (
-            main.tilesize * main.half_mapx - background_pic.get_width() / 2 - 1,
-            main.tilesize * main.half_mapy - background_pic.get_height() / 2 - 1,
+            config.TILESIZE * main.half_mapx - background_pic.get_width() / 2 - 1,
+            config.TILESIZE * main.half_mapy - background_pic.get_height() / 2 - 1,
         ),
     )
     # monsters
@@ -673,19 +674,19 @@ def refresh_skill_display(screen_str):
     for i in range(len(g.item.inv)):
         g.create_norm_box(
             (
-                x + (i % inv.inv_width) * g.tilesize + 2 * ((i % inv.inv_width) + 1),
-                y + (i / inv.inv_width) * g.tilesize + 2 * ((i / inv.inv_width) + 1),
+                x + (i % inv.inv_width) * config.TILESIZE + 2 * ((i % inv.inv_width) + 1),
+                y + (i / inv.inv_width) * config.TILESIZE + 2 * ((i / inv.inv_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dh_green",
         )
     if tmp_item != -1 and tmp_item < inv.inv_width * inv.inv_height:
         g.create_norm_box(
             (
-                x + (inv.curr_item % inv.inv_width) * g.tilesize + 2 * ((inv.curr_item % inv.inv_width) + 1),
-                y + (inv.curr_item / inv.inv_width) * g.tilesize + 2 * ((inv.curr_item / inv.inv_width) + 1),
+                x + (inv.curr_item % inv.inv_width) * config.TILESIZE + 2 * ((inv.curr_item % inv.inv_width) + 1),
+                y + (inv.curr_item / inv.inv_width) * config.TILESIZE + 2 * ((inv.curr_item / inv.inv_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dark_green",
         )
 
@@ -1139,8 +1140,8 @@ def begin(mon_index_input):
 
     global monster_start
     monster_start = (
-        main.tilesize * main.half_mapx - background_pic.get_width() / 2,
-        main.tilesize * main.half_mapy - background_pic.get_height() / 2,
+        config.TILESIZE * main.half_mapx - background_pic.get_width() / 2,
+        config.TILESIZE * main.half_mapy - background_pic.get_height() / 2,
     )
     for i in range(len(monster_list)):
         monster_slashes.append([0, 0, 0])
@@ -1186,7 +1187,7 @@ def begin(mon_index_input):
     global button_y_start
     global button_height
     attack_button_loc = (
-        main.tilesize * main.half_mapx
+        config.TILESIZE * main.half_mapx
         - g.buttons["attack.png"].get_width()
         - g.buttons["use.png"].get_width()
         - g.buttons["skill.png"].get_width() / 2
@@ -1197,7 +1198,7 @@ def begin(mon_index_input):
     run_button_loc = inspect_button_loc + g.buttons["inspect.png"].get_width()
     final_button_loc = run_button_loc + g.buttons["quit.png"].get_width()
 
-    button_y_start = main.tilesize * main.half_mapy + background_pic.get_height() / 2
+    button_y_start = config.TILESIZE * main.half_mapy + background_pic.get_height() / 2
     button_height = g.buttons["attack.png"].get_height()
 
     g.create_norm_box((attack_button_loc, button_y_start), (final_button_loc - attack_button_loc, button_height))

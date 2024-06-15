@@ -19,10 +19,11 @@
 # This file controls the town shops.
 
 
+import pygame
+
 import g
 import item
 import main
-import pygame
 from player import player
 
 # location of the store in the g.shops[] array
@@ -30,7 +31,7 @@ global store_num
 store_num = 0
 
 # width/height of inv and shop windows, in tiles.
-# (g.tilesize + the 3 pixel border)
+# (config.TILESIZE + the 3 pixel border)
 shop_width = 4
 shop_height = 7
 
@@ -192,18 +193,21 @@ def refresh_shop():
     for y in range(shop_height):
         for x in range(shop_width):
             g.create_norm_box(
-                (canvas_x_start + x * g.tilesize + 2 * (x + 1), canvas_y_start + y * g.tilesize + 2 * (y + 1)),
-                (g.tilesize, g.tilesize),
+                (
+                    canvas_x_start + x * config.TILESIZE + 2 * (x + 1),
+                    canvas_y_start + y * config.TILESIZE + 2 * (y + 1),
+                ),
+                (config.TILESIZE, config.TILESIZE),
                 inner_color="dh_green",
             )
     for y in range(shop_height):
         for x in range(shop_width):
             g.create_norm_box(
                 (
-                    temp_canvas_width * 2 + canvas_x_start + x * g.tilesize + 2 * (x + 1),
-                    canvas_y_start + y * g.tilesize + 2 * (y + 1),
+                    temp_canvas_width * 2 + canvas_x_start + x * config.TILESIZE + 2 * (x + 1),
+                    canvas_y_start + y * config.TILESIZE + 2 * (y + 1),
                 ),
-                (g.tilesize, g.tilesize),
+                (config.TILESIZE, config.TILESIZE),
                 inner_color="dh_green",
             )
 
@@ -214,12 +218,12 @@ def refresh_shop():
                 (
                     canvas_x_start
                     + temp_canvas_width * 2
-                    + (curr_item % shop_width) * g.tilesize
+                    + (curr_item % shop_width) * config.TILESIZE
                     + 2 * ((curr_item % shop_width) + 1)
                 ),
-                canvas_y_start + (curr_item / shop_width) * g.tilesize + 2 * ((curr_item / shop_width) + 1),
+                canvas_y_start + (curr_item / shop_width) * config.TILESIZE + 2 * ((curr_item / shop_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dark_green",
         )
 
@@ -231,9 +235,9 @@ def refresh_shop():
                 (
                     canvas_x_start
                     + temp_canvas_width * 2
-                    + (invpos % shop_width) * g.tilesize
+                    + (invpos % shop_width) * config.TILESIZE
                     + 2 * ((invpos % shop_width) + 1),
-                    canvas_y_start + (invpos / shop_width) * g.tilesize + 2 * ((invpos / shop_width) + 1),
+                    canvas_y_start + (invpos / shop_width) * config.TILESIZE + 2 * ((invpos / shop_width) + 1),
                 ),
             )
             invpos += 1
@@ -242,10 +246,10 @@ def refresh_shop():
     if curr_focus == 0:
         g.create_norm_box(
             (
-                canvas_x_start + (curr_item % shop_width) * g.tilesize + 2 * ((curr_item % shop_width) + 1),
-                canvas_y_start + (curr_item / shop_width) * g.tilesize + 2 * ((curr_item / shop_width) + 1),
+                canvas_x_start + (curr_item % shop_width) * config.TILESIZE + 2 * ((curr_item % shop_width) + 1),
+                canvas_y_start + (curr_item / shop_width) * config.TILESIZE + 2 * ((curr_item / shop_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dark_green",
         )
 
@@ -255,8 +259,8 @@ def refresh_shop():
             g.screen.blit(
                 g.tiles[item.item[item.inv[i]].picturename],
                 (
-                    canvas_x_start + (i % shop_width) * g.tilesize + 2 * ((i % shop_width) + 1),
-                    canvas_y_start + (i / shop_width) * g.tilesize + 2 * ((i / shop_width) + 1),
+                    canvas_x_start + (i % shop_width) * config.TILESIZE + 2 * ((i % shop_width) + 1),
+                    canvas_y_start + (i / shop_width) * config.TILESIZE + 2 * ((i / shop_width) + 1),
                 ),
             )
             invpos += 1
@@ -369,17 +373,17 @@ def which_box(x, y):
     if x < 3:
         return -1
     tempx = x - 3
-    likelyx = tempx / (g.tilesize + 2)
-    tempx = tempx - (likelyx * (g.tilesize + 2))
-    if tempx >= g.tilesize - 1:
+    likelyx = tempx / (config.TILESIZE + 2)
+    tempx = tempx - (likelyx * (config.TILESIZE + 2))
+    if tempx >= config.TILESIZE - 1:
         return -1
 
     if y < 3:
         return -1
     tempy = y - 3
-    likelyy = tempy / (g.tilesize + 2)
-    tempy = tempy - (likelyy * (g.tilesize + 2))
-    if tempy >= g.tilesize - 1:
+    likelyy = tempy / (config.TILESIZE + 2)
+    tempy = tempy - (likelyy * (config.TILESIZE + 2))
+    if tempy >= config.TILESIZE - 1:
         return -1
 
     if likelyx >= shop_width:
@@ -564,10 +568,10 @@ def init_window_shop(store_type_input):
     global temp_button_x
     global temp_button_width
     global temp_button_y
-    temp_canvas_width = (g.tilesize * shop_width) + ((shop_width + 1) * 2) + 1
-    temp_canvas_height = (g.tilesize * shop_height) + ((shop_height + 1) * 2) + 1
-    canvas_x_start = ((g.tilesize * main.mapsizex) - temp_canvas_width * 3) / 2
-    canvas_y_start = ((g.tilesize * main.mapsizey) - temp_canvas_height) / 2
+    temp_canvas_width = (config.TILESIZE * shop_width) + ((shop_width + 1) * 2) + 1
+    temp_canvas_height = (config.TILESIZE * shop_height) + ((shop_height + 1) * 2) + 1
+    canvas_x_start = ((config.TILESIZE * main.mapsizex) - temp_canvas_width * 3) / 2
+    canvas_y_start = ((config.TILESIZE * main.mapsizey) - temp_canvas_height) / 2
     temp_button_x = (
         canvas_x_start
         + (temp_canvas_width * 3) / 2
@@ -604,8 +608,11 @@ def init_window_shop(store_type_input):
     for y in range(shop_height):
         for x in range(shop_width):
             g.create_norm_box(
-                (canvas_x_start + x * g.tilesize + 2 * (x + 1), canvas_y_start + y * g.tilesize + 2 * (y + 1)),
-                (g.tilesize, g.tilesize),
+                (
+                    canvas_x_start + x * config.TILESIZE + 2 * (x + 1),
+                    canvas_y_start + y * config.TILESIZE + 2 * (y + 1),
+                ),
+                (config.TILESIZE, config.TILESIZE),
                 inner_color="dh_green",
             )
 
@@ -618,10 +625,10 @@ def init_window_shop(store_type_input):
         for x in range(shop_width):
             g.create_norm_box(
                 (
-                    temp_canvas_width * 2 + canvas_x_start + x * g.tilesize + 2 * (x + 1),
-                    canvas_y_start + y * g.tilesize + 2 * (y + 1),
+                    temp_canvas_width * 2 + canvas_x_start + x * config.TILESIZE + 2 * (x + 1),
+                    canvas_y_start + y * config.TILESIZE + 2 * (y + 1),
                 ),
-                (g.tilesize, g.tilesize),
+                (config.TILESIZE, config.TILESIZE),
                 inner_color="dh_green",
             )
 

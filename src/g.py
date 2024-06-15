@@ -1,27 +1,6 @@
-# g.py
-# Copyright (C) 2005 Free Software Foundation
-# This file is part of Dragon Hunt.
-
-# Dragon Hunt is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# Dragon Hunt is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with Dragon Hunt; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-# This file contains everything that needs to be accessed by most or all files.
-
-
-# Dragon Hunt 3.56. Released under the GPL. Copyright 2005
-# (Note to self: when changing version, change variables.txt, README.txt,
-# and setup.py.)
+"""
+This was originally a 'globals' file, but is currently in the process of being refactored largely into a new config file
+"""
 
 # needed for save/load game
 import pickle
@@ -29,11 +8,13 @@ import sys
 from os import mkdir, path, remove, walk
 from random import random
 
+import pygame
+
 import action
+import config
 import item
 import main
 import monster
-import pygame
 
 # player info
 from player import player
@@ -53,14 +34,6 @@ window_main = ""
 debug = False
 # Call rpg with the faststart argument to not preprocess the map files.
 faststart = False
-
-# fill colour
-# fill_colour = "#b9e5ad"
-# fill_sel_colour = "#7aa96e"
-# outline_colour = "#70a662"
-
-# default tile width. Set in variables.txt, or default to 32.
-tilesize = 32
 
 # location on map: x, y, z coordinate. Map names are given a zgrid on loading.
 xgrid = 0
@@ -101,7 +74,6 @@ per_turn_script = []
 # Default key bindings for the game.
 bindings = {}
 
-message_lines = 6
 difficulty = 1
 
 name_name = "Name"
@@ -280,14 +252,9 @@ new_game_dice = []
 # get the key bindings from settings.txt
 def read_settings():
     global bindings
-    global message_lines
     global difficulty
     global editor_xy
-    global editor_tilesize
     global fullscreen
-    editor_xy = (640, 480)
-    editor_tilesize = 15
-    fullscreen = 0
     # try to open settings.txt. If it doesn't exist,
     # just use the default settings.
     try:
@@ -300,16 +267,12 @@ def read_settings():
         if line[:1] == "#" or line[:1] == "":
             line = file.readline()
             continue
-        if line.split("=", 1)[0].strip() == "message_lines":
-            message_lines = line.split("=", 1)[1].strip()
-        elif line.split("=", 1)[0].strip() == "difficulty":
+        if line.split("=", 1)[0].strip() == "difficulty":
             difficulty = int(line.split("=", 1)[1].strip())
         elif line.split("=", 1)[0].strip() == "editor_xsize":
             editor_xy = (int(line.split("=", 1)[1].strip()), editor_xy[1])
         elif line.split("=", 1)[0].strip() == "editor_ysize":
             editor_xy = (editor_xy[0], int(line.split("=", 1)[1].strip()))
-        elif line.split("=", 1)[0].strip() == "editor_tilesize":
-            editor_tilesize = int(line.split("=", 1)[1].strip())
         elif line.split("=", 1)[0].strip() == "fullscreen":
             fullscreen = int(line.split("=", 1)[1].strip())
         else:
@@ -342,9 +305,6 @@ def read_variables():
             read_dice(3, line.split("=", 1)[1].strip())
         elif switch2 == "gold":
             read_dice(4, line.split("=", 1)[1].strip())
-        elif switch2 == "tilesize":
-            global tilesize
-            tilesize = int(line.split("=", 1)[1].strip())
         elif switch2 == "default_player_name":
             global default_player_name
             default_player_name = line.split("=", 1)[1].strip()
