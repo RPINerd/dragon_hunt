@@ -162,7 +162,7 @@ def click_map(xy):
         or cur_mode == "scripting"
         or cur_mode == "scripting2"
     ):
-        set_tile((xy[0] / g.tilesize) + portal_x, (xy[1] / g.tilesize) + portal_y, cur_tile)
+        set_tile((xy[0] / config.TILESIZE) + portal_x, (xy[1] / config.TILESIZE) + portal_y, cur_tile)
 
 
 # set mode to add, replace, remove, or walkable
@@ -249,7 +249,7 @@ def refresh_map():
                     if line[:3].lower() == "pix" or line[:6].lower() == "addpix" or line[:10].lower() == "addoverpix":
                         g.screen.blit(
                             g.tiles[line[line.find("(") + 2 : g.action.match_command(line) - 2]],
-                            ((x - portal_x) * g.tilesize, (y - portal_y) * g.tilesize),
+                            ((x - portal_x) * config.TILESIZE, (y - portal_y) * config.TILESIZE),
                         )
             except IndexError:
                 print("Crash prevention: ", x, y, len(cur_map.field))
@@ -269,53 +269,59 @@ def refresh_map():
                     if line == "walk(1)":
                         g.create_norm_box(
                             (
-                                (x - portal_x) * g.tilesize + g.tilesize / 3,
-                                (y - portal_y) * g.tilesize + g.tilesize / 3,
+                                (x - portal_x) * config.TILESIZE + config.TILESIZE / 3,
+                                (y - portal_y) * config.TILESIZE + config.TILESIZE / 3,
                             ),
-                            (g.tilesize / 3, g.tilesize / 3),
+                            (config.TILESIZE / 3, config.TILESIZE / 3),
                             inner_color="white",
                         )
                     if line == "walk(0)":
                         g.create_norm_box(
                             (
-                                (x - portal_x) * g.tilesize + g.tilesize / 3,
-                                (y - portal_y) * g.tilesize + g.tilesize / 3,
+                                (x - portal_x) * config.TILESIZE + config.TILESIZE / 3,
+                                (y - portal_y) * config.TILESIZE + config.TILESIZE / 3,
                             ),
-                            (g.tilesize / 3, g.tilesize / 3),
+                            (config.TILESIZE / 3, config.TILESIZE / 3),
                             inner_color="black",
                         )
                     # The wall_* display. Show a black bar on the given side.
                     if line == "wall_n(1)":
                         g.create_norm_box(
-                            ((x - portal_x) * g.tilesize + g.tilesize / 8, (y - portal_y) * g.tilesize + 2),
-                            (7 * g.tilesize / 8, 5),
+                            (
+                                (x - portal_x) * config.TILESIZE + config.TILESIZE / 8,
+                                (y - portal_y) * config.TILESIZE + 2,
+                            ),
+                            (7 * config.TILESIZE / 8, 5),
                             "white",
                             "black",
                         )
                     if line == "wall_s(1)":
                         g.create_norm_box(
                             (
-                                (x - portal_x) * g.tilesize + g.tilesize / 8,
-                                (y - portal_y) * g.tilesize + g.tilesize - 7,
+                                (x - portal_x) * config.TILESIZE + config.TILESIZE / 8,
+                                (y - portal_y) * config.TILESIZE + config.TILESIZE - 7,
                             ),
-                            (7 * g.tilesize / 8, 5),
+                            (7 * config.TILESIZE / 8, 5),
                             "white",
                             "black",
                         )
                     if line == "wall_w(1)":
                         g.create_norm_box(
-                            ((x - portal_x) * g.tilesize + 2, (y - portal_y) * g.tilesize + g.tilesize / 8),
-                            (5, 7 * g.tilesize / 8),
+                            (
+                                (x - portal_x) * config.TILESIZE + 2,
+                                (y - portal_y) * config.TILESIZE + config.TILESIZE / 8,
+                            ),
+                            (5, 7 * config.TILESIZE / 8),
                             "white",
                             "black",
                         )
                     if line == "wall_e(1)":
                         g.create_norm_box(
                             (
-                                (x - portal_x) * g.tilesize + g.tilesize - 7,
-                                (y - portal_y) * g.tilesize + g.tilesize / 8,
+                                (x - portal_x) * config.TILESIZE + config.TILESIZE - 7,
+                                (y - portal_y) * config.TILESIZE + config.TILESIZE / 8,
                             ),
-                            (5, 7 * g.tilesize / 8),
+                            (5, 7 * config.TILESIZE / 8),
                             "white",
                             "black",
                         )
@@ -335,26 +341,26 @@ def refresh_map():
                     if temp_command != "wal" and temp_command != "pix":
                         g.create_norm_box(
                             (
-                                (x - portal_x) * g.tilesize + g.tilesize / 3,
-                                (y - portal_y) * g.tilesize + g.tilesize / 3,
+                                (x - portal_x) * config.TILESIZE + config.TILESIZE / 3,
+                                (y - portal_y) * config.TILESIZE + config.TILESIZE / 3,
                             ),
-                            (g.tilesize / 3, g.tilesize / 3),
+                            (config.TILESIZE / 3, config.TILESIZE / 3),
                             inner_color="white",
                         )
                 if len(cur_map.field[y][x].actions) > 0:
                     g.create_norm_box(
                         (
-                            (x - portal_x) * g.tilesize + g.tilesize / 3 + 2,
-                            (y - portal_y) * g.tilesize + g.tilesize / 3 + 2,
+                            (x - portal_x) * config.TILESIZE + config.TILESIZE / 3 + 2,
+                            (y - portal_y) * config.TILESIZE + config.TILESIZE / 3 + 2,
                         ),
-                        (g.tilesize / 3 - 4, g.tilesize / 3 - 4),
+                        (config.TILESIZE / 3 - 4, config.TILESIZE / 3 - 4),
                         inner_color="white",
                     )
                     g.screen.fill(
                         g.colors["black"],
                         (
-                            (x - portal_x) * g.tilesize + g.tilesize / 2 - 2,
-                            (y - portal_y) * g.tilesize + g.tilesize / 2 - 2,
+                            (x - portal_x) * config.TILESIZE + config.TILESIZE / 2 - 2,
+                            (y - portal_y) * config.TILESIZE + config.TILESIZE / 2 - 2,
                             2,
                             2,
                         ),
@@ -369,18 +375,18 @@ def refresh_map():
                 if x == cur_tilecopy_x and y == cur_tilecopy_y:
                     g.create_norm_box(
                         (
-                            (x - portal_x) * g.tilesize + g.tilesize / 3 + 2,
-                            (y - portal_y) * g.tilesize + g.tilesize / 3 + 2,
+                            (x - portal_x) * config.TILESIZE + config.TILESIZE / 3 + 2,
+                            (y - portal_y) * config.TILESIZE + config.TILESIZE / 3 + 2,
                         ),
-                        (g.tilesize / 3 - 4, g.tilesize / 3 - 4),
+                        (config.TILESIZE / 3 - 4, config.TILESIZE / 3 - 4),
                         inner_color="white",
                     )
     # grid display
     if tilegrid == 1:
         for y in range(portalsize):
-            g.screen.fill(g.colors["black"], (0, y * g.tilesize, portalsize * g.tilesize, 1))
+            g.screen.fill(g.colors["black"], (0, y * config.TILESIZE, portalsize * config.TILESIZE, 1))
         for x in range(portalsize):
-            g.screen.fill(g.colors["black"], (x * g.tilesize, 0, 1, portalsize * g.tilesize))
+            g.screen.fill(g.colors["black"], (x * config.TILESIZE, 0, 1, portalsize * config.TILESIZE))
 
     g.unclean_screen = True
 
@@ -646,14 +652,14 @@ def setup_tilebox():
 
 
 def click_tiles(xy):
-    if xy[0] < g.screen_size[0] - (tilebox_width) * (g.tilesize + 1):
+    if xy[0] < g.screen_size[0] - (tilebox_width) * (config.TILESIZE + 1):
         return 0
     else:
         global cur_tile_num
         global cur_tile
         tmp = cur_tile_num
-        x = xy[0] - (g.screen_size[0] - (tilebox_width) * (g.tilesize + 1))
-        cur_tile_num = x / (g.tilesize + 1) + tilebox_width * (xy[1] / (g.tilesize + 1))
+        x = xy[0] - (g.screen_size[0] - (tilebox_width) * (config.TILESIZE + 1))
+        cur_tile_num = x / (config.TILESIZE + 1) + tilebox_width * (xy[1] / (config.TILESIZE + 1))
         tmp_dir = cur_tile_set
         if tmp_dir == "default":
             tmp_dir = ""
@@ -696,9 +702,9 @@ def display_tiles(set=""):
     g.screen.fill(
         g.colors["black"],
         (
-            g.screen_size[0] - (tilebox_width) * (g.tilesize + 1) - 1,
+            g.screen_size[0] - (tilebox_width) * (config.TILESIZE + 1) - 1,
             0,
-            (tilebox_width) * (g.tilesize + 1) + 1,
+            (tilebox_width) * (config.TILESIZE + 1) + 1,
             g.screen_size[1],
         ),
     )
@@ -720,15 +726,16 @@ def display_tiles(set=""):
                 g.screen.fill(
                     g.colors["hp_red"],
                     (
-                        g.screen_size[0] - (col_span - cur_col) * (g.tilesize + 1) - 1,
-                        cur_row * (g.tilesize + 1) - 1,
-                        g.tilesize + 2,
-                        g.tilesize + 2,
+                        g.screen_size[0] - (col_span - cur_col) * (config.TILESIZE + 1) - 1,
+                        cur_row * (config.TILESIZE + 1) - 1,
+                        config.TILESIZE + 2,
+                        config.TILESIZE + 2,
                     ),
                 )
                 cur_tile = file
             g.screen.blit(
-                tiles[file], (g.screen_size[0] - (col_span - cur_col) * (g.tilesize + 1), cur_row * (g.tilesize + 1))
+                tiles[file],
+                (g.screen_size[0] - (col_span - cur_col) * (config.TILESIZE + 1), cur_row * (config.TILESIZE + 1)),
             )
             cur_col = cur_col + 1
             cur = cur + 1
@@ -973,10 +980,10 @@ def toggle_grid():
     global tilegrid
     if tilegrid == 0:
         tilegrid = 1
-        # g.tilesize += 1
+        # config.TILESIZE += 1
     elif tilegrid == 1:
         tilegrid = 0
-        # g.tilesize -= 1
+        # config.TILESIZE -= 1
     refresh_map()
 
 
@@ -1467,7 +1474,7 @@ def sel_mod(selected_mod):
                 print_cur_xy((0, 0), True)
 
             elif event.type == pygame.MOUSEMOTION:
-                tmp_square = ((event.pos[0] / g.tilesize) + portal_x, (event.pos[1] / g.tilesize) + portal_y)
+                tmp_square = ((event.pos[0] / config.TILESIZE) + portal_x, (event.pos[1] / config.TILESIZE) + portal_y)
                 print_cur_xy(tmp_square)
                 if mouse_button_down:
                     if tmp_square != last_square:
@@ -1498,7 +1505,10 @@ def sel_mod(selected_mod):
                         break
                     if cur_mode == "replace" or cur_mode == "add" or cur_mode == "remove" or cur_mode == "walkable":
                         mouse_button_down = True
-                        last_square = ((event.pos[0] / g.tilesize) + portal_x, (event.pos[1] / g.tilesize) + portal_y)
+                        last_square = (
+                            (event.pos[0] / config.TILESIZE) + portal_x,
+                            (event.pos[1] / config.TILESIZE) + portal_y,
+                        )
                     tmp = click_map(event.pos)
                     if tmp > 0:
                         break

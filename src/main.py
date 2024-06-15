@@ -4,12 +4,14 @@ This file controls the wilderness and dungeon.
 
 from random import random
 
+import pygame
+
 import action
 import battle
+import config
 import g
 import inv
 import new_game
-import pygame
 import shop
 from player import player
 
@@ -19,7 +21,6 @@ mapsizex = 20
 mapsizey = 15
 
 width = 20
-tilesize = 32
 iconsize = 20
 
 # division is nasty. Only do it once. Used for centering items on the player.
@@ -171,17 +172,17 @@ def refreshmap():
 
 # refreshes the stat display in the lower-right.
 def refresh_inv_icon(redisplay=0):
-    info_top_x = mapsizex * tilesize - 3 * iconsize
-    info_top_y = mapsizey * tilesize - 7 * iconsize
-    info_bottom_x = mapsizex * tilesize
-    info_bottom_y = mapsizey * tilesize - iconsize
-    top_of_buttons = mapsizey * tilesize - iconsize
+    info_top_x = mapsizex * config.TILESIZE - 3 * iconsize
+    info_top_y = mapsizey * config.TILESIZE - 7 * iconsize
+    info_bottom_x = mapsizex * config.TILESIZE
+    info_bottom_y = mapsizey * config.TILESIZE - iconsize
+    top_of_buttons = mapsizey * config.TILESIZE - iconsize
 
     g.create_norm_box((info_top_x, info_top_y), (3 * iconsize, 7 * iconsize), "black", "dh_green")
 
-    g.screen.blit(g.icons[inv_icon_image], (mapsizex * tilesize - 3 * iconsize, top_of_buttons))
-    g.screen.blit(g.icons[quit_icon_image], (mapsizex * tilesize - iconsize, top_of_buttons))
-    g.screen.blit(g.icons[save_icon_image], (mapsizex * tilesize - 2 * iconsize, top_of_buttons))
+    g.screen.blit(g.icons[inv_icon_image], (mapsizex * config.TILESIZE - 3 * iconsize, top_of_buttons))
+    g.screen.blit(g.icons[quit_icon_image], (mapsizex * config.TILESIZE - iconsize, top_of_buttons))
+    g.screen.blit(g.icons[save_icon_image], (mapsizex * config.TILESIZE - 2 * iconsize, top_of_buttons))
 
     icon_x = info_top_x + 5
     icon_y = info_top_y + 5
@@ -227,24 +228,26 @@ def refresh_bars():
 # given x and y (absolute coods.) refresh the given tile. (ADJUST FOR PARTIAL)
 def refresh_tile(x, y, input_zgrid, xshift=0, yshift=0):
     for picture in findtile(x, y, input_zgrid):
-        map_canvas.blit(picture, ((x + half_mapx + 1 + xshift) * g.tilesize, (y + half_mapy + 1 + yshift) * g.tilesize))
+        map_canvas.blit(
+            picture, ((x + half_mapx + 1 + xshift) * config.TILESIZE, (y + half_mapy + 1 + yshift) * config.TILESIZE)
+        )
     for picture in findovertile(x, y, input_zgrid):
         map_over_canvas.blit(
-            picture, ((x + half_mapx + 1 + xshift) * g.tilesize, (y + half_mapy + 1 + yshift) * g.tilesize)
+            picture, ((x + half_mapx + 1 + xshift) * config.TILESIZE, (y + half_mapy + 1 + yshift) * config.TILESIZE)
         )
 
 
 # refreshs the hero; faster than refreshing the whole map.
 def refreshhero():
     for picture in findtile(g.xgrid, g.ygrid, g.zgrid):
-        g.screen.blit(picture, ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize))
+        g.screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
     if player.cur_hero not in g.tiles:
         print("hero " + player.cur_hero + " not found")
         return 0
-    g.screen.blit(g.tiles[player.cur_hero], ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize))
+    g.screen.blit(g.tiles[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
     for picture in g.maps[g.zgrid].field[g.ygrid][g.xgrid].addoverpix:
-        g.screen.blit(picture, ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize))
+        g.screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
 
 # called to process the onload portion of a level. Called whenever entering
@@ -262,8 +265,8 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
     if input_zgrid == -1:
         input_zgrid = g.zgrid
     map_size = (
-        tilesize * (len(g.maps[input_zgrid].field[0]) + mapsizex + 1),
-        tilesize * (len(g.maps[input_zgrid].field) + mapsizey + 1),
+        config.TILESIZE * (len(g.maps[input_zgrid].field[0]) + mapsizex + 1),
+        config.TILESIZE * (len(g.maps[input_zgrid].field) + mapsizey + 1),
     )
 
     global map_canvas
@@ -375,8 +378,8 @@ def debug_print_level():
 def redisplay_map(x=0, y=0):
 
     if (x == 0 and y == 0) or player.hp <= 0:
-        g.screen.blit(map_canvas, (-(g.xgrid + 1) * tilesize, -(g.ygrid + 1) * tilesize))
-        g.screen.blit(map_over_canvas, (-(g.xgrid + 1) * tilesize, -(g.ygrid + 1) * tilesize))
+        g.screen.blit(map_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
+        g.screen.blit(map_over_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
     else:
         tmp_msg_scroller = pygame.Surface((384, 64))
         tmp_stat_box = pygame.Surface((60, 151))
@@ -388,8 +391,8 @@ def redisplay_map(x=0, y=0):
                 map_canvas,
                 (0, 0),
                 (
-                    (g.xgrid - x + 1) * tilesize + i * x * 2,
-                    (g.ygrid - y + 1) * tilesize + i * y * 2,
+                    (g.xgrid - x + 1) * config.TILESIZE + i * x * 2,
+                    (g.ygrid - y + 1) * config.TILESIZE + i * y * 2,
                     g.screen_size[0],
                     g.screen_size[1],
                 ),
@@ -398,25 +401,27 @@ def redisplay_map(x=0, y=0):
             if tmp_key in g.tiles:
                 g.screen.blit(
                     g.tiles[tmp_key],
-                    ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize),
+                    ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE),
                 )
             elif player.cur_hero in g.tiles:
-                g.screen.blit(g.tiles[player.cur_hero], ((mapsizex / 2) * g.tilesize, (mapsizey / 2) * g.tilesize))
+                g.screen.blit(
+                    g.tiles[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE)
+                )
             g.screen.blit(
                 map_over_canvas,
-                (g.screen_size[0] / 2 - tilesize, g.screen_size[1] / 2 - tilesize),
+                (g.screen_size[0] / 2 - config.TILESIZE, g.screen_size[1] / 2 - config.TILESIZE),
                 (
-                    (g.xgrid - x + 1) * tilesize + i * x * 2 + g.screen_size[0] / 2 - tilesize,
-                    (g.ygrid - y + 1) * tilesize + i * y * 2 + g.screen_size[1] / 2 - tilesize,
-                    tilesize * 3,
-                    tilesize * 3,
+                    (g.xgrid - x + 1) * config.TILESIZE + i * x * 2 + g.screen_size[0] / 2 - config.TILESIZE,
+                    (g.ygrid - y + 1) * config.TILESIZE + i * y * 2 + g.screen_size[1] / 2 - config.TILESIZE,
+                    config.TILESIZE * 3,
+                    config.TILESIZE * 3,
                 ),
             )
             g.screen.blit(tmp_msg_scroller, (0, 416))
             g.screen.blit(tmp_stat_box, (580, 329))
             pygame.display.flip()
-    g.screen.blit(map_canvas, (-(g.xgrid + 1) * tilesize, -(g.ygrid + 1) * tilesize))
-    g.screen.blit(map_over_canvas, (-(g.xgrid + 1) * tilesize, -(g.ygrid + 1) * tilesize))
+    g.screen.blit(map_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
+    g.screen.blit(map_over_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
     refreshhero()
     g.unclean_screen = True
 
@@ -1042,7 +1047,7 @@ def cleanup(event=None):
 def init_window_main(is_new_game=0):
     g.load_tiles()
     global map_canvas
-    tmp_map_size = (tilesize * (g.max_mapsize[0] + mapsizex + 1), tilesize * (g.max_mapsize[1] + mapsizey + 1))
+    tmp_map_size = (tilesize * (g.max_mapsize[0] + mapsizex + 1), config.TILESIZE * (g.max_mapsize[1] + mapsizey + 1))
 
     map_canvas = pygame.Surface(tmp_map_size)
 
@@ -1067,7 +1072,7 @@ def init_window_main(is_new_game=0):
         print("Level loading time: ", pygame.time.get_ticks() - tmp_time2)
 
     # width of the hp/ep bars.
-    g.hpbar_width = g.tilesize * 3
+    g.hpbar_width = config.TILESIZE * 3
 
     # put in the map, and do finishing touches on the window.
     player.reset_stats()
@@ -1075,12 +1080,12 @@ def init_window_main(is_new_game=0):
         process_onload()
     player.cur_hero = "people/hero_w" + g.maps[g.zgrid].hero_suffix + ".png"
 
-    top_of_buttons = mapsizey * tilesize - iconsize
+    top_of_buttons = mapsizey * config.TILESIZE - iconsize
 
-    info_top_x = mapsizex * tilesize - 3 * iconsize
-    info_top_y = mapsizey * tilesize - 7 * iconsize
-    info_bottom_x = mapsizex * tilesize
-    info_bottom_y = mapsizey * tilesize - iconsize
+    info_top_x = mapsizex * config.TILESIZE - 3 * iconsize
+    info_top_y = mapsizey * config.TILESIZE - 7 * iconsize
+    info_bottom_x = mapsizex * config.TILESIZE
+    info_bottom_y = mapsizey * config.TILESIZE - iconsize
     icon_x = info_top_x + 5
     icon_y = info_top_y + 5
     stats_x = info_top_x + iconsize + 10
@@ -1207,10 +1212,10 @@ def unbind_keys():
 
 # handles mouse clicks on the main tile canvas.
 def mouse_handler(xy):
-    icon_y1 = mapsizey * tilesize - iconsize
-    icon_y2 = mapsizey * tilesize
+    icon_y1 = mapsizey * config.TILESIZE - iconsize
+    icon_y2 = mapsizey * config.TILESIZE
 
-    inv_x1 = mapsizex * tilesize - 3 * iconsize
+    inv_x1 = mapsizex * config.TILESIZE - 3 * iconsize
     inv_x2 = inv_x1 + iconsize
     if xy[0] > inv_x1 and xy[0] < inv_x2 and xy[1] > icon_y1 and xy[1] < icon_y2:
         show_inv()
@@ -1228,9 +1233,9 @@ def mouse_handler(xy):
         return close_window()
 
     if (
-        xy[0] > mapsizex * tilesize - 3 * iconsize - g.buttons["scroller.png"].get_width()
-        and xy[0] < mapsizex * tilesize - 3 * iconsize
-        and xy[1] > mapsizey * tilesize - g.buttons["scroller.png"].get_height()
+        xy[0] > mapsizex * config.TILESIZE - 3 * iconsize - g.buttons["scroller.png"].get_width()
+        and xy[0] < mapsizex * config.TILESIZE - 3 * iconsize
+        and xy[1] > mapsizey * config.TILESIZE - g.buttons["scroller.png"].get_height()
     ):
         tmpline = ""
         for line in message_array:
@@ -1240,13 +1245,13 @@ def mouse_handler(xy):
 
     # set variables, based on the shape of the main window. (tall or wide)
     if mapsizex > mapsizey:
-        mapsz = mapsizey * g.tilesize
-        mapstartx = (mapsizex * g.tilesize - mapsz) / 2
+        mapsz = mapsizey * config.TILESIZE
+        mapstartx = (mapsizex * config.TILESIZE - mapsz) / 2
         mapstarty = 0
     else:
-        mapsz = mapsizex * g.tilesize
+        mapsz = mapsizex * config.TILESIZE
         mapstartx = 0
-        mapstarty = (mapsizey * g.tilesize - mapsz) / 2
+        mapstarty = (mapsizey * config.TILESIZE - mapsz) / 2
 
     # This basically divides the screen along diagonals, then finds the
     # current quadrent of the mouse.
@@ -1269,10 +1274,10 @@ def mouse_move(xy):
     global save_icon_image
     global scroller_icon_image
 
-    icon_y1 = mapsizey * tilesize - iconsize
-    icon_y2 = mapsizey * tilesize
+    icon_y1 = mapsizey * config.TILESIZE - iconsize
+    icon_y2 = mapsizey * config.TILESIZE
 
-    inv_x1 = mapsizex * tilesize - 3 * iconsize
+    inv_x1 = mapsizex * config.TILESIZE - 3 * iconsize
     inv_x2 = inv_x1 + iconsize
     if xy[0] > inv_x1 and xy[0] < inv_x2 and xy[1] > icon_y1 and xy[1] < icon_y2:
         new_icon_image = "inv_sel.png"
@@ -1294,9 +1299,9 @@ def mouse_move(xy):
         new_quit_image = "quit.png"
 
     if (
-        xy[0] > mapsizex * tilesize - iconsize * 3 - g.buttons["scroller.png"].get_width()
-        and xy[0] < mapsizex * tilesize - 3 * iconsize
-        and xy[1] > mapsizey * tilesize - g.buttons["scroller.png"].get_height()
+        xy[0] > mapsizex * config.TILESIZE - iconsize * 3 - g.buttons["scroller.png"].get_width()
+        and xy[0] < mapsizex * config.TILESIZE - 3 * iconsize
+        and xy[1] > mapsizey * config.TILESIZE - g.buttons["scroller.png"].get_height()
     ):
         new_scroll_icon_image = "scroller_sel.png"
     else:

@@ -2,18 +2,18 @@
 
 A small but fun RPG. Investigate the rumors of monsters attacking a small town. (Hint: the rumors are true.)
 
-[Website](https://emhsoft.com/dh.html)
+[Original Website](https://emhsoft.com/dh.html)
+[GitHub](https://github.com/RPINerd/dragon_hunt)
 
-Current Version - 3.56
+Current Version - 4.0-dev
 
 ## Latest Updates
 
-- Changed the level loading code a bit
-- The world map in Dark Ages should now be faster
-- Fixed a couple small bugs. (Bugreports by Lukas Sabota)
-- The game will use Psyco if available; This greatly speeds up loading time
-- Added options screen
-- Added joystick support (Lukas Sabota for suggestion)
+- Convert code to Python 3.12
+- Cleaned out dead code and unused assets
+- Stripped out joystick support
+- Black/Flake8 linting
+- Convert file structure to future package build
 
 ## Requirements
 
@@ -26,7 +26,7 @@ Game is built on Linux, but should work on Windows and Mac OSX as well provided 
 
 Run the shell script `Play` from the root directory  
 or  
-Run `python rpg.py` from the `./code/` directory
+Run `python rpg.py` from the `./src/` directory
 
 ## Map Editor
 
@@ -34,7 +34,7 @@ The map editor is a separate program that can be used to create maps for the gam
 
 Run the shell script `Editor` from the root directory  
 or  
-Run `python map_editor.py` from the `./code/` directory
+Run `python map_editor.py` from the `./src/` directory
 
 ## Controls
 

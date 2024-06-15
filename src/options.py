@@ -4,8 +4,9 @@ This file controls the options screen.
 
 from os import path
 
-import g
 import pygame
+
+import g
 
 # -1=none, 0=fullscreen, 1=difficulty, 2=custom key
 # 5=save, 6=reset, 7=cancel
@@ -30,8 +31,8 @@ def box_with_text(xy, text, focused, active=False):
 
 def refresh_window():
     # create the window
-    x_start = g.tilesize * g.main.mapsizex / 2 - 90
-    y_start = g.tilesize * g.main.mapsizey / 2 - 80
+    x_start = config.TILESIZE * g.main.mapsizex / 2 - 90
+    y_start = config.TILESIZE * g.main.mapsizey / 2 - 80
     x_width = 180
     g.create_norm_box((x_start, y_start), (x_width, 212))
 
@@ -87,8 +88,8 @@ def refresh_window():
 
 def refresh_key_window(adjusting=False):
     # create the window
-    x_start = g.tilesize * g.main.mapsizex / 2 - 90
-    y_start = g.tilesize * g.main.mapsizey / 2 - 80
+    x_start = config.TILESIZE * g.main.mapsizex / 2 - 90
+    y_start = config.TILESIZE * g.main.mapsizey / 2 - 80
     x_width = 180
     g.create_norm_box((x_start, y_start), (x_width, 212))
 
@@ -350,11 +351,11 @@ def custom_key():
 
 
 def mouse_handler_move(pos):
-    pos = (pos[0], pos[1] - g.tilesize * g.main.mapsizey / 2 + 80)
+    pos = (pos[0], pos[1] - config.TILESIZE * g.main.mapsizey / 2 + 80)
     global curr_button
     if (
-        pos[0] < g.tilesize * g.main.mapsizex / 2 - 90
-        or pos[0] > g.tilesize * g.main.mapsizex / 2 + 90
+        pos[0] < config.TILESIZE * g.main.mapsizex / 2 - 90
+        or pos[0] > config.TILESIZE * g.main.mapsizex / 2 + 90
         or pos[1] < 0
         or pos[1] > 212
     ):

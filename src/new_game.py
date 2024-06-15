@@ -23,11 +23,12 @@
 
 import sys
 
+import pygame
+
 import g
 import loadgame
 import main
 import options
-import pygame
 from player import player
 
 # main stats for character. Taken from g.hp etc.
@@ -101,14 +102,15 @@ def key_handler_up(key_name):
 
 def refresh_name():
     g.screen.fill(
-        g.colors["light_gray"], (g.tilesize * main.mapsizex / 4 + 10, g.tilesize * main.mapsizey / 3 + 10, 280, 14)
+        g.colors["light_gray"],
+        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10, 280, 14),
     )
     tmp_name = name_stat[:curr_name_loc] + "|" + name_stat[curr_name_loc:]
     g.print_string(
         g.screen,
         g.name_name + ": " + tmp_name,
         g.font,
-        (g.tilesize * main.mapsizex / 4 + 10, g.tilesize * main.mapsizey / 3 + 10),
+        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10),
     )
     g.unclean_screen = True
 
@@ -454,7 +456,7 @@ def init_new_game():
     global name_stat
     name_stat = g.default_player_name
     global inner_button_start
-    inner_button_start = g.tilesize * main.mapsizey * 2 / 3 - g.buttons["begin.png"].get_height()
+    inner_button_start = config.TILESIZE * main.mapsizey * 2 / 3 - g.buttons["begin.png"].get_height()
     global inner_button_height
     inner_button_height = g.buttons["begin.png"].get_height()
     global inner_new_game_width
@@ -463,7 +465,7 @@ def init_new_game():
     global inner_quit_width
     global inner_final_width
     inner_new_game_width = (
-        g.tilesize * main.mapsizex / 2 - g.buttons["begin.png"].get_width() - g.buttons["skill.png"].get_width()
+        config.TILESIZE * main.mapsizex / 2 - g.buttons["begin.png"].get_width() - g.buttons["skill.png"].get_width()
     )
     inner_rename_width = inner_new_game_width + g.buttons["begin.png"].get_width()
     inner_reroll_width = inner_rename_width + g.buttons["skill.png"].get_width()
@@ -510,7 +512,7 @@ def init_window():
     global quit_width
     global final_width
     new_game_width = (
-        g.tilesize * main.mapsizex / 2 - g.buttons["begin.png"].get_width() - g.buttons["load.png"].get_width() / 2
+        config.TILESIZE * main.mapsizex / 2 - g.buttons["begin.png"].get_width() - g.buttons["load.png"].get_width() / 2
     )
     load_width = new_game_width + g.buttons["begin.png"].get_width()
     options_width = load_width + g.buttons["options.png"].get_width()
@@ -545,42 +547,42 @@ def init_window():
 
 def refresh_new_game():
     g.create_norm_box(
-        (g.tilesize * main.mapsizex / 4, g.tilesize * main.mapsizey / 3),
-        (g.tilesize * main.mapsizex / 2, g.tilesize * main.mapsizey / 3),
+        (config.TILESIZE * main.mapsizex / 4, config.TILESIZE * main.mapsizey / 3),
+        (config.TILESIZE * main.mapsizex / 2, config.TILESIZE * main.mapsizey / 3),
     )
     g.print_string(
         g.screen,
         g.name_name + ": " + name_stat,
         g.font,
-        (g.tilesize * main.mapsizex / 4 + 10, g.tilesize * main.mapsizey / 3 + 10),
+        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10),
     )
     g.print_string(
         g.screen,
         g.hp_name + ": " + str(hp_stat),
         g.font,
-        (g.tilesize * main.mapsizex / 4 + 10, g.tilesize * main.mapsizey / 3 + 25),
+        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 25),
     )
     g.print_string(
         g.screen,
         g.ep_name + ": " + str(ep_stat),
         g.font,
-        (g.tilesize * main.mapsizex / 4 + 10, g.tilesize * main.mapsizey / 3 + 40),
+        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 40),
     )
     g.print_string(
         g.screen,
         g.attack_name + ": " + str(attack_stat),
         g.font,
-        (g.tilesize * main.mapsizex / 4 + 10, g.tilesize * main.mapsizey / 3 + 55),
+        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 55),
     )
     g.print_string(
         g.screen,
         g.defense_name + ": " + str(defense_stat),
         g.font,
-        (g.tilesize * main.mapsizex / 4 + 10, g.tilesize * main.mapsizey / 3 + 70),
+        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 70),
     )
     g.print_string(
         g.screen,
         g.gold_name + ": " + str(gold_stat),
         g.font,
-        (g.tilesize * main.mapsizex / 4 + 10, g.tilesize * main.mapsizey / 3 + 85),
+        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 85),
     )

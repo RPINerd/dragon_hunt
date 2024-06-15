@@ -1,27 +1,6 @@
-# g.py
-# Copyright (C) 2005 Free Software Foundation
-# This file is part of Dragon Hunt.
-
-# Dragon Hunt is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# Dragon Hunt is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with Dragon Hunt; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-# This file contains everything that needs to be accessed by most or all files.
-
-
-# Dragon Hunt 3.56. Released under the GPL. Copyright 2005
-# (Note to self: when changing version, change variables.txt, README.txt,
-# and setup.py.)
+"""
+This was originally a 'globals' file, but is currently in the process of being refactored largely into a new config file
+"""
 
 # needed for save/load game
 import pickle
@@ -29,11 +8,13 @@ import sys
 from os import mkdir, path, remove, walk
 from random import random
 
+import pygame
+
 import action
+import config
 import item
 import main
 import monster
-import pygame
 
 # player info
 from player import player
@@ -53,14 +34,6 @@ window_main = ""
 debug = False
 # Call rpg with the faststart argument to not preprocess the map files.
 faststart = False
-
-# fill colour
-# fill_colour = "#b9e5ad"
-# fill_sel_colour = "#7aa96e"
-# outline_colour = "#70a662"
-
-# default tile width. Set in variables.txt, or default to 32.
-tilesize = 32
 
 # location on map: x, y, z coordinate. Map names are given a zgrid on loading.
 xgrid = 0
@@ -101,7 +74,6 @@ per_turn_script = []
 # Default key bindings for the game.
 bindings = {}
 
-message_lines = 6
 difficulty = 1
 
 name_name = "Name"
@@ -239,38 +211,19 @@ def init_data():
     screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
     print_string(screen, "Loading ...", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
     pygame.display.flip()
+
     read_settings()
     load_backgrounds()
     read_scripts()
     item.read_items()
     read_skills()
     monster.read_monster()
-    global game_name
-    game_name = read_game_name()
     read_variables()
     read_shops()
     read_perturn()
     load_buttons()
     load_icons()
     load_sounds()
-
-
-def read_game_name() -> str:
-    """
-    Get the name of the game from the variables.txt file
-    Note that this does not set the game name, only returns it. This lets it be used in rpg.py
-
-    :return: The name of the game
-    """
-
-    with open(mod_directory + "/data/variables.txt", "r") as file:
-        for line in file:
-            line = line.strip()
-            if line[:1] == "#" or line[:1] == "":
-                continue
-            if line.split("=", 1)[0].strip() == "game_name":
-                return line.split("=", 1)[1].strip()
-    return "ERROR: Game name not found"
 
 
 # What dice to roll when starting a new game. 2d array.
@@ -280,14 +233,9 @@ new_game_dice = []
 # get the key bindings from settings.txt
 def read_settings():
     global bindings
-    global message_lines
     global difficulty
     global editor_xy
-    global editor_tilesize
     global fullscreen
-    editor_xy = (640, 480)
-    editor_tilesize = 15
-    fullscreen = 0
     # try to open settings.txt. If it doesn't exist,
     # just use the default settings.
     try:
@@ -300,16 +248,12 @@ def read_settings():
         if line[:1] == "#" or line[:1] == "":
             line = file.readline()
             continue
-        if line.split("=", 1)[0].strip() == "message_lines":
-            message_lines = line.split("=", 1)[1].strip()
-        elif line.split("=", 1)[0].strip() == "difficulty":
+        if line.split("=", 1)[0].strip() == "difficulty":
             difficulty = int(line.split("=", 1)[1].strip())
         elif line.split("=", 1)[0].strip() == "editor_xsize":
             editor_xy = (int(line.split("=", 1)[1].strip()), editor_xy[1])
         elif line.split("=", 1)[0].strip() == "editor_ysize":
             editor_xy = (editor_xy[0], int(line.split("=", 1)[1].strip()))
-        elif line.split("=", 1)[0].strip() == "editor_tilesize":
-            editor_tilesize = int(line.split("=", 1)[1].strip())
         elif line.split("=", 1)[0].strip() == "fullscreen":
             fullscreen = int(line.split("=", 1)[1].strip())
         else:
@@ -322,63 +266,71 @@ read_settings()
 
 
 def read_variables():
+
+    # Verify that the variables file exists.
+    if not path.exists(mod_directory + "/data/variables.txt"):
+        print(f"Error: No variables file found in {mod_directory}/data/.. Exiting.")
+        sys.exit()
+
+    # Set up the new_game_dice array.
     for i in range(5):
         new_game_dice.append([])
-    file = open(mod_directory + "/data/variables.txt", "r")
-    line = file.readline()
-    while line != "":
-        line = line.strip()
-        if line[:1] == "#" or line[:1] == "":
-            line = file.readline()
-            continue
-        switch2 = line.split("=", 1)[0].strip().lower()
-        if switch2 == "hp":
-            read_dice(0, line.split("=", 1)[1].strip())
-        elif switch2 == "ep":
-            read_dice(1, line.split("=", 1)[1].strip())
-        elif switch2 == "attack":
-            read_dice(2, line.split("=", 1)[1].strip())
-        elif switch2 == "defense":
-            read_dice(3, line.split("=", 1)[1].strip())
-        elif switch2 == "gold":
-            read_dice(4, line.split("=", 1)[1].strip())
-        elif switch2 == "tilesize":
-            global tilesize
-            tilesize = int(line.split("=", 1)[1].strip())
-        elif switch2 == "default_player_name":
-            global default_player_name
-            default_player_name = line.split("=", 1)[1].strip()
-        elif switch2 == "name_name":
-            global name_name
-            name_name = line.split("=", 1)[1].strip()
-        elif switch2 == "hp_name":
-            global hp_name
-            hp_name = line.split("=", 1)[1].strip()
-        elif switch2 == "ep_name":
-            global ep_name
-            ep_name = line.split("=", 1)[1].strip()
-        elif switch2 == "attack_name":
-            global attack_name
-            attack_name = line.split("=", 1)[1].strip()
-        elif switch2 == "defense_name":
-            global defense_name
-            defense_name = line.split("=", 1)[1].strip()
-        elif switch2 == "gold_name":
-            global gold_name
-            gold_name = line.split("=", 1)[1].strip()
-        elif switch2 == "skill_name":
-            global skill_name
-            skill_name = line.split("=", 1)[1].strip()
-        elif switch2 == "exp_name":
-            global exp_name
-            exp_name = line.split("=", 1)[1].strip()
-        elif switch2 == "level_name":
-            global level_name
-            level_name = line.split("=", 1)[1].strip()
-        elif switch2 == "exp_list":
-            global exp_list
-            exp_list = line.split("=", 1)[1].strip().split(" ")
-        line = file.readline()
+
+    # Open the module variables file and parse it
+    with open(mod_directory + "/data/variables.txt", "r") as file:
+        for line in file:
+
+            line_key = line.split("=", 1)[0].strip().lower()
+            line_value = line.split("=", 1)[1].strip()
+            if line_key == "hp":
+                read_dice(0, line_value)
+            elif line_key == "ep":
+                read_dice(1, line_value)
+            elif line_key == "attack":
+                read_dice(2, line_value)
+            elif line_key == "defense":
+                read_dice(3, line_value)
+            elif line_key == "gold":
+                read_dice(4, line_value)
+            elif line_key == "game_name":
+                config.mut["GAME_NAME"] = line_value
+            elif line_key == "default_player_name":
+                global default_player_name
+                default_player_name = line_value
+            elif line_key == "name_name":
+                global name_name
+                name_name = line_value
+            elif line_key == "hp_name":
+                global hp_name
+                hp_name = line_value
+            elif line_key == "ep_name":
+                global ep_name
+                ep_name = line_value
+            elif line_key == "attack_name":
+                global attack_name
+                attack_name = line_value
+            elif line_key == "defense_name":
+                global defense_name
+                defense_name = line_value
+            elif line_key == "gold_name":
+                global gold_name
+                gold_name = line_value
+            elif line_key == "skill_name":
+                global skill_name
+                skill_name = line_value
+            elif line_key == "exp_name":
+                global exp_name
+                exp_name = line_value
+            elif line_key == "level_name":
+                global level_name
+                level_name = line_value
+            elif line_key == "exp_list":
+                global exp_list
+                exp_list = line_value.split(" ")
+
+    if game_name == "":
+        print("Warning: No game name found in variables file. Defaulting to 'Dragon Hunt'")
+        config.mut["GAME_NAME"] = "Dragon Hunt"
 
 
 # given a dice set and string of the form 2d4+5, place in new_game_dice

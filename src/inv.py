@@ -16,15 +16,16 @@
 # along with Dragon Hunt; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+import pygame
+
 import action
 import g
 import item
 import main
-import pygame
 from player import player
 
 # width/height of inv canvas, in tiles.
-# (g.tilesize + the 3 pixel border)
+# (config.TILESIZE + the 3 pixel border)
 inv_width = 4
 inv_height = 7
 
@@ -164,7 +165,7 @@ def open_equip_item():
     open_inner_menu("equip")
 
     # Equip also needs the equip screen:
-    temp_canvas_width = (g.tilesize * equip_size) + 8
+    temp_canvas_width = (config.TILESIZE * equip_size) + 8
     g.create_norm_box((tmp_x_base - temp_canvas_width, tmp_y_base), (temp_canvas_width, temp_canvas_width))
 
     g.cur_window = "inventory_equip"
@@ -229,16 +230,18 @@ def open_inner_menu(screen_str):
     global inv_canvas_width
     global inv_canvas_height
     if inv_canvas_width == 0:
-        inv_canvas_width = (g.tilesize * inv_width) + ((inv_width + 1) * 2) + 1
+        inv_canvas_width = (config.TILESIZE * inv_width) + ((inv_width + 1) * 2) + 1
     if inv_canvas_height == 0:
-        inv_canvas_height = (g.tilesize * inv_height) + ((inv_height + 1) * 2) + 1
+        inv_canvas_height = (config.TILESIZE * inv_height) + ((inv_height + 1) * 2) + 1
 
-    tmp_x_base = (g.tilesize * main.mapsizex) / 2 - inv_canvas_width
-    tmp_y_base = (g.tilesize * main.mapsizey - inv_canvas_height) / 2
+    tmp_x_base = (config.TILESIZE * main.mapsizex) / 2 - inv_canvas_width
+    tmp_y_base = (config.TILESIZE * main.mapsizey - inv_canvas_height) / 2
     tmp_menu_x_base = (
-        ((g.tilesize * main.mapsizex) / 2 - tmp_x_base) / 2 + tmp_x_base - g.buttons[screen_str + ".png"].get_width()
+        ((config.TILESIZE * main.mapsizex) / 2 - tmp_x_base) / 2
+        + tmp_x_base
+        - g.buttons[screen_str + ".png"].get_width()
     )
-    tmp_menu_y_base = (g.tilesize * main.mapsizey + inv_canvas_height) / 2
+    tmp_menu_y_base = (config.TILESIZE * main.mapsizey + inv_canvas_height) / 2
     tmp_menu_width = g.buttons[screen_str + ".png"].get_width() + g.buttons["leave.png"].get_width()
     tmp_menu_height = g.buttons["leave.png"].get_height()
 
@@ -253,8 +256,10 @@ def create_inv_display(screen_str):
     g.create_norm_box(
         (tmp_x_base, tmp_y_base),
         (
-            (g.tilesize * main.mapsizex) / 2 - tmp_x_base,
-            (g.tilesize * main.mapsizey + inv_canvas_height) / 2 + g.buttons["leave.png"].get_height() - tmp_y_base,
+            (config.TILESIZE * main.mapsizex) / 2 - tmp_x_base,
+            (config.TILESIZE * main.mapsizey + inv_canvas_height) / 2
+            + g.buttons["leave.png"].get_height()
+            - tmp_y_base,
         ),
     )
 
@@ -262,8 +267,8 @@ def create_inv_display(screen_str):
     for y in range(inv_height):
         for x in range(inv_width):
             g.create_norm_box(
-                (tmp_x_base + x * g.tilesize + 2 * (x + 1), tmp_y_base + y * g.tilesize + 2 * (y + 1)),
-                (g.tilesize, g.tilesize),
+                (tmp_x_base + x * config.TILESIZE + 2 * (x + 1), tmp_y_base + y * config.TILESIZE + 2 * (y + 1)),
+                (config.TILESIZE, config.TILESIZE),
                 inner_color="dh_green",
             )
 
@@ -294,9 +299,11 @@ def refresh_inner_buttons(screen_str):
         leave_image = "leave_sel.png"
 
     x_start = (
-        ((g.tilesize * main.mapsizex) / 2 - tmp_x_base) / 2 + tmp_x_base - g.buttons[screen_str + ".png"].get_width()
+        ((config.TILESIZE * main.mapsizex) / 2 - tmp_x_base) / 2
+        + tmp_x_base
+        - g.buttons[screen_str + ".png"].get_width()
     )
-    y_start = (g.tilesize * main.mapsizey + inv_canvas_height) / 2
+    y_start = (config.TILESIZE * main.mapsizey + inv_canvas_height) / 2
 
     g.screen.blit(g.buttons[first_image], (x_start, y_start))
     g.screen.blit(g.buttons[leave_image], (x_start + g.buttons[screen_str + ".png"].get_width(), y_start))
@@ -316,17 +323,17 @@ def refresh_drop():
 def refresh_equip():
     refresh_inv_display("equip")
     # rebuild the equipment display
-    temp_canvas_width = (g.tilesize * equip_size) + 8
+    temp_canvas_width = (config.TILESIZE * equip_size) + 8
     tmpx = tmp_x_base - temp_canvas_width
     tmpy = tmp_y_base
 
     for i in range(9):
         g.create_norm_box(
             (
-                tmpx + (i % equip_size) * g.tilesize + 2 * ((i % equip_size) + 1),
-                tmpy + (i / equip_size) * g.tilesize + 2 * ((i / equip_size) + 1),
+                tmpx + (i % equip_size) * config.TILESIZE + 2 * ((i % equip_size) + 1),
+                tmpy + (i / equip_size) * config.TILESIZE + 2 * ((i / equip_size) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dh_green",
         )
 
@@ -335,10 +342,10 @@ def refresh_equip():
         c_item = curr_item - inv_width * inv_height
         g.create_norm_box(
             (
-                tmpx + (c_item % equip_size) * g.tilesize + 2 * ((c_item % equip_size) + 1),
-                tmpy + (c_item / equip_size) * g.tilesize + 2 * ((c_item / equip_size) + 1),
+                tmpx + (c_item % equip_size) * config.TILESIZE + 2 * ((c_item % equip_size) + 1),
+                tmpy + (c_item / equip_size) * config.TILESIZE + 2 * ((c_item / equip_size) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dark_green",
         )
 
@@ -384,20 +391,20 @@ def refresh_inv_display(screen_str):
     for i in range(len(item.inv)):
         g.create_norm_box(
             (
-                x + (i % inv_width) * g.tilesize + 2 * ((i % inv_width) + 1),
-                y + (i / inv_width) * g.tilesize + 2 * ((i / inv_width) + 1),
+                x + (i % inv_width) * config.TILESIZE + 2 * ((i % inv_width) + 1),
+                y + (i / inv_width) * config.TILESIZE + 2 * ((i / inv_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dh_green",
         )
 
     if curr_item != -1 and curr_item < inv_width * inv_height:
         g.create_norm_box(
             (
-                x + (curr_item % inv_width) * g.tilesize + 2 * ((curr_item % inv_width) + 1),
-                y + (curr_item / inv_width) * g.tilesize + 2 * ((curr_item / inv_width) + 1),
+                x + (curr_item % inv_width) * config.TILESIZE + 2 * ((curr_item % inv_width) + 1),
+                y + (curr_item / inv_width) * config.TILESIZE + 2 * ((curr_item / inv_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dark_green",
         )
 
@@ -434,20 +441,20 @@ def refresh_skill(screen_str):
     for i in range(len(item.inv)):
         g.create_norm_box(
             (
-                x + (i % inv_width) * g.tilesize + 2 * ((i % inv_width) + 1),
-                y + (i / inv_width) * g.tilesize + 2 * ((i / inv_width) + 1),
+                x + (i % inv_width) * config.TILESIZE + 2 * ((i % inv_width) + 1),
+                y + (i / inv_width) * config.TILESIZE + 2 * ((i / inv_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dh_green",
         )
 
     if curr_item != -1 and curr_item < inv_width * inv_height:
         g.create_norm_box(
             (
-                x + (curr_item % inv_width) * g.tilesize + 2 * ((curr_item % inv_width) + 1),
-                y + (curr_item / inv_width) * g.tilesize + 2 * ((curr_item / inv_width) + 1),
+                x + (curr_item % inv_width) * config.TILESIZE + 2 * ((curr_item % inv_width) + 1),
+                y + (curr_item / inv_width) * config.TILESIZE + 2 * ((curr_item / inv_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dark_green",
         )
 
@@ -476,8 +483,8 @@ def leave_inner():
 # Refreshes the stat display to the right side of the inv.
 def refresh_stat_display():
 
-    start_x = (g.tilesize * main.mapsizex) / 2
-    start_y = (g.tilesize * main.mapsizey - total_height) / 2
+    start_x = (config.TILESIZE * main.mapsizex) / 2
+    start_y = (config.TILESIZE * main.mapsizey - total_height) / 2
     # hp/ep bars
     # 	main.canvas_map.delete("stats")
     # Create the hp/ep background bars
@@ -508,47 +515,50 @@ def refresh_stat_display():
 
     tmp_width = 52
     g.screen.fill(
-        g.colors["light_gray"], (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 5, 50, 14)
+        g.colors["light_gray"], (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5, 50, 14)
     )
     g.print_string(
-        g.screen, player.name, g.font, (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 5)
+        g.screen, player.name, g.font, (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5)
     )
     g.print_string(
         g.screen,
         str(player.hp) + "/" + str(player.adj_maxhp),
         g.font,
-        (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 22),
+        (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 22),
     )
     g.print_string(
         g.screen,
         str(player.ep) + "/" + str(player.adj_maxep),
         g.font,
-        (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 39),
+        (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 39),
     )
 
     g.screen.fill(
-        g.colors["light_gray"], (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 55, 50, 80)
+        g.colors["light_gray"], (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 55, 50, 80)
     )
     g.print_string(
         g.screen,
         str(player.adj_attack),
         g.font,
-        (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 55),
+        (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 55),
     )
     g.print_string(
         g.screen,
         str(player.adj_defense),
         g.font,
-        (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 70),
+        (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 70),
     )
     g.print_string(
-        g.screen, str(player.gold), g.font, (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 85)
+        g.screen,
+        str(player.gold),
+        g.font,
+        (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 85),
     )
     g.print_string(
         g.screen,
         str(player.level),
         g.font,
-        (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 100),
+        (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 100),
     )
     tmp = str(player.exp_till_level())
     if tmp == "9999":
@@ -556,14 +566,14 @@ def refresh_stat_display():
             g.screen,
             str(player.exp) + "/----",
             g.font,
-            (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 115),
+            (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 115),
         )
     else:
         g.print_string(
             g.screen,
             str(player.exp) + "/" + str(player.exp_till_level() + player.exp),
             g.font,
-            (start_x + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2 + 115),
+            (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 115),
         )
 
     main.refresh_bars()
@@ -818,20 +828,20 @@ def refresh_inv(x, y, input_tag):
     for i in range(len(item.inv)):
         g.create_norm_box(
             (
-                x + (i % inv_width) * g.tilesize + 2 * ((i % inv_width) + 1),
-                y + (i / inv_width) * g.tilesize + 2 * ((i / inv_width) + 1),
+                x + (i % inv_width) * config.TILESIZE + 2 * ((i % inv_width) + 1),
+                y + (i / inv_width) * config.TILESIZE + 2 * ((i / inv_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dh_green",
         )
 
     if curr_item != -1:
         g.create_norm_box(
             (
-                x + (curr_item % inv_width) * g.tilesize + 2 * ((curr_item % inv_width) + 1),
-                y + (curr_item / inv_width) * g.tilesize + 2 * ((curr_item / inv_width) + 1),
+                x + (curr_item % inv_width) * config.TILESIZE + 2 * ((curr_item % inv_width) + 1),
+                y + (curr_item / inv_width) * config.TILESIZE + 2 * ((curr_item / inv_width) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dark_green",
         )
 
@@ -845,10 +855,10 @@ def refresh_inv(x, y, input_tag):
     if cur_button == 3:  # equipment
         g.create_norm_box(
             (
-                (curr_item % equip_size) * g.tilesize + 2 * ((curr_item % equip_size) + 1),
-                (curr_item / equip_size) * g.tilesize + 2 * ((curr_item / equip_size) + 1),
+                (curr_item % equip_size) * config.TILESIZE + 2 * ((curr_item % equip_size) + 1),
+                (curr_item / equip_size) * config.TILESIZE + 2 * ((curr_item / equip_size) + 1),
             ),
-            (g.tilesize, g.tilesize),
+            (config.TILESIZE, config.TILESIZE),
             inner_color="dark_green",
         )
 
@@ -858,7 +868,8 @@ def refresh_inv(x, y, input_tag):
 # and draws the picture.
 def draw_item(input_picture, x, y, x_offset, y_offset, tag):
     g.screen.blit(
-        g.tiles[input_picture], (x_offset + x * g.tilesize + 2 * (x + 1), y_offset + y * g.tilesize + 2 * (y + 1))
+        g.tiles[input_picture],
+        (x_offset + x * config.TILESIZE + 2 * (x + 1), y_offset + y * config.TILESIZE + 2 * (y + 1)),
     )
 
 
@@ -1081,7 +1092,7 @@ def equip_mouse_click(xy):
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
     # If the click was outside of the inv area.
     if temp_num == -1:
-        temp_canvas_width = (g.tilesize * equip_size) + 8
+        temp_canvas_width = (config.TILESIZE * equip_size) + 8
         # If the click was in the button area.
         if (
             (xy[0] > tmp_menu_x_base)
@@ -1124,7 +1135,7 @@ def equip_mouse_dbl_click(xy):
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
     # If the click was outside of the inv area.
     if temp_num == -1:
-        temp_canvas_width = (g.tilesize * equip_size) + 8
+        temp_canvas_width = (config.TILESIZE * equip_size) + 8
         # If the click was inside the equip area.
         if (
             (xy[0] > tmp_x_base - temp_canvas_width)
@@ -1169,9 +1180,9 @@ def which_box(x, y, temp_size):
         return -1
     # Transform x from pixels to tiles
     tempx = x - 3
-    likelyx = tempx / (g.tilesize + 2)
-    tempx = tempx - (likelyx * (g.tilesize + 2))
-    if tempx >= g.tilesize - 1:
+    likelyx = tempx / (config.TILESIZE + 2)
+    tempx = tempx - (likelyx * (config.TILESIZE + 2))
+    if tempx >= config.TILESIZE - 1:
         return -1
 
     # Check for the top border
@@ -1179,9 +1190,9 @@ def which_box(x, y, temp_size):
         return -1
     # Transform y from pixels to tiles
     tempy = y - 3
-    likelyy = tempy / (g.tilesize + 2)
-    tempy = tempy - (likelyy * (g.tilesize + 2))
-    if tempy >= g.tilesize - 1:
+    likelyy = tempy / (config.TILESIZE + 2)
+    tempy = tempy - (likelyy * (config.TILESIZE + 2))
+    if tempy >= config.TILESIZE - 1:
         return -1
     # Final check, then return the location in the inv.
     if likelyy * temp_size + likelyx >= temp_size * inv_height:
@@ -1275,17 +1286,17 @@ def init_window_inv():
     button_width = g.buttons["drop.png"].get_width()
 
     global base_x
-    base_x = (g.tilesize * main.mapsizex) / 2 - button_width
+    base_x = (config.TILESIZE * main.mapsizex) / 2 - button_width
     global base_y
-    base_y = (g.tilesize * main.mapsizey - total_height) / 2
+    base_y = (config.TILESIZE * main.mapsizey - total_height) / 2
 
     global inv_canvas_width
     global inv_canvas_height
-    inv_canvas_width = (g.tilesize * inv_width) + ((inv_width + 1) * 2) + 1
-    inv_canvas_height = (g.tilesize * inv_height) + ((inv_height + 1) * 2) + 1
+    inv_canvas_width = (config.TILESIZE * inv_width) + ((inv_width + 1) * 2) + 1
+    inv_canvas_height = (config.TILESIZE * inv_height) + ((inv_height + 1) * 2) + 1
 
-    # start_x = (g.tilesize * main.mapsizex) / 2
-    # start_y = (g.tilesize * main.mapsizey - total_height) / 2
+    # start_x = (config.TILESIZE * main.mapsizex) / 2
+    # start_y = (config.TILESIZE * main.mapsizey - total_height) / 2
 
     # Create the main inv box.
     # The +20 is just "wiggle room", to prevent the length of the name
@@ -1293,8 +1304,8 @@ def init_window_inv():
     g.create_norm_box(
         (base_x, base_y),
         (
-            (g.tilesize * main.mapsizex) / 2 + g.hpbar_width + 15 - base_x,
-            (g.tilesize * main.mapsizey + total_height) / 2 - base_y,
+            (config.TILESIZE * main.mapsizex) / 2 + g.hpbar_width + 15 - base_x,
+            (config.TILESIZE * main.mapsizey + total_height) / 2 - base_y,
         ),
     )
 
@@ -1310,7 +1321,10 @@ def init_window_inv():
 
     # Create the labels to the right:
     tmp_width = 52
-    label_start = ((g.tilesize * main.mapsizex) / 2 + tmp_width, (g.tilesize * main.mapsizey - total_height) / 2)
+    label_start = (
+        (config.TILESIZE * main.mapsizex) / 2 + tmp_width,
+        (config.TILESIZE * main.mapsizey - total_height) / 2,
+    )
     text = g.name_name + ":"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 5), align=2)
     text = g.hp_name + ":"
