@@ -13,4 +13,4 @@ EDITOR_TILESIZE = 24
 MESSAGE_LINES = 10
 
 # Mutable global variables
-mut = {"MODULE_POS": 0, "CURR_BUTTON": 0}
+mut = {"MODULE_POS": 0, "CURR_BUTTON": 0, "GAME_NAME": ""}
