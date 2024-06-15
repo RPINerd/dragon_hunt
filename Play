@@ -2,5 +2,5 @@
 # This script is used to run the game from the command line.
 
 tempname=$(dirname "$0")
-cd "$tempname/code" || exit
+cd "$tempname/src" || exit
 exec python rpg.py "$@"

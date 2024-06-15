@@ -22,7 +22,7 @@ load_console=96
 
 #Number of lines for the message scroller in the main window.
 #6 should be sized about right for 800x600.
-message_lines = 6
+message_lines = 10
 
 #Difficulty: Easy=0, Normal=1, Hard=2.
 difficulty=1
