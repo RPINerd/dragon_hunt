@@ -10,8 +10,6 @@ tilesize=32
 
 
 name_name = Name
-hp_name = HP
-ep_name = EP
 attack_name = Attack
 defense_name = Defense
 gold_name = Gold

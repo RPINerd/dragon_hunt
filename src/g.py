@@ -77,8 +77,6 @@ bindings = {}
 difficulty = 1
 
 name_name = "Name"
-hp_name = "HP"
-ep_name = "EP"
 attack_name = "Attack"
 defense_name = "Defense"
 gold_name = "Gold"
@@ -300,12 +298,6 @@ def read_variables():
             elif line_key == "name_name":
                 global name_name
                 name_name = line_value
-            elif line_key == "hp_name":
-                global hp_name
-                hp_name = line_value
-            elif line_key == "ep_name":
-                global ep_name
-                ep_name = line_value
             elif line_key == "attack_name":
                 global attack_name
                 attack_name = line_value

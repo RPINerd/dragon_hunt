@@ -23,6 +23,7 @@ from os import listdir, mkdir, path, remove
 
 import pygame
 
+import config
 import g
 
 # was a game loaded? Used to determine whether to use newgame script.
@@ -149,9 +150,9 @@ def display_stats(stat_dict, titles_dict):
         g.screen, g.name_name + ": " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum)
     )
     linenum += 1
-    g.print_string(g.screen, g.hp_name + ": " + stat_dict["hp"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(g.screen, "HP: " + stat_dict["hp"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, g.ep_name + ": " + stat_dict["ep"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(g.screen, "MP: " + stat_dict["ep"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
     g.print_string(
         g.screen, g.attack_name + ": " + stat_dict["attack"], g.font, (info_x, info_y + pixels_per_line * linenum)

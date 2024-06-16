@@ -25,6 +25,7 @@ import sys
 
 import pygame
 
+import config
 import g
 import loadgame
 import main
@@ -558,13 +559,13 @@ def refresh_new_game():
     )
     g.print_string(
         g.screen,
-        g.hp_name + ": " + str(hp_stat),
+        "HP: " + str(hp_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 25),
     )
     g.print_string(
         g.screen,
-        g.ep_name + ": " + str(ep_stat),
+        "MP: " + str(ep_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 40),
     )

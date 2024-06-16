@@ -727,7 +727,7 @@ def useitem(item_index, leave_item=0):
     if item_type == 11:
         # heal the player, delete the item
         player.give_stat("hp", g.item.item[item_value].quality)
-        main.print_message("You are healed for " + str(g.item.item[item_value].quality) + " " + g.hp_name + ".")
+        main.print_message("You are healed for " + str(g.item.item[item_value].quality) + " HP.")
         if leave_item == 0:
             g.item.drop_inv_item(g.item.find_inv_item(item_value))
             attack_player()

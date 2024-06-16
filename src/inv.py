@@ -19,6 +19,7 @@
 import pygame
 
 import action
+import config
 import g
 import item
 import main
@@ -1327,9 +1328,9 @@ def init_window_inv():
     )
     text = g.name_name + ":"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 5), align=2)
-    text = g.hp_name + ":"
+    text = "HP:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 22), align=2)
-    text = g.ep_name + ":"
+    text = "MP:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 39), align=2)
     text = g.attack_name + ":"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 55), align=2)
