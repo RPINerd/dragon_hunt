@@ -21,6 +21,7 @@
 import pygame
 
 import action
+import config
 import g
 import inv
 import main
@@ -528,7 +529,7 @@ def monster_dead(i):
         main.print_message("You find " + str(gold) + " " + g.gold_name.lower() + ",")
 
         exp = monster_list[i].exp
-        main.print_message("and get " + str(exp) + " " + g.exp_name.lower() + ".")
+        main.print_message("and get " + str(exp) + " XP.")
         player.add_exp(exp)
     else:
         action.activate_lines(g.xgrid, g.ygrid, g.zgrid, monster_list[i].on_death)
@@ -742,9 +743,7 @@ def useitem(item_index, leave_item=0):
         # gem power increases num_dice (ie. chance to hit and total damage)
         global num_dice
         num_dice = num_dice + gem_power / 4
-        main.print_message(
-            "The " + g.item.item[item_value].name + " focuses the power of your " + g.attack_name.lower() + "."
-        )
+        main.print_message("The " + g.item.item[item_value].name + " focuses the power of your attack.")
         main.refresh_bars()
         if leave_item == 0:
             g.item.drop_inv_item(g.item.find_inv_item(item_value))

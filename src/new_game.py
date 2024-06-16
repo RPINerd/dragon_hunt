@@ -109,7 +109,7 @@ def refresh_name():
     tmp_name = name_stat[:curr_name_loc] + "|" + name_stat[curr_name_loc:]
     g.print_string(
         g.screen,
-        g.name_name + ": " + tmp_name,
+        "Name: " + tmp_name,
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10),
     )
@@ -553,7 +553,7 @@ def refresh_new_game():
     )
     g.print_string(
         g.screen,
-        g.name_name + ": " + name_stat,
+        "Name: " + name_stat,
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10),
     )
@@ -571,19 +571,19 @@ def refresh_new_game():
     )
     g.print_string(
         g.screen,
-        g.attack_name + ": " + str(attack_stat),
+        "Attack: " + str(attack_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 55),
     )
     g.print_string(
         g.screen,
-        g.defense_name + ": " + str(defense_stat),
+        "Defense: " + str(defense_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 70),
     )
     g.print_string(
         g.screen,
-        g.gold_name + ": " + str(gold_stat),
+        "Gold: " + str(gold_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 85),
     )

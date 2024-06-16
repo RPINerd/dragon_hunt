@@ -21,6 +21,7 @@
 
 import pygame
 
+import config
 import g
 import item
 import main
@@ -279,7 +280,7 @@ def refresh_shop():
     )
     g.print_string(
         g.screen,
-        g.skill_name + ": " + str(player.skillpoints),
+        "Skill Points: " + str(player.skillpoints),
         g.font,
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 11),
     )

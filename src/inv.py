@@ -1326,21 +1326,21 @@ def init_window_inv():
         (config.TILESIZE * main.mapsizex) / 2 + tmp_width,
         (config.TILESIZE * main.mapsizey - total_height) / 2,
     )
-    text = g.name_name + ":"
+    text = "Name:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 5), align=2)
     text = "HP:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 22), align=2)
     text = "MP:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 39), align=2)
-    text = g.attack_name + ":"
+    text = "Attack:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 55), align=2)
-    text = g.defense_name + ":"
+    text = "Defense:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 70), align=2)
-    text = g.gold_name + ":"
+    text = "Gold:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 85), align=2)
-    text = g.level_name + ":"
+    text = "Level:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 100), align=2)
-    text = g.exp_name + ":"
+    text = "XP:"
     g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 115), align=2)
 
     # bindings

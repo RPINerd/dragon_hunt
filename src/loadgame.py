@@ -146,31 +146,21 @@ def display_stats(stat_dict, titles_dict):
     info_x = config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width() + 5
     info_y = config.TILESIZE * g.main.mapsizey / 3
     linenum = 0
-    g.print_string(
-        g.screen, g.name_name + ": " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum)
-    )
+    g.print_string(g.screen, "Name: " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
     g.print_string(g.screen, "HP: " + stat_dict["hp"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
     g.print_string(g.screen, "MP: " + stat_dict["ep"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(
-        g.screen, g.attack_name + ": " + stat_dict["attack"], g.font, (info_x, info_y + pixels_per_line * linenum)
-    )
+    g.print_string(g.screen, "Attack: " + stat_dict["attack"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(
-        g.screen, g.defense_name + ": " + stat_dict["defense"], g.font, (info_x, info_y + pixels_per_line * linenum)
-    )
+    g.print_string(g.screen, "Defense: " + stat_dict["defense"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(
-        g.screen, g.gold_name + ": " + stat_dict["gold"], g.font, (info_x, info_y + pixels_per_line * linenum)
-    )
+    g.print_string(g.screen, "Gold: " + stat_dict["gold"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, g.exp_name + ": " + stat_dict["exp"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(g.screen, "XP: " + stat_dict["exp"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(
-        g.screen, g.level_name + ": " + stat_dict["level"], g.font, (info_x, info_y + pixels_per_line * linenum)
-    )
+    g.print_string(g.screen, "Level: " + stat_dict["level"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
 
     for i in range(5):

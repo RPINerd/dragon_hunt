@@ -76,16 +76,6 @@ bindings = {}
 
 difficulty = 1
 
-name_name = "Name"
-attack_name = "Attack"
-defense_name = "Defense"
-gold_name = "Gold"
-skill_name = "Skill"
-exp_name = "EXP"
-level_name = "Level"
-exp_list = ""
-
-
 # Used in new_game
 default_player_name = "Alfred"
 
@@ -295,27 +285,6 @@ def read_variables():
             elif line_key == "default_player_name":
                 global default_player_name
                 default_player_name = line_value
-            elif line_key == "name_name":
-                global name_name
-                name_name = line_value
-            elif line_key == "attack_name":
-                global attack_name
-                attack_name = line_value
-            elif line_key == "defense_name":
-                global defense_name
-                defense_name = line_value
-            elif line_key == "gold_name":
-                global gold_name
-                gold_name = line_value
-            elif line_key == "skill_name":
-                global skill_name
-                skill_name = line_value
-            elif line_key == "exp_name":
-                global exp_name
-                exp_name = line_value
-            elif line_key == "level_name":
-                global level_name
-                level_name = line_value
             elif line_key == "exp_list":
                 global exp_list
                 exp_list = line_value.split(" ")
