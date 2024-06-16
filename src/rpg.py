@@ -35,9 +35,9 @@ def quit_game():
 
 def refresh_module_info() -> None:
     g.unclean_screen = True
-    tmp = module_pos - (module_pos % 5)
+    tmp = config.mut["MODULE_POS"] - (config.mut["MODULE_POS"] % 5)
     for i in range(5):
-        if i == module_pos % 5:
+        if i == config.mut["MODULE_POS"] % 5:
             tmp_color = "dh_green"
         else:
             tmp_color = "light_gray"
@@ -68,29 +68,27 @@ def refresh_module_info() -> None:
 # All keypresses pass through here. Based on the key name,
 # give the right action. ("etc", "left", "right", "up", "down", "return")
 def key_handler(switch):
-    global module_pos
     if switch == g.bindings["cancel"]:
         quit_game()
     elif switch == g.bindings["left"] or switch == g.bindings["right"]:
-        global cur_button
-        if cur_button == 0:
-            cur_button = 1
+        if config.mut["CURR_BUTTON"] == 0:
+            config.mut["CURR_BUTTON"] = 1
         else:
-            cur_button = 0
+            config.mut["CURR_BUTTON"] = 0
         refresh_buttons()
     elif switch == g.bindings["up"]:
-        module_pos -= 1
-        if module_pos <= -1:
-            module_pos = len(config.MODULES) - 1
+        config.mut["MODULE_POS"] -= 1
+        if config.mut["MODULE_POS"] <= -1:
+            config.mut["MODULE_POS"] = len(config.MODULES) - 1
         refresh_module_info()
     elif switch == g.bindings["down"]:
-        module_pos += 1
-        if module_pos >= len(config.MODULES):
-            module_pos = 0
+        config.mut["MODULE_POS"] += 1
+        if config.mut["MODULE_POS"] >= len(config.MODULES):
+            config.mut["MODULE_POS"] = 0
         refresh_module_info()
     elif switch == g.bindings["action"]:
-        if cur_button != 1:
-            sel_mod(config.MODULES[module_pos])
+        if config.mut["CURR_BUTTON"] != 1:
+            sel_mod(config.MODULES[config.mut["MODULE_POS"]])
         else:
             quit_game()
 
@@ -102,7 +100,6 @@ def mouse_over(xy, x1, y1, x2, y2):
 
 
 def mouse_handler_move(xy):
-    global cur_button
     # up arrow:
     if mouse_over(
         xy,
@@ -111,7 +108,7 @@ def mouse_handler_move(xy):
         config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_up.png"].get_height(),
     ):
-        cur_button = 2
+        config.mut["CURR_BUTTON"] = 2
 
     # down arrow:
     if mouse_over(
@@ -121,7 +118,7 @@ def mouse_handler_move(xy):
         config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_down.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + 140,
     ):
-        cur_button = 3
+        config.mut["CURR_BUTTON"] = 3
 
     # load button:
     if mouse_over(
@@ -131,7 +128,7 @@ def mouse_handler_move(xy):
         config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["load.png"].get_height(),
     ):
-        cur_button = 0
+        config.mut["CURR_BUTTON"] = 0
 
     # leave button:
     if mouse_over(
@@ -141,32 +138,30 @@ def mouse_handler_move(xy):
         config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load.png"].get_width() + g.buttons["quit.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["quit.png"].get_height(),
     ):
-        cur_button = 1
+        config.mut["CURR_BUTTON"] = 1
     refresh_buttons()
 
 
 def mouse_handler_down(xy):
-    global cur_button
-    global module_pos
-    if cur_button == 2:
-        tmp = module_pos - (module_pos % 5) - 5
+    if config.mut["CURR_BUTTON"] == 2:
+        tmp = config.mut["MODULE_POS"] - (config.mut["MODULE_POS"] % 5) - 5
         if tmp < 0:
-            module_pos = len(config.MODULES) - (len(config.MODULES) % 5) + (module_pos % 5)
-            if module_pos >= len(config.MODULES):
-                module_pos = len(config.MODULES) - 1
+            config.mut["MODULE_POS"] = len(config.MODULES) - (len(config.MODULES) % 5) + (config.mut["MODULE_POS"] % 5)
+            if config.mut["MODULE_POS"] >= len(config.MODULES):
+                config.mut["MODULE_POS"] = len(config.MODULES) - 1
         else:
-            module_pos -= 5
+            config.mut["MODULE_POS"] -= 5
         refresh_module_info()
 
     # down arrow:
-    if cur_button == 3:
-        tmp = module_pos - (module_pos % 5) + 5
+    if config.mut["CURR_BUTTON"] == 3:
+        tmp = config.mut["MODULE_POS"] - (config.mut["MODULE_POS"] % 5) + 5
         if tmp >= len(config.MODULES):
-            module_pos = module_pos % 5
+            config.mut["MODULE_POS"] = config.mut["MODULE_POS"] % 5
         else:
-            module_pos += 5
-            if module_pos >= len(config.MODULES):
-                module_pos = len(config.MODULES) - 1
+            config.mut["MODULE_POS"] += 5
+            if config.mut["MODULE_POS"] >= len(config.MODULES):
+                config.mut["MODULE_POS"] = len(config.MODULES) - 1
         refresh_module_info()
 
     # load button:
@@ -202,16 +197,15 @@ def mouse_handler_down(xy):
         base_y -= 40
         if base_y % 20 < 2 or base_y % 20 > 18:
             return
-        tmp = module_pos - (module_pos % 5) + (base_y / 20)
+        tmp = config.mut["MODULE_POS"] - (config.mut["MODULE_POS"] % 5) + (base_y / 20)
         if tmp >= len(config.MODULES):
             return
         else:
-            module_pos = tmp
+            config.mut["MODULE_POS"] = tmp
         refresh_module_info()
 
 
 def mouse_handler_double(xy):
-    global module_pos
     # save "listbox"
     if mouse_over(
         xy,
@@ -221,7 +215,7 @@ def mouse_handler_double(xy):
         config.TILESIZE * g.main.mapsizey / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
     ):
 
-        sel_mod(config.MODULES[module_pos])
+        sel_mod(config.MODULES[config.mut["MODULE_POS"]])
 
 
 def refresh_buttons() -> None:
@@ -230,11 +224,11 @@ def refresh_buttons() -> None:
     down_pic = "loadgame_down.png"
     load_pic = "load.png"
     quit_pic = "quit.png"
-    if cur_button == 0:
+    if config.mut["CURR_BUTTON"] == 0:
         load_pic = "load_sel.png"
-    elif cur_button == 1:
+    elif config.mut["CURR_BUTTON"] == 1:
         quit_pic = "quit_sel.png"
-    elif cur_button == 2:
+    elif config.mut["CURR_BUTTON"] == 2:
         up_pic = "loadgame_up_sel.png"
     else:
         down_pic = "loadgame_down_sel.png"

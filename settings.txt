@@ -1,4 +1,4 @@
-#This file specifies the key bindings for this game. The bindings are all
+# This file specifies the key bindings for this game. The bindings are all
 # numbers for pygame.K_KEYNAME, as listed at
 # http://pygame.org/docs/ref/pygame_constants.html
 up=273

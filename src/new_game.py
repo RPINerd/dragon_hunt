@@ -313,24 +313,24 @@ def quit_game():
 
 # refresh the buttons.
 def refresh_buttons():
-    if cur_button > 4:
+    if config.mut["CURR_BUTTON"] > 4:
         g.screen.blit(g.buttons["begin.png"], (inner_new_game_width, inner_button_start))
         g.screen.blit(g.buttons["skill.png"], (inner_rename_width, inner_button_start))
         g.screen.blit(g.buttons["reroll.png"], (inner_reroll_width, inner_button_start))
         g.screen.blit(g.buttons["leave.png"], (inner_quit_width, inner_button_start))
-        if cur_button == 5:
+        if config.mut["CURR_BUTTON"] == 5:
             g.screen.blit(g.buttons["begin_sel.png"], (inner_new_game_width, inner_button_start))
             refresh_help("Begin a new game")
-        if cur_button == 6:
+        if config.mut["CURR_BUTTON"] == 6:
             g.screen.blit(g.buttons["skill_sel.png"], (inner_rename_width, inner_button_start))
             refresh_help("Change your name")
-        if cur_button == 7:
+        if config.mut["CURR_BUTTON"] == 7:
             g.screen.blit(g.buttons["reroll_sel.png"], (inner_reroll_width, inner_button_start))
             refresh_help("Reroll your statistics")
-        if cur_button == 8:
+        if config.mut["CURR_BUTTON"] == 8:
             g.screen.blit(g.buttons["leave_sel.png"], (inner_quit_width, inner_button_start))
             refresh_help("Back to the main menu")
-        if cur_button == 9:
+        if config.mut["CURR_BUTTON"] == 9:
             refresh_help("")
 
     else:
@@ -338,19 +338,19 @@ def refresh_buttons():
         g.screen.blit(g.buttons["load.png"], (load_width, button_start))
         g.screen.blit(g.buttons["options.png"], (options_width, button_start))
         g.screen.blit(g.buttons["quit.png"], (quit_width, button_start))
-        if cur_button == 0:
+        if config.mut["CURR_BUTTON"] == 0:
             g.screen.blit(g.buttons["begin_sel.png"], (new_game_width, button_start))
             refresh_help("Create a new character")
-        if cur_button == 1:
+        if config.mut["CURR_BUTTON"] == 1:
             g.screen.blit(g.buttons["load_sel.png"], (load_width, button_start))
             refresh_help("Load an old game")
-        if cur_button == 2:
+        if config.mut["CURR_BUTTON"] == 2:
             g.screen.blit(g.buttons["options_sel.png"], (options_width, button_start))
             refresh_help("Change the options")
-        if cur_button == 3:
+        if config.mut["CURR_BUTTON"] == 3:
             g.screen.blit(g.buttons["quit_sel.png"], (quit_width, button_start))
             refresh_help("Quit the game")
-        if cur_button == 4:
+        if config.mut["CURR_BUTTON"] == 4:
             refresh_help("")
     pygame.display.flip()
 
@@ -369,43 +369,42 @@ def refresh_help(string):
 # All keypresses in new_game pass through here. Based on the key name,
 # give the right action. ("etc", "left", "right", "up", "down", "return")
 def key_handler(key_name):
-    global cur_button
     if key_name == g.bindings["cancel"]:
-        if cur_button > 4:
+        if config.mut["CURR_BUTTON"] > 4:
             back_from_new_game()
             return 0
         else:
             g.break_one_loop = 100
             return 1
     elif key_name == g.bindings["up"] or key_name == g.bindings["left"]:
-        if cur_button == 0:
-            cur_button = 4
-        if cur_button == 5:
-            cur_button = 9
-        cur_button -= 1
+        if config.mut["CURR_BUTTON"] == 0:
+            config.mut["CURR_BUTTON"] = 4
+        if config.mut["CURR_BUTTON"] == 5:
+            config.mut["CURR_BUTTON"] = 9
+        config.mut["CURR_BUTTON"] -= 1
     elif key_name == g.bindings["down"] or key_name == g.bindings["right"]:
-        if cur_button == 4 or cur_button == 3:
-            cur_button = -1
-        if cur_button == 8 or cur_button == 9:
-            cur_button = 4
-        cur_button += 1
+        if config.mut["CURR_BUTTON"] == 4 or config.mut["CURR_BUTTON"] == 3:
+            config.mut["CURR_BUTTON"] = -1
+        if config.mut["CURR_BUTTON"] == 8 or config.mut["CURR_BUTTON"] == 9:
+            config.mut["CURR_BUTTON"] = 4
+        config.mut["CURR_BUTTON"] += 1
     elif key_name == g.bindings["action"]:
-        if cur_button == 0:
+        if config.mut["CURR_BUTTON"] == 0:
             init_new_game()
-        elif cur_button == 1:
+        elif config.mut["CURR_BUTTON"] == 1:
             load_game()
-        elif cur_button == 2:
+        elif config.mut["CURR_BUTTON"] == 2:
             show_options()
-        elif cur_button == 3:
+        elif config.mut["CURR_BUTTON"] == 3:
             sys.exit()
-        elif cur_button == 5:
+        elif config.mut["CURR_BUTTON"] == 5:
             return begin_game()
-        elif cur_button == 6:
+        elif config.mut["CURR_BUTTON"] == 6:
             rename_character()
             refresh_new_game()
-        elif cur_button == 7:
+        elif config.mut["CURR_BUTTON"] == 7:
             reroll_stats()
-        elif cur_button == 8:
+        elif config.mut["CURR_BUTTON"] == 8:
             back_from_new_game()
             return 0
 
@@ -413,41 +412,40 @@ def key_handler(key_name):
 
 
 def mouse_handler_move(xy):
-    global cur_button
-    prev_button = cur_button
-    if cur_button > 4:
+    prev_button = config.mut["CURR_BUTTON"]
+    if config.mut["CURR_BUTTON"] > 4:
         if (
             xy[1] < inner_button_start
             or xy[1] > inner_button_height + inner_button_start
             or xy[0] < inner_new_game_width
         ):
-            cur_button = 9
+            config.mut["CURR_BUTTON"] = 9
         else:
             if xy[0] < inner_rename_width:
-                cur_button = 5
+                config.mut["CURR_BUTTON"] = 5
             elif xy[0] < inner_reroll_width:
-                cur_button = 6
+                config.mut["CURR_BUTTON"] = 6
             elif xy[0] < inner_quit_width:
-                cur_button = 7
+                config.mut["CURR_BUTTON"] = 7
             elif xy[0] < inner_final_width:
-                cur_button = 8
+                config.mut["CURR_BUTTON"] = 8
             else:
-                cur_button = 9
+                config.mut["CURR_BUTTON"] = 9
     else:
         if xy[1] < button_start or xy[1] > button_height + button_start or xy[0] < new_game_width:
-            cur_button = 4
+            config.mut["CURR_BUTTON"] = 4
         else:
             if xy[0] < load_width:
-                cur_button = 0
+                config.mut["CURR_BUTTON"] = 0
             elif xy[0] < options_width:
-                cur_button = 1
+                config.mut["CURR_BUTTON"] = 1
             elif xy[0] < quit_width:
-                cur_button = 2
+                config.mut["CURR_BUTTON"] = 2
             elif xy[0] < final_width:
-                cur_button = 3
+                config.mut["CURR_BUTTON"] = 3
             else:
-                cur_button = 4
-    if prev_button != cur_button:
+                config.mut["CURR_BUTTON"] = 4
+    if prev_button != config.mut["CURR_BUTTON"]:
         refresh_buttons()
 
 
@@ -473,8 +471,7 @@ def init_new_game():
     inner_quit_width = inner_reroll_width + g.buttons["reroll.png"].get_width()
     inner_final_width = inner_quit_width + g.buttons["leave.png"].get_width()
 
-    global cur_button
-    cur_button = 5
+    config.mut["CURR_BUTTON"] = 5
 
     reroll_stats()
     refresh_new_game()
@@ -482,8 +479,7 @@ def init_new_game():
 
 def back_from_new_game():
     g.screen.blit(g.backgrounds["new_game.png"], (0, 0))
-    global cur_button
-    cur_button = 0
+    config.mut["CURR_BUTTON"] = 0
     refresh_buttons()
     pygame.display.flip()
 
@@ -520,8 +516,7 @@ def init_window():
     quit_width = options_width + g.buttons["load.png"].get_width()
     final_width = quit_width + g.buttons["quit.png"].get_width()
 
-    global cur_button
-    cur_button = 0
+    config.mut["CURR_BUTTON"] = 0
     refresh_buttons()
 
     pygame.display.flip()

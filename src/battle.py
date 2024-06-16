@@ -270,8 +270,7 @@ def attack(event=0):
         last_mon_num = active_button
     if last_mon_num == -1:
         return 0
-    global cur_button
-    cur_button = 0
+    config.mut["CURR_BUTTON"] = 0
     clear_slashes()
 
     # Both hp's *should* be over 0. Just a precaution.
@@ -477,7 +476,7 @@ def attack_player_per_monster(i):
         if player.hp <= 0:
             player.hp = 0
             main.print_message("The " + monster_list[i].name + " kills you.")
-            cur_button = 1
+            config.mut["CURR_BUTTON"] = 1
             refresh()
             refresh_buttons()
 
@@ -926,15 +925,15 @@ def refresh_buttons():
     skill_name = "skill.png"
     inspect_name = "inspect.png"
     quit_name = "quit.png"
-    if cur_button == 0:
+    if config.mut["CURR_BUTTON"] == 0:
         attack_name = "attack_sel.png"
-    elif cur_button == 1:
+    elif config.mut["CURR_BUTTON"] == 1:
         use_name = "use_sel.png"
-    elif cur_button == 2:
+    elif config.mut["CURR_BUTTON"] == 2:
         skill_name = "skill_sel.png"
-    elif cur_button == 3:
+    elif config.mut["CURR_BUTTON"] == 3:
         inspect_name = "inspect_sel.png"
-    elif cur_button == 4:
+    elif config.mut["CURR_BUTTON"] == 4:
         quit_name = "quit_sel.png"
 
     g.screen.blit(g.buttons[attack_name], (attack_button_loc, button_y_start))
@@ -952,28 +951,27 @@ def refresh_buttons():
 # All keypresses in window_shop pass through here. Based on the key name,
 # give the right action. ("etc", "left", "right", "up", "down", "return")
 def key_handler(key_name):
-    global cur_button
     if key_name == g.bindings["cancel"]:
         return runaway()
     elif key_name == g.bindings["right"] or key_name == g.bindings["down"]:
-        cur_button += 1
-        if cur_button >= 5:
-            cur_button = 0
+        config.mut["CURR_BUTTON"] += 1
+        if config.mut["CURR_BUTTON"] >= 5:
+            config.mut["CURR_BUTTON"] = 0
     elif key_name == g.bindings["left"] or key_name == g.bindings["up"]:
-        cur_button -= 1
-        if cur_button <= -1:
-            cur_button = 4  # loop around
+        config.mut["CURR_BUTTON"] -= 1
+        if config.mut["CURR_BUTTON"] <= -1:
+            config.mut["CURR_BUTTON"] = 4  # loop around
 
     elif key_name == g.bindings["action"]:
-        if cur_button == 0:
+        if config.mut["CURR_BUTTON"] == 0:
             attack()
-        elif cur_button == 1:
+        elif config.mut["CURR_BUTTON"] == 1:
             open_item_menu()
-        elif cur_button == 2:
+        elif config.mut["CURR_BUTTON"] == 2:
             open_skill_menu()
-        elif cur_button == 3:
+        elif config.mut["CURR_BUTTON"] == 3:
             inspect_monst()
-        elif cur_button == 4:
+        elif config.mut["CURR_BUTTON"] == 4:
             return runaway()
         return 0
     elif key_name == g.bindings["attack"]:
@@ -1051,23 +1049,22 @@ def skill_mouse_move(xy):
 
 
 def mouse_handler_move(xy):
-    global cur_button
-    tmp_button = cur_button
+    tmp_button = config.mut["CURR_BUTTON"]
     if xy[0] < attack_button_loc or xy[1] < button_y_start or xy[1] > button_y_start + button_height:
-        cur_button = -1
+        config.mut["CURR_BUTTON"] = -1
     elif xy[0] < item_button_loc:
-        cur_button = 0
+        config.mut["CURR_BUTTON"] = 0
     elif xy[0] < skill_button_loc:
-        cur_button = 1
+        config.mut["CURR_BUTTON"] = 1
     elif xy[0] < inspect_button_loc:
-        cur_button = 2
+        config.mut["CURR_BUTTON"] = 2
     elif xy[0] < run_button_loc:
-        cur_button = 3
+        config.mut["CURR_BUTTON"] = 3
     elif xy[0] < final_button_loc:
-        cur_button = 4
+        config.mut["CURR_BUTTON"] = 4
     else:
-        cur_button = -1
-    if tmp_button != cur_button:
+        config.mut["CURR_BUTTON"] = -1
+    if tmp_button != config.mut["CURR_BUTTON"]:
         refresh_buttons()
 
 
@@ -1112,8 +1109,6 @@ def begin(mon_index_input):
 
     global did_run
     did_run = 0
-    global cur_button
-    cur_button = 0
     global run_attempts
     run_attempts = 0
     global active_button

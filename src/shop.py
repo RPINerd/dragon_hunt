@@ -79,22 +79,22 @@ temp_button_y = 0
 def refresh_buttons():
     global prev_button
 
-    if prev_button == cur_button:
+    if prev_button == config.mut["CURR_BUTTON"]:
         return
-    prev_button = cur_button
+    prev_button = config.mut["CURR_BUTTON"]
     g.create_norm_box((temp_button_x, temp_button_y), (temp_button_width, g.buttons["sell.png"].get_height()))
 
-    if cur_button == 0:
+    if config.mut["CURR_BUTTON"] == 0:
         g.screen.blit(g.buttons["sell_sel.png"], (temp_button_x, temp_button_y))
     else:
         g.screen.blit(g.buttons["sell.png"], (temp_button_x, temp_button_y))
 
-    if cur_button == 1:
+    if config.mut["CURR_BUTTON"] == 1:
         g.screen.blit(g.buttons["leave_shop_sel.png"], (temp_button_x + leave_height, temp_button_y))
     else:
         g.screen.blit(g.buttons["leave_shop.png"], (temp_button_x + leave_height, temp_button_y))
 
-    if cur_button == 2:
+    if config.mut["CURR_BUTTON"] == 2:
         g.screen.blit(g.buttons["buy_sel.png"], (temp_button_x + buy_height, temp_button_y))
     else:
         g.screen.blit(g.buttons["buy.png"], (temp_button_x + buy_height, temp_button_y))
@@ -413,7 +413,6 @@ def mouse_sel_inv(xy):
 def mouse_sel_shop(xy):
     global curr_item
     global curr_focus
-    global cur_button
     global last_click_time
     global last_box
     # Is the mouse at least in the general area?.
@@ -429,7 +428,7 @@ def mouse_sel_shop(xy):
     if temp_num != -1:
         curr_item = int(temp_num)
         curr_focus = 0
-        cur_button = 0
+        config.mut["CURR_BUTTON"] = 0
         refresh_shop()
         show_details()
         return 0
@@ -438,7 +437,7 @@ def mouse_sel_shop(xy):
     if temp_num != -1:
         curr_item = int(temp_num)
         curr_focus = 1
-        cur_button = 2
+        config.mut["CURR_BUTTON"] = 2
         refresh_shop()
         show_details()
         return 0
@@ -462,7 +461,6 @@ def mouse_sel_shop(xy):
 def mouse_handler_dbl(xy):
     global curr_item
     global curr_focus
-    global cur_button
     # Is the mouse at least in the general area?.
     if xy[0] < canvas_x_start or xy[1] < canvas_y_start:
         return 0
@@ -471,7 +469,7 @@ def mouse_handler_dbl(xy):
     if temp_num != -1:
         curr_item = temp_num
         curr_focus = 0
-        cur_button = 0
+        config.mut["CURR_BUTTON"] = 0
         sell_item()
         refresh_shop()
         show_details()
@@ -481,7 +479,7 @@ def mouse_handler_dbl(xy):
     if temp_num != -1:
         curr_item = temp_num
         curr_focus = 1
-        cur_button = 2
+        config.mut["CURR_BUTTON"] = 2
         buy_item()
         refresh_shop()
         show_details()
@@ -489,7 +487,6 @@ def mouse_handler_dbl(xy):
 
 
 def mouse_move(xy):
-    global cur_button
     if (
         xy[0] > temp_button_x
         and xy[0] < temp_button_x + temp_button_width
@@ -497,11 +494,11 @@ def mouse_move(xy):
         and xy[1] < temp_button_y + g.buttons["buy.png"].get_height()
     ):
         if xy[0] < temp_button_x + leave_height:
-            cur_button = 0
+            config.mut["CURR_BUTTON"] = 0
         elif xy[0] < temp_button_x + buy_height:
-            cur_button = 1
+            config.mut["CURR_BUTTON"] = 1
         else:
-            cur_button = 2
+            config.mut["CURR_BUTTON"] = 2
         refresh_buttons()
 
 
@@ -509,36 +506,35 @@ def mouse_move(xy):
 # give the right action. ("etc", "left", "right", "up", "down", "return")
 def key_handler(switch):
     global curr_item
-    global cur_button
     global curr_focus
     # switch based on keycode
     if switch == g.bindings["cancel"]:
         return 1
     elif switch == g.bindings["action"]:
-        if curr_focus == 1 and cur_button == 2:
+        if curr_focus == 1 and config.mut["CURR_BUTTON"] == 2:
             buy_item()
-        elif curr_focus != 1 and cur_button == 0:
+        elif curr_focus != 1 and config.mut["CURR_BUTTON"] == 0:
             sell_item()
-        elif cur_button == 1:
+        elif config.mut["CURR_BUTTON"] == 1:
             return 1
     elif switch == g.bindings["left"]:
         if curr_item % shop_width == 0:  # move between lists
             if curr_focus == 0:
                 curr_focus = 1
-                cur_button = 2
+                config.mut["CURR_BUTTON"] = 2
             else:
                 curr_focus = 0
-                cur_button = 0
+                config.mut["CURR_BUTTON"] = 0
             curr_item += shop_width
         curr_item -= 1
     elif switch == g.bindings["right"]:
         if curr_item % shop_width == shop_width - 1:  # move between lists
             if curr_focus == 0:
                 curr_focus = 1
-                cur_button = 2
+                config.mut["CURR_BUTTON"] = 2
             else:
                 curr_focus = 0
-                cur_button = 0
+                config.mut["CURR_BUTTON"] = 0
             curr_item -= shop_width
         curr_item += 1
     elif switch == g.bindings["up"]:
@@ -593,8 +589,7 @@ def init_window_shop(store_type_input):
     curr_item = 0
     global curr_focus
     curr_focus = 1
-    global cur_button
-    cur_button = 2
+    config.mut["CURR_BUTTON"] = 2
 
     store_type_input = store_type_input.lower()
     global store_num

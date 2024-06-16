@@ -44,7 +44,7 @@ active_button = 0
 # currently selected button. 0=Use, 1=Drop, 2=Wear, 3=Skill, 4=Save, 5=Leave
 cur_button = 0
 
-# Like cur_button, but for the inner menus.
+# Like config.mut["CURR_BUTTON"], but for the inner menus.
 inner_cur_button = 0
 
 # distance from the top of the inv box each button should be placed.
@@ -666,9 +666,9 @@ def wear_item():
         item.take_inv_item(temp)
         main.print_message("You equip yourself with your " + item.item[player.equip[item_loc]].name + ".")
         player.reset_stats()
-        if cur_button == 0:
+        if config.mut["CURR_BUTTON"] == 0:
             refresh_use()
-        elif cur_button == 1:
+        elif config.mut["CURR_BUTTON"] == 1:
             refresh_equip()
     refresh_stat_display()
 
@@ -785,9 +785,9 @@ def refresh_menu_buttons():
     if action.has_dialog == 1:
         return 0
 
-    if oldbutton == cur_button:
+    if oldbutton == config.mut["CURR_BUTTON"]:
         return
-    oldbutton = cur_button
+    oldbutton = config.mut["CURR_BUTTON"]
     # 	if main.canvas_map.winfo_exists() == 0: return 0
     # 	main.canvas_map.delete("buttons")
     use_image = "use.png"
@@ -796,17 +796,17 @@ def refresh_menu_buttons():
     skill_image = "skill.png"
     save_image = "save.png"
     leave_image = "leave.png"
-    if cur_button == 0:
+    if config.mut["CURR_BUTTON"] == 0:
         use_image = "use_sel.png"
-    elif cur_button == 1:
+    elif config.mut["CURR_BUTTON"] == 1:
         equip_image = "equip_sel.png"
-    elif cur_button == 2:
+    elif config.mut["CURR_BUTTON"] == 2:
         drop_image = "drop_sel.png"
-    elif cur_button == 3:
+    elif config.mut["CURR_BUTTON"] == 3:
         skill_image = "skill_sel.png"
-    elif cur_button == 4:
+    elif config.mut["CURR_BUTTON"] == 4:
         save_image = "save_sel.png"
-    elif cur_button == 5:
+    elif config.mut["CURR_BUTTON"] == 5:
         leave_image = "leave_sel.png"
 
     g.screen.blit(g.buttons[use_image], (base_x, base_y))
@@ -827,7 +827,7 @@ def refresh_inv(x, y, input_tag):
     # 	canvas_inv.delete("item")
     # 	invpos = 0
     # Draw a selection box around the current item.
-    # 	if cur_button == 0 or (cur_button == 1):
+    # 	if config.mut["CURR_BUTTON"] == 0 or (cur_button == 1):
     for i in range(len(item.inv)):
         g.create_norm_box(
             (
@@ -855,7 +855,7 @@ def refresh_inv(x, y, input_tag):
     # 			invpos += 1
 
     # 	canvas_equip.delete("item")
-    if cur_button == 3:  # equipment
+    if config.mut["CURR_BUTTON"] == 3:  # equipment
         g.create_norm_box(
             (
                 (curr_item % equip_size) * config.TILESIZE + 2 * ((curr_item % equip_size) + 1),
@@ -879,38 +879,36 @@ def draw_item(input_picture, x, y, x_offset, y_offset, tag):
 # All keypresses in window_inv pass through here. Based on the key name,
 # give the right action. ("etc", "left", "right", "up", "down", "return")
 def menu_key_handler(key_name):
-    # 	if action.has_dialog == 1: return 0
-    global cur_button
     if key_name == g.bindings["cancel"]:
         return 1
     elif (key_name == g.bindings["right"]) or (key_name == g.bindings["down"]):
-        cur_button += 1
-        if cur_button > 5:
-            cur_button = 0
+        config.mut["CURR_BUTTON"] += 1
+        if config.mut["CURR_BUTTON"] > 5:
+            config.mut["CURR_BUTTON"] = 0
     elif (key_name == g.bindings["left"]) or (key_name == g.bindings["up"]):
-        cur_button -= 1
-        if cur_button < 0:
-            cur_button = 5
+        config.mut["CURR_BUTTON"] -= 1
+        if config.mut["CURR_BUTTON"] < 0:
+            config.mut["CURR_BUTTON"] = 5
     elif key_name == g.bindings["action"]:
         # I take care of refresh by grabbing the current window as a bitmap,
         # then redisplaying it. Note that the -64 is to prevent the message
         # scroller from being clobbered
         old_screen_refresh = pygame.Surface((g.screen_size[0], g.screen_size[1] - 64))
         old_screen_refresh.blit(g.screen, (0, 0))
-        if cur_button == 0:
+        if config.mut["CURR_BUTTON"] == 0:
             open_use_item()
-        elif cur_button == 1:
+        elif config.mut["CURR_BUTTON"] == 1:
             open_equip_item()
-        elif cur_button == 2:
+        elif config.mut["CURR_BUTTON"] == 2:
             open_drop_item()
-        elif cur_button == 3:
+        elif config.mut["CURR_BUTTON"] == 3:
             tmp = open_skill_menu()
             if tmp == "end":
                 return 1
-        elif cur_button == 4:
+        elif config.mut["CURR_BUTTON"] == 4:
             inv_savegame()
             return 0
-        elif cur_button == 5:
+        elif config.mut["CURR_BUTTON"] == 5:
             leave_inv()
             return 1
         g.screen.blit(old_screen_refresh, (0, 0))
@@ -920,7 +918,6 @@ def menu_key_handler(key_name):
 
 # generic key handler for anytime there is an inner inv window open.
 def inner_key_handler(key_name):
-    global cur_button
     global curr_item
     if key_name == g.bindings["cancel"]:
         # leave_inner()
@@ -977,13 +974,12 @@ def skill_key_handler(key_name):
 
 # I have to do this separate, as the equip screen has an extra display.
 def equip_key_handler(key_name):
-    global cur_button
     global curr_item
     if key_name == g.bindings["cancel"]:
         # 		leave_inner()
         return 1
     elif key_name == g.bindings["right"]:
-        if cur_button == 1:  # if equip screen
+        if config.mut["CURR_BUTTON"] == 1:  # if equip screen
             if curr_item < inv_width * inv_height:  # if in inv
                 if curr_item % inv_width == inv_width - 1:  # if on right side
                     if curr_item / inv_width >= equip_size:
@@ -995,7 +991,7 @@ def equip_key_handler(key_name):
                     curr_item = (c_item / equip_size) * inv_width - 1
         curr_item += 1
     elif key_name == g.bindings["left"]:
-        if cur_button == 1:  # if equip screen
+        if config.mut["CURR_BUTTON"] == 1:  # if equip screen
             if curr_item < inv_width * inv_height:  # if in inv
                 if curr_item % inv_width == 0:  # if on left side
                     if curr_item / inv_width >= equip_size:
@@ -1206,24 +1202,22 @@ def which_box(x, y, temp_size):
 
 
 def menu_mouse_move(xy):
-    # 	if action.has_dialog == 1: return 0
-    global cur_button
     base_loc_y = xy[1] - base_y
     base_loc_x = xy[0] - base_x
     if base_loc_y < 0 or base_loc_x < 0 or base_loc_y > total_height or base_loc_x > button_width:
         return
     elif base_loc_y < equip_height:
-        cur_button = 0
+        config.mut["CURR_BUTTON"] = 0
     elif base_loc_y < drop_height:
-        cur_button = 1
+        config.mut["CURR_BUTTON"] = 1
     elif base_loc_y < skill_height:
-        cur_button = 2
+        config.mut["CURR_BUTTON"] = 2
     elif base_loc_y < save_height:
-        cur_button = 3
+        config.mut["CURR_BUTTON"] = 3
     elif base_loc_y < leave_height:
-        cur_button = 4
+        config.mut["CURR_BUTTON"] = 4
     else:
-        cur_button = 5
+        config.mut["CURR_BUTTON"] = 5
     refresh_menu_buttons()
 
 
@@ -1266,8 +1260,6 @@ def skill_mouse_move(xy):
 
 # This creates the inv area within the map canvas.
 def init_window_inv():
-    global cur_button
-    cur_button = 0
     global oldbutton
     oldbutton = 99
 

@@ -1,7 +1,8 @@
-from os import listdir
+"""
+"""
 
 # Previously array_mods
-MODULES = listdir("../modules/").remove("default")
+MODULES = ["DarkAges", "DragonHunt"]
 
 # Tile size notes from original code:
 # size (in tiles) of the editor screen. 15 works well with 640x480,

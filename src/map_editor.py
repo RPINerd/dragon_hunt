@@ -33,6 +33,7 @@ pygame.font.init()
 # window.master.withdraw()
 # window.title("Map Editor")
 
+import config
 import g
 import listbox
 import scripting
@@ -48,7 +49,7 @@ mapsize_y = 25
 
 portal_x = 0
 portal_y = 0
-portalsize = g.editor_tilesize
+portalsize = config.EDITOR_TILESIZE
 
 cur_tilecopy_x = 0
 cur_tilecopy_y = 0

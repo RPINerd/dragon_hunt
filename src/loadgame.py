@@ -28,8 +28,6 @@ import g
 
 # was a game loaded? Used to determine whether to use newgame script.
 did_load = ""
-global cur_button
-cur_button = 0
 
 global saves_array
 saves_array = []
@@ -194,11 +192,10 @@ def key_handler(switch):
     if switch == g.bindings["cancel"]:
         cancel_load()
     elif switch == g.bindings["left"] or switch == g.bindings["right"]:
-        global cur_button
-        if cur_button == 0:
-            cur_button = 1
+        if config.mut["CURR_BUTTON"] == 0:
+            config.mut["CURR_BUTTON"] = 1
         else:
-            cur_button = 0
+            config.mut["CURR_BUTTON"] = 0
         refresh_buttons()
     elif switch == g.bindings["up"]:
         saves_pos -= 1
@@ -214,7 +211,7 @@ def key_handler(switch):
             saves_pos = 0
         refresh_save_info()
     elif switch == g.bindings["action"]:
-        if cur_button != 1:
+        if config.mut["CURR_BUTTON"] != 1:
             load_selected()
         else:
             cancel_load()
@@ -229,7 +226,6 @@ def cancel_load():
 
 
 def mouse_handler_move(xy):
-    global cur_button
     # up arrow:
     if mouse_over(
         xy,
@@ -238,7 +234,7 @@ def mouse_handler_move(xy):
         config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_up.png"].get_height(),
     ):
-        cur_button = 2
+        config.mut["CURR_BUTTON"] = 2
 
     # down arrow:
     if mouse_over(
@@ -248,7 +244,7 @@ def mouse_handler_move(xy):
         config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_down.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + 140,
     ):
-        cur_button = 3
+        config.mut["CURR_BUTTON"] = 3
 
     # load button:
     if mouse_over(
@@ -258,7 +254,7 @@ def mouse_handler_move(xy):
         config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load_scr.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["load_scr.png"].get_height(),
     ):
-        cur_button = 0
+        config.mut["CURR_BUTTON"] = 0
 
     # leave button:
     if mouse_over(
@@ -270,13 +266,12 @@ def mouse_handler_move(xy):
         + g.buttons["leave.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["leave.png"].get_height(),
     ):
-        cur_button = 1
+        config.mut["CURR_BUTTON"] = 1
 
     refresh_buttons()
 
 
 def mouse_handler_down(xy):
-    global cur_button
     global saves_pos
     # up arrow:
     if mouse_over(
@@ -323,7 +318,7 @@ def mouse_handler_down(xy):
         config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load_scr.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["load_scr.png"].get_height(),
     ):
-        cur_button = 0
+        config.mut["CURR_BUTTON"] = 0
         key_handler(pygame.K_RETURN)
 
     # leave button:
@@ -336,7 +331,7 @@ def mouse_handler_down(xy):
         + g.buttons["leave.png"].get_width(),
         config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["leave.png"].get_height(),
     ):
-        cur_button = 1
+        config.mut["CURR_BUTTON"] = 1
         key_handler(pygame.K_RETURN)
 
     # save "listbox"
@@ -387,11 +382,11 @@ def refresh_buttons():
     leave_img = "leave.png"
     up_img = "loadgame_up.png"
     down_img = "loadgame_down.png"
-    if cur_button == 0:
+    if config.mut["CURR_BUTTON"] == 0:
         load_img = "load_scr_sel.png"
-    elif cur_button == 1:
+    elif config.mut["CURR_BUTTON"] == 1:
         leave_img = "leave_sel.png"
-    elif cur_button == 2:
+    elif config.mut["CURR_BUTTON"] == 2:
         up_img = "loadgame_up_sel.png"
     else:
         down_img = "loadgame_down_sel.png"

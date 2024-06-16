@@ -15,8 +15,10 @@ import config
 import item
 import main
 import monster
+
 # player info
 from player import player
+
 # needed for scripting
 # from scripting import g, maps, read_maps, read_scripts, read_shops, newgame_act
 from scripting import *
@@ -229,7 +231,17 @@ def read_settings() -> None:
 
     with open("../settings.txt", "r") as settings_file:
         for line in settings_file:
+
+            # Strip whitespace
+            line = line.strip()
+
+            # Skip comments and empty lines
+            if line.startswith("#") or line == "":
+                continue
+
+            print(line)
             line_key = line.split("=")[0]
+            print(line_key)
             line_value = line.split("=")[1]
             if line_key == "difficulty":
                 difficulty = int(line_value)
@@ -240,6 +252,9 @@ def read_settings() -> None:
             else:
                 bind_line = line.split("=")[0]
                 bindings[bind_line] = int(line_value)
+
+
+read_settings()
 
 
 def read_variables() -> None:
@@ -259,6 +274,11 @@ def read_variables() -> None:
     # Open the module variables file and parse it
     with open(mod_directory + "/data/variables.txt", "r") as file:
         for line in file:
+            line = line.strip()
+
+            # Skip comments and empty lines
+            if line.startswith("#") or line == "":
+                continue
 
             line_key = line.split("=", 1)[0].strip().lower()
             line_value = line.split("=", 1)[1].strip()
