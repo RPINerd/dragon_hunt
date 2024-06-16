@@ -217,13 +217,13 @@ def print_cur_xy(xy, ignore_and_force=False):
     if ignore_and_force:
         xy = last_xy
     if last_xy != xy or ignore_and_force:
-        g.screen.fill(g.colors["black"], (g.screen_size[0] - 100, g.screen_size[1] - 30, 100, 12))
+        g.screen.fill(config.COLORS["black"], (g.screen_size[0] - 100, g.screen_size[1] - 30, 100, 12))
         g.print_string(
             g.screen,
             cur_mode + "  " + str(xy[0]) + ", " + str(xy[1]),
             g.font,
             (g.screen_size[0] - 3, g.screen_size[1] - 30),
-            color=g.colors["white"],
+            color=config.COLORS["white"],
             align=2,
         )
         last_xy = xy
@@ -233,7 +233,7 @@ def print_cur_xy(xy, ignore_and_force=False):
 # refresh map. This refreshes every tile, as accuracy is rather important here.
 # (compared to the main game)
 def refresh_map():
-    g.screen.fill(g.colors["black"])
+    g.screen.fill(config.COLORS["black"])
     # 	canvas_map.delete(ALL)
     for y in range(portal_y, portal_y + portalsize):
         if y >= mapsize_y:
@@ -357,7 +357,7 @@ def refresh_map():
                         inner_color="white",
                     )
                     g.screen.fill(
-                        g.colors["black"],
+                        config.COLORS["black"],
                         (
                             (x - portal_x) * config.TILESIZE + config.TILESIZE / 2 - 2,
                             (y - portal_y) * config.TILESIZE + config.TILESIZE / 2 - 2,
@@ -384,9 +384,9 @@ def refresh_map():
     # grid display
     if tilegrid == 1:
         for y in range(portalsize):
-            g.screen.fill(g.colors["black"], (0, y * config.TILESIZE, portalsize * config.TILESIZE, 1))
+            g.screen.fill(config.COLORS["black"], (0, y * config.TILESIZE, portalsize * config.TILESIZE, 1))
         for x in range(portalsize):
-            g.screen.fill(g.colors["black"], (x * config.TILESIZE, 0, 1, portalsize * config.TILESIZE))
+            g.screen.fill(config.COLORS["black"], (x * config.TILESIZE, 0, 1, portalsize * config.TILESIZE))
 
     g.unclean_screen = True
 
@@ -700,7 +700,7 @@ def display_tiles(set=""):
     global tile_set_size
     tile_set_size = 0
     g.screen.fill(
-        g.colors["black"],
+        config.COLORS["black"],
         (
             g.screen_size[0] - (tilebox_width) * (config.TILESIZE + 1) - 1,
             0,
@@ -724,7 +724,7 @@ def display_tiles(set=""):
                 cur_col = 0
             if cur_tile_num == cur_col + tilebox_width * cur_row:
                 g.screen.fill(
-                    g.colors["hp_red"],
+                    config.COLORS["hp_red"],
                     (
                         g.screen_size[0] - (col_span - cur_col) * (config.TILESIZE + 1) - 1,
                         cur_row * (config.TILESIZE + 1) - 1,
@@ -744,7 +744,7 @@ def display_tiles(set=""):
         cur_tile.split("/")[-1],
         g.font,
         (g.screen_size[0] - 4, g.screen_size[1] - 18),
-        color=g.colors["white"],
+        color=config.COLORS["white"],
         align=2,
     )
 
@@ -857,7 +857,7 @@ def do_load_map():
     if tmp == -1:
         refresh_map()
         return
-    g.print_string(g.screen, "Loading", g.font, (250, 150), g.colors["white"])
+    g.print_string(g.screen, "Loading", g.font, (250, 150), config.COLORS["white"])
     pygame.display.flip()
     g.zgrid = g.mapname2zgrid(tmp)
     global cur_map
@@ -1027,14 +1027,14 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
         (width, 350),
         16,
         1,
-        g.colors["light_gray"],
-        g.colors["dh_green"],
-        g.colors["black"],
-        g.colors["black"],
+        config.COLORS["light_gray"],
+        config.COLORS["dh_green"],
+        config.COLORS["black"],
+        config.COLORS["black"],
         g.font,
     )
     input_scroll = scrollbar.scrollbar(
-        (width + 10, 10), 350, 16, g.colors["light_gray"], g.colors["hp_green"], g.colors["white"]
+        (width + 10, 10), 350, 16, config.COLORS["light_gray"], config.COLORS["hp_green"], config.COLORS["white"]
     )
 
     g.screen.blit(g.buttons["load_sel.png"], (10, 360))
@@ -1545,7 +1545,7 @@ else:
     tmp = select_from_list(array_mods, True)
     if tmp == -1:
         sys.exit()
-    g.print_string(g.screen, "Loading", g.font, (250, 150), g.colors["white"])
+    g.print_string(g.screen, "Loading", g.font, (250, 150), config.COLORS["white"])
     pygame.display.flip()
 pygame.display.set_caption("Map Editor")
 sel_mod(tmp)

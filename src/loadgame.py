@@ -135,7 +135,7 @@ def display_stats(stat_dict, titles_dict):
     pixels_per_line = 20
     g.unclean_screen = True
     g.screen.fill(
-        g.colors["light_gray"],
+        config.COLORS["light_gray"],
         (
             config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width() + 3,
             config.TILESIZE * g.main.mapsizey / 3,

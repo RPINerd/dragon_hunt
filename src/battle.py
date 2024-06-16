@@ -100,7 +100,7 @@ def y_start(mon_num):
 def refresh():
     global monster_slashes
     g.screen.fill(
-        g.colors["black"],
+        config.COLORS["black"],
         (
             config.TILESIZE * main.half_mapx - background_pic.get_width() / 2 - 2,
             config.TILESIZE * main.half_mapy - background_pic.get_height() / 2 - 2,

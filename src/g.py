@@ -15,10 +15,8 @@ import config
 import item
 import main
 import monster
-
 # player info
 from player import player
-
 # needed for scripting
 # from scripting import g, maps, read_maps, read_scripts, read_shops, newgame_act
 from scripting import *
@@ -196,7 +194,7 @@ def init_data():
     is now way too fast to even percieve
     """
 
-    screen.fill(colors["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
+    screen.fill(config.COLORS["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
     print_string(screen, "Loading ...", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
     pygame.display.flip()
 
@@ -218,42 +216,36 @@ def init_data():
 new_game_dice = []
 
 
-# get the key bindings from settings.txt
-def read_settings():
+def read_settings() -> None:
+    """
+    Read the settings file and set the global variables accordingly
+    """
+
     global bindings
     global difficulty
     global editor_xy
     global fullscreen
-    # try to open settings.txt. If it doesn't exist,
-    # just use the default settings.
-    try:
-        file = open("../settings.txt", "r")
-    except IOError:
-        return 0
-    line = file.readline()
-    while line != "":
-        line = line.strip()
-        if line[:1] == "#" or line[:1] == "":
-            line = file.readline()
-            continue
-        if line.split("=", 1)[0].strip() == "difficulty":
-            difficulty = int(line.split("=", 1)[1].strip())
-        elif line.split("=", 1)[0].strip() == "editor_xsize":
-            editor_xy = (int(line.split("=", 1)[1].strip()), editor_xy[1])
-        elif line.split("=", 1)[0].strip() == "editor_ysize":
-            editor_xy = (editor_xy[0], int(line.split("=", 1)[1].strip()))
-        elif line.split("=", 1)[0].strip() == "fullscreen":
-            fullscreen = int(line.split("=", 1)[1].strip())
-        else:
-            bind_line = line.split("=", 1)[0].strip()
-            bindings[bind_line] = int(line.split("=", 1)[1].strip())
-        line = file.readline()
+    editor_xy = (1024, 768)
+
+    with open("../settings.txt", "r") as settings_file:
+        for line in settings_file:
+            line_key = line.split("=")[0]
+            line_value = line.split("=")[1]
+            if line_key == "difficulty":
+                difficulty = int(line_value)
+            elif line_key == "editor_xy_size":
+                editor_xy = (int(line_value.split(",")[0]), int(line_value.split(",")[1]))
+            elif line_key == "fullscreen":
+                fullscreen = int(line_value)
+            else:
+                bind_line = line.split("=")[0]
+                bindings[bind_line] = int(line_value)
 
 
-read_settings()
-
-
-def read_variables():
+def read_variables() -> None:
+    """
+    Read the variables file for the selected module and set the global variables accordingly
+    """
 
     # Verify that the variables file exists.
     if not path.exists(mod_directory + "/data/variables.txt"):
@@ -358,9 +350,14 @@ def addskill(name, effect, level, price, description, scripting=[], picture="ite
     player.skill[i - 1].append(picture)
 
 
-# takes a skill name, and returns its location in the
-# skill[] array, with -1 == nonexisting.
-def findskill(name):
+def findskill(name: str) -> int:
+    """
+    Find a skill in the player's skill list by name. Returns the index of the skill in the list. Returns -1 if the skill is not found.
+
+    :param name: The name of the skill to find
+    :return: The index of the skill in the player's skill list
+    """
+
     for i in range(len(player.skill)):
         if name.lower() == player.skill[i][0].lower():
             return i
@@ -676,25 +673,6 @@ def play_sound(sound_name):
 # create the fonts needed.
 font = pygame.font.Font(None, 14)
 
-# colors:
-colors = {
-    "white": (255, 255, 255, 255),
-    "black": (0, 0, 0, 255),
-    "hp_red": (238, 5, 5, 255),
-    "hp_green": (5, 187, 5, 255),
-    "ep_blue": (5, 5, 238, 255),
-    "dark_red": (125, 0, 0, 255),
-    "dark_green": (122, 169, 110, 255),
-    "dark_blue": (0, 0, 125, 255),
-    "light_red": (255, 50, 50, 255),
-    "light_green": (50, 255, 50, 255),
-    "light_blue": (50, 50, 255, 255),
-    "purple": (96, 96, 144, 255),
-    "light_gray": (227, 227, 227, 255),
-    "very_dark_blue": (32, 32, 47, 255),
-    "dh_green": (185, 229, 173, 255),
-}
-
 
 def read_images(dir_name: str) -> dict:
     """
@@ -746,14 +724,14 @@ def create_norm_box(xy: list, size: list, outline_color: str = "black", inner_co
     :return: None
     """
 
-    screen.fill(colors[outline_color], (xy[0], xy[1], size[0], size[1]))
-    screen.fill(colors[inner_color], (xy[0] + 1, xy[1] + 1, size[0] - 2, size[1] - 2))
+    screen.fill(config.COLORS[outline_color], (xy[0], xy[1], size[0], size[1]))
+    screen.fill(config.COLORS[inner_color], (xy[0] + 1, xy[1] + 1, size[0] - 2, size[1] - 2))
 
 
 # given a surface, string, font, char to underline (int; -1 to len(string)),
 # xy coord, and color, print(the string to the surface.)
 # Align (0=left, 1=Center, 2=Right) changes the alignment of the text
-def print_string(surface, string_to_print, font, xy, color=colors["black"], align=0, width=-1):
+def print_string(surface, string_to_print, font, xy, color=config.COLORS["black"], align=0, width=-1):
     string_to_print = string_to_print.replace("\t", "     ")
     if align != 0:
         temp_size = font.size(string_to_print)
@@ -799,7 +777,7 @@ def print_multiline(surface, string_to_print, font, width, xy, color="black") ->
             num_of_lines += 1
             xy = (start_xy[0], xy[1] + temp_size[1])
             continue
-        temp_text = font.render(string, 1, colors[color])
+        temp_text = font.render(string, 1, config.COLORS[color])
 
         if (xy[0] - start_xy[0]) + temp_size[0] > width:
             num_of_lines += 1

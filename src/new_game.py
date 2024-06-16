@@ -103,7 +103,7 @@ def key_handler_up(key_name):
 
 def refresh_name():
     g.screen.fill(
-        g.colors["light_gray"],
+        config.COLORS["light_gray"],
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10, 280, 14),
     )
     tmp_name = name_stat[:curr_name_loc] + "|" + name_stat[curr_name_loc:]
@@ -362,8 +362,8 @@ def refresh_stats():
 def refresh_help(string):
     start_xy = (15, button_start + button_height / 2)
     size = (180, 14)
-    g.screen.fill(g.colors["very_dark_blue"], (start_xy[0], start_xy[1], size[0], size[1]))
-    g.print_string(g.screen, string, g.font, start_xy, g.colors["white"])
+    g.screen.fill(config.COLORS["very_dark_blue"], (start_xy[0], start_xy[1], size[0], size[1]))
+    g.print_string(g.screen, string, g.font, start_xy, config.COLORS["white"])
 
 
 # All keypresses in new_game pass through here. Based on the key name,
@@ -496,7 +496,7 @@ def init_window():
     global bgcolour
     bgcolour = "lightgrey"
 
-    g.screen.fill(g.colors["black"])
+    g.screen.fill(config.COLORS["black"])
     g.screen.blit(g.backgrounds["new_game.png"], (0, 0))
 
     global name_stat

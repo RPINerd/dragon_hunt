@@ -105,7 +105,7 @@ def refresh_buttons():
 # Actually sets the info in the middle of the shop screen.
 def set_details(name, cost, value, costtype, power, description, inv_or_shop):
 
-    g.screen.fill(g.colors["light_gray"], (canvas_x_start + temp_canvas_width, canvas_y_start + 25, 137, 190))
+    g.screen.fill(config.COLORS["light_gray"], (canvas_x_start + temp_canvas_width, canvas_y_start + 25, 137, 190))
 
     g.print_string(g.screen, name, g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 25))
 
@@ -268,7 +268,7 @@ def refresh_shop():
 
     # set gold and skillpoints
     g.screen.fill(
-        g.colors["light_gray"],
+        config.COLORS["light_gray"],
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 26, 120, 25),
     )
 

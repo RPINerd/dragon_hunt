@@ -677,10 +677,10 @@ def script_fade(x, y, z, argument_array):
     if argument_array[0][1] == 0:
         for i in range(40):
             g.pygame.time.wait(15)
-            g.screen.fill(g.colors["black"], (0, i * 12, g.screen_size[0], 12))
-            g.screen.fill(g.colors["black"], (0, g.screen_size[1] - i * 12 - 12, g.screen_size[0], 12))
-            g.screen.fill(g.colors["black"], (0, g.screen_size[1] / 2 + i * 12, g.screen_size[0], 12))
-            g.screen.fill(g.colors["black"], (0, g.screen_size[1] / 2 - i * 12 - 12, g.screen_size[0], 12))
+            g.screen.fill(config.COLORS["black"], (0, i * 12, g.screen_size[0], 12))
+            g.screen.fill(config.COLORS["black"], (0, g.screen_size[1] - i * 12 - 12, g.screen_size[0], 12))
+            g.screen.fill(config.COLORS["black"], (0, g.screen_size[1] / 2 + i * 12, g.screen_size[0], 12))
+            g.screen.fill(config.COLORS["black"], (0, g.screen_size[1] / 2 - i * 12 - 12, g.screen_size[0], 12))
             g.pygame.display.flip()
 
 

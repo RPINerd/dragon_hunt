@@ -516,7 +516,8 @@ def refresh_stat_display():
 
     tmp_width = 52
     g.screen.fill(
-        g.colors["light_gray"], (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5, 50, 14)
+        config.COLORS["light_gray"],
+        (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5, 50, 14),
     )
     g.print_string(
         g.screen, player.name, g.font, (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5)
@@ -535,7 +536,8 @@ def refresh_stat_display():
     )
 
     g.screen.fill(
-        g.colors["light_gray"], (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 55, 50, 80)
+        config.COLORS["light_gray"],
+        (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 55, 50, 80),
     )
     g.print_string(
         g.screen,

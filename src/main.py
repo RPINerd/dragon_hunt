@@ -860,7 +860,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
             draw_cursor_pos = g.font.size(textbox_text[:cursor_loc].replace("\t", "     "))
 
             g.screen.fill(
-                g.colors["black"],
+                config.COLORS["black"],
                 (
                     (g.screen_size[0] - text_width) / 2 + 7 + draw_cursor_pos[0],
                     (g.screen_size[1] + line_height) / 2 - 18,
@@ -1056,7 +1056,7 @@ def init_window_main(is_new_game=0):
     if not g.faststart:
         # This cuts a small amount off the loading time for each level. (From about
         # 370ms to about 270ms.)
-        g.screen.fill(g.colors["light_gray"], (g.screen_size[0] / 2 - 150, g.screen_size[1] / 2 - 20, 300, 40))
+        g.screen.fill(config.COLORS["light_gray"], (g.screen_size[0] / 2 - 150, g.screen_size[1] / 2 - 20, 300, 40))
         g.print_string(g.screen, "Processing Maps", g.font, (g.screen_size[0] / 2, g.screen_size[1] / 2), align=1)
         pygame.display.flip()
         for mapindex in range(len(g.maps)):

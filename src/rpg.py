@@ -260,7 +260,7 @@ def refresh_buttons() -> None:
 
 def init_window():
 
-    g.screen.fill(g.colors["purple"])
+    g.screen.fill(config.COLORS["purple"])
     g.load_buttons()
 
     # Allow the activation of debug mode from the command line
@@ -286,7 +286,7 @@ def init_window():
         "You have multiple modules installed. Pick one to play.",
         g.font,
         (config.TILESIZE * g.main.mapsizex / 2 + 10, config.TILESIZE * g.main.mapsizey / 2 + 15),
-        color=g.colors["white"],
+        color=config.COLORS["white"],
     )
 
     # box for listbox
