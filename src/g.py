@@ -238,10 +238,7 @@ def read_settings() -> None:
             # Skip comments and empty lines
             if line.startswith("#") or line == "":
                 continue
-
-            print(line)
             line_key = line.split("=")[0]
-            print(line_key)
             line_value = line.split("=")[1]
             if line_key == "difficulty":
                 difficulty = int(line_value)

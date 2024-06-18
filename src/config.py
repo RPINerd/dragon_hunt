@@ -4,6 +4,10 @@
 # Previously array_mods
 MODULES = ["DarkAges", "DragonHunt"]
 
+# Screen resolution
+SCREEN_WIDTH = 1024
+SCREEN_HEIGHT = 768
+
 # Tile size notes from original code:
 # size (in tiles) of the editor screen. 15 works well with 640x480,
 # 20 with 800x600, and 24 with 1024x768
