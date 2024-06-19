@@ -7,6 +7,7 @@ import game_screen as pygscreen
 import new_game
 
 
+#! Currently Unused
 def draw_text_with_border(screen, text, position, font, text_color, border_color, border_width):
     x, y = position
     # Render the border
@@ -18,6 +19,42 @@ def draw_text_with_border(screen, text, position, font, text_color, border_color
     # Render the original text on top
     text_surface = font.render(text, True, text_color)
     screen.blit(text_surface, position)
+
+
+def load(selected_mod: str = "DragonHunt") -> None:
+    """
+    Given a selected module, run it.
+    This is effectively the main launching point for the game,
+    starting up the core game window and loop.
+
+    :param selected_mod: The selected module to run.
+    """
+
+    pygame.font.init()
+    screen = pygscreen.get_screen()
+    pygame.display.set_caption("Loading")
+    pygame.display.set_icon(pygame.image.load("../data/icon.png"))
+
+    g.mod_directory = "../modules/" + selected_mod
+
+    pygame.draw.rect(
+        screen,
+        config.COLORS["black"],
+        (config.SCREEN_WIDTH / 4, config.SCREEN_HEIGHT / 3, config.SCREEN_WIDTH / 2, config.SCREEN_HEIGHT / 3),
+    )
+
+    font = pygame.font.Font(None, 26)
+    text = "Loading. Please wait..."
+    text_surface = font.render(text, True, config.COLORS["white"])
+    text_rect = text_surface.get_rect()
+    text_rect.center = (config.SCREEN_WIDTH / 2, config.SCREEN_HEIGHT / 2)
+    screen.blit(text_surface, text_rect)
+
+    pygame.display.flip()
+    print("g.init_data")
+    g.init_data()
+    print("new_game init_window")
+    new_game.init_window()
 
 
 def select() -> int:
@@ -55,7 +92,7 @@ def select() -> int:
         modules.append("")
 
     # Initialize pygame
-    pygame.init()
+    # pygame.init()
 
     # Limit the framerate to 30
     clock = pygame.time.Clock()
@@ -79,6 +116,15 @@ def select() -> int:
         # Draw the black accent rectangle
         rect_height = int(0.15 * yres)
         pygame.draw.rect(screen, config.COLORS["black"], (0, yres // 2 - rect_height // 2, xres, rect_height))
+
+        # White module selection text
+        text = "You have multiple modules installed, please pick one to play!"
+        mod_font = pygame.font.Font(None, 26)
+        text_surface = mod_font.render(text, True, config.COLORS["white"])
+        text_rect = text_surface.get_rect()
+        text_rect.right = xres - 30
+        text_rect.top = (yres // 2) - (text_rect.height // 2)
+        screen.blit(text_surface, text_rect)
 
         # Create the white background box for the module list
         list_box_height = (25 * 5) + (2 * arrow_height) + quit_height + 10
@@ -155,6 +201,6 @@ def select() -> int:
                         selected_index = i
 
     # Quit the game
-    pygame.quit()
+    # pygame.quit()
 
     return selected_index

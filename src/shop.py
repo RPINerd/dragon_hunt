@@ -48,23 +48,6 @@ leave_height = 0
 buy_height = 0
 sell_height = 0
 
-# array containing the item[] index of all inventory items.
-# Used to determine which item to sell/drop
-# global listbox_inv_array
-# listbox_inv_array = []
-
-# variables for the middle info display
-# item_name  = StringVar()
-# item_cost  = StringVar()
-# item_value = StringVar()
-# item_power = StringVar()
-# item_desc  = StringVar()
-# curr_gold  = StringVar()
-# curr_skill = StringVar()
-
-# global store_name
-# store_name = StringVar()
-
 temp_canvas_width = 0
 temp_canvas_height = 0
 canvas_x_start = 0

@@ -1,4 +1,5 @@
 """
+This file contains the configuration settings for the game
 """
 
 # Previously array_mods
