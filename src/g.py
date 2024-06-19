@@ -12,6 +12,7 @@ import pygame
 
 import action
 import config
+import game_screen as pygscreen
 import item
 import main
 import monster
@@ -87,6 +88,8 @@ unclean_screen = False
 
 global clock
 clock = pygame.time.Clock()
+
+pygame.font.init()
 
 
 # save the game in saves/input.
@@ -190,27 +193,49 @@ def loadgame(save_file):
 
 
 # this calls scripting.py to read the datafiles.
-def init_data():
+def init_data() -> None:
     """
     Initialize all the data files for the game, originally had a lot of loading screens but
     is now way too fast to even percieve
+
+    :param screen: The screen to display the loading screen on
+    :param screen_size: The size of the screen, as a tuple of ints
+
+    :return: None
     """
 
-    screen.fill(config.COLORS["light_gray"], (screen_size[0] / 2 - 150, screen_size[1] / 2 - 20, 300, 40))
-    print_string(screen, "Loading ...", font, (screen_size[0] / 2, screen_size[1] / 2), align=1)
-    pygame.display.flip()
+    # TODO refactor so that everyone just uses pygscreen.get_screen() instead of g.screen
+    global screen
+    screen = pygscreen.get_screen()
 
+    # TODO refactor this to just use config.screensizes across everything
+    global screen_size
+    screen_size = screen.get_size()
+
+    # TODO "read maps" has a nifty bar that I should emulate throughout the other loads
+    print("Read settings")
     read_settings()
+    print("Load backgrounds")
     load_backgrounds()
+    print("Read scripts")
     read_scripts()
+    print("Read items")
     item.read_items()
+    print("Read skills")
     read_skills()
+    print("Read monsters")
     monster.read_monster()
+    print("Read variables")
     read_variables()
+    print("Read shops")
     read_shops()
+    print("Read perturn")
     read_perturn()
+    print("Load buttons")
     load_buttons()
+    print("Load icons")
     load_icons()
+    print("Load sounds")
     load_sounds()
 
 
@@ -703,7 +728,7 @@ def read_images(dir_name: str) -> dict:
         print("Error: SDL_image required. Exiting.")
         sys.exit()
     image_dictionary = {"blank": pygame.Surface((32, 32))}
-    image_dictionary = inner_read_images("../modules/default/" + dir_name, image_dictionary)
+    image_dictionary = inner_read_images("../data/buttons", image_dictionary)
     image_dictionary = inner_read_images(g.mod_directory + dir_name, image_dictionary)
 
     return image_dictionary

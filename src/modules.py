@@ -2,6 +2,9 @@ import pygame
 from pygame.locals import K_DOWN, K_RETURN, K_UP, KEYDOWN, MOUSEBUTTONDOWN, QUIT
 
 import config
+import g
+import game_screen as pygscreen
+import new_game
 
 
 def draw_text_with_border(screen, text, position, font, text_color, border_color, border_width):
@@ -59,7 +62,7 @@ def select() -> int:
     clock.tick(30)
 
     # Set up the display
-    screen = pygame.display.set_mode((xres, yres))
+    screen = pygscreen.get_screen()
     pygame.display.set_caption("Select Module")
     pygame.display.set_icon(pygame.image.load("../data/icon.png"))
 
