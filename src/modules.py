@@ -91,9 +91,6 @@ def select() -> int:
     while len(modules) < 5:
         modules.append("")
 
-    # Initialize pygame
-    # pygame.init()
-
     # Limit the framerate to 30
     clock = pygame.time.Clock()
     clock.tick(30)
@@ -199,8 +196,5 @@ def select() -> int:
                         < yres // 2 - list_box_height // 2 + (arrow_height * 2) + 10 + i * 30 + 25
                     ):
                         selected_index = i
-
-    # Quit the game
-    # pygame.quit()
 
     return selected_index

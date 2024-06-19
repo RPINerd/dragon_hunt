@@ -611,6 +611,7 @@ def load_backgrounds():
         backgrounds[image_name] = image
 
 
+# TODO we have a button class now, move this there
 buttons = {}
 
 
