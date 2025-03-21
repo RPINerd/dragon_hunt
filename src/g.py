@@ -1,20 +1,17 @@
-"""
-This was originally a 'globals' file, but is currently in the process of being refactored largely into a new config file
-"""
+"""This was originally a 'globals' file, but is currently in the process of being refactored largely into a new config file"""
 
 # needed for save/load game
 import pickle
 import sys
 from os import mkdir, path, remove, walk
+from pathlib import Path
 from random import random
 
 import pygame
 
-import action
 import config
 import game_screen as pygscreen
 import item
-import main
 import monster
 
 # player info
@@ -48,16 +45,8 @@ timestep = 0
 # dictionary of script variables.
 var_list = {}
 
-# current monster hp. Used to allow activation
-# of bombs from inv. UNUSED
-cur_mon_hp = 0
-
 # Current window in use (main, battle, inventory, shop)
 cur_window = "main"
-
-# Should the player be allowed to move? Used with the move scripting command,
-# to prevent moving again after moving.
-allow_move = 1
 
 # Should the automatic changing of the hero picture be allowed?
 # Used with the manual hero() command, to prevent the change from being undone.
@@ -101,7 +90,7 @@ def savegame(save_file):
             remove(g.mod_directory + "/saves")
         mkdir(g.mod_directory + "/saves")
     save_loc = g.mod_directory + "/saves/" + save_file
-    savefile = open(save_loc, "w")
+    savefile = Path.open(save_loc, "w")
     pickle.dump(player.name, savefile)
     pickle.dump(player.hp, savefile)
     pickle.dump(player.ep, savefile)
@@ -148,7 +137,7 @@ def savegame(save_file):
 
 def loadgame(save_file):
     save_loc = g.mod_directory + "/saves/" + save_file
-    savefile = open(save_loc, "r")
+    savefile = Path.open(save_loc, "r")
     player.name = pickle.load(savefile)
     player.hp = pickle.load(savefile)
     player.ep = pickle.load(savefile)
@@ -203,7 +192,6 @@ def init_data() -> None:
 
     :return: None
     """
-
     # TODO refactor so that everyone just uses pygscreen.get_screen() instead of g.screen
     global screen
     screen = pygscreen.get_screen()
@@ -247,14 +235,13 @@ def read_settings() -> None:
     """
     Read the settings file and set the global variables accordingly
     """
-
     global bindings
     global difficulty
     global editor_xy
     global fullscreen
     editor_xy = (1024, 768)
 
-    with open("../settings.txt", "r") as settings_file:
+    with Path.open("../settings.txt") as settings_file:
         for line in settings_file:
 
             # Strip whitespace
@@ -283,7 +270,6 @@ def read_variables() -> None:
     """
     Read the variables file for the selected module and set the global variables accordingly
     """
-
     # Verify that the variables file exists.
     if not path.exists(mod_directory + "/data/variables.txt"):
         print(f"Error: No variables file found in {mod_directory}/data/.. Exiting.")
@@ -294,7 +280,7 @@ def read_variables() -> None:
         new_game_dice.append([])
 
     # Open the module variables file and parse it
-    with open(mod_directory + "/data/variables.txt", "r") as file:
+    with Path.open(mod_directory + "/data/variables.txt") as file:
         for line in file:
             line = line.strip()
 
@@ -399,7 +385,6 @@ def findskill(name: str) -> int:
     :param name: The name of the skill to find
     :return: The index of the skill in the player's skill list
     """
-
     for i in range(len(player.skill)):
         if name.lower() == player.skill[i][0].lower():
             return i
@@ -410,9 +395,8 @@ def findskill(name: str) -> int:
 def add_skill(skill_loc):
     if player.skill[skill_loc][5] == 1:
         return 0
-    else:
-        player.skill[skill_loc][5] = 1
-        return 1
+    player.skill[skill_loc][5] = 1
+    return 1
 
 
 # Load the skills. Requires g.mod_directory to be set
@@ -470,23 +454,22 @@ def read_skills():
                 temp_skill_description = ""
                 temp_skill_scripting = []
                 temp_skill_picture = "items/rage.png"
+        elif data_or_scripting == 0:
+            command = line_strip.split("=", 1)[0].lower().strip()
+            value = line_strip.split("=", 1)[1].strip()
+            if command == "level":
+                temp_skill_level = value
+            elif command == "price":
+                temp_skill_price = value
+            elif command == "type":
+                temp_skill_type = value
+            elif command == "description":
+                temp_skill_description = value
+            elif command == "picture":
+                temp_skill_picture = value
         else:
-            if data_or_scripting == 0:
-                command = line_strip.split("=", 1)[0].lower().strip()
-                value = line_strip.split("=", 1)[1].strip()
-                if command == "level":
-                    temp_skill_level = value
-                elif command == "price":
-                    temp_skill_price = value
-                elif command == "type":
-                    temp_skill_type = value
-                elif command == "description":
-                    temp_skill_description = value
-                elif command == "picture":
-                    temp_skill_picture = value
-            else:
-                temp_skill_scripting.append(line_strip)
-    if temp_skill_name != "":
+            temp_skill_scripting.append(line_strip)
+    if not temp_skill_name:
         addskill(
             temp_skill_name,
             temp_skill_type,
@@ -505,15 +488,13 @@ def read_skills():
 # Modify is the bonus given to each die. Use die_roll(2, 6) + 4 for bonuses on
 # the entire roll, die_roll(2, 6, 1) for bonuses on each roll. Default = 0
 def die_roll(dice, sides, modfy=0):
-    if sides < 1:
-        sides = 1
-    if dice < 1:
-        dice = 1
+    sides = max(sides, 1)
+    dice = max(dice, 1)
 
     sum = 0
     for x in range(dice):
-        die = int(((random() * sides) + 1 + modfy))
-        sum = sum + die
+        die = int((random() * sides) + 1 + modfy)
+        sum += die
 
     return sum
 
@@ -553,22 +534,14 @@ def iswalkable(x, y, dx, dy):
             return 0
         # can't move onto tile if there's a wall in the way
         if maps[zgrid].field[y][x].walk == 1:
-            if maps[zgrid].field[y][x].wall_s == 1 and move_direction == "n":
+            if (maps[zgrid].field[y][x].wall_s == 1 and move_direction == "n") or (maps[zgrid].field[y][x].wall_n == 1 and move_direction == "s"):
                 return 0
-            elif maps[zgrid].field[y][x].wall_n == 1 and move_direction == "s":
-                return 0
-            elif maps[zgrid].field[y][x].wall_e == 1 and move_direction == "w":
-                return 0
-            elif maps[zgrid].field[y][x].wall_w == 1 and move_direction == "e":
+            if (maps[zgrid].field[y][x].wall_e == 1 and move_direction == "w") or (maps[zgrid].field[y][x].wall_w == 1 and move_direction == "e"):
                 return 0
         # can't move out of old tile if there's a wall in the way
-        if maps[zgrid].field[y - dy][x - dx].wall_s == 1 and move_direction == "s":
+        if (maps[zgrid].field[y - dy][x - dx].wall_s == 1 and move_direction == "s") or (maps[zgrid].field[y - dy][x - dx].wall_n == 1 and move_direction == "n"):
             return 0
-        elif maps[zgrid].field[y - dy][x - dx].wall_n == 1 and move_direction == "n":
-            return 0
-        elif maps[zgrid].field[y - dy][x - dx].wall_e == 1 and move_direction == "e":
-            return 0
-        elif maps[zgrid].field[y - dy][x - dx].wall_w == 1 and move_direction == "w":
+        if (maps[zgrid].field[y - dy][x - dx].wall_e == 1 and move_direction == "e") or (maps[zgrid].field[y - dy][x - dx].wall_w == 1 and move_direction == "w"):
             return 0
 
     except IndexError:
@@ -582,9 +555,8 @@ def mapname2zgrid(name):
     for i in range(len(maps)):
         if maps[i].name == name:
             return i
-    else:
-        print("file " + name + " not found")
-        return -1
+    print("file " + name + " not found")
+    return -1
 
 
 tiles = {}
@@ -640,7 +612,7 @@ def load_icons():
 # be used for the map editor, to keep it from shredding formatting.
 def read_script_file(file_name, from_editor=0):
     temp_array = []
-    file = open(g.mod_directory + file_name, "r")
+    file = Path.open(g.mod_directory + file_name)
     temp_array.extend(file.readlines())
     file.close()
     if from_editor == 0:
@@ -724,7 +696,6 @@ def read_images(dir_name: str) -> dict:
     :param dir_name: The directory to read images from
     :return: A dictionary of all images in the directory
     """
-
     if pygame.image.get_extended() == 0:
         print("Error: SDL_image required. Exiting.")
         sys.exit()
@@ -766,7 +737,6 @@ def create_norm_box(xy: list, size: list, outline_color: str = "black", inner_co
 
     :return: None
     """
-
     screen.fill(config.COLORS[outline_color], (xy[0], xy[1], size[0], size[1]))
     screen.fill(config.COLORS[inner_color], (xy[0] + 1, xy[1] + 1, size[0] - 2, size[1] - 2))
 

@@ -92,8 +92,7 @@ monster_start = (0, 0)
 def y_start(mon_num):
     if len(monster.monster_groups[mon_index].y_pos) > mon_num:
         return monster_start[1] + monster.monster_groups[mon_index].y_pos[mon_num]
-    else:
-        return monster_start[1] + 10
+    return monster_start[1] + 10
 
 
 # refreshes the battle view. Call after changing anything.
@@ -137,8 +136,7 @@ def refresh():
         )
         # Over (green) part of the monster hp display
         temp_width = base_mon_hp_width[i] * int(monster_list[i].hp) / int(monster_list[i].maxhp)
-        if temp_width < 0:
-            temp_width = 0
+        temp_width = max(temp_width, 0)
         g.create_norm_box((base_mon_hp_start[i], base_mon_hp_y_start[i]), (temp_width, 5), inner_color="hp_green")
 
         g.print_string(
@@ -165,8 +163,7 @@ def refresh():
 
     # Over (green) part of the player hp display
     temp_width = base_mon_hp_width[0] * int(player.hp) / int(player.adj_maxhp)
-    if temp_width < 0:
-        temp_width = 0
+    temp_width = max(temp_width, 0)
     g.create_norm_box(
         (
             monster_start[0] + (background_pic.get_width() - base_mon_hp_width[0]) / 2,
@@ -199,8 +196,7 @@ def refresh():
     )
     # Over (green) part of the player ep display
     temp_width = base_mon_hp_width[0] * int(player.ep) / int(player.adj_maxep)
-    if temp_width < 0:
-        temp_width = 0
+    temp_width = max(temp_width, 0)
     g.create_norm_box(
         (
             monster_start[0] + (background_pic.get_width() - base_mon_hp_width[0]) / 2,
@@ -331,9 +327,9 @@ def select_monster():
         g.clock.tick(30)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                g.allow_move = 1
+                config.ALLOW_MOVE = True
                 return -1
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if event.key == g.bindings["up"] or event.key == g.bindings["left"]:
                     choose_monster_prev()
                     refresh()
@@ -359,12 +355,11 @@ def select_monster():
     # cleanup
     if return_from_dialog == 2:
         return -1
-    else:
-        bind_keys()
+    bind_keys()
 
-        action.has_dialog = 0
-        refresh()
-        return active_button
+    action.has_dialog = 0
+    refresh()
+    return active_button
 
 
 # Cycle through the various monsters when attacking. Used by the keyboard.
@@ -444,8 +439,7 @@ def monster_mouse_move(xy):
 # attack the i'th monster in monster_list[], with an attack of power attack_power.
 def attack_monster(i, attack_power):
     if i == -1:
-        return
-    global cur_mon_hp
+        return None
     # find the damage done
     global num_dice
     damage = g.die_roll(num_dice, attack_power + 2)
@@ -569,21 +563,20 @@ def runaway(force_success=False):
     if can_leave() == 1:
         g.break_one_loop += 1
     # Attempt to run. Testers get better chance.
+    elif (
+        (g.die_roll(1, 10 + run_attempts) > 7)
+        or (player.name == "testing123" and g.die_roll(1, 10) > 5)
+        or (force_success)
+    ):
+        main.print_message("You coward! You ran away from the " + monster.monster_groups[mon_index].name + ".")
+        did_run = 1
+        g.break_one_loop += 1
     else:
-        if (
-            (g.die_roll(1, 10 + run_attempts) > 7)
-            or ((player.name == "testing123" and g.die_roll(1, 10) > 5))
-            or (force_success)
-        ):
-            main.print_message("You coward! You ran away from the " + monster.monster_groups[mon_index].name + ".")
-            did_run = 1
-            g.break_one_loop += 1
-        else:
-            run_attempts += 1
-            main.print_message("You fail to run away.")
-            attack_player()
-            refresh()
-            return 0
+        run_attempts += 1
+        main.print_message("You fail to run away.")
+        attack_player()
+        refresh()
+        return 0
 
 
 # The use item button was pressed in the battle window. Open the
@@ -697,9 +690,7 @@ def refresh_skill_display(screen_str):
 
     # draw the help text
     g.create_norm_box((inv.tmp_menu_x_base, inv.tmp_menu_y_base + inv.tmp_menu_height), (inv.tmp_menu_width, 17))
-    if len(player.skill) <= tmp_item:
-        helptext = ""
-    elif tmp_item == -1 or player.skill[tmp_item][5] == 0 or player.skill[tmp_item][1] == 5:
+    if len(player.skill) <= tmp_item or tmp_item == -1 or player.skill[tmp_item][5] == 0 or player.skill[tmp_item][1] == 5:
         helptext = ""
     else:
         helptext = player.skill[tmp_item][0] + " (" + str(player.skill[tmp_item][2]) + " EP)"
@@ -953,7 +944,7 @@ def refresh_buttons():
 def key_handler(key_name):
     if key_name == g.bindings["cancel"]:
         return runaway()
-    elif key_name == g.bindings["right"] or key_name == g.bindings["down"]:
+    if key_name == g.bindings["right"] or key_name == g.bindings["down"]:
         config.mut["CURR_BUTTON"] += 1
         if config.mut["CURR_BUTTON"] >= 5:
             config.mut["CURR_BUTTON"] = 0

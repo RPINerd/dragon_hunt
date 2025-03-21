@@ -11,7 +11,6 @@ import battle
 import config
 import g
 import inv
-import new_game
 import shop
 from player import player
 
@@ -112,11 +111,11 @@ def dead_yet():
 # back to main menu. Called on death.
 def close_window(event=0):
     if action.has_dialog == 1:
-        return
+        return None
     if player.hp < 1:
         cleanup()
         return 1
-    elif show_yesno("Leave this game?", 0):
+    if show_yesno("Leave this game?", False):
         return 1
     refreshmap()
     return 0
@@ -432,10 +431,8 @@ def findtile(x, y, input_zgrid):
     testing = 0
     returnpix = []
     # If dealing with an off-map area, grab the nearest known tile.
-    if x < 0:
-        x = 0
-    if y < 0:
-        y = 0
+    x = max(x, 0)
+    y = max(y, 0)
     if y >= len(g.maps[input_zgrid].field):
         y = len(g.maps[input_zgrid].field) - 1
     if x >= len(g.maps[input_zgrid].field[y]):
@@ -516,7 +513,7 @@ def move_hero(x, y):
     tempx = g.xgrid + x
 
     if g.iswalkable(tempx, tempy, x, y):
-        if g.allow_move == 1:
+        if config.ALLOW_MOVE:
             g.xgrid = g.xgrid + x
             g.ygrid = g.ygrid + y
             passturn()
@@ -541,7 +538,7 @@ def move_hero(x, y):
             # Moves the canvas over a bit
             redisplay_map(x, y)
             # Refreshes the new part.
-            g.allow_move = 1
+            config.ALLOW_MOVE = True
             refresh_inv_icon()
             refresh_bars()
             refresh_message_box()
@@ -610,7 +607,7 @@ def move_hero(x, y):
         g.allow_change_hero = 1
         refreshhero()
         g.unclean_screen = True
-    g.allow_move = 1
+    config.ALLOW_MOVE = True
     g.allow_change_hero = 1
 
 
@@ -673,12 +670,12 @@ def start_battle(mon_index):
 
 # Call to display a dialog box. Used to work with action.py.
 # Note this only works if window_main is visible.
-def show_dialog(line=None, txt_width=-1, allow_move=1):
+def show_dialog(line=None, txt_width=-1, allow_move=True):
     return show_popup(line, ["begin.png"], allow_move, txt_width)
 
 
 # given a string, display that string, along with yes and no buttons.
-def show_yesno(line="", allow_move=1):
+def show_yesno(line="", allow_move=True):
     return show_popup(line, ["no.png", "yes.png"], allow_move)
 
 
@@ -686,7 +683,7 @@ def show_yesno(line="", allow_move=1):
 # displayed in the textbox. Max_len is the maximum length of the text.
 # Note that we always use the standard Arrows/Return arrangement, instead of the
 # normal customizable keys, to prevent problems.
-def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allow_move=1, input_width=-1):
+def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allow_move=True, input_width=-1):
     # Move the array of button names to a global array. We'll need it later.
     global button_array2
     button_array2 = ["no.png", "yes.png"]
@@ -698,7 +695,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
 
     cursor_loc = len(textbox_text)
     action.has_dialog = 1
-    g.allow_move = allow_move
+    config.ALLOW_MOVE = allow_move
     global active_button
     active_button = 1
 
@@ -724,8 +721,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     num_of_lines = g.print_multiline(temp_surface, line, g.font, text_width - 10, (5, 0), "black")
 
     line_height = num_of_lines * 13 + 40
-    if line_height < 40:
-        line_height = 40
+    line_height = max(line_height, 40)
 
     tmp_height = g.buttons[button_array2[0]].get_height()
 
@@ -761,18 +757,16 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
             break
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                g.allow_move = 1
+                config.ALLOW_MOVE = True
                 return -1
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     cursor_loc -= 1
-                    if cursor_loc < 0:
-                        cursor_loc = 0
+                    cursor_loc = max(cursor_loc, 0)
                     g.unclean_screen = True
                 elif event.key == pygame.K_RIGHT:
                     cursor_loc += 1
-                    if cursor_loc > len(textbox_text):
-                        cursor_loc = len(textbox_text)
+                    cursor_loc = min(cursor_loc, len(textbox_text))
                     g.unclean_screen = True
                 elif event.key == pygame.K_UP or event.key == pygame.K_DOWN:
                     if active_button == 0:
@@ -790,24 +784,23 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
                     if cursor_loc > 0:
                         textbox_text = textbox_text[: cursor_loc - 1] + textbox_text[cursor_loc:]
                         cursor_loc -= 1
-                        if cursor_loc < 0:
-                            cursor_loc = 0
+                        cursor_loc = max(cursor_loc, 0)
                         g.unclean_screen = True
                 elif event.key == pygame.K_DELETE:
                     if cursor_loc < len(textbox_text):
                         textbox_text = textbox_text[:cursor_loc] + textbox_text[cursor_loc + 1 :]
                         g.unclean_screen = True
                 elif event.key == pygame.K_RETURN:
-                    g.allow_move = 1
+                    config.ALLOW_MOVE = True
                     g.screen.blit(restore_surface, ((g.screen_size[0] - text_width) / 2, 0))
                     if active_button == 1:
                         g.unclean_screen = True
                         return textbox_text
-                    elif active_button == 0:
+                    if active_button == 0:
                         g.unclean_screen = True
                         return -1
                 elif event.key == pygame.K_ESCAPE:
-                    g.allow_move = 1
+                    config.ALLOW_MOVE = True
                     g.screen.blit(restore_surface, ((g.screen_size[0] - text_width) / 2, 0))
                     return -1
                 else:
@@ -835,12 +828,12 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
                     break
                 change_button(event.pos)
                 if active_button != -1:
-                    g.allow_move = 1
+                    config.ALLOW_MOVE = True
                     g.screen.blit(restore_surface, ((g.screen_size[0] - text_width) / 2, 0))
                     if active_button == 1:
                         g.unclean_screen = True
                         return textbox_text
-                    elif active_button == 0:
+                    if active_button == 0:
                         g.unclean_screen = True
                         return -1
 
@@ -873,14 +866,14 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
 
 # given a string and an array of buttons,
 # display that string, along with the given buttons.
-def show_popup(line="", button_array=[], allow_move=1, input_width=-1):
+def show_popup(line="", button_array=[], allow_move=True, input_width=-1):
     # Move the array of button names to a global array. We'll need it later.
     global button_array2
     button_array2 = button_array
     line = action.interpret_line(line)
 
     action.has_dialog = 1
-    g.allow_move = allow_move
+    config.ALLOW_MOVE = allow_move
     global active_button
     active_button = 0
 
@@ -906,8 +899,7 @@ def show_popup(line="", button_array=[], allow_move=1, input_width=-1):
     num_of_lines = g.print_multiline(temp_surface, line, g.font, text_width - 10, (5, 0), "black")
 
     line_height = num_of_lines * 13 + 10
-    if line_height < 40:
-        line_height = 40
+    line_height = max(line_height, 40)
 
     tmp_height = g.buttons[button_array2[0]].get_height()
 
@@ -945,15 +937,15 @@ def show_popup(line="", button_array=[], allow_move=1, input_width=-1):
             break
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                g.allow_move = 1
+                config.ALLOW_MOVE = True
                 return -1
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if event.key == g.bindings["up"] or event.key == g.bindings["left"]:
                     decrease_button()
                 elif event.key == g.bindings["down"] or event.key == g.bindings["right"]:
                     increase_button()
                 elif event.key == g.bindings["action"]:
-                    g.allow_move = 1
+                    config.ALLOW_MOVE = True
                     g.screen.blit(restore_surface, ((g.screen_size[0] - surface_width) / 2, 0))
                     return active_button
             elif event.type == pygame.MOUSEMOTION:
@@ -969,7 +961,7 @@ def show_popup(line="", button_array=[], allow_move=1, input_width=-1):
                     break
                 change_button(event.pos)
                 if active_button != -1:
-                    g.allow_move = 1
+                    config.ALLOW_MOVE = True
                     g.screen.blit(restore_surface, ((g.screen_size[0] - surface_width) / 2, 0))
                     return active_button
         if g.unclean_screen:
@@ -1108,7 +1100,7 @@ def init_window_main(is_new_game=0):
         action.activate_lines(g.xgrid, g.ygrid, g.zgrid, g.newgame_act)
     else:
         g.allow_change_hero = 1  # needed else first move after load looks wrong
-    g.allow_move = 1
+    config.ALLOW_MOVE = True
 
     repeat_key = 0
     global key_down
@@ -1122,7 +1114,7 @@ def init_window_main(is_new_game=0):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if key_handler_down(event.key) == 1:
                     return
                 repeat_key = 140
@@ -1243,7 +1235,7 @@ def mouse_handler(xy):
         tmpline = ""
         for line in message_array:
             tmpline += line + "\n"
-        show_dialog(tmpline, 650, 0)
+        show_dialog(tmpline, 650, False)
         return 0
 
     # set variables, based on the shape of the main window. (tall or wide)
@@ -1263,11 +1255,10 @@ def mouse_handler(xy):
             move_hero(0, 1)
         else:
             move_hero(-1, 0)
-    else:  # north or east
-        if xy[0] + xy[1] > mapstartx + mapstarty + mapsz:
-            move_hero(1, 0)
-        else:
-            move_hero(0, -1)
+    elif xy[0] + xy[1] > mapstartx + mapstarty + mapsz:  # north or east
+        move_hero(1, 0)
+    else:
+        move_hero(0, -1)
 
 
 # called whenever the mouse moves

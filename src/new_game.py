@@ -162,22 +162,19 @@ def backspace_name():
         return
     name_stat = name_stat[: curr_name_loc - 1] + name_stat[curr_name_loc:]
     curr_name_loc -= 1
-    if curr_name_loc < 0:
-        curr_name_loc = 0
+    curr_name_loc = max(curr_name_loc, 0)
 
 
 def name_left():
     global curr_name_loc
     curr_name_loc -= 1
-    if curr_name_loc < 0:
-        curr_name_loc = 0
+    curr_name_loc = max(curr_name_loc, 0)
 
 
 def name_right():
     global curr_name_loc
     curr_name_loc += 1
-    if curr_name_loc > len(name_stat):
-        curr_name_loc = len(name_stat)
+    curr_name_loc = min(curr_name_loc, len(name_stat))
 
 
 def name_home():
@@ -211,7 +208,6 @@ def reset_vars():
     g.zgrid = 0
 
     timestep = 0
-    cur_mon_hp = 0
     g.var_list = {}
     g.item.dropped_items = []
 
@@ -373,10 +369,9 @@ def key_handler(key_name):
         if config.mut["CURR_BUTTON"] > 4:
             back_from_new_game()
             return 0
-        else:
-            g.break_one_loop = 100
-            return 1
-    elif key_name == g.bindings["up"] or key_name == g.bindings["left"]:
+        g.break_one_loop = 100
+        return 1
+    if key_name == g.bindings["up"] or key_name == g.bindings["left"]:
         if config.mut["CURR_BUTTON"] == 0:
             config.mut["CURR_BUTTON"] = 4
         if config.mut["CURR_BUTTON"] == 5:
@@ -420,31 +415,28 @@ def mouse_handler_move(xy):
             or xy[0] < inner_new_game_width
         ):
             config.mut["CURR_BUTTON"] = 9
+        elif xy[0] < inner_rename_width:
+            config.mut["CURR_BUTTON"] = 5
+        elif xy[0] < inner_reroll_width:
+            config.mut["CURR_BUTTON"] = 6
+        elif xy[0] < inner_quit_width:
+            config.mut["CURR_BUTTON"] = 7
+        elif xy[0] < inner_final_width:
+            config.mut["CURR_BUTTON"] = 8
         else:
-            if xy[0] < inner_rename_width:
-                config.mut["CURR_BUTTON"] = 5
-            elif xy[0] < inner_reroll_width:
-                config.mut["CURR_BUTTON"] = 6
-            elif xy[0] < inner_quit_width:
-                config.mut["CURR_BUTTON"] = 7
-            elif xy[0] < inner_final_width:
-                config.mut["CURR_BUTTON"] = 8
-            else:
-                config.mut["CURR_BUTTON"] = 9
+            config.mut["CURR_BUTTON"] = 9
+    elif xy[1] < button_start or xy[1] > button_height + button_start or xy[0] < new_game_width:
+        config.mut["CURR_BUTTON"] = 4
+    elif xy[0] < load_width:
+        config.mut["CURR_BUTTON"] = 0
+    elif xy[0] < options_width:
+        config.mut["CURR_BUTTON"] = 1
+    elif xy[0] < quit_width:
+        config.mut["CURR_BUTTON"] = 2
+    elif xy[0] < final_width:
+        config.mut["CURR_BUTTON"] = 3
     else:
-        if xy[1] < button_start or xy[1] > button_height + button_start or xy[0] < new_game_width:
-            config.mut["CURR_BUTTON"] = 4
-        else:
-            if xy[0] < load_width:
-                config.mut["CURR_BUTTON"] = 0
-            elif xy[0] < options_width:
-                config.mut["CURR_BUTTON"] = 1
-            elif xy[0] < quit_width:
-                config.mut["CURR_BUTTON"] = 2
-            elif xy[0] < final_width:
-                config.mut["CURR_BUTTON"] = 3
-            else:
-                config.mut["CURR_BUTTON"] = 4
+        config.mut["CURR_BUTTON"] = 4
     if prev_button != config.mut["CURR_BUTTON"]:
         refresh_buttons()
 
@@ -530,7 +522,7 @@ def init_window():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if key_handler(event.key) == 1:
                     return
             elif event.type == pygame.MOUSEMOTION:

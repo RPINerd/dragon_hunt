@@ -5,6 +5,7 @@
 """
 
 import battle
+import config
 import g
 import main
 import monster
@@ -27,7 +28,6 @@ def interpret_line(message: str) -> str:
     :param message: string to interpret
     :return: displayable string
     """
-
     # The ~Variable~ sequence enables variables to be inserted into info.
     num_of_tildes = message.count("~")
 
@@ -76,14 +76,13 @@ def activate_lines(x, y, z, commands: list) -> int:
     :param commands: array of commands
     :return: 1 if the scripting completed, or 0 if it ended somewhere.
     """
-
     i = 0
     # Go through all action lines.
     while i < len(commands):
         temp = run_command(x, y, z, commands[i])
         if temp == "end":
             return 0
-        elif temp == "if":
+        if temp == "if":
             else_loc, endif_loc = find_if_else_block(commands[i + 1 :], i + 1)
             if (else_loc == -1) or (endif_loc == -1):
                 print("surrounding code:")
@@ -149,8 +148,7 @@ def command_type(command) -> int:
         return 0
     if command[0] == '"':
         return 1
-    else:
-        return 2
+    return 2
 
 
 # Given a string/command that starts with "(", return the location of the
@@ -180,8 +178,7 @@ def match_parenth(command):
         elif s[i] == ")":
             if par_num == 0:
                 return i
-            else:
-                par_num -= 1
+            par_num -= 1
         i += 1
     print("match_parenth() cannot find the end of this parenthesis pair:")
     print(command)
@@ -216,7 +213,7 @@ def match_quotes(command):
         if is_code == 0:
             if s[i] == '"':
                 return i + 1
-            elif s[i] == "\\":
+            if s[i] == "\\":
                 is_code = 1
         else:
             is_code = 0
@@ -277,9 +274,7 @@ def run_command(x, y, z, command):
     command = command.strip()
 
     # if command is a number, just return the number.
-    if command.isdigit() == 1:
-        return_num = int(command)
-    elif command[:1] == "-" and command[1:].isdigit() == 1:
+    if command.isdigit() == 1 or (command[:1] == "-" and command[1:].isdigit() == 1):
         return_num = int(command)
 
     # if command is a string, just return the string.
@@ -471,7 +466,6 @@ def check_num_args(num_of_args: int, lower_num: int, upper_num: int, command_nam
     :param command_name: name of the command
     :return: 1 if the number of arguments is good, 0 otherwise
     """
-
     if num_of_args < lower_num or num_of_args > upper_num:
         print(
             f"{command_name} called with wrong number of arguments.\
@@ -493,7 +487,6 @@ def check_types_args(args: list, arg_types: list, command_name: str, quiet: int 
     :param quiet: quiet flag
     :return: 1 if the script arguments are of the right type, 0 otherwise
     """
-
     for i in range(len(arg_types)):
         if args[i] == "bad":
             return 0
@@ -538,8 +531,7 @@ def script_addskill(x, y, z, argument_array):  # add a skill
     if temp == -1:
         print("Unknown skill: " + argument_array[0][0][1:-1])
         return 0
-    else:
-        return g.add_skill(temp)
+    return g.add_skill(temp)
 
 
 def script_attack(x, y, z, argument_array):  # cause creature to attack
@@ -582,11 +574,11 @@ def script_damage_monster(x, y, z, argument_array):  # In battle, hurt monster f
     if len(argument_array) == 0:  # Basic damage_monster command.
         battle.monster_hurt(mon_num, player.adj_attack)
         return 1
-    else:  # Of the format damage_monster Command.
-        if check_types_args(argument_array, [0], "damage_monster") == 0:
-            return "bad"
-        battle.monster_hurt(mon_num, argument_array[0][0])
-        return 1
+    # Of the format damage_monster Command.
+    if check_types_args(argument_array, [0], "damage_monster") == 0:
+        return "bad"
+    battle.monster_hurt(mon_num, argument_array[0][0])
+    return 1
 
 
 def script_delpix(x, y, z, argument_array):  # remove a picture from the tile.
@@ -649,13 +641,13 @@ def script_equip(x, y, z, argument_array):  # adjust equipment
             if switch3 == g.item.item[player.equip[i]].name.lower():
                 return 1
         return 0
-    elif switch2 == "take":
+    if switch2 == "take":
         for i in range(len(player.equip)):
             if switch3 == g.item.item[player.equip[i]].name.lower():
                 player.equip[i] = -1
                 return 1
         return 0
-    elif switch2 == "give":
+    if switch2 == "give":
         item_loc = g.item.finditem(switch3)
         if item_loc == -1:
             print("unknown item " + switch3)
@@ -665,9 +657,8 @@ def script_equip(x, y, z, argument_array):  # adjust equipment
             return "bad"
         player.equip[g.item.item[item_loc].type] = item_loc
         return 1
-    else:
-        print("unknown switch for equip(): " + switch2)
-        return "bad"
+    print("unknown switch for equip(): " + switch2)
+    return "bad"
 
 
 def script_fade(x, y, z, argument_array):
@@ -706,13 +697,11 @@ def script_find(x, y, z, argument_array):
             main.print_message("You picked up " + str(amount) + " " + founditem + ".")
             has_dialog = 0
             return 1
-        else:
-            main.print_message("You have no room for the " + founditem + ".")
-            has_dialog = 0
-            return 0
-    else:
+        main.print_message("You have no room for the " + founditem + ".")
         has_dialog = 0
         return 0
+    has_dialog = 0
+    return 0
 
 
 def script_gamestat(x, y, z, argument_array):
@@ -723,22 +712,21 @@ def script_gamestat(x, y, z, argument_array):
 
     if switch2 == "loc":
         return '"' + g.cur_window + '"'
-    elif switch2 == "difficulty":
+    if switch2 == "difficulty":
         return int(g.difficulty)
-    elif switch2 == "gamename":
+    if switch2 == "gamename":
         return '"' + g.game_name + '"'
-    elif switch2 == "x":
+    if switch2 == "x":
         return int(g.xgrid)
-    elif switch2 == "y":
+    if switch2 == "y":
         return int(g.ygrid)
-    elif switch2 == "newx":
+    if switch2 == "newx":
         return int(x)
-    elif switch2 == "newy":
+    if switch2 == "newy":
         return int(y)
-    elif switch2 == "mapname":
+    if switch2 == "mapname":
         return '"' + g.maps[g.zgrid].name + '"'
-    else:
-        print("Unknown stat: " + switch2)
+    print("Unknown stat: " + switch2)
     return "bad"
 
 
@@ -771,10 +759,9 @@ def script_give(x, y, z, argument_array):  # Change stats. Note that negative nu
         main.refresh_inv_icon()
         return 1
 
-    else:
-        if check_types_args(argument_array, [1, 0], "give") == 0:
-            return "bad"
-        set_to = int(argument_array[1][0])
+    if check_types_args(argument_array, [1, 0], "give") == 0:
+        return "bad"
+    set_to = int(argument_array[1][0])
 
     if switch2 == "hp":
         player.give_stat("hp", set_to)
@@ -808,8 +795,7 @@ def script_give(x, y, z, argument_array):  # Change stats. Note that negative nu
     main.refresh_inv_icon()
     if set_to == 0:
         return 0
-    else:
-        return 1
+    return 1
 
 
 def script_hero(x, y, z, argument_array):  # change hero pix
@@ -845,12 +831,12 @@ def script_hurt_monster(x, y, z, argument_array):  # In battle, hurt monster for
     if len(argument_array) == 0:  # Basic hurt_monster command.
         battle.attack_monster(mon_num, player.adj_attack)
         return 1
-    else:  # Of the format hurt_monster Command.
-        if check_types_args(argument_array, [0], "hurt_monster") == 0:
-            return "bad"
+    # Of the format hurt_monster Command.
+    if check_types_args(argument_array, [0], "hurt_monster") == 0:
+        return "bad"
 
-        battle.attack_monster(mon_num, argument_array[0][0])
-        return 1
+    battle.attack_monster(mon_num, argument_array[0][0])
+    return 1
 
 
 def script_if(x, y, z, argument_array):
@@ -876,36 +862,30 @@ def script_if(x, y, z, argument_array):
     if compare == "<=":
         if line_return1 <= line_return2:
             return "if"
-        else:
-            return "else"
-    elif compare == ">=":
+        return "else"
+    if compare == ">=":
         if line_return1 >= line_return2:
             return "if"
-        else:
-            return "else"
-    elif compare == "=" or compare == "==":
+        return "else"
+    if compare == "=" or compare == "==":
         if line_return1 == line_return2:
             return "if"
-        else:
-            return "else"
-    elif compare == "!=":
+        return "else"
+    if compare == "!=":
         if line_return1 != line_return2:
             return "if"
-        else:
-            return "else"
-    elif compare == "<":
+        return "else"
+    if compare == "<":
         if line_return1 < line_return2:
             return "if"
-        else:
-            return "else"
-    elif compare == ">":
+        return "else"
+    if compare == ">":
         if line_return1 > line_return2:
             return "if"
-        else:
-            return "else"
-    else:  # of the form eg "if var something
-        print("if command was given an unknown comparison: " + compare)
-        return 0
+        return "else"
+    # of the form eg "if var something
+    print("if command was given an unknown comparison: " + compare)
+    return 0
 
 
 def script_info(x, y, z, argument_array):  # display line of text in textbox below main screen
@@ -936,21 +916,18 @@ def script_inv(x, y, z, argument_array):  # inventory functions.
     if switch2 == "has":
         if g.item.find_inv_item(temp) > -1:
             return 1
-        else:
-            return 0
-    elif switch2 == "take":
+        return 0
+    if switch2 == "take":
         temp = g.item.find_inv_item(temp)
         if temp > -1:
             g.item.drop_inv_item(temp)
             return 1
-        else:
-            return 0
-    elif switch2 == "give":
+        return 0
+    if switch2 == "give":
         if g.item.take_inv_item(temp) == -1:
             return 0
-        else:
-            return 1
-    elif switch2 == "use":
+        return 1
+    if switch2 == "use":
         tmptype = g.item.item[temp].type
         if tmptype != 11 and tmptype != 12 and tmptype != 14 and tmptype != 15 and tmptype != 16 and tmptype != 17:
             print("item " + g.item.item[temp].name + " cannot be used.")
@@ -1026,8 +1003,7 @@ def script_item(x, y, z, argument_array):  # give item
 
     if g.item.take_inv_item(g.item.finditem(argument_array[0][0][1:-1])) == -1:
         return 0
-    else:
-        return 1
+    return 1
 
 
 def script_lose(x, y, z, argument_array):
@@ -1071,20 +1047,17 @@ def script_mapspot(x, y, z, argument_array):
         if tmpygrid < len(g.maps[tmpzgrid].field):
             if tmpxgrid < len(g.maps[tmpzgrid].field[tmpygrid]):
                 return 1
-            else:
-                return 0
-        else:
             return 0
+        return 0
     if switch2 == "y_bound":
         return len(g.maps[tmpzgrid].field)
     if switch2 == "x_bound":
         return len(g.maps[tmpzgrid].field[0])
-    else:
-        print("unknown switch " + switch2 + " in mapspot.")
-        print("possible: walk, pix, num_of_dropped, num_of_addpix,")
-        print("num_of_addoverpix, wall_n, wall_s, wall_w, wall_e,")
-        print("within_bounds, y_bound, or x_bound.")
-        return "bad"
+    print("unknown switch " + switch2 + " in mapspot.")
+    print("possible: walk, pix, num_of_dropped, num_of_addpix,")
+    print("num_of_addoverpix, wall_n, wall_s, wall_w, wall_e,")
+    print("within_bounds, y_bound, or x_bound.")
+    return "bad"
 
 
 def script_mapstat(x, y, z, argument_array):
@@ -1097,7 +1070,7 @@ def script_mapstat(x, y, z, argument_array):
         switch3 = interpret_line(switch3)
         g.maps[z].monster.append(switch3)
         return 1
-    elif switch2 == "delmonster":
+    if switch2 == "delmonster":
         try:
             switch3 = interpret_line(switch3)
             g.maps[z].monster.remove(switch3)
@@ -1181,21 +1154,20 @@ def script_monster_stat(x, y, z, argument_array):
     switch3 = argument_array[1][0][1:-1].lower()
     if switch3 == "name":
         return battle.monster_list[mon_num].name
-    elif switch3 == "hp":
+    if switch3 == "hp":
         return battle.monster_list[mon_num].hp
-    elif switch3 == "maxhp":
+    if switch3 == "maxhp":
         return battle.monster_list[mon_num].maxhp
-    elif switch3 == "attack":
+    if switch3 == "attack":
         return battle.monster_list[mon_num].attack
-    elif switch3 == "defense":
+    if switch3 == "defense":
         return battle.monster_list[mon_num].defense
-    elif switch3 == "gold":
+    if switch3 == "gold":
         return battle.monster_list[mon_num].gold
-    elif switch3 == "exp":
+    if switch3 == "exp":
         return battle.monster_list[mon_num].exp
-    else:
-        print("Bad stat of " + switch3 + " used in monster_stat.")
-        return -1
+    print("Bad stat of " + switch3 + " used in monster_stat.")
+    return -1
 
 
 def script_monster_select(x, y, z, argument_array):  # In battle, ask the player to
@@ -1230,7 +1202,7 @@ def script_move(x, y, z, argument_array):  # move the player
     main.refreshmap()
     if curr_zgrid == g.zgrid:
         g.pygame.time.wait(90)
-    g.allow_move = 0
+    config.ALLOW_MOVE = False
     if debug == 1:
         print(clock() - tmp)
     return 1
@@ -1263,9 +1235,8 @@ def script_question(x, y, z, argument_array):  # yes/no dialog box
     if main.show_yesno(str(insert_newlines(argument_array[0][0][1:-1]))):
         has_dialog = 0
         return 1
-    else:
-        has_dialog = 0
-        return 0
+    has_dialog = 0
+    return 0
 
 
 def script_refresh(x, y, z, argument_array):  # refresh the screen manually.
@@ -1280,8 +1251,7 @@ def script_rng(x, y, z, argument_array):  # Random Number Generator
     temp = g.die_roll(1, int(argument_array[1][0]))
     if int(argument_array[0][0]) >= temp:
         return temp
-    else:
-        return 0
+    return 0
 
 
 def script_run(x, y, z, argument_array):  # Run the actions of a different tile.
@@ -1350,25 +1320,24 @@ def script_set(x, y, z, argument_array):  # set variable (in g.var_list)
     if operation_char == "+":
         g.var_list[command2] = g.var_list[command2] + set_to
         return 1
-    elif operation_char == "-":
+    if operation_char == "-":
         g.var_list[command2] = g.var_list[command2] - set_to
         return 1
-    elif operation_char == "*":
+    if operation_char == "*":
         g.var_list[command2] = g.var_list[command2] * set_to
         return 1
-    elif operation_char == "/":
+    if operation_char == "/":
         g.var_list[command2] = g.var_list[command2] / set_to
         return 1
-    elif operation_char == "%":
+    if operation_char == "%":
         g.var_list[command2] = g.var_list[command2] % set_to
         return 1
-    elif operation_char == "^":
+    if operation_char == "^":
         g.var_list[command2] = pow(g.var_list[command2], set_to)
         return 1
-    else:
-        print("set command called with unknown operator: " + operation_char)
-        print("possible operators: +, -, *, /, %, ^.")
-        return "bad"
+    print("set command called with unknown operator: " + operation_char)
+    print("possible operators: +, -, *, /, %, ^.")
+    return "bad"
 
 
 def script_skill(x, y, z, argument_array):  # skill functions
@@ -1383,31 +1352,27 @@ def script_skill(x, y, z, argument_array):  # skill functions
     if argument_array[0][0][1:-1].lower() == "has":
         if g.player.skill[temp][5] > 0:
             return 1
-        else:
-            return 0
-    elif argument_array[0][0][1:-1].lower() == "take":
+        return 0
+    if argument_array[0][0][1:-1].lower() == "take":
         if g.player.skill[temp][5] > 0:
             g.player.skill[temp][5] = 0
             return 1
-        else:
-            g.player.skill[temp][5] = 0
-            return 0
-    elif argument_array[0][0][1:-1].lower() == "give":
+        g.player.skill[temp][5] = 0
+        return 0
+    if argument_array[0][0][1:-1].lower() == "give":
         if g.player.skill[temp][5] > 0:
             g.player.skill[temp][5] = 1
             return 0
-        else:
-            g.player.skill[temp][5] = 1
-            return 1
-    elif argument_array[0][0][1:-1].lower() == "use":
+        g.player.skill[temp][5] = 1
+        return 1
+    if argument_array[0][0][1:-1].lower() == "use":
         if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
             print("Cannot use skills outside of battle.")
             return "bad"
         battle.useskill(temp, 1)
         return 1
-    else:
-        print("Unknown switch " + argument_array[0][0][1:-1] + "found.")
-        return "bad"
+    print("Unknown switch " + argument_array[0][0][1:-1] + "found.")
+    return "bad"
 
 
 def script_stat(x, y, z, argument_array):  # return stat
@@ -1417,37 +1382,36 @@ def script_stat(x, y, z, argument_array):  # return stat
     switch2 = argument_array[0][0][1:-1].lower()
     if switch2 == "name":
         return '"' + player.name + '"'
-    elif switch2 == "hp":
+    if switch2 == "hp":
         return player.hp
-    elif switch2 == "ep":
+    if switch2 == "ep":
         return player.ep
-    elif switch2 == "maxhp":
+    if switch2 == "maxhp":
         return player.maxhp
-    elif switch2 == "maxep":
+    if switch2 == "maxep":
         return player.maxep
-    elif switch2 == "attack":
+    if switch2 == "attack":
         return player.attack
-    elif switch2 == "defense":
+    if switch2 == "defense":
         return player.defense
-    elif switch2 == "adj_maxhp":
+    if switch2 == "adj_maxhp":
         return player.adj_maxhp
-    elif switch2 == "adj_maxep":
+    if switch2 == "adj_maxep":
         return player.adj_maxep
-    elif switch2 == "adj_attack":
+    if switch2 == "adj_attack":
         return player.adj_attack
-    elif switch2 == "adj_defense":
+    if switch2 == "adj_defense":
         return player.adj_defense
-    elif switch2 == "gold":
+    if switch2 == "gold":
         return player.gold
-    elif switch2 == "exp":
+    if switch2 == "exp":
         return player.exp
-    elif switch2 == "level":
+    if switch2 == "level":
         return player.level
-    elif switch2 == "skillpoints":
+    if switch2 == "skillpoints":
         return player.skillpoints
-    else:
-        print("Unknown stat: " + switch2)
-        return 0
+    print("Unknown stat: " + switch2)
+    return 0
 
 
 def script_store(x, y, z, argument_array):  # enter store
@@ -1470,9 +1434,8 @@ def script_take(x, y, z, argument_array):  # Drop item, by name.
     temp = g.item.find_inv_item(g.item.finditem(argument_array[0][0][1:-1]))
     if temp == -1:
         return 0
-    else:
-        g.item.drop_inv_item(temp)
-        return 1
+    g.item.drop_inv_item(temp)
+    return 1
 
 
 def script_var(x, y, z, argument_array):  # return variable (in g.var_list)
@@ -1485,8 +1448,7 @@ def script_var(x, y, z, argument_array):  # return variable (in g.var_list)
         try:
             if g.var_list[command2].isdigit():
                 return int(g.var_list[command2])
-            else:
-                return '"' + g.var_list[command2] + '"'
+            return '"' + g.var_list[command2] + '"'
         except AttributeError:
             # This gets called when the var is an actual number. (and thus
             # has no isdigit() attribute)

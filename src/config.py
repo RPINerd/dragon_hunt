@@ -36,4 +36,5 @@ COLORS = {
 }
 
 # Mutable global variables
+ALLOW_MOVE = True  # Used with the move scripting command to prevent moving multiple times
 mut = {"MODULE_POS": 0, "CURR_BUTTON": 0, "GAME_NAME": ""}
