@@ -2,9 +2,16 @@
 .venv/
 __pycache__/
 *.pyc
+.python-version
+*.egg-info/
 
 # VS Code Files
 .vscode/
+
+# Temporary Files
+*.lock
+*.log
+*.tmp
 
 # Repo Specific Files
 temp_editor_script.txt

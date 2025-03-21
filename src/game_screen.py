@@ -9,9 +9,11 @@ import config
 # Screen dimensions
 SCREEN_WIDTH = config.SCREEN_WIDTH
 SCREEN_HEIGHT = config.SCREEN_HEIGHT
+# FLAGS = pygame.SCALED
+FLAGS = 0
 
 # Pygame screen creation
-_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+_screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), FLAGS)
 pygame.display.set_caption("Dragon Hunt - RPG")
 
 

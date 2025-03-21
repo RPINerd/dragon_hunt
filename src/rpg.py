@@ -5,6 +5,7 @@
 
 # Built-in/Generic Imports
 import sys
+from pathlib import Path
 
 # 3rd party lib imports
 import pygame
@@ -210,8 +211,7 @@ def mouse_handler_down(xy):
         tmp = config.mut["MODULE_POS"] - (config.mut["MODULE_POS"] % 5) + (base_y / 20)
         if tmp >= len(config.MODULES):
             return
-        else:
-            config.mut["MODULE_POS"] = tmp
+        config.mut["MODULE_POS"] = tmp
         refresh_module_info()
 
 
@@ -307,11 +307,11 @@ def init_window():
         g.clock.tick(30)
         if g.break_one_loop > 0:
             g.break_one_loop -= 1
-            return
+            return None
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
-            elif event.type == pygame.KEYDOWN:
+                return None
+            if event.type == pygame.KEYDOWN:
                 key_handler(event.key)
             elif event.type == pygame.MOUSEMOTION:
                 mouse_handler_move(event.pos)
@@ -334,6 +334,7 @@ if __name__ == "__main__":
     pygame.display.set_caption("Loading")
 
     # I can't use the standard image dictionary, as that requires the screen to be created.
+    print(Path.cwd())
     tmp_icon = pygame.image.load("../modules/default/images/buttons/icon.png")
     pygame.display.set_icon(tmp_icon)
 

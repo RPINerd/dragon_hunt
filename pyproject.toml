@@ -1,25 +1,28 @@
-[build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
-
 [project]
-name = "dragon_hunt"
-version = "4.0-dev"
+name = "dragon-hunt"
 authors = [
-    { name="Evil Mr Henry", email="evilmrhenry@emhsoft.net" },
+    { name="Evil Mr Henry", email="evilmrhenry@emhsoft.net" }
 ]
 maintainers = [
-    { name="RPINerd", email="" },
+    { name="RPINerd" }
 ]
+version = "4.0-dev"
 description = "A simple rogue-like RPG game."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: CCPL :: GPLv2",
     "Operating System :: Linux",
 ]
+dependencies = [
+    "pygame-ce>=2.5.3",
+]
 
 [project.urls]
 Homepage = "https://github.com/RPINerd/dragon_hunt"
 Issues = "https://github.com/RPINerd/dragon_hunt/issues"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"

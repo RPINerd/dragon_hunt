@@ -7,7 +7,7 @@ import game_screen as pygscreen
 import new_game
 
 
-#! Currently Unused
+# ! Currently Unused
 def draw_text_with_border(screen, text, position, font, text_color, border_color, border_width):
     x, y = position
     # Render the border
@@ -23,13 +23,16 @@ def draw_text_with_border(screen, text, position, font, text_color, border_color
 
 def load(selected_mod: str = "DragonHunt") -> None:
     """
-    Given a selected module, run it.
-    This is effectively the main launching point for the game,
-    starting up the core game window and loop.
+    Initialize and run the provided module.
 
-    :param selected_mod: The selected module to run.
+    This is effectively the main launching point for the game, starting up the core game window and loop.
+
+    Args:
+        selected_mod (str): The selected module to run.
+
+    Returns:
+        None
     """
-
     pygame.font.init()
     screen = pygscreen.get_screen()
     pygame.display.set_caption("Loading")
@@ -63,8 +66,6 @@ def select() -> int:
 
     :return: The index of the selected module to load
     """
-
-    # Some variables
     selected_index = 0
     xres = 1024
     yres = 768

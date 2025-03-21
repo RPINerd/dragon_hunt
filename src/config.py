@@ -1,6 +1,4 @@
-"""
-This file contains the configuration settings for the game
-"""
+"""Configuration settings for the Dragon Hunt game."""
 
 # Previously array_mods
 MODULES = ["DarkAges", "DragonHunt"]
@@ -13,7 +11,7 @@ SCREEN_HEIGHT = 768
 # size (in tiles) of the editor screen. 15 works well with 640x480,
 # 20 with 800x600, and 24 with 1024x768
 TILESIZE = 32
-EDITOR_TILESIZE = 24
+EDITOR_TILESIZE = 32
 
 # Number of lines to display in the scroller
 MESSAGE_LINES = 10

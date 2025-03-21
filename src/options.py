@@ -6,6 +6,7 @@ from os import path
 
 import pygame
 
+import config
 import g
 
 # -1=none, 0=fullscreen, 1=difficulty, 2=custom key

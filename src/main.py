@@ -17,8 +17,8 @@ from player import player
 
 # size, in tiles, of the main screen. While this is adjustable,
 # odd numbers would work much better. (To keep the player centered.)
-mapsizex = 20
-mapsizey = 15
+mapsizex = 31
+mapsizey = 23
 
 width = 20
 iconsize = 20
