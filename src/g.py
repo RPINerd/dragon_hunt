@@ -28,11 +28,6 @@ game_name = ""
 # a Tkinter window reference later.)
 window_main = ""
 
-# Call rpg with the debug argument to show debug info.
-debug = False
-# Call rpg with the faststart argument to not preprocess the map files.
-faststart = False
-
 # location on map: x, y, z coordinate. Map names are given a zgrid on loading.
 xgrid = 0
 ygrid = 0
@@ -54,9 +49,6 @@ allow_change_hero = 1
 
 # width of the hp/ep bars
 hpbar_width = 0
-
-# current module directory
-mod_directory = ""
 
 # per turn scripting, for hp recovery and the like.
 per_turn_script = []
@@ -81,15 +73,14 @@ clock = pygame.time.Clock()
 pygame.font.init()
 
 
-# save the game in saves/input.
-# uses pickle, first line is a version number.
-def savegame(save_file):
+def savegame(save_file: str) -> None:
+    """Save the game in saves/input"""
     # If there is no save directory, make one.
-    if path.isdir(g.mod_directory + "/saves") == 0:
-        if path.exists(g.mod_directory + "/saves") == 1:
-            remove(g.mod_directory + "/saves")
-        mkdir(g.mod_directory + "/saves")
-    save_loc = g.mod_directory + "/saves/" + save_file
+    if path.isdir(config.MODULES_DIR + "/saves") == 0:
+        if path.exists(config.MODULES_DIR + "/saves") == 1:
+            remove(config.MODULES_DIR + "/saves")
+        mkdir(config.MODULES_DIR + "/saves")
+    save_loc = config.MODULES_DIR + "/saves/" + save_file
     savefile = Path.open(save_loc, "w")
     pickle.dump(player.name, savefile)
     pickle.dump(player.hp, savefile)
@@ -136,7 +127,7 @@ def savegame(save_file):
 
 
 def loadgame(save_file):
-    save_loc = g.mod_directory + "/saves/" + save_file
+    save_loc = config.MODULES_DIR + "/saves/" + save_file
     savefile = Path.open(save_loc, "r")
     player.name = pickle.load(savefile)
     player.hp = pickle.load(savefile)
@@ -269,8 +260,8 @@ def read_variables() -> None:
     Read the variables file for the selected module and set the global variables accordingly
     """
     # Verify that the variables file exists.
-    if not path.exists(mod_directory + "/data/variables.txt"):
-        print(f"Error: No variables file found in {mod_directory}/data/.. Exiting.")
+    if not path.exists(config.MODULES_DIR + "/data/variables.txt"):
+        print(f"Error: No variables file found in {config.MODULES_DIR}/data/.. Exiting.")
         sys.exit()
 
     # Set up the new_game_dice array.
@@ -278,7 +269,7 @@ def read_variables() -> None:
         new_game_dice.append([])
 
     # Open the module variables file and parse it
-    with Path.open(mod_directory + "/data/variables.txt") as file:
+    with Path.open(config.MODULES_DIR + "/data/variables.txt") as file:
         for line in file:
             line = line.strip()
 
@@ -304,8 +295,7 @@ def read_variables() -> None:
                 global default_player_name
                 default_player_name = line_value
             elif line_key == "exp_list":
-                global exp_list
-                exp_list = line_value.split(" ")
+                config.mut["EXP_LIST"] = line_value.split(" ")
 
     if game_name == "":
         print("Warning: No game name found in variables file. Defaulting to 'Dragon Hunt'")
@@ -327,7 +317,7 @@ def read_dice(variable, dice_string):
     new_game_dice[variable].append(int(third))
 
 
-# reads the file data/perturn.txt. Expects mod_directory to be set.
+# reads the file data/perturn.txt. Expects config.MODULES_DIR to be set.
 def read_perturn():
     cur_turns = []
     temp_cur_turns = []
@@ -397,7 +387,7 @@ def add_skill(skill_loc):
     return 1
 
 
-# Load the skills. Requires g.mod_directory to be set
+# Load the skills. Requires config.MODULES_DIR to be set
 def read_skills():
     # Add built-in skills.
     addskill("Rage", 0, 1, 10, "Gives you increased damage for the" + " rest of a battle", picture="items/rage.png")
@@ -411,7 +401,7 @@ def read_skills():
         picture="items/bastard_sword.png",
     )
     addskill("Frenzy", 2, 2, 30, "Your next attack will try to hit" + " more than once", picture="items/frenzy.png")
-    if path.exists(g.mod_directory + "/data/skills.txt"):
+    if path.exists(config.MODULES_DIR + "/data/skills.txt"):
         temp_skills = read_script_file("/data/skills.txt")
 
     # temp storage for the skill data
@@ -610,7 +600,7 @@ def load_icons():
 # be used for the map editor, to keep it from shredding formatting.
 def read_script_file(file_name, from_editor=0):
     temp_array = []
-    file = Path.open(g.mod_directory + file_name)
+    file = Path.open(config.MODULES_DIR + file_name)
     temp_array.extend(file.readlines())
     file.close()
     if from_editor == 0:
@@ -656,7 +646,7 @@ def read_images(dir_name: str) -> dict:
         sys.exit()
     image_dictionary = {"blank": pygame.Surface((32, 32))}
     image_dictionary = inner_read_images("../data/buttons", image_dictionary)
-    image_dictionary = inner_read_images(g.mod_directory + dir_name, image_dictionary)
+    image_dictionary = inner_read_images(config.MODULES_DIR + dir_name, image_dictionary)
 
     return image_dictionary
 

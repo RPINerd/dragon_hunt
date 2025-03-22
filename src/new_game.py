@@ -18,7 +18,7 @@
 
 # This file creates a new character.
 # Either call directly (which will use the first module seen), or
-# call from rpg.py after setting g.mod_directory.
+# call from rpg.py after setting config.MODULES_DIR.
 
 
 import sys

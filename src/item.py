@@ -21,11 +21,13 @@
 # needed for reading items dir.
 from os import listdir
 
+import config
 import g
 
 
 # Item definition.
 class item_class:
+
     """
     Item definition
     """
@@ -110,7 +112,7 @@ def finditem(name):
 # read items directory. This is called on startup.
 def read_items():
     # put the names of the available items in array_items.
-    array_items = listdir(g.mod_directory + "/data/items")
+    array_items = listdir(config.MODULES_DIR + "/data/items")
 
     # remove all .* files.
     i = 0

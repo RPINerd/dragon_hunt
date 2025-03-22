@@ -21,6 +21,7 @@
 from os import listdir
 from random import random
 
+import config
 import g
 
 
@@ -91,7 +92,7 @@ def find_level_monster(level):
 # read monsters directory, and place in monsters[]. This is called on startup.
 def read_monster():
     # put the names of the available monsters in array_monsters.
-    array_monsters = listdir(g.mod_directory + "/data/monsters")
+    array_monsters = listdir(config.MODULES_DIR + "/data/monsters")
 
     # remove all .* files.
     i = 0
@@ -137,7 +138,7 @@ def read_monster():
                 monster_groups[cur_group].y_pos.append(int(entry.strip()))
 
 
-# given a filename, (relative to g.mod_directory + "/data/monsters")
+# given a filename, (relative to config.MODULES_DIR + "/data/monsters")
 # open and interpret the monster.
 def addmonster(filename):
     global monsters

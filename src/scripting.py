@@ -4,6 +4,8 @@
 
 from os import listdir
 
+import action
+import config
 import g
 
 
@@ -255,7 +257,7 @@ class map:
                     self.field[yloc][xloc].onload[0][:4].lower() == "pix("
                     or self.field[yloc][xloc].onload[0][:5].lower() == "walk("
                 ):
-                    g.action.activate_lines(xloc, yloc, zloc, [self.field[yloc][xloc].onload[0]])
+                    action.activate_lines(xloc, yloc, zloc, [self.field[yloc][xloc].onload[0]])
                     self.field[yloc][xloc].onload.pop(0)
                     # Note that the indentation here is correct, as this prevents
                     # the corner case of an if statement in the first line from
@@ -264,7 +266,7 @@ class map:
                         self.field[yloc][xloc].onload[0][:4].lower() == "pix("
                         or self.field[yloc][xloc].onload[0][:5].lower() == "walk("
                     ):
-                        g.action.activate_lines(xloc, yloc, zloc, [self.field[yloc][xloc].onload[0]])
+                        action.activate_lines(xloc, yloc, zloc, [self.field[yloc][xloc].onload[0]])
                         self.field[yloc][xloc].onload.pop(0)
 
 
@@ -278,7 +280,7 @@ def read_maps(from_editor=0):
     g.load_backgrounds()
 
     # put the names of the available maps in array_maps.
-    array_maps = listdir(g.mod_directory + "/data/maps")
+    array_maps = listdir(config.MODULES_DIR + "/data/maps")
 
     # remove all .* files.
     i = 0
@@ -415,8 +417,8 @@ shops = []
 # Places data into shops[].
 def read_shops():
     # grab the needed data from the file
-    shop_loc = g.mod_directory + "/data/shops.txt"
-    shop_file = open(shop_loc, "r")
+    shop_loc = config.MODULES_DIR + "/data/shops.txt"
+    shop_file = open(shop_loc)
 
     cur_shop = -1
 

@@ -1,3 +1,4 @@
+""""""
 import pygame
 from pygame.locals import K_DOWN, K_RETURN, K_UP, KEYDOWN, MOUSEBUTTONDOWN, QUIT
 
@@ -50,7 +51,7 @@ def load(selected_mod: str = "DragonHunt") -> None:
     pygame.display.set_caption("Loading")
     pygame.display.set_icon(pygame.image.load("../data/icon.png"))
 
-    g.mod_directory = "../modules/" + selected_mod
+    config.MODULES_DIR = "../modules/" + selected_mod
 
     pygame.draw.rect(
         screen,

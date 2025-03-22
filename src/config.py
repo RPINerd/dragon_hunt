@@ -2,6 +2,7 @@
 
 # Previously array_mods
 MODULES = ["DarkAges", "DragonHunt"]
+MODULES_DIR = ""
 
 # Screen resolution
 SCREEN_WIDTH = 1024
@@ -37,4 +38,7 @@ COLORS = {
 
 # Mutable global variables
 ALLOW_MOVE = True  # Used with the move scripting command to prevent moving multiple times
-mut = {"MODULE_POS": 0, "CURR_BUTTON": 0, "GAME_NAME": ""}
+mut = {"MODULE_POS": 0, "CURR_BUTTON": 0, "GAME_NAME": "", "EXP_LIST": ""}
+
+DEBUG = False
+FASTBOOT = False  # Skip map preprocessing

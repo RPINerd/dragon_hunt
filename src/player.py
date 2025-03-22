@@ -18,10 +18,12 @@
 
 # This file controls the player info
 
+import config
 import g
 
 
 class player_class:
+
     """
     This class is used to store all the player's information.
     """

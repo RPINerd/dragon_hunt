@@ -104,8 +104,8 @@ def refresh_save_info():
             tmp_titles.append("")
     # 		return
     else:
-        save_loc = g.mod_directory + "/saves/" + saves_array[saves_pos]
-        savefile = open(save_loc, "r")
+        save_loc = config.MODULES_DIR + "/saves/" + saves_array[saves_pos]
+        savefile = open(save_loc)
         version_unused = g.pickle.load(savefile)
         tmp_stats["name"] = str(g.pickle.load(savefile))
         tmp_stats["hp"] = str(g.pickle.load(savefile))
@@ -437,14 +437,14 @@ def init_window_loadgame():
     pixels_per_line = 20
 
     # If there is no save directory, make one.
-    if path.isdir(g.mod_directory + "/saves") == 0:
-        if path.exists(g.mod_directory + "/saves") == 1:
-            remove(g.mod_directory + "/saves")
-        mkdir(g.mod_directory + "/saves")
+    if path.isdir(config.MODULES_DIR + "/saves") == 0:
+        if path.exists(config.MODULES_DIR + "/saves") == 1:
+            remove(config.MODULES_DIR + "/saves")
+        mkdir(config.MODULES_DIR + "/saves")
     # show the files contained in the saves directory.
     global saves_array
     saves_array = []
-    tmp_saves_array = listdir(g.mod_directory + "/saves")
+    tmp_saves_array = listdir(config.MODULES_DIR + "/saves")
     for save_name in tmp_saves_array:
         if save_name[:1] != "." and save_name != "CVS":
             saves_array.append(save_name)

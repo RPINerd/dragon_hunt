@@ -257,7 +257,7 @@ def refresh_shop():
 
     g.print_string(
         g.screen,
-        g.gold_name + ": " + str(player.gold),
+        "Gold: " + str(player.gold),
         g.font,
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 26),
     )

@@ -1,6 +1,4 @@
-"""
-This file controls the options screen.
-"""
+"""This file controls the options screen."""
 
 from os import path
 
@@ -219,8 +217,8 @@ def key_handler(switch):
 
             # save the settings to disk
             options_file_text = []
-            if path.exists(g.mod_directory + "/../../settings.txt") == 1:
-                optionfile = open(g.mod_directory + "/../../settings.txt")
+            if path.exists(config.MODULES_DIR + "/../../settings.txt") == 1:
+                optionfile = open(config.MODULES_DIR + "/../../settings.txt")
                 options_file_text = optionfile.readlines()
             else:
                 "Could not open settings.txt. Not saving settings."
@@ -250,7 +248,7 @@ def key_handler(switch):
                     options_file_text[linenum] = command + "=" + str(g.fullscreen) + "\n"
 
             optionfile.close()
-            optionfile = open(g.mod_directory + "/../../settings.txt", "w")
+            optionfile = open(config.MODULES_DIR + "/../../settings.txt", "w")
             optionfile.writelines(options_file_text)
 
             cancel_settings()
@@ -278,8 +276,8 @@ def bind_new_key(start_key):
             break
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
-            elif event.type == pygame.KEYDOWN:
+                return None
+            if event.type == pygame.KEYDOWN:
                 return event.key
     return start_key
 

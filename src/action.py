@@ -11,8 +11,7 @@ import main
 import monster
 from player import player
 
-debug = 0
-if debug == 1:
+if config.DEBUG:
     from time import clock
 
 # set to 1 whenever the player really shouldn't be moving.
@@ -1186,7 +1185,7 @@ def script_move(x, y, z, argument_array):  # move the player
     if check_types_args(argument_array, [1, 0, 0], "move") == 0:
         return "bad"
 
-    if debug == 1:
+    if config.DEBUG:
         tmp = clock()
 
     g.xgrid = int(argument_array[1][0])
@@ -1203,7 +1202,7 @@ def script_move(x, y, z, argument_array):  # move the player
     if curr_zgrid == g.zgrid:
         g.pygame.time.wait(90)
     config.ALLOW_MOVE = False
-    if debug == 1:
+    if config.DEBUG:
         print(clock() - tmp)
     return 1
 

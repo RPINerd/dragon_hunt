@@ -256,7 +256,7 @@ def refreshhero():
 # on. Note that this maches up to the arangement of numbers on a keypad.
 # This variable is meant to be used for drawing bordering levels.
 def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
-    if g.debug:
+    if config.DEBUG:
         tmp_time = pygame.time.get_ticks()
         if onlypartial == 5:
             print("entering level " + g.maps[g.zgrid].name)
@@ -364,12 +364,12 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
         process_onload(False, downright_zgrid, 7, input_zgrid)
     global free_move
     free_move = 1
-    if g.debug:
+    if config.DEBUG:
         print("loaded " + str(input_zgrid) + " in " + str(pygame.time.get_ticks() - tmp_time))
 
 
 def debug_print_level():
-    if g.debug:
+    if config.DEBUG:
         pygame.image.save(map_canvas, "templevel.bmp")
         print("saved level to templevel.bmp")
 
@@ -1046,9 +1046,9 @@ def init_window_main(is_new_game=0):
 
     map_canvas = pygame.Surface(tmp_map_size)
 
-    if g.debug:
+    if config.DEBUG:
         tmp_time2 = pygame.time.get_ticks()
-    if not g.faststart:
+    if not config.FASTBOOT:
         # This cuts a small amount off the loading time for each level. (From about
         # 370ms to about 270ms.)
         g.screen.fill(config.COLORS["light_gray"], (g.screen_size[0] / 2 - 150, g.screen_size[1] / 2 - 20, 300, 40))
@@ -1063,7 +1063,7 @@ def init_window_main(is_new_game=0):
                 "ep_blue",
             )
             pygame.display.flip()
-    if g.debug:
+    if config.DEBUG:
         print("Level loading time: ", pygame.time.get_ticks() - tmp_time2)
 
     # width of the hp/ep bars.
@@ -1162,7 +1162,7 @@ def key_handler_down(key_name):
 
 
 def key_handler(key_name):
-    if g.debug:
+    if config.DEBUG:
         tmp_time = pygame.time.get_ticks()
     global key_down
     if key_name == g.bindings["up"]:
@@ -1184,7 +1184,7 @@ def key_handler(key_name):
         load_console()
     elif key_name == pygame.K_F10:
         debug_print_level()
-    if g.debug:
+    if config.DEBUG:
         print(pygame.time.get_ticks() - tmp_time)
     return 0
 

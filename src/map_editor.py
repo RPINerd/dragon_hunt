@@ -584,15 +584,15 @@ def load_tiles():
     global num_tiles
     num_tiles = 0
 
-    for root, dirs, files in os.walk(g.mod_directory + "/images/tiles/"):
+    for root, dirs, files in os.walk(config.MODULES_DIR + "/images/tiles/"):
         (head, tail) = os.path.split(root)
         if tail != "CVS":
             files.sort()
             for tilename in files:
                 num_tiles = num_tiles + 1
                 # if image is in a sub-dir:
-                if root != g.mod_directory + "/images/tiles/":
-                    i = len(g.mod_directory + "/images/tiles/")
+                if root != config.MODULES_DIR + "/images/tiles/":
+                    i = len(config.MODULES_DIR + "/images/tiles/")
                     tilenames.append(root[i:] + "/" + tilename)
                     tiles[root[i:] + "/" + tilename] = pygame.image.load(root + "/" + tilename).convert_alpha()
                 else:  # if image is in root dir
@@ -764,7 +764,7 @@ def check_repeat_tile(x, y):
 # save map to map dir
 def save_map():
     set_codes()
-    map_loc = g.mod_directory + "/data/maps/" + map_name
+    map_loc = config.MODULES_DIR + "/data/maps/" + map_name
     print("Saving map to " + map_loc)
     try:
         os.rename(map_loc, map_loc + "~")
@@ -843,7 +843,7 @@ def save_map():
 
 # loads the loadmap window, then loads the returned map into cur_map.
 def do_load_map():
-    array_maps = os.listdir(g.mod_directory + "/data/maps/")
+    array_maps = os.listdir(config.MODULES_DIR + "/data/maps/")
     array_maps.sort()
     # remove CVS directory
     i = 0
@@ -1121,7 +1121,7 @@ def tile_dir_list(autoselect=-1):
     global cur_tile_set
     list_of_dirs = []
     cur_dir = 0
-    for root, dirs, files in os.walk(g.mod_directory + "/images/tiles/"):
+    for root, dirs, files in os.walk(config.MODULES_DIR + "/images/tiles/"):
         (head, tail) = os.path.split(root)
         if tail != "CVS":
             if tail == "":
@@ -1317,10 +1317,10 @@ def map_menu():
 
 def sel_mod(selected_mod):
     # 	window_sel_game.withdraw()
-    g.mod_directory = "../modules/" + selected_mod
+    config.MODULES_DIR = "../modules/" + selected_mod
     # put all items in a list
     global item_dir
-    item_dir = os.listdir(g.mod_directory + "/images/tiles/items")
+    item_dir = os.listdir(config.MODULES_DIR + "/images/tiles/items")
     j = 0
     while j < len(item_dir):
         if item_dir[j] != "CVS":
