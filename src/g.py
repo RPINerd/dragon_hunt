@@ -223,8 +223,6 @@ def init_data() -> None:
     load_buttons()
     print("Load icons")
     load_icons()
-    print("Load sounds")
-    load_sounds()
 
 
 # What dice to roll when starting a new game. 2d array.
@@ -640,49 +638,6 @@ def interpret_lines(temp_array):
             temp_array[cur_line].strip()
         cur_line += 1
     return temp_array
-
-
-sounds = {}
-nosound = 0
-
-
-# This loads the sounds
-def load_sounds():
-    global sounds
-    global nosound
-    sounds = {}
-    if nosound == 1:
-        return 0
-    try:
-        pygame.mixer.init()
-    except pygame.error as message:
-        print(f"Error: Unable to init sound (pygame message: {message})")
-        nosound = 1
-        return 0
-
-    for root, dirs, files in walk(mod_directory + "/sound"):
-        (head, tail) = path.split(root)
-        if tail != "CVS":
-            for soundname in files:
-                # if image is in a sub-dir:
-                tmp_name = soundname[:-5] + soundname[-4:]
-                tmp_number = int(soundname[-5])
-                if root != mod_directory + "/sound":
-                    i = len(mod_directory + "/sound")
-                    base_name = root[i:] + "/" + tmp_name
-                else:  # if image is in root dir
-                    base_name = tmp_name
-                if base_name not in sounds:
-                    sounds[base_name] = {}
-                sounds[base_name][tmp_number] = pygame.mixer.Sound(root + "/" + soundname)
-
-
-def play_sound(sound_name):
-    if sound_name not in sounds:
-        print("missing sound set " + sound_name)
-    dict_size = len(sounds[sound_name])
-
-    sounds[sound_name][int(random() * dict_size)].play()
 
 
 # create the fonts needed.

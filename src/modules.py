@@ -5,6 +5,7 @@ import config
 import g
 import game_screen as pygscreen
 import new_game
+from audio import load_sounds
 
 
 # ! Currently Unused
@@ -19,6 +20,17 @@ def draw_text_with_border(screen, text, position, font, text_color, border_color
     # Render the original text on top
     text_surface = font.render(text, True, text_color)
     screen.blit(text_surface, position)
+
+
+def init_gamedata() -> None:
+    """
+    Initialize the game data.
+
+    Returns:
+        None
+    """
+    print("Load sounds")
+    load_sounds()
 
 
 def load(selected_mod: str = "DragonHunt") -> None:
@@ -56,6 +68,7 @@ def load(selected_mod: str = "DragonHunt") -> None:
     pygame.display.flip()
     print("g.init_data")
     g.init_data()
+    init_gamedata()
     print("new_game init_window")
     new_game.init_window()
 
