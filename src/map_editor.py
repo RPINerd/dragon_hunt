@@ -35,9 +35,7 @@ pygame.font.init()
 
 import config
 import g
-import listbox
-import scripting
-import scrollbar
+from widgets import Listbox, Scrollbar, refresh_list
 
 pygame.display.set_caption("Map Editor")
 
@@ -1023,7 +1021,7 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
     width = 200
     if extra_wide:
         width = 500
-    input_listbox = listbox.listbox(
+    input_listbox = Listbox(
         (10, 10),
         (width, 350),
         16,
@@ -1034,13 +1032,13 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
         config.COLORS["black"],
         g.font,
     )
-    input_scroll = scrollbar.scrollbar(
+    input_scroll = Scrollbar(
         (width + 10, 10), 350, 16, config.COLORS["light_gray"], config.COLORS["hp_green"], config.COLORS["white"]
     )
 
     g.screen.blit(g.buttons["load_sel.png"], (10, 360))
     g.screen.blit(g.buttons["quit.png"], (10 + g.buttons["load_sel.png"].get_width(), 360))
-    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -1051,27 +1049,25 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
             if event.type == pygame.QUIT:
                 g.unclean_screen = True
                 return -1
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_UP:
                     cur_pos -= 1
-                    if cur_pos < 0:
-                        cur_pos = 0
-                    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                    cur_pos = max(cur_pos, 0)
+                    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
                 if event.key == pygame.K_PAGEUP:
                     cur_pos -= 16
-                    if cur_pos < 0:
-                        cur_pos = 0
-                    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                    cur_pos = max(cur_pos, 0)
+                    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
                 if event.key == pygame.K_DOWN:
                     cur_pos += 1
                     if cur_pos >= len(input_array):
                         cur_pos = len(input_array) - 1
-                    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
                 if event.key == pygame.K_PAGEDOWN:
                     cur_pos += 16
                     if cur_pos >= len(input_array):
                         cur_pos = len(input_array) - 1
-                    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
                 elif event.key == pygame.K_RETURN or event.key == pygame.K_KP_ENTER:
                     if return_pos:
                         return cur_pos
@@ -1079,10 +1075,10 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
                         return input_array[cur_pos]
                 elif event.key == pygame.K_HOME:
                     cur_pos = 0
-                    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
                 elif event.key == pygame.K_END:
                     cur_pos = len(input_array) - 1
-                    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
                 elif event.key == pygame.K_ESCAPE:
                     g.unclean_screen = True
                     return -1
@@ -1092,7 +1088,7 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
                         tmp = input_listbox.is_over(event.pos)
                         if tmp != -1:
                             cur_pos = (cur_pos / 16) * 16 + tmp
-                            listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                            refresh_list(input_listbox, input_scroll, cur_pos, input_array)
                             if act_as_menu:
                                 if return_pos:
                                     return cur_pos
@@ -1110,14 +1106,13 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
                         return -1
                 elif event.button == 4:
                     cur_pos -= 1
-                    if cur_pos < 0:
-                        cur_pos = 0
-                    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                    cur_pos = max(cur_pos, 0)
+                    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
                 elif event.button == 5:
                     cur_pos += 1
                     if cur_pos >= len(input_array):
                         cur_pos = len(input_array) - 1
-                    listbox.refresh_list(input_listbox, input_scroll, cur_pos, input_array)
+                    refresh_list(input_listbox, input_scroll, cur_pos, input_array)
         if g.unclean_screen:
             pygame.display.flip()
 
