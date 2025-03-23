@@ -16,3 +16,4 @@ __pycache__/
 # Repo Specific Files
 temp_editor_script.txt
 saves/
+legacy/
