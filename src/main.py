@@ -1040,8 +1040,8 @@ def init_window_main(is_new_game=0):
     g.load_tiles()
     global map_canvas
     tmp_map_size = (
-        config.TILESIZE * (g.max_mapsize[0] + mapsizex + 1),
-        config.TILESIZE * (g.max_mapsize[1] + mapsizey + 1),
+        config.TILESIZE * (config.MAX_MAPSIZE[0] + mapsizex + 1),
+        config.TILESIZE * (config.MAX_MAPSIZE[1] + mapsizey + 1),
     )
 
     map_canvas = pygame.Surface(tmp_map_size)

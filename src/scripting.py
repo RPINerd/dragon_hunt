@@ -298,13 +298,13 @@ def read_maps(from_editor=0):
                 i += 1
 
     # go through all maps, adding them to our knowledge.
-    g.max_mapsize = (0, 0)
+    config.MAX_MAPSIZE = (0, 0)
     for mapname in array_maps:
         maps.append(map(mapname, from_editor))
-        if g.max_mapsize[0] < len(maps[-1].field[0]):
-            g.max_mapsize = (len(maps[-1].field[0]), g.max_mapsize[1])
-        if g.max_mapsize[1] < len(maps[-1].field):
-            g.max_mapsize = (g.max_mapsize[0], len(maps[-1].field))
+        if config.MAX_MAPSIZE[0] < len(maps[-1].field[0]):
+            config.MAX_MAPSIZE = (len(maps[-1].field[0]), config.MAX_MAPSIZE[1])
+        if config.MAX_MAPSIZE[1] < len(maps[-1].field):
+            config.MAX_MAPSIZE = (config.MAX_MAPSIZE[0], len(maps[-1].field))
 
 
 endgame_act = []

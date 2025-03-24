@@ -28,10 +28,11 @@ def box_with_text(xy, text, focused, active=False):
     g.print_string(g.screen, text, g.font, (xy[0] + 9, xy[1] + 10))
 
 
-def refresh_window():
+def refresh_window() -> None:
+    """"""
     # create the window
-    x_start = config.TILESIZE * g.main.mapsizex / 2 - 90
-    y_start = config.TILESIZE * g.main.mapsizey / 2 - 80
+    x_start = config.TILESIZE * config.MAPSIZE_X / 2 - 90
+    y_start = config.TILESIZE * config.MAPSIZE_Y / 2 - 80
     x_width = 180
     g.create_norm_box((x_start, y_start), (x_width, 212))
 
@@ -85,10 +86,11 @@ def refresh_window():
     pygame.display.flip()
 
 
-def refresh_key_window(adjusting=False):
+def refresh_key_window(adjusting: bool = False) -> None:
+    """"""
     # create the window
-    x_start = config.TILESIZE * g.main.mapsizex / 2 - 90
-    y_start = config.TILESIZE * g.main.mapsizey / 2 - 80
+    x_start = config.TILESIZE * config.MAPSIZE_X / 2 - 90
+    y_start = config.TILESIZE * config.MAPSIZE_Y / 2 - 80
     x_width = 180
     g.create_norm_box((x_start, y_start), (x_width, 212))
 
@@ -350,11 +352,11 @@ def custom_key():
 
 
 def mouse_handler_move(pos):
-    pos = (pos[0], pos[1] - config.TILESIZE * g.main.mapsizey / 2 + 80)
+    pos = (pos[0], pos[1] - config.TILESIZE * config.MAPSIZE_Y / 2 + 80)
     global curr_button
     if (
-        pos[0] < config.TILESIZE * g.main.mapsizex / 2 - 90
-        or pos[0] > config.TILESIZE * g.main.mapsizex / 2 + 90
+        pos[0] < config.TILESIZE * config.MAPSIZE_X / 2 - 90
+        or pos[0] > config.TILESIZE * config.MAPSIZE_X / 2 + 90
         or pos[1] < 0
         or pos[1] > 212
     ):

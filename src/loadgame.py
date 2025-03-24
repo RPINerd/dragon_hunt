@@ -64,16 +64,16 @@ def load_selected():
         return
     prevent_dbl_load = 1
     g.create_norm_box(
-        (config.TILESIZE * g.main.mapsizex / 4, config.TILESIZE * g.main.mapsizey / 3),
-        (config.TILESIZE * g.main.mapsizex / 2, 140 + g.buttons["load_scr.png"].get_height()),
+        (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3),
+        (config.TILESIZE * config.MAPSIZE_X / 2, 140 + g.buttons["load_scr.png"].get_height()),
     )
     g.print_string(
         g.screen,
         "Loading game. Please wait",
         g.font,
         (
-            config.TILESIZE * g.main.mapsizex / 2,
-            config.TILESIZE * g.main.mapsizey / 3 + 70 + g.buttons["load_scr.png"].get_height() / 2,
+            config.TILESIZE * config.MAPSIZE_X / 2,
+            config.TILESIZE * config.MAPSIZE_Y / 3 + 70 + g.buttons["load_scr.png"].get_height() / 2,
         ),
     )
     pygame.display.flip()
@@ -135,14 +135,14 @@ def display_stats(stat_dict, titles_dict):
     g.screen.fill(
         config.COLORS["light_gray"],
         (
-            config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width() + 3,
-            config.TILESIZE * g.main.mapsizey / 3,
+            config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["loadgame_up.png"].get_width() + 3,
+            config.TILESIZE * config.MAPSIZE_Y / 3,
             150,
             170,
         ),
     )
-    info_x = config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width() + 5
-    info_y = config.TILESIZE * g.main.mapsizey / 3
+    info_x = config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["loadgame_up.png"].get_width() + 5
+    info_y = config.TILESIZE * config.MAPSIZE_Y / 3
     linenum = 0
     g.print_string(g.screen, "Name: " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
@@ -168,8 +168,8 @@ def display_stats(stat_dict, titles_dict):
             inner_color = "light_gray"
         g.create_norm_box(
             (
-                config.TILESIZE * g.main.mapsizex / 4 + 2,
-                config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_down.png"].get_height() + 1 + i * 20,
+                config.TILESIZE * config.MAPSIZE_X / 4 + 2,
+                config.TILESIZE * config.MAPSIZE_Y / 3 + g.buttons["loadgame_down.png"].get_height() + 1 + i * 20,
             ),
             (g.buttons["loadgame_down.png"].get_width() - 3, 17),
             inner_color=inner_color,
@@ -179,8 +179,8 @@ def display_stats(stat_dict, titles_dict):
             titles_dict[i],
             g.font,
             (
-                config.TILESIZE * g.main.mapsizex / 4 + 5,
-                config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_down.png"].get_height() + 2 + i * 20,
+                config.TILESIZE * config.MAPSIZE_X / 4 + 5,
+                config.TILESIZE * config.MAPSIZE_Y / 3 + g.buttons["loadgame_down.png"].get_height() + 2 + i * 20,
             ),
         )
 
@@ -229,42 +229,42 @@ def mouse_handler_move(xy):
     # up arrow:
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4,
-        config.TILESIZE * g.main.mapsizey / 3,
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_up.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4,
+        config.TILESIZE * config.MAPSIZE_Y / 3,
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["loadgame_up.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + g.buttons["loadgame_up.png"].get_height(),
     ):
         config.mut["CURR_BUTTON"] = 2
 
     # down arrow:
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4,
-        config.TILESIZE * g.main.mapsizey / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_down.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140,
+        config.TILESIZE * config.MAPSIZE_X / 4,
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["loadgame_down.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140,
     ):
         config.mut["CURR_BUTTON"] = 3
 
     # load button:
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4,
-        config.TILESIZE * g.main.mapsizey / 3 + 140,
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load_scr.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["load_scr.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4,
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140,
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["load_scr.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140 + g.buttons["load_scr.png"].get_height(),
     ):
         config.mut["CURR_BUTTON"] = 0
 
     # leave button:
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load_scr.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140,
-        config.TILESIZE * g.main.mapsizex / 4
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["load_scr.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140,
+        config.TILESIZE * config.MAPSIZE_X / 4
         + g.buttons["load_scr.png"].get_width()
         + g.buttons["leave.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["leave.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140 + g.buttons["leave.png"].get_height(),
     ):
         config.mut["CURR_BUTTON"] = 1
 
@@ -276,10 +276,10 @@ def mouse_handler_down(xy):
     # up arrow:
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4,
-        config.TILESIZE * g.main.mapsizey / 3,
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_up.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4,
+        config.TILESIZE * config.MAPSIZE_Y / 3,
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["loadgame_up.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + g.buttons["loadgame_up.png"].get_height(),
     ):
 
         tmp = saves_pos - (saves_pos % 5) - 5
@@ -295,10 +295,10 @@ def mouse_handler_down(xy):
     # down arrow:
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4,
-        config.TILESIZE * g.main.mapsizey / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_down.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140,
+        config.TILESIZE * config.MAPSIZE_X / 4,
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["loadgame_down.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140,
     ):
 
         tmp = saves_pos - (saves_pos % 5) + 5
@@ -313,10 +313,10 @@ def mouse_handler_down(xy):
     # load button:
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4,
-        config.TILESIZE * g.main.mapsizey / 3 + 140,
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load_scr.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["load_scr.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4,
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140,
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["load_scr.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140 + g.buttons["load_scr.png"].get_height(),
     ):
         config.mut["CURR_BUTTON"] = 0
         key_handler(pygame.K_RETURN)
@@ -324,12 +324,12 @@ def mouse_handler_down(xy):
     # leave button:
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load_scr.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140,
-        config.TILESIZE * g.main.mapsizex / 4
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["load_scr.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140,
+        config.TILESIZE * config.MAPSIZE_X / 4
         + g.buttons["load_scr.png"].get_width()
         + g.buttons["leave.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140 + g.buttons["leave.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140 + g.buttons["leave.png"].get_height(),
     ):
         config.mut["CURR_BUTTON"] = 1
         key_handler(pygame.K_RETURN)
@@ -337,21 +337,20 @@ def mouse_handler_down(xy):
     # save "listbox"
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4,
-        config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_up.png"].get_height(),
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4,
+        config.TILESIZE * config.MAPSIZE_Y / 3 + g.buttons["loadgame_up.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["loadgame_up.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
     ):
 
-        base_y = xy[1] - config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_up.png"].get_height()
+        base_y = xy[1] - config.TILESIZE * config.MAPSIZE_Y / 3 + g.buttons["loadgame_up.png"].get_height()
         base_y -= 40
         if base_y % 20 < 2 or base_y % 20 > 18:
             return
         tmp = saves_pos - (saves_pos % 5) + (base_y / 20)
         if tmp >= len(saves_array):
             return
-        else:
-            saves_pos = tmp
+        saves_pos = tmp
         refresh_save_info()
 
 
@@ -360,10 +359,10 @@ def mouse_handler_double(xy):
     # save "listbox"
     if mouse_over(
         xy,
-        config.TILESIZE * g.main.mapsizex / 4,
-        config.TILESIZE * g.main.mapsizey / 3 + g.buttons["loadgame_up.png"].get_height(),
-        config.TILESIZE * g.main.mapsizex / 4 + g.buttons["loadgame_up.png"].get_width(),
-        config.TILESIZE * g.main.mapsizey / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4,
+        config.TILESIZE * config.MAPSIZE_Y / 3 + g.buttons["loadgame_up.png"].get_height(),
+        config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["loadgame_up.png"].get_width(),
+        config.TILESIZE * config.MAPSIZE_Y / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
     ):
 
         load_selected()
@@ -391,21 +390,21 @@ def refresh_buttons():
     else:
         down_img = "loadgame_down_sel.png"
     g.screen.blit(
-        g.buttons[load_img], (config.TILESIZE * g.main.mapsizex / 4, config.TILESIZE * g.main.mapsizey / 3 + 140)
+        g.buttons[load_img], (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3 + 140)
     )
     g.screen.blit(
         g.buttons[leave_img],
         (
-            config.TILESIZE * g.main.mapsizex / 4 + g.buttons["load_scr.png"].get_width(),
-            config.TILESIZE * g.main.mapsizey / 3 + 140,
+            config.TILESIZE * config.MAPSIZE_X / 4 + g.buttons["load_scr.png"].get_width(),
+            config.TILESIZE * config.MAPSIZE_Y / 3 + 140,
         ),
     )
-    g.screen.blit(g.buttons[up_img], (config.TILESIZE * g.main.mapsizex / 4, config.TILESIZE * g.main.mapsizey / 3))
+    g.screen.blit(g.buttons[up_img], (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3))
     g.screen.blit(
         g.buttons[down_img],
         (
-            config.TILESIZE * g.main.mapsizex / 4,
-            config.TILESIZE * g.main.mapsizey / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
+            config.TILESIZE * config.MAPSIZE_X / 4,
+            config.TILESIZE * config.MAPSIZE_Y / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
         ),
     )
 
@@ -415,8 +414,8 @@ def init_window_loadgame():
     global prevent_dbl_load
     prevent_dbl_load = 0
     g.create_norm_box(
-        (config.TILESIZE * g.main.mapsizex / 4 - 2, config.TILESIZE * g.main.mapsizey / 3 - 2),
-        (config.TILESIZE * g.main.mapsizex / 2 + 2, +140 + g.buttons["load_scr.png"].get_height() + 2),
+        (config.TILESIZE * config.MAPSIZE_X / 4 - 2, config.TILESIZE * config.MAPSIZE_Y / 3 - 2),
+        (config.TILESIZE * config.MAPSIZE_X / 2 + 2, +140 + g.buttons["load_scr.png"].get_height() + 2),
     )
 
     global did_load
@@ -424,13 +423,13 @@ def init_window_loadgame():
 
     # add the saves images
     g.screen.blit(
-        g.buttons["loadgame_up.png"], (config.TILESIZE * g.main.mapsizex / 4, config.TILESIZE * g.main.mapsizey / 3)
+        g.buttons["loadgame_up.png"], (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3)
     )
     g.screen.blit(
         g.buttons["loadgame_down.png"],
         (
-            config.TILESIZE * g.main.mapsizex / 4,
-            config.TILESIZE * g.main.mapsizey / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
+            config.TILESIZE * config.MAPSIZE_X / 4,
+            config.TILESIZE * config.MAPSIZE_Y / 3 + 140 - g.buttons["loadgame_down.png"].get_height(),
         ),
     )
 
@@ -466,8 +465,8 @@ def init_window_loadgame():
             break
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
-            elif event.type == pygame.KEYDOWN:
+                return None
+            if event.type == pygame.KEYDOWN:
                 key_handler(event.key)
                 repeat_key = 0
             elif event.type == pygame.KEYUP:
@@ -476,7 +475,7 @@ def init_window_loadgame():
                 mouse_handler_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if mouse_handler_down(event.pos) == 1:
-                    return
+                    return None
 
         if g.unclean_screen:
             pygame.display.flip()

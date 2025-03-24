@@ -29,12 +29,10 @@ import pygame
 pygame.init()
 pygame.font.init()
 
-# window = Toplevel()
-# window.master.withdraw()
-# window.title("Map Editor")
 
 import config
 import g
+import main
 from widgets import Listbox, Scrollbar, refresh_list
 
 pygame.display.set_caption("Map Editor")
@@ -62,12 +60,9 @@ background = "grass.png"
 map_name = "map.txt"
 tile_set_size = 0
 tilebox_width = 4
-tilegrid = 0  # whether or not to display the map grid
 cur_map = ""  # this will normally be a g.map class.
-global dirnames
 dirnames = []
 # all possible items so we can make unique variables for each one
-global item_list
 item_list = {"blank": 4}
 
 
@@ -381,7 +376,7 @@ def refresh_map():
                         inner_color="white",
                     )
     # grid display
-    if tilegrid == 1:
+    if config.TILEGRID:
         for y in range(portalsize):
             g.screen.fill(config.COLORS["black"], (0, y * config.TILESIZE, portalsize * config.TILESIZE, 1))
         for x in range(portalsize):
@@ -463,7 +458,7 @@ def set_tile(x, y, name):
 
 # add name item to tile at x, y
 def add_item(x, y, name):
-    tmp = g.main.ask_for_string("Amount of item? (examples: 5, a)")
+    tmp = main.ask_for_string("Amount of item? (examples: 5, a)")
     if tmp == -1:
         refresh_map()
         return
@@ -526,11 +521,11 @@ def change_scripting(x, y, modetype):
         if tmp == -1:
             break
         if tmp >= len(scripting_list):
-            tmp = g.main.ask_for_string("New line?")
+            tmp = main.ask_for_string("New line?")
             if tmp != -1 and tmp.strip() != "":
                 scripting_list.append(tmp)
         else:
-            tmp2 = g.main.ask_for_string(
+            tmp2 = main.ask_for_string(
                 "Change line... (change to --- to" + " insert a line).", textbox_text=scripting_list[tmp]
             )
             if tmp2 != -1:
@@ -604,8 +599,8 @@ def load_tiles():
 def get_walk_values():
     global walk_vals
     walk_vals = {"blank": 0}
-    walk_defs_loc = g.mod_directory + "/data/" + "walk_defs.txt"
-    walk_defs = open(walk_defs_loc, "r")
+    walk_defs_loc = config.MODULES_DIR + "/data/" + "walk_defs.txt"
+    walk_defs = open(walk_defs_loc)
     # read lines, store in walk[tilename] = 1 or 0
     walk_line = walk_defs.readline()
     while walk_line != "" and walk_line[:1] != ":":
@@ -966,23 +961,21 @@ def really_change_mapsize(x, y):
     refresh_map()
 
 
-def ask_yesno(line=None):
+def ask_yesno(line: str | None = None) -> bool:
+    """Tiny wrapper around main.show_yesno to handle confirmation popup"""
     tmp_surface = pygame.Surface(g.screen_size)
     tmp_surface.blit(g.screen, (0, 0))
-    tmp_answer = g.main.show_yesno(line)
+    tmp_answer = main.show_yesno(line)
     g.screen.blit(tmp_surface, (0, 0))
     g.unclean_screen = True
     return tmp_answer
 
 
 def toggle_grid():
-    global tilegrid
-    if tilegrid == 0:
-        tilegrid = 1
-        # config.TILESIZE += 1
-    elif tilegrid == 1:
-        tilegrid = 0
-        # config.TILESIZE -= 1
+    if config.TILEGRID:
+        config.TILEGRID = False
+    else:
+        config.TILEGRID = True
     refresh_map()
 
 
@@ -1160,7 +1153,7 @@ def main_menu():
         create_map()
     if tmp == "Rename":
         global map_name
-        tmp = g.main.ask_for_string("Name of map?", map_name)
+        tmp = main.ask_for_string("Name of map?", map_name)
         if tmp == -1:
             refresh_map()
             return
@@ -1220,7 +1213,7 @@ def map_menu():
             refresh_map()
             return
         if tmp == "Custom":
-            tmp = g.main.ask_for_string("New Size. Enter in form XxY (eg 23x54)", str(mapsize_x) + "x" + str(mapsize_y))
+            tmp = main.ask_for_string("New Size. Enter in form XxY (eg 23x54)", str(mapsize_x) + "x" + str(mapsize_y))
             if tmp == -1:
                 refresh_map()
                 return
@@ -1294,11 +1287,11 @@ def map_menu():
             if tmp == -1:
                 break
             if tmp >= len(monster_list):
-                tmp = g.main.ask_for_string("What is the monster's name?")
+                tmp = main.ask_for_string("What is the monster's name?")
                 if tmp != -1 and tmp.strip() != "":
                     monster_list.append(tmp)
             else:
-                tmp2 = g.main.ask_for_string("What is the monster's name?", textbox_text=monster_list[tmp])
+                tmp2 = main.ask_for_string("What is the monster's name?", textbox_text=monster_list[tmp])
                 if tmp2 != -1:
                     if tmp2.strip() == "":
                         monster_list.pop(tmp)
@@ -1309,7 +1302,7 @@ def map_menu():
             cur_map.monster.append(monster_line)
         refresh_map()
     elif tmp == "Battle Background":
-        tmp = g.main.ask_for_string("Filename for battle background?", textbox_text=cur_map.battle_background_name)
+        tmp = main.ask_for_string("Filename for battle background?", textbox_text=cur_map.battle_background_name)
         if tmp != -1:
             cur_map.battle_background_name = tmp
         refresh_map()

@@ -1,7 +1,7 @@
 """Configuration settings for the Dragon Hunt game."""
 
 # Previously array_mods
-MODULES = ["DarkAges", "DragonHunt"]
+MODULES = ["DarkAges", "DragonHunt", " ", " ", " "]
 MODULES_DIR = ""
 
 # Screen resolution
@@ -12,7 +12,9 @@ SCREEN_HEIGHT = 768
 # size (in tiles) of the editor screen. 15 works well with 640x480,
 # 20 with 800x600, and 24 with 1024x768
 TILESIZE = 32
-EDITOR_TILESIZE = 32
+MAPSIZE_X = 31
+MAPSIZE_Y = 23
+MAX_MAPSIZE = (0, 0)
 
 # Number of lines to display in the scroller
 MESSAGE_LINES = 10
@@ -42,3 +44,9 @@ mut = {"MODULE_POS": 0, "CURR_BUTTON": 0, "GAME_NAME": "", "EXP_LIST": ""}
 
 DEBUG = False
 FASTBOOT = False  # Skip map preprocessing
+
+# Editor variables
+EDITOR_TILESIZE = 32  # Size of the editor screen (in tiles)
+TILEGRID = False  # Whether or not to display the map grid
+EDITOR_MAPSIZE_X = 25
+EDITOR_MAPSIZE_Y = 25

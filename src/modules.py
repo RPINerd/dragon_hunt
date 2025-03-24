@@ -9,20 +9,6 @@ import new_game
 from audio import load_sounds
 
 
-# ! Currently Unused
-def draw_text_with_border(screen, text, position, font, text_color, border_color, border_width):
-    x, y = position
-    # Render the border
-    for dx in range(-border_width, border_width + 1):
-        for dy in range(-border_width, border_width + 1):
-            if dx != 0 or dy != 0:  # Avoid the center
-                border_text = font.render(text, True, border_color)
-                screen.blit(border_text, (x + dx, y + dy))
-    # Render the original text on top
-    text_surface = font.render(text, True, text_color)
-    screen.blit(text_surface, position)
-
-
 def init_gamedata() -> None:
     """
     Initialize the game data.
@@ -78,7 +64,8 @@ def select() -> int:
     """
     Display a menu to select a module.
 
-    :return: The index of the selected module to load
+    Returns:
+        The index of the selected module to load
     """
     selected_index = 0
     xres = 1024
@@ -102,9 +89,6 @@ def select() -> int:
         module[0] + "".join([" " + char if char.isupper() else char for char in module[1:]])
         for module in config.MODULES
     ]
-    # Extend the modules list to have at least 5 entries
-    while len(modules) < 5:
-        modules.append("")
 
     # Limit the framerate to 30
     clock = pygame.time.Clock()
