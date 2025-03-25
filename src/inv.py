@@ -23,6 +23,7 @@ import config
 import g
 import item
 import main
+import save_mgmt
 from player import player
 
 # width/height of inv canvas, in tiles.
@@ -906,11 +907,15 @@ def menu_key_handler(key_name):
             if tmp == "end":
                 return 1
         elif config.mut["CURR_BUTTON"] == 4:
-            inv_savegame()
-            return 0
+            if action.has_dialog == 1:
+                return False
+            save_mgmt.savegame(player.name)
+            main.print_message("** Game Saved **")
+            pygame.display.flip()
+            return False
         elif config.mut["CURR_BUTTON"] == 5:
             leave_inv()
-            return 1
+            return True
         g.screen.blit(old_screen_refresh, (0, 0))
     refresh_menu_buttons()
     refresh_stat_display()

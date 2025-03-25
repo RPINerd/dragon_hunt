@@ -11,6 +11,7 @@ import battle
 import config
 import g
 import inv
+import save_mgmt
 import shop
 from player import player
 
@@ -95,7 +96,7 @@ def refresh_message_box():
 def save_game():
     if action.has_dialog == 1:
         return 0
-    g.savegame(player.name)
+    save_mgmt.savegame(player.name)
     print_message("** Game Saved **")
 
 

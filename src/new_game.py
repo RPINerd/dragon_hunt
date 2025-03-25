@@ -30,6 +30,7 @@ import g
 import loadgame
 import main
 import options
+import save_mgmt
 from player import player
 
 # main stats for character. Taken from g.hp etc.
@@ -270,7 +271,7 @@ def begin_game(loadgame_name=""):
         player.name = "Nameless"
     # bring the main window up.
     if loadgame_name != "":
-        g.loadgame(loadgame_name)
+        save_mgmt.loadgame(loadgame_name)
     main.init_window_main(new_game)
     already_started_game = 0
     g.break_one_loop = 0
@@ -349,10 +350,6 @@ def refresh_buttons():
         if config.mut["CURR_BUTTON"] == 4:
             refresh_help("")
     pygame.display.flip()
-
-
-def refresh_stats():
-    pass
 
 
 def refresh_help(string):
