@@ -16,6 +16,7 @@ classifiers = [
     "Operating System :: Linux",
 ]
 dependencies = [
+    "icecream>=2.1.4",
     "pygame-ce>=2.5.3",
 ]
 

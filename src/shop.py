@@ -20,6 +20,7 @@
 
 
 import pygame
+from icecream import ic
 
 import config
 import g
@@ -123,7 +124,7 @@ def show_details(event=0, sel_item=-1):
         sel_item = curr_item
     if curr_focus == 0:  # inv
         if sel_item < len(item.inv):
-            print(sel_item)
+            ic(sel_item)
             if item.inv[sel_item] != -1:
                 tempitem = item.item[item.inv[sel_item]]
                 if tempitem.type == 14 and g.shops[store_num].name == "a Gem Shop":

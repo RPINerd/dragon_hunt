@@ -8,6 +8,7 @@ from pathlib import Path
 from random import random
 
 import pygame
+from icecream import ic
 
 import config
 import game_screen as pygscreen
@@ -93,27 +94,27 @@ def init_data() -> None:
     screen_size = screen.get_size()
 
     # TODO "read maps" has a nifty bar that I should emulate throughout the other loads
-    print("Read settings")
+    ic("Read settings")
     read_settings()
-    print("Load backgrounds")
+    ic("Load backgrounds")
     load_backgrounds()
-    print("Read scripts")
+    ic("Read scripts")
     read_scripts()
-    print("Read items")
+    ic("Read items")
     item.read_items()
-    print("Read skills")
+    ic("Read skills")
     read_skills()
-    print("Read monsters")
+    ic("Read monsters")
     monster.read_monster()
-    print("Read variables")
+    ic("Read variables")
     read_variables()
-    print("Read shops")
+    ic("Read shops")
     read_shops()
-    print("Read perturn")
+    ic("Read perturn")
     read_perturn()
-    print("Load buttons")
+    ic("Load buttons")
     load_buttons()
-    print("Load icons")
+    ic("Load icons")
     load_icons()
 
 
@@ -162,7 +163,7 @@ def read_variables() -> None:
     """
     # Verify that the variables file exists.
     if not path.exists(config.MODULES_DIR + "/data/variables.txt"):
-        print(f"Error: No variables file found in {config.MODULES_DIR}/data/.. Exiting.")
+        ic(f"Error: No variables file found in {config.MODULES_DIR}/data/.. Exiting.")
         sys.exit()
 
     # Set up the new_game_dice array.
@@ -199,7 +200,7 @@ def read_variables() -> None:
                 config.mut["EXP_LIST"] = line_value.split(" ")
 
     if game_name == "":
-        print("Warning: No game name found in variables file. Defaulting to 'Dragon Hunt'")
+        ic("Warning: No game name found in variables file. Defaulting to 'Dragon Hunt'")
         config.mut["GAME_NAME"] = "Dragon Hunt"
 
 
@@ -444,7 +445,7 @@ def mapname2zgrid(name):
     for i in range(len(maps)):
         if maps[i].name == name:
             return i
-    print("file " + name + " not found")
+    ic("file " + name + " not found")
     return -1
 
 
@@ -543,7 +544,7 @@ def read_images(dir_name: str) -> dict:
     :return: A dictionary of all images in the directory
     """
     if pygame.image.get_extended() == 0:
-        print("Error: SDL_image required. Exiting.")
+        ic("Error: SDL_image required. Exiting.")
         sys.exit()
     image_dictionary = {"blank": pygame.Surface((32, 32))}
     image_dictionary = inner_read_images("../data/buttons", image_dictionary)
@@ -568,7 +569,7 @@ def inner_read_images(dir_name, image_dictionary):
                     else:  # if image is in root dir
                         image_dictionary[tilename] = pygame.image.load(root + "/" + tilename).convert_alpha()
         except pygame.error:
-            print(root[i:] + "/" + tilename + " failed to load")
+            ic(root[i:] + "/" + tilename + " failed to load")
     return image_dictionary
 
 
@@ -588,7 +589,7 @@ def create_norm_box(xy: list, size: list, outline_color: str = "black", inner_co
 
 
 # given a surface, string, font, char to underline (int; -1 to len(string)),
-# xy coord, and color, print(the string to the surface.)
+# xy coord, and color, ic(the string to the surface.)
 # Align (0=left, 1=Center, 2=Right) changes the alignment of the text
 def print_string(surface, string_to_print, font, xy, color=config.COLORS["black"], align=0, width=-1):
     string_to_print = string_to_print.replace("\t", "     ")

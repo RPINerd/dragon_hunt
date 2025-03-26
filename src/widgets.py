@@ -1,5 +1,6 @@
 """Widgets for neater implememntation of UI elements."""
 import pygame
+from icecream import ic
 
 import g
 
@@ -69,16 +70,16 @@ class Listbox:
 
     def refresh_listbox(self, selected, lines_array):
         if len(lines_array) != self.viewable_items:
-            print("CRASH WARNING: len(lines_array)=" + str(len(lines_array)))
-            print("CRASH WARNING: self.viewable_items=" + str(self.viewable_items))
+            ic("CRASH WARNING: len(lines_array)=" + str(len(lines_array)))
+            ic("CRASH WARNING: self.viewable_items=" + str(self.viewable_items))
             return 0
 
         if selected >= self.viewable_items:
-            print("Error in refresh_listbox(). selected =" + str(selected))
+            ic("Error in refresh_listbox(). selected =" + str(selected))
             selected = 0
 
         if len(lines_array) % (self.viewable_items * self.lines_per_item) != 0:
-            print("Error in refresh_listbox(). len(lines_array)=" + str(len(lines_array)))
+            ic("Error in refresh_listbox(). len(lines_array)=" + str(len(lines_array)))
             return 0
 
         g.screen.blit(self.list_surface, self.xy)
@@ -218,7 +219,7 @@ def refresh_list(listbox: Listbox, scrollbar: Scrollbar, list_pos, list_array):
         ],
     )
     if tmp == 0:
-        print(list_array)
+        ic(list_array)
     if scrollbar != 0:
         scrollbar.refresh_scroll(
             list_pos, ((len(list_array) / listbox.viewable_items) + 1) * listbox.viewable_items - 1

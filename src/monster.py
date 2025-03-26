@@ -21,6 +21,8 @@
 from os import listdir
 from random import random
 
+from icecream import ic
+
 import config
 import g
 
@@ -69,7 +71,7 @@ def monster_name_to_index(name):
     for i in range(len(monsters)):
         if name.lower() == monsters[i].name.lower():
             return i
-    print("monster " + name + " not found in monsters directory.")
+    ic("monster " + name + " not found in monsters directory.")
     return -1
 
 
@@ -85,7 +87,7 @@ def find_level_monster(level):
     for i in range(len(monster_groups)):
         if mon_name.lower() == monster_groups[i].name.lower():
             return i
-    print("monster " + mon_name + " not found in monsters directory.")
+    ic("monster " + mon_name + " not found in monsters directory.")
     return -1
 
 
@@ -181,7 +183,7 @@ def addmonster(filename):
         elif monster_command.lower() == ":on_death":
             curr_mode = 1
         else:
-            print("bad line of " + monster_line + " found in " + filename)
+            ic("bad line of " + monster_line + " found in " + filename)
 
     # actually add the monster
     monsters.append(monster_class(temp_name, temp_hp, temp_attack, temp_defense, temp_exp, temp_gold, temp_description))

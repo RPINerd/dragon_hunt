@@ -4,6 +4,8 @@
 
 from os import listdir
 
+from icecream import ic
+
 import action
 import config
 import g
@@ -155,7 +157,7 @@ class map:
                     elif map_command == "level_downright":
                         self.downright_level = map_line.split("=", 1)[1].strip()
                     else:
-                        print("bad command of " + map_command + " received")
+                        ic(f"Bad command of {map_command} received!")
 
             # input tile data
             if curr_mode == 2:
@@ -231,7 +233,7 @@ class map:
                     for line in self.tiles[character][1]:
                         self.field[cur_line][cur_char].actions.append(line)
                 except KeyError:
-                    print("Tile " + character + " is undefined in map " + self.name)
+                    ic("Tile " + character + " is undefined in map " + self.name)
                 cur_char += 1
             cur_line += 1
 

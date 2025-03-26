@@ -3,6 +3,7 @@ from os import path, walk
 from random import random
 
 import pygame
+from icecream import ic
 
 from config import MODULES_DIR
 
@@ -20,7 +21,7 @@ def load_sounds() -> None:
     try:
         pygame.mixer.init()
     except pygame.error as message:
-        print(f"Error: Unable to init sound (pygame message: {message})")
+        ic(f"Error: Unable to init sound (pygame message: {message})")
         MUTE = True
         return
 
@@ -49,4 +50,4 @@ def play_sound(sound_name: str) -> None:
     except KeyError:
         raise KeyError(f"Missing sound set {sound_name}")
     except pygame.error:
-        print(f"Error: Unable to play sound {sound_name}")
+        ic(f"Error: Unable to play sound {sound_name}")

@@ -1,5 +1,6 @@
 """"""
 import pygame
+from icecream import ic
 from pygame.locals import K_DOWN, K_RETURN, K_UP, KEYDOWN, MOUSEBUTTONDOWN, QUIT
 
 import config
@@ -16,7 +17,7 @@ def init_gamedata() -> None:
     Returns:
         None
     """
-    print("Load sounds")
+    ic("Load sounds")
     load_sounds()
 
 
@@ -53,10 +54,10 @@ def load(selected_mod: str = "DragonHunt") -> None:
     screen.blit(text_surface, text_rect)
 
     pygame.display.flip()
-    print("g.init_data")
+    ic("g.init_data")
     g.init_data()
     init_gamedata()
-    print("new_game init_window")
+    ic("new_game init_window")
     new_game.init_window()
 
 

@@ -246,7 +246,7 @@ def refresh_map():
                             ((x - portal_x) * config.TILESIZE, (y - portal_y) * config.TILESIZE),
                         )
             except IndexError:
-                print("Crash prevention: ", x, y, len(cur_map.field))
+                ic("Crash prevention: ", x, y, len(cur_map.field))
     # If we are adjusting walkable status, display black/white box on tile.
     # White for walkable, Black for non. Note that if the walkable status
     # depends on an if statement, this may have incorrect results. (No good
@@ -760,7 +760,7 @@ def check_repeat_tile(x, y):
 def save_map():
     set_codes()
     map_loc = config.MODULES_DIR + "/data/maps/" + map_name
-    print("Saving map to " + map_loc)
+    ic("Saving map to " + map_loc)
     try:
         os.rename(map_loc, map_loc + "~")
     except OSError:
@@ -774,7 +774,7 @@ def save_map():
                     cur_map.field[y][x].name = codes[count]
                     count += 1
             except IndexError:
-                print("Crash prevention:", x, y)
+                ic("Crash prevention:", x, y)
                 return
 
     for y in range(mapsize_y):
@@ -1219,21 +1219,20 @@ def map_menu():
                 return
             size_array = tmp.split("x")
             if len(size_array) != 2:
-                print("Bad size of " + tmp)
+                ic("Bad size of " + tmp)
                 refresh_map()
                 return
-            else:
-                try:
-                    xysize = (int(size_array[0]), int(size_array[1]))
-                except ValueError:
-                    print("Bad size of " + tmp)
-                    refresh_map()
-                    return
-                if xysize[0] < 1 or xysize[1] < 1:
-                    print("Bad size of " + tmp)
-                    refresh_map()
-                    return
-                really_change_mapsize(xysize[0], xysize[1])
+            try:
+                xysize = (int(size_array[0]), int(size_array[1]))
+            except ValueError:
+                ic("Bad size of " + tmp)
+                refresh_map()
+                return
+            if xysize[0] < 1 or xysize[1] < 1:
+                ic("Bad size of " + tmp)
+                refresh_map()
+                return
+            really_change_mapsize(xysize[0], xysize[1])
         else:
             tmp = int(tmp[:2])
             really_change_mapsize(tmp, tmp)
@@ -1527,7 +1526,7 @@ elif len(sys.argv) > 1:
         mod_loc = array_mods.index(sys.argv[1])
         tmp = array_mods[mod_loc]
     except ValueError:
-        print("The module " + sys.argv[1] + " was not found")
+        ic(f"The module {sys.argv[1]} was not found!")
         tmp = array_mods[0]
 else:
     pygame.display.set_caption("Select module")
