@@ -1,4 +1,9 @@
-""""""
+"""
+Module selection screen and game initialization
+
+Select function displays a window where the user can select a module to play
+Load function initializes the game and runs the selected module
+"""
 import pygame
 from icecream import ic
 from pygame.locals import K_DOWN, K_RETURN, K_UP, KEYDOWN, MOUSEBUTTONDOWN, QUIT
@@ -8,15 +13,52 @@ import g
 import game_screen as pygscreen
 import new_game
 from audio import load_sounds
+from item import read_items
+from modloader import load_backgrounds, load_buttons, load_icons, read_perturn, read_settings, read_variables
+from monster import read_monster
+from scripting import read_scripts, read_shops
 
 
 def init_gamedata() -> None:
     """
     Initialize the game data.
 
+    ? Originally had a lot of loading screens but is now way too fast to even percieve
+
+    TODO "read maps" has a nifty bar that I should emulate throughout the other loads
+    TODO refactor so that everyone just uses pygscreen.get_screen() instead of g.screen
+    TODO refactor this to just use config.screensizes across everything
+
     Returns:
         None
     """
+    global screen
+    screen = pygscreen.get_screen()
+    global screen_size
+    screen_size = screen.get_size()
+
+    ic("Read settings")
+    read_settings()
+    ic("Load backgrounds")
+    load_backgrounds()
+    ic("Read scripts")
+    read_scripts()
+    ic("Read items")
+    read_items()
+    ic("Read skills")
+    g.read_skills()  # TODO
+    ic("Read monsters")
+    read_monster()
+    ic("Read variables")
+    read_variables()
+    ic("Read shops")
+    read_shops()
+    ic("Read perturn")
+    read_perturn()
+    ic("Load buttons")
+    load_buttons()
+    ic("Load icons")
+    load_icons()
     ic("Load sounds")
     load_sounds()
 
@@ -33,7 +75,6 @@ def load(selected_mod: str = "DragonHunt") -> None:
     Returns:
         None
     """
-    pygame.font.init()
     screen = pygscreen.get_screen()
     pygame.display.set_caption("Loading")
     pygame.display.set_icon(pygame.image.load("../data/icon.png"))

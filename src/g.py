@@ -1,9 +1,7 @@
 """This was originally a 'globals' file, but is currently in the process of being refactored largely into a new config file"""
 
 # needed for save/load game
-import pickle
-import sys
-from os import mkdir, path, remove, walk
+from os import path
 from pathlib import Path
 from random import random
 
@@ -11,9 +9,6 @@ import pygame
 from icecream import ic
 
 import config
-import game_screen as pygscreen
-import item
-import monster
 
 # player info
 from player import player
@@ -55,12 +50,7 @@ hpbar_width = 0
 per_turn_script = []
 
 # Default key bindings for the game.
-bindings = {}
-
-difficulty = 1
-
-# Used in new_game
-default_player_name = "Alfred"
+bindings: dict[str, int] = {}
 
 # Used in place of some of the Tkinter variables.
 break_one_loop = 0
@@ -71,175 +61,8 @@ unclean_screen = False
 global clock
 clock = pygame.time.Clock()
 
-pygame.font.init()
-
-
-# this calls scripting.py to read the datafiles.
-def init_data() -> None:
-    """
-    Initialize all the data files for the game, originally had a lot of loading screens but
-    is now way too fast to even percieve
-
-    :param screen: The screen to display the loading screen on
-    :param screen_size: The size of the screen, as a tuple of ints
-
-    :return: None
-    """
-    # TODO refactor so that everyone just uses pygscreen.get_screen() instead of g.screen
-    global screen
-    screen = pygscreen.get_screen()
-
-    # TODO refactor this to just use config.screensizes across everything
-    global screen_size
-    screen_size = screen.get_size()
-
-    # TODO "read maps" has a nifty bar that I should emulate throughout the other loads
-    ic("Read settings")
-    read_settings()
-    ic("Load backgrounds")
-    load_backgrounds()
-    ic("Read scripts")
-    read_scripts()
-    ic("Read items")
-    item.read_items()
-    ic("Read skills")
-    read_skills()
-    ic("Read monsters")
-    monster.read_monster()
-    ic("Read variables")
-    read_variables()
-    ic("Read shops")
-    read_shops()
-    ic("Read perturn")
-    read_perturn()
-    ic("Load buttons")
-    load_buttons()
-    ic("Load icons")
-    load_icons()
-
-
 # What dice to roll when starting a new game. 2d array.
 new_game_dice = []
-
-
-def read_settings() -> None:
-    """
-    Read the settings file and set the global variables accordingly
-    """
-    global bindings
-    global difficulty
-    global editor_xy
-    global fullscreen
-    editor_xy = (1024, 768)
-
-    with Path.open("../settings.txt") as settings_file:
-        for line in settings_file:
-
-            # Strip whitespace
-            line = line.strip()
-
-            # Skip comments and empty lines
-            if line.startswith("#") or line == "":
-                continue
-            line_key = line.split("=")[0]
-            line_value = line.split("=")[1]
-            if line_key == "difficulty":
-                difficulty = int(line_value)
-            elif line_key == "editor_xy_size":
-                editor_xy = (int(line_value.split(",")[0]), int(line_value.split(",")[1]))
-            elif line_key == "fullscreen":
-                fullscreen = int(line_value)
-            else:
-                bind_line = line.split("=")[0]
-                bindings[bind_line] = int(line_value)
-
-
-read_settings()
-
-
-def read_variables() -> None:
-    """
-    Read the variables file for the selected module and set the global variables accordingly
-    """
-    # Verify that the variables file exists.
-    if not path.exists(config.MODULES_DIR + "/data/variables.txt"):
-        ic(f"Error: No variables file found in {config.MODULES_DIR}/data/.. Exiting.")
-        sys.exit()
-
-    # Set up the new_game_dice array.
-    for i in range(5):
-        new_game_dice.append([])
-
-    # Open the module variables file and parse it
-    with Path.open(config.MODULES_DIR + "/data/variables.txt") as file:
-        for line in file:
-            line = line.strip()
-
-            # Skip comments and empty lines
-            if line.startswith("#") or line == "":
-                continue
-
-            line_key = line.split("=", 1)[0].strip().lower()
-            line_value = line.split("=", 1)[1].strip()
-            if line_key == "hp":
-                read_dice(0, line_value)
-            elif line_key == "ep":
-                read_dice(1, line_value)
-            elif line_key == "attack":
-                read_dice(2, line_value)
-            elif line_key == "defense":
-                read_dice(3, line_value)
-            elif line_key == "gold":
-                read_dice(4, line_value)
-            elif line_key == "game_name":
-                config.mut["GAME_NAME"] = line_value
-            elif line_key == "default_player_name":
-                global default_player_name
-                default_player_name = line_value
-            elif line_key == "exp_list":
-                config.mut["EXP_LIST"] = line_value.split(" ")
-
-    if game_name == "":
-        ic("Warning: No game name found in variables file. Defaulting to 'Dragon Hunt'")
-        config.mut["GAME_NAME"] = "Dragon Hunt"
-
-
-# given a dice set and string of the form 2d4+5, place in new_game_dice
-def read_dice(variable, dice_string):
-    first = dice_string.split("d", 1)[0].strip()
-    temp = dice_string.split("d", 1)[1].strip()
-    if temp.find("+") == -1:
-        second = temp.strip()
-        third = "0"
-    else:
-        second = temp.split("+", 1)[0].strip()
-        third = temp.split("+", 1)[1].strip()
-    new_game_dice[variable].append(int(first))
-    new_game_dice[variable].append(int(second))
-    new_game_dice[variable].append(int(third))
-
-
-# reads the file data/perturn.txt. Expects config.MODULES_DIR to be set.
-def read_perturn():
-    cur_turns = []
-    temp_cur_turns = []
-    global per_turn_script
-    for i in range(30):
-        per_turn_script.append([])
-    per_turn_lines = read_script_file("/data/perturn.txt")
-    for line in per_turn_lines:
-        line = line.strip()
-        if line[:1] == ":":  # start defining more tiles.
-            cur_turns = []
-            temp_cur_turns = line[1:].split(",")
-            for turn in temp_cur_turns:
-                if turn.strip().isdigit():
-                    cur_turns.append(int(turn.strip()))
-
-        # give scripting to the current tiles
-        else:
-            for turn_num in cur_turns:
-                per_turn_script[turn_num].append(line)
 
 
 # skills array. Each skill is a separate line in the array. Each line goes:
@@ -373,8 +196,6 @@ def read_skills():
 
 # Rolls dice in the form 2d6, where 2 is the number of dice, and 6 the number of
 # sides on each die. modify is the bonus given to each die. Use die_roll(2, 6)
-
-
 # Modify is the bonus given to each die. Use die_roll(2, 6) + 4 for bonuses on
 # the entire roll, die_roll(2, 6, 1) for bonuses on each roll. Default = 0
 def die_roll(dice, sides, modfy=0):
@@ -461,43 +282,6 @@ def load_tiles():
         tiles[image_name] = image
 
 
-backgrounds = {}
-
-
-# This loads the battle backgrounds.
-def load_backgrounds():
-    global backgrounds
-    temp_images = read_images("/images/backgrounds/")
-    backgrounds = {}
-    for image_name, image in temp_images.items():
-        backgrounds[image_name] = image
-
-
-# TODO we have a button class now, move this there
-buttons = {}
-
-
-# This loads the buttons.
-def load_buttons():
-    global buttons
-    temp_images = read_images("/images/buttons/")
-    buttons = {}
-    for image_name, image in temp_images.items():
-        buttons[image_name] = image
-
-
-icons = {}
-
-
-# This loads the icons
-def load_icons():
-    global icons
-    temp_images = read_images("/images/icons/")
-    icons = {}
-    for image_name, image in temp_images.items():
-        icons[image_name] = image
-
-
 # given a filename, return the script contained in the file. from_editor will
 # be used for the map editor, to keep it from shredding formatting.
 def read_script_file(file_name, from_editor=0):
@@ -534,43 +318,6 @@ def interpret_lines(temp_array):
 
 # create the fonts needed.
 font = pygame.font.Font(None, 14)
-
-
-def read_images(dir_name: str) -> dict:
-    """
-    Read all images in the given directory and its subdirectories
-
-    :param dir_name: The directory to read images from
-    :return: A dictionary of all images in the directory
-    """
-    if pygame.image.get_extended() == 0:
-        ic("Error: SDL_image required. Exiting.")
-        sys.exit()
-    image_dictionary = {"blank": pygame.Surface((32, 32))}
-    image_dictionary = inner_read_images("../data/buttons", image_dictionary)
-    image_dictionary = inner_read_images(config.MODULES_DIR + dir_name, image_dictionary)
-
-    return image_dictionary
-
-
-def inner_read_images(dir_name, image_dictionary):
-    i = 0
-    for root, dirs, files in walk(dir_name):
-        (head, tail) = path.split(root)
-        try:
-            if tail != "CVS":
-                for tilename in files:
-                    # if image is in a sub-dir:
-                    if root != dir_name:
-                        i = len(dir_name)
-                        image_dictionary[root[i:] + "/" + tilename] = pygame.image.load(
-                            root + "/" + tilename
-                        ).convert_alpha()
-                    else:  # if image is in root dir
-                        image_dictionary[tilename] = pygame.image.load(root + "/" + tilename).convert_alpha()
-        except pygame.error:
-            ic(root[i:] + "/" + tilename + " failed to load")
-    return image_dictionary
 
 
 def create_norm_box(xy: list, size: list, outline_color: str = "black", inner_color: str = "light_gray") -> None:

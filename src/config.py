@@ -41,6 +41,24 @@ COLORS = {
 # Mutable global variables
 ALLOW_MOVE = True  # Used with the move scripting command to prevent moving multiple times
 mut = {"MODULE_POS": 0, "CURR_BUTTON": 0, "GAME_NAME": "", "EXP_LIST": ""}
+BACKGROUNDS: dict[str,] = {}
+BINDINGS: dict[str, int] = {
+    "up": 273,
+    "down": 274,
+    "left": 276,
+    "right": 275,
+    "action": 13,
+    "cancel": 27,
+    "attack": 97,
+    "save": 115,
+    "quit": 113,
+    "inv": 105,
+}
+BUTTONS: dict[str,] = {}
+DIFFICULTY: int = 1  # 0 = easy, 1 = normal, 2 = hard
+DICE: list[list[int]] = [[], [], [], [], []]  # Array of dice for the player
+DEFAULT_NAME: str = "Alfred"  # Default name for the player
+ICONS: dict[str,] = {}
 
 DEBUG = False
 FASTBOOT = False  # Skip map preprocessing
