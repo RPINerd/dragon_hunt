@@ -10,6 +10,7 @@ import battle
 import config
 import g
 import inv
+import modloader
 import save_mgmt
 import shop
 from player import player
@@ -179,22 +180,22 @@ def refresh_inv_icon(redisplay=0):
 
     g.create_norm_box((info_top_x, info_top_y), (3 * iconsize, 7 * iconsize), "black", "dh_green")
 
-    g.screen.blit(g.icons[inv_icon_image], (mapsizex * config.TILESIZE - 3 * iconsize, top_of_buttons))
-    g.screen.blit(g.icons[quit_icon_image], (mapsizex * config.TILESIZE - iconsize, top_of_buttons))
-    g.screen.blit(g.icons[save_icon_image], (mapsizex * config.TILESIZE - 2 * iconsize, top_of_buttons))
+    g.screen.blit(config.ICONS[inv_icon_image], (mapsizex * config.TILESIZE - 3 * iconsize, top_of_buttons))
+    g.screen.blit(config.ICONS[quit_icon_image], (mapsizex * config.TILESIZE - iconsize, top_of_buttons))
+    g.screen.blit(config.ICONS[save_icon_image], (mapsizex * config.TILESIZE - 2 * iconsize, top_of_buttons))
 
     icon_x = info_top_x + 5
     icon_y = info_top_y + 5
 
-    g.screen.blit(g.icons["attack.png"], (icon_x, icon_y))
+    g.screen.blit(config.ICONS["attack.png"], (icon_x, icon_y))
     icon_y += iconsize
-    g.screen.blit(g.icons["defense.png"], (icon_x, icon_y))
+    g.screen.blit(config.ICONS["defense.png"], (icon_x, icon_y))
     icon_y += iconsize
-    g.screen.blit(g.icons["gold.png"], (icon_x, icon_y))
+    g.screen.blit(config.ICONS["gold.png"], (icon_x, icon_y))
     icon_y += iconsize
-    g.screen.blit(g.icons["level.png"], (icon_x, icon_y))
+    g.screen.blit(config.ICONS["level.png"], (icon_x, icon_y))
     icon_y += iconsize
-    g.screen.blit(g.icons["xp.png"], (icon_x, icon_y))
+    g.screen.blit(config.ICONS["xp.png"], (icon_x, icon_y))
     icon_y += iconsize
 
     stats_x = info_top_x + iconsize + 10
@@ -398,14 +399,14 @@ def redisplay_map(x=0, y=0):
                 ),
             )
             tmp_key = player.cur_hero[:-4] + "_" + str(i % 2) + player.cur_hero[-4:]
-            if tmp_key in g.tiles:
+            if tmp_key in config.TILES:
                 g.screen.blit(
-                    g.tiles[tmp_key],
+                    config.TILES[tmp_key],
                     ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE),
                 )
-            elif player.cur_hero in g.tiles:
+            elif player.cur_hero in config.TILES:
                 g.screen.blit(
-                    g.tiles[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE)
+                    config.TILES[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE)
                 )
             g.screen.blit(
                 map_over_canvas,
@@ -445,7 +446,7 @@ def findtile(x, y, input_zgrid):
         for picture in config.MAPS[input_zgrid].field[y][x].addpix:
             returnpix.append(picture)
         for itemname in config.MAPS[input_zgrid].field[y][x].items:
-            returnpix.append(g.tiles[g.item.item[g.item.finditem(itemname)].picturename])
+            returnpix.append(config.TILES[g.item.item[g.item.finditem(itemname)].picturename])
         for picture in config.MAPS[input_zgrid].field[y][x].addoverpix:
             returnpix.append(picture)
         return returnpix
@@ -1038,7 +1039,7 @@ def cleanup(event=None):
 
 # call to create window_main.
 def init_window_main(is_new_game=0):
-    g.load_tiles()
+    modloader.load_tiles()
     global map_canvas
     tmp_map_size = (
         config.TILESIZE * (config.MAX_MAPSIZE[0] + mapsizex + 1),

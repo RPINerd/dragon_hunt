@@ -25,6 +25,11 @@ def load_buttons() -> None:
     config.BUTTONS = read_images("/images/buttons/")
 
 
+def load_tiles() -> None:
+    """Loads the various tiles."""
+    config.TILES = read_images("/images/tiles/")
+
+
 def read_images(dir_name: str) -> dict[str, pygame.Surface]:
     """
     Read all images in the given directory and its subdirectories

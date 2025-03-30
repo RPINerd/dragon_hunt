@@ -9,6 +9,7 @@ from icecream import ic
 import battle
 import config
 import g
+import game_screen as pygscreen
 import main
 import monster
 from player import player
@@ -513,10 +514,10 @@ def script_addpix(x, y, z, argument_array):  # add a picture to the tile.
     if check_types_args(argument_array, [1], "addpix") == 0:
         return "bad"
 
-    if argument_array[0][0][1:-1] not in g.tiles:
+    if argument_array[0][0][1:-1] not in config.TILES:
         ic("Tile " + argument_array[0][0][1:-1] + " does not exist in map " + config.MAPS[z].name)
         return 0
-    config.MAPS[z].field[y][x].add_pix(g.tiles[argument_array[0][0][1:-1]])
+    config.MAPS[z].field[y][x].add_pix(config.TILES[argument_array[0][0][1:-1]])
     return 1
 
 
@@ -524,7 +525,7 @@ def script_addoverpix(x, y, z, argument_array):  # add a picture to the tile.
     if check_types_args(argument_array, [1], "addoverpix") == 0:
         return "bad"
 
-    config.MAPS[z].field[y][x].add_over_pix(g.tiles[argument_array[0][0][1:-1]])
+    config.MAPS[z].field[y][x].add_over_pix(config.TILES[argument_array[0][0][1:-1]])
     return 1
 
 
@@ -591,7 +592,7 @@ def script_delpix(x, y, z, argument_array):  # remove a picture from the tile.
         return "bad"
 
     try:
-        config.MAPS[z].field[y][x].del_pix(g.tiles[argument_array[0][0][1:-1]])
+        config.MAPS[z].field[y][x].del_pix(config.TILES[argument_array[0][0][1:-1]])
         main.refresh_tile(x, y, z)
         return 1
     except ValueError:
@@ -1088,7 +1089,7 @@ def script_mapstat(x, y, z, argument_array):
         return 1
     elif switch2 == "battle_bg":
         switch3 = interpret_line(switch3)
-        config.MAPS[z].battle_background = g.backgrounds[switch3]
+        config.MAPS[z].battle_background = config.BACKGROUNDS[switch3]
         config.MAPS[z].battle_background_name = switch3
         return 1
     elif switch2 == "change_titlebar":
@@ -1221,7 +1222,7 @@ def script_pix(x, y, z, argument_array):  # change tile picture
     if check_types_args(argument_array, [1], "pix") == 0:
         return "bad"
 
-    config.MAPS[z].field[y][x].pix = g.tiles[argument_array[0][0][1:-1]]
+    config.MAPS[z].field[y][x].pix = config.TILES[argument_array[0][0][1:-1]]
     config.MAPS[z].field[y][x].name = argument_array[0][0][1:-1]
     config.MAPS[z].field[y][x].addpix = []
     return 1

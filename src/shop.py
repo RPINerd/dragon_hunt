@@ -217,7 +217,7 @@ def refresh_shop():
     for i in range(len(g.shops[store_num].itemlist)):
         if i != -1:
             g.screen.blit(
-                g.tiles[g.shops[store_num].itemlist[i].picture],
+                config.TILES[g.shops[store_num].itemlist[i].picture],
                 (
                     canvas_x_start
                     + temp_canvas_width * 2
@@ -243,7 +243,7 @@ def refresh_shop():
     for i in range(len(item.inv)):
         if item.inv[i] != -1:
             g.screen.blit(
-                g.tiles[item.item[item.inv[i]].picturename],
+                config.TILES[item.item[item.inv[i]].picturename],
                 (
                     canvas_x_start + (i % shop_width) * config.TILESIZE + 2 * ((i % shop_width) + 1),
                     canvas_y_start + (i / shop_width) * config.TILESIZE + 2 * ((i / shop_width) + 1),
@@ -359,7 +359,7 @@ def which_box(x, y):
         return -1
     tempx = x - 3
     likelyx = tempx / (config.TILESIZE + 2)
-    tempx = tempx - (likelyx * (config.TILESIZE + 2))
+    tempx -= (likelyx * (config.TILESIZE + 2))
     if tempx >= config.TILESIZE - 1:
         return -1
 
@@ -367,7 +367,7 @@ def which_box(x, y):
         return -1
     tempy = y - 3
     likelyy = tempy / (config.TILESIZE + 2)
-    tempy = tempy - (likelyy * (config.TILESIZE + 2))
+    tempy -= (likelyy * (config.TILESIZE + 2))
     if tempy >= config.TILESIZE - 1:
         return -1
 

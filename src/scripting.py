@@ -14,7 +14,7 @@ import g
 # map data. Class tile contains data on each tile,
 # and is a subclass of map.
 # Class map contains data on each map, and the tiles contained within.
-class tile:
+class Tile:
     def __init__(self, symbol):
         # Filled in with a Tkinter image reference
         self.pix = ""
@@ -221,21 +221,17 @@ class map:
                 continue
 
         # place the formatted data into self.field
-        cur_line = 0
-        for line in maptext:
+        for cur_line, line in enumerate(maptext):
             self.field.append([])
-            cur_char = 0
-            for character in line:
-                self.field[cur_line].append(tile(character))
+            for cur_char, character in enumerate(line):
+                self.field[cur_line].append(Tile(character))
                 try:
-                    for line in self.tiles[character][0]:
-                        self.field[cur_line][cur_char].onload.append(line)
-                    for line in self.tiles[character][1]:
-                        self.field[cur_line][cur_char].actions.append(line)
+                    for obj in self.tiles[character][0]:
+                        self.field[cur_line][cur_char].onload.append(obj)
+                    for obj in self.tiles[character][1]:
+                        self.field[cur_line][cur_char].actions.append(obj)
                 except KeyError:
                     ic("Tile " + character + " is undefined in map " + self.name)
-                cur_char += 1
-            cur_line += 1
 
         # place the per-tile data into self.field
         for line in self.per_tile_info:
@@ -247,7 +243,7 @@ class map:
             self.battle_background = g.backgrounds["generic.png"]
 
     def add_tile(self, tile_name):
-        new_tile = tile(tile_name)
+        new_tile = Tile(tile_name)
         self.tiles[tile_name] = new_tile
 
     # I need to call this with zgrid as it is not stored locally.

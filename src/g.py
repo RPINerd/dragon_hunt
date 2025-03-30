@@ -254,21 +254,22 @@ def mapname2zgrid(name):
     return -1
 
 
-tiles = {}
+def read_script_file(file_name: str | Path, from_editor: int = 0) -> list[str]:
+    """
+    Parse a script file and return a list of commands/scripts
 
+    The from_editor parameter is used to determine if the call is coming from the map
+    editor or not. If it is, the script will be returned as-is, without any parsing.
 
-# this loads the various tiles.
-def load_tiles():
-    global tiles
-    temp_images = read_images("/images/tiles/")
-    tiles = {}
-    for image_name, image in temp_images.items():
-        tiles[image_name] = image
+    TODO if the file provided is a path, could simplify the calling to not require str concat
 
+    Args:
+        file_name (str): The name of the file to read
+        from_editor (int, optional): 1 if being called from editor. Defaults to 0.
 
-# given a filename, return the script contained in the file. from_editor will
-# be used for the map editor, to keep it from shredding formatting.
-def read_script_file(file_name, from_editor=0):
+    Returns:
+        list[str]: The scripting commands in the file
+    """
     temp_array = []
     file = Path.open(config.MODULES_DIR + file_name)
     temp_array.extend(file.readlines())

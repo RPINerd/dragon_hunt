@@ -62,6 +62,7 @@ DICE: list[list[int]] = [[], [], [], [], []]  # Array of dice for the player
 DEFAULT_NAME: str = "Alfred"  # Default name for the player
 ICONS: dict[str,] = {}
 MAPS: list = []
+TILES: dict[str,] = {}
 
 DEBUG = False
 FASTBOOT = False  # Skip map preprocessing

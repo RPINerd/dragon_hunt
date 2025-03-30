@@ -1189,7 +1189,7 @@ def which_box(x, y, temp_size):
     # Transform x from pixels to tiles
     tempx = x - 3
     likelyx = tempx / (config.TILESIZE + 2)
-    tempx = tempx - (likelyx * (config.TILESIZE + 2))
+    tempx -= (likelyx * (config.TILESIZE + 2))
     if tempx >= config.TILESIZE - 1:
         return -1
 
@@ -1199,7 +1199,7 @@ def which_box(x, y, temp_size):
     # Transform y from pixels to tiles
     tempy = y - 3
     likelyy = tempy / (config.TILESIZE + 2)
-    tempy = tempy - (likelyy * (config.TILESIZE + 2))
+    tempy -= (likelyy * (config.TILESIZE + 2))
     if tempy >= config.TILESIZE - 1:
         return -1
     # Final check, then return the location in the inv.

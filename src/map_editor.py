@@ -32,7 +32,9 @@ pygame.font.init()
 
 import config
 import g
+import game_screen as pygscreen
 import main
+import modloader
 from widgets import Listbox, Scrollbar, refresh_list
 
 pygame.display.set_caption("Map Editor")
@@ -242,7 +244,7 @@ def refresh_map():
                         continue
                     if line[:3].lower() == "pix" or line[:6].lower() == "addpix" or line[:10].lower() == "addoverpix":
                         g.screen.blit(
-                            g.tiles[line[line.find("(") + 2 : g.action.match_command(line) - 2]],
+                            config.TILES[line[line.find("(") + 2 : g.action.match_command(line) - 2]],
                             ((x - portal_x) * config.TILESIZE, (y - portal_y) * config.TILESIZE),
                         )
             except IndexError:
@@ -1319,9 +1321,9 @@ def sel_mod(selected_mod):
             name = "items/" + item_dir[j]
             item_list[name] = 0
         j += 1
-    g.read_maps(1)
-    g.load_tiles()
-    g.read_variables()
+    modloader.read_maps(1)
+    modloader.load_tiles()
+    modloader.read_variables()
     # 	window.deiconify()
     make_menus()
     load_tiles()

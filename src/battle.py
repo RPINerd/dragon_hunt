@@ -1129,9 +1129,9 @@ def begin(mon_index_input):
     for i in range(len(monster_list)):
         monster_slashes.append([0, 0, 0])
         try:
-            monster_pic.append(g.tiles["monsters/" + monster_list[i].name + ".png"])
+            monster_pic.append(config.TILES["monsters/" + monster_list[i].name + ".png"])
         except KeyError:
-            monster_pic.append(g.tiles["monsters/generic.png"])
+            monster_pic.append(config.TILES["monsters/generic.png"])
 
         # if x and y positions were given, use them; otherwise, start at the
         # middle, and go right. This works for 1 or two monsters, but xy
@@ -1151,9 +1151,9 @@ def begin(mon_index_input):
 
     global hero_pic
     try:
-        hero_pic = g.tiles["people/hero_n" + config.MAPS[g.zgrid].hero_suffix + ".png"]
+        hero_pic = config.TILES["people/hero_n" + config.MAPS[g.zgrid].hero_suffix + ".png"]
     except KeyError:
-        hero_pic = g.tiles["blank"]
+        hero_pic = config.TILES["blank"]
 
     global hero_loc
     hero_loc = (
