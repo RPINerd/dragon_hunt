@@ -1,24 +1,5 @@
-# item.py
-# Copyright (C) 2005 Free Software Foundation
-# This file is part of Dragon Hunt.
+"""This file contains the item/inv structures and functions."""
 
-# Dragon Hunt is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# Dragon Hunt is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with Dragon Hunt; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-# This file contains the item/inv structures and functions.
-
-# needed for reading items dir.
 from os import listdir
 
 import config
@@ -26,34 +7,60 @@ import g
 
 
 # Item definition.
-class item_class:
+class Item:
 
-    """
-    Item definition
-    """
+    """Item definition"""
 
-    def __init__(self):
-        self.name = ""
+    def __init__(self,
+        name: str,
+        type: int,
+        qual: int,
+        price: int,
+        val: int,
+        desc: str,
+        img_name: str,
+        bonuses: tuple[int, int, int, int],
+        script: list[str]) -> None:
+        """"""
+        self.name = name
         # type is 0-5 for equipment, 10-20 for items, and 99 for system items.
         # type 10 is unusable (use for story items/keys) 11 is healing, 12 is
         # explosive, 14 is gems, 15-17 is scripted (15=usable in battle,
         # 16=usable out of battle, 17=usable in both).
-        self.type = 0
+        self.type = type
         # The power of the item.
-        self.quality = 0
+        self.quality = qual
         # If price is 0, the item is un sell/buy/drop able. (For story items.)
-        self.price = 0
+        self.price = price
         # value is how much you can sell it for, vs. price is the cost to buy
-        self.value = 0
-        self.description = ""
-        self.picturename = "items/dropped.png"
-        self.hp_bonus = 0
-        self.ep_bonus = 0
-        self.attack_bonus = 0
-        self.defense_bonus = 0
+        self.value = val
+        self.description = desc
+        self.picturename = img_name
+        self.hp_bonus = bonuses[0]
+        self.ep_bonus = bonuses[1]
+        self.attack_bonus = bonuses[2]
+        self.defense_bonus = bonuses[3]
         # An array of lines, describing the scripting run when the item is used.
-        self.scripting = []
+        self.scripting = script
 
+
+class DroppedItem:
+
+    """An array of dropped items. Used for keeping dropped items around through save/loads."""
+
+    def __init__(self, name: str, pos: tuple[int, int], mapname: str) -> None:
+        """"""
+        self.name = name
+        self.x = pos[0]
+        self.y = pos[1]
+        self.mapname = mapname
+
+
+# Item arrays. Each item is a separate element in the array. Each element is
+# a member of the class Item. See the start of this file for details.
+# Duplicate item names are bad.
+item: list[Item] = []
+dropped_items: list[DroppedItem] = []
 
 # inventory: 28 spaces.
 # An array of numbers, which are either the index of the
@@ -63,19 +70,34 @@ for x in range(28):
     inv.append(-1)
 
 
-# takes the index in the item[] array, and returns the index
-# of the first occurance in the inv[] array, or -1 for failure.
-def find_inv_item(num):
+def find_inv_item(num: int) -> int:
+    """
+    Find an item in the inventory
+
+    Given an index in the item[] array, return the index of the first occurance in the inv[] array
+
+    Args:
+        num (int): The index in the item[] array
+
+    Returns:
+        int: The index of the first occurance in the inv; -1 for failure
+    """
     for i in range(len(inv)):
         if inv[i] == num:
             return i
     return -1
 
 
-# takes the index of an item in the item[] array, and places it
-# in the first empty spot in the inv[] array. Retuns the
-# index of inv[] item is placed at, or -1 for failure.
-def take_inv_item(num):
+def take_inv_item(num: int) -> int:
+    """
+    Takes the index of an item in the item[] array, and places it in the first empty spot in the inv[] array
+
+    Args:
+        num (int): An index of the item from the item[] array
+
+    Retuns:
+        (int): Index of inv[] item is placed at; -1 for failure
+    """
     for i in range(len(inv)):
         if inv[i] == -1:
             inv[i] = num
@@ -83,25 +105,29 @@ def take_inv_item(num):
     return -1
 
 
-# takes the index of an item in the inv[] array,
-# removes it, then removes the empty space.
-def drop_inv_item(num):
+def drop_inv_item(num: int) -> None:
+    """
+    Takes the index of an item in the inv[] array, removes it, then removes the empty space
+
+    Args:
+        num (int): The index of the item in the inv[] array
+    """
     inv[num] = -1
     for i in range(num + 1, len(inv)):
         inv[i - 1] = inv[i]
     inv[len(inv) - 1] = -1
 
 
-# Item arrays. Each item is a separate element in the array. Each element is
-# a member of the class item_class. See the start of this file for details.
-# Duplicate item names are bad.
-global item
-item = []
+def finditem(name: str) -> int:
+    """
+    Find an item in the item[] array
 
+    Args:
+        name (str): The name of the item to find
 
-# takes an item name, and returns its location in the
-# item[] array, with -1 == nonexisting.
-def finditem(name):
+    Returns:
+        int: The index of the item in the item[] array; -1 if not found
+    """
     tmpname = name.lower()
     for i in range(len(item)):
         if tmpname == item[i].name.lower():
@@ -109,43 +135,35 @@ def finditem(name):
     return -1
 
 
-# read items directory. This is called on startup.
-def read_items():
-    # put the names of the available items in array_items.
+def read_items() -> None:
+    """Read items directory; called on startup"""
+    # Put the names of the available items in array_items.
     array_items = listdir(config.MODULES_DIR + "/data/items")
 
     # remove all .* files.
     i = 0
     while i < len(array_items):
         extension_start = len(array_items[i]) - 4
-        if extension_start <= 0:
+        if extension_start <= 0 or array_items[i][:1] == "." or array_items[i][extension_start : extension_start + 4] != ".txt":
             array_items.pop(i)
         else:
-            if array_items[i][:1] == ".":
-                array_items.pop(i)
-            elif array_items[i][extension_start : extension_start + 4] != ".txt":
-                array_items.pop(i)
-            else:
-                i += 1
+            i += 1
 
     # go through all items, adding them to our knowledge.
     for item_filename in array_items:
         additem(item_filename)
 
 
-# given the filename of an item file, load the data from the file into the
-# item array.
-def additem(item_filename):
+def additem(item_filename: str) -> None:
+    """
+    Given the filename of an item, load the data into the item array
+
+    Args:
+        item_filename (str): The filename of the item to load
+    """
     global item
 
-    temp_name = ""
-    temp_type = 0
-    temp_quality = 0
-    temp_price = 0
-    temp_value = 0
-    temp_description = ""
-    temp_picture = None
-    item.append(item_class())
+    item.append(Item("", 0, 0, -1, -1, "", None, (0, 0, 0, 0), []))
     item_array_loc = len(item) - 1
 
     # default values
@@ -208,24 +226,14 @@ def additem(item_filename):
         item[item_array_loc].price = item[item_array_loc].value
 
 
-# An array of dropped items. Used for keeping dropped items around
-# through save/loads.
-class dropped_item_class:
-    def __init__(self, name, x, y, mapname):
-        self.name = name
-        self.x = x
-        self.y = y
-        self.mapname = mapname
+def add_dropped_item(name: str, pos: tuple[int, int], mapname: str) -> None:
+    """Add a dropped item to the dropped_items array."""
+    dropped_items.append(DroppedItem(name, pos, mapname))
 
 
-dropped_items = []
-
-
-def add_dropped_item(name, x, y, mapname):
-    dropped_items.append(dropped_item_class(name, x, y, mapname))
-
-
-def del_dropped_item(name, x, y, mapname):
+def del_dropped_item(name: str, pos: tuple[int, int], mapname: str) -> None:
+    """Delete a dropped item from the dropped_items array."""
+    x, y = pos
     for i in range(len(dropped_items)):
         if (
             dropped_items[i].name == name
@@ -234,10 +242,11 @@ def del_dropped_item(name, x, y, mapname):
             and dropped_items[i].mapname == mapname
         ):
             del dropped_items[i]
-            return 0
+            return
 
 
-def load_dropped_items():
+def load_dropped_items() -> None:
+    """"""
     for dropped_item in dropped_items:
         z = g.mapname2zgrid(dropped_item.mapname)
         config.MAPS[z].field[dropped_item.y][dropped_item.x].additem(dropped_item.name)

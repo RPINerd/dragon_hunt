@@ -21,7 +21,6 @@
 # Date: Sept.1, 2004
 
 import os
-import re
 import sys
 
 import pygame
@@ -467,7 +466,7 @@ def add_item(x, y, name):
     amount = tmp
     item = name.split("/", 1)[1]
     item = item[0 : len(item) - 4]
-    item_name = re.sub("_", " ", item)
+    item_name = item.replace("_", " ")
     var_name = item + "_" + map_name + "_" + str(item_list[name])
     item_list[name] += 1
     cur_map.field[y][x].onload.append('if(var("' + var_name + '"), "=", 0)')

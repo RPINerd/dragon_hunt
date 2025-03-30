@@ -28,6 +28,7 @@ import pygame
 import config
 import g
 import game_screen as pygscreen
+import item
 import loadgame
 import main
 import options
@@ -215,11 +216,11 @@ def reset_vars():
 
     timestep = 0
     g.var_list = {}
-    g.item.dropped_items = []
+    item.dropped_items = []
 
     # clear the inventory
-    for i in range(len(g.item.inv)):
-        g.item.inv[i] = -1
+    for i in range(len(item.inv)):
+        item.inv[i] = -1
     for i in range(len(player.equip)):
         player.equip[i] = -1
     # clear skills
@@ -264,8 +265,8 @@ def begin_game(loadgame_name=""):
     )
     pygame.display.flip()
 
-    g.read_maps()
-    g.item.load_dropped_items()
+    read_maps()
+    item.load_dropped_items()
 
     # just in case someone changed the name
     # after rerolling or loading

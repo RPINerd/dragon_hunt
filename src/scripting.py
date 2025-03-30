@@ -9,6 +9,7 @@ from icecream import ic
 import action
 import config
 import g
+import item
 
 
 # map data. Class tile contains data on each tile,
@@ -67,11 +68,11 @@ class Tile:
 class map:
     def additem(self, itemname, x, y):
         self.field[y][x].additem(itemname)
-        g.item.add_dropped_item(itemname, x, y, self.name)
+        item.add_dropped_item(itemname, (x, y), self.name)
 
     def del_item(self, itemname, x, y):
         self.field[y][x].del_item(itemname)
-        g.item.del_dropped_item(itemname, x, y, self.name)
+        item.del_dropped_item(itemname, x, y, self.name)
 
     def __init__(self, mapname, from_editor=0):
         self.name = mapname
@@ -337,7 +338,7 @@ def read_scripts():
 class shop_item:
     def __init__(self, name):
         self.item_name = name
-        itemnum = g.item.finditem(name)
+        itemnum = item.finditem(name)
         self.cost = 0
         self.value = 0
         self.buytype = "gold"
@@ -347,12 +348,12 @@ class shop_item:
         self.picture = ""
         # if adding an actual item, initialize to the item's qualities.
         if itemnum != -1:
-            self.cost = g.item.item[itemnum].price
-            self.value = g.item.item[itemnum].value
+            self.cost = item.item[itemnum].price
+            self.value = item.item[itemnum].value
             self.buytype = "gold"
-            self.power = g.item.item[itemnum].quality
-            self.description = g.item.item[itemnum].description
-            self.picture = g.item.item[itemnum].picturename
+            self.power = item.item[itemnum].quality
+            self.description = item.item[itemnum].description
+            self.picture = item.item[itemnum].picturename
 
     def add_cost(self, itemcost):
         self.cost = itemcost

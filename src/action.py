@@ -10,6 +10,7 @@ import battle
 import config
 import g
 import game_screen as pygscreen
+import item
 import main
 import monster
 from player import player
@@ -641,27 +642,27 @@ def script_equip(x, y, z, argument_array):  # adjust equipment
             return "bad"
         if player.equip[equip_loc] == -1:
             return '""'
-        return '"' + g.item.item[player.equip[equip_loc]].name + '"'
+        return '"' + item.item[player.equip[equip_loc]].name + '"'
     if switch2 == "has":
         for i in range(len(player.equip)):
-            if switch3 == g.item.item[player.equip[i]].name.lower():
+            if switch3 == item.item[player.equip[i]].name.lower():
                 return 1
         return 0
     if switch2 == "take":
         for i in range(len(player.equip)):
-            if switch3 == g.item.item[player.equip[i]].name.lower():
+            if switch3 == item.item[player.equip[i]].name.lower():
                 player.equip[i] = -1
                 return 1
         return 0
     if switch2 == "give":
-        item_loc = g.item.finditem(switch3)
+        item_loc = item.finditem(switch3)
         if item_loc == -1:
             ic("unknown item " + switch3)
             return "bad"
-        if g.item.item[item_loc].type > 5:
+        if item.item[item_loc].type > 5:
             ic("item " + switch3 + " cannot be worn")
             return "bad"
-        player.equip[g.item.item[item_loc].type] = item_loc
+        player.equip[item.item[item_loc].type] = item_loc
         return 1
     ic("unknown switch for equip(): " + switch2)
     return "bad"
@@ -912,7 +913,7 @@ def script_inv(x, y, z, argument_array):  # inventory functions.
     if check_types_args(argument_array, [1, 1], "inv") == 0:
         return "bad"
 
-    temp = g.item.finditem(argument_array[1][0][1:-1])
+    temp = item.finditem(argument_array[1][0][1:-1])
     if temp == -1:
         ic("Item " + argument_array[1][0][1:-1] + " does not exist.")
         return "bad"
@@ -920,23 +921,23 @@ def script_inv(x, y, z, argument_array):  # inventory functions.
     switch2 = argument_array[0][0][1:-1].lower()
 
     if switch2 == "has":
-        if g.item.find_inv_item(temp) > -1:
+        if item.find_inv_item(temp) > -1:
             return 1
         return 0
     if switch2 == "take":
-        temp = g.item.find_inv_item(temp)
+        temp = item.find_inv_item(temp)
         if temp > -1:
-            g.item.drop_inv_item(temp)
+            item.drop_inv_item(temp)
             return 1
         return 0
     if switch2 == "give":
-        if g.item.take_inv_item(temp) == -1:
+        if item.take_inv_item(temp) == -1:
             return 0
         return 1
     if switch2 == "use":
-        tmptype = g.item.item[temp].type
+        tmptype = item.item[temp].type
         if tmptype != 11 and tmptype != 12 and tmptype != 14 and tmptype != 15 and tmptype != 16 and tmptype != 17:
-            ic("item " + g.item.item[temp].name + " cannot be used.")
+            ic("item " + item.item[temp].name + " cannot be used.")
             return "bad"
         if (g.cur_window == "battle" or g.cur_window == "battle_item" or g.cur_window == "battle_skill") and (
             tmptype != 16
@@ -948,28 +949,28 @@ def script_inv(x, y, z, argument_array):  # inventory functions.
             main.inv.use_item(temp)
             return 1
         else:
-            ic("item " + g.item.item[temp].name + " cannot be used in " + g.cur_window)
+            ic("item " + item.item[temp].name + " cannot be used in " + g.cur_window)
             return "bad"
     elif switch2 == "type":
-        return g.item.item[temp].type
+        return item.item[temp].type
     elif switch2 == "quality":
-        return g.item.item[temp].quality
+        return item.item[temp].quality
     elif switch2 == "price":
-        return g.item.item[temp].price
+        return item.item[temp].price
     elif switch2 == "value":
-        return g.item.item[temp].value
+        return item.item[temp].value
     elif switch2 == "description":
-        return '"' + g.item.item[temp].description + '"'
+        return '"' + item.item[temp].description + '"'
     elif switch2 == "picturename":
-        return '"' + g.item.item[temp].picturename + '"'
+        return '"' + item.item[temp].picturename + '"'
     elif switch2 == "hp_bonus":
-        return g.item.item[temp].hp_bonus
+        return item.item[temp].hp_bonus
     elif switch2 == "ep_bonus":
-        return g.item.item[temp].ep_bonus
+        return item.item[temp].ep_bonus
     elif switch2 == "attack_bonus":
-        return g.item.item[temp].attack_bonus
+        return item.item[temp].attack_bonus
     elif switch2 == "defense_bonus":
-        return g.item.item[temp].defense_bonus
+        return item.item[temp].defense_bonus
     else:
         ic("Unknown switch " + argument_array[0][0][1:-1] + "found.")
         return "bad"
@@ -983,9 +984,9 @@ def script_inv_spot(x, y, z, argument_array):  # return name of given inv item.
     if argument_array[0][0] < 0 or argument_array[0][0] > 27:
         ic("inv location is impossible: " + str(argument_array[0][0]))
         return "bad"
-    if g.item.inv[argument_array[0][0]] == -1:
+    if item.inv[argument_array[0][0]] == -1:
         return '""'
-    return '"' + g.item.item[g.item.inv[argument_array[0][0]]].name + '"'
+    return '"' + item.item[item.inv[argument_array[0][0]]].name + '"'
 
 
 def script_is_equipped(x, y, z, argument_array):  # is the given item equipped?
@@ -996,7 +997,7 @@ def script_is_equipped(x, y, z, argument_array):  # is the given item equipped?
     for item_title in player.equip:
         if item_title == -1:
             continue
-        if g.item.item[item_title].name.lower() == match:
+        if item.item[item_title].name.lower() == match:
             return 1
     return 0
 
@@ -1007,7 +1008,7 @@ def script_item(x, y, z, argument_array):  # give item
     if check_types_args(argument_array, [1], "item") == 0:
         return "bad"
 
-    if g.item.take_inv_item(g.item.finditem(argument_array[0][0][1:-1])) == -1:
+    if item.take_inv_item(item.finditem(argument_array[0][0][1:-1])) == -1:
         return 0
     return 1
 
@@ -1437,10 +1438,10 @@ def script_take(x, y, z, argument_array):  # Drop item, by name.
     if check_types_args(argument_array, [1], "take") == 0:
         return "bad"
 
-    temp = g.item.find_inv_item(g.item.finditem(argument_array[0][0][1:-1]))
+    temp = item.find_inv_item(item.finditem(argument_array[0][0][1:-1]))
     if temp == -1:
         return 0
-    g.item.drop_inv_item(temp)
+    item.drop_inv_item(temp)
     return 1
 
 
