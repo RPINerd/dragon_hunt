@@ -132,17 +132,17 @@ def activate_scripting(x, y, z):
         z < 0
         or x < 0
         or y < 0
-        or z >= len(g.maps)
-        or y >= len(g.maps[g.zgrid].field)
-        or x >= len(g.maps[g.zgrid].field[y])
+        or z >= len(config.MAPS)
+        or y >= len(config.MAPS[g.zgrid].field)
+        or x >= len(config.MAPS[g.zgrid].field[y])
     ):
         return
 
     itemnum = 0
-    while itemnum < len(g.maps[g.zgrid].field[y][x].items):
-        itemname = g.maps[g.zgrid].field[y][x].items[itemnum]
+    while itemnum < len(config.MAPS[g.zgrid].field[y][x].items):
+        itemname = config.MAPS[g.zgrid].field[y][x].items[itemnum]
         if action.run_command(x, y, z, 'find("' + itemname + '", "a")'):
-            g.maps[g.zgrid].del_item(itemname, x, y)
+            config.MAPS[g.zgrid].del_item(itemname, x, y)
             refresh_tile(x, y, g.zgrid)
             refresh_inv_icon()
             refresh_bars()
@@ -150,11 +150,11 @@ def activate_scripting(x, y, z):
             itemnum += 1
 
     # if there are no actions, leave immediately
-    if len(g.maps[temp_zgrid].field[y][x].actions) == 0:
+    if len(config.MAPS[temp_zgrid].field[y][x].actions) == 0:
         return
 
     # go through all action lines.
-    action.activate_lines(x, y, temp_zgrid, g.maps[temp_zgrid].field[y][x].actions)
+    action.activate_lines(x, y, temp_zgrid, config.MAPS[temp_zgrid].field[y][x].actions)
 
 
 # redraws the main map. Call after moving.
@@ -246,7 +246,7 @@ def refreshhero():
         return
 
     g.screen.blit(g.tiles[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
-    for picture in g.maps[g.zgrid].field[g.ygrid][g.xgrid].addoverpix:
+    for picture in config.MAPS[g.zgrid].field[g.ygrid][g.xgrid].addoverpix:
         g.screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
 
@@ -260,19 +260,19 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
     if config.DEBUG:
         tmp_time = pygame.time.get_ticks()
         if onlypartial == 5:
-            ic(f"Entering level {g.maps[g.zgrid].name}")
+            ic(f"Entering level {config.MAPS[g.zgrid].name}")
 
     if input_zgrid == -1:
         input_zgrid = g.zgrid
     map_size = (
-        config.TILESIZE * (len(g.maps[input_zgrid].field[0]) + mapsizex + 1),
-        config.TILESIZE * (len(g.maps[input_zgrid].field) + mapsizey + 1),
+        config.TILESIZE * (len(config.MAPS[input_zgrid].field[0]) + mapsizex + 1),
+        config.TILESIZE * (len(config.MAPS[input_zgrid].field) + mapsizey + 1),
     )
 
     global map_canvas
 
-    if g.maps[input_zgrid].under_level != "":
-        process_onload(False, g.mapname2zgrid(g.maps[input_zgrid].under_level))
+    if config.MAPS[input_zgrid].under_level != "":
+        process_onload(False, g.mapname2zgrid(config.MAPS[input_zgrid].under_level))
 
     # over_canvas
     if onlypartial == 5:
@@ -284,51 +284,51 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
     xshift = 0
     yshift = 0
     if onlypartial == 1:  # upright
-        xshift = len(g.maps[rootzgrid].field[0])
-        yshift = -len(g.maps[rootzgrid].field)
+        xshift = len(config.MAPS[rootzgrid].field[0])
+        yshift = -len(config.MAPS[rootzgrid].field)
     elif onlypartial == 2:  # up
-        yshift = -len(g.maps[rootzgrid].field)
+        yshift = -len(config.MAPS[rootzgrid].field)
     if onlypartial == 3:  # upleft
-        xshift = -len(g.maps[rootzgrid].field[0])
-        yshift = -len(g.maps[rootzgrid].field)
+        xshift = -len(config.MAPS[rootzgrid].field[0])
+        yshift = -len(config.MAPS[rootzgrid].field)
     elif onlypartial == 4:  # right
-        xshift = len(g.maps[rootzgrid].field[0])
+        xshift = len(config.MAPS[rootzgrid].field[0])
     elif onlypartial == 6:  # left
-        xshift = -len(g.maps[rootzgrid].field[0])
+        xshift = -len(config.MAPS[rootzgrid].field[0])
     elif onlypartial == 7:  # downright
-        xshift = len(g.maps[rootzgrid].field[0])
-        yshift = len(g.maps[rootzgrid].field)
+        xshift = len(config.MAPS[rootzgrid].field[0])
+        yshift = len(config.MAPS[rootzgrid].field)
     elif onlypartial == 8:  # down
-        yshift = len(g.maps[rootzgrid].field)
+        yshift = len(config.MAPS[rootzgrid].field)
     elif onlypartial == 9:  # downleft
-        xshift = -len(g.maps[rootzgrid].field[0])
-        yshift = len(g.maps[rootzgrid].field)
+        xshift = -len(config.MAPS[rootzgrid].field[0])
+        yshift = len(config.MAPS[rootzgrid].field)
 
     # set y range:
     if onlypartial < 4:
-        rangey = range(len(g.maps[input_zgrid].field) - half_mapy - 1, len(g.maps[input_zgrid].field))
+        rangey = range(len(config.MAPS[input_zgrid].field) - half_mapy - 1, len(config.MAPS[input_zgrid].field))
     elif onlypartial > 6:
         rangey = range(0, half_mapy + 1)
     elif onlypartial != 5:
-        rangey = range(0, len(g.maps[input_zgrid].field))
+        rangey = range(0, len(config.MAPS[input_zgrid].field))
     else:
-        rangey = range(-1 * half_mapy - 1, len(g.maps[input_zgrid].field) + half_mapy + 1)
+        rangey = range(-1 * half_mapy - 1, len(config.MAPS[input_zgrid].field) + half_mapy + 1)
 
     # set x range
     if onlypartial == 1 or onlypartial == 4 or onlypartial == 7:
         rangex = range(0, (half_mapx + 1))
     elif onlypartial == 3 or onlypartial == 6 or onlypartial == 9:
-        rangex = range(len(g.maps[input_zgrid].field[0]) - (half_mapx + 1), len(g.maps[input_zgrid].field[0]))
+        rangex = range(len(config.MAPS[input_zgrid].field[0]) - (half_mapx + 1), len(config.MAPS[input_zgrid].field[0]))
     elif onlypartial != 5:
-        rangex = range(0, len(g.maps[input_zgrid].field[0]))
+        rangex = range(0, len(config.MAPS[input_zgrid].field[0]))
     else:
-        rangex = range(-1 * half_mapx - 1, len(g.maps[input_zgrid].field[0]) + half_mapx + 1)
+        rangex = range(-1 * half_mapx - 1, len(config.MAPS[input_zgrid].field[0]) + half_mapx + 1)
 
-    for y in range(len(g.maps[input_zgrid].field)):
-        for x in range(len(g.maps[input_zgrid].field[y])):
-            g.maps[input_zgrid].field[y][x].addpix = []
-            g.maps[input_zgrid].field[y][x].addoverpix = []
-            action.activate_lines(x, y, input_zgrid, g.maps[input_zgrid].field[y][x].onload)
+    for y in range(len(config.MAPS[input_zgrid].field)):
+        for x in range(len(config.MAPS[input_zgrid].field[y])):
+            config.MAPS[input_zgrid].field[y][x].addpix = []
+            config.MAPS[input_zgrid].field[y][x].addoverpix = []
+            action.activate_lines(x, y, input_zgrid, config.MAPS[input_zgrid].field[y][x].onload)
             if dead_yet() == 1:
                 break
 
@@ -338,30 +338,30 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
             refresh_tile(x, y, input_zgrid, xshift, yshift)
 
     # take care of tiled maps.
-    if g.maps[input_zgrid].left_level != "" and recurse:  # left
-        left_zgrid = g.mapname2zgrid(g.maps[input_zgrid].left_level)
+    if config.MAPS[input_zgrid].left_level != "" and recurse:  # left
+        left_zgrid = g.mapname2zgrid(config.MAPS[input_zgrid].left_level)
         process_onload(False, left_zgrid, 6, input_zgrid)
-    if g.maps[input_zgrid].right_level != "" and recurse:  # right
-        right_zgrid = g.mapname2zgrid(g.maps[input_zgrid].right_level)
+    if config.MAPS[input_zgrid].right_level != "" and recurse:  # right
+        right_zgrid = g.mapname2zgrid(config.MAPS[input_zgrid].right_level)
         process_onload(False, right_zgrid, 4, input_zgrid)
-    if g.maps[input_zgrid].up_level != "" and recurse:  # up
-        up_zgrid = g.mapname2zgrid(g.maps[input_zgrid].up_level)
+    if config.MAPS[input_zgrid].up_level != "" and recurse:  # up
+        up_zgrid = g.mapname2zgrid(config.MAPS[input_zgrid].up_level)
         process_onload(False, up_zgrid, 2, input_zgrid)
-    if g.maps[input_zgrid].down_level != "" and recurse:  # down
-        down_zgrid = g.mapname2zgrid(g.maps[input_zgrid].down_level)
+    if config.MAPS[input_zgrid].down_level != "" and recurse:  # down
+        down_zgrid = g.mapname2zgrid(config.MAPS[input_zgrid].down_level)
         process_onload(False, down_zgrid, 8, input_zgrid)
     # Take care of tiled levels. (Diagonal sections.)
-    if g.maps[input_zgrid].upleft_level != "" and recurse:  # upleft
-        upleft_zgrid = g.mapname2zgrid(g.maps[input_zgrid].upleft_level)
+    if config.MAPS[input_zgrid].upleft_level != "" and recurse:  # upleft
+        upleft_zgrid = g.mapname2zgrid(config.MAPS[input_zgrid].upleft_level)
         process_onload(False, upleft_zgrid, 3, input_zgrid)
-    if g.maps[input_zgrid].upright_level != "" and recurse:  # upright
-        upright_zgrid = g.mapname2zgrid(g.maps[input_zgrid].upright_level)
+    if config.MAPS[input_zgrid].upright_level != "" and recurse:  # upright
+        upright_zgrid = g.mapname2zgrid(config.MAPS[input_zgrid].upright_level)
         process_onload(False, upright_zgrid, 1, input_zgrid)
-    if g.maps[input_zgrid].downleft_level != "" and recurse:  # downleft
-        downleft_zgrid = g.mapname2zgrid(g.maps[input_zgrid].downleft_level)
+    if config.MAPS[input_zgrid].downleft_level != "" and recurse:  # downleft
+        downleft_zgrid = g.mapname2zgrid(config.MAPS[input_zgrid].downleft_level)
         process_onload(False, downleft_zgrid, 9, input_zgrid)
-    if g.maps[input_zgrid].downright_level != "" and recurse:  # downright
-        downright_zgrid = g.mapname2zgrid(g.maps[input_zgrid].downright_level)
+    if config.MAPS[input_zgrid].downright_level != "" and recurse:  # downright
+        downright_zgrid = g.mapname2zgrid(config.MAPS[input_zgrid].downright_level)
         process_onload(False, downright_zgrid, 7, input_zgrid)
     global free_move
     free_move = 1
@@ -434,35 +434,35 @@ def findtile(x, y, input_zgrid):
     # If dealing with an off-map area, grab the nearest known tile.
     x = max(x, 0)
     y = max(y, 0)
-    if y >= len(g.maps[input_zgrid].field):
-        y = len(g.maps[input_zgrid].field) - 1
-    if x >= len(g.maps[input_zgrid].field[y]):
-        x = len(g.maps[input_zgrid].field[y]) - 1
+    if y >= len(config.MAPS[input_zgrid].field):
+        y = len(config.MAPS[input_zgrid].field) - 1
+    if x >= len(config.MAPS[input_zgrid].field[y]):
+        x = len(config.MAPS[input_zgrid].field[y]) - 1
     try:
         # This should not (normally) fail.
-        if g.maps[input_zgrid].field[y][x].pix != "":
-            returnpix.append(g.maps[input_zgrid].field[y][x].pix)
-        for picture in g.maps[input_zgrid].field[y][x].addpix:
+        if config.MAPS[input_zgrid].field[y][x].pix != "":
+            returnpix.append(config.MAPS[input_zgrid].field[y][x].pix)
+        for picture in config.MAPS[input_zgrid].field[y][x].addpix:
             returnpix.append(picture)
-        for itemname in g.maps[input_zgrid].field[y][x].items:
+        for itemname in config.MAPS[input_zgrid].field[y][x].items:
             returnpix.append(g.tiles[g.item.item[g.item.finditem(itemname)].picturename])
-        for picture in g.maps[input_zgrid].field[y][x].addoverpix:
+        for picture in config.MAPS[input_zgrid].field[y][x].addoverpix:
             returnpix.append(picture)
         return returnpix
     except IndexError:
         # If it fails, there is rock there.
-        returnpix.append(g.maps[input_zgrid].field[0][0].pix)
+        returnpix.append(config.MAPS[input_zgrid].field[0][0].pix)
         return returnpix
     except KeyError:
         # if the author forgot to define the tile, point out the mistake.
         ic(
             "Tile of "
-            + g.maps[input_zgrid].field[y][x].name
+            + config.MAPS[input_zgrid].field[y][x].name
             + " is not defined"
             + " in map "
-            + g.maps[input_zgrid].name
+            + config.MAPS[input_zgrid].name
         )
-        returnpix.append(g.maps[input_zgrid].field[0][0].pix)
+        returnpix.append(config.MAPS[input_zgrid].field[0][0].pix)
         return returnpix
 
 
@@ -474,13 +474,13 @@ def findovertile(x, y, input_zgrid):
         return []
     if y < 0:
         return []
-    if y >= len(g.maps[input_zgrid].field):
+    if y >= len(config.MAPS[input_zgrid].field):
         return []
-    if x >= len(g.maps[input_zgrid].field[y]):
+    if x >= len(config.MAPS[input_zgrid].field[y]):
         return []
     try:
         # This should not (normally) fail.
-        for picture in g.maps[input_zgrid].field[y][x].addoverpix:
+        for picture in config.MAPS[input_zgrid].field[y][x].addoverpix:
             returnpix.append(picture)
         return returnpix
     except IndexError:
@@ -488,8 +488,8 @@ def findovertile(x, y, input_zgrid):
         return []
     except KeyError:
         # if the author forgot to define the tile, point out the mistake.
-        ic("Tile is not defined in map " + g.maps[input_zgrid].name)
-        returnpix.append(g.maps[input_zgrid].field[0][0].pix)
+        ic("Tile is not defined in map " + config.MAPS[input_zgrid].name)
+        returnpix.append(config.MAPS[input_zgrid].field[0][0].pix)
         return returnpix
 
 
@@ -520,13 +520,13 @@ def move_hero(x, y):
             passturn()
             if g.allow_change_hero == 1:
                 if y == -1:
-                    player.cur_hero = "people/hero_n" + g.maps[g.zgrid].hero_suffix + ".png"
+                    player.cur_hero = "people/hero_n" + config.MAPS[g.zgrid].hero_suffix + ".png"
                 if y == 1:
-                    player.cur_hero = "people/hero_s" + g.maps[g.zgrid].hero_suffix + ".png"
+                    player.cur_hero = "people/hero_s" + config.MAPS[g.zgrid].hero_suffix + ".png"
                 if x == -1:
-                    player.cur_hero = "people/hero_w" + g.maps[g.zgrid].hero_suffix + ".png"
+                    player.cur_hero = "people/hero_w" + config.MAPS[g.zgrid].hero_suffix + ".png"
                 if x == 1:
-                    player.cur_hero = "people/hero_e" + g.maps[g.zgrid].hero_suffix + ".png"
+                    player.cur_hero = "people/hero_e" + config.MAPS[g.zgrid].hero_suffix + ".png"
             g.allow_change_hero = 1
             # Sometimes, quick refresh is bad.
             global already_refreshed
@@ -546,50 +546,50 @@ def move_hero(x, y):
 
     else:
         redisplay_later = False
-        if tempx < 0 and g.maps[g.zgrid].left_level != "":  # left
-            new_zgrid = g.mapname2zgrid(g.maps[g.zgrid].left_level)
-            if g.maps[new_zgrid].field[g.ygrid][len(g.maps[new_zgrid].field[g.ygrid]) - 1].walk != 0:
+        if tempx < 0 and config.MAPS[g.zgrid].left_level != "":  # left
+            new_zgrid = g.mapname2zgrid(config.MAPS[g.zgrid].left_level)
+            if config.MAPS[new_zgrid].field[g.ygrid][len(config.MAPS[new_zgrid].field[g.ygrid]) - 1].walk != 0:
                 g.action.script_move(
                     g.xgrid,
                     g.ygrid,
                     g.zgrid,
                     [
-                        ['"' + g.maps[g.zgrid].left_level + '"', 1],
-                        [len(g.maps[new_zgrid].field[g.ygrid]) - 1, 0],
+                        ['"' + config.MAPS[g.zgrid].left_level + '"', 1],
+                        [len(config.MAPS[new_zgrid].field[g.ygrid]) - 1, 0],
                         [g.ygrid, 0],
                     ],
                 )
                 player.cur_hero = "people/hero_w"
                 redisplay_later = True
-        elif tempy < 0 and g.maps[g.zgrid].up_level != "":  # up
-            new_zgrid = g.mapname2zgrid(g.maps[g.zgrid].up_level)
-            if g.maps[new_zgrid].field[len(g.maps[new_zgrid].field) - 1][g.xgrid].walk != 0:
+        elif tempy < 0 and config.MAPS[g.zgrid].up_level != "":  # up
+            new_zgrid = g.mapname2zgrid(config.MAPS[g.zgrid].up_level)
+            if config.MAPS[new_zgrid].field[len(config.MAPS[new_zgrid].field) - 1][g.xgrid].walk != 0:
                 g.action.script_move(
                     g.xgrid,
                     g.ygrid,
                     g.zgrid,
-                    [['"' + g.maps[g.zgrid].up_level + '"', 1], [g.xgrid, 0], [len(g.maps[new_zgrid].field) - 1, 0]],
+                    [['"' + config.MAPS[g.zgrid].up_level + '"', 1], [g.xgrid, 0], [len(config.MAPS[new_zgrid].field) - 1, 0]],
                 )
                 player.cur_hero = "people/hero_n"
                 redisplay_later = True
-        elif tempx >= len(g.maps[g.zgrid].field[0]) and g.maps[g.zgrid].right_level != "":  # right
-            new_zgrid = g.mapname2zgrid(g.maps[g.zgrid].right_level)
-            if g.maps[new_zgrid].field[g.ygrid][0].walk != 0:
+        elif tempx >= len(config.MAPS[g.zgrid].field[0]) and config.MAPS[g.zgrid].right_level != "":  # right
+            new_zgrid = g.mapname2zgrid(config.MAPS[g.zgrid].right_level)
+            if config.MAPS[new_zgrid].field[g.ygrid][0].walk != 0:
                 g.action.script_move(
-                    g.xgrid, g.ygrid, g.zgrid, [['"' + g.maps[g.zgrid].right_level + '"', 1], [0, 0], [g.ygrid, 0]]
+                    g.xgrid, g.ygrid, g.zgrid, [['"' + config.MAPS[g.zgrid].right_level + '"', 1], [0, 0], [g.ygrid, 0]]
                 )
                 player.cur_hero = "people/hero_e"
                 redisplay_later = True
-        elif tempy >= len(g.maps[g.zgrid].field) and g.maps[g.zgrid].down_level != "":  # down
-            new_zgrid = g.mapname2zgrid(g.maps[g.zgrid].down_level)
-            if g.maps[new_zgrid].field[0][g.xgrid].walk != 0:
+        elif tempy >= len(config.MAPS[g.zgrid].field) and config.MAPS[g.zgrid].down_level != "":  # down
+            new_zgrid = g.mapname2zgrid(config.MAPS[g.zgrid].down_level)
+            if config.MAPS[new_zgrid].field[0][g.xgrid].walk != 0:
                 g.action.script_move(
-                    g.xgrid, g.ygrid, g.zgrid, [['"' + g.maps[g.zgrid].down_level + '"', 1], [g.xgrid, 0], [0, 0]]
+                    g.xgrid, g.ygrid, g.zgrid, [['"' + config.MAPS[g.zgrid].down_level + '"', 1], [g.xgrid, 0], [0, 0]]
                 )
                 player.cur_hero = "people/hero_s"
                 redisplay_later = True
         if redisplay_later:
-            player.cur_hero += g.maps[g.zgrid].hero_suffix + ".png"
+            player.cur_hero += config.MAPS[g.zgrid].hero_suffix + ".png"
             redisplay_map(x, y)
             refresh_inv_icon()
             refresh_bars()
@@ -604,7 +604,7 @@ def move_hero(x, y):
                 player.cur_hero = "people/hero_w"
             if x == 1:
                 player.cur_hero = "people/hero_e"
-            player.cur_hero += g.maps[g.zgrid].hero_suffix + ".png"
+            player.cur_hero += config.MAPS[g.zgrid].hero_suffix + ".png"
         g.allow_change_hero = 1
         refreshhero()
         g.unclean_screen = True
@@ -709,10 +709,10 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     # find widths
     box_width = 0
     for button_line in button_array2:
-        box_width += g.buttons[button_line].get_width()
+        box_width += config.BUTTONS[button_line].get_width()
     button_width_array.append((g.screen_size[0]) / 2 - (box_width) / 2)
     for i in range(len(button_array2)):
-        button_width_array.append(button_width_array[i] + g.buttons[button_array2[i]].get_width())
+        button_width_array.append(button_width_array[i] + config.BUTTONS[button_array2[i]].get_width())
     text_width = 300
     if input_width != -1:
         text_width = input_width
@@ -724,7 +724,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     line_height = num_of_lines * 13 + 40
     line_height = max(line_height, 40)
 
-    tmp_height = g.buttons[button_array2[0]].get_height()
+    tmp_height = config.BUTTONS[button_array2[0]].get_height()
 
     # store the appearance before displaying the box.
     restore_surface = pygame.Surface((text_width, 480))
@@ -887,10 +887,10 @@ def show_popup(line="", button_array=[], allow_move=True, input_width=-1):
     # find widths
     box_width = 0
     for button_line in button_array2:
-        box_width += g.buttons[button_line].get_width()
+        box_width += config.BUTTONS[button_line].get_width()
     button_width_array.append((g.screen_size[0]) / 2 - (box_width) / 2)
     for i in range(len(button_array2)):
-        button_width_array.append(button_width_array[i] + g.buttons[button_array2[i]].get_width())
+        button_width_array.append(button_width_array[i] + config.BUTTONS[button_array2[i]].get_width())
     text_width = 300
     if input_width != -1:
         text_width = input_width
@@ -902,7 +902,7 @@ def show_popup(line="", button_array=[], allow_move=True, input_width=-1):
     line_height = num_of_lines * 13 + 10
     line_height = max(line_height, 40)
 
-    tmp_height = g.buttons[button_array2[0]].get_height()
+    tmp_height = config.BUTTONS[button_array2[0]].get_height()
 
     # store the appearance before displaying the box.
     surface_width = box_width
@@ -941,11 +941,11 @@ def show_popup(line="", button_array=[], allow_move=True, input_width=-1):
                 config.ALLOW_MOVE = True
                 return -1
             if event.type == pygame.KEYDOWN:
-                if event.key == g.bindings["up"] or event.key == g.bindings["left"]:
+                if event.key == config.BINDINGS["up"] or event.key == config.BINDINGS["left"]:
                     decrease_button()
-                elif event.key == g.bindings["down"] or event.key == g.bindings["right"]:
+                elif event.key == config.BINDINGS["down"] or event.key == config.BINDINGS["right"]:
                     increase_button()
-                elif event.key == g.bindings["action"]:
+                elif event.key == config.BINDINGS["action"]:
                     config.ALLOW_MOVE = True
                     g.screen.blit(restore_surface, ((g.screen_size[0] - surface_width) / 2, 0))
                     return active_button
@@ -985,9 +985,9 @@ def refresh_buttons():
     for i in range(len(button_array2)):
         if active_button == i:
             tmp = button_array2[i][0:-4] + "_sel" + button_array2[i][-4:]
-            g.screen.blit(g.buttons[tmp], (button_width_array[i], button_height))
+            g.screen.blit(config.BUTTONS[tmp], (button_width_array[i], button_height))
         else:
-            g.screen.blit(g.buttons[button_array2[i]], (button_width_array[i], button_height))
+            g.screen.blit(config.BUTTONS[button_array2[i]], (button_width_array[i], button_height))
     g.unclean_screen = True
 
 
@@ -1055,11 +1055,11 @@ def init_window_main(is_new_game=0):
         g.screen.fill(config.COLORS["light_gray"], (g.screen_size[0] / 2 - 150, g.screen_size[1] / 2 - 20, 300, 40))
         g.print_string(g.screen, "Processing Maps", g.font, (g.screen_size[0] / 2, g.screen_size[1] / 2), align=1)
         pygame.display.flip()
-        for mapindex in range(len(g.maps)):
-            g.maps[mapindex].preprocess_map(mapindex)
+        for mapindex in range(len(config.MAPS)):
+            config.MAPS[mapindex].preprocess_map(mapindex)
             g.create_norm_box(
                 (g.screen_size[0] / 4 + 2, g.screen_size[1] * 2 / 3 - 10),
-                (((g.screen_size[0] / 2 - 4) * mapindex) / len(g.maps), 8),
+                (((g.screen_size[0] / 2 - 4) * mapindex) / len(config.MAPS), 8),
                 "black",
                 "ep_blue",
             )
@@ -1072,9 +1072,9 @@ def init_window_main(is_new_game=0):
 
     # put in the map, and do finishing touches on the window.
     player.reset_stats()
-    if is_new_game == 0 or len(g.maps) == 1:
+    if is_new_game == 0 or len(config.MAPS) == 1:
         process_onload()
-    player.cur_hero = "people/hero_w" + g.maps[g.zgrid].hero_suffix + ".png"
+    player.cur_hero = "people/hero_w" + config.MAPS[g.zgrid].hero_suffix + ".png"
 
     top_of_buttons = mapsizey * config.TILESIZE - iconsize
 
@@ -1130,13 +1130,13 @@ def init_window_main(is_new_game=0):
         # creates a timing bug that fires this once too much.
         if repeat_key > 140:
             if key_down[0]:
-                key_handler(g.bindings["up"])
+                key_handler(config.BINDINGS["up"])
             elif key_down[1]:
-                key_handler(g.bindings["down"])
+                key_handler(config.BINDINGS["down"])
             elif key_down[2]:
-                key_handler(g.bindings["left"])
+                key_handler(config.BINDINGS["left"])
             elif key_down[3]:
-                key_handler(g.bindings["right"])
+                key_handler(config.BINDINGS["right"])
             repeat_key = 0
         if g.unclean_screen:
             pygame.display.flip()
@@ -1150,13 +1150,13 @@ def bind_keys():
 
 def key_handler_down(key_name):
     global key_down
-    if key_name == g.bindings["up"]:
+    if key_name == config.BINDINGS["up"]:
         key_down[0] = True
-    elif key_name == g.bindings["down"]:
+    elif key_name == config.BINDINGS["down"]:
         key_down[1] = True
-    elif key_name == g.bindings["left"]:
+    elif key_name == config.BINDINGS["left"]:
         key_down[2] = True
-    elif key_name == g.bindings["right"]:
+    elif key_name == config.BINDINGS["right"]:
         key_down[3] = True
     else:
         return key_handler(key_name)
@@ -1166,22 +1166,22 @@ def key_handler(key_name):
     if config.DEBUG:
         tmp_time = pygame.time.get_ticks()
     global key_down
-    if key_name == g.bindings["up"]:
+    if key_name == config.BINDINGS["up"]:
         move_hero(0, -1)
-    elif key_name == g.bindings["down"]:
+    elif key_name == config.BINDINGS["down"]:
         move_hero(0, 1)
-    elif key_name == g.bindings["left"]:
+    elif key_name == config.BINDINGS["left"]:
         move_hero(-1, 0)
-    elif key_name == g.bindings["right"]:
+    elif key_name == config.BINDINGS["right"]:
         move_hero(1, 0)
-    elif key_name == g.bindings["quit"] or key_name == g.bindings["cancel"]:
+    elif key_name == config.BINDINGS["quit"] or key_name == config.BINDINGS["cancel"]:
         if close_window() == 1:
             return 1
-    elif key_name == g.bindings["action"] or key_name == g.bindings["inv"]:
+    elif key_name == config.BINDINGS["action"] or key_name == config.BINDINGS["inv"]:
         show_inv()
-    elif key_name == g.bindings["save"]:
-        save_game()
-    elif key_name == g.bindings["load_console"]:
+    elif key_name == config.BINDINGS["save"]:
+        save_mgmt.save_game(player.name)
+    elif key_name == config.BINDINGS["load_console"]:
         load_console()
     elif key_name == pygame.K_F10:
         debug_print_level()
@@ -1192,13 +1192,13 @@ def key_handler(key_name):
 
 def key_handler_up(key_name):
     global key_down
-    if key_name == g.bindings["up"]:
+    if key_name == config.BINDINGS["up"]:
         key_down[0] = False
-    elif key_name == g.bindings["down"]:
+    elif key_name == config.BINDINGS["down"]:
         key_down[1] = False
-    elif key_name == g.bindings["left"]:
+    elif key_name == config.BINDINGS["left"]:
         key_down[2] = False
-    elif key_name == g.bindings["right"]:
+    elif key_name == config.BINDINGS["right"]:
         key_down[3] = False
 
 
@@ -1229,9 +1229,9 @@ def mouse_handler(xy):
         return close_window()
 
     if (
-        xy[0] > mapsizex * config.TILESIZE - 3 * iconsize - g.buttons["scroller.png"].get_width()
+        xy[0] > mapsizex * config.TILESIZE - 3 * iconsize - config.BUTTONS["scroller.png"].get_width()
         and xy[0] < mapsizex * config.TILESIZE - 3 * iconsize
-        and xy[1] > mapsizey * config.TILESIZE - g.buttons["scroller.png"].get_height()
+        and xy[1] > mapsizey * config.TILESIZE - config.BUTTONS["scroller.png"].get_height()
     ):
         tmpline = ""
         for line in message_array:
@@ -1294,9 +1294,9 @@ def mouse_move(xy):
         new_quit_image = "quit.png"
 
     if (
-        xy[0] > mapsizex * config.TILESIZE - iconsize * 3 - g.buttons["scroller.png"].get_width()
+        xy[0] > mapsizex * config.TILESIZE - iconsize * 3 - config.BUTTONS["scroller.png"].get_width()
         and xy[0] < mapsizex * config.TILESIZE - 3 * iconsize
-        and xy[1] > mapsizey * config.TILESIZE - g.buttons["scroller.png"].get_height()
+        and xy[1] > mapsizey * config.TILESIZE - config.BUTTONS["scroller.png"].get_height()
     ):
         new_scroll_icon_image = "scroller_sel.png"
     else:

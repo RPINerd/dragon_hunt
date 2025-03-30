@@ -514,9 +514,9 @@ def script_addpix(x, y, z, argument_array):  # add a picture to the tile.
         return "bad"
 
     if argument_array[0][0][1:-1] not in g.tiles:
-        ic("Tile " + argument_array[0][0][1:-1] + " does not exist in map " + g.maps[z].name)
+        ic("Tile " + argument_array[0][0][1:-1] + " does not exist in map " + config.MAPS[z].name)
         return 0
-    g.maps[z].field[y][x].add_pix(g.tiles[argument_array[0][0][1:-1]])
+    config.MAPS[z].field[y][x].add_pix(g.tiles[argument_array[0][0][1:-1]])
     return 1
 
 
@@ -524,7 +524,7 @@ def script_addoverpix(x, y, z, argument_array):  # add a picture to the tile.
     if check_types_args(argument_array, [1], "addoverpix") == 0:
         return "bad"
 
-    g.maps[z].field[y][x].add_over_pix(g.tiles[argument_array[0][0][1:-1]])
+    config.MAPS[z].field[y][x].add_over_pix(g.tiles[argument_array[0][0][1:-1]])
     return 1
 
 
@@ -591,7 +591,7 @@ def script_delpix(x, y, z, argument_array):  # remove a picture from the tile.
         return "bad"
 
     try:
-        g.maps[z].field[y][x].del_pix(g.tiles[argument_array[0][0][1:-1]])
+        config.MAPS[z].field[y][x].del_pix(g.tiles[argument_array[0][0][1:-1]])
         main.refresh_tile(x, y, z)
         return 1
     except ValueError:
@@ -730,7 +730,7 @@ def script_gamestat(x, y, z, argument_array):
     if switch2 == "newy":
         return int(y)
     if switch2 == "mapname":
-        return '"' + g.maps[g.zgrid].name + '"'
+        return '"' + config.MAPS[g.zgrid].name + '"'
     ic("Unknown stat: " + switch2)
     return "bad"
 
@@ -1031,33 +1031,33 @@ def script_mapspot(x, y, z, argument_array):
     switch2 = argument_array[3][0][1:-1].lower()
 
     if switch2 == "walk":
-        return g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].walk
+        return config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].walk
     if switch2 == "pix":
-        return '"' + g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].name + '"'
+        return '"' + config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].name + '"'
     if switch2 == "num_of_dropped":
-        return len(g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].items)
+        return len(config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].items)
     if switch2 == "num_of_addpix":
-        return len(g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].addpix)
+        return len(config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].addpix)
     if switch2 == "num_of_addoverpix":
-        return len(g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].addoverpix)
+        return len(config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].addoverpix)
     if switch2 == "wall_n":
-        return g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].wall_n
+        return config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].wall_n
     if switch2 == "wall_s":
-        return g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].wall_s
+        return config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].wall_s
     if switch2 == "wall_w":
-        return g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].wall_w
+        return config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].wall_w
     if switch2 == "wall_e":
-        return g.maps[tmpzgrid].field[tmpygrid][tmpxgrid].wall_e
+        return config.MAPS[tmpzgrid].field[tmpygrid][tmpxgrid].wall_e
     if switch2 == "within_bounds":
-        if tmpygrid < len(g.maps[tmpzgrid].field):
-            if tmpxgrid < len(g.maps[tmpzgrid].field[tmpygrid]):
+        if tmpygrid < len(config.MAPS[tmpzgrid].field):
+            if tmpxgrid < len(config.MAPS[tmpzgrid].field[tmpygrid]):
                 return 1
             return 0
         return 0
     if switch2 == "y_bound":
-        return len(g.maps[tmpzgrid].field)
+        return len(config.MAPS[tmpzgrid].field)
     if switch2 == "x_bound":
-        return len(g.maps[tmpzgrid].field[0])
+        return len(config.MAPS[tmpzgrid].field[0])
     ic("unknown switch " + switch2 + " in mapspot.")
     ic("possible: walk, pix, num_of_dropped, num_of_addpix,")
     ic("num_of_addoverpix, wall_n, wall_s, wall_w, wall_e,")
@@ -1073,23 +1073,23 @@ def script_mapstat(x, y, z, argument_array):
 
     if switch2 == "addmonster":
         switch3 = interpret_line(switch3)
-        g.maps[z].monster.append(switch3)
+        config.MAPS[z].monster.append(switch3)
         return 1
     if switch2 == "delmonster":
         try:
             switch3 = interpret_line(switch3)
-            g.maps[z].monster.remove(switch3)
+            config.MAPS[z].monster.remove(switch3)
             return 1
         except ValueError:
             return 0
     elif switch2 == "hero_bg":
         switch3 = interpret_line(switch3)
-        g.maps[z].hero_suffix = switch3
+        config.MAPS[z].hero_suffix = switch3
         return 1
     elif switch2 == "battle_bg":
         switch3 = interpret_line(switch3)
-        g.maps[z].battle_background = g.backgrounds[switch3]
-        g.maps[z].battle_background_name = switch3
+        config.MAPS[z].battle_background = g.backgrounds[switch3]
+        config.MAPS[z].battle_background_name = switch3
         return 1
     elif switch2 == "change_titlebar":
         switch3 = interpret_line(switch3)
@@ -1221,9 +1221,9 @@ def script_pix(x, y, z, argument_array):  # change tile picture
     if check_types_args(argument_array, [1], "pix") == 0:
         return "bad"
 
-    g.maps[z].field[y][x].pix = g.tiles[argument_array[0][0][1:-1]]
-    g.maps[z].field[y][x].name = argument_array[0][0][1:-1]
-    g.maps[z].field[y][x].addpix = []
+    config.MAPS[z].field[y][x].pix = g.tiles[argument_array[0][0][1:-1]]
+    config.MAPS[z].field[y][x].name = argument_array[0][0][1:-1]
+    config.MAPS[z].field[y][x].addpix = []
     return 1
 
 
@@ -1270,10 +1270,10 @@ def script_run(x, y, z, argument_array):  # Run the actions of a different tile.
     y2 = int(argument_array[2][0])
 
     # if there are no actions, leave immediately
-    if len(g.maps[z2].field[y2][x2].actions) == 0:
+    if len(config.MAPS[z2].field[y2][x2].actions) == 0:
         return 1
     # go through all action lines.
-    return activate_lines(x2, y2, z2, g.maps[z2].field[y2][x2].actions)
+    return activate_lines(x2, y2, z2, config.MAPS[z2].field[y2][x2].actions)
 
 
 def script_set(x, y, z, argument_array):  # set variable (in g.var_list)
@@ -1465,35 +1465,35 @@ def script_var(x, y, z, argument_array):  # return variable (in g.var_list)
 def script_walk(x, y, z, argument_array):  # change tile walkability
     if check_types_args(argument_array, [0], "walk") == 0:
         return "bad"
-    g.maps[z].field[y][x].walk = argument_array[0][0]
+    config.MAPS[z].field[y][x].walk = argument_array[0][0]
     return_num = 1
 
 
 def script_wall_n(x, y, z, argument_array):  # change tile wall values
     if check_types_args(argument_array, [0], "wall_n") == 0:
         return "bad"
-    g.maps[z].field[y][x].wall_n = argument_array[0][0]
+    config.MAPS[z].field[y][x].wall_n = argument_array[0][0]
     return 1
 
 
 def script_wall_s(x, y, z, argument_array):  # change tile wall values
     if check_types_args(argument_array, [0], "wall_s") == 0:
         return "bad"
-    g.maps[z].field[y][x].wall_s = argument_array[0][0]
+    config.MAPS[z].field[y][x].wall_s = argument_array[0][0]
     return 1
 
 
 def script_wall_e(x, y, z, argument_array):  # change tile wall values
     if check_types_args(argument_array, [0], "wall_e") == 0:
         return "bad"
-    g.maps[z].field[y][x].wall_e = argument_array[0][0]
+    config.MAPS[z].field[y][x].wall_e = argument_array[0][0]
     return 1
 
 
 def script_wall_w(x, y, z, argument_array):  # change tile wall values
     if check_types_args(argument_array, [0], "wall_w") == 0:
         return "bad"
-    g.maps[z].field[y][x].wall_w = argument_array[0][0]
+    config.MAPS[z].field[y][x].wall_w = argument_array[0][0]
     return 1
 
 

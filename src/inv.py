@@ -241,11 +241,11 @@ def open_inner_menu(screen_str):
     tmp_menu_x_base = (
         ((config.TILESIZE * main.mapsizex) / 2 - tmp_x_base) / 2
         + tmp_x_base
-        - g.buttons[screen_str + ".png"].get_width()
+        - config.BUTTONS[screen_str + ".png"].get_width()
     )
     tmp_menu_y_base = (config.TILESIZE * main.mapsizey + inv_canvas_height) / 2
-    tmp_menu_width = g.buttons[screen_str + ".png"].get_width() + g.buttons["leave.png"].get_width()
-    tmp_menu_height = g.buttons["leave.png"].get_height()
+    tmp_menu_width = config.BUTTONS[screen_str + ".png"].get_width() + config.BUTTONS["leave.png"].get_width()
+    tmp_menu_height = config.BUTTONS["leave.png"].get_height()
 
     create_inv_display(screen_str)
 
@@ -260,7 +260,7 @@ def create_inv_display(screen_str):
         (
             (config.TILESIZE * main.mapsizex) / 2 - tmp_x_base,
             (config.TILESIZE * main.mapsizey + inv_canvas_height) / 2
-            + g.buttons["leave.png"].get_height()
+            + config.BUTTONS["leave.png"].get_height()
             - tmp_y_base,
         ),
     )
@@ -303,12 +303,12 @@ def refresh_inner_buttons(screen_str):
     x_start = (
         ((config.TILESIZE * main.mapsizex) / 2 - tmp_x_base) / 2
         + tmp_x_base
-        - g.buttons[screen_str + ".png"].get_width()
+        - config.BUTTONS[screen_str + ".png"].get_width()
     )
     y_start = (config.TILESIZE * main.mapsizey + inv_canvas_height) / 2
 
-    g.screen.blit(g.buttons[first_image], (x_start, y_start))
-    g.screen.blit(g.buttons[leave_image], (x_start + g.buttons[screen_str + ".png"].get_width(), y_start))
+    g.screen.blit(config.BUTTONS[first_image], (x_start, y_start))
+    g.screen.blit(config.BUTTONS[leave_image], (x_start + config.BUTTONS[screen_str + ".png"].get_width(), y_start))
 
     pygame.display.flip()
 
@@ -700,10 +700,10 @@ def drop_item():
         g.screen.blit(tmp_surface, (170, 140))
         main.print_message("You drop your " + item.item[item.inv[curr_item]].name)
 
-        # add dropped item to map
-        g.maps[g.zgrid].additem(item.item[item.inv[item_to_delete]].name, g.xgrid, g.ygrid)
+        # Add dropped item to map
+        config.MAPS[g.zgrid].additem(item.item[item.inv[item_to_delete]].name, g.xgrid, g.ygrid)
 
-        # remove the item from inventory
+        # Remove the item from inventory
         item.drop_inv_item(curr_item)
     else:
         g.screen.blit(tmp_surface, (170, 140))
@@ -810,12 +810,12 @@ def refresh_menu_buttons():
     elif config.mut["CURR_BUTTON"] == 5:
         leave_image = "leave_sel.png"
 
-    g.screen.blit(g.buttons[use_image], (base_x, base_y))
-    g.screen.blit(g.buttons[equip_image], (base_x, base_y + equip_height))
-    g.screen.blit(g.buttons[drop_image], (base_x, base_y + drop_height))
-    g.screen.blit(g.buttons[skill_image], (base_x, base_y + skill_height))
-    g.screen.blit(g.buttons[save_image], (base_x, base_y + save_height))
-    g.screen.blit(g.buttons[leave_image], (base_x, base_y + leave_height))
+    g.screen.blit(config.BUTTONS[use_image], (base_x, base_y))
+    g.screen.blit(config.BUTTONS[equip_image], (base_x, base_y + equip_height))
+    g.screen.blit(config.BUTTONS[drop_image], (base_x, base_y + drop_height))
+    g.screen.blit(config.BUTTONS[skill_image], (base_x, base_y + skill_height))
+    g.screen.blit(config.BUTTONS[save_image], (base_x, base_y + save_height))
+    g.screen.blit(config.BUTTONS[leave_image], (base_x, base_y + leave_height))
 
     pygame.display.flip()
 
@@ -879,18 +879,23 @@ def draw_item(input_picture, x, y, x_offset, y_offset, tag):
 
 # All keypresses in window_inv pass through here. Based on the key name,
 # give the right action. ("etc", "left", "right", "up", "down", "return")
-def menu_key_handler(key_name):
-    if key_name == g.bindings["cancel"]:
-        return 1
-    elif (key_name == g.bindings["right"]) or (key_name == g.bindings["down"]):
+def menu_key_handler(key_name: int) -> bool:
+    """
+    All keypresses in window_inv pass through here.
+
+    Based on the key name, give the right action ("etc", "left", "right", "up", "down", "return").
+    """
+    if key_name == config.BINDINGS["cancel"]:
+        return True
+    if (key_name == config.BINDINGS["right"]) or (key_name == config.BINDINGS["down"]):
         config.mut["CURR_BUTTON"] += 1
         if config.mut["CURR_BUTTON"] > 5:
             config.mut["CURR_BUTTON"] = 0
-    elif (key_name == g.bindings["left"]) or (key_name == g.bindings["up"]):
+    elif (key_name == config.BINDINGS["left"]) or (key_name == config.BINDINGS["up"]):
         config.mut["CURR_BUTTON"] -= 1
         if config.mut["CURR_BUTTON"] < 0:
             config.mut["CURR_BUTTON"] = 5
-    elif key_name == g.bindings["action"]:
+    elif key_name == config.BINDINGS["action"]:
         # I take care of refresh by grabbing the current window as a bitmap,
         # then redisplaying it. Note that the -64 is to prevent the message
         # scroller from being clobbered
@@ -905,7 +910,7 @@ def menu_key_handler(key_name):
         elif config.mut["CURR_BUTTON"] == 3:
             tmp = open_skill_menu()
             if tmp == "end":
-                return 1
+                return True
         elif config.mut["CURR_BUTTON"] == 4:
             if action.has_dialog == 1:
                 return False
@@ -920,30 +925,31 @@ def menu_key_handler(key_name):
     refresh_menu_buttons()
     refresh_stat_display()
 
+    return False
+
 
 # generic key handler for anytime there is an inner inv window open.
 def inner_key_handler(key_name):
     global curr_item
-    if key_name == g.bindings["cancel"]:
-        # leave_inner()
+    if key_name == config.BINDINGS["cancel"]:
         return 1
-    elif key_name == g.bindings["right"]:
+    if key_name == config.BINDINGS["right"]:
         curr_item += 1
         if curr_item >= inv_width * inv_height:
             curr_item -= inv_width * inv_height
-    elif key_name == g.bindings["left"]:
+    elif key_name == config.BINDINGS["left"]:
         curr_item -= 1
         if curr_item < 0:
             curr_item += inv_width * inv_height
-    elif key_name == g.bindings["up"]:
-        curr_item = curr_item - inv_width
+    elif key_name == config.BINDINGS["up"]:
+        curr_item -= inv_width
         if curr_item < 0:
             curr_item += inv_width * inv_height
-    elif key_name == g.bindings["down"]:
-        curr_item = curr_item + inv_width
+    elif key_name == config.BINDINGS["down"]:
+        curr_item += inv_width
         if curr_item >= inv_width * inv_height:
             curr_item -= inv_width * inv_height
-    elif key_name == g.bindings["action"]:
+    elif key_name == config.BINDINGS["action"]:
         return 2
     return 0
 
@@ -980,10 +986,9 @@ def skill_key_handler(key_name):
 # I have to do this separate, as the equip screen has an extra display.
 def equip_key_handler(key_name):
     global curr_item
-    if key_name == g.bindings["cancel"]:
-        # 		leave_inner()
+    if key_name == config.BINDINGS["cancel"]:
         return 1
-    elif key_name == g.bindings["right"]:
+    if key_name == config.BINDINGS["right"]:
         if config.mut["CURR_BUTTON"] == 1:  # if equip screen
             if curr_item < inv_width * inv_height:  # if in inv
                 if curr_item % inv_width == inv_width - 1:  # if on right side
@@ -995,7 +1000,7 @@ def equip_key_handler(key_name):
                 if c_item % equip_size == equip_size - 1:  # if on right side
                     curr_item = (c_item / equip_size) * inv_width - 1
         curr_item += 1
-    elif key_name == g.bindings["left"]:
+    elif key_name == config.BINDINGS["left"]:
         if config.mut["CURR_BUTTON"] == 1:  # if equip screen
             if curr_item < inv_width * inv_height:  # if in inv
                 if curr_item % inv_width == 0:  # if on left side
@@ -1007,7 +1012,7 @@ def equip_key_handler(key_name):
                 if c_item % equip_size == 0:  # if on left side
                     curr_item = ((c_item / equip_size) + 1) * inv_width
         curr_item -= 1
-    elif key_name == g.bindings["up"]:
+    elif key_name == config.BINDINGS["up"]:
         if curr_item >= inv_width * inv_height:  # equip
             curr_item -= equip_size
             if curr_item < (inv_width * inv_height):
@@ -1016,7 +1021,7 @@ def equip_key_handler(key_name):
             curr_item -= inv_width
             if curr_item < 0:
                 curr_item += inv_width * inv_height
-    elif key_name == g.bindings["down"]:
+    elif key_name == config.BINDINGS["down"]:
         if curr_item >= inv_width * inv_height:  # equip
             curr_item += equip_size
             if curr_item >= (inv_width * inv_height) + (equip_size * equip_size):
@@ -1025,7 +1030,7 @@ def equip_key_handler(key_name):
             curr_item += inv_width
             if curr_item >= inv_width * inv_height:
                 curr_item -= inv_width * inv_height
-    elif key_name == g.bindings["action"]:
+    elif key_name == config.BINDINGS["action"]:
         wear_item()
     refresh_equip()
     return 0
@@ -1037,8 +1042,8 @@ def menu_mouse_click(xy):
     base_loc_y = xy[1] - base_y
     base_loc_x = xy[0] - base_x
     if base_loc_y < 0 or base_loc_x < 0 or base_loc_y > total_height or base_loc_x > button_width:
-        return
-    return menu_key_handler(g.bindings["action"])
+        return None
+    return menu_key_handler(config.BINDINGS["action"])
 
 
 # generic mouse click while an inner menu is open.
@@ -1052,12 +1057,10 @@ def inner_mouse_click(xy, button):
         and (xy[0] < tmp_menu_x_base + tmp_menu_width)
         and xy[1] < tmp_menu_y_base + tmp_menu_height
     ):
-        if xy[0] < tmp_menu_x_base + g.buttons[button + ".png"].get_width():
+        if xy[0] < tmp_menu_x_base + config.BUTTONS[button + ".png"].get_width():
             return 2
-        else:
-            return 1
-    else:
-        curr_item = temp_num
+        return 1
+    curr_item = temp_num
     return 0
 
 
@@ -1104,10 +1107,10 @@ def equip_mouse_click(xy):
             and (xy[0] < tmp_menu_x_base + tmp_menu_width)
             and xy[1] < tmp_menu_y_base + tmp_menu_height
         ):
-            if xy[0] < tmp_menu_x_base + g.buttons["equip.png"].get_width():
+            if xy[0] < tmp_menu_x_base + config.BUTTONS["equip.png"].get_width():
                 wear_item()
             else:
-                return 1
+                return True
         # If the click was inside the equip area.
         elif (
             (xy[0] > tmp_x_base - temp_canvas_width)
@@ -1121,6 +1124,8 @@ def equip_mouse_click(xy):
     else:
         curr_item = temp_num
     refresh_equip()
+
+    return False
 
 
 def inner_mouse_dbl_click(xy):
@@ -1234,7 +1239,7 @@ def inner_mouse_move(xy, button=""):
         and (xy[0] < tmp_menu_x_base + tmp_menu_width)
         and xy[1] < tmp_menu_y_base + tmp_menu_height
     ):
-        if xy[0] < tmp_menu_x_base + g.buttons[button + ".png"].get_width():
+        if xy[0] < tmp_menu_x_base + config.BUTTONS[button + ".png"].get_width():
             inner_cur_button = 0
         else:
             inner_cur_button = 1
@@ -1270,20 +1275,20 @@ def init_window_inv():
 
     # Location of the various buttons.
     global equip_height
-    equip_height = g.buttons["use.png"].get_height()
+    equip_height = config.BUTTONS["use.png"].get_height()
     global drop_height
-    drop_height = equip_height + g.buttons["equip.png"].get_height()
+    drop_height = equip_height + config.BUTTONS["equip.png"].get_height()
     global skill_height
-    skill_height = drop_height + g.buttons["skill.png"].get_height()
+    skill_height = drop_height + config.BUTTONS["skill.png"].get_height()
     global save_height
-    save_height = skill_height + g.buttons["drop.png"].get_height()
+    save_height = skill_height + config.BUTTONS["drop.png"].get_height()
     global leave_height
-    leave_height = save_height + g.buttons["save.png"].get_height()
+    leave_height = save_height + config.BUTTONS["save.png"].get_height()
     global total_height
-    total_height = leave_height + g.buttons["leave.png"].get_height()
+    total_height = leave_height + config.BUTTONS["leave.png"].get_height()
 
     global button_width
-    button_width = g.buttons["drop.png"].get_width()
+    button_width = config.BUTTONS["drop.png"].get_width()
 
     global base_x
     base_x = (config.TILESIZE * main.mapsizex) / 2 - button_width

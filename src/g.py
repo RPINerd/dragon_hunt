@@ -61,9 +61,6 @@ unclean_screen = False
 global clock
 clock = pygame.time.Clock()
 
-# What dice to roll when starting a new game. 2d array.
-new_game_dice = []
-
 
 # skills array. Each skill is a separate line in the array. Each line goes:
 # name, effect, level, price, description, acquired, scripting, picture.

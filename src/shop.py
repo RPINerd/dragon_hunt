@@ -66,22 +66,23 @@ def refresh_buttons():
     if prev_button == config.mut["CURR_BUTTON"]:
         return
     prev_button = config.mut["CURR_BUTTON"]
-    g.create_norm_box((temp_button_x, temp_button_y), (temp_button_width, g.buttons["sell.png"].get_height()))
+
+    g.create_norm_box((temp_button_x, temp_button_y), (temp_button_width, config.BUTTONS["sell.png"].get_height()))
 
     if config.mut["CURR_BUTTON"] == 0:
-        g.screen.blit(g.buttons["sell_sel.png"], (temp_button_x, temp_button_y))
+        g.screen.blit(config.BUTTONS["sell_sel.png"], (temp_button_x, temp_button_y))
     else:
-        g.screen.blit(g.buttons["sell.png"], (temp_button_x, temp_button_y))
+        g.screen.blit(config.BUTTONS["sell.png"], (temp_button_x, temp_button_y))
 
     if config.mut["CURR_BUTTON"] == 1:
-        g.screen.blit(g.buttons["leave_shop_sel.png"], (temp_button_x + leave_height, temp_button_y))
+        g.screen.blit(config.BUTTONS["leave_shop_sel.png"], (temp_button_x + leave_height, temp_button_y))
     else:
-        g.screen.blit(g.buttons["leave_shop.png"], (temp_button_x + leave_height, temp_button_y))
+        g.screen.blit(config.BUTTONS["leave_shop.png"], (temp_button_x + leave_height, temp_button_y))
 
     if config.mut["CURR_BUTTON"] == 2:
-        g.screen.blit(g.buttons["buy_sel.png"], (temp_button_x + buy_height, temp_button_y))
+        g.screen.blit(config.BUTTONS["buy_sel.png"], (temp_button_x + buy_height, temp_button_y))
     else:
-        g.screen.blit(g.buttons["buy.png"], (temp_button_x + buy_height, temp_button_y))
+        g.screen.blit(config.BUTTONS["buy.png"], (temp_button_x + buy_height, temp_button_y))
 
     pygame.display.flip()
 
@@ -430,7 +431,7 @@ def mouse_sel_shop(xy):
         xy[0] > temp_button_x
         and xy[0] < temp_button_x + temp_button_width
         and xy[1] > temp_button_y
-        and xy[1] < temp_button_y + g.buttons["buy.png"].get_height()
+        and xy[1] < temp_button_y + config.BUTTONS["buy.png"].get_height()
     ):
         if xy[0] < temp_button_x + leave_height:
             sell_item()
@@ -475,7 +476,7 @@ def mouse_move(xy):
         xy[0] > temp_button_x
         and xy[0] < temp_button_x + temp_button_width
         and xy[1] > temp_button_y
-        and xy[1] < temp_button_y + g.buttons["buy.png"].get_height()
+        and xy[1] < temp_button_y + config.BUTTONS["buy.png"].get_height()
     ):
         if xy[0] < temp_button_x + leave_height:
             config.mut["CURR_BUTTON"] = 0
@@ -492,16 +493,16 @@ def key_handler(switch):
     global curr_item
     global curr_focus
     # switch based on keycode
-    if switch == g.bindings["cancel"]:
+    if switch == config.BINDINGS["cancel"]:
         return 1
-    elif switch == g.bindings["action"]:
+    if switch == config.BINDINGS["action"]:
         if curr_focus == 1 and config.mut["CURR_BUTTON"] == 2:
             buy_item()
         elif curr_focus != 1 and config.mut["CURR_BUTTON"] == 0:
             sell_item()
         elif config.mut["CURR_BUTTON"] == 1:
             return 1
-    elif switch == g.bindings["left"]:
+    elif switch == config.BINDINGS["left"]:
         if curr_item % shop_width == 0:  # move between lists
             if curr_focus == 0:
                 curr_focus = 1
@@ -511,7 +512,7 @@ def key_handler(switch):
                 config.mut["CURR_BUTTON"] = 0
             curr_item += shop_width
         curr_item -= 1
-    elif switch == g.bindings["right"]:
+    elif switch == config.BINDINGS["right"]:
         if curr_item % shop_width == shop_width - 1:  # move between lists
             if curr_focus == 0:
                 curr_focus = 1
@@ -521,11 +522,11 @@ def key_handler(switch):
                 config.mut["CURR_BUTTON"] = 0
             curr_item -= shop_width
         curr_item += 1
-    elif switch == g.bindings["up"]:
-        curr_item = curr_item - shop_width
+    elif switch == config.BINDINGS["up"]:
+        curr_item -= shop_width
         if curr_item < 0:
             curr_item += shop_width * shop_height
-    elif switch == g.bindings["down"]:
+    elif switch == config.BINDINGS["down"]:
         curr_item = curr_item + shop_width
         if curr_item >= shop_width * shop_height:
             curr_item -= shop_width * shop_height
@@ -556,11 +557,11 @@ def init_window_shop(store_type_input):
     temp_button_x = (
         canvas_x_start
         + (temp_canvas_width * 3) / 2
-        - g.buttons["sell.png"].get_width()
-        - g.buttons["leave_shop.png"].get_width() / 2
+        - config.BUTTONS["sell.png"].get_width()
+        - config.BUTTONS["leave_shop.png"].get_width() / 2
     )
     temp_button_width = (
-        g.buttons["sell.png"].get_width() + g.buttons["leave_shop.png"].get_width() + g.buttons["buy.png"].get_width()
+        config.BUTTONS["sell.png"].get_width() + config.BUTTONS["leave_shop.png"].get_width() + config.BUTTONS["buy.png"].get_width()
     )
     temp_button_y = canvas_y_start + temp_canvas_height + 1
 
@@ -626,9 +627,9 @@ def init_window_shop(store_type_input):
     )
 
     global leave_height
-    leave_height = g.buttons["sell.png"].get_width()
+    leave_height = config.BUTTONS["sell.png"].get_width()
     global buy_height
-    buy_height = leave_height + g.buttons["leave.png"].get_width()
+    buy_height = leave_height + config.BUTTONS["leave.png"].get_width()
 
     # get data in listboxes
     refresh_shop()

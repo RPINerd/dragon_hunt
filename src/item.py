@@ -240,4 +240,4 @@ def del_dropped_item(name, x, y, mapname):
 def load_dropped_items():
     for dropped_item in dropped_items:
         z = g.mapname2zgrid(dropped_item.mapname)
-        g.maps[z].field[dropped_item.y][dropped_item.x].additem(dropped_item.name)
+        config.MAPS[z].field[dropped_item.y][dropped_item.x].additem(dropped_item.name)

@@ -128,7 +128,7 @@ def refresh():
         g.screen.blit(monster_pic[i], (base_mon_hp_start[i], ystart))
 
         # 		if monster_slashes[i][0] == 1:
-        # 			g.screen.blit(g.buttons["slash_attack.png"],
+        # 			g.screen.blit(config.BUTTONS["slash_attack.png"],
         # 				(base_mon_hp_start[i]+4, ystart+4))
 
         # Under (red) part of the monster hp display
@@ -151,7 +151,7 @@ def refresh():
     # refresh the player
     g.screen.blit(hero_pic, hero_loc)
     # 	if monster_slashes[-1][0] == 1:
-    # 			g.screen.blit(g.buttons["slash_attack.png"], (hero_loc[0]+4,hero_loc[1]+4))
+    # 			g.screen.blit(config.BUTTONS["slash_attack.png"], (hero_loc[0]+4,hero_loc[1]+4))
     # Under (red) part of the player hp display
     g.create_norm_box(
         (
@@ -227,7 +227,7 @@ def refresh():
             tmp_surface.blit(g.screen, (0, 0), (base_mon_hp_start[i], ystart - 32, 32, 64))
             for j in range(13):
                 g.screen.blit(tmp_surface, (base_mon_hp_start[i], ystart - 32))
-                g.screen.blit(g.buttons["slash_attack.png"], (base_mon_hp_start[i] + j, ystart + j))
+                g.screen.blit(config.BUTTONS["slash_attack.png"], (base_mon_hp_start[i] + j, ystart + j))
                 pygame.display.flip()
             g.screen.blit(tmp_surface, (base_mon_hp_start[i], ystart - 32))
             pygame.display.flip()
@@ -236,7 +236,7 @@ def refresh():
         tmp_surface.blit(g.screen, (0, 0), (hero_loc[0], hero_loc[1] - 32, 32, 64))
         for j in range(13):
             g.screen.blit(tmp_surface, (hero_loc[0], hero_loc[1] - 32))
-            g.screen.blit(g.buttons["slash_attack.png"], (hero_loc[0] + j, hero_loc[1] + j))
+            g.screen.blit(config.BUTTONS["slash_attack.png"], (hero_loc[0] + j, hero_loc[1] + j))
             pygame.display.flip()
         g.screen.blit(tmp_surface, (hero_loc[0], hero_loc[1] - 32))
         pygame.display.flip()
@@ -246,12 +246,12 @@ def refresh():
     global active_button
     if active_button != -1:
         g.screen.blit(
-            g.buttons["sword_pointer.png"], (base_mon_hp_start[active_button], base_mon_hp_y_start[active_button] - 20)
+            config.BUTTONS["sword_pointer.png"], (base_mon_hp_start[active_button], base_mon_hp_y_start[active_button] - 20)
         )
     # 		main.canvas_map.create_image(
     # 			base_mon_hp_start[active_button],
     # 			base_mon_hp_y_start[active_button]-20,
-    # 			anchor=N, image=g.buttons["sword_pointer.png"],
+    # 			anchor=N, image=config.BUTTONS["sword_pointer.png"],
     # 			tags=("monster_arrow", "battle"))
     main.refresh_bars()
 
@@ -331,15 +331,15 @@ def select_monster():
                 config.ALLOW_MOVE = True
                 return -1
             if event.type == pygame.KEYDOWN:
-                if event.key == g.bindings["up"] or event.key == g.bindings["left"]:
+                if event.key == config.BINDINGS["up"] or event.key == config.BINDINGS["left"]:
                     choose_monster_prev()
                     refresh()
                     pygame.display.flip()
-                elif event.key == g.bindings["down"] or event.key == g.bindings["right"]:
+                elif event.key == config.BINDINGS["down"] or event.key == config.BINDINGS["right"]:
                     choose_monster_next()
                     refresh()
                     pygame.display.flip()
-                elif event.key == g.bindings["action"] or g.bindings["attack"]:
+                elif event.key == config.BINDINGS["action"] or config.BINDINGS["attack"]:
                     g.break_one_loop = 1
             elif event.type == pygame.MOUSEMOTION:
                 monster_mouse_move(event.pos)
@@ -910,8 +910,8 @@ def inspect_monst():
     pygame.display.flip()
 
 
-# Refresh the buttons in the main battle view.
-def refresh_buttons():
+def refresh_buttons() -> None:
+    """Refresh the buttons in the main battle view."""
     attack_name = "attack.png"
     use_name = "use.png"
     skill_name = "skill.png"
@@ -928,33 +928,30 @@ def refresh_buttons():
     elif config.mut["CURR_BUTTON"] == 4:
         quit_name = "quit_sel.png"
 
-    g.screen.blit(g.buttons[attack_name], (attack_button_loc, button_y_start))
-    g.screen.blit(g.buttons[use_name], (item_button_loc, button_y_start))
-    g.screen.blit(g.buttons[skill_name], (skill_button_loc, button_y_start))
-    g.screen.blit(g.buttons[inspect_name], (inspect_button_loc, button_y_start))
-    g.screen.blit(g.buttons[quit_name], (run_button_loc, button_y_start))
+    g.screen.blit(config.BUTTONS[attack_name], (attack_button_loc, button_y_start))
+    g.screen.blit(config.BUTTONS[use_name], (item_button_loc, button_y_start))
+    g.screen.blit(config.BUTTONS[skill_name], (skill_button_loc, button_y_start))
+    g.screen.blit(config.BUTTONS[inspect_name], (inspect_button_loc, button_y_start))
+    g.screen.blit(config.BUTTONS[quit_name], (run_button_loc, button_y_start))
 
     pygame.display.flip()
-
-
-# 	pygame.time.wait(3000)
 
 
 # All keypresses in window_shop pass through here. Based on the key name,
 # give the right action. ("etc", "left", "right", "up", "down", "return")
 def key_handler(key_name):
-    if key_name == g.bindings["cancel"]:
+    if key_name == config.BINDINGS["cancel"]:
         return runaway()
-    if key_name == g.bindings["right"] or key_name == g.bindings["down"]:
+    if key_name == config.BINDINGS["right"] or key_name == config.BINDINGS["down"]:
         config.mut["CURR_BUTTON"] += 1
         if config.mut["CURR_BUTTON"] >= 5:
             config.mut["CURR_BUTTON"] = 0
-    elif key_name == g.bindings["left"] or key_name == g.bindings["up"]:
+    elif key_name == config.BINDINGS["left"] or key_name == config.BINDINGS["up"]:
         config.mut["CURR_BUTTON"] -= 1
         if config.mut["CURR_BUTTON"] <= -1:
             config.mut["CURR_BUTTON"] = 4  # loop around
 
-    elif key_name == g.bindings["action"]:
+    elif key_name == config.BINDINGS["action"]:
         if config.mut["CURR_BUTTON"] == 0:
             attack()
         elif config.mut["CURR_BUTTON"] == 1:
@@ -966,7 +963,7 @@ def key_handler(key_name):
         elif config.mut["CURR_BUTTON"] == 4:
             return runaway()
         return 0
-    elif key_name == g.bindings["attack"]:
+    elif key_name == config.BINDINGS["attack"]:
         attack()
     refresh_buttons()
 
@@ -1111,7 +1108,7 @@ def begin(mon_index_input):
 
     global canvas_mon_pic
     global background_pic
-    background_pic = g.maps[g.zgrid].battle_background
+    background_pic = config.MAPS[g.zgrid].battle_background
 
     global monster_pic
     monster_pic = []
@@ -1154,7 +1151,7 @@ def begin(mon_index_input):
 
     global hero_pic
     try:
-        hero_pic = g.tiles["people/hero_n" + g.maps[g.zgrid].hero_suffix + ".png"]
+        hero_pic = g.tiles["people/hero_n" + config.MAPS[g.zgrid].hero_suffix + ".png"]
     except KeyError:
         hero_pic = g.tiles["blank"]
 
@@ -1174,18 +1171,18 @@ def begin(mon_index_input):
     global button_height
     attack_button_loc = (
         config.TILESIZE * main.half_mapx
-        - g.buttons["attack.png"].get_width()
-        - g.buttons["use.png"].get_width()
-        - g.buttons["skill.png"].get_width() / 2
+        - config.BUTTONS["attack.png"].get_width()
+        - config.BUTTONS["use.png"].get_width()
+        - config.BUTTONS["skill.png"].get_width() / 2
     )
-    item_button_loc = attack_button_loc + g.buttons["attack.png"].get_width()
-    skill_button_loc = item_button_loc + g.buttons["use.png"].get_width()
-    inspect_button_loc = skill_button_loc + g.buttons["skill.png"].get_width()
-    run_button_loc = inspect_button_loc + g.buttons["inspect.png"].get_width()
-    final_button_loc = run_button_loc + g.buttons["quit.png"].get_width()
+    item_button_loc = attack_button_loc + config.BUTTONS["attack.png"].get_width()
+    skill_button_loc = item_button_loc + config.BUTTONS["use.png"].get_width()
+    inspect_button_loc = skill_button_loc + config.BUTTONS["skill.png"].get_width()
+    run_button_loc = inspect_button_loc + config.BUTTONS["inspect.png"].get_width()
+    final_button_loc = run_button_loc + config.BUTTONS["quit.png"].get_width()
 
     button_y_start = config.TILESIZE * main.half_mapy + background_pic.get_height() / 2
-    button_height = g.buttons["attack.png"].get_height()
+    button_height = config.BUTTONS["attack.png"].get_height()
 
     g.create_norm_box((attack_button_loc, button_y_start), (final_button_loc - attack_button_loc, button_height))
 

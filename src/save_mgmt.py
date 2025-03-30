@@ -55,7 +55,7 @@ def savegame(save_file: str) -> None:
             pickle.dump("Ignore", savefile)
     pickle.dump(xgrid, savefile)
     pickle.dump(ygrid, savefile)
-    pickle.dump(maps[zgrid].name, savefile)
+    pickle.dump(config.MAPS[zgrid].name, savefile)
     # skills are stored by name as well.
     num = 0
     for i in range(len(player.skill)):

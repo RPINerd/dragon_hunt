@@ -95,8 +95,6 @@ def load(selected_mod: str = "DragonHunt") -> None:
     screen.blit(text_surface, text_rect)
 
     pygame.display.flip()
-    ic("g.init_data")
-    g.init_data()
     init_gamedata()
     ic("new_game init_window")
     new_game.init_window()

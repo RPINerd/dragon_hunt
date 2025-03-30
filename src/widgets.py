@@ -2,6 +2,7 @@
 import pygame
 from icecream import ic
 
+import config
 import g
 
 
@@ -150,8 +151,8 @@ class Scrollbar:
         self.scroll_surface.fill(bg_color, (1, self.size[0], self.size[0] - 2, self.size[1] - 36))
 
         # create arrows
-        self.scroll_surface.blit(g.buttons["arrow.png"], (1, 1))
-        self.scroll_surface.blit(pygame.transform.flip(g.buttons["arrow.png"], 0, 1), (1, self.size[1] - 17))
+        self.scroll_surface.blit(config.BUTTONS["arrow.png"], (1, 1))
+        self.scroll_surface.blit(pygame.transform.flip(config.BUTTONS["arrow.png"], 0, 1), (1, self.size[1] - 17))
 
         self.refresh_scroll(0, 100)
 

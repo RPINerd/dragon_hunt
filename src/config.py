@@ -1,5 +1,6 @@
 """Configuration settings for the Dragon Hunt game."""
 
+
 # Previously array_mods
 MODULES = ["DarkAges", "DragonHunt", " ", " ", " "]
 MODULES_DIR = ""
@@ -7,6 +8,7 @@ MODULES_DIR = ""
 # Screen resolution
 SCREEN_WIDTH = 1024
 SCREEN_HEIGHT = 768
+FULLSCREEN = False
 
 # Tile size notes from original code:
 # size (in tiles) of the editor screen. 15 works well with 640x480,
@@ -59,6 +61,7 @@ DIFFICULTY: int = 1  # 0 = easy, 1 = normal, 2 = hard
 DICE: list[list[int]] = [[], [], [], [], []]  # Array of dice for the player
 DEFAULT_NAME: str = "Alfred"  # Default name for the player
 ICONS: dict[str,] = {}
+MAPS: list = []
 
 DEBUG = False
 FASTBOOT = False  # Skip map preprocessing

@@ -44,7 +44,7 @@ def refresh_window() -> None:
     if curr_button == 0:
         in_color = "dh_green"
     g.create_norm_box((x_start + 2, y_start + 2), (x_width - 4, 23), inner_color=in_color)
-    g.screen.blit(g.buttons[fullscreen_img], (x_start + 7, y_start + 3))
+    g.screen.blit(config.BUTTONS[fullscreen_img], (x_start + 7, y_start + 3))
     g.print_string(g.screen, "Fullscreen", g.font, (x_start + 27, y_start + 10))
 
     # difficulty
@@ -158,17 +158,17 @@ def key_handler(switch):
     global tmp_fullscreen
     global tmp_difficulty
     global tmp_keys
-    if switch == g.bindings["cancel"]:
+    if switch == config.BINDINGS["cancel"]:
         cancel_settings()
-    elif switch == g.bindings["up"]:
+    elif switch == config.BINDINGS["up"]:
         curr_button -= 1
         if curr_button <= -1:
             curr_button = 7
-    elif switch == g.bindings["down"]:
+    elif switch == config.BINDINGS["down"]:
         curr_button += 1
         if curr_button > 7:
             curr_button = 0
-    elif switch == g.bindings["action"]:
+    elif switch == config.BINDINGS["action"]:
         if curr_button == 0:  # fullscreen
             if tmp_fullscreen == 0:
                 tmp_fullscreen = 1
@@ -192,30 +192,30 @@ def key_handler(switch):
                 pygame.display.toggle_fullscreen()
             g.fullscreen = tmp_fullscreen
             g.difficulty = tmp_difficulty
-            g.bindings["up"] = tmp_keys["up"]
-            g.bindings["down"] = tmp_keys["down"]
-            g.bindings["right"] = tmp_keys["right"]
-            g.bindings["left"] = tmp_keys["left"]
-            g.bindings["action"] = tmp_keys["action"]
-            g.bindings["cancel"] = tmp_keys["cancel"]
+            config.BINDINGS["up"] = tmp_keys["up"]
+            config.BINDINGS["down"] = tmp_keys["down"]
+            config.BINDINGS["right"] = tmp_keys["right"]
+            config.BINDINGS["left"] = tmp_keys["left"]
+            config.BINDINGS["action"] = tmp_keys["action"]
+            config.BINDINGS["cancel"] = tmp_keys["cancel"]
             # Restore any shortcuts that had been removed before.
-            g.bindings["attack"] = pygame.K_a
-            g.bindings["save"] = pygame.K_s
-            g.bindings["quit"] = pygame.K_q
-            g.bindings["inv"] = pygame.K_i
-            g.bindings["load_console"] = pygame.K_BACKQUOTE
+            config.BINDINGS["attack"] = pygame.K_a
+            config.BINDINGS["save"] = pygame.K_s
+            config.BINDINGS["quit"] = pygame.K_q
+            config.BINDINGS["inv"] = pygame.K_i
+            config.BINDINGS["load_console"] = pygame.K_BACKQUOTE
             # Remove any shortcuts that are already taken.
             for binding in ["up", "down", "right", "left", "action", "cancel"]:
-                if g.bindings[binding] == pygame.K_a:
-                    g.bindings["attack"] = 0
-                if g.bindings[binding] == pygame.K_s:
-                    g.bindings["save"] = 0
-                if g.bindings[binding] == pygame.K_q:
-                    g.bindings["quit"] = 0
-                if g.bindings[binding] == pygame.K_i:
-                    g.bindings["inv"] = 0
-                if g.bindings[binding] == pygame.K_BACKQUOTE:
-                    g.bindings["load_console"] = 0
+                if config.BINDINGS[binding] == pygame.K_a:
+                    config.BINDINGS["attack"] = 0
+                if config.BINDINGS[binding] == pygame.K_s:
+                    config.BINDINGS["save"] = 0
+                if config.BINDINGS[binding] == pygame.K_q:
+                    config.BINDINGS["quit"] = 0
+                if config.BINDINGS[binding] == pygame.K_i:
+                    config.BINDINGS["inv"] = 0
+                if config.BINDINGS[binding] == pygame.K_BACKQUOTE:
+                    config.BINDINGS["load_console"] = 0
 
             # save the settings to disk
             options_file_text = []
@@ -243,7 +243,7 @@ def key_handler(switch):
                     or command == "inv"
                     or command == "load_console"
                 ):
-                    options_file_text[linenum] = command + "=" + str(g.bindings[command]) + "\n"
+                    options_file_text[linenum] = command + "=" + str(config.BINDINGS[command]) + "\n"
                 if command == "difficulty":
                     options_file_text[linenum] = command + "=" + str(g.difficulty) + "\n"
                 if command == "fullscreen":
@@ -288,17 +288,17 @@ def bind_new_key(start_key):
 def key_key_handler(switch):
     global curr_button
     global tmp_keys
-    if switch == g.bindings["cancel"]:
+    if switch == config.BINDINGS["cancel"]:
         cancel_settings()
-    elif switch == g.bindings["up"]:
+    elif switch == config.BINDINGS["up"]:
         curr_button -= 1
         if curr_button <= 9:
             curr_button = 17
-    elif switch == g.bindings["down"]:
+    elif switch == config.BINDINGS["down"]:
         curr_button += 1
         if curr_button > 17:
             curr_button = 10
-    elif switch == g.bindings["action"]:
+    elif switch == config.BINDINGS["action"]:
         if curr_button == 10:  # up
             refresh_key_window(True)
             tmp_keys["up"] = bind_new_key(tmp_keys["up"])
@@ -319,12 +319,12 @@ def key_key_handler(switch):
             tmp_keys["cancel"] = bind_new_key(tmp_keys["cancel"])
         if curr_button == 16:  # reset
             tmp_keys = {}
-            tmp_keys["up"] = g.bindings["up"]
-            tmp_keys["down"] = g.bindings["down"]
-            tmp_keys["right"] = g.bindings["right"]
-            tmp_keys["left"] = g.bindings["left"]
-            tmp_keys["action"] = g.bindings["action"]
-            tmp_keys["cancel"] = g.bindings["cancel"]
+            tmp_keys["up"] = config.BINDINGS["up"]
+            tmp_keys["down"] = config.BINDINGS["down"]
+            tmp_keys["right"] = config.BINDINGS["right"]
+            tmp_keys["left"] = config.BINDINGS["left"]
+            tmp_keys["action"] = config.BINDINGS["action"]
+            tmp_keys["cancel"] = config.BINDINGS["cancel"]
         if curr_button == 17:  # back
             cancel_settings()
     refresh_key_window()
@@ -443,12 +443,12 @@ def init_window_options():
     tmp_fullscreen = g.fullscreen
     tmp_difficulty = g.difficulty
     tmp_keys = {}
-    tmp_keys["up"] = g.bindings["up"]
-    tmp_keys["down"] = g.bindings["down"]
-    tmp_keys["right"] = g.bindings["right"]
-    tmp_keys["left"] = g.bindings["left"]
-    tmp_keys["action"] = g.bindings["action"]
-    tmp_keys["cancel"] = g.bindings["cancel"]
+    tmp_keys["up"] = config.BINDINGS["up"]
+    tmp_keys["down"] = config.BINDINGS["down"]
+    tmp_keys["right"] = config.BINDINGS["right"]
+    tmp_keys["left"] = config.BINDINGS["left"]
+    tmp_keys["action"] = config.BINDINGS["action"]
+    tmp_keys["cancel"] = config.BINDINGS["cancel"]
     refresh_window()
     while True:
         pygame.time.wait(30)

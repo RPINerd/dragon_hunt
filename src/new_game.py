@@ -67,11 +67,11 @@ def reroll_stats():
     global attack_stat
     global defense_stat
     global gold_stat
-    hp_stat = g.die_roll(g.new_game_dice[0][0], g.new_game_dice[0][1]) + g.new_game_dice[0][2]
-    ep_stat = g.die_roll(g.new_game_dice[1][0], g.new_game_dice[1][1]) + g.new_game_dice[1][2]
-    attack_stat = g.die_roll(g.new_game_dice[2][0], g.new_game_dice[2][1]) + g.new_game_dice[2][2]
-    defense_stat = g.die_roll(g.new_game_dice[3][0], g.new_game_dice[3][1]) + g.new_game_dice[3][2]
-    gold_stat = g.die_roll(g.new_game_dice[4][0], g.new_game_dice[4][1]) + g.new_game_dice[4][2]
+    hp_stat = g.die_roll(config.DICE[0][0], config.DICE[0][1]) + config.DICE[0][2]
+    ep_stat = g.die_roll(config.DICE[1][0], config.DICE[1][1]) + config.DICE[1][2]
+    attack_stat = g.die_roll(config.DICE[2][0], config.DICE[2][1]) + config.DICE[2][2]
+    defense_stat = g.die_roll(config.DICE[3][0], config.DICE[3][1]) + config.DICE[3][2]
+    gold_stat = g.die_roll(config.DICE[4][0], config.DICE[4][1]) + config.DICE[4][2]
 
     reset_vars()
     refresh_new_game()
@@ -120,16 +120,16 @@ def refresh_name():
 def name_key_handler(key_name):
     if key_name == pygame.K_BACKSPACE:
         backspace_name()
-    elif key_name == g.bindings["action"]:
+    elif key_name == config.BINDINGS["action"]:
         return 1
-    elif key_name == g.bindings["cancel"]:
+    elif key_name == config.BINDINGS["cancel"]:
         global name_stat
         global old_name
         name_stat = old_name
         return 1
-    elif key_name == g.bindings["left"] or key_name == g.bindings["up"]:
+    elif key_name == config.BINDINGS["left"] or key_name == config.BINDINGS["up"]:
         name_left()
-    elif key_name == g.bindings["right"] or key_name == g.bindings["down"]:
+    elif key_name == config.BINDINGS["right"] or key_name == config.BINDINGS["down"]:
         name_right()
     elif key_name == pygame.K_HOME:
         name_home()
@@ -249,13 +249,13 @@ def begin_game(loadgame_name=""):
     already_started_game = 1
 
     g.create_norm_box(
-        (g.screen_size[0] / 4, g.screen_size[1] / 3),
-        (g.screen_size[0] / 2, g.screen_size[1] / 3),
+        (config.SCREEN_WIDTH / 4, config.SCREEN_HEIGHT / 3),
+        (config.SCREEN_WIDTH / 2, config.SCREEN_HEIGHT / 3),
         "black",
         "light_gray",
     )
     g.print_string(
-        g.screen, "Starting game. Please wait", g.font, (g.screen_size[0] / 2, g.screen_size[1] / 2), align=1
+        screen, "Starting game. Please wait", g.font, (config.SCREEN_WIDTH / 2, config.SCREEN_HEIGHT / 2), align=1
     )
     pygame.display.flip()
 
@@ -311,41 +311,41 @@ def quit_game():
 # refresh the buttons.
 def refresh_buttons():
     if config.mut["CURR_BUTTON"] > 4:
-        g.screen.blit(g.buttons["begin.png"], (inner_new_game_width, inner_button_start))
-        g.screen.blit(g.buttons["skill.png"], (inner_rename_width, inner_button_start))
-        g.screen.blit(g.buttons["reroll.png"], (inner_reroll_width, inner_button_start))
-        g.screen.blit(g.buttons["leave.png"], (inner_quit_width, inner_button_start))
+        g.screen.blit(config.BUTTONS["begin.png"], (inner_new_game_width, inner_button_start))
+        g.screen.blit(config.BUTTONS["skill.png"], (inner_rename_width, inner_button_start))
+        g.screen.blit(config.BUTTONS["reroll.png"], (inner_reroll_width, inner_button_start))
+        g.screen.blit(config.BUTTONS["leave.png"], (inner_quit_width, inner_button_start))
         if config.mut["CURR_BUTTON"] == 5:
-            g.screen.blit(g.buttons["begin_sel.png"], (inner_new_game_width, inner_button_start))
+            g.screen.blit(config.BUTTONS["begin_sel.png"], (inner_new_game_width, inner_button_start))
             refresh_help("Begin a new game")
         if config.mut["CURR_BUTTON"] == 6:
-            g.screen.blit(g.buttons["skill_sel.png"], (inner_rename_width, inner_button_start))
+            g.screen.blit(config.BUTTONS["skill_sel.png"], (inner_rename_width, inner_button_start))
             refresh_help("Change your name")
         if config.mut["CURR_BUTTON"] == 7:
-            g.screen.blit(g.buttons["reroll_sel.png"], (inner_reroll_width, inner_button_start))
+            g.screen.blit(config.BUTTONS["reroll_sel.png"], (inner_reroll_width, inner_button_start))
             refresh_help("Reroll your statistics")
         if config.mut["CURR_BUTTON"] == 8:
-            g.screen.blit(g.buttons["leave_sel.png"], (inner_quit_width, inner_button_start))
+            g.screen.blit(config.BUTTONS["leave_sel.png"], (inner_quit_width, inner_button_start))
             refresh_help("Back to the main menu")
         if config.mut["CURR_BUTTON"] == 9:
             refresh_help("")
 
     else:
-        g.screen.blit(g.buttons["begin.png"], (new_game_width, button_start))
-        g.screen.blit(g.buttons["load.png"], (load_width, button_start))
-        g.screen.blit(g.buttons["options.png"], (options_width, button_start))
-        g.screen.blit(g.buttons["quit.png"], (quit_width, button_start))
+        g.screen.blit(config.BUTTONS["begin.png"], (new_game_width, button_start))
+        g.screen.blit(config.BUTTONS["load.png"], (load_width, button_start))
+        g.screen.blit(config.BUTTONS["options.png"], (options_width, button_start))
+        g.screen.blit(config.BUTTONS["quit.png"], (quit_width, button_start))
         if config.mut["CURR_BUTTON"] == 0:
-            g.screen.blit(g.buttons["begin_sel.png"], (new_game_width, button_start))
+            g.screen.blit(config.BUTTONS["begin_sel.png"], (new_game_width, button_start))
             refresh_help("Create a new character")
         if config.mut["CURR_BUTTON"] == 1:
-            g.screen.blit(g.buttons["load_sel.png"], (load_width, button_start))
+            g.screen.blit(config.BUTTONS["load_sel.png"], (load_width, button_start))
             refresh_help("Load an old game")
         if config.mut["CURR_BUTTON"] == 2:
-            g.screen.blit(g.buttons["options_sel.png"], (options_width, button_start))
+            g.screen.blit(config.BUTTONS["options_sel.png"], (options_width, button_start))
             refresh_help("Change the options")
         if config.mut["CURR_BUTTON"] == 3:
-            g.screen.blit(g.buttons["quit_sel.png"], (quit_width, button_start))
+            g.screen.blit(config.BUTTONS["quit_sel.png"], (quit_width, button_start))
             refresh_help("Quit the game")
         if config.mut["CURR_BUTTON"] == 4:
             refresh_help("")
@@ -359,28 +359,25 @@ def refresh_help(string):
     g.print_string(g.screen, string, g.font, start_xy, config.COLORS["white"])
 
 
-# All keypresses in new_game pass through here. Based on the key name,
-# give the right action. ("etc", "left", "right", "up", "down", "return")
-def key_handler(key_name):
-    if key_name == g.bindings["cancel"]:
+    if key_name == config.BINDINGS["cancel"]:
         if config.mut["CURR_BUTTON"] > 4:
             back_from_new_game()
             return 0
         g.break_one_loop = 100
         return 1
-    if key_name == g.bindings["up"] or key_name == g.bindings["left"]:
+    if key_name == config.BINDINGS["up"] or key_name == config.BINDINGS["left"]:
         if config.mut["CURR_BUTTON"] == 0:
             config.mut["CURR_BUTTON"] = 4
         if config.mut["CURR_BUTTON"] == 5:
             config.mut["CURR_BUTTON"] = 9
         config.mut["CURR_BUTTON"] -= 1
-    elif key_name == g.bindings["down"] or key_name == g.bindings["right"]:
+    elif key_name == config.BINDINGS["down"] or key_name == config.BINDINGS["right"]:
         if config.mut["CURR_BUTTON"] == 4 or config.mut["CURR_BUTTON"] == 3:
             config.mut["CURR_BUTTON"] = -1
         if config.mut["CURR_BUTTON"] == 8 or config.mut["CURR_BUTTON"] == 9:
             config.mut["CURR_BUTTON"] = 4
         config.mut["CURR_BUTTON"] += 1
-    elif key_name == g.bindings["action"]:
+    elif key_name == config.BINDINGS["action"]:
         if config.mut["CURR_BUTTON"] == 0:
             init_new_game()
         elif config.mut["CURR_BUTTON"] == 1:
@@ -442,23 +439,23 @@ def mouse_handler_move(xy):
 def init_new_game():
 
     global name_stat
-    name_stat = g.default_player_name
+    name_stat = config.DEFAULT_NAME
     global inner_button_start
-    inner_button_start = config.TILESIZE * main.mapsizey * 2 / 3 - g.buttons["begin.png"].get_height()
+    inner_button_start = config.TILESIZE * main.mapsizey * 2 / 3 - config.BUTTONS["begin.png"].get_height()
     global inner_button_height
-    inner_button_height = g.buttons["begin.png"].get_height()
+    inner_button_height = config.BUTTONS["begin.png"].get_height()
     global inner_new_game_width
     global inner_rename_width
     global inner_reroll_width
     global inner_quit_width
     global inner_final_width
     inner_new_game_width = (
-        config.TILESIZE * main.mapsizex / 2 - g.buttons["begin.png"].get_width() - g.buttons["skill.png"].get_width()
+        config.TILESIZE * main.mapsizex / 2 - config.BUTTONS["begin.png"].get_width() - config.BUTTONS["skill.png"].get_width()
     )
-    inner_rename_width = inner_new_game_width + g.buttons["begin.png"].get_width()
-    inner_reroll_width = inner_rename_width + g.buttons["skill.png"].get_width()
-    inner_quit_width = inner_reroll_width + g.buttons["reroll.png"].get_width()
-    inner_final_width = inner_quit_width + g.buttons["leave.png"].get_width()
+    inner_rename_width = inner_new_game_width + config.BUTTONS["begin.png"].get_width()
+    inner_reroll_width = inner_rename_width + config.BUTTONS["skill.png"].get_width()
+    inner_quit_width = inner_reroll_width + config.BUTTONS["reroll.png"].get_width()
+    inner_final_width = inner_quit_width + config.BUTTONS["leave.png"].get_width()
 
     config.mut["CURR_BUTTON"] = 5
 
@@ -485,25 +482,25 @@ def init_window():
     g.screen.blit(g.backgrounds["new_game.png"], (0, 0))
 
     global name_stat
-    name_stat = g.default_player_name
+    name_stat = config.DEFAULT_NAME
 
     # button coords
     global button_start
     button_start = 331
     global button_height
-    button_height = g.buttons["begin.png"].get_height()
+    button_height = config.BUTTONS["begin.png"].get_height()
     global new_game_width
     global load_width
     global options_width
     global quit_width
     global final_width
     new_game_width = (
-        config.TILESIZE * main.mapsizex / 2 - g.buttons["begin.png"].get_width() - g.buttons["load.png"].get_width() / 2
+        config.TILESIZE * main.mapsizex / 2 - config.BUTTONS["begin.png"].get_width() - config.BUTTONS["load.png"].get_width() / 2
     )
-    load_width = new_game_width + g.buttons["begin.png"].get_width()
-    options_width = load_width + g.buttons["options.png"].get_width()
-    quit_width = options_width + g.buttons["load.png"].get_width()
-    final_width = quit_width + g.buttons["quit.png"].get_width()
+    load_width = new_game_width + config.BUTTONS["begin.png"].get_width()
+    options_width = load_width + config.BUTTONS["options.png"].get_width()
+    quit_width = options_width + config.BUTTONS["load.png"].get_width()
+    final_width = quit_width + config.BUTTONS["quit.png"].get_width()
 
     config.mut["CURR_BUTTON"] = 0
     refresh_buttons()

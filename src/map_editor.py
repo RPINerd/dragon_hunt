@@ -829,7 +829,7 @@ def save_map():
     map_file.close()
 
     g.zgrid = g.mapname2zgrid(cur_map.name)
-    copy_map(g.maps[g.zgrid], cur_map)
+    copy_map(config.MAPS[g.zgrid], cur_map)
     try:
         os.remove(map_loc + "~")
     except OSError:
@@ -858,7 +858,7 @@ def do_load_map():
     cur_map = g.map("")
     # Rereading all the maps is a bit roundabout, but prevents a nasty bug.
     g.read_maps(1)
-    copy_map(cur_map, g.maps[g.zgrid])
+    copy_map(cur_map, config.MAPS[g.zgrid])
     global mapsize_x
     mapsize_x = len(cur_map.field[0])
     global mapsize_y
@@ -1029,8 +1029,8 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
         (width + 10, 10), 350, 16, config.COLORS["light_gray"], config.COLORS["hp_green"], config.COLORS["white"]
     )
 
-    g.screen.blit(g.buttons["load_sel.png"], (10, 360))
-    g.screen.blit(g.buttons["quit.png"], (10 + g.buttons["load_sel.png"].get_width(), 360))
+    g.screen.blit(config.BUTTONS["load_sel.png"], (10, 360))
+    g.screen.blit(config.BUTTONS["quit.png"], (10 + config.BUTTONS["load_sel.png"].get_width(), 360))
     refresh_list(input_listbox, input_scroll, cur_pos, input_array)
     while True:
         pygame.time.wait(30)
@@ -1087,14 +1087,14 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
                                     return cur_pos
                                 if input_array[cur_pos] != "":
                                     return input_array[cur_pos]
-                    elif event.pos[1] > 360 + g.buttons["load_sel.png"].get_height():
+                    elif event.pos[1] > 360 + config.BUTTONS["load_sel.png"].get_height():
                         break
-                    elif event.pos[0] < 10 + g.buttons["load_sel.png"].get_width():
+                    elif event.pos[0] < 10 + config.BUTTONS["load_sel.png"].get_width():
                         if return_pos:
                             return cur_pos
                         if input_array[cur_pos] != "":
                             return input_array[cur_pos]
-                    elif event.pos[0] < 10 + g.buttons["load_sel.png"].get_width() + g.buttons["quit.png"].get_width():
+                    elif event.pos[0] < 10 + config.BUTTONS["load_sel.png"].get_width() + config.BUTTONS["quit.png"].get_width():
                         g.unclean_screen = True
                         return -1
                 elif event.button == 4:

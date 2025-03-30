@@ -111,7 +111,7 @@ def read_settings() -> None:
             if line_key == "difficulty":
                 config.DIFFICULTY = int(line_value)
             elif line_key == "editor_xy_size":
-                editor_xy = (int(line_value.split(",")[0]), int(line_value.split(",")[1]))
+                config.SCREEN_WIDTH, config.SCREEN_HEIGHT = (int(line_value.split(",")[0]), int(line_value.split(",")[1]))
             elif line_key == "fullscreen":
                 config.FULLSCREEN = int(line_value)
             else:
@@ -133,8 +133,9 @@ def read_variables() -> None:
         dice_list = [int(first), int(second), int(third)]
         config.DICE[index] = dice_list
 
+    variable_path = Path(config.MODULES_DIR + "/data/variables.txt")
     # Verify that the variables file exists.
-    if not Path.exists(config.MODULES_DIR + "/data/variables.txt"):
+    if not Path.exists(variable_path):
         ic(f"Error: No variables file found in {config.MODULES_DIR}/data/.. Exiting.")
         sys.exit()
 
