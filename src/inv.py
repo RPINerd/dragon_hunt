@@ -195,7 +195,8 @@ def open_equip_item():
     menu_bind_keys()
 
 
-def open_skill_menu():
+def open_skill_menu() -> str | None:
+    """"""
     open_inner_menu("skill")
     g.cur_window = "inventory_skill"
     refresh_skill("skill")
@@ -298,16 +299,18 @@ def refresh_inner_buttons(screen_str: str) -> None:
     pygame.display.flip()
 
 
-# Refreshes the item display in the inner menus.
-def refresh_use():
+def refresh_use() -> None:
+    """Refreshes the item display in the inner menus."""
     refresh_inv_display("use")
 
 
-def refresh_drop():
+def refresh_drop() -> None:
+    """"""
     refresh_inv_display("drop")
 
 
-def refresh_equip():
+def refresh_equip() -> None:
+    """"""
     refresh_inv_display("equip")
     # rebuild the equipment display
     temp_canvas_width = (config.TILESIZE * equip_size) + 8
@@ -566,8 +569,8 @@ def refresh_stat_display():
     pygame.display.flip()
 
 
-# called when "Save" is pressed
-def inv_savegame():
+def leave_inv() -> None:
+    """Called when "Leave" is pressed"""
     if action.has_dialog == 1:
         return 0
     g.savegame(player.name)
@@ -589,8 +592,8 @@ def leave_inv():
     # back_to_main.set("1")
 
 
-# puts a worn item into the inventory. Called from the remove button.
-def rm_equip():
+def rm_equip() -> None:
+    """Puts a worn item into the inventory. Called from the remove button."""
     if action.has_dialog == 1:
         return 0
     # Curr_item is the current location in the equipment canvas.
@@ -621,8 +624,8 @@ def rm_equip():
     refresh_stat_display()
 
 
-# takes an item from the inventory, and wears it.
-def wear_item():
+def wear_item() -> None:
+    """Wears the item at the current location in the inventory."""
     if action.has_dialog == 1:
         return 0
     if curr_item >= inv_width * inv_height:
@@ -636,12 +639,12 @@ def wear_item():
 
     if item_value == -1:
         return
-    # put the equip slot into item_loc
+
+    # Put the equip slot into item_loc
     item_loc = item.item[item_value].type
 
-    # if item is equipment
+    # If item is equipment, trade the item and whatever is in the equip slot
     if item_loc < 6:
-        # trade the item and whatever's in the equip slot
         temp = player.equip[item_loc]
         player.equip[item_loc] = item_value
         item.drop_inv_item(curr_item)
@@ -655,8 +658,8 @@ def wear_item():
     refresh_stat_display()
 
 
-# drops an item from the inventory. Uses curr_item
-def drop_item():
+def drop_item() -> None:
+    """Drops the item at the current location in the inventory."""
     if action.has_dialog == 1:
         return 0
     if curr_item >= len(item.inv) or item.inv[curr_item] == -1:
@@ -670,11 +673,8 @@ def drop_item():
         main.print_message("You feel attached to your " + item.item[item.inv[item_to_delete]].name)
         return 0
     # the inv[] location of the item is now in item_to_delete.
+
     # Ask if the player really wants to drop it.
-
-    # 	main.canvas_map.unbind("<ButtonRelease-1>")
-    # 	main.canvas_map.unbind("<Motion>")
-
     tmp_surface = pygame.Surface((300, 200))
     tmp_surface.blit(g.screen, (0, 0), (170, 140, 300, 200))
     if main.show_yesno("Drop your " + item.item[item.inv[item_to_delete]].name + "?"):
@@ -693,9 +693,13 @@ def drop_item():
     refresh_drop()
 
 
-# called when "Use" is pressed. Either uses the current location in
-# the inv, or the item_index.
-def use_item(item_index=-1):
+def use_item(item_index: int = -1) -> None:
+    """
+    Uses the item at the current location in the inventory
+
+    Args:
+        item_index (int): The index of the item to use. If -1, uses the current item.
+    """
     # 	if action.has_dialog == 1: return 0
     if item_index == -1:
         if curr_item >= len(item.inv) or item.inv[curr_item] == -1:
@@ -735,7 +739,8 @@ def use_item(item_index=-1):
         refresh_stat_display()
 
 
-def useskill(free_skill=0):
+def useskill(free_skill: int = 0) -> bool:
+    """"""
     # sanity checks
     skill_index = curr_item
     if skill_index >= len(player.skill):
@@ -760,8 +765,8 @@ def useskill(free_skill=0):
     return 1
 
 
-# refresh buttons in the main inv menu.
-def refresh_menu_buttons():
+def refresh_menu_buttons() -> None:
+    """Refreshes the buttons in the main inventory menu."""
     global oldbutton
     if action.has_dialog == 1:
         return 0
@@ -847,7 +852,7 @@ def refresh_inv(x, y, input_tag):
         )
 
 
-# Takes a canvas, a string (leading to a picture in g.tiles[]), and xy coords
+# Takes a canvas, a string (leading to a picture in config.TILES[]), and xy coords
 # (in tiles, starting from 0), an xy offset from the upper-left of canvas_map,
 # and draws the picture.
 def draw_item(input_picture, x, y, x_offset, y_offset, tag):
@@ -1073,7 +1078,8 @@ def skill_mouse_click(xy):
     return tmp
 
 
-def equip_mouse_click(xy):
+def equip_mouse_click(xy: tuple[int, int]) -> bool:
+    """"""
     # decide if the mouse is within one of the boxes.
     global curr_item
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
@@ -1347,6 +1353,10 @@ def init_window_inv():
                     return
 
 
-# bind the keys. Called upon window creation and return from a yes/no box
-def menu_bind_keys():
+def menu_bind_keys() -> None:
+    """
+    Bind the keys for the inventory menu.
+
+    Called upon window creation and return from a yes/no box
+    """
     g.cur_window = "inventory"

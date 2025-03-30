@@ -363,8 +363,8 @@ def select_monster():
     return active_button
 
 
-# Cycle through the various monsters when attacking. Used by the keyboard.
-def choose_monster_prev():
+def choose_monster_prev() -> None:
+    """Cycle through the previous monsters when attacking. Used by the keyboard."""
     global active_button
     i = active_button
     while True:
@@ -383,7 +383,8 @@ def choose_monster_prev():
     refresh()
 
 
-def choose_monster_next():
+def choose_monster_next() -> None:
+    """Cycle through the next monsters when attacking. Used by the keyboard."""
     global active_button
     i = active_button
     while True:
@@ -890,9 +891,8 @@ def useskill(skill_index, free_skill=0):
         refresh_buttons()
 
 
-# The inspect button was pressed in the battle window.
-def inspect_monst():
-    # don't do anything if battle is over.
+def inspect_monst() -> None:
+    """The inspect button was pressed in the battle window."""
     if can_leave() == 1:
         return 0
     tmp = select_monster()
@@ -1060,21 +1060,16 @@ def mouse_handler_move(xy):
         refresh_buttons()
 
 
-# Sets the description to the left of the battle view to that of
-# the i'th monster
-
-# BUGBUGBUG
-
-
-def set_description_text(i):
-    return 1
-    canvas_desc.delete(ALL)
-    canvas_desc.create_text(1, 5, anchor=NW, text=monster_list[i].description, width=195)
+# ! BUG apparently?
+def set_description_text(i: int) -> None:
+    """Sets the description to the left of the battle view to that of the i'th monster"""
+    pass
+    # canvas_desc.delete(ALL)
+    # canvas_desc.create_text(1, 5, anchor=NW, text=monster_list[i].description, width=195)
 
 
-# start a battle.
-def begin(mon_index_input):
-
+def begin(mon_index_input) -> str | int:
+    """Initiate a battle"""
     # 	global window_battle
     global bgcolour
     bgcolour = "lightgrey"

@@ -12,20 +12,18 @@ class Button:
 
     def __init__(
         self,
-        x: int | float,
-        y: int | float,
-        width: int,
-        height: int,
+        coords: tuple[int, int],
+        dimensions: tuple[int, int],
         color,
         text: str = "",
         font: pygame.font = None,
         image: pygame.image = None
     ) -> None:
         """"""
-        self.x = x
-        self.y = y
-        self.width = width
-        self.height = height
+        self.x = coords[0]
+        self.y = coords[1]
+        self.width = dimensions[0]
+        self.height = dimensions[1]
         self.text = text
         self.font = font
         self.color = color
@@ -109,7 +107,8 @@ class Listbox:
                 )
         return 1
 
-    def is_over(self, xy):
+    def is_over(self, xy: tuple[int, int]) -> int:
+        """"""
         if (
             xy[0] >= self.xy[0]
             and xy[1] >= self.xy[1]
@@ -208,7 +207,7 @@ class Scrollbar:
         return list_pos
 
 
-def refresh_list(listbox: Listbox, scrollbar: Scrollbar, list_pos, list_array):
+def refresh_list(listbox: Listbox, scrollbar: Scrollbar, list_pos: int, list_array: list) -> None:
     """"""
     tmp = listbox.refresh_listbox(
         list_pos % listbox.viewable_items,

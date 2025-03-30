@@ -17,8 +17,19 @@ global tmp_keys
 tmp_keys = {}
 
 
-# unfocused, inactive=gray; focused, inactive=green; focused, active=red
-def box_with_text(xy, text, focused, active=False):
+def box_with_text(xy: tuple[int, int], text: str, focused: bool, active: bool = False) -> None:
+    """
+    Create a box with text inside it, colored based on focus and state
+
+    unfocused, inactive = gray
+    focused, inactive = green
+    focused, active = red
+    Args:
+        xy (tuple[int, int]): The x and y coordinates of the box
+        text (str): The text to display inside the box
+        focused (bool): Whether the box is currently focused
+        active (bool): Whether the box is currently active
+    """
     in_color = "light_gray"
     if focused:
         in_color = "dh_green"

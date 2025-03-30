@@ -1,25 +1,8 @@
-# file: new_game.py
-# Copyright (C) 2005 Free Software Foundation
-# This file is part of Dragon Hunt.
+"""
+Create a new character
 
-# Dragon Hunt is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# Dragon Hunt is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with Dragon Hunt; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-# This file creates a new character.
-# Either call directly (which will use the first module seen), or
-# call from rpg.py after setting config.MODULES_DIR.
-
+Either call directly (which will use the first module seen), or call from rpg.py after setting config.MODULES_DIR.
+"""
 
 import sys
 
@@ -62,11 +45,8 @@ already_started_game = 0
 curr_name_loc = -1
 
 
-# give new stats for the character. Called when pressing the
-# "Reroll stats" button.
-def reroll_stats():
-
-    # actual re-rolling
+def reroll_stats() -> None:
+    """Reroll the stats for the character (from reroll button)"""
     global name_stat
     global hp_stat
     global ep_stat
@@ -83,7 +63,8 @@ def reroll_stats():
     refresh_new_game()
 
 
-def rename_character():
+def rename_character() -> None:
+    """Called when the user presses the rename button"""
     global name_stat
     global curr_name_loc
     curr_name_loc = len(name_stat)
@@ -97,10 +78,10 @@ def rename_character():
     if tmp != -1:
         name_stat = tmp
     refresh_name()
-    return 1
 
 
-def key_handler_up(key_name):
+def key_handler_up(key_name: int) -> None:
+    """"""
     global key_down
     if key_down == "":
         return
@@ -108,8 +89,9 @@ def key_handler_up(key_name):
         key_down = ""
 
 
-def refresh_name():
-    g.screen.fill(
+def refresh_name() -> None:
+    """"""
+    screen.fill(
         config.COLORS["light_gray"],
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10, 280, 14),
     )
@@ -123,7 +105,8 @@ def refresh_name():
     g.unclean_screen = True
 
 
-def name_key_handler(key_name):
+def name_key_handler(key_name: int) -> int:
+    """"""
     if key_name == pygame.K_BACKSPACE:
         backspace_name()
     elif key_name == config.BINDINGS["action"]:
@@ -146,7 +129,8 @@ def name_key_handler(key_name):
     return 0
 
 
-def adjust_name(input_char):
+def adjust_name(input_char: str) -> None:
+    """"""
     global name_stat
     global curr_name_loc
     usable_chars = "`~!@#$%^&*()-_=+|[{]};:'\",<.>/? "
@@ -162,7 +146,8 @@ def adjust_name(input_char):
     curr_name_loc += 1
 
 
-def backspace_name():
+def backspace_name() -> None:
+    """"""
     global name_stat
     global curr_name_loc
     if curr_name_loc <= 0:
@@ -172,30 +157,34 @@ def backspace_name():
     curr_name_loc = max(curr_name_loc, 0)
 
 
-def name_left():
+def name_left() -> None:
+    """"""
     global curr_name_loc
     curr_name_loc -= 1
     curr_name_loc = max(curr_name_loc, 0)
 
 
-def name_right():
+def name_right() -> None:
+    """"""
     global curr_name_loc
     curr_name_loc += 1
     curr_name_loc = min(curr_name_loc, len(name_stat))
 
 
-def name_home():
+def name_home() -> None:
+    """"""
     global curr_name_loc
     curr_name_loc = 0
 
 
-def name_end():
+def name_end() -> None:
+    """"""
     global curr_name_loc
     curr_name_loc = len(name_stat)
 
 
-# call to reset the game
-def reset_vars():
+def reset_vars() -> None:
+    """Reset the game variables to their default values"""
     # move variables to player.*
     player.maxhp = int(hp_stat)
     player.maxep = int(ep_stat)
@@ -214,7 +203,6 @@ def reset_vars():
     g.ygrid = 0
     g.zgrid = 0
 
-    timestep = 0
     g.var_list = {}
     item.dropped_items = []
 
@@ -230,8 +218,8 @@ def reset_vars():
     new_game = 1
 
 
-# get stats from g.*
-def get_stats():
+def get_stats() -> None:
+    """Get stats from globals"""
     global name_stat
     global hp_stat
     global ep_stat
@@ -246,8 +234,18 @@ def get_stats():
     gold_stat = player.gold
 
 
-# Use the stats given to create a new character.
-def begin_game(loadgame_name=""):
+def begin_game(loadgame_name: str = "") -> bool:
+    """
+    Called when the user presses the "Begin" button in the new game screen.
+
+    Use the stats given to create a new character and start the game.
+
+    Args:
+        loadgame_name (str): The name of the save file to load. Blank for a new game.
+
+    Returns:
+        bool: True if the game was started, False if it was not.
+    """
     # This prevents a race condition
     global already_started_game
     if already_started_game == 1:
@@ -287,7 +285,7 @@ def begin_game(loadgame_name=""):
     return 1
 
 
-def load_game():
+def load_game() -> None:
     # bring the loadgame window up.
     global new_game
     load_game = 0
@@ -302,15 +300,15 @@ def load_game():
         return begin_game(load_game)
 
 
-def show_options():
-    # bring the options window up.
+def show_options() -> None:
+    """Bring the options window up."""
     temp_surface = pygame.Surface((400, 300))
     temp_surface.blit(g.screen, (0, 0), (100, 100, 400, 300))
     options.init_window_options()
     g.screen.blit(temp_surface, (100, 100))
 
 
-def quit_game():
+def quit_game() -> None:
     return
 
 
@@ -412,7 +410,8 @@ def key_handler(key_name) -> bool:
     refresh_buttons()
 
 
-def mouse_handler_move(xy):
+def mouse_handler_move(xy: tuple[int, int]) -> None:
+    """"""
     prev_button = config.mut["CURR_BUTTON"]
     if config.mut["CURR_BUTTON"] > 4:
         if (
@@ -447,9 +446,8 @@ def mouse_handler_move(xy):
         refresh_buttons()
 
 
-# Called when newgame is pressed on the main menu.
-def init_new_game():
-
+def init_new_game() -> None:
+    """Called when newgame is pressed on the main menu"""
     global name_stat
     name_stat = config.DEFAULT_NAME
     global inner_button_start
@@ -475,16 +473,15 @@ def init_new_game():
     refresh_new_game()
 
 
-def back_from_new_game():
-    g.screen.blit(g.backgrounds["new_game.png"], (0, 0))
+def back_from_new_game() -> None:
+    """Called when the user presses the back button"""
     config.mut["CURR_BUTTON"] = 0
     refresh_buttons()
     pygame.display.flip()
 
 
-# called upon game start
-def init_window():
-
+def init_window() -> None:
+    """Called upon game start"""
     pygame.display.set_caption(g.game_name)
 
     global bgcolour
@@ -539,7 +536,8 @@ def init_window():
                         return
 
 
-def refresh_new_game():
+def refresh_new_game() -> None:
+    """Refresh the new game screen"""
     g.create_norm_box(
         (config.TILESIZE * main.mapsizex / 4, config.TILESIZE * main.mapsizey / 3),
         (config.TILESIZE * main.mapsizex / 2, config.TILESIZE * main.mapsizey / 3),

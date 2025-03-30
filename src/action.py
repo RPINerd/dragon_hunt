@@ -71,17 +71,21 @@ def interpret_line(message: str) -> str:
     return endstring
 
 
-def activate_lines(x, y, z, commands: list) -> int:
+def activate_lines(x: int, y: int, z: int, commands: list[str]) -> int:
     """
-    Given an array of commands, run them. See scripting.txt for details.
-    Note that x and y are absolute values.
-    Returns 1 if the scripting completed, or 0 if it ended somewhere.
+    Given an array of commands, run them.
 
-    :param x: x coordinate
-    :param y: y coordinate
-    :param z: z coordinate
-    :param commands: array of commands
-    :return: 1 if the scripting completed, or 0 if it ended somewhere.
+    See scripting.txt for details.
+    Note that x and y are absolute values.
+
+    Args:
+        x (int): x coordinate
+        y (int): y coordinate
+        z (int): z coordinate
+        commands (list[str]): List of commands to run
+
+    Returns:
+        int: 1 if successful, 0 otherwise
     """
     i = 0
     # Go through all action lines.
@@ -241,7 +245,7 @@ def insert_newlines(command: str) -> str:
 
 # Given a list of ,-separated commands, return an array of the return values
 # for each command. Used to parse argument lists.
-def run_arguments(x, y, z, commands):
+def run_arguments(x: int, y: int, z: int, commands):
     commands = commands.strip()
     return_vals = []
 
@@ -277,7 +281,7 @@ def run_arguments(x, y, z, commands):
 # returns either a number, a string (with first and last chars of "),
 # "end" (end script), or "bad" (same as end, but also ic(debugging info).)
 # x and y are absolute values.
-def run_command(x, y, z, command):
+def run_command(x: int, y: int, z: int, command):
     command = command.strip()
 
     # if command is a number, just return the number.
@@ -511,7 +515,7 @@ def check_types_args(args: list, arg_types: list, command_name: str, quiet: int 
 # engine. (number, string, end, or bad)
 
 
-def script_addpix(x, y, z, argument_array):  # add a picture to the tile.
+def script_addpix(x: int, y: int, z: int, argument_array):  # add a picture to the tile.
     if check_types_args(argument_array, [1], "addpix") == 0:
         return "bad"
 
@@ -522,7 +526,7 @@ def script_addpix(x, y, z, argument_array):  # add a picture to the tile.
     return 1
 
 
-def script_addoverpix(x, y, z, argument_array):  # add a picture to the tile.
+def script_addoverpix(x: int, y: int, z: int, argument_array):  # add a picture to the tile.
     if check_types_args(argument_array, [1], "addoverpix") == 0:
         return "bad"
 
@@ -530,18 +534,18 @@ def script_addoverpix(x, y, z, argument_array):  # add a picture to the tile.
     return 1
 
 
-def script_addskill(x, y, z, argument_array):  # add a skill
+def script_addskill(x: int, y: int, z: int, argument_array):  # add a skill
     if check_types_args(argument_array, [1], "addskill") == 0:
         return "bad"
 
-    temp = g.findskill(argument_array[0][0][1:-1])
+    temp = player.findskill(argument_array[0][0][1:-1])
     if temp == -1:
         ic("Unknown skill: " + argument_array[0][0][1:-1])
         return 0
     return g.add_skill(temp)
 
 
-def script_attack(x, y, z, argument_array):  # cause creature to attack
+def script_attack(x: int, y: int, z: int, argument_array):  # cause creature to attack
     if check_types_args(argument_array, [1], "attack") == 0:
         return "bad"
 
@@ -568,7 +572,7 @@ def script_attack(x, y, z, argument_array):  # cause creature to attack
     return 0
 
 
-def script_damage_monster(x, y, z, argument_array):  # In battle, hurt monster for either
+def script_damage_monster(x: int, y: int, z: int, argument_array):  # In battle, hurt monster for either
     # adj_attack points, or Command points. *NOT* reduced by armor.
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
         ic("damage_monster called outside of battle.")
@@ -588,7 +592,8 @@ def script_damage_monster(x, y, z, argument_array):  # In battle, hurt monster f
     return 1
 
 
-def script_delpix(x, y, z, argument_array):  # remove a picture from the tile.
+def script_delpix(x: int, y: int, z: int, argument_array) -> str | int:
+    """Remove a picture from the tile."""
     if check_types_args(argument_array, [1], "delpix") == 0:
         return "bad"
 
@@ -600,24 +605,24 @@ def script_delpix(x, y, z, argument_array):  # remove a picture from the tile.
         return 0
 
 
-def script_dialog(x, y, z, argument_array):  # show a message in a dialog box.
+def script_dialog(x: int, y: int, z: int, argument_array):  # show a message in a dialog box.
     if check_types_args(argument_array, [1], "dialog") == 0:
         return "bad"
     main.show_dialog(insert_newlines(argument_array[0][0][1:-1]))
     return 1
 
 
-def script_die(x, y, z, argument_array):  # process endgame.txt script
+def script_die(x: int, y: int, z: int, argument_array):  # process endgame.txt script
     player.hp = -1
     activate_lines(x, y, z, g.endgame_act)
     return "end"
 
 
-def script_end(x, y, z, argument_array):  # end the script
+def script_end(x: int, y: int, z: int, argument_array):  # end the script
     return "end"
 
 
-def script_equip(x, y, z, argument_array):  # adjust equipment
+def script_equip(x: int, y: int, z: int, argument_array):  # adjust equipment
     if check_types_args(argument_array, [1, 1], "equip") == 0:
         return "bad"
 
@@ -668,7 +673,7 @@ def script_equip(x, y, z, argument_array):  # adjust equipment
     return "bad"
 
 
-def script_fade(x, y, z, argument_array):
+def script_fade(x: int, y: int, z: int, argument_array):
     if check_types_args(argument_array, [0], "fade") == 0:
         return "bad"
 
@@ -682,7 +687,7 @@ def script_fade(x, y, z, argument_array):
             g.pygame.display.flip()
 
 
-def script_find(x, y, z, argument_array):
+def script_find(x: int, y: int, z: int, argument_array):
     if check_types_args(argument_array, [1, 2], "find") == 0:
         return "bad"
 
@@ -711,7 +716,7 @@ def script_find(x, y, z, argument_array):
     return 0
 
 
-def script_gamestat(x, y, z, argument_array):
+def script_gamestat(x: int, y: int, z: int, argument_array):
     if check_types_args(argument_array, [1], "gamestat") == 0:
         return "bad"
 
@@ -737,7 +742,7 @@ def script_gamestat(x, y, z, argument_array):
     return "bad"
 
 
-def script_generic_dialog(x, y, z, argument_array):  # Custom dialog box.
+def script_generic_dialog(x: int, y: int, z: int, argument_array):  # Custom dialog box.
     if check_types_args(argument_array, [1], "generic_dialog") == 0:
         return "bad"
     line = argument_array.pop(0)
@@ -750,7 +755,7 @@ def script_generic_dialog(x, y, z, argument_array):  # Custom dialog box.
     return main.show_popup(line, dialog_array)
 
 
-def script_give(x, y, z, argument_array):  # Change stats. Note that negative numbers also work
+def script_give(x: int, y: int, z: int, argument_array):  # Change stats. Note that negative numbers also work
     if check_types_args(argument_array, [1, 2], "give") == 0:
         return "bad"
 
@@ -805,16 +810,18 @@ def script_give(x, y, z, argument_array):  # Change stats. Note that negative nu
     return 1
 
 
-def script_hero(x, y, z, argument_array):  # change hero pix
+def script_hero(x: int, y: int, z: int, argument_array) -> str | None:
+    """Change hero pix"""
     if check_types_args(argument_array, [1], "hero") == 0:
         return "bad"
 
     player.cur_hero = "people/" + argument_array[0][0][1:-1] + ".png"
     g.g.allow_change_hero = 0
     main.refreshmap()
+    return None
 
 
-def script_hurt(x, y, z, argument_array):  # hurt player (reduced by armor)
+def script_hurt(x: int, y: int, z: int, argument_array):  # hurt player (reduced by armor)
     if check_types_args(argument_array, [0], "hurt") == 0:
         return "bad"
 
@@ -825,7 +832,7 @@ def script_hurt(x, y, z, argument_array):  # hurt player (reduced by armor)
     return 1
 
 
-def script_hurt_monster(x, y, z, argument_array):  # In battle, hurt monster for either
+def script_hurt_monster(x: int, y: int, z: int, argument_array):  # In battle, hurt monster for either
     # adj_attack points, or Command points. Reduced by armor.
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
         ic("hurt_monster called outside of battle.")
@@ -846,7 +853,7 @@ def script_hurt_monster(x, y, z, argument_array):  # In battle, hurt monster for
     return 1
 
 
-def script_if(x, y, z, argument_array):
+def script_if(x: int, y: int, z: int, argument_array):
     if len(argument_array) == 1:
         argument_array.append(['"=="', 1])
         argument_array.append([1, 0])
@@ -895,7 +902,7 @@ def script_if(x, y, z, argument_array):
     return 0
 
 
-def script_info(x, y, z, argument_array):  # display line of text in textbox below main screen
+def script_info(x: int, y: int, z: int, argument_array):  # display line of text in textbox below main screen
     if check_types_args(argument_array, [2], "info") == 0:
         return "bad"
 
@@ -909,7 +916,7 @@ def script_info(x, y, z, argument_array):  # display line of text in textbox bel
     return 1
 
 
-def script_inv(x, y, z, argument_array):  # inventory functions.
+def script_inv(x: int, y: int, z: int, argument_array):  # inventory functions.
     if check_types_args(argument_array, [1, 1], "inv") == 0:
         return "bad"
 
@@ -976,7 +983,7 @@ def script_inv(x, y, z, argument_array):  # inventory functions.
         return "bad"
 
 
-def script_inv_spot(x, y, z, argument_array):  # return name of given inv item.
+def script_inv_spot(x: int, y: int, z: int, argument_array):  # return name of given inv item.
     if check_types_args(argument_array, [0], "inv_spot") == 0:
         return "bad"
 
@@ -989,7 +996,7 @@ def script_inv_spot(x, y, z, argument_array):  # return name of given inv item.
     return '"' + item.item[item.inv[argument_array[0][0]]].name + '"'
 
 
-def script_is_equipped(x, y, z, argument_array):  # is the given item equipped?
+def script_is_equipped(x: int, y: int, z: int, argument_array):  # is the given item equipped?
     if check_types_args(argument_array, [1], "is_equipped") == 0:
         return "bad"
 
@@ -1002,7 +1009,7 @@ def script_is_equipped(x, y, z, argument_array):  # is the given item equipped?
     return 0
 
 
-def script_item(x, y, z, argument_array):  # give item
+def script_item(x: int, y: int, z: int, argument_array):  # give item
     argument_array = [['"give"', 1], argument_array[0]]
     tmp = script_inv(x, y, z, argument_array)
     if check_types_args(argument_array, [1], "item") == 0:
@@ -1013,13 +1020,15 @@ def script_item(x, y, z, argument_array):  # give item
     return 1
 
 
-def script_lose(x, y, z, argument_array):
+def script_lose(x: int, y: int, z: int, argument_array) -> str:
+    """"""
     player.hp = -1
     main.close_window()
     return "end"
 
 
-def script_mapspot(x, y, z, argument_array):
+def script_mapspot(x: int, y: int, z: int, argument_array) -> str | int:
+    """"""
     if check_types_args(argument_array, [1, 0, 0, 1], "mapspot") == 0:
         return "bad"
 
@@ -1067,7 +1076,7 @@ def script_mapspot(x, y, z, argument_array):
     return "bad"
 
 
-def script_mapstat(x, y, z, argument_array):
+def script_mapstat(x: int, y: int, z: int, argument_array):
     if check_types_args(argument_array, [1, 1], "mapstat") == 0:
         return "bad"
     switch2 = argument_array[0][0][1:-1].lower()
@@ -1101,7 +1110,7 @@ def script_mapstat(x, y, z, argument_array):
 
 
 # In battle, change the stats of the given monster
-def script_monster_give_stat(x, y, z, argument_array):
+def script_monster_give_stat(x: int, y: int, z: int, argument_array):
     if check_types_args(argument_array, [2, 1, 2], "monster_give_stat") == 0:
         return "bad"
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
@@ -1142,8 +1151,8 @@ def script_monster_give_stat(x, y, z, argument_array):
     battle.set_description_text(mon_num)
 
 
-# In battle, return the stats of the given monster
-def script_monster_stat(x, y, z, argument_array):
+def script_monster_stat(x: int, y: int, z: int, argument_array) -> str | int:
+    """In battle, return the stats of the given monster"""
     if check_types_args(argument_array, [0, 1], "monster_stat") == 0:
         return "bad"
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
@@ -1177,7 +1186,7 @@ def script_monster_stat(x, y, z, argument_array):
     return -1
 
 
-def script_monster_select(x, y, z, argument_array):  # In battle, ask the player to
+def script_monster_select(x: int, y: int, z: int, argument_array):  # In battle, ask the player to
     # select a monster
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
         ic("monster_select called outside of battle.")
@@ -1189,7 +1198,7 @@ def script_monster_select(x, y, z, argument_array):  # In battle, ask the player
     return mon_num
 
 
-def script_move(x, y, z, argument_array):  # move the player
+def script_move(x: int, y: int, z: int, argument_array):  # move the player
     if check_types_args(argument_array, [1, 0, 0], "move") == 0:
         return "bad"
 
@@ -1215,11 +1224,11 @@ def script_move(x, y, z, argument_array):  # move the player
     return 1
 
 
-def script_pass(x, y, z, argument_array):  # do nothing
+def script_pass(x: int, y: int, z: int, argument_array):  # do nothing
     return 1
 
 
-def script_pix(x, y, z, argument_array):  # change tile picture
+def script_pix(x: int, y: int, z: int, argument_array):  # change tile picture
     if check_types_args(argument_array, [1], "pix") == 0:
         return "bad"
 
@@ -1229,12 +1238,12 @@ def script_pix(x, y, z, argument_array):  # change tile picture
     return 1
 
 
-def script_printvars(x, y, z, argument_array):  # debug: ic(all variables)
+def script_printvars(x: int, y: int, z: int, argument_array):  # debug: ic(all variables)
     ic(g.var_list)
     return 1
 
 
-def script_question(x, y, z, argument_array):  # yes/no dialog box
+def script_question(x: int, y: int, z: int, argument_array):  # yes/no dialog box
     if check_types_args(argument_array, [1], "question") == 0:
         return "bad"
 
@@ -1246,12 +1255,12 @@ def script_question(x, y, z, argument_array):  # yes/no dialog box
     return 0
 
 
-def script_refresh(x, y, z, argument_array):  # refresh the screen manually.
+def script_refresh(x: int, y: int, z: int, argument_array):  # refresh the screen manually.
     main.refreshmap()
     return 1
 
 
-def script_rng(x, y, z, argument_array):  # Random Number Generator
+def script_rng(x: int, y: int, z: int, argument_array):  # Random Number Generator
     if check_types_args(argument_array, [0, 0], "rng") == 0:
         return "bad"
 
@@ -1261,7 +1270,7 @@ def script_rng(x, y, z, argument_array):  # Random Number Generator
     return 0
 
 
-def script_run(x, y, z, argument_array):  # Run the actions of a different tile.
+def script_run(x: int, y: int, z: int, argument_array):  # Run the actions of a different tile.
     if check_types_args(argument_array, [1, 0, 0], "run") == 0:
         return "bad"
 
@@ -1278,7 +1287,7 @@ def script_run(x, y, z, argument_array):  # Run the actions of a different tile.
     return activate_lines(x2, y2, z2, config.MAPS[z2].field[y2][x2].actions)
 
 
-def script_set(x, y, z, argument_array):  # set variable (in g.var_list)
+def script_set(x: int, y: int, z: int, argument_array):  # set variable (in g.var_list)
     if len(argument_array) == 2:
         argument_array = [argument_array[0], ['"="', 1], argument_array[1]]
 
@@ -1347,7 +1356,7 @@ def script_set(x, y, z, argument_array):  # set variable (in g.var_list)
     return "bad"
 
 
-def script_skill(x, y, z, argument_array):  # skill functions
+def script_skill(x: int, y: int, z: int, argument_array):  # skill functions
     if check_types_args(argument_array, [2, 2], "skill") == 0:
         return "bad"
 
@@ -1382,7 +1391,7 @@ def script_skill(x, y, z, argument_array):  # skill functions
     return "bad"
 
 
-def script_stat(x, y, z, argument_array):  # return stat
+def script_stat(x: int, y: int, z: int, argument_array):  # return stat
     if check_types_args(argument_array, [1], "stat") == 0:
         return "bad"
 
@@ -1421,7 +1430,7 @@ def script_stat(x, y, z, argument_array):  # return stat
     return 0
 
 
-def script_store(x, y, z, argument_array):  # enter store
+def script_store(x: int, y: int, z: int, argument_array: list) -> int | str:  # enter store
     if check_types_args(argument_array, [1], "store") == 0:
         return "bad"
 
@@ -1431,7 +1440,7 @@ def script_store(x, y, z, argument_array):  # enter store
     return 1
 
 
-def script_take(x, y, z, argument_array):  # Drop item, by name.
+def script_take(x: int, y: int, z: int, argument_array):  # Drop item, by name.
     argument_array = [['"take"', 1], argument_array[0]]
     return script_inv(x, y, z, argument_array)
 
@@ -1445,7 +1454,7 @@ def script_take(x, y, z, argument_array):  # Drop item, by name.
     return 1
 
 
-def script_var(x, y, z, argument_array):  # return variable (in g.var_list)
+def script_var(x: int, y: int, z: int, argument_array):  # return variable (in g.var_list)
     if check_types_args(argument_array, [1], "var") == 0:
         return "bad"
 
@@ -1464,40 +1473,40 @@ def script_var(x, y, z, argument_array):  # return variable (in g.var_list)
         return 0
 
 
-def script_walk(x, y, z, argument_array):  # change tile walkability
+def script_walk(x: int, y: int, z: int, argument_array):  # change tile walkability
     if check_types_args(argument_array, [0], "walk") == 0:
         return "bad"
     config.MAPS[z].field[y][x].walk = argument_array[0][0]
     return_num = 1
 
 
-def script_wall_n(x, y, z, argument_array):  # change tile wall values
+def script_wall_n(x: int, y: int, z: int, argument_array):  # change tile wall values
     if check_types_args(argument_array, [0], "wall_n") == 0:
         return "bad"
     config.MAPS[z].field[y][x].wall_n = argument_array[0][0]
     return 1
 
 
-def script_wall_s(x, y, z, argument_array):  # change tile wall values
+def script_wall_s(x: int, y: int, z: int, argument_array):  # change tile wall values
     if check_types_args(argument_array, [0], "wall_s") == 0:
         return "bad"
     config.MAPS[z].field[y][x].wall_s = argument_array[0][0]
     return 1
 
 
-def script_wall_e(x, y, z, argument_array):  # change tile wall values
+def script_wall_e(x: int, y: int, z: int, argument_array):  # change tile wall values
     if check_types_args(argument_array, [0], "wall_e") == 0:
         return "bad"
     config.MAPS[z].field[y][x].wall_e = argument_array[0][0]
     return 1
 
 
-def script_wall_w(x, y, z, argument_array):  # change tile wall values
+def script_wall_w(x: int, y: int, z: int, argument_array):  # change tile wall values
     if check_types_args(argument_array, [0], "wall_w") == 0:
         return "bad"
     config.MAPS[z].field[y][x].wall_w = argument_array[0][0]
     return 1
 
 
-def script_win(x, y, z, argument_array):  # process wingame.txt script
+def script_win(x: int, y: int, z: int, argument_array):  # process wingame.txt script
     return activate_lines(x, y, z, g.wingame_act)

@@ -238,8 +238,8 @@ def refresh_tile(x, y, input_zgrid, xshift=0, yshift=0):
         )
 
 
-# refreshs the hero; faster than refreshing the whole map.
-def refreshhero():
+def refreshhero() -> None:
+    """Refresh the hero; faster than refreshing the whole map"""
     for picture in findtile(g.xgrid, g.ygrid, g.zgrid):
         g.screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
@@ -377,8 +377,8 @@ def debug_print_level():
         ic("Saved level to templevel.bmp")
 
 
-def redisplay_map(x=0, y=0):
-
+def redisplay_map(x: int = 0, y: int = 0) -> None:
+    """Redraw the map, centered on the player."""
     if (x == 0 and y == 0) or player.hp <= 0:
         g.screen.blit(map_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
         g.screen.blit(map_over_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
@@ -678,7 +678,7 @@ def show_dialog(line=None, txt_width=-1, allow_move=True):
 
 
 # given a string, display that string, along with yes and no buttons.
-def show_yesno(line="", allow_move=True):
+def show_yesno(line: str = "", allow_move: bool = True):
     return show_popup(line, ["no.png", "yes.png"], allow_move)
 
 
@@ -867,9 +867,19 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
             pygame.display.flip()
 
 
-# given a string and an array of buttons,
-# display that string, along with the given buttons.
-def show_popup(line="", button_array=[], allow_move=True, input_width=-1):
+def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = True, input_width: int = -1) -> int:
+    """
+    Display a popup dialog box for user interaction.
+
+    Args:
+        line (str): The text to display in the dialog box.
+        button_array (list[str]): A list of button image names to display.
+        allow_move (bool): Whether to allow movement while the dialog is open.
+        input_width (int): The width of the input box, -1 to fit to text.
+
+    Returns:
+        int: The index of the button pressed, or -1 if the dialog was closed.
+    """
     # Move the array of button names to a global array. We'll need it later.
     global button_array2
     button_array2 = button_array
@@ -1336,7 +1346,8 @@ def show_inv():
     g.cur_window = "main"
 
 
-def enter_store(cur_loc):
+def enter_store(cur_loc: str) -> None:
+    """"""
     global key_down
     key_down = [False, False, False, False]
     shop.init_window_shop(cur_loc)

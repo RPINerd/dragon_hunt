@@ -79,7 +79,7 @@ clock = pygame.time.Clock()
 
 
 # Add a skill to the skill[] array
-def addskill(name, effect, level, price, description, scripting=[], picture="items/rage.png"):
+def addskill(name: str, effect: int, level: int, price: int, description: str, scripting: list = [], picture: str = "items/rage.png"):
     player.skill.append([])
     i = len(player.skill)
     player.skill[i - 1].append(name)
@@ -309,7 +309,7 @@ def interpret_lines(temp_array):
 font = pygame.font.Font(None, 14)
 
 
-def create_norm_box(xy: list, size: list, outline_color: str = "black", inner_color: str = "light_gray") -> None:
+def create_norm_box(xy: list | tuple, size: list | tuple, outline_color: str = "black", inner_color: str = "light_gray") -> None:
     """
     Create a box on the screen with the given parameters.
 
@@ -342,23 +342,25 @@ def print_string(surface, string_to_print, font, xy, color=config.COLORS["black"
         surface.blit(temp_text, xy)
 
 
-def print_multiline(surface, string_to_print, font, width, xy, color="black") -> int:
-    """
+def print_multiline(surface: pygame.Surface, string_to_print: str, font: pygame.font.Font, width: int, xy: tuple[int, int], color: str = "black") -> int:
+    r"""
     Print a string to the screen, wrapping it to fit within a certain width
+
     Used to display descriptions and such.
 
     Note that bkshl+n can be used for newlines, but it must be used as
     `line1 \\n line2` in code, separated by spaces, with the bkshl escaped)
     Escape not needed in scripts.
 
-    :param surface: The surface to print to
-    :param string_to_print: The string to print
-    :param font: The font to use
-    :param width: The width to wrap the text to
-    :param xy: The xy coordinates to print the text at
-    :param color: The color to print the text in
-
-    :return: The number of lines printed
+    Args:
+        surface (pygame.Surface): The surface to print to
+        string_to_print (str): The string to print
+        font (pygame.font.Font): The font to use
+        width (int): The width to wrap the text to
+        xy (tuple): The xy coordinates to print the text at
+        color (str): The color to print the text in
+    Returns:
+        int: The number of lines printed
     """
     string_to_print = string_to_print.replace("\t", "     ")
     start_xy = xy

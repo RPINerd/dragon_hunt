@@ -63,7 +63,8 @@ temp_button_width = 0
 temp_button_y = 0
 
 
-def refresh_buttons():
+def refresh_buttons() -> None:
+    """Redraw the buttons at the bottom of the shop window."""
     global prev_button
 
     if prev_button == config.mut["CURR_BUTTON"]:
@@ -90,9 +91,18 @@ def refresh_buttons():
     pygame.display.flip()
 
 
-# Actually sets the info in the middle of the shop screen.
-def set_details(name, cost, value, costtype, power, description, inv_or_shop):
+def set_details(name: str, cost: int, value: int, power: int, description: str, inv_or_shop: str) -> None:
+    """
+    Sets the info in the middle of the shop screen
 
+    Args:
+        name (str): The name of the item.
+        cost (int): The cost of the item (buying).
+        value (int): The value of the item (selling).
+        power (int): The power or quality level of the item.
+        description (str): The description of the item.
+        inv_or_shop (str): Whether the item is in the inventory or shop.
+    """
     g.screen.fill(config.COLORS["light_gray"], (canvas_x_start + temp_canvas_width, canvas_y_start + 25, 137, 190))
 
     g.print_string(g.screen, name, g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 25))
@@ -119,10 +129,16 @@ def set_details(name, cost, value, costtype, power, description, inv_or_shop):
     pygame.display.flip()
 
 
-# show info for a selected item in the middle of the window.
-def show_details(event=0, sel_item=-1):
-    # The use of sel_item gives the ability to look at an item without selecting
-    # it, while working normally the rest of the time.
+def show_details(event: int = 0, sel_item: int = -1) -> None:
+    """
+    Show info for a selected item in the middle of the window
+
+    The use of sel_item gives the ability to look at an item without selecting it, while working normally the rest of the time
+
+    Args:
+        # TODO event (int): The event that triggered this function.
+        sel_item (int): The item to show details for
+    """
     if sel_item == -1:
         sel_item = curr_item
     if curr_focus == 0:  # inv
@@ -276,8 +292,8 @@ def refresh_shop():
     main.refresh_bars()
 
 
-# called upon pressing "Sell". Uses the selected item.
-def sell_item():
+def sell_item() -> None:
+    """Called upon pressing "Sell"; uses the selected item."""
     if curr_focus != 0:
         return 0
     if curr_item > len(item.inv):
@@ -287,14 +303,15 @@ def sell_item():
 
     if item.item[item.inv[curr_item]].price == 0:
         main.print_message("You feel attached to your " + item.item[item.inv[curr_item]].name)
-        return 0
-    # give the player money
-    # note that all stores have a 5 year, money-back guarantee,
-    # and accept returns from other stores as well.
-    # This means there is no need to doublecheck intent. ;)
-    # FIXME: this is no longer true since gems aren't paid for
-    # full value anywhere but the gem shop
-    # print g.shops[store_num].name
+        return
+
+    # Pay player for item
+    """
+    All stores have a 5 year, money-back guarantee, and accept returns from other stores as well.
+    This means there is no need to doublecheck intent. ;)
+
+    FIXME: this is no longer true since gems aren't paid for full value anywhere but the gem shop
+    """
     if item.item[item.inv[curr_item]].type == 14 and g.shops[store_num].name == "a Gem Shop":
         main.print_message("The Gem Shop owner is happy to pay the true value of your gems.")
         player.give_gold(item.item[item.inv[curr_item]].price)
@@ -303,14 +320,14 @@ def sell_item():
 
     main.print_message("You sell your " + item.item[item.inv[curr_item]].name + ".")
 
-    # remove the item
+    # Remove the item from inventory
     item.drop_inv_item(curr_item)
     refresh_shop()
     show_details()
 
 
-# Call on pressing "Buy". Uses the selected item.
-def buy_item():
+def buy_item() -> None:
+    """Called upon pressing "Buy"; uses the selected item."""
     if curr_focus != 1:
         return 0
     if curr_item >= len(g.shops[store_num].itemlist):
@@ -395,8 +412,8 @@ def mouse_sel_inv(xy):
     show_details()
 
 
-# called when the user releases the mouse in the shop canvas.
-def mouse_sel_shop(xy):
+def mouse_sel_shop(xy: tuple[int, int]) -> bool:
+    """Called when the user releases the mouse in the shop canvas."""
     global curr_item
     global curr_focus
     global last_click_time
@@ -444,9 +461,11 @@ def mouse_sel_shop(xy):
         refresh_buttons()
 
 
-def mouse_handler_dbl(xy):
+def mouse_handler_dbl(xy: tuple[int, int]) -> bool:
+    """"""
     global curr_item
     global curr_focus
+
     # Is the mouse at least in the general area?.
     if xy[0] < canvas_x_start or xy[1] < canvas_y_start:
         return 0
@@ -472,7 +491,8 @@ def mouse_handler_dbl(xy):
         return 0
 
 
-def mouse_move(xy):
+def mouse_move(xy: tuple[int, int]) -> None:
+    """Called when the mouse moves over the shop window."""
     if (
         xy[0] > temp_button_x
         and xy[0] < temp_button_x + temp_button_width
@@ -540,8 +560,8 @@ def key_handler(switch: int) -> bool:
     show_details()
 
 
-# create window_shop
-def init_window_shop(store_type_input):
+def init_window_shop(store_type_input: str) -> None:
+    """Initialize the shop window."""
     g.cur_window = "shop"
     global last_click_time
     last_click_time = 0

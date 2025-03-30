@@ -40,28 +40,36 @@ class Tile:
         # An array of item names; the items that exist on this tile.
         self.items = []
 
-    def add_act(self, action):
+    def add_act(self, action) -> None:
+        """"""
         self.actions.append(action)
 
-    def add_onload(self, onload):
+    def add_onload(self, onload) -> None:
+        """"""
         self.onload.append(onload)
 
-    def add_pix(self, picture):
+    def add_pix(self, picture) -> None:
+        """"""
         self.addpix.append(picture)
 
-    def add_over_pix(self, picture):
+    def add_over_pix(self, picture) -> None:
+        """"""
         self.addoverpix.append(picture)
 
-    def del_pix(self, picture):
+    def del_pix(self, picture) -> None:
+        """"""
         self.addpix.remove(picture)
 
-    def del_over_pix(self, picture):
+    def del_over_pix(self, picture) -> None:
+        """"""
         self.addoverpix.remove(picture)
 
-    def additem(self, itemname):
+    def additem(self, itemname) -> None:
+        """"""
         self.items.append(itemname)
 
-    def del_item(self, itemname):
+    def del_item(self, itemname) -> None:
+        """"""
         self.items.remove(itemname)
 
 

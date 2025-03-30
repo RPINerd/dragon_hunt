@@ -149,14 +149,9 @@ def move_right(dist=1):
     refresh_map()
 
 
-def click_map(xy):
-    if (
-        cur_tile != ""
-        or cur_mode == "remove"
-        or cur_mode == "walkable"
-        or cur_mode == "scripting"
-        or cur_mode == "scripting2"
-    ):
+def click_map(xy: tuple[int, int]) -> None:
+    """"""
+    if not cur_tile or cur_mode in {"remove", "walkable", "scripting", "scripting2"}:
         set_tile((xy[0] / config.TILESIZE) + portal_x, (xy[1] / config.TILESIZE) + portal_y, cur_tile)
 
 
