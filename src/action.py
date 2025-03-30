@@ -769,31 +769,31 @@ def script_give(x, y, z, argument_array):  # Change stats. Note that negative nu
     set_to = int(argument_array[1][0])
 
     if switch2 == "hp":
-        player.give_stat("hp", set_to)
+        player.take_damage(set_to)
     elif switch2 == "ep":
-        player.give_stat("ep", set_to)
+        player.use_ep(set_to)
     elif switch2 == "maxhp":
-        player.give_stat("maxhp", set_to)
+        player.raise_hp(set_to)
     elif switch2 == "maxep":
-        player.give_stat("maxep", set_to)
+        player.raise_ep(set_to)
     elif switch2 == "attack":
-        player.give_stat("attack", set_to)
+        player.raise_attack(set_to)
     elif switch2 == "defense":
-        player.give_stat("defense", set_to)
+        player.raise_defense("defense", set_to)
     elif switch2 == "adj_maxhp":
-        player.give_stat("adj_maxhp", set_to)
+        player.buff_hp("adj_maxhp", set_to)
     elif switch2 == "adj_maxep":
-        player.give_stat("adj_maxep", set_to)
+        player.buff_ep("adj_maxep", set_to)
     elif switch2 == "adj_attack":
-        player.give_stat("adj_attack", set_to)
+        player.buff_attack("adj_attack", set_to)
     elif switch2 == "adj_defense":
-        player.give_stat("adj_defense", set_to)
+        player.buff_defense("adj_defense", set_to)
     elif switch2 == "gold":
-        player.give_stat("gold", set_to)
+        player.give_gold(set_to)
     elif switch2 == "exp":
         player.add_exp(set_to)
     elif switch2 == "skillpoints":
-        player.give_stat("skillpoints", set_to)
+        player.add_skillpoints(set_to)
     else:
         ic("Unknown stat: " + switch2)
     main.refresh_bars()
@@ -1349,26 +1349,26 @@ def script_skill(x, y, z, argument_array):  # skill functions
     if check_types_args(argument_array, [2, 2], "skill") == 0:
         return "bad"
 
-    temp = g.findskill(argument_array[1][0][1:-1])
+    temp = player.findskill(argument_array[1][0][1:-1])
     if temp == -1:
         ic("Skill " + argument_array[1][0][1:-1] + " does not exist.")
         return "bad"
 
     if argument_array[0][0][1:-1].lower() == "has":
-        if g.player.skill[temp][5] > 0:
+        if player.skill[temp][5] > 0:
             return 1
         return 0
     if argument_array[0][0][1:-1].lower() == "take":
-        if g.player.skill[temp][5] > 0:
-            g.player.skill[temp][5] = 0
+        if player.skill[temp][5] > 0:
+            player.skill[temp][5] = 0
             return 1
-        g.player.skill[temp][5] = 0
+        player.skill[temp][5] = 0
         return 0
     if argument_array[0][0][1:-1].lower() == "give":
-        if g.player.skill[temp][5] > 0:
-            g.player.skill[temp][5] = 1
+        if player.skill[temp][5] > 0:
+            player.skill[temp][5] = 1
             return 0
-        g.player.skill[temp][5] = 1
+        player.skill[temp][5] = 1
         return 1
     if argument_array[0][0][1:-1].lower() == "use":
         if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":

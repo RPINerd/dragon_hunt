@@ -18,40 +18,45 @@
 
 # This file controls the player info
 
+from typing import TYPE_CHECKING
+
 import config
 import g
 
+if TYPE_CHECKING:
+    from pathlib import Path
 
-class player_class:
 
-    """
-    This class is used to store all the player's information.
-    """
+class Player:
 
-    def __init__(self):
-        self.name = ""
-        self.hp = 0
-        self.ep = 0
-        self.maxhp = 0
-        self.maxep = 0
-        self.attack = 0
-        self.defense = 0
-        self.gold = 0
-        self.exp = 0
-        self.level = 0
-        self.skillpoints = 1
+    """This class is used to store all the player's information."""
+
+    def __init__(self) -> None:
+        """Initialize a blank player object."""
+        self.name: str = ""
+        self.hp: int = 0
+        self.ep: int = 0
+        self.maxhp: int = 0
+        self.maxep: int = 0
+        self.attack: int = 0
+        self.defense: int = 0
+        self.gold: int = 0
+        self.exp: int = 0
+        self.level: int = 0
+        self.skillpoints: int = 1
 
         # Values adjusted by equipment.
         # Kept correct by main.refreshmap().
         # Use these for calculations.
-        self.adj_attack = 0
-        self.adj_defense = 0
-        self.adj_maxhp = 0
-        self.adj_maxep = 0
+        self.adj_attack: int = 0
+        self.adj_defense: int = 0
+        self.adj_maxhp: int = 0
+        self.adj_maxep: int = 0
 
         # Name of current hero picture.
-        self.cur_hero = "people/hero_w.png"
+        self.cur_hero: str | Path = "people/hero_w.png"
 
+        # TODO maybe could be a dict?
         # skills array. Each skill is a separate line in the array. Each line goes:
         # name, effect, level, price, description, acquired, scripting (if any),
         # then picture.
@@ -59,154 +64,224 @@ class player_class:
         # level is the skillpoints required to get the skill,
         # price is the ep needed to use.
         # acquired tells if the skill has already been learned by the player.
-        self.skill = []
+        self.skill: list[list] = []
 
-        # equipment:
-        # equip[0]=weapon, [1]=armor, [2]=shield
-        # [3]=helmet, [4]=gloves, [5]=boots
+        # A list of numbers representing equipment slots
+        # Values are either the index of the item in the item[] array, or -1 for empty.
+        # Array: weapon (0), armor (1), shield (2), helmet (3), gloves (4), boots (5)
+        self.equip: list[int] = [-1 for _ in range(6)]
 
-        # An array of numbers, which are either the index of the
-        # item in the item[] array, or -1 for empty.
-        self.equip = []
-        for x in range(6):
-            self.equip.append(-1)
-
-    def add_exp(self, input_exp) -> None:
+    def add_exp(self, input_exp: int) -> None:
         """
         Adds experience to the player and handles level gains.
 
-        :param input_exp: The amount of experience to add.
-        :return: None
-        """
+        Args:
+            input_exp (int): The amount of experience to add.
 
-        self.exp = int(self.exp) + int(input_exp)
-        if 1 > self.exp:
+        Returns:
+            None
+        """
+        self.exp += input_exp
+        if self.exp < 1:
             self.exp = 0
 
         # Has the player gained a level?
         if self.exp_till_level() <= 0:
-            self.level = self.level + 1
-            g.main.print_message("You gain a level!")
+            self.level += 1
+            # !main.print_message("You gain a level!")
             g.action.activate_lines(g.xgrid, g.ygrid, g.zgrid, g.levelup_act)
 
     def exp_till_level(self) -> int:
         """
-        Returns the amount of experience needed to reach the next level.
+        Calculates experience needed to reach the next level.
 
-        :return: Exp needed
+        Returns:
+            (int): Exp needed for next level
         """
-
-        if g.exp_list == "":
+        if not config.mut["EXP_LIST"]:
             return_val = int(10 * (self.level + 1) * (self.level + 1)) - int(self.exp)
+        elif len(config.mut["EXP_LIST"]) > self.level:
+            return_val = int(config.mut["EXP_LIST"][self.level]) - int(self.exp)
         else:
-            if len(g.exp_list) > self.level:
-                return_val = int(g.exp_list[self.level]) - int(self.exp)
+            return_val = 9999
+        return max(return_val, 0)
+
+    def take_damage(self, damage: int) -> None:
+        """
+        Inflict damage on the player.
+
+        Args:
+            damage (int): The amount of damage to inflict.
+
+        Returns:
+            None
+        """
+        self.hp -= damage
+        self.hp = min(self.adj_maxhp, self.hp)
+
+    def use_ep(self, ep_cost: int) -> None:
+        """
+        Use energy/mana/etc. points
+
+        Args:
+            ep_cost (int): The amount of energy points to use.
+
+        Returns:
+            None
+        """
+        self.ep -= ep_cost
+        self.ep = min(self.adj_maxep, self.ep)
+        self.ep = max(self.ep, 0)
+
+    def raise_hp(self, hp_raise: int) -> None:
+        """
+        Raise the player's max hit points.
+
+        Args:
+            hp_raise (int): The amount of hit points to gain.
+        """
+        self.maxhp += hp_raise
+        self.maxhp = max(self.maxhp, 1)
+        self.adj_maxhp += hp_raise
+        self.adj_maxhp = max(self.adj_maxhp, 1)
+
+    def raise_ep(self, ep_raise: int) -> None:
+        """
+        Raise the player's max energy/mana points.
+
+        Args:
+            ep_raise (int): The amount of energy points to gain.
+        """
+        self.maxep += ep_raise
+        self.maxep = max(self.maxep, 1)
+        self.adj_maxep += ep_raise
+        self.adj_maxep = max(self.adj_maxep, 1)
+
+    def raise_attack(self, attack_raise: int) -> None:
+        """
+        Raise the player's attack power.
+
+        Args:
+            attack_raise (int): The amount of attack power to gain.
+        """
+        self.attack += attack_raise
+        self.attack = max(self.attack, 1)
+        self.adj_attack += attack_raise
+        self.adj_attack = max(self.adj_attack, 1)
+
+    def raise_defense(self, defense_raise: int) -> None:
+        """
+        Raise the player's defense power.
+
+        Args:
+            defense_raise (int): The amount of defense power to gain.
+        """
+        self.defense += defense_raise
+        self.defense = max(self.defense, 1)
+        self.adj_defense += defense_raise
+        self.adj_defense = max(self.adj_defense, 1)
+
+    def buff_hp(self, hp_buff: int) -> None:
+        """
+        Buff the player's hit points.
+
+        Args:
+            hp_buff (int): The amount of hit points to gain.
+        """
+        self.adj_maxhp += hp_buff
+        self.adj_maxhp = max(self.adj_maxhp, 1)
+
+    def buff_ep(self, ep_buff: int) -> None:
+        """
+        Buff the player's energy/mana points.
+
+        Args:
+            ep_buff (int): The amount of energy points to gain.
+        """
+        self.adj_maxep += ep_buff
+        self.adj_maxep = max(self.adj_maxep, 1)
+
+    def buff_attack(self, attack_buff: int) -> None:
+        """
+        Buff the player's attack power.
+
+        Args:
+            attack_buff (int): The amount of attack power to gain.
+        """
+        self.adj_attack += attack_buff
+        self.adj_attack = max(self.adj_attack, 1)
+
+    def buff_defense(self, defense_buff: int) -> None:
+        """
+        Buff the player's defense power.
+
+        Args:
+            defense_buff (int): The amount of defense power to gain.
+        """
+        self.adj_defense += defense_buff
+        self.adj_defense = max(self.adj_defense, 1)
+
+    def add_skillpoints(self, points: int) -> None:
+        """
+        Add skill points to the player.
+
+        Args:
+            points (int): The amount of skill points to add.
+        """
+        self.skillpoints += points
+        if self.skillpoints < 1:
+            self.skillpoints = 0
+
+    def findskill(self, name: str) -> int:
+        """
+        Find a skill in the player's skill list by name
+
+        Args:
+            name (str): The name of the skill to find
+
+        Returns:
+            (int): The index of the skill in the player's skill list, -1 if not found.
+        """
+        for i in range(len(self.skill)):
+            if name.lower() == self.skill[i][0].lower():
+                return i
+        return -1
+
+    def give_gold(self, gold: int) -> None:
+        """
+        Give gold to the player.
+
+        Args:
+            gold (int): The amount of gold to give.
+        """
+        self.gold += gold
+        if self.gold < 1:
+            self.gold = 0
+
+    def reset_stats(self) -> None:
+        """Recalculate the players adjusted stats."""
+        self.adj_attack = self.attack
+        self.adj_defense = self.defense
+        self.adj_maxhp = self.maxhp
+        self.adj_maxep = self.maxep
+
+        for index, slot in enumerate(self.equip):
+            if slot == -1:  # Empty slot
+                continue
+
+            # Weapon quality increases attack, other item quality increase defense
+            if index == 0:
+                self.adj_attack += g.item.item[slot].quality
             else:
-                return_val = 9999
-        if return_val < 0:
-            return_val = 0
-        return return_val
+                self.adj_defense += g.item.item[slot].quality
 
-    # function for permanently changing the stats of a player.
-    # stat=hp, ep, (adj_)maxhp, (adj_)maxep, (adj_)attack, (adj_)defense,
-    # gold, skillpoints.
-    # Value is a number
-    def give_stat(self, stat, value):
-        if stat == "hp":
-            self.hp = self.hp + int(value)
-            if self.hp >= self.adj_maxhp:
-                self.hp = self.adj_maxhp
-        elif stat == "ep":
-            self.ep = self.ep + int(value)
-            if self.ep >= self.adj_maxep:
-                self.ep = self.adj_maxep
-            if self.ep < 0:
-                self.ep = 0
-        elif stat == "maxhp":
-            self.maxhp = self.maxhp + int(value)
-            if 1 > self.maxhp:
-                self.maxhp = 1
-            self.adj_maxhp = self.adj_maxhp + int(value)
-            if 1 > self.adj_maxhp:
-                self.adj_maxhp = 1
-        elif stat == "maxep":
-            self.maxep = self.maxep + int(value)
-            if 1 > self.maxep:
-                self.maxep = 1
-            self.adj_maxep = self.adj_maxep + int(value)
-            if 1 > self.adj_maxep:
-                self.adj_maxep = 1
-        elif stat == "attack":
-            self.attack = self.attack + int(value)
-            if 1 > self.attack:
-                self.attack = 1
-            self.adj_attack = self.adj_attack + int(value)
-            if 1 > self.adj_attack:
-                self.adj_attack = 1
-        elif stat == "defense":
-            self.defense = self.defense + int(value)
-            if 1 > self.defense:
-                self.defense = 1
-            self.adj_defense = self.adj_defense + int(value)
-            if 1 > self.adj_defense:
-                self.adj_defense = 1
-        elif stat == "adj_maxhp":
-            self.adj_maxhp = self.adj_maxhp + int(value)
-            if 1 > self.adj_maxhp:
-                self.adj_maxhp = 1
-        elif stat == "adj_maxep":
-            self.adj_maxep = self.adj_maxep + int(value)
-            if 1 > self.adj_maxep:
-                self.adj_maxep = 1
-        elif stat == "adj_attack":
-            self.adj_attack = self.adj_attack + int(value)
-            if 1 > self.adj_attack:
-                self.adj_attack = 1
-        elif stat == "adj_defense":
-            self.adj_defense = self.adj_defense + int(value)
-            if 1 > self.adj_defense:
-                self.adj_defense = 1
-        elif stat == "gold":
-            self.gold = int(self.gold) + int(value)
-            if 1 > self.gold:
-                self.gold = 0
-        elif stat == "skillpoints":
-            self.skillpoints = self.skillpoints + int(value)
-            if 1 > self.skillpoints:
-                self.skillpoints = 0
-        else:
-            print("player.give_stat called with unknown stat of " + stat)
+            self.adj_attack += g.item.item[slot].attack_bonus
+            self.adj_defense += g.item.item[slot].defense_bonus
+            self.adj_maxhp += g.item.item[slot].hp_bonus
+            self.adj_maxep += g.item.item[slot].ep_bonus
 
-    # recalculates the adj_ values.
-    def reset_stats(self):
-        self.adj_attack = int(self.attack)
-        if self.equip[0] != -1:
-            self.adj_attack = self.adj_attack + g.item.item[self.equip[0]].quality
-        for i in range(6):
-            if self.equip[i] != -1:
-                self.adj_attack = self.adj_attack + g.item.item[self.equip[i]].attack_bonus
-
-        self.adj_defense = int(self.defense)
-        for i in range(1, 6):
-            if self.equip[i] != -1:
-                self.adj_defense = self.adj_defense + g.item.item[self.equip[i]].quality
-        for i in range(6):
-            if self.equip[i] != -1:
-                self.adj_defense = self.adj_defense + g.item.item[self.equip[i]].defense_bonus
-
-        self.adj_maxhp = int(self.maxhp)
-        for i in range(6):
-            if self.equip[i] != -1:
-                self.adj_maxhp = self.adj_maxhp + g.item.item[self.equip[i]].hp_bonus
-        if self.hp > self.adj_maxhp:
-            self.hp = self.adj_maxhp
-
-        self.adj_maxep = int(self.maxep)
-        for i in range(6):
-            if self.equip[i] != -1:
-                self.adj_maxep = self.adj_maxep + g.item.item[self.equip[i]].ep_bonus
-        if self.ep > self.adj_maxep:
-            self.ep = self.adj_maxep
+        self.hp = min(self.hp, self.adj_maxhp)
+        self.ep = min(self.ep, self.adj_maxep)
 
 
-player = player_class()
+player = Player()

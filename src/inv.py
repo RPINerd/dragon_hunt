@@ -741,7 +741,7 @@ def use_item(item_index=-1):
     # if item is healing
     if item_loc == 11:
         # heal the player, delete the item
-        player.give_stat("hp", item.item[item_value].quality)
+        player.take_damage(item.item[item_value].quality)
         if item_index == -1:
             item.drop_inv_item(curr_item)
     if item_loc == 16 or item_loc == 17:
@@ -769,10 +769,9 @@ def useskill(free_skill=0):
     if player.skill[skill_index][1] == 5 or player.skill[skill_index][1] == 6:  # Scripted
         tempxy = (g.xgrid, g.ygrid, g.zgrid)
         # If the scripting ends with an "end" command,
-        if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, player.skill[skill_index][6]) == 1:
-            if free_skill == 0:
-                # pay for the skill
-                player.give_stat("ep", -1 * player.skill[skill_index][2])
+        if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, player.skill[skill_index][6]) == 1 and free_skill == 0:
+            # Pay for the skill
+            player.use_ep(-1 * player.skill[skill_index][2])
         main.refresh_bars()
         refresh_stat_display()
         if tempxy != (g.xgrid, g.ygrid, g.zgrid):

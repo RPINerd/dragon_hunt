@@ -88,19 +88,6 @@ def addskill(name, effect, level, price, description, scripting=[], picture="ite
     player.skill[i - 1].append(picture)
 
 
-def findskill(name: str) -> int:
-    """
-    Find a skill in the player's skill list by name. Returns the index of the skill in the list. Returns -1 if the skill is not found.
-
-    :param name: The name of the skill to find
-    :return: The index of the skill in the player's skill list
-    """
-    for i in range(len(player.skill)):
-        if name.lower() == player.skill[i][0].lower():
-            return i
-    return -1
-
-
 # gives the player a skill; takes the location in skill[] as input
 def add_skill(skill_loc):
     if player.skill[skill_loc][5] == 1:

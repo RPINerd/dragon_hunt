@@ -465,7 +465,7 @@ def attack_player_per_monster(i):
     damage = damage - g.die_roll(1, player.adj_defense + 2)
     if damage > 0:
         main.print_message("The " + monster_list[i].name + " hits you for " + str(damage) + " damage.")
-        player.give_stat("hp", -1 * damage)
+        player.take_damage(-1 * damage)
         monster_slashed("h", damage)
         # you dead yet?
         if player.hp <= 0:
@@ -519,8 +519,8 @@ def monster_dead(i):
 
     if len(monster_list[i].on_death) == 0:
         gold = monster_list[i].gold
-        player.give_stat("gold", gold)
-        main.print_message("You find " + str(gold) + " " + g.gold_name.lower() + ",")
+        player.give_gold(gold)
+        main.print_message(f"You find {gold} gold,")
 
         exp = monster_list[i].exp
         main.print_message("and get " + str(exp) + " XP.")
@@ -718,7 +718,7 @@ def useitem(item_index, leave_item=0):
     # if item is healing
     if item_type == 11:
         # heal the player, delete the item
-        player.give_stat("hp", g.item.item[item_value].quality)
+        player.take_damage(g.item.item[item_value].quality)
         main.print_message("You are healed for " + str(g.item.item[item_value].quality) + " HP.")
         if leave_item == 0:
             g.item.drop_inv_item(g.item.find_inv_item(item_value))
@@ -730,7 +730,7 @@ def useitem(item_index, leave_item=0):
         old_attack = player.adj_attack
         gem_power = g.item.item[item_value].quality
         # gem power increases attack strength potential
-        player.give_stat("adj_attack", gem_power * 0.75)
+        player.buff_attack("adj_attack", gem_power * 0.75)
         # gem power increases num_dice (ie. chance to hit and total damage)
         global num_dice
         num_dice = num_dice + gem_power / 4
@@ -817,10 +817,10 @@ def useskill(skill_index, free_skill=0):
     if player.skill[skill_index][1] == 0:  # rage
         if free_skill == 0:
             # pay for the skill
-            player.give_stat("ep", -1 * player.skill[skill_index][2])
+            player.use_ep(-1 * player.skill[skill_index][2])
         main.print_message("You fly into a rage.")
         # increase attack ability
-        player.give_stat("adj_attack", (1 + int(player.level) / 4))
+        player.buff_attack("adj_attack", (1 + int(player.level) / 4))
         main.refresh_bars()
         main.refresh_inv_icon()
         attack_player()
@@ -828,7 +828,7 @@ def useskill(skill_index, free_skill=0):
     elif player.skill[skill_index][1] == 1:  # Sneak away
         if free_skill == 0:
             # pay for the skill
-            player.give_stat("ep", -1 * player.skill[skill_index][2])
+            player.use_ep(-1 * player.skill[skill_index][2])
         global run_attempts
         if g.die_roll(1, 10 + int(player.level) + run_attempts) > 4:
             runaway(True)
@@ -841,7 +841,7 @@ def useskill(skill_index, free_skill=0):
     elif player.skill[skill_index][1] == 2:  # Frenzy
         if free_skill == 0:
             # pay for the skill
-            player.give_stat("ep", -1 * player.skill[skill_index][2])
+            player.use_ep(-1 * player.skill[skill_index][2])
         mon_num = select_monster()
         for i in range(2 + int(player.level) / 4):
             if monster_list[mon_num].hp < 1:
@@ -859,7 +859,7 @@ def useskill(skill_index, free_skill=0):
     elif player.skill[skill_index][1] == 3:  # Dismember
         if free_skill == 0:
             # pay for the skill
-            player.give_stat("ep", -1 * player.skill[skill_index][2])
+            player.use_ep(-1 * player.skill[skill_index][2])
         mon_num = select_monster()
         if mon_num == -1:
             return 0
@@ -872,7 +872,7 @@ def useskill(skill_index, free_skill=0):
         if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, player.skill[skill_index][6]) == 1:
             if free_skill == 0:
                 # pay for the skill
-                player.give_stat("ep", -1 * player.skill[skill_index][2])
+                player.use_ep(-1 * player.skill[skill_index][2])
         if can_leave() == 0:
             attack_player()
         main.refresh_bars()

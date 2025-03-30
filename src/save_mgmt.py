@@ -115,7 +115,8 @@ def loadgame(save_file):
         zgrid = mapname2zgrid(str(zgrid))
     skill_len = pickle.load(savefile)
     for i in range(skill_len):
-        player.skill[findskill(pickle.load(savefile))][5] = 1
+        loaded_skill = player.findskill(pickle.load(savefile))
+        player.skill[loaded_skill][5] = 1
     item.dropped_items = pickle.load(savefile)
     global timestep
     timestep = pickle.load(savefile)

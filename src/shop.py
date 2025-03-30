@@ -295,9 +295,9 @@ def sell_item():
     # print g.shops[store_num].name
     if item.item[item.inv[curr_item]].type == 14 and g.shops[store_num].name == "a Gem Shop":
         main.print_message("The Gem Shop owner is happy to pay the true value of your gems.")
-        player.give_stat("gold", item.item[item.inv[curr_item]].price)
+        player.give_gold(item.item[item.inv[curr_item]].price)
     else:
-        player.give_stat("gold", item.item[item.inv[curr_item]].value)
+        player.give_gold(item.item[item.inv[curr_item]].value)
 
     main.print_message("You sell your " + item.item[item.inv[curr_item]].name + ".")
 
@@ -325,29 +325,28 @@ def buy_item():
                     == 1
                 ):
                     main.print_message("You buy a " + g.shops[store_num].itemlist[curr_item].item_name + ".")
-                    player.give_stat("gold", -1 * int(g.shops[store_num].itemlist[curr_item].cost))
+                    player.give_gold(-1 * int(g.shops[store_num].itemlist[curr_item].cost))
                 else:  # not enough room
                     main.print_message("Your inventory is full.")
             else:
                 temp = main.action.activate_lines(0, 0, 0, g.shops[store_num].itemlist[curr_item].actions)
                 if temp == 1:
-                    player.give_stat("gold", -1 * int(g.shops[store_num].itemlist[curr_item].cost))
-    else:  # skillpoints
-        # if enough skillpoints
-        if int(g.shops[store_num].itemlist[curr_item].cost) <= int(player.skillpoints):
-            # if no actions were given
-            if len(g.shops[store_num].itemlist[curr_item].actions) == 0:
-                # if given successfully.
-                if (
-                    main.action.run_command(0, 0, 0, 'item("' + g.shops[store_num].itemlist[curr_item].item_name + '")')
-                    == 1
-                ):
-                    main.print_message("You buy a " + g.shops[store_num].itemlist[curr_item].item_name + ".")
-                    player.give_stat("skillpoints", -1 * int(g.shops[store_num].itemlist[curr_item].cost))
-            else:
-                temp = main.action.activate_lines(0, 0, 0, g.shops[store_num].itemlist[curr_item].actions)
-                if temp == 1:
-                    player.give_stat("skillpoints", -1 * int(g.shops[store_num].itemlist[curr_item].cost))
+                    player.give_gold(-1 * int(g.shops[store_num].itemlist[curr_item].cost))
+    # if enough skillpoints
+    elif int(g.shops[store_num].itemlist[curr_item].cost) <= int(player.skillpoints):
+        # if no actions were given
+        if len(g.shops[store_num].itemlist[curr_item].actions) == 0:
+            # if given successfully.
+            if (
+                main.action.run_command(0, 0, 0, 'item("' + g.shops[store_num].itemlist[curr_item].item_name + '")')
+                == 1
+            ):
+                main.print_message("You buy a " + g.shops[store_num].itemlist[curr_item].item_name + ".")
+                player.add_skillpoints(-1 * int(g.shops[store_num].itemlist[curr_item].cost))
+        else:
+            temp = main.action.activate_lines(0, 0, 0, g.shops[store_num].itemlist[curr_item].actions)
+            if temp == 1:
+                player.add_skillpoints(-1 * int(g.shops[store_num].itemlist[curr_item].cost))
 
     refresh_shop()
     show_details()
