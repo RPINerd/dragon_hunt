@@ -781,13 +781,13 @@ def useitem(item_index, leave_item=0):
             attack_player()
 
     if can_leave() == 1:
-        inv.leave_inner()
+        g.break_one_loop += 1
         return 0
     refresh()
 
     # back to battle
     if leave_item == 0:
-        inv.leave_inner()
+        g.break_one_loop += 1
         refresh_buttons()
 
 
@@ -878,7 +878,7 @@ def useskill(skill_index, free_skill=0):
         main.refresh_bars()
 
     if can_leave() == 1:
-        inv.leave_inner()
+        g.break_one_loop += 1
         return 0
     active_button = -1
     monster_mouse_move((0, 0))
@@ -886,7 +886,7 @@ def useskill(skill_index, free_skill=0):
 
     # replace the cursor
     if free_skill == 0:
-        inv.leave_inner()
+        g.break_one_loop += 1
         refresh_buttons()
 
 

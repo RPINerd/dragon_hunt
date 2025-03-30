@@ -275,24 +275,8 @@ def create_inv_display(screen_str):
             )
 
 
-def refresh_use_buttons(event=0):
-    refresh_inner_buttons("use")
-
-
-def refresh_drop_buttons(event=0):
-    refresh_inner_buttons("drop")
-
-
-def refresh_equip_buttons(event=0):
-    refresh_inner_buttons("equip")
-
-
-def refresh_skill_buttons(event=0):
-    refresh_inner_buttons("skill")
-
-
-# Refreshes the inner menu buttons.
-def refresh_inner_buttons(screen_str):
+def refresh_inner_buttons(screen_str: str) -> None:
+    """Refreshes the inner menu buttons."""
     first_image = screen_str + ".png"
     leave_image = "leave.png"
     if inner_cur_button == 0:
@@ -476,10 +460,6 @@ def refresh_skill(screen_str):
     g.print_string(g.screen, helptext, g.font, (tmp_menu_x_base + 2, tmp_menu_y_base + tmp_menu_height + 1))
 
     pygame.display.flip()
-
-
-def leave_inner():
-    g.break_one_loop += 1
 
 
 # Refreshes the stat display to the right side of the inv.
@@ -1249,22 +1229,22 @@ def inner_mouse_move(xy, button=""):
 
 def use_mouse_move(xy):
     if inner_mouse_move(xy, "use"):
-        refresh_use_buttons()
+        refresh_inner_buttons("use")
 
 
 def drop_mouse_move(xy):
     if inner_mouse_move(xy, "drop"):
-        refresh_drop_buttons()
+        refresh_inner_buttons("drop")
 
 
 def equip_mouse_move(xy):
     if inner_mouse_move(xy, "equip"):
-        refresh_equip_buttons()
+        refresh_inner_buttons("equip")
 
 
 def skill_mouse_move(xy):
     if inner_mouse_move(xy, "skill"):
-        refresh_skill_buttons()
+        refresh_inner_buttons("skill")
 
 
 # This creates the inv area within the map canvas.
