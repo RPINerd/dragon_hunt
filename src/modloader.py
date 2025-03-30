@@ -9,6 +9,9 @@ from icecream import ic
 import config
 import g
 
+# from scripting import Map  # TODO make map its own file/module
+import scripting
+
 
 def load_icons() -> None:
     """This loads the icons"""
@@ -67,7 +70,32 @@ def read_images(dir_name: str) -> dict[str, pygame.Surface]:
     image_dictionary = inner_read_images("../data/buttons", image_dictionary)
     image_dictionary = inner_read_images(config.MODULES_DIR + dir_name, image_dictionary)
 
-    return image_dictionary
+    return image_dictionary  #noqa
+
+
+def read_maps(from_editor: int = 0) -> None:
+    """
+    Read the data/maps directory and place in maps[]
+
+    This called at startup
+
+    Args:
+        from_editor (int, optional): 1 if being called from editor. Defaults to 0.
+    """
+    del config.MAPS[:]
+    load_backgrounds()
+
+    # Create an iterator of all the *.txt map files in the directory
+    array_maps: list[Path] = Path(config.MODULES_DIR + "/data/maps").glob("*.txt")
+
+    # Iterate through all maps, adding them to our knowledge.
+    config.MAX_MAPSIZE = (0, 0)
+    for mapname in array_maps:
+        config.MAPS.append(scripting.Map(mapname, from_editor))
+        if config.MAX_MAPSIZE[0] < len(config.MAPS[-1].field[0]):
+            config.MAX_MAPSIZE = (len(config.MAPS[-1].field[0]), config.MAX_MAPSIZE[1])
+        if config.MAX_MAPSIZE[1] < len(config.MAPS[-1].field):
+            config.MAX_MAPSIZE = (config.MAX_MAPSIZE[0], len(config.MAPS[-1].field))
 
 
 def read_perturn() -> None:
@@ -98,9 +126,9 @@ def read_perturn() -> None:
 
 def read_settings() -> None:
     """Read the settings file and set the global variables accordingly"""
-    global editor_xy
+    # global editor_xy
 
-    editor_xy = (1024, 768)
+    # editor_xy = (1024, 768)
 
     with Path.open("../settings.txt") as settings_file:
         for fline in settings_file:

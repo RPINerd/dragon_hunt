@@ -32,7 +32,6 @@ from player import player
 screen = pygscreen.get_screen()
 
 # location of the store in the g.shops[] array
-global store_num
 store_num = 0
 
 # width/height of inv and shop windows, in tiles.

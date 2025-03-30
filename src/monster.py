@@ -82,7 +82,7 @@ def find_level_monster(level):
     # Pick a random entry in the monster table of the map.
     if len(config.MAPS[level].monster) == 0:
         return -1
-    mon_name = g.maps[level].monster[int(random() * len(g.maps[level].monster))]
+    mon_name = config.MAPS[level].monster[int(random() * len(config.MAPS[level].monster))]
     # Take the monster name, and find the monsters[] index.
     for i in range(len(monster_groups)):
         if mon_name.lower() == monster_groups[i].name.lower():

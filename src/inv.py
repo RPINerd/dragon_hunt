@@ -121,7 +121,7 @@ def open_use_item():
     open_inner_menu("use")
     g.cur_window = "inventory_use"
     refresh_use()
-    refresh_use_buttons()
+    refresh_inner_buttons("use")
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -145,7 +145,7 @@ def open_drop_item():
     open_inner_menu("drop")
     g.cur_window = "inventory_drop"
     refresh_drop()
-    refresh_drop_buttons()
+    refresh_inner_buttons("drop")
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -173,7 +173,7 @@ def open_equip_item():
 
     g.cur_window = "inventory_equip"
     refresh_equip()
-    refresh_equip_buttons()
+    refresh_inner_buttons("equip")
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -200,7 +200,7 @@ def open_skill_menu() -> str | None:
     open_inner_menu("skill")
     g.cur_window = "inventory_skill"
     refresh_skill("skill")
-    refresh_skill_buttons()
+    refresh_inner_buttons("skill")
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -572,24 +572,8 @@ def refresh_stat_display():
 def leave_inv() -> None:
     """Called when "Leave" is pressed"""
     if action.has_dialog == 1:
-        return 0
-    g.savegame(player.name)
-    main.print_message("** Game Saved **")
-    pygame.display.flip()
-
-
-# 	help_text.set("Game Saved")
-
-
-# called when "Leave" is pressed
-def leave_inv():
-    if action.has_dialog == 1:
-        return 0
-    # leave_inner()
+        return
     g.cur_window = "main"
-    # main.canvas_map.delete("inv")
-    # back_to_inv.set("1")
-    # back_to_main.set("1")
 
 
 def rm_equip() -> None:
@@ -857,7 +841,7 @@ def refresh_inv(x, y, input_tag):
 # and draws the picture.
 def draw_item(input_picture, x, y, x_offset, y_offset, tag):
     g.screen.blit(
-        g.tiles[input_picture],
+        config.TILES[input_picture],
         (x_offset + x * config.TILESIZE + 2 * (x + 1), y_offset + y * config.TILESIZE + 2 * (y + 1)),
     )
 

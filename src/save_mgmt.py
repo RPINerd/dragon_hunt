@@ -6,9 +6,9 @@ from os import mkdir, path, remove
 from pathlib import Path
 
 import config
+import g
 import item
 from player import player
-from scripting import maps
 
 
 def savegame(save_file: str) -> None:
@@ -99,7 +99,6 @@ def loadgame(save_file):
         player.equip[i] = item.finditem(pickle.load(savefile))
         if item.item[player.equip[i]].name == "Ignore":
             player.equip[i] = -1
-    global inv
     inv_len = pickle.load(savefile)
     for i in range(inv_len):
         item.inv[i] = item.finditem(pickle.load(savefile))
@@ -112,7 +111,7 @@ def loadgame(save_file):
     global zgrid
     zgrid = pickle.load(savefile)
     if not str(zgrid).isdigit():
-        zgrid = mapname2zgrid(str(zgrid))
+        zgrid = g.mapname2zgrid(str(zgrid))
     skill_len = pickle.load(savefile)
     for i in range(skill_len):
         loaded_skill = player.findskill(pickle.load(savefile))

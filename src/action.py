@@ -701,11 +701,11 @@ def script_find(x: int, y: int, z: int, argument_array):
     has_dialog = 1
     if main.show_yesno("You found " + str(amount) + " " + founditem + "! Would you like to pick it up ?"):
         if founditem.lower() == "gold":
-            player.give_stat("gold", int(amount))
+            player.give_gold(int(amount))
             main.print_message("You picked up " + str(amount) + " " + founditem + ".")
             has_dialog = 0
             return 1
-        if g.item.take_inv_item(g.item.finditem(founditem)) != -1:
+        if item.take_inv_item(item.finditem(founditem)) != -1:
             main.print_message("You picked up " + str(amount) + " " + founditem + ".")
             has_dialog = 0
             return 1
@@ -828,7 +828,7 @@ def script_hurt(x: int, y: int, z: int, argument_array):  # hurt player (reduced
     # interpret the second part of the command
     damage = g.die_roll(1, int(argument_array[0][0]) + 2)
     damage = damage - g.die_roll(1, player.adj_defense + 2)
-    player.give_stat("hp", -1 * damage)
+    player.take_damage(-1 * damage)
     return 1
 
 

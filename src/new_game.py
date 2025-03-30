@@ -16,6 +16,7 @@ import loadgame
 import main
 import options
 import save_mgmt
+from modloader import read_maps
 from player import player
 
 screen = pygscreen.get_screen()
@@ -97,7 +98,7 @@ def refresh_name() -> None:
     )
     tmp_name = name_stat[:curr_name_loc] + "|" + name_stat[curr_name_loc:]
     g.print_string(
-        g.screen,
+        screen,
         "Name: " + tmp_name,
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10),
@@ -290,14 +291,13 @@ def load_game() -> None:
     global new_game
     load_game = 0
     temp_surface = pygame.Surface((400, 300))
-    temp_surface.blit(g.screen, (0, 0), (100, 100, 400, 300))
+    temp_surface.blit(screen, (0, 0), (100, 100, 400, 300))
     load_game = loadgame.init_window_loadgame()
-    g.screen.blit(temp_surface, (100, 100))
-    if load_game != "":
-        new_game = 0
+    screen.blit(temp_surface, (100, 100))
     get_stats()
-    if load_game != "":
-        return begin_game(load_game)
+    if load_game:
+        new_game = 0
+        begin_game(load_game)
 
 
 def show_options() -> None:
@@ -305,7 +305,7 @@ def show_options() -> None:
     temp_surface = pygame.Surface((400, 300))
     temp_surface.blit(g.screen, (0, 0), (100, 100, 400, 300))
     options.init_window_options()
-    g.screen.blit(temp_surface, (100, 100))
+    screen.blit(temp_surface, (100, 100))
 
 
 def quit_game() -> None:
@@ -475,6 +475,7 @@ def init_new_game() -> None:
 
 def back_from_new_game() -> None:
     """Called when the user presses the back button"""
+    screen.blit(config.BACKGROUNDS["new_game.png"], (0, 0))
     config.mut["CURR_BUTTON"] = 0
     refresh_buttons()
     pygame.display.flip()
@@ -487,8 +488,8 @@ def init_window() -> None:
     global bgcolour
     bgcolour = "lightgrey"
 
-    g.screen.fill(config.COLORS["black"])
-    g.screen.blit(g.backgrounds["new_game.png"], (0, 0))
+    screen.fill(config.COLORS["black"])
+    screen.blit(config.BACKGROUNDS["new_game.png"], (0, 0))
 
     global name_stat
     name_stat = config.DEFAULT_NAME

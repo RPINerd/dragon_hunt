@@ -12,6 +12,7 @@ import g
 import game_screen as pygscreen
 import inv
 import modloader
+import monster
 import save_mgmt
 import shop
 from player import player
@@ -243,11 +244,11 @@ def refreshhero() -> None:
     for picture in findtile(g.xgrid, g.ygrid, g.zgrid):
         g.screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
-    if player.cur_hero not in g.tiles:
+    if player.cur_hero not in config.TILES:
         ic(f"Warning: Hero {player.cur_hero} not found!")
         return
 
-    g.screen.blit(g.tiles[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
+    g.screen.blit(config.TILES[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
     for picture in config.MAPS[g.zgrid].field[g.ygrid][g.xgrid].addoverpix:
         g.screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
@@ -639,7 +640,7 @@ def passturn():
 
     if chance < 15:
         # battle
-        temp = g.monster.find_level_monster(g.zgrid)
+        temp = monster.find_level_monster(g.zgrid)
         # if there exists a monster to battle:
         if temp != -1:
             global key_down
@@ -651,7 +652,7 @@ def passturn():
                 already_refreshed = 1
 
 
-# Starts a battle. Takes the index of the monster in g.monster.monster_groups
+# Starts a battle. Takes the index of the monster in monster.monster_groups
 def start_battle(mon_index):
     global free_move
     tmp = battle.begin(mon_index)
@@ -1237,8 +1238,8 @@ def mouse_handler(xy):
     save_x1 = inv_x2
     save_x2 = save_x1 + iconsize
     if xy[0] > save_x1 and xy[0] < save_x2 and xy[1] > icon_y1 and xy[1] < icon_y2:
-        save_game()
-        return 0
+        save_mgmt.save_game(player.name)
+        return None
 
     quit_x1 = save_x2
     quit_x2 = quit_x1 + iconsize

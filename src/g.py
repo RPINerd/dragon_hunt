@@ -206,7 +206,7 @@ def checklocation(x, y):
         return "a"
     try:
         # this will fail when looking too far right or down
-        return maps[zgrid].field[y][x].name
+        return config.MAPS[zgrid].field[y][x].name
     except IndexError:
         # off the map, so rock.
         return "a"
@@ -229,18 +229,18 @@ def iswalkable(x, y, dx, dy):
         return 0
     try:
         # this will fail when looking too far right or down
-        if maps[zgrid].field[y][x].walk == 0:
+        if config.MAPS[zgrid].field[y][x].walk == 0:
             return 0
         # can't move onto tile if there's a wall in the way
-        if maps[zgrid].field[y][x].walk == 1:
-            if (maps[zgrid].field[y][x].wall_s == 1 and move_direction == "n") or (maps[zgrid].field[y][x].wall_n == 1 and move_direction == "s"):
+        if config.MAPS[zgrid].field[y][x].walk == 1:
+            if (config.MAPS[zgrid].field[y][x].wall_s == 1 and move_direction == "n") or (config.MAPS[zgrid].field[y][x].wall_n == 1 and move_direction == "s"):
                 return 0
-            if (maps[zgrid].field[y][x].wall_e == 1 and move_direction == "w") or (maps[zgrid].field[y][x].wall_w == 1 and move_direction == "e"):
+            if (config.MAPS[zgrid].field[y][x].wall_e == 1 and move_direction == "w") or (config.MAPS[zgrid].field[y][x].wall_w == 1 and move_direction == "e"):
                 return 0
         # can't move out of old tile if there's a wall in the way
-        if (maps[zgrid].field[y - dy][x - dx].wall_s == 1 and move_direction == "s") or (maps[zgrid].field[y - dy][x - dx].wall_n == 1 and move_direction == "n"):
+        if (config.MAPS[zgrid].field[y - dy][x - dx].wall_s == 1 and move_direction == "s") or (config.MAPS[zgrid].field[y - dy][x - dx].wall_n == 1 and move_direction == "n"):
             return 0
-        if (maps[zgrid].field[y - dy][x - dx].wall_e == 1 and move_direction == "e") or (maps[zgrid].field[y - dy][x - dx].wall_w == 1 and move_direction == "w"):
+        if (config.MAPS[zgrid].field[y - dy][x - dx].wall_e == 1 and move_direction == "e") or (config.MAPS[zgrid].field[y - dy][x - dx].wall_w == 1 and move_direction == "w"):
             return 0
 
     except IndexError:
@@ -251,8 +251,8 @@ def iswalkable(x, y, dx, dy):
 
 # takes the name of a map, and returns its zgrid.
 def mapname2zgrid(name):
-    for i in range(len(maps)):
-        if maps[i].name == name:
+    for i in range(len(config.MAPS)):
+        if config.MAPS[i].name == name:
             return i
     ic("file " + name + " not found")
     return -1

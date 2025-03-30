@@ -2,7 +2,8 @@
     This file controls the loading of datafiles
 """
 
-from os import listdir
+
+from pathlib import Path
 
 from icecream import ic
 
@@ -82,8 +83,8 @@ class map:
         self.field[y][x].del_item(itemname)
         item.del_dropped_item(itemname, x, y, self.name)
 
-    def __init__(self, mapname, from_editor=0):
-        self.name = mapname
+    def __init__(self, mapname: Path, from_editor: int = 0) -> None:
+        self.name = mapname.name.strip()
         self.field = []  # multidimentional array of tile class members.
         self.monster = []  # monsters that can attack on this level.
 
@@ -113,7 +114,7 @@ class map:
         # grab the needed data from the file
         if mapname == "":
             return
-        map_file = g.read_script_file("/data/maps/" + mapname, from_editor)
+        map_file = g.read_script_file("/data/maps/" + self.name, from_editor)
 
         # current mode. 0 for the actual map, 1 for monsters,
         # 2 for tile defines, 3 for per-tile info
@@ -143,7 +144,7 @@ class map:
                     if map_command == "monster":
                         self.monster.append(map_line.split("=", 1)[1].strip())
                     elif map_command == "battle_bg":
-                        self.battle_background = g.backgrounds[map_line.split("=", 1)[1].strip()]
+                        self.battle_background = config.BACKGROUNDS[map_line.split("=", 1)[1].strip()]
                         self.battle_background_name = map_line.split("=", 1)[1].strip()
                     elif map_command == "hero_bg":
                         self.hero_suffix = map_line.split("=", 1)[1].strip()
@@ -248,8 +249,8 @@ class map:
                 self.field[line[1]][line[0]].onload.append(onload_line)
             for action_line in line[3]:
                 self.field[line[1]][line[0]].actions.append(action_line)
-        if self.battle_background == "":
-            self.battle_background = g.backgrounds["generic.png"]
+        if not self.battle_background:
+            self.battle_background = config.BACKGROUNDS["generic.png"]
 
     def add_tile(self, tile_name):
         new_tile = Tile(tile_name)
@@ -275,43 +276,6 @@ class map:
                     ):
                         action.activate_lines(xloc, yloc, zloc, [self.field[yloc][xloc].onload[0]])
                         self.field[yloc][xloc].onload.pop(0)
-
-
-# this is the actual array for the maps. Call with g.maps[g.zgrid]
-maps = []
-
-
-# read the data/maps directory and place in maps[]. This called at startup.
-def read_maps(from_editor=0):
-    del maps[:]
-    g.load_backgrounds()
-
-    # put the names of the available maps in array_maps.
-    array_maps = listdir(config.MODULES_DIR + "/data/maps")
-
-    # remove all .* files.
-    i = 0
-    while i < len(array_maps):
-        # print array_maps[i]
-        extension_start = len(array_maps[i]) - 4
-        if extension_start <= 0:
-            array_maps.pop(i)
-        else:
-            if array_maps[i][:1] == ".":
-                array_maps.pop(i)
-            elif array_maps[i][extension_start : extension_start + 4] != ".txt":
-                array_maps.pop(i)
-            else:
-                i += 1
-
-    # go through all maps, adding them to our knowledge.
-    config.MAX_MAPSIZE = (0, 0)
-    for mapname in array_maps:
-        maps.append(map(mapname, from_editor))
-        if config.MAX_MAPSIZE[0] < len(maps[-1].field[0]):
-            config.MAX_MAPSIZE = (len(maps[-1].field[0]), config.MAX_MAPSIZE[1])
-        if config.MAX_MAPSIZE[1] < len(maps[-1].field):
-            config.MAX_MAPSIZE = (config.MAX_MAPSIZE[0], len(maps[-1].field))
 
 
 endgame_act = []
