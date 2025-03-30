@@ -364,6 +364,12 @@ def refresh_help(string):
     g.print_string(g.screen, string, g.font, start_xy, config.COLORS["white"])
 
 
+def key_handler(key_name) -> bool:
+    """
+    All keypresses in new_game pass through here
+
+    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    """
     if key_name == config.BINDINGS["cancel"]:
         if config.mut["CURR_BUTTON"] > 4:
             back_from_new_game()

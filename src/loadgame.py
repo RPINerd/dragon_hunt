@@ -185,9 +185,12 @@ def display_stats(stat_dict, titles_dict):
         )
 
 
-# All keypresses pass through here. Based on the key name,
-# give the right action. ("etc", "left", "right", "up", "down", "return")
-def key_handler(switch):
+def key_handler(switch: int) -> None:
+    """
+    All keypresses in new_game pass through here
+
+    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    """
     global saves_pos
     if switch == config.BINDINGS["cancel"]:
         cancel_load()

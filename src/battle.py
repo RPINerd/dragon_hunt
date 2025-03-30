@@ -937,9 +937,12 @@ def refresh_buttons() -> None:
     pygame.display.flip()
 
 
-# All keypresses in window_shop pass through here. Based on the key name,
-# give the right action. ("etc", "left", "right", "up", "down", "return")
-def key_handler(key_name):
+def key_handler(key_name: int) -> str | int:
+    """
+    All keypresses in new_game pass through here
+
+    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    """
     if key_name == config.BINDINGS["cancel"]:
         return runaway()
     if key_name == config.BINDINGS["right"] or key_name == config.BINDINGS["down"]:

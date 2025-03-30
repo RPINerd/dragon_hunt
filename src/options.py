@@ -151,9 +151,12 @@ def refresh_key_window(adjusting: bool = False) -> None:
     pygame.display.flip()
 
 
-# All keypresses pass through here. Based on the key name,
-# give the right action. ("etc", "left", "right", "up", "down", "return")
-def key_handler(switch):
+def key_handler(switch: int) -> None:
+    """
+    All keypresses in new_game pass through here
+
+    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    """
     global curr_button
     global tmp_fullscreen
     global tmp_difficulty

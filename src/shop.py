@@ -488,9 +488,12 @@ def mouse_move(xy):
         refresh_buttons()
 
 
-# All keypresses in window_shop pass through here. Based on the key name,
-# give the right action. ("etc", "left", "right", "up", "down", "return")
-def key_handler(switch):
+def key_handler(switch: int) -> bool:
+    """
+    All keypresses in new_game pass through here
+
+    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    """
     global curr_item
     global curr_focus
     # switch based on keycode

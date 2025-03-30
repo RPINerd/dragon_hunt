@@ -1164,7 +1164,12 @@ def key_handler_down(key_name):
         return key_handler(key_name)
 
 
-def key_handler(key_name):
+def key_handler(key_name: int) -> int:
+    """
+    All keypresses in new_game pass through here
+
+    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    """
     if config.DEBUG:
         tmp_time = pygame.time.get_ticks()
     global key_down
