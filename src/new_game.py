@@ -27,11 +27,16 @@ import pygame
 
 import config
 import g
+import game_screen as pygscreen
 import loadgame
 import main
 import options
 import save_mgmt
 from player import player
+
+screen = pygscreen.get_screen()
+
+MAXNAMELEN = 20
 
 # main stats for character. Taken from g.hp etc.
 global name_stat
@@ -147,7 +152,7 @@ def adjust_name(input_char):
     c = input_char
     if c == "":
         return
-    if len(name_stat) > 20:
+    if len(name_stat) > MAXNAMELEN:
         return
     if c.isalnum() == 0:
         if usable_chars.find(c) == -1:
@@ -249,13 +254,13 @@ def begin_game(loadgame_name=""):
     already_started_game = 1
 
     g.create_norm_box(
-        (config.SCREEN_WIDTH / 4, config.SCREEN_HEIGHT / 3),
-        (config.SCREEN_WIDTH / 2, config.SCREEN_HEIGHT / 3),
+        (pygscreen.SCREEN_WIDTH / 4, pygscreen.SCREEN_HEIGHT / 3),
+        (pygscreen.SCREEN_WIDTH / 2, pygscreen.SCREEN_HEIGHT / 3),
         "black",
         "light_gray",
     )
     g.print_string(
-        screen, "Starting game. Please wait", g.font, (config.SCREEN_WIDTH / 2, config.SCREEN_HEIGHT / 2), align=1
+        screen, "Starting game. Please wait", g.font, (pygscreen.SCREEN_WIDTH / 2, pygscreen.SCREEN_HEIGHT / 2), align=1
     )
     pygame.display.flip()
 
@@ -533,37 +538,37 @@ def refresh_new_game():
         (config.TILESIZE * main.mapsizex / 2, config.TILESIZE * main.mapsizey / 3),
     )
     g.print_string(
-        g.screen,
+        screen,
         "Name: " + name_stat,
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10),
     )
     g.print_string(
-        g.screen,
+        screen,
         "HP: " + str(hp_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 25),
     )
     g.print_string(
-        g.screen,
+        screen,
         "MP: " + str(ep_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 40),
     )
     g.print_string(
-        g.screen,
+        screen,
         "Attack: " + str(attack_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 55),
     )
     g.print_string(
-        g.screen,
+        screen,
         "Defense: " + str(defense_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 70),
     )
     g.print_string(
-        g.screen,
+        screen,
         "Gold: " + str(gold_stat),
         g.font,
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 85),

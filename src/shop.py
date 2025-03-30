@@ -24,9 +24,12 @@ from icecream import ic
 
 import config
 import g
+import game_screen as pygscreen
 import item
 import main
 from player import player
+
+screen = pygscreen.get_screen()
 
 # location of the store in the g.shops[] array
 global store_num
@@ -99,11 +102,10 @@ def set_details(name, cost, value, costtype, power, description, inv_or_shop):
             g.print_string(
                 g.screen, "Cost: " + str(cost), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
             )
-    elif inv_or_shop == "inv":
-        if value != "":
-            g.print_string(
-                g.screen, "Value: " + str(value), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
-            )
+    elif inv_or_shop == "inv" and value:
+        g.print_string(
+            screen, "Value: " + str(value), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
+        )
 
     if power == "" or power == "-1":
         pass
@@ -258,13 +260,13 @@ def refresh_shop():
     )
 
     g.print_string(
-        g.screen,
+        screen,
         "Gold: " + str(player.gold),
         g.font,
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 26),
     )
     g.print_string(
-        g.screen,
+        screen,
         "Skill Points: " + str(player.skillpoints),
         g.font,
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 11),
@@ -614,11 +616,11 @@ def init_window_shop(store_type_input):
 
     # Info labels
     g.print_string(
-        g.screen, "Inventory", g.font, (canvas_x_start + (temp_canvas_width * 1) / 2, canvas_y_start - 15), align=1
+        screen, "Inventory", g.font, (canvas_x_start + (temp_canvas_width * 1) / 2, canvas_y_start - 15), align=1
     )
 
     g.print_string(
-        g.screen,
+        screen,
         g.shops[store_num].name,
         g.font,
         (canvas_x_start + (temp_canvas_width * 5) / 2, canvas_y_start - 15),

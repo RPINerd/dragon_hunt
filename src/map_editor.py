@@ -213,12 +213,12 @@ def print_cur_xy(xy, ignore_and_force=False):
     if ignore_and_force:
         xy = last_xy
     if last_xy != xy or ignore_and_force:
-        g.screen.fill(config.COLORS["black"], (g.screen_size[0] - 100, g.screen_size[1] - 30, 100, 12))
+        g.screen.fill(config.COLORS["black"], (pygscreen.SCREEN_WIDTH - 100, pygscreen.SCREEN_HEIGHT - 30, 100, 12))
         g.print_string(
             g.screen,
             cur_mode + "  " + str(xy[0]) + ", " + str(xy[1]),
             g.font,
-            (g.screen_size[0] - 3, g.screen_size[1] - 30),
+            (pygscreen.SCREEN_WIDTH - 3, pygscreen.SCREEN_HEIGHT - 30),
             color=config.COLORS["white"],
             align=2,
         )
@@ -387,7 +387,7 @@ def refresh_map():
     g.unclean_screen = True
 
     # scrollbars
-    scroll_length = g.screen_size[1] - 2
+    scroll_length = pygscreen.SCREEN_HEIGHT - 2
     g.create_norm_box((0, scroll_length - 1), (scroll_length, 4))
     g.create_norm_box(
         ((scroll_length * portal_x) / mapsize_x, scroll_length - 1),
@@ -648,13 +648,12 @@ def setup_tilebox():
 
 
 def click_tiles(xy):
-    if xy[0] < g.screen_size[0] - (tilebox_width) * (config.TILESIZE + 1):
+    if xy[0] < pygscreen.SCREEN_WIDTH - (tilebox_width) * (config.TILESIZE + 1):
         return 0
-    else:
-        global cur_tile_num
-        global cur_tile
-        tmp = cur_tile_num
-        x = xy[0] - (g.screen_size[0] - (tilebox_width) * (config.TILESIZE + 1))
+    global cur_tile_num
+    global cur_tile
+    tmp = cur_tile_num
+    x = xy[0] - (pygscreen.SCREEN_WIDTH - (tilebox_width) * (config.TILESIZE + 1))
         cur_tile_num = x / (config.TILESIZE + 1) + tilebox_width * (xy[1] / (config.TILESIZE + 1))
         tmp_dir = cur_tile_set
         if tmp_dir == "default":
@@ -698,10 +697,10 @@ def display_tiles(set=""):
     g.screen.fill(
         config.COLORS["black"],
         (
-            g.screen_size[0] - (tilebox_width) * (config.TILESIZE + 1) - 1,
+            pygscreen.SCREEN_WIDTH - (tilebox_width) * (config.TILESIZE + 1) - 1,
             0,
             (tilebox_width) * (config.TILESIZE + 1) + 1,
-            g.screen_size[1],
+            pygscreen.SCREEN_HEIGHT,
         ),
     )
 
@@ -722,7 +721,7 @@ def display_tiles(set=""):
                 g.screen.fill(
                     config.COLORS["hp_red"],
                     (
-                        g.screen_size[0] - (col_span - cur_col) * (config.TILESIZE + 1) - 1,
+                        pygscreen.SCREEN_WIDTH - (col_span - cur_col) * (config.TILESIZE + 1) - 1,
                         cur_row * (config.TILESIZE + 1) - 1,
                         config.TILESIZE + 2,
                         config.TILESIZE + 2,
@@ -731,7 +730,7 @@ def display_tiles(set=""):
                 cur_tile = file
             g.screen.blit(
                 tiles[file],
-                (g.screen_size[0] - (col_span - cur_col) * (config.TILESIZE + 1), cur_row * (config.TILESIZE + 1)),
+                (pygscreen.SCREEN_WIDTH - (col_span - cur_col) * (config.TILESIZE + 1), cur_row * (config.TILESIZE + 1)),
             )
             cur_col = cur_col + 1
             cur = cur + 1
@@ -739,7 +738,7 @@ def display_tiles(set=""):
         g.screen,
         cur_tile.split("/")[-1],
         g.font,
-        (g.screen_size[0] - 4, g.screen_size[1] - 18),
+        (pygscreen.SCREEN_WIDTH - 4, pygscreen.SCREEN_HEIGHT - 18),
         color=config.COLORS["white"],
         align=2,
     )

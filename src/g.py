@@ -9,6 +9,7 @@ import pygame
 from icecream import ic
 
 import config
+import game_screen as pygscreen
 
 # player info
 from player import player
@@ -16,6 +17,9 @@ from player import player
 # needed for scripting
 # from scripting import g, maps, read_maps, read_scripts, read_shops, newgame_act
 from scripting import *
+
+# This is the screen that will be used for the game.
+screen = pygscreen.get_screen()
 
 # This will be displayed on the Title screen and Main screen.
 game_name = ""

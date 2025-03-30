@@ -21,6 +21,7 @@ import pygame
 import action
 import config
 import g
+import game_screen as pygscreen
 import item
 import main
 import save_mgmt
@@ -878,7 +879,7 @@ def menu_key_handler(key_name: int) -> bool:
         # I take care of refresh by grabbing the current window as a bitmap,
         # then redisplaying it. Note that the -64 is to prevent the message
         # scroller from being clobbered
-        old_screen_refresh = pygame.Surface((g.screen_size[0], g.screen_size[1] - 64))
+        old_screen_refresh = pygame.Surface((pygscreen.SCREEN_WIDTH, pygscreen.SCREEN_HEIGHT - 64))
         old_screen_refresh.blit(g.screen, (0, 0))
         if config.mut["CURR_BUTTON"] == 0:
             open_use_item()
