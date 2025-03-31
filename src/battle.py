@@ -29,6 +29,7 @@ import inv
 import main
 import monster
 import utils
+import widgets
 from player import player
 
 mon_index = 0
@@ -136,16 +137,16 @@ def refresh():
         # 				(base_mon_hp_start[i]+4, ystart+4))
 
         # Under (red) part of the monster hp display
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (base_mon_hp_start[i], base_mon_hp_y_start[i]), (base_mon_hp_width[i], 5), inner_color="hp_red"
         )
         # Over (green) part of the monster hp display
         temp_width = base_mon_hp_width[i] * int(monster_list[i].hp) / int(monster_list[i].maxhp)
         temp_width = max(temp_width, 0)
-        g.create_norm_box((base_mon_hp_start[i], base_mon_hp_y_start[i]), (temp_width, 5), inner_color="hp_green")
+        widgets.bordered_box(screen, (base_mon_hp_start[i], base_mon_hp_y_start[i]), (temp_width, 5), inner_color="hp_green")
 
-        g.print_string(
-            g.screen,
+        widgets.print_string(
+            screen,
             str(monster_list[i].hp) + "/" + str(monster_list[i].maxhp),
             g.font,
             (xstart, base_mon_hp_y_start[i] + 6),
@@ -157,7 +158,7 @@ def refresh():
     # 	if monster_slashes[-1][0] == 1:
     # 			screen.blit(config.BUTTONS["slash_attack.png"], (hero_loc[0]+4,hero_loc[1]+4))
     # Under (red) part of the player hp display
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (
             monster_start[0] + (background_pic.get_width() - base_mon_hp_width[0]) / 2,
             monster_start[1] + background_pic.get_height() - hero_pic.get_height() * 3 / 2 - 2,
@@ -169,7 +170,7 @@ def refresh():
     # Over (green) part of the player hp display
     temp_width = base_mon_hp_width[0] * int(player.hp) / int(player.adj_maxhp)
     temp_width = max(temp_width, 0)
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (
             monster_start[0] + (background_pic.get_width() - base_mon_hp_width[0]) / 2,
             monster_start[1] + background_pic.get_height() - hero_pic.get_height() * 3 / 2 - 2,
@@ -178,8 +179,8 @@ def refresh():
         inner_color="hp_green",
     )
 
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         str(player.hp) + "/" + str(player.adj_maxhp),
         g.font,
         (
@@ -191,7 +192,7 @@ def refresh():
 
     # refresh the player ep bar
     # Under (red) part of the player ep display
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (
             monster_start[0] + (background_pic.get_width() - base_mon_hp_width[0]) / 2,
             monster_start[1] + background_pic.get_height() - hero_pic.get_height(),
@@ -202,7 +203,7 @@ def refresh():
     # Over (green) part of the player ep display
     temp_width = base_mon_hp_width[0] * int(player.ep) / int(player.adj_maxep)
     temp_width = max(temp_width, 0)
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (
             monster_start[0] + (background_pic.get_width() - base_mon_hp_width[0]) / 2,
             monster_start[1] + background_pic.get_height() - hero_pic.get_height(),
@@ -211,8 +212,8 @@ def refresh():
         inner_color="ep_blue",
     )
 
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         str(player.ep) + "/" + str(player.adj_maxep),
         g.font,
         (
@@ -680,7 +681,7 @@ def refresh_skill_display(screen_str):
     y = inv.tmp_y_base
     tmp_item = inv.curr_item
     for i in range(len(g.item.inv)):
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 x + (i % inv.inv_width) * config.TILESIZE + 2 * ((i % inv.inv_width) + 1),
                 y + (i / inv.inv_width) * config.TILESIZE + 2 * ((i / inv.inv_width) + 1),
@@ -689,7 +690,7 @@ def refresh_skill_display(screen_str):
             inner_color="dh_green",
         )
     if tmp_item != -1 and tmp_item < inv.inv_width * inv.inv_height:
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 x + (inv.curr_item % inv.inv_width) * config.TILESIZE + 2 * ((inv.curr_item % inv.inv_width) + 1),
                 y + (inv.curr_item / inv.inv_width) * config.TILESIZE + 2 * ((inv.curr_item / inv.inv_width) + 1),
@@ -704,12 +705,12 @@ def refresh_skill_display(screen_str):
             inv.draw_item(player.skill[i][7], i % inv.inv_width, i / inv.inv_width, x, y)
 
     # draw the help text
-    g.create_norm_box((inv.tmp_menu_x_base, inv.tmp_menu_y_base + inv.tmp_menu_height), (inv.tmp_menu_width, 17))
+    widgets.bordered_box(screen, (inv.tmp_menu_x_base, inv.tmp_menu_y_base + inv.tmp_menu_height), (inv.tmp_menu_width, 17))
     if len(player.skill) <= tmp_item or tmp_item == -1 or player.skill[tmp_item][5] == 0 or player.skill[tmp_item][1] == 5:
         helptext = ""
     else:
         helptext = player.skill[tmp_item][0] + " (" + str(player.skill[tmp_item][2]) + " EP)"
-    g.print_string(g.screen, helptext, g.font, (inv.tmp_menu_x_base + 2, inv.tmp_menu_y_base + inv.tmp_menu_height + 1))
+    widgets.print_string(screen, helptext, g.font, (inv.tmp_menu_x_base + 2, inv.tmp_menu_y_base + inv.tmp_menu_height + 1))
     pygame.display.flip()
 
 
@@ -1191,7 +1192,7 @@ def begin(mon_index_input: int) -> str | int:
     button_y_start = config.TILESIZE * main.half_mapy + background_pic.get_height() / 2
     button_height = config.BUTTONS["attack.png"].get_height()
 
-    g.create_norm_box((attack_button_loc, button_y_start), (final_button_loc - attack_button_loc, button_height))
+    widgets.bordered_box(screen, (attack_button_loc, button_y_start), (final_button_loc - attack_button_loc, button_height))
 
     # bindings
     bind_keys()

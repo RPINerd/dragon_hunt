@@ -27,6 +27,7 @@ import pygame
 import config
 import g
 import game_screen as pygscreen
+import widgets
 
 # was a game loaded? Used to determine whether to use newgame script.
 did_load = ""
@@ -61,11 +62,11 @@ def load_selected():
     if prevent_dbl_load == 1:
         return
     prevent_dbl_load = 1
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3),
         (config.TILESIZE * config.MAPSIZE_X / 2, 140 + config.BUTTONS["load_scr.png"].get_height()),
     )
-    g.print_string(
+    widgets.print_string(
         screen,
         "Loading game. Please wait",
         g.font,
@@ -140,21 +141,21 @@ def display_stats(stat_dict, titles_dict):
     info_x = config.TILESIZE * config.MAPSIZE_X / 4 + config.BUTTONS["loadgame_up.png"].get_width() + 5
     info_y = config.TILESIZE * config.MAPSIZE_Y / 3
     linenum = 0
-    g.print_string(screen, "Name: " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    widgets.print_string(screen, "Name: " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(screen, "HP: " + stat_dict["hp"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    widgets.print_string(screen, "HP: " + stat_dict["hp"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(screen, "MP: " + stat_dict["ep"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    widgets.print_string(screen, "MP: " + stat_dict["ep"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(screen, "Attack: " + stat_dict["attack"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    widgets.print_string(screen, "Attack: " + stat_dict["attack"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(screen, "Defense: " + stat_dict["defense"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    widgets.print_string(screen, "Defense: " + stat_dict["defense"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(screen, "Gold: " + stat_dict["gold"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    widgets.print_string(screen, "Gold: " + stat_dict["gold"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(screen, "XP: " + stat_dict["exp"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    widgets.print_string(screen, "XP: " + stat_dict["exp"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(screen, "Level: " + stat_dict["level"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    widgets.print_string(screen, "Level: " + stat_dict["level"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
 
     for i in range(5):
@@ -162,7 +163,7 @@ def display_stats(stat_dict, titles_dict):
             inner_color = "dh_green"
         else:
             inner_color = "light_gray"
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 config.TILESIZE * config.MAPSIZE_X / 4 + 2,
                 config.TILESIZE * config.MAPSIZE_Y / 3 + config.BUTTONS["loadgame_down.png"].get_height() + 1 + i * 20,
@@ -170,7 +171,7 @@ def display_stats(stat_dict, titles_dict):
             (config.BUTTONS["loadgame_down.png"].get_width() - 3, 17),
             inner_color=inner_color,
         )
-        g.print_string(
+        widgets.print_string(
             screen,
             titles_dict[i],
             g.font,
@@ -412,7 +413,7 @@ def init_window_loadgame():
     # create the window
     global prevent_dbl_load
     prevent_dbl_load = 0
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (config.TILESIZE * config.MAPSIZE_X / 4 - 2, config.TILESIZE * config.MAPSIZE_Y / 3 - 2),
         (config.TILESIZE * config.MAPSIZE_X / 2 + 2, +140 + config.BUTTONS["load_scr.png"].get_height() + 2),
     )

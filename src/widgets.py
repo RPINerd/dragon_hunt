@@ -225,3 +225,107 @@ def refresh_list(listbox: Listbox, scrollbar: Scrollbar, list_pos: int, list_arr
             list_pos, ((len(list_array) / listbox.viewable_items) + 1) * listbox.viewable_items - 1
         )
     pygame.display.flip()
+
+
+def bordered_box(
+    screen: pygame.Surface,
+    xy: list | tuple,
+    size: list | tuple,
+    outline_color: str = "black",
+    inner_color: str = "light_gray") -> None:
+    """
+    Create a box on the screen with the given parameters.
+
+    Args:
+        screen (pygame.Surface): The surface to draw on.
+        xy (list | tuple): The coordinates of the box (x, y).
+        size (list | tuple): The size of the box (width, height).
+        outline_color (str): The color of the box outline.
+        inner_color (str): The color of the inner box.
+    """
+    screen.fill(config.COLORS[outline_color], (xy[0], xy[1], size[0], size[1]))
+    screen.fill(config.COLORS[inner_color], (xy[0] + 1, xy[1] + 1, size[0] - 2, size[1] - 2))
+
+
+def print_string(
+    surface: pygame.Surface,
+    text: str,
+    font: pygame.font.Font,
+    xy: tuple[int, int],
+    color: pygame.typing.ColorLike = config.COLORS["black"],
+    align: int = 0,
+    width: int = -1) -> None:
+    """
+    Print a string to the screen
+
+    Args:
+        surface (pygame.Surface): The surface to print to
+        text (str): The string to print
+        font (pygame.font.Font): The font to use
+        xy (tuple): The xy coordinates to print the text at
+        color (pygame.ColorLike): The color to print the text in
+        align (int): 0=left, 1=center, 2=right
+        width (int): The width of the text box. -1 for no limit.
+    """
+    text = text.replace("\t", "     ")
+    if align != 0:
+        temp_size = font.size(text)
+        if align == 1:
+            xy = (xy[0] - temp_size[0] / 2, xy[1])
+        else:
+            xy = (xy[0] - temp_size[0], xy[1])
+    temp_text = font.render(text, 1, color)
+    if width != -1:
+        surface.blit(temp_text, xy, (0, 0, width, temp_text.get_size()[1]))
+    else:
+        surface.blit(temp_text, xy)
+
+
+def print_paragraph(
+    surface: pygame.Surface,
+    text: str,
+    font: pygame.font.Font,
+    width: int,
+    xy: tuple[int, int],
+    color: pygame.typing.ColorLike = config.COLORS["black"]) -> int:
+    r"""
+    Print a string to the screen, wrapping it to fit within a certain width
+
+    Used to display descriptions and such.
+
+    Note that bkshl+n can be used for newlines, but it must be used as
+    `line1 \\n line2` in code, separated by spaces, with the bkshl escaped)
+    Escape not needed in scripts.
+
+    Args:
+        surface (pygame.Surface): The surface to print to
+        text (str): The string to print
+        font (pygame.font.Font): The font to use
+        width (int): The width to wrap the text to
+        xy (tuple): The xy coordinates to print the text at
+        color (pygame.ColorLike): The color to print the text in
+
+    Returns:
+        int: The number of lines printed
+    """
+    text = text.replace("\t", "     ")
+    start_xy = xy
+    string_array = text.split(" ")
+
+    num_of_lines = 1
+    for string in string_array:
+        string += " "
+        temp_size = font.size(string)
+
+        if string == "\n ":
+            num_of_lines += 1
+            xy = (start_xy[0], xy[1] + temp_size[1])
+            continue
+        temp_text = font.render(string, 1, color)
+
+        if (xy[0] - start_xy[0]) + temp_size[0] > width:
+            num_of_lines += 1
+            xy = (start_xy[0], xy[1] + temp_size[1])
+        surface.blit(temp_text, xy)
+        xy = (xy[0] + temp_size[0], xy[1])
+    return num_of_lines

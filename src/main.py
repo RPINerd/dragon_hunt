@@ -15,6 +15,7 @@ import modloader
 import monster
 import save_mgmt
 import shop
+import widgets
 from player import player
 
 # size, in tiles, of the main screen. While this is adjustable,
@@ -87,11 +88,11 @@ def print_message(message):
 
 
 def refresh_message_box():
-    g.create_norm_box((0, pygscreen.SCREEN_HEIGHT - 64), (pygscreen.SCREEN_WIDTH * 3 / 5, 64), "black", "dh_green")
+    widgets.bordered_box(screen, (0, pygscreen.SCREEN_HEIGHT - 64), (pygscreen.SCREEN_WIDTH * 3 / 5, 64), "black", "dh_green")
 
     message_start = pygscreen.SCREEN_HEIGHT - 62
     for message in message_array[-5:]:
-        g.print_string(g.screen, message, g.font, (5, message_start), width=pygscreen.SCREEN_WIDTH * 3 / 5 - 5)
+        widgets.print_string(screen, message, g.font, (5, message_start), width=pygscreen.SCREEN_WIDTH * 3 / 5 - 5)
         message_start += 12
     g.unclean_screen = True
 
@@ -182,9 +183,9 @@ def refresh_inv_icon(redisplay=0):
     info_bottom_y = mapsizey * config.TILESIZE - iconsize
     top_of_buttons = mapsizey * config.TILESIZE - iconsize
 
-    g.create_norm_box((info_top_x, info_top_y), (3 * iconsize, 7 * iconsize), "black", "dh_green")
+    widgets.bordered_box(screen, (info_top_x, info_top_y), (3 * iconsize, 7 * iconsize), "black", "dh_green")
 
-    g.screen.blit(config.ICONS[inv_icon_image], (mapsizex * config.TILESIZE - 3 * iconsize, top_of_buttons))
+    screen.blit(config.ICONS[inv_icon_image], (mapsizex * config.TILESIZE - 3 * iconsize, top_of_buttons))
     screen.blit(config.ICONS[quit_icon_image], (mapsizex * config.TILESIZE - iconsize, top_of_buttons))
     screen.blit(config.ICONS[save_icon_image], (mapsizex * config.TILESIZE - 2 * iconsize, top_of_buttons))
 
@@ -205,28 +206,28 @@ def refresh_inv_icon(redisplay=0):
     stats_x = info_top_x + iconsize + 10
     stats_y = info_top_y + 7
 
-    g.print_string(g.screen, str(player.adj_attack), g.font, (stats_x, stats_y))
+    widgets.print_string(screen, str(player.adj_attack), g.font, (stats_x, stats_y))
     stats_y += iconsize
-    g.print_string(g.screen, str(player.adj_defense), g.font, (stats_x, stats_y))
+    widgets.print_string(screen, str(player.adj_defense), g.font, (stats_x, stats_y))
     stats_y += iconsize
-    g.print_string(g.screen, str(player.gold), g.font, (stats_x, stats_y))
+    widgets.print_string(screen, str(player.gold), g.font, (stats_x, stats_y))
     stats_y += iconsize
-    g.print_string(g.screen, str(player.level), g.font, (stats_x, stats_y))
+    widgets.print_string(screen, str(player.level), g.font, (stats_x, stats_y))
     stats_y += iconsize
-    g.print_string(g.screen, str(player.exp), g.font, (stats_x, stats_y))
+    widgets.print_string(screen, str(player.exp), g.font, (stats_x, stats_y))
     stats_y += iconsize
 
 
 def refresh_bars():
     start_width = pygscreen.SCREEN_WIDTH - 3 * iconsize
     start_height = pygscreen.SCREEN_HEIGHT - 7 * iconsize - 11
-    g.create_norm_box((start_width, start_height), (3 * iconsize, 6), "black", "hp_red")
+    widgets.bordered_box(screen, (start_width, start_height), (3 * iconsize, 6), "black", "hp_red")
     hpbar_width = 3 * iconsize * player.hp / player.adj_maxhp
-    g.create_norm_box((start_width, start_height), (hpbar_width, 6), "black", "hp_green")
+    widgets.bordered_box(screen, (start_width, start_height), (hpbar_width, 6), "black", "hp_green")
 
-    g.create_norm_box((start_width, start_height + 5), (3 * iconsize, 6), "black", "hp_red")
+    widgets.bordered_box(screen, (start_width, start_height + 5), (3 * iconsize, 6), "black", "hp_red")
     epbar_width = 3 * iconsize * player.ep / player.adj_maxep
-    g.create_norm_box((start_width, start_height + 5), (epbar_width, 6), "black", "ep_blue")
+    widgets.bordered_box(screen, (start_width, start_height + 5), (epbar_width, 6), "black", "ep_blue")
 
 
 # given x and y (absolute coods.) refresh the given tile. (ADJUST FOR PARTIAL)
@@ -724,7 +725,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
 
     temp_surface = pygame.Surface((text_width, 480)).convert_alpha()
     temp_surface.fill((0, 0, 0, 0))
-    num_of_lines = g.print_multiline(temp_surface, line, g.font, text_width - 10, (5, 0), "black")
+    num_of_lines = widgets.print_paragraph(temp_surface, line, g.font, text_width - 10, (5, 0), "black")
 
     line_height = num_of_lines * 13 + 40
     line_height = max(line_height, 40)
@@ -736,7 +737,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     restore_surface.blit(screen, (0, 0), ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0, text_width, 480))
 
     # create the box around the text
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         ((pygscreen.SCREEN_WIDTH - text_width) / 2, (pygscreen.SCREEN_HEIGHT - line_height) / 2),
         (text_width, line_height),
         inner_color="dh_green",
@@ -747,7 +748,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     screen.blit(temp_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2 + 5, (pygscreen.SCREEN_HEIGHT - line_height) / 2 + 5))
 
     # create the box around the buttons
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         ((pygscreen.SCREEN_WIDTH - box_width) / 2, button_height), (box_width, tmp_height), inner_color="dark_green"
     )
 
@@ -845,13 +846,13 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
 
         if g.unclean_screen:
             g.unclean_screen = False
-            g.create_norm_box(
+            widgets.bordered_box(screen,
                 ((pygscreen.SCREEN_WIDTH - text_width) / 2 + 5, (pygscreen.SCREEN_HEIGHT + line_height) / 2 - 20),
                 (text_width - 10, 17),
                 inner_color="light_gray",
             )
-            g.print_string(
-                g.screen,
+            widgets.print_string(
+                screen,
                 textbox_text,
                 g.font,
                 ((pygscreen.SCREEN_WIDTH - text_width) / 2 + 7, (pygscreen.SCREEN_HEIGHT + line_height) / 2 - 18),
@@ -912,7 +913,7 @@ def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = 
 
     temp_surface = pygame.Surface((text_width, 480)).convert_alpha()
     temp_surface.fill((0, 0, 0, 0))
-    num_of_lines = g.print_multiline(temp_surface, line, g.font, text_width - 10, (5, 0), "black")
+    num_of_lines = widgets.print_paragraph(temp_surface, line, g.font, text_width - 10, (5, 0), "black")
 
     line_height = num_of_lines * 13 + 10
     line_height = max(line_height, 40)
@@ -927,7 +928,7 @@ def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = 
     restore_surface.blit(screen, (0, 0), ((pygscreen.SCREEN_WIDTH - surface_width) / 2, 0, surface_width, 400))
 
     # create the box around the text
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         ((pygscreen.SCREEN_WIDTH - text_width) / 2, (pygscreen.SCREEN_HEIGHT - line_height) / 2),
         (text_width, line_height),
         inner_color="dh_green",
@@ -938,7 +939,7 @@ def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = 
     screen.blit(temp_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2 + 5, (pygscreen.SCREEN_HEIGHT - line_height) / 2 + 5))
 
     # create the box around the buttons
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         ((pygscreen.SCREEN_WIDTH - box_width) / 2, button_height), (box_width, tmp_height), inner_color="dark_green"
     )
 
@@ -1068,11 +1069,11 @@ def init_window_main(is_new_game=0):
         # This cuts a small amount off the loading time for each level. (From about
         # 370ms to about 270ms.)
         screen.fill(config.COLORS["light_gray"], (pygscreen.SCREEN_WIDTH / 2 - 150, pygscreen.SCREEN_HEIGHT / 2 - 20, 300, 40))
-        g.print_string(g.screen, "Processing Maps", g.font, (pygscreen.SCREEN_WIDTH / 2, pygscreen.SCREEN_HEIGHT / 2), align=1)
+        widgets.print_string(screen, "Processing Maps", g.font, (pygscreen.SCREEN_WIDTH / 2, pygscreen.SCREEN_HEIGHT / 2), align=1)
         pygame.display.flip()
         for mapindex in range(len(config.MAPS)):
             config.MAPS[mapindex].preprocess_map(mapindex)
-            g.create_norm_box(
+            widgets.bordered_box(screen,
                 (pygscreen.SCREEN_WIDTH / 4 + 2, pygscreen.SCREEN_HEIGHT * 2 / 3 - 10),
                 (((pygscreen.SCREEN_WIDTH / 2 - 4) * mapindex) / len(config.MAPS), 8),
                 "black",

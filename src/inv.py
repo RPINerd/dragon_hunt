@@ -25,6 +25,7 @@ import game_screen as pygscreen
 import item
 import main
 import save_mgmt
+import widgets
 from player import player
 
 # width/height of inv canvas, in tiles.
@@ -161,7 +162,7 @@ def open_equip_item():
 
     # Equip also needs the equip screen:
     temp_canvas_width = (config.TILESIZE * equip_size) + 8
-    g.create_norm_box((tmp_x_base - temp_canvas_width, tmp_y_base), (temp_canvas_width, temp_canvas_width))
+    widgets.bordered_box(screen, (tmp_x_base - temp_canvas_width, tmp_y_base), (temp_canvas_width, temp_canvas_width))
 
     g.cur_window = "inventory_equip"
     refresh_equip()
@@ -241,12 +242,12 @@ def open_inner_menu(screen_str):
     create_inv_display()
 
     # button rectangle
-    g.create_norm_box((tmp_menu_x_base, tmp_menu_y_base), (tmp_menu_width, tmp_menu_height))
+    widgets.bordered_box(screen, (tmp_menu_x_base, tmp_menu_y_base), (tmp_menu_width, tmp_menu_height))
 
 
 def create_inv_display() -> None:
     """Create a generic inventory display"""
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (tmp_x_base, tmp_y_base),
         (
             (config.TILESIZE * main.mapsizex) / 2 - tmp_x_base,
@@ -259,7 +260,7 @@ def create_inv_display() -> None:
     # Per-item borders
     for y in range(inv_height):
         for x in range(inv_width):
-            g.create_norm_box(
+            widgets.bordered_box(screen,
                 (tmp_x_base + x * config.TILESIZE + 2 * (x + 1), tmp_y_base + y * config.TILESIZE + 2 * (y + 1)),
                 (config.TILESIZE, config.TILESIZE),
                 inner_color="dh_green",
@@ -307,7 +308,7 @@ def refresh_equip() -> None:
     tmpy = tmp_y_base
 
     for i in range(9):
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 tmpx + (i % equip_size) * config.TILESIZE + 2 * ((i % equip_size) + 1),
                 tmpy + (i / equip_size) * config.TILESIZE + 2 * ((i / equip_size) + 1),
@@ -319,7 +320,7 @@ def refresh_equip() -> None:
     # Draw selection rectangle for equipment display
     if curr_item != -1 and curr_item >= inv_width * inv_height:
         c_item = curr_item - inv_width * inv_height
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 tmpx + (c_item % equip_size) * config.TILESIZE + 2 * ((c_item % equip_size) + 1),
                 tmpy + (c_item / equip_size) * config.TILESIZE + 2 * ((c_item / equip_size) + 1),
@@ -368,7 +369,7 @@ def refresh_inv_display(screen_str):
     x = tmp_x_base
     y = tmp_y_base
     for i in range(len(item.inv)):
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 x + (i % inv_width) * config.TILESIZE + 2 * ((i % inv_width) + 1),
                 y + (i / inv_width) * config.TILESIZE + 2 * ((i / inv_width) + 1),
@@ -378,7 +379,7 @@ def refresh_inv_display(screen_str):
         )
 
     if curr_item != -1 and curr_item < inv_width * inv_height:
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 x + (curr_item % inv_width) * config.TILESIZE + 2 * ((curr_item % inv_width) + 1),
                 y + (curr_item / inv_width) * config.TILESIZE + 2 * ((curr_item / inv_width) + 1),
@@ -404,9 +405,9 @@ def refresh_inv_display(screen_str):
     else:
         helptext = item.item[item.inv[curr_item]].name
 
-    g.create_norm_box((tmp_menu_x_base, tmp_menu_y_base + tmp_menu_height), (tmp_menu_width, 17))
+    widgets.bordered_box(screen, (tmp_menu_x_base, tmp_menu_y_base + tmp_menu_height), (tmp_menu_width, 17))
 
-    g.print_string(g.screen, helptext, g.font, (tmp_menu_x_base + 2, tmp_menu_y_base + tmp_menu_height + 1))
+    widgets.print_string(screen, helptext, g.font, (tmp_menu_x_base + 2, tmp_menu_y_base + tmp_menu_height + 1))
     pygame.display.flip()
 
 
@@ -415,7 +416,7 @@ def refresh_skill(screen_str):
     x = tmp_x_base
     y = tmp_y_base
     for i in range(len(item.inv)):
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 x + (i % inv_width) * config.TILESIZE + 2 * ((i % inv_width) + 1),
                 y + (i / inv_width) * config.TILESIZE + 2 * ((i / inv_width) + 1),
@@ -425,7 +426,7 @@ def refresh_skill(screen_str):
         )
 
     if curr_item != -1 and curr_item < inv_width * inv_height:
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 x + (curr_item % inv_width) * config.TILESIZE + 2 * ((curr_item % inv_width) + 1),
                 y + (curr_item / inv_width) * config.TILESIZE + 2 * ((curr_item / inv_width) + 1),
@@ -440,12 +441,12 @@ def refresh_skill(screen_str):
             draw_item(player.skill[i][7], i % inv_width, i / inv_width, x, y, screen_str)
 
     # draw the help text
-    g.create_norm_box((tmp_menu_x_base, tmp_menu_y_base + tmp_menu_height), (tmp_menu_width, 17))
+    widgets.bordered_box(screen, (tmp_menu_x_base, tmp_menu_y_base + tmp_menu_height), (tmp_menu_width, 17))
     if len(player.skill) <= curr_item or curr_item == -1 or player.skill[curr_item][5] == 0 or player.skill[curr_item][1] <= 4:
         helptext = ""
     else:
         helptext = player.skill[curr_item][0] + " (" + str(player.skill[curr_item][2]) + " EP)"
-    g.print_string(g.screen, helptext, g.font, (tmp_menu_x_base + 2, tmp_menu_y_base + tmp_menu_height + 1))
+    widgets.print_string(screen, helptext, g.font, (tmp_menu_x_base + 2, tmp_menu_y_base + tmp_menu_height + 1))
 
     pygame.display.flip()
 
@@ -462,21 +463,21 @@ def refresh_stat_display():
     bar_height = 15
     bar_start = start_y + 21
 
-    g.create_norm_box((start_x + 5, bar_start - 1), (g.hpbar_width, bar_height), inner_color="hp_red")
-    g.create_norm_box((start_x + 5, bar_start + bar_height + 1), (g.hpbar_width, bar_height), inner_color="hp_red")
+    widgets.bordered_box(screen, (start_x + 5, bar_start - 1), (g.hpbar_width, bar_height), inner_color="hp_red")
+    widgets.bordered_box(screen, (start_x + 5, bar_start + bar_height + 1), (g.hpbar_width, bar_height), inner_color="hp_red")
 
     temp_width = g.hpbar_width * player.hp / player.adj_maxhp
     temp_width = max(temp_width, 0)
 
     bar_height = 15
     bar_start = start_y + 21
-    g.create_norm_box((start_x + 5, bar_start - 1), (temp_width, bar_height), inner_color="hp_green")
+    widgets.bordered_box(screen, (start_x + 5, bar_start - 1), (temp_width, bar_height), inner_color="hp_green")
     # 	main.canvas_map.create_rectangle(start_x+5, bar_start-1, start_x+temp_width+5,
     # 		bar_start+bar_height-1, fill="#05BB05", tags=("stats", "inv"))
     # 	main.canvas_map.delete("show_ep")
     temp_width = g.hpbar_width * player.ep / player.adj_maxep
     temp_width = max(temp_width, 0)
-    g.create_norm_box((start_x + 5, bar_start + bar_height + 1), (temp_width, bar_height), inner_color="ep_blue")
+    widgets.bordered_box(screen, (start_x + 5, bar_start + bar_height + 1), (temp_width, bar_height), inner_color="ep_blue")
     # 	main.canvas_map.create_rectangle(start_x+5, bar_start+bar_height+1, start_x+temp_width+5,
     # 		bar_start+bar_height*2+1, fill="#2525EE", tags=("stats", "inv"))
     # 	main.canvas_map.lift("bar")
@@ -486,17 +487,17 @@ def refresh_stat_display():
         config.COLORS["light_gray"],
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5, 50, 14),
     )
-    g.print_string(
-        g.screen, player.name, g.font, (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5)
+    widgets.print_string(
+        screen, player.name, g.font, (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5)
     )
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         str(player.hp) + "/" + str(player.adj_maxhp),
         g.font,
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 22),
     )
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         str(player.ep) + "/" + str(player.adj_maxep),
         g.font,
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 39),
@@ -506,41 +507,41 @@ def refresh_stat_display():
         config.COLORS["light_gray"],
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 55, 50, 80),
     )
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         str(player.adj_attack),
         g.font,
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 55),
     )
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         str(player.adj_defense),
         g.font,
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 70),
     )
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         str(player.gold),
         g.font,
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 85),
     )
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         str(player.level),
         g.font,
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 100),
     )
     tmp = str(player.exp_till_level())
     if tmp == "9999":
-        g.print_string(
-            g.screen,
+        widgets.print_string(
+            screen,
             str(player.exp) + "/----",
             g.font,
             (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 115),
         )
     else:
-        g.print_string(
-            g.screen,
+        widgets.print_string(
+            screen,
             str(player.exp) + "/" + str(player.exp_till_level() + player.exp),
             g.font,
             (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 115),
@@ -1213,7 +1214,7 @@ def init_window_inv():
     # Create the main inv box.
     # The +20 is just "wiggle room", to prevent the length of the name
     # affecting the dimensions.
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (base_x, base_y),
         (
             (config.TILESIZE * main.mapsizex) / 2 + g.hpbar_width + 15 - base_x,
@@ -1237,21 +1238,21 @@ def init_window_inv():
         (config.TILESIZE * main.mapsizey - total_height) / 2,
     )
     text = "Name:"
-    g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 5), align=2)
+    widgets.print_string(screen, text, g.font, (label_start[0], label_start[1] + 5), align=2)
     text = "HP:"
-    g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 22), align=2)
+    widgets.print_string(screen, text, g.font, (label_start[0], label_start[1] + 22), align=2)
     text = "MP:"
-    g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 39), align=2)
+    widgets.print_string(screen, text, g.font, (label_start[0], label_start[1] + 39), align=2)
     text = "Attack:"
-    g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 55), align=2)
+    widgets.print_string(screen, text, g.font, (label_start[0], label_start[1] + 55), align=2)
     text = "Defense:"
-    g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 70), align=2)
+    widgets.print_string(screen, text, g.font, (label_start[0], label_start[1] + 70), align=2)
     text = "Gold:"
-    g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 85), align=2)
+    widgets.print_string(screen, text, g.font, (label_start[0], label_start[1] + 85), align=2)
     text = "Level:"
-    g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 100), align=2)
+    widgets.print_string(screen, text, g.font, (label_start[0], label_start[1] + 100), align=2)
     text = "XP:"
-    g.print_string(g.screen, text, g.font, (label_start[0], label_start[1] + 115), align=2)
+    widgets.print_string(screen, text, g.font, (label_start[0], label_start[1] + 115), align=2)
 
     # bindings
     menu_bind_keys()

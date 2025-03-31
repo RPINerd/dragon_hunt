@@ -17,6 +17,7 @@ import main
 import options
 import save_mgmt
 import utils
+import widgets
 from modloader import read_maps
 from player import player
 
@@ -99,7 +100,7 @@ def refresh_name() -> None:
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10, 280, 14),
     )
     tmp_name = name_stat[:curr_name_loc] + "|" + name_stat[curr_name_loc:]
-    g.print_string(
+    widgets.print_string(
         screen,
         "Name: " + tmp_name,
         g.font,
@@ -254,13 +255,13 @@ def begin_game(loadgame_name: str = "") -> bool:
         return False
     already_started_game = 1
 
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (pygscreen.SCREEN_WIDTH / 4, pygscreen.SCREEN_HEIGHT / 3),
         (pygscreen.SCREEN_WIDTH / 2, pygscreen.SCREEN_HEIGHT / 3),
         "black",
         "light_gray",
     )
-    g.print_string(
+    widgets.print_string(
         screen, "Starting game. Please wait", g.font, (pygscreen.SCREEN_WIDTH / 2, pygscreen.SCREEN_HEIGHT / 2), align=1
     )
     pygame.display.flip()
@@ -361,7 +362,7 @@ def refresh_help(string):
     start_xy = (15, button_start + button_height / 2)
     size = (180, 14)
     screen.fill(config.COLORS["very_dark_blue"], (start_xy[0], start_xy[1], size[0], size[1]))
-    g.print_string(screen, string, g.font, start_xy, config.COLORS["white"])
+    widgets.print_string(screen, string, g.font, start_xy, config.COLORS["white"])
 
 
 def key_handler(key_name) -> bool:
@@ -539,43 +540,46 @@ def init_window() -> None:
 
 def refresh_new_game() -> None:
     """Refresh the new game screen"""
-    g.create_norm_box(
-        (config.TILESIZE * main.mapsizex / 4, config.TILESIZE * main.mapsizey / 3),
-        (config.TILESIZE * main.mapsizex / 2, config.TILESIZE * main.mapsizey / 3),
+    quarter_width = config.TILESIZE * main.mapsizex / 4
+    third_height = config.TILESIZE * main.mapsizey / 3
+    half_width = config.TILESIZE * main.mapsizex / 2
+    widgets.bordered_box(screen,
+        (quarter_width, third_height),
+        (half_width, third_height),
     )
-    g.print_string(
+    widgets.print_string(
         screen,
         "Name: " + name_stat,
         g.font,
-        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10),
+        (quarter_width + 10, third_height + 10),
     )
-    g.print_string(
+    widgets.print_string(
         screen,
         "HP: " + str(hp_stat),
         g.font,
-        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 25),
+        (quarter_width + 10, third_height + 25),
     )
-    g.print_string(
+    widgets.print_string(
         screen,
         "MP: " + str(ep_stat),
         g.font,
-        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 40),
+        (quarter_width + 10, third_height + 40),
     )
-    g.print_string(
+    widgets.print_string(
         screen,
         "Attack: " + str(attack_stat),
         g.font,
-        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 55),
+        (quarter_width + 10, third_height + 55),
     )
-    g.print_string(
+    widgets.print_string(
         screen,
         "Defense: " + str(defense_stat),
         g.font,
-        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 70),
+        (quarter_width + 10, third_height + 70),
     )
-    g.print_string(
+    widgets.print_string(
         screen,
         "Gold: " + str(gold_stat),
         g.font,
-        (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 85),
+        (quarter_width + 10, third_height + 85),
     )

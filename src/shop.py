@@ -27,6 +27,7 @@ import g
 import game_screen as pygscreen
 import item
 import main
+import widgets
 from player import player
 
 screen = pygscreen.get_screen()
@@ -70,7 +71,7 @@ def refresh_buttons() -> None:
         return
     prev_button = config.mut["CURR_BUTTON"]
 
-    g.create_norm_box((temp_button_x, temp_button_y), (temp_button_width, config.BUTTONS["sell.png"].get_height()))
+    widgets.bordered_box(screen, (temp_button_x, temp_button_y), (temp_button_width, config.BUTTONS["sell.png"].get_height()))
 
     if config.mut["CURR_BUTTON"] == 0:
         screen.blit(config.BUTTONS["sell_sel.png"], (temp_button_x, temp_button_y))
@@ -104,26 +105,26 @@ def set_details(name: str, cost: int, value: int, power: int, description: str, 
     """
     screen.fill(config.COLORS["light_gray"], (canvas_x_start + temp_canvas_width, canvas_y_start + 25, 137, 190))
 
-    g.print_string(g.screen, name, g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 25))
+    widgets.print_string(screen, name, g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 25))
 
     if inv_or_shop == "shop":
         if cost:
-            g.print_string(
-                g.screen, "Cost: " + str(cost), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
+            widgets.print_string(
+                screen, "Cost: " + str(cost), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
             )
     elif inv_or_shop == "inv" and value:
-        g.print_string(
+        widgets.print_string(
             screen, "Value: " + str(value), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
         )
 
     if not power or power == "-1":
         pass
     else:
-        g.print_string(
-            g.screen, "Power: " + str(power), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 55)
+        widgets.print_string(
+            screen, "Power: " + str(power), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 55)
         )
 
-    g.print_multiline(g.screen, description, g.font, 130, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 70))
+    widgets.print_paragraph(screen, description, g.font, 130, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 70))
 
     pygame.display.flip()
 
@@ -191,7 +192,7 @@ def refresh_shop():
     # per-item borders
     for y in range(shop_height):
         for x in range(shop_width):
-            g.create_norm_box(
+            widgets.bordered_box(screen,
                 (
                     canvas_x_start + x * config.TILESIZE + 2 * (x + 1),
                     canvas_y_start + y * config.TILESIZE + 2 * (y + 1),
@@ -201,7 +202,7 @@ def refresh_shop():
             )
     for y in range(shop_height):
         for x in range(shop_width):
-            g.create_norm_box(
+            widgets.bordered_box(screen,
                 (
                     temp_canvas_width * 2 + canvas_x_start + x * config.TILESIZE + 2 * (x + 1),
                     canvas_y_start + y * config.TILESIZE + 2 * (y + 1),
@@ -212,7 +213,7 @@ def refresh_shop():
 
     # if the shop is selected, draw a selection box around the current item.
     if curr_focus == 1:
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 (
                     canvas_x_start
@@ -243,7 +244,7 @@ def refresh_shop():
     invpos = 0
     # if the inv is selected, draw a selection box around the current item.
     if curr_focus == 0:
-        g.create_norm_box(
+        widgets.bordered_box(screen,
             (
                 canvas_x_start + (curr_item % shop_width) * config.TILESIZE + 2 * ((curr_item % shop_width) + 1),
                 canvas_y_start + (curr_item / shop_width) * config.TILESIZE + 2 * ((curr_item / shop_width) + 1),
@@ -270,13 +271,13 @@ def refresh_shop():
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 26, 120, 25),
     )
 
-    g.print_string(
+    widgets.print_string(
         screen,
         "Gold: " + str(player.gold),
         g.font,
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 26),
     )
-    g.print_string(
+    widgets.print_string(
         screen,
         "Skill Points: " + str(player.skillpoints),
         g.font,
@@ -593,7 +594,7 @@ def init_window_shop(store_type_input: str) -> None:
     global bgcolour
     bgcolour = "light_grey"
 
-    g.create_norm_box((canvas_x_start - 2, canvas_y_start - 19), (temp_canvas_width * 3 + 3, temp_canvas_height + 20))
+    widgets.bordered_box(screen, (canvas_x_start - 2, canvas_y_start - 19), (temp_canvas_width * 3 + 3, temp_canvas_height + 20))
 
     global curr_item
     curr_item = 0
@@ -608,12 +609,12 @@ def init_window_shop(store_type_input: str) -> None:
             store_num = i
             break
 
-    g.create_norm_box((canvas_x_start, canvas_y_start), (temp_canvas_width - 1, temp_canvas_height - 1))
+    widgets.bordered_box(screen, (canvas_x_start, canvas_y_start), (temp_canvas_width - 1, temp_canvas_height - 1))
 
     # per-item borders
     for y in range(shop_height):
         for x in range(shop_width):
-            g.create_norm_box(
+            widgets.bordered_box(screen,
                 (
                     canvas_x_start + x * config.TILESIZE + 2 * (x + 1),
                     canvas_y_start + y * config.TILESIZE + 2 * (y + 1),
@@ -622,14 +623,14 @@ def init_window_shop(store_type_input: str) -> None:
                 inner_color="dh_green",
             )
 
-    g.create_norm_box(
+    widgets.bordered_box(screen,
         (temp_canvas_width * 2 + canvas_x_start, canvas_y_start), (temp_canvas_width - 1, temp_canvas_height - 1)
     )
 
     # per-item borders
     for y in range(shop_height):
         for x in range(shop_width):
-            g.create_norm_box(
+            widgets.bordered_box(screen,
                 (
                     temp_canvas_width * 2 + canvas_x_start + x * config.TILESIZE + 2 * (x + 1),
                     canvas_y_start + y * config.TILESIZE + 2 * (y + 1),
@@ -639,11 +640,11 @@ def init_window_shop(store_type_input: str) -> None:
             )
 
     # Info labels
-    g.print_string(
+    widgets.print_string(
         screen, "Inventory", g.font, (canvas_x_start + (temp_canvas_width * 1) / 2, canvas_y_start - 15), align=1
     )
 
-    g.print_string(
+    widgets.print_string(
         screen,
         g.shops[store_num].name,
         g.font,
