@@ -4,6 +4,7 @@ from os import listdir
 
 import config
 import g
+import utils
 
 
 # Item definition.
@@ -176,7 +177,7 @@ def additem(item_filename: str) -> None:
     item[item_array_loc].picturename = None
     item[item_array_loc].scripting = []
 
-    item_file = g.read_script_file("/data/items/" + item_filename)
+    item_file = utils.read_script_file("/data/items/" + item_filename)
 
     # go through all lines of the file
     cur_line = 0

@@ -6,7 +6,7 @@ from random import random
 from icecream import ic
 
 import config
-import g
+import utils
 
 
 class MonsterGroup:
@@ -113,7 +113,7 @@ def read_monster() -> None:
     global monster_groups
     monster_groups = []
     cur_group = -1
-    monster_file = g.read_script_file("/data/monsters.txt")
+    monster_file = utils.read_script_file("/data/monsters.txt")
 
     # go through all lines of the file
     for monster_line in monster_file:
@@ -157,7 +157,7 @@ def addmonster(filename: str) -> None:
 
     curr_mode = 0  # are we reading in a script (1) or variables (0)?
 
-    monster_file = g.read_script_file("/data/monsters/" + filename)
+    monster_file = utils.read_script_file("/data/monsters/" + filename)
     # go through all lines of the file
     for fline in monster_file:
         monster_line = fline.strip()

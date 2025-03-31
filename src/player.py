@@ -247,6 +247,20 @@ class Player:
                 return i
         return -1
 
+    def add_skill(self, skill_loc: int) -> int:
+        """
+        Add a skill to the player's skill list.
+
+        Args:
+            skill_loc (int): The index of the skill in the player's skill list.
+        Returns:
+            (int): 1 if the skill was added, 0 if it was already acquired.
+        """
+        if self.skill[skill_loc][5] == 1:
+            return 0
+        self.skill[skill_loc][5] = 1
+        return 1
+
     def give_gold(self, gold: int) -> None:
         """
         Give gold to the player.

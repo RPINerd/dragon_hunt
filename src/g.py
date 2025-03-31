@@ -1,15 +1,12 @@
 """This was originally a 'globals' file, but is currently in the process of being refactored largely into a new config file"""
 
 # needed for save/load game
-from os import path
-from pathlib import Path
 
 import pygame
 from icecream import ic
 
 import config
 import game_screen as pygscreen
-from player import player
 from scripting import *
 
 # This is the screen that will be used for the game.
@@ -55,115 +52,6 @@ break_one_loop = 0
 unclean_screen = False
 
 clock = pygame.time.Clock()
-
-
-# skills array. Each skill is a separate line in the array. Each line goes:
-# name, effect, level, price, description, acquired, scripting, picture.
-# effect is an integer that tells battle.py which case in a select to pick.
-# (0=Rage, 1=Sneak, 2=Frenzy, 3=Dismember, 4=Scripted (battle),
-# 5=Scripted (out of battle), 6=Scripted (both).)
-# level is the skillpoints required to get the skill,
-# price is the ep needed to use.
-# acquired tells if the skill has already been learned by the player.
-# scripting is an array (that may be empty) that describes the scripting run on use.
-# picture is the picture used to show that skill.
-
-
-# Add a skill to the skill[] array
-def addskill(name: str, effect: int, level: int, price: int, description: str, scripting: list = [], picture: str = "items/rage.png"):
-    player.skill.append([])
-    i = len(player.skill)
-    player.skill[i - 1].append(name)
-    player.skill[i - 1].append(int(effect))
-    player.skill[i - 1].append(int(level))
-    player.skill[i - 1].append(int(price))
-    player.skill[i - 1].append(description)
-    player.skill[i - 1].append(0)
-    player.skill[i - 1].append(scripting)
-    player.skill[i - 1].append(picture)
-
-
-# gives the player a skill; takes the location in skill[] as input
-def add_skill(skill_loc):
-    if player.skill[skill_loc][5] == 1:
-        return 0
-    player.skill[skill_loc][5] = 1
-    return 1
-
-
-# Load the skills. Requires config.MODULES_DIR to be set
-def read_skills():
-    # Add built-in skills.
-    addskill("Rage", 0, 1, 10, "Gives you increased damage for the rest of a battle", picture="items/rage.png")
-    addskill("Sneak Away", 1, 1, 10, "Attempts to leave a battle.", picture="items/sneak_away.png")
-    addskill("Dismember", 3, 2, 20, "Your next attack will do maximum damage, and ignore armor", picture="items/bastard_sword.png")
-    addskill("Frenzy", 2, 2, 30, "Your next attack will try to hit more than once", picture="items/frenzy.png")
-    if path.exists(config.MODULES_DIR + "/data/skills.txt"):
-        temp_skills = read_script_file("/data/skills.txt")
-
-    # temp storage for the skill data
-    temp_skill_name = ""
-    temp_skill_level = 0
-    temp_skill_type = 4
-    temp_skill_price = 0
-    temp_skill_description = ""
-    temp_skill_scripting = []
-    # Are we entering skill data (0) or scripting (1)?
-    data_or_scripting = 0
-
-    for line in temp_skills:
-        line_strip = line.strip()
-        if line_strip[0] == ":":
-            # switch between data or scripting
-            if line_strip[1:].lower() == "scripting":
-                data_or_scripting = 1
-            elif line_strip[1:].lower() == "data":
-                data_or_scripting = 0
-            else:  # Or just input a new skill.
-                # If we have any data, add the previous skill
-                if temp_skill_name != "":
-                    addskill(
-                        temp_skill_name,
-                        temp_skill_type,
-                        temp_skill_level,
-                        temp_skill_price,
-                        temp_skill_description,
-                        temp_skill_scripting,
-                        temp_skill_picture,
-                    )
-
-                temp_skill_name = line_strip[1:]
-                temp_skill_level = 0
-                temp_skill_type = 4
-                temp_skill_price = 0
-                temp_skill_description = ""
-                temp_skill_scripting = []
-                temp_skill_picture = "items/rage.png"
-        elif data_or_scripting == 0:
-            command = line_strip.split("=", 1)[0].lower().strip()
-            value = line_strip.split("=", 1)[1].strip()
-            if command == "level":
-                temp_skill_level = value
-            elif command == "price":
-                temp_skill_price = value
-            elif command == "type":
-                temp_skill_type = value
-            elif command == "description":
-                temp_skill_description = value
-            elif command == "picture":
-                temp_skill_picture = value
-        else:
-            temp_skill_scripting.append(line_strip)
-    if not temp_skill_name:
-        addskill(
-            temp_skill_name,
-            temp_skill_type,
-            temp_skill_level,
-            temp_skill_price,
-            temp_skill_description,
-            temp_skill_scripting,
-            temp_skill_picture,
-        )
 
 
 # Returns the symbol of the given tile. X and Y are absolute coords.
@@ -224,53 +112,6 @@ def mapname2zgrid(name):
             return i
     ic("file " + name + " not found")
     return -1
-
-
-def read_script_file(file_name: str | Path, from_editor: int = 0) -> list[str]:
-    """
-    Parse a script file and return a list of commands/scripts
-
-    The from_editor parameter is used to determine if the call is coming from the map
-    editor or not. If it is, the script will be returned as-is, without any parsing.
-
-    TODO if the file provided is a path, could simplify the calling to not require str concat
-
-    Args:
-        file_name (str): The name of the file to read
-        from_editor (int, optional): 1 if being called from editor. Defaults to 0.
-
-    Returns:
-        list[str]: The scripting commands in the file
-    """
-    temp_array = []
-    file = Path.open(config.MODULES_DIR + file_name)
-    temp_array.extend(file.readlines())
-    file.close()
-    if from_editor == 0:
-        temp_array = interpret_lines(temp_array)
-    return temp_array
-
-
-# Takes an array of lines, and deals with comments, empty lines,
-# and line-continuation, to properly interpret the scripting.
-def interpret_lines(temp_array):
-    cur_line = 0
-    while True:
-        if cur_line >= len(temp_array):
-            break
-        # strip out spaces/tabs
-        temp_array[cur_line] = temp_array[cur_line].strip()
-        # ignore blank lines and comments
-        if temp_array[cur_line][:1] == "#" or temp_array[cur_line] == "":
-            temp_array.pop(cur_line)
-            continue
-        # allow the \ line-continuation character.
-        while temp_array[cur_line][-1:] == "\\":  # really a single backslash, BTW.
-            temp_array[cur_line] = temp_array[cur_line][:-1] + temp_array[cur_line + 1][:-1].strip()
-            temp_array.pop(cur_line + 1)
-            temp_array[cur_line].strip()
-        cur_line += 1
-    return temp_array
 
 
 # create the fonts needed.

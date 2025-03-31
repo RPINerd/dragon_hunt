@@ -11,8 +11,10 @@ import g
 
 # from scripting import Map  # TODO make map its own file/module
 import scripting
+import utils
 from item import read_items
 from monster import read_monster
+from player import player
 from scripting import read_scripts, read_shops
 
 
@@ -139,7 +141,7 @@ def read_perturn() -> None:
     temp_cur_turns = []
     for i in range(30):
         g.per_turn_script.append([])
-    per_turn_lines = g.read_script_file("/data/perturn.txt")  # TODO
+    per_turn_lines = utils.read_script_file("/data/perturn.txt")  # TODO
     for fline in per_turn_lines:
         line = fline.strip()
         if line[:1] == ":":  # start defining more tiles.
@@ -180,6 +182,134 @@ def read_settings() -> None:
                 config.FULLSCREEN = int(line_value)
             else:
                 config.BINDINGS[line_key.lower()] = int(line_value)
+
+
+def read_skills() -> None:
+    """
+    Read the skills file for the selected module
+
+    TODO the players owned skills should be part of the player object, not a global variable
+
+    Each skill is a list of properties in the config.SKILLS object.
+    Each line contains:
+        name, effect, level, price, description, acquired, scripting, picture.
+
+    Effect is an integer that tells battle.py which case in a select to pick.
+    (0=Rage, 1=Sneak, 2=Frenzy, 3=Dismember, 4=Scripted (battle), 5=Scripted (out of battle), 6=Scripted (both).)
+    Level is the skillpoints required to get the skill,
+    Price is the ep needed to use.
+    Acquired tells if the skill has already been learned by the player.
+    Scripting is an array (that may be empty) that describes the scripting run on use.
+    Picture is the picture used to show that skill.
+    """
+    if path.exists(config.MODULES_DIR + "/data/skills.txt"):
+        temp_skills = utils.read_script_file("/data/skills.txt")
+
+    # Built-in/standard skills
+    player.skill.append([
+        "Rage",
+        0,
+        1,
+        10,
+        "Gives you increased damage for the rest of a battle",
+        1,
+        [],
+        "items/rage.png"])
+    player.skill.append([
+        "Sneak Away",
+        1,
+        1,
+        10,
+        "Attempts to leave a battle.",
+        1,
+        [],
+        "items/sneak_away.png"])
+    player.skill.append([
+        "Dismember",
+        3,
+        2,
+        20,
+        "Your next attack will do maximum damage, and ignore armor",
+        1,
+        [],
+        "items/bastard_sword.png"])
+    player.skill.append([
+        "Frenzy",
+        2,
+        2,
+        30,
+        "Your next attack will try to hit more than once",
+        1,
+        [],
+        "items/frenzy.png"])
+
+    # temp storage for the skill data
+    temp_skill_name = ""
+    temp_skill_level = 0
+    temp_skill_type = 4
+    temp_skill_price = 0
+    temp_skill_description = ""
+    temp_skill_scripting = []
+    temp_skill_acquired = 0
+    temp_skill_picture = "items/rage.png"
+    # Are we entering skill data (0) or scripting (1)?
+    data_or_scripting = 0
+
+    for line in temp_skills:
+        line_strip = line.strip()
+        if line_strip[0] == ":":
+            # switch between data or scripting
+            if line_strip[1:].lower() == "scripting":
+                data_or_scripting = 1
+            elif line_strip[1:].lower() == "data":
+                data_or_scripting = 0
+            else:  # Or just input a new skill.
+                # If we have any data, add the previous skill
+                if temp_skill_name:
+                    player.skill.append([
+                        temp_skill_name,
+                        temp_skill_type,
+                        temp_skill_level,
+                        temp_skill_price,
+                        temp_skill_description,
+                        temp_skill_acquired,
+                        temp_skill_scripting,
+                        temp_skill_picture,
+                    ])
+
+                temp_skill_name = line_strip[1:]
+                temp_skill_level = 0
+                temp_skill_type = 4
+                temp_skill_price = 0
+                temp_skill_description = ""
+                temp_skill_scripting = []
+                temp_skill_picture = "items/rage.png"
+        elif data_or_scripting == 0:
+            command = line_strip.split("=", 1)[0].lower().strip()
+            value = line_strip.split("=", 1)[1].strip()
+            if command == "level":
+                temp_skill_level = value
+            elif command == "price":
+                temp_skill_price = value
+            elif command == "type":
+                temp_skill_type = value
+            elif command == "description":
+                temp_skill_description = value
+            elif command == "picture":
+                temp_skill_picture = value
+        else:
+            temp_skill_scripting.append(line_strip)
+    if not temp_skill_name:
+        player.skill.append([
+            temp_skill_name,
+            temp_skill_type,
+            temp_skill_level,
+            temp_skill_price,
+            temp_skill_description,
+            temp_skill_acquired,
+            temp_skill_scripting,
+            temp_skill_picture,
+        ])
 
 
 def read_variables() -> None:
@@ -244,7 +374,7 @@ def init_gamedata() -> None:
 
     TODO "read maps" has a nifty bar that I should emulate throughout the other loads
     TODO refactor so that everyone just uses pygscreen.get_screen() instead of screen
-    TODO refactor this to just use confiscreensizes across everything
+    TODO refactor this to just use config.screensizes across everything
 
     Returns:
         None
@@ -258,7 +388,7 @@ def init_gamedata() -> None:
     ic("Read items")
     read_items()
     ic("Read skills")
-    g.read_skills()  # TODO
+    read_skills()
     ic("Read monsters")
     read_monster()
     ic("Read variables")

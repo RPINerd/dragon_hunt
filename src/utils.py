@@ -1,4 +1,5 @@
 """"""
+from pathlib import Path
 from random import random
 
 import pygame
@@ -48,3 +49,61 @@ def die_roll(dice: int, sides: int, modfy: int = 0) -> int:
         sum += die
 
     return sum
+
+
+def read_script_file(file_name: str | Path, from_editor: int = 0) -> list[str]:
+    """
+    Parse a script file and return a list of commands/scripts
+
+    The from_editor parameter is used to determine if the call is coming from the map
+    editor or not. If it is, the script will be returned as-is, without any parsing.
+
+    TODO if the file provided is a path, could simplify the calling to not require str concat
+    TODO switch to a context manager for file opening, merge in the interpret lines logic
+    TODO error handling for file not found, etc.
+
+    Args:
+        file_name (str): The name of the file to read
+        from_editor (int, optional): 1 if being called from editor. Defaults to 0.
+
+    Returns:
+        list[str]: The scripting commands in the file
+    """
+
+    def interpret_lines(script_lines: list[str]) -> list[str]:
+        """
+        Interpret lines of a script file.
+
+        Deals with comments, empty lines, and line-continuation to properly interpret the scripting.
+
+        Args:
+            script_lines (list[str]): The lines of the script file to interpret.
+
+        Returns:
+            list[str]: The interpreted lines of the script file.
+        """
+        cur_line = 0
+        while True:
+            if cur_line >= len(script_lines):
+                break
+            # strip out spaces/tabs
+            script_lines[cur_line] = script_lines[cur_line].strip()
+            # ignore blank lines and comments
+            if script_lines[cur_line][:1] == "#" or not script_lines[cur_line]:
+                script_lines.pop(cur_line)
+                continue
+            # allow the \ line-continuation character.
+            while script_lines[cur_line][-1:] == "\\":  # really a single backslash, BTW.
+                script_lines[cur_line] = script_lines[cur_line][:-1] + script_lines[cur_line + 1][:-1].strip()
+                script_lines.pop(cur_line + 1)
+                script_lines[cur_line].strip()
+            cur_line += 1
+        return script_lines
+
+    temp_array = []
+    file = Path.open(config.MODULES_DIR + file_name)
+    temp_array.extend(file.readlines())
+    file.close()
+    if from_editor == 0:
+        return interpret_lines(temp_array)
+    return temp_array

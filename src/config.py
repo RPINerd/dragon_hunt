@@ -65,6 +65,7 @@ DICE: list[list[int]] = [[], [], [], [], []]  # Array of dice for the player
 DEFAULT_NAME: str = "Alfred"  # Default name for the player
 ICONS: dict[str,] = {}
 MAPS: list = []
+SKILLS: list[list[str | int]] = []
 SOUNDS: dict[str, dict[int, pygame.Sound]] = {}
 TILES: dict[str,] = {}
 

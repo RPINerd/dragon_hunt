@@ -545,7 +545,7 @@ def script_addskill(x: int, y: int, z: int, argument_array):  # add a skill
     if temp == -1:
         ic("Unknown skill: " + argument_array[0][0][1:-1])
         return 0
-    return g.add_skill(temp)
+    return player.add_skill(temp)
 
 
 def script_attack(x: int, y: int, z: int, argument_array):  # cause creature to attack
@@ -819,7 +819,7 @@ def script_hero(x: int, y: int, z: int, argument_array) -> str | None:
         return "bad"
 
     player.cur_hero = "people/" + argument_array[0][0][1:-1] + ".png"
-    g.g.allow_change_hero = 0
+    g.allow_change_hero = 0
     main.refreshmap()
     return None
 
@@ -884,7 +884,7 @@ def script_if(x: int, y: int, z: int, argument_array):
         if line_return1 >= line_return2:
             return "if"
         return "else"
-    if compare == "=" or compare == "==":
+    if compare in {"=", "=="}:
         if line_return1 == line_return2:
             return "if"
         return "else"
@@ -925,7 +925,7 @@ def script_inv(x: int, y: int, z: int, argument_array):  # inventory functions.
 
     temp = item.finditem(argument_array[1][0][1:-1])
     if temp == -1:
-        ic("Item " + argument_array[1][0][1:-1] + " does not exist.")
+        ic(f"Item {argument_array[1][0][1:-1]} does not exist.")
         return "bad"
 
     switch2 = argument_array[0][0][1:-1].lower()

@@ -9,8 +9,8 @@ from icecream import ic
 
 import action
 import config
-import g
 import item
+import utils
 
 
 # map data. Class tile contains data on each tile,
@@ -117,7 +117,7 @@ class Map:
         # grab the needed data from the file
         if not self.name:
             return
-        map_file = g.read_script_file("/data/maps/" + self.name, from_editor)
+        map_file = utils.read_script_file("/data/maps/" + self.name, from_editor)
 
         # current mode. 0 for the actual map, 1 for monsters,
         # 2 for tile defines, 3 for per-tile info
@@ -293,10 +293,10 @@ def read_scripts():
     global wingame_act
     global newgame_act
     global levelup_act
-    endgame = g.read_script_file("/data/endgame.txt")
-    wingame = g.read_script_file("/data/wingame.txt")
-    newgame = g.read_script_file("/data/newgame.txt")
-    levelup = g.read_script_file("/data/levelup.txt")
+    endgame = utils.read_script_file("/data/endgame.txt")
+    wingame = utils.read_script_file("/data/wingame.txt")
+    newgame = utils.read_script_file("/data/newgame.txt")
+    levelup = utils.read_script_file("/data/levelup.txt")
 
     for line in endgame:
         endgame_act.append(line)
