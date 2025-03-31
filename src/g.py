@@ -48,12 +48,12 @@ hpbar_width = 0
 per_turn_script = []
 
 # Used in place of some of the Tkinter variables.
+# ? Wut?
 break_one_loop = 0
 
 # used to decide whether or not to refresh (flip) the screen.
 unclean_screen = False
 
-global clock
 clock = pygame.time.Clock()
 
 

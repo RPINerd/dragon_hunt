@@ -55,11 +55,8 @@ global curr_message_num
 curr_message_num = 0
 
 
-global map_canvas
 map_canvas = pygame.Surface((1, 1))
-global map_over_canvas
 map_over_canvas = pygame.Surface((1, 1))
-global map_under_canvas
 map_under_canvas = pygame.Surface((1, 1))
 
 global key_down

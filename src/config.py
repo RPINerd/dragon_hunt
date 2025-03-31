@@ -1,23 +1,28 @@
 """Configuration settings for the Dragon Hunt game."""
+from pathlib import Path
 
+import pygame
 
 # Previously array_mods
-MODULES = ["DarkAges", "DragonHunt", " ", " ", " "]
-MODULES_DIR = ""
+MODULES: list[str] = ["DarkAges", "DragonHunt", " ", " ", " "]
+MODULES_DIR: str | Path = ""
 
 # Screen resolution
+SCREEN_WIDTH: int = 1024
+SCREEN_HEIGHT: int = 768
+FULLSCREEN: bool = False
 MUTE: bool = False
 
 # Tile size notes from original code:
 # size (in tiles) of the editor screen. 15 works well with 640x480,
 # 20 with 800x600, and 24 with 1024x768
-TILESIZE = 32
-MAPSIZE_X = 31
-MAPSIZE_Y = 23
-MAX_MAPSIZE = (0, 0)
+TILESIZE: int = 32
+MAPSIZE_X: int = 31
+MAPSIZE_Y: int = 23
+MAX_MAPSIZE: tuple[int, int] = (0, 0)
 
 # Number of lines to display in the scroller
-MESSAGE_LINES = 10
+MESSAGE_LINES: int = 10
 
 # Colors used in the game
 COLORS = {
@@ -67,7 +72,7 @@ DEBUG = False
 FASTBOOT = False  # Skip map preprocessing
 
 # Editor variables
-EDITOR_TILESIZE = 32  # Size of the editor screen (in tiles)
+EDITOR_TILESIZE: int = 32  # Size of the editor screen (in tiles)
 TILEGRID = False  # Whether or not to display the map grid
-EDITOR_MAPSIZE_X = 25
-EDITOR_MAPSIZE_Y = 25
+EDITOR_MAPSIZE_X: int = 25
+EDITOR_MAPSIZE_Y: int = 25

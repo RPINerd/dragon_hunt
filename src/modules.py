@@ -80,18 +80,19 @@ def load(selected_mod: str = "DragonHunt") -> None:
     pygame.display.set_icon(pygame.image.load("../data/icon.png"))
 
     config.MODULES_DIR = "../modules/" + selected_mod
-
+    screen_width = screen.get_width()
+    screen_height = screen.get_height()
     pygame.draw.rect(
         screen,
         config.COLORS["black"],
-        (config.SCREEN_WIDTH / 4, config.SCREEN_HEIGHT / 3, config.SCREEN_WIDTH / 2, config.SCREEN_HEIGHT / 3),
+        (screen_width / 4, screen_height / 3, screen_width / 2, screen_height / 3),
     )
 
     font = pygame.font.Font(None, 26)
     text = "Loading. Please wait..."
     text_surface = font.render(text, True, config.COLORS["white"])
     text_rect = text_surface.get_rect()
-    text_rect.center = (config.SCREEN_WIDTH / 2, config.SCREEN_HEIGHT / 2)
+    text_rect.center = (screen_width / 2, screen_height / 2)
     screen.blit(text_surface, text_rect)
 
     pygame.display.flip()

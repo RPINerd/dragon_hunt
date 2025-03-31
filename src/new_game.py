@@ -109,81 +109,81 @@ def refresh_name() -> None:
     g.unclean_screen = True
 
 
-def name_key_handler(key_name: int) -> int:
-    """"""
-    if key_name == pygame.K_BACKSPACE:
-        backspace_name()
-    elif key_name == config.BINDINGS["action"]:
-        return 1
-    elif key_name == config.BINDINGS["cancel"]:
-        global name_stat
-        global old_name
-        name_stat = old_name
-        return 1
-    elif key_name == config.BINDINGS["left"] or key_name == config.BINDINGS["up"]:
-        name_left()
-    elif key_name == config.BINDINGS["right"] or key_name == config.BINDINGS["down"]:
-        name_right()
-    elif key_name == pygame.K_HOME:
-        name_home()
-    elif key_name == pygame.K_END:
-        name_end()
-    else:
-        return 2
-    return 0
+# def name_key_handler(key_name: int) -> int:
+#     """"""
+#     if key_name == pygame.K_BACKSPACE:
+#         backspace_name()
+#     elif key_name == config.BINDINGS["action"]:
+#         return 1
+#     elif key_name == config.BINDINGS["cancel"]:
+#         global name_stat
+#         global old_name
+#         name_stat = old_name
+#         return 1
+#     elif key_name == config.BINDINGS["left"] or key_name == config.BINDINGS["up"]:
+#         name_left()
+#     elif key_name == config.BINDINGS["right"] or key_name == config.BINDINGS["down"]:
+#         name_right()
+#     elif key_name == pygame.K_HOME:
+#         name_home()
+#     elif key_name == pygame.K_END:
+#         name_end()
+#     else:
+#         return 2
+#     return 0
 
 
-def adjust_name(input_char: str) -> None:
-    """"""
-    global name_stat
-    global curr_name_loc
-    usable_chars = "`~!@#$%^&*()-_=+|[{]};:'\",<.>/? "
-    c = input_char
-    if not c:
-        return
-    if len(name_stat) > MAXNAMELEN:
-        return
-    if not c.isalnum() and c not in usable_chars:
-        return
-    name_stat = name_stat[:curr_name_loc] + input_char + name_stat[curr_name_loc:]
-    curr_name_loc += 1
+# def adjust_name(input_char: str) -> None:
+#     """"""
+#     global name_stat
+#     global curr_name_loc
+#     usable_chars = "`~!@#$%^&*()-_=+|[{]};:'\",<.>/? "
+#     c = input_char
+#     if not c:
+#         return
+#     if len(name_stat) > MAXNAMELEN:
+#         return
+#     if not c.isalnum() and c not in usable_chars:
+#         return
+#     name_stat = name_stat[:curr_name_loc] + input_char + name_stat[curr_name_loc:]
+#     curr_name_loc += 1
 
 
-def backspace_name() -> None:
-    """"""
-    global name_stat
-    global curr_name_loc
-    if curr_name_loc <= 0:
-        return
-    name_stat = name_stat[: curr_name_loc - 1] + name_stat[curr_name_loc:]
-    curr_name_loc -= 1
-    curr_name_loc = max(curr_name_loc, 0)
+# def backspace_name() -> None:
+#     """"""
+#     global name_stat
+#     global curr_name_loc
+#     if curr_name_loc <= 0:
+#         return
+#     name_stat = name_stat[: curr_name_loc - 1] + name_stat[curr_name_loc:]
+#     curr_name_loc -= 1
+#     curr_name_loc = max(curr_name_loc, 0)
 
 
-def name_left() -> None:
-    """"""
-    global curr_name_loc
-    curr_name_loc -= 1
-    curr_name_loc = max(curr_name_loc, 0)
+# def name_left() -> None:
+#     """"""
+#     global curr_name_loc
+#     curr_name_loc -= 1
+#     curr_name_loc = max(curr_name_loc, 0)
 
 
-def name_right() -> None:
-    """"""
-    global curr_name_loc
-    curr_name_loc += 1
-    curr_name_loc = min(curr_name_loc, len(name_stat))
+# def name_right() -> None:
+#     """"""
+#     global curr_name_loc
+#     curr_name_loc += 1
+#     curr_name_loc = min(curr_name_loc, len(name_stat))
 
 
-def name_home() -> None:
-    """"""
-    global curr_name_loc
-    curr_name_loc = 0
+# def name_home() -> None:
+#     """"""
+#     global curr_name_loc
+#     curr_name_loc = 0
 
 
-def name_end() -> None:
-    """"""
-    global curr_name_loc
-    curr_name_loc = len(name_stat)
+# def name_end() -> None:
+#     """"""
+#     global curr_name_loc
+#     curr_name_loc = len(name_stat)
 
 
 def reset_vars() -> None:
