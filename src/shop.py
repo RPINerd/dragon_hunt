@@ -73,19 +73,19 @@ def refresh_buttons() -> None:
     g.create_norm_box((temp_button_x, temp_button_y), (temp_button_width, config.BUTTONS["sell.png"].get_height()))
 
     if config.mut["CURR_BUTTON"] == 0:
-        g.screen.blit(config.BUTTONS["sell_sel.png"], (temp_button_x, temp_button_y))
+        screen.blit(config.BUTTONS["sell_sel.png"], (temp_button_x, temp_button_y))
     else:
-        g.screen.blit(config.BUTTONS["sell.png"], (temp_button_x, temp_button_y))
+        screen.blit(config.BUTTONS["sell.png"], (temp_button_x, temp_button_y))
 
     if config.mut["CURR_BUTTON"] == 1:
-        g.screen.blit(config.BUTTONS["leave_shop_sel.png"], (temp_button_x + leave_height, temp_button_y))
+        screen.blit(config.BUTTONS["leave_shop_sel.png"], (temp_button_x + leave_height, temp_button_y))
     else:
-        g.screen.blit(config.BUTTONS["leave_shop.png"], (temp_button_x + leave_height, temp_button_y))
+        screen.blit(config.BUTTONS["leave_shop.png"], (temp_button_x + leave_height, temp_button_y))
 
     if config.mut["CURR_BUTTON"] == 2:
-        g.screen.blit(config.BUTTONS["buy_sel.png"], (temp_button_x + buy_height, temp_button_y))
+        screen.blit(config.BUTTONS["buy_sel.png"], (temp_button_x + buy_height, temp_button_y))
     else:
-        g.screen.blit(config.BUTTONS["buy.png"], (temp_button_x + buy_height, temp_button_y))
+        screen.blit(config.BUTTONS["buy.png"], (temp_button_x + buy_height, temp_button_y))
 
     pygame.display.flip()
 
@@ -102,7 +102,7 @@ def set_details(name: str, cost: int, value: int, power: int, description: str, 
         description (str): The description of the item.
         inv_or_shop (str): Whether the item is in the inventory or shop.
     """
-    g.screen.fill(config.COLORS["light_gray"], (canvas_x_start + temp_canvas_width, canvas_y_start + 25, 137, 190))
+    screen.fill(config.COLORS["light_gray"], (canvas_x_start + temp_canvas_width, canvas_y_start + 25, 137, 190))
 
     g.print_string(g.screen, name, g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 25))
 
@@ -229,7 +229,7 @@ def refresh_shop():
     # draw the item pictures.
     for i in range(len(g.shops[store_num].itemlist)):
         if i != -1:
-            g.screen.blit(
+            screen.blit(
                 config.TILES[g.shops[store_num].itemlist[i].picture],
                 (
                     canvas_x_start
@@ -255,7 +255,7 @@ def refresh_shop():
     # draw the item pictures.
     for i in range(len(item.inv)):
         if item.inv[i] != -1:
-            g.screen.blit(
+            screen.blit(
                 config.TILES[item.item[item.inv[i]].picturename],
                 (
                     canvas_x_start + (i % shop_width) * config.TILESIZE + 2 * ((i % shop_width) + 1),
@@ -265,7 +265,7 @@ def refresh_shop():
             invpos += 1
 
     # set gold and skillpoints
-    g.screen.fill(
+    screen.fill(
         config.COLORS["light_gray"],
         (canvas_x_start + temp_canvas_width + 5, canvas_y_start + temp_canvas_height - 26, 120, 25),
     )

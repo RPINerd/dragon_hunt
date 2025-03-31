@@ -13,6 +13,7 @@ import game_screen as pygscreen
 import item
 import main
 import monster
+import utils
 from player import player
 
 if config.DEBUG:
@@ -21,6 +22,8 @@ if config.DEBUG:
 # set to 1 whenever the player really shouldn't be moving.
 global has_dialog
 has_dialog = 0
+
+screen = pygscreen.get_screen()
 
 
 def interpret_line(message: str) -> str:
@@ -680,10 +683,10 @@ def script_fade(x: int, y: int, z: int, argument_array):
     if argument_array[0][1] == 0:
         for i in range(40):
             g.pygame.time.wait(15)
-            g.screen.fill(config.COLORS["black"], (0, i * 12, pygscreen.SCREEN_WIDTH, 12))
-            g.screen.fill(config.COLORS["black"], (0, pygscreen.SCREEN_HEIGHT - i * 12 - 12, pygscreen.SCREEN_WIDTH, 12))
-            g.screen.fill(config.COLORS["black"], (0, pygscreen.SCREEN_HEIGHT / 2 + i * 12, pygscreen.SCREEN_WIDTH, 12))
-            g.screen.fill(config.COLORS["black"], (0, pygscreen.SCREEN_HEIGHT / 2 - i * 12 - 12, pygscreen.SCREEN_WIDTH, 12))
+            screen.fill(config.COLORS["black"], (0, i * 12, pygscreen.SCREEN_WIDTH, 12))
+            screen.fill(config.COLORS["black"], (0, pygscreen.SCREEN_HEIGHT - i * 12 - 12, pygscreen.SCREEN_WIDTH, 12))
+            screen.fill(config.COLORS["black"], (0, pygscreen.SCREEN_HEIGHT / 2 + i * 12, pygscreen.SCREEN_WIDTH, 12))
+            screen.fill(config.COLORS["black"], (0, pygscreen.SCREEN_HEIGHT / 2 - i * 12 - 12, pygscreen.SCREEN_WIDTH, 12))
             g.pygame.display.flip()
 
 

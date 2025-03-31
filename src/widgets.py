@@ -3,7 +3,9 @@ import pygame
 from icecream import ic
 
 import config
-import g
+import game_screen as pygscreen
+
+screen = pygscreen.get_screen()
 
 
 class Button:
@@ -14,7 +16,7 @@ class Button:
         self,
         coords: tuple[int, int],
         dimensions: tuple[int, int],
-        color,
+        color: pygame.typing.ColorLike,
         text: str = "",
         font: pygame.font = None,
         image: pygame.image = None
@@ -81,10 +83,10 @@ class Listbox:
             ic("Error in refresh_listbox(). len(lines_array)=" + str(len(lines_array)))
             return 0
 
-        g.screen.blit(self.list_surface, self.xy)
+        screen.blit(self.list_surface, self.xy)
 
         # selected:
-        g.screen.fill(
+        screen.fill(
             self.sel_color,
             (
                 self.xy[0] + 1,
@@ -98,8 +100,8 @@ class Listbox:
         txt_y_size = self.font.size("")
         for i in range(self.viewable_items):
             for j in range(self.lines_per_item):
-                g.print_string(
-                    g.screen,
+                print_string(
+                    screen,
                     lines_array[i * self.lines_per_item + j],
                     self.font,
                     (self.xy[0] + 4, self.xy[1] + (i * self.size[1]) / self.viewable_items + j * (txt_y_size[1] + 2)),
@@ -158,13 +160,13 @@ class Scrollbar:
     def refresh_scroll(self, start_item, total_items):
         start_item = min(start_item, total_items - self.viewable_items)
 
-        g.screen.blit(self.scroll_surface, self.xy)
+        screen.blit(self.scroll_surface, self.xy)
 
         # middle gripper
         self.start_y = self.size[0] + (self.scroll_area * start_item) / total_items
         self.size_y = (self.scroll_area * self.viewable_items) / total_items
 
-        g.screen.fill(self.fore_color, (self.xy[0] + 1, self.xy[1] + self.start_y, self.size[0] - 2, self.size_y))
+        screen.fill(self.fore_color, (self.xy[0] + 1, self.xy[1] + self.start_y, self.size[0] - 2, self.size_y))
 
     def is_over(self, xy):
         if (

@@ -7,7 +7,9 @@
 import pygame
 
 import config
+import game_screen as pygscreen
 import modules
+screen = pygscreen.get_screen()
 
 
 def main() -> None:

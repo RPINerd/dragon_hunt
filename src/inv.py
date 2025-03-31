@@ -282,8 +282,8 @@ def refresh_inner_buttons(screen_str: str) -> None:
     )
     y_start = (config.TILESIZE * main.mapsizey + inv_canvas_height) / 2
 
-    g.screen.blit(config.BUTTONS[first_image], (x_start, y_start))
-    g.screen.blit(config.BUTTONS[leave_image], (x_start + config.BUTTONS[screen_str + ".png"].get_width(), y_start))
+    screen.blit(config.BUTTONS[first_image], (x_start, y_start))
+    screen.blit(config.BUTTONS[leave_image], (x_start + config.BUTTONS[screen_str + ".png"].get_width(), y_start))
 
     pygame.display.flip()
 
@@ -482,7 +482,7 @@ def refresh_stat_display():
     # 	main.canvas_map.lift("bar")
 
     tmp_width = 52
-    g.screen.fill(
+    screen.fill(
         config.COLORS["light_gray"],
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 5, 50, 14),
     )
@@ -502,7 +502,7 @@ def refresh_stat_display():
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 39),
     )
 
-    g.screen.fill(
+    screen.fill(
         config.COLORS["light_gray"],
         (start_x + tmp_width, (config.TILESIZE * main.mapsizey - total_height) / 2 + 55, 50, 80),
     )
@@ -641,7 +641,7 @@ def drop_item() -> None:
 
     # Ask if the player really wants to drop it.
     tmp_surface = pygame.Surface((300, 200))
-    tmp_surface.blit(g.screen, (0, 0), (170, 140, 300, 200))
+    tmp_surface.blit(screen, (0, 0), (170, 140, 300, 200))
     if main.show_yesno("Drop your " + item.item[item.inv[item_to_delete]].name + "?"):
         screen.blit(tmp_surface, (170, 140))
         main.print_message("You drop your " + item.item[item.inv[curr_item]].name)
@@ -803,7 +803,7 @@ def menu_key_handler(key_name: int) -> bool:
         # then redisplaying it. Note that the -64 is to prevent the message
         # scroller from being clobbered
         old_screen_refresh = pygame.Surface((pygscreen.SCREEN_WIDTH, pygscreen.SCREEN_HEIGHT - 64))
-        old_screen_refresh.blit(g.screen, (0, 0))
+        old_screen_refresh.blit(screen, (0, 0))
         if config.mut["CURR_BUTTON"] == 0:
             open_use_item()
         elif config.mut["CURR_BUTTON"] == 1:
@@ -824,7 +824,7 @@ def menu_key_handler(key_name: int) -> bool:
         elif config.mut["CURR_BUTTON"] == 5:
             leave_inv()
             return True
-        g.screen.blit(old_screen_refresh, (0, 0))
+        screen.blit(old_screen_refresh, (0, 0))
     refresh_menu_buttons()
     refresh_stat_display()
 

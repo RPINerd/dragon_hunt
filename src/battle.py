@@ -24,6 +24,7 @@ from icecream import ic
 import action
 import config
 import g
+import game_screen as pygscreen
 import inv
 import main
 import monster
@@ -89,6 +90,8 @@ old_attack = 0
 # upper-left of the background/monster display.
 monster_start = (0, 0)
 
+screen = pygscreen.get_screen()
+
 
 # given an index in the monster array, return the y start of the monster.
 def y_start(mon_num):
@@ -100,7 +103,7 @@ def y_start(mon_num):
 # refreshes the battle view. Call after changing anything.
 def refresh():
     global monster_slashes
-    g.screen.fill(
+    screen.fill(
         config.COLORS["black"],
         (
             config.TILESIZE * main.half_mapx - background_pic.get_width() / 2 - 2,
@@ -109,7 +112,7 @@ def refresh():
             background_pic.get_height() + 2,
         ),
     )
-    g.screen.blit(
+    screen.blit(
         background_pic,
         (
             config.TILESIZE * main.half_mapx - background_pic.get_width() / 2 - 1,
@@ -126,10 +129,10 @@ def refresh():
         else:
             xstart = monster_start[0] + background_pic.get_width() / 2 + i * 40
         ystart = y_start(i)
-        g.screen.blit(monster_pic[i], (base_mon_hp_start[i], ystart))
+        screen.blit(monster_pic[i], (base_mon_hp_start[i], ystart))
 
         # 		if monster_slashes[i][0] == 1:
-        # 			g.screen.blit(config.BUTTONS["slash_attack.png"],
+        # 			screen.blit(config.BUTTONS["slash_attack.png"],
         # 				(base_mon_hp_start[i]+4, ystart+4))
 
         # Under (red) part of the monster hp display
@@ -150,9 +153,9 @@ def refresh():
         )
 
     # refresh the player
-    g.screen.blit(hero_pic, hero_loc)
+    screen.blit(hero_pic, hero_loc)
     # 	if monster_slashes[-1][0] == 1:
-    # 			g.screen.blit(config.BUTTONS["slash_attack.png"], (hero_loc[0]+4,hero_loc[1]+4))
+    # 			screen.blit(config.BUTTONS["slash_attack.png"], (hero_loc[0]+4,hero_loc[1]+4))
     # Under (red) part of the player hp display
     g.create_norm_box(
         (
@@ -225,28 +228,28 @@ def refresh():
         if monster_slashes[i][0] == 1:
             monster_slashes[i][0] = 0
             ystart = y_start(i)
-            tmp_surface.blit(g.screen, (0, 0), (base_mon_hp_start[i], ystart - 32, 32, 64))
+            tmp_surface.blit(screen, (0, 0), (base_mon_hp_start[i], ystart - 32, 32, 64))
             for j in range(13):
-                g.screen.blit(tmp_surface, (base_mon_hp_start[i], ystart - 32))
-                g.screen.blit(config.BUTTONS["slash_attack.png"], (base_mon_hp_start[i] + j, ystart + j))
+                screen.blit(tmp_surface, (base_mon_hp_start[i], ystart - 32))
+                screen.blit(config.BUTTONS["slash_attack.png"], (base_mon_hp_start[i] + j, ystart + j))
                 pygame.display.flip()
-            g.screen.blit(tmp_surface, (base_mon_hp_start[i], ystart - 32))
+            screen.blit(tmp_surface, (base_mon_hp_start[i], ystart - 32))
             pygame.display.flip()
     if monster_slashes[-1][0] == 1:
         monster_slashes[-1][0] = 0
-        tmp_surface.blit(g.screen, (0, 0), (hero_loc[0], hero_loc[1] - 32, 32, 64))
+        tmp_surface.blit(screen, (0, 0), (hero_loc[0], hero_loc[1] - 32, 32, 64))
         for j in range(13):
-            g.screen.blit(tmp_surface, (hero_loc[0], hero_loc[1] - 32))
-            g.screen.blit(config.BUTTONS["slash_attack.png"], (hero_loc[0] + j, hero_loc[1] + j))
+            screen.blit(tmp_surface, (hero_loc[0], hero_loc[1] - 32))
+            screen.blit(config.BUTTONS["slash_attack.png"], (hero_loc[0] + j, hero_loc[1] + j))
             pygame.display.flip()
-        g.screen.blit(tmp_surface, (hero_loc[0], hero_loc[1] - 32))
+        screen.blit(tmp_surface, (hero_loc[0], hero_loc[1] - 32))
         pygame.display.flip()
 
     # Draw the monster selection arrow if needed.
     # 	main.canvas_map.delete("monster_arrow")
     global active_button
     if active_button != -1:
-        g.screen.blit(
+        screen.blit(
             config.BUTTONS["sword_pointer.png"], (base_mon_hp_start[active_button], base_mon_hp_y_start[active_button] - 20)
         )
     # 		main.canvas_map.create_image(
@@ -599,7 +602,7 @@ def open_item_menu() -> None:
     if can_leave() == 1:
         return
     tmp_surface = pygame.Surface((300, 420))
-    tmp_surface.blit(g.screen, (0, 0), (170, 0, 300, 420))
+    tmp_surface.blit(screen, (0, 0), (170, 0, 300, 420))
     inv.open_inner_menu("use")
     bind_item_keys()
     inv.inner_cur_button = 0
@@ -624,7 +627,7 @@ def open_item_menu() -> None:
                 item_mouse_click(event.pos)
         if g.unclean_screen:
             pygame.display.flip()
-    g.screen.blit(tmp_surface, (170, 0))
+    screen.blit(tmp_surface, (170, 0))
     refresh()
     refresh_buttons()
     pygame.display.flip()
@@ -637,7 +640,7 @@ def open_skill_menu() -> None:
     if can_leave() == 1:
         return
     tmp_surface = pygame.Surface((300, 420))
-    tmp_surface.blit(g.screen, (0, 0), (170, 0, 300, 420))
+    tmp_surface.blit(screen, (0, 0), (170, 0, 300, 420))
     inv.open_inner_menu("skill")
     bind_skill_keys()
     inv.inner_cur_button = 0
@@ -662,7 +665,7 @@ def open_skill_menu() -> None:
                 skill_mouse_click(event.pos)
         if g.unclean_screen:
             pygame.display.flip()
-    g.screen.blit(tmp_surface, (170, 0))
+    screen.blit(tmp_surface, (170, 0))
     refresh()
     pygame.display.flip()
     bind_keys()
@@ -911,9 +914,9 @@ def inspect_monst() -> None:
     display_text += monster_list[tmp].description
 
     tmp_surface = pygame.Surface((300, 500))
-    tmp_surface.blit(g.screen, (0, 0), (170, 0, 300, 500))
+    tmp_surface.blit(screen, (0, 0), (170, 0, 300, 500))
     main.show_dialog(display_text)
-    g.screen.blit(tmp_surface, (170, 0))
+    screen.blit(tmp_surface, (170, 0))
     pygame.display.flip()
 
 
@@ -935,11 +938,11 @@ def refresh_buttons() -> None:
     elif config.mut["CURR_BUTTON"] == 4:
         quit_name = "quit_sel.png"
 
-    g.screen.blit(config.BUTTONS[attack_name], (attack_button_loc, button_y_start))
-    g.screen.blit(config.BUTTONS[use_name], (item_button_loc, button_y_start))
-    g.screen.blit(config.BUTTONS[skill_name], (skill_button_loc, button_y_start))
-    g.screen.blit(config.BUTTONS[inspect_name], (inspect_button_loc, button_y_start))
-    g.screen.blit(config.BUTTONS[quit_name], (run_button_loc, button_y_start))
+    screen.blit(config.BUTTONS[attack_name], (attack_button_loc, button_y_start))
+    screen.blit(config.BUTTONS[use_name], (item_button_loc, button_y_start))
+    screen.blit(config.BUTTONS[skill_name], (skill_button_loc, button_y_start))
+    screen.blit(config.BUTTONS[inspect_name], (inspect_button_loc, button_y_start))
+    screen.blit(config.BUTTONS[quit_name], (run_button_loc, button_y_start))
 
     pygame.display.flip()
 

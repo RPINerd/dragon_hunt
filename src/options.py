@@ -6,6 +6,8 @@ import pygame
 
 import config
 import g
+import game_screen as pygscreen
+screen = pygscreen.get_screen()
 
 # -1=none, 0=fullscreen, 1=difficulty, 2=custom key
 # 5=save, 6=reset, 7=cancel

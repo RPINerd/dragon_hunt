@@ -64,6 +64,8 @@ map_under_canvas = pygame.Surface((1, 1))
 global key_down
 key_down = [False, False, False, False]
 
+screen = pygscreen.get_screen()
+
 
 # Print a message in status box. Works with ~Action~ embedded commands.
 def print_message(message):
@@ -183,21 +185,21 @@ def refresh_inv_icon(redisplay=0):
     g.create_norm_box((info_top_x, info_top_y), (3 * iconsize, 7 * iconsize), "black", "dh_green")
 
     g.screen.blit(config.ICONS[inv_icon_image], (mapsizex * config.TILESIZE - 3 * iconsize, top_of_buttons))
-    g.screen.blit(config.ICONS[quit_icon_image], (mapsizex * config.TILESIZE - iconsize, top_of_buttons))
-    g.screen.blit(config.ICONS[save_icon_image], (mapsizex * config.TILESIZE - 2 * iconsize, top_of_buttons))
+    screen.blit(config.ICONS[quit_icon_image], (mapsizex * config.TILESIZE - iconsize, top_of_buttons))
+    screen.blit(config.ICONS[save_icon_image], (mapsizex * config.TILESIZE - 2 * iconsize, top_of_buttons))
 
     icon_x = info_top_x + 5
     icon_y = info_top_y + 5
 
-    g.screen.blit(config.ICONS["attack.png"], (icon_x, icon_y))
+    screen.blit(config.ICONS["attack.png"], (icon_x, icon_y))
     icon_y += iconsize
-    g.screen.blit(config.ICONS["defense.png"], (icon_x, icon_y))
+    screen.blit(config.ICONS["defense.png"], (icon_x, icon_y))
     icon_y += iconsize
-    g.screen.blit(config.ICONS["gold.png"], (icon_x, icon_y))
+    screen.blit(config.ICONS["gold.png"], (icon_x, icon_y))
     icon_y += iconsize
-    g.screen.blit(config.ICONS["level.png"], (icon_x, icon_y))
+    screen.blit(config.ICONS["level.png"], (icon_x, icon_y))
     icon_y += iconsize
-    g.screen.blit(config.ICONS["xp.png"], (icon_x, icon_y))
+    screen.blit(config.ICONS["xp.png"], (icon_x, icon_y))
     icon_y += iconsize
 
     stats_x = info_top_x + iconsize + 10
@@ -242,15 +244,15 @@ def refresh_tile(x, y, input_zgrid, xshift=0, yshift=0):
 def refreshhero() -> None:
     """Refresh the hero; faster than refreshing the whole map"""
     for picture in findtile(g.xgrid, g.ygrid, g.zgrid):
-        g.screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
+        screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
     if player.cur_hero not in config.TILES:
         ic(f"Warning: Hero {player.cur_hero} not found!")
         return
 
-    g.screen.blit(config.TILES[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
+    screen.blit(config.TILES[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
     for picture in config.MAPS[g.zgrid].field[g.ygrid][g.xgrid].addoverpix:
-        g.screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
+        screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
 
 # called to process the onload portion of a level. Called whenever entering
@@ -381,16 +383,16 @@ def debug_print_level():
 def redisplay_map(x: int = 0, y: int = 0) -> None:
     """Redraw the map, centered on the player."""
     if (x == 0 and y == 0) or player.hp <= 0:
-        g.screen.blit(map_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
-        g.screen.blit(map_over_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
+        screen.blit(map_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
+        screen.blit(map_over_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
     else:
         tmp_msg_scroller = pygame.Surface((384, 64))
         tmp_stat_box = pygame.Surface((60, 151))
-        tmp_msg_scroller.blit(g.screen, (0, 0), (0, 416, 384, 64))
-        tmp_stat_box.blit(g.screen, (0, 0), (580, 329, 60, 151))
+        tmp_msg_scroller.blit(screen, (0, 0), (0, 416, 384, 64))
+        tmp_stat_box.blit(screen, (0, 0), (580, 329, 60, 151))
         for i in range(16):
             tmp_time2 = pygame.time.get_ticks()
-            g.screen.blit(
+            screen.blit(
                 map_canvas,
                 (0, 0),
                 (
@@ -402,15 +404,15 @@ def redisplay_map(x: int = 0, y: int = 0) -> None:
             )
             tmp_key = player.cur_hero[:-4] + "_" + str(i % 2) + player.cur_hero[-4:]
             if tmp_key in config.TILES:
-                g.screen.blit(
+                screen.blit(
                     config.TILES[tmp_key],
                     ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE),
                 )
             elif player.cur_hero in config.TILES:
-                g.screen.blit(
+                screen.blit(
                     config.TILES[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE)
                 )
-            g.screen.blit(
+            screen.blit(
                 map_over_canvas,
                 (pygscreen.SCREEN_WIDTH / 2 - config.TILESIZE, pygscreen.SCREEN_HEIGHT / 2 - config.TILESIZE),
                 (
@@ -420,11 +422,11 @@ def redisplay_map(x: int = 0, y: int = 0) -> None:
                     config.TILESIZE * 3,
                 ),
             )
-            g.screen.blit(tmp_msg_scroller, (0, 416))
-            g.screen.blit(tmp_stat_box, (580, 329))
+            screen.blit(tmp_msg_scroller, (0, 416))
+            screen.blit(tmp_stat_box, (580, 329))
             pygame.display.flip()
-    g.screen.blit(map_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
-    g.screen.blit(map_over_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
+    screen.blit(map_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
+    screen.blit(map_over_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
     refreshhero()
     g.unclean_screen = True
 
@@ -731,7 +733,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
 
     # store the appearance before displaying the box.
     restore_surface = pygame.Surface((text_width, 480))
-    restore_surface.blit(g.screen, (0, 0), ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0, text_width, 480))
+    restore_surface.blit(screen, (0, 0), ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0, text_width, 480))
 
     # create the box around the text
     g.create_norm_box(
@@ -742,7 +744,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
     global button_height
     button_height = (pygscreen.SCREEN_HEIGHT - line_height) / 2 + line_height - 1
 
-    g.screen.blit(temp_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2 + 5, (pygscreen.SCREEN_HEIGHT - line_height) / 2 + 5))
+    screen.blit(temp_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2 + 5, (pygscreen.SCREEN_HEIGHT - line_height) / 2 + 5))
 
     # create the box around the buttons
     g.create_norm_box(
@@ -796,7 +798,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
                         g.unclean_screen = True
                 elif event.key == pygame.K_RETURN:
                     config.ALLOW_MOVE = True
-                    g.screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0))
+                    screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0))
                     if active_button == 1:
                         g.unclean_screen = True
                         return textbox_text
@@ -805,7 +807,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
                         return -1
                 elif event.key == pygame.K_ESCAPE:
                     config.ALLOW_MOVE = True
-                    g.screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0))
+                    screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0))
                     return -1
                 else:
                     if event.unicode.isalnum() == 0:
@@ -833,7 +835,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
                 change_button(event.pos)
                 if active_button != -1:
                     config.ALLOW_MOVE = True
-                    g.screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0))
+                    screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2, 0))
                     if active_button == 1:
                         g.unclean_screen = True
                         return textbox_text
@@ -856,7 +858,7 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
             )
             draw_cursor_pos = g.font.size(textbox_text[:cursor_loc].replace("\t", "     "))
 
-            g.screen.fill(
+            screen.fill(
                 config.COLORS["black"],
                 (
                     (pygscreen.SCREEN_WIDTH - text_width) / 2 + 7 + draw_cursor_pos[0],
@@ -922,7 +924,7 @@ def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = 
     if box_width < text_width:
         surface_width = text_width
     restore_surface = pygame.Surface((surface_width, 400))
-    restore_surface.blit(g.screen, (0, 0), ((pygscreen.SCREEN_WIDTH - surface_width) / 2, 0, surface_width, 400))
+    restore_surface.blit(screen, (0, 0), ((pygscreen.SCREEN_WIDTH - surface_width) / 2, 0, surface_width, 400))
 
     # create the box around the text
     g.create_norm_box(
@@ -933,7 +935,7 @@ def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = 
     global button_height
     button_height = (pygscreen.SCREEN_HEIGHT - line_height) / 2 + line_height - 1
 
-    g.screen.blit(temp_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2 + 5, (pygscreen.SCREEN_HEIGHT - line_height) / 2 + 5))
+    screen.blit(temp_surface, ((pygscreen.SCREEN_WIDTH - text_width) / 2 + 5, (pygscreen.SCREEN_HEIGHT - line_height) / 2 + 5))
 
     # create the box around the buttons
     g.create_norm_box(
@@ -960,7 +962,7 @@ def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = 
                     increase_button()
                 elif event.key == config.BINDINGS["action"]:
                     config.ALLOW_MOVE = True
-                    g.screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - surface_width) / 2, 0))
+                    screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - surface_width) / 2, 0))
                     return active_button
             elif event.type == pygame.MOUSEMOTION:
                 if event.pos[1] > button_height and event.pos[1] < button_height + tmp_height:
@@ -976,7 +978,7 @@ def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = 
                 change_button(event.pos)
                 if active_button != -1:
                     config.ALLOW_MOVE = True
-                    g.screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - surface_width) / 2, 0))
+                    screen.blit(restore_surface, ((pygscreen.SCREEN_WIDTH - surface_width) / 2, 0))
                     return active_button
         if g.unclean_screen:
             pygame.display.flip()
@@ -998,9 +1000,9 @@ def refresh_buttons():
     for i in range(len(button_array2)):
         if active_button == i:
             tmp = button_array2[i][0:-4] + "_sel" + button_array2[i][-4:]
-            g.screen.blit(config.BUTTONS[tmp], (button_width_array[i], button_height))
+            screen.blit(config.BUTTONS[tmp], (button_width_array[i], button_height))
         else:
-            g.screen.blit(config.BUTTONS[button_array2[i]], (button_width_array[i], button_height))
+            screen.blit(config.BUTTONS[button_array2[i]], (button_width_array[i], button_height))
     g.unclean_screen = True
 
 
@@ -1065,7 +1067,7 @@ def init_window_main(is_new_game=0):
     if not config.FASTBOOT:
         # This cuts a small amount off the loading time for each level. (From about
         # 370ms to about 270ms.)
-        g.screen.fill(config.COLORS["light_gray"], (pygscreen.SCREEN_WIDTH / 2 - 150, pygscreen.SCREEN_HEIGHT / 2 - 20, 300, 40))
+        screen.fill(config.COLORS["light_gray"], (pygscreen.SCREEN_WIDTH / 2 - 150, pygscreen.SCREEN_HEIGHT / 2 - 20, 300, 40))
         g.print_string(g.screen, "Processing Maps", g.font, (pygscreen.SCREEN_WIDTH / 2, pygscreen.SCREEN_HEIGHT / 2), align=1)
         pygame.display.flip()
         for mapindex in range(len(config.MAPS)):
