@@ -5,10 +5,13 @@
 """
 
 import pygame
+from icecream import ic
 
 import config
 import game_screen as pygscreen
 import modules
+import new_game
+
 screen = pygscreen.get_screen()
 
 
@@ -32,6 +35,9 @@ def main() -> None:
     # Call the module selection script
     module_index = modules.select()
     modules.load(config.MODULES[module_index])
+
+    ic("Module loaded, initializing game")
+    new_game.init_window()
 
 
 if __name__ == "__main__":

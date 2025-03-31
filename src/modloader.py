@@ -11,6 +11,9 @@ import g
 
 # from scripting import Map  # TODO make map its own file/module
 import scripting
+from item import read_items
+from monster import read_monster
+from scripting import read_scripts, read_shops
 
 
 def load_icons() -> None:
@@ -31,6 +34,34 @@ def load_buttons() -> None:
 def load_tiles() -> None:
     """Loads the various tiles."""
     config.TILES = read_images("/images/tiles/")
+
+
+def load_sounds() -> None:
+    """Walk the sound directory and load all sounds into the SOUNDS dictionary."""
+    if config.MUTE:
+        return
+    try:
+        pygame.mixer.init()
+    except pygame.error as message:
+        ic(f"Error: Unable to init sound (pygame message: {message})")
+        MUTE = True
+        return
+
+    for root, dirs, files in walk(config.MODULES_DIR + "/sound"):
+        (head, tail) = path.split(root)
+        if tail != "CVS":
+            for soundname in files:
+                # if image is in a sub-dir:
+                tmp_name = soundname[:-5] + soundname[-4:]
+                tmp_number = int(soundname[-5])
+                if root != config.MODULES_DIR + "/sound":
+                    i = len(config.MODULES_DIR + "/sound")
+                    base_name = root[i:] + "/" + tmp_name
+                else:  # if image is in root dir
+                    base_name = tmp_name
+                if base_name not in config.SOUNDS:
+                    config.SOUNDS[base_name] = {}
+                config.SOUNDS[base_name][tmp_number] = pygame.mixer.Sound(root + "/" + soundname)
 
 
 def read_images(dir_name: str) -> dict[str, pygame.Surface]:
@@ -203,3 +234,42 @@ def read_variables() -> None:
     if not config.mut["GAME_NAME"]:
         ic("Warning: No game name found in variables file. Defaulting to 'Dragon Hunt'")
         config.mut["GAME_NAME"] = "Dragon Hunt"
+
+
+def init_gamedata() -> None:
+    """
+    Initialize the game data.
+
+    ? Originally had a lot of loading screens but is now way too fast to even percieve
+
+    TODO "read maps" has a nifty bar that I should emulate throughout the other loads
+    TODO refactor so that everyone just uses pygscreen.get_screen() instead of screen
+    TODO refactor this to just use confiscreensizes across everything
+
+    Returns:
+        None
+    """
+    ic("Read settings")
+    read_settings()
+    ic("Load backgrounds")
+    load_backgrounds()
+    ic("Read scripts")
+    read_scripts()
+    ic("Read items")
+    read_items()
+    ic("Read skills")
+    g.read_skills()  # TODO
+    ic("Read monsters")
+    read_monster()
+    ic("Read variables")
+    read_variables()
+    ic("Read shops")
+    read_shops()
+    ic("Read perturn")
+    read_perturn()
+    ic("Load buttons")
+    load_buttons()
+    ic("Load icons")
+    load_icons()
+    ic("Load sounds")
+    load_sounds()
