@@ -7,6 +7,8 @@ import pygame
 import config
 import g
 import game_screen as pygscreen
+import widgets
+
 screen = pygscreen.get_screen()
 
 # -1=none, 0=fullscreen, 1=difficulty, 2=custom key
@@ -37,8 +39,8 @@ def box_with_text(xy: tuple[int, int], text: str, focused: bool, active: bool = 
         in_color = "dh_green"
         if active:
             in_color = "light_red"
-    g.create_norm_box((xy[0] + 2, xy[1] + 2), (176, 23), inner_color=in_color)
-    g.print_string(g.screen, text, g.font, (xy[0] + 9, xy[1] + 10))
+    widgets.bordered_box(screen, (xy[0] + 2, xy[1] + 2), (176, 23), inner_color=in_color)
+    widgets.print_string(screen, text, g.font, (xy[0] + 9, xy[1] + 10))
 
 
 def refresh_window() -> None:
@@ -47,7 +49,7 @@ def refresh_window() -> None:
     x_start = config.TILESIZE * config.MAPSIZE_X / 2 - 90
     y_start = config.TILESIZE * config.MAPSIZE_Y / 2 - 80
     x_width = 180
-    g.create_norm_box((x_start, y_start), (x_width, 212))
+    widgets.bordered_box(screen, (x_start, y_start), (x_width, 212))
 
     # fullscreen
     fullscreen_img = "check.png"
@@ -56,9 +58,9 @@ def refresh_window() -> None:
     in_color = "light_gray"
     if curr_button == 0:
         in_color = "dh_green"
-    g.create_norm_box((x_start + 2, y_start + 2), (x_width - 4, 23), inner_color=in_color)
-    g.screen.blit(config.BUTTONS[fullscreen_img], (x_start + 7, y_start + 3))
-    g.print_string(g.screen, "Fullscreen", g.font, (x_start + 27, y_start + 10))
+    widgets.bordered_box(screen, (x_start + 2, y_start + 2), (x_width - 4, 23), inner_color=in_color)
+    screen.blit(config.BUTTONS[fullscreen_img], (x_start + 7, y_start + 3))
+    widgets.print_string(screen, "Fullscreen", g.font, (x_start + 27, y_start + 10))
 
     # difficulty
     if tmp_difficulty == 0:
@@ -105,7 +107,7 @@ def refresh_key_window(adjusting: bool = False) -> None:
     x_start = config.TILESIZE * config.MAPSIZE_X / 2 - 90
     y_start = config.TILESIZE * config.MAPSIZE_Y / 2 - 80
     x_width = 180
-    g.create_norm_box((x_start, y_start), (x_width, 212))
+    widgets.bordered_box(screen, (x_start, y_start), (x_width, 212))
 
     # up
     tmp_string = "Up: " + pygame.key.name(tmp_keys["up"])
