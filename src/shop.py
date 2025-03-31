@@ -107,7 +107,7 @@ def set_details(name: str, cost: int, value: int, power: int, description: str, 
     g.print_string(g.screen, name, g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 25))
 
     if inv_or_shop == "shop":
-        if cost != "":
+        if cost:
             g.print_string(
                 g.screen, "Cost: " + str(cost), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
             )
@@ -116,7 +116,7 @@ def set_details(name: str, cost: int, value: int, power: int, description: str, 
             screen, "Value: " + str(value), g.font, (canvas_x_start + temp_canvas_width + 5, canvas_y_start + 40)
         )
 
-    if power == "" or power == "-1":
+    if not power or power == "-1":
         pass
     else:
         g.print_string(
@@ -150,7 +150,6 @@ def show_details(event: int = 0, sel_item: int = -1) -> None:
                         tempitem.name,
                         tempitem.price,
                         tempitem.price,
-                        "gold",
                         tempitem.quality,
                         tempitem.description,
                         "inv",
@@ -160,31 +159,28 @@ def show_details(event: int = 0, sel_item: int = -1) -> None:
                         tempitem.name,
                         tempitem.price,
                         tempitem.value,
-                        "gold",
                         tempitem.quality,
                         tempitem.description,
                         "inv",
                     )
             # if there is no item selected, blank details.
             else:
-                set_details("", "", "", "", "", "", "inv")
+                set_details("", "", "", "", "", "inv")
         else:
-            set_details("", "", "", "", "", "", "inv")
+            set_details("", "", "", "", "", "inv")
 
-    else:  # shop
-        if sel_item < len(g.shops[store_num].itemlist):
-            tempitem = g.shops[store_num].itemlist[sel_item]
-            set_details(
-                tempitem.item_name,
-                tempitem.cost,
-                tempitem.value,
-                tempitem.buytype,
-                tempitem.power,
-                tempitem.description,
-                "shop",
-            )
-        else:
-            set_details("", "", "", "", "", "", "shop")
+    elif sel_item < len(g.shops[store_num].itemlist):
+        tempitem = g.shops[store_num].itemlist[sel_item]
+        set_details(
+            tempitem.item_name,
+            tempitem.cost,
+            tempitem.value,
+            tempitem.power,
+            tempitem.description,
+            "shop",
+        )
+    else:
+        set_details("", "", "", "", "", "shop")
 
 
 # place appropriate items into the store.
@@ -294,12 +290,11 @@ def refresh_shop():
 def sell_item() -> None:
     """Called upon pressing "Sell"; uses the selected item."""
     if curr_focus != 0:
-        return 0
+        return
     if curr_item > len(item.inv):
-        return 0
+        return
     if item.inv[curr_item] == -1:
-        return 0
-
+        return
     if item.item[item.inv[curr_item]].price == 0:
         main.print_message("You feel attached to your " + item.item[item.inv[curr_item]].name)
         return
@@ -328,9 +323,9 @@ def sell_item() -> None:
 def buy_item() -> None:
     """Called upon pressing "Buy"; uses the selected item."""
     if curr_focus != 1:
-        return 0
+        return
     if curr_item >= len(g.shops[store_num].itemlist):
-        return 0
+        return
 
     if g.shops[store_num].itemlist[curr_item].buytype == "gold":
         # if enough gold
@@ -419,7 +414,7 @@ def mouse_sel_shop(xy: tuple[int, int]) -> bool:
     global last_box
     # Is the mouse at least in the general area?.
     if xy[0] < canvas_x_start or xy[1] < canvas_y_start:
-        return 0
+        return False
 
     if last_click_time + 200 > pygame.time.get_ticks():
         last_click_time = 0
@@ -433,7 +428,7 @@ def mouse_sel_shop(xy: tuple[int, int]) -> bool:
         config.mut["CURR_BUTTON"] = 0
         refresh_shop()
         show_details()
-        return 0
+        return False
 
     temp_num = which_box(xy[0] - canvas_x_start - temp_canvas_width * 2, xy[1] - canvas_y_start)
     if temp_num != -1:
@@ -442,7 +437,7 @@ def mouse_sel_shop(xy: tuple[int, int]) -> bool:
         config.mut["CURR_BUTTON"] = 2
         refresh_shop()
         show_details()
-        return 0
+        return False
 
     if (
         xy[0] > temp_button_x
@@ -454,10 +449,12 @@ def mouse_sel_shop(xy: tuple[int, int]) -> bool:
             sell_item()
         elif xy[0] < temp_button_x + buy_height:
             # leave_shop()
-            return 1
+            return True
         else:
             buy_item()
         refresh_buttons()
+
+    return False
 
 
 def mouse_handler_dbl(xy: tuple[int, int]) -> bool:
@@ -467,7 +464,7 @@ def mouse_handler_dbl(xy: tuple[int, int]) -> bool:
 
     # Is the mouse at least in the general area?.
     if xy[0] < canvas_x_start or xy[1] < canvas_y_start:
-        return 0
+        return False
 
     temp_num = which_box(xy[0] - canvas_x_start, xy[1] - canvas_y_start)
     if temp_num != -1:
@@ -477,7 +474,7 @@ def mouse_handler_dbl(xy: tuple[int, int]) -> bool:
         sell_item()
         refresh_shop()
         show_details()
-        return 0
+        return False
 
     temp_num = which_box(xy[0] - canvas_x_start - temp_canvas_width * 2, xy[1] - canvas_y_start)
     if temp_num != -1:
@@ -487,7 +484,10 @@ def mouse_handler_dbl(xy: tuple[int, int]) -> bool:
         buy_item()
         refresh_shop()
         show_details()
-        return 0
+        return False
+
+    # ! Might be a mistake to add this
+    return True
 
 
 def mouse_move(xy: tuple[int, int]) -> None:
@@ -517,14 +517,14 @@ def key_handler(switch: int) -> bool:
     global curr_focus
     # switch based on keycode
     if switch == config.BINDINGS["cancel"]:
-        return 1
+        return True
     if switch == config.BINDINGS["action"]:
         if curr_focus == 1 and config.mut["CURR_BUTTON"] == 2:
             buy_item()
         elif curr_focus != 1 and config.mut["CURR_BUTTON"] == 0:
             sell_item()
         elif config.mut["CURR_BUTTON"] == 1:
-            return 1
+            return True
     elif switch == config.BINDINGS["left"]:
         if curr_item % shop_width == 0:  # move between lists
             if curr_focus == 0:
@@ -550,13 +550,15 @@ def key_handler(switch: int) -> bool:
         if curr_item < 0:
             curr_item += shop_width * shop_height
     elif switch == config.BINDINGS["down"]:
-        curr_item = curr_item + shop_width
+        curr_item += shop_width
         if curr_item >= shop_width * shop_height:
             curr_item -= shop_width * shop_height
 
     refresh_shop()
     refresh_buttons()
     show_details()
+
+    return False
 
 
 def init_window_shop(store_type_input: str) -> None:
@@ -666,11 +668,10 @@ def init_window_shop(store_type_input: str) -> None:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if key_handler(event.key) == 1:
                     return
             elif event.type == pygame.MOUSEMOTION:
                 mouse_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if mouse_sel_shop(event.pos) == 1:
-                    return
+            elif event.type == pygame.MOUSEBUTTONDOWN and mouse_sel_shop(event.pos):
+                return

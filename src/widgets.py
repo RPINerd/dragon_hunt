@@ -209,15 +209,13 @@ class Scrollbar:
 
 def refresh_list(listbox: Listbox, scrollbar: Scrollbar, list_pos: int, list_array: list) -> None:
     """"""
-    tmp = listbox.refresh_listbox(
-        list_pos % listbox.viewable_items,
-        list_array[
-            (list_pos / listbox.viewable_items)
-            * listbox.viewable_items : (list_pos / listbox.viewable_items)
-            * listbox.viewable_items
-            + listbox.viewable_items
-        ],
-    )
+    selected_item = list_pos % listbox.viewable_items
+    viewable_items = listbox.viewable_items
+    start_pos = int((list_pos / viewable_items) * viewable_items)
+    end_pos = int(start_pos + viewable_items)
+
+    tmp = listbox.refresh_listbox(selected_item, list_array[start_pos:end_pos])
+
     if tmp == 0:
         ic(list_array)
     if scrollbar != 0:

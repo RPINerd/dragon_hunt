@@ -110,9 +110,9 @@ def activate_lines(x: int, y: int, z: int, commands: list[str]) -> int:
                 for line in commands:
                     ic(line)
                 return "bad"
-            if else_loc != endif_loc:
-                if activate_lines(x, y, z, commands[else_loc + 1 : endif_loc]) == 0:
-                    return 0
+            if (else_loc != endif_loc and
+                activate_lines(x, y, z, commands[else_loc + 1 : endif_loc]) == 0):
+                return 0
             i = endif_loc
         elif temp == "bad":
             ic("surrounding code:")
@@ -1155,7 +1155,7 @@ def script_monster_stat(x: int, y: int, z: int, argument_array) -> str | int:
     """In battle, return the stats of the given monster"""
     if check_types_args(argument_array, [0, 1], "monster_stat") == 0:
         return "bad"
-    if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
+    if g.cur_window not in {"battle", "battle_item", "battle_skill"}:
         ic("monster_stat called outside of battle.")
         return -1
 

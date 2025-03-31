@@ -377,7 +377,7 @@ def choose_monster_prev() -> None:
         if i == active_button:
             ic("choose_monster_prev couldn't find a monster.")
             active_button = -1
-            return -1
+            return
     # help_text.set("Attack the " + monster_list[active_button].name)
     set_description_text(active_button)
     refresh()
@@ -397,7 +397,7 @@ def choose_monster_next() -> None:
         if i == active_button:
             ic("choose_monster_next couldn't find a monster.")
             active_button = -1
-            return -1
+            return
     # help_text.set("Attack the " + monster_list[active_button].name)
     set_description_text(active_button)
     refresh()
@@ -545,27 +545,37 @@ def monster_dead(i):
         refresh()
 
 
-# returns 1 if battle is finished, (one of the parties is dead) or 0 if not.
-def can_leave():
-    # 	if window_battle.winfo_exists() == 0: return 1
+def can_leave() -> bool:
+    """
+    Determine if the battle is over.
+
+    Returns:
+        bool: True if the battle is over, False otherwise.
+        """
     if player.hp <= 0:
-        return 1
-    for i in range(len(monster_list)):
-        if monster_list[i].hp > 0:
-            return 0
-    return 1
+        return True
+    return all(monster_list[i].hp <= 0 for i in range(len(monster_list)))
 
 
 # run/leave/quit button was pressed
-def runaway(force_success=False):
+def runaway(force_success: bool = False) -> bool:
+    """
+    Attempt to run away from the battle.
+
+    Args:
+        force_success (bool): If True, the player will always succeed in running away.
+    Returns:
+        bool: True if the player successfully ran away, False otherwise.
+    """
     global run_attempts
     global did_run
     clear_slashes()
     # leave/quit
-    if can_leave() == 1:
+    if can_leave():
         g.break_one_loop += 1
+        return True
     # Attempt to run. Testers get better chance.
-    elif (
+    if (
         (g.die_roll(1, 10 + run_attempts) > 7)
         or (player.name == "testing123" and g.die_roll(1, 10) > 5)
         or (force_success)
@@ -573,20 +583,20 @@ def runaway(force_success=False):
         main.print_message("You coward! You ran away from the " + monster.monster_groups[mon_index].name + ".")
         did_run = 1
         g.break_one_loop += 1
-    else:
-        run_attempts += 1
-        main.print_message("You fail to run away.")
-        attack_player()
-        refresh()
-        return 0
+        return True
+
+    run_attempts += 1
+    main.print_message("You fail to run away.")
+    attack_player()
+    refresh()
+    return False
 
 
-# The use item button was pressed in the battle window. Open the
-# item display.
-def open_item_menu():
+def open_item_menu() -> None:
+    """The use item button was pressed in the battle window. Open the item display."""
     # don't do anything if battle is over.
     if can_leave() == 1:
-        return 0
+        return
     tmp_surface = pygame.Surface((300, 420))
     tmp_surface.blit(g.screen, (0, 0), (170, 0, 300, 420))
     inv.open_inner_menu("use")
@@ -620,12 +630,11 @@ def open_item_menu():
     bind_keys()
 
 
-# The use skill button was pressed in the battle window. Open the
-# skill display.
-def open_skill_menu():
+def open_skill_menu() -> None:
+    """The use skill button was pressed in the battle window. Open the skill display."""
     # don't do anything if battle is over.
     if can_leave() == 1:
-        return 0
+        return
     tmp_surface = pygame.Surface((300, 420))
     tmp_surface.blit(g.screen, (0, 0), (170, 0, 300, 420))
     inv.open_inner_menu("skill")
@@ -688,7 +697,7 @@ def refresh_skill_display(screen_str):
     # draw the skill pictures.
     for i in range(len(player.skill)):
         if player.skill[i][5] != 0 and (player.skill[i][1] <= 4 or player.skill[i][1] == 6):
-            inv.draw_item(player.skill[i][7], i % inv.inv_width, i / inv.inv_width, x, y, screen_str)
+            inv.draw_item(player.skill[i][7], i % inv.inv_width, i / inv.inv_width, x, y)
 
     # draw the help text
     g.create_norm_box((inv.tmp_menu_x_base, inv.tmp_menu_y_base + inv.tmp_menu_height), (inv.tmp_menu_width, 17))
@@ -698,11 +707,6 @@ def refresh_skill_display(screen_str):
         helptext = player.skill[tmp_item][0] + " (" + str(player.skill[tmp_item][2]) + " EP)"
     g.print_string(g.screen, helptext, g.font, (inv.tmp_menu_x_base + 2, inv.tmp_menu_y_base + inv.tmp_menu_height + 1))
     pygame.display.flip()
-
-
-# 	main.canvas_map.create_text(inv.tmp_menu_x_base+inv.tmp_menu_width/2,
-# 		inv.tmp_menu_y_base+inv.tmp_menu_height+1, anchor=N, text=helptext,
-# 		tags=("item", "inv", screen_str, "helptext"))
 
 
 # Use a given item. item_index is the location in the item.item[] array.
@@ -894,19 +898,21 @@ def useskill(skill_index, free_skill=0):
 def inspect_monst() -> None:
     """The inspect button was pressed in the battle window."""
     if can_leave() == 1:
-        return 0
+        return
+
     tmp = select_monster()
     if tmp == -1:
-        return 0
-    display_text = monster_list[tmp].name + " \n "
-    display_text += "Attack: " + str(monster_list[tmp].attack) + "           "
-    display_text += "Defense: " + str(monster_list[tmp].defense) + " \n "
+        return
+
+    display_text = f"{monster_list[tmp].name} \n "
+    display_text += f"Attack: {monster_list[tmp].attack}           "
+    display_text += f"Defense: {monster_list[tmp].defense} \n "
     display_text += monster_list[tmp].description
+
     tmp_surface = pygame.Surface((300, 500))
     tmp_surface.blit(g.screen, (0, 0), (170, 0, 300, 500))
     main.show_dialog(display_text)
     g.screen.blit(tmp_surface, (170, 0))
-    # 	refresh()
     pygame.display.flip()
 
 
@@ -1068,10 +1074,9 @@ def set_description_text(i: int) -> None:
     # canvas_desc.create_text(1, 5, anchor=NW, text=monster_list[i].description, width=195)
 
 
-def begin(mon_index_input) -> str | int:
+def begin(mon_index_input: int) -> str | int:
     """Initiate a battle"""
     # 	global window_battle
-    global bgcolour
     bgcolour = "lightgrey"
     # 	window_battle = Frame(g.window_main, bd=4, relief=GROOVE, bg=bgcolour)
     # 	window_battle.grid(row=0, column=0)

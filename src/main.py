@@ -94,12 +94,12 @@ def refresh_message_box():
     g.unclean_screen = True
 
 
-# save game
-def save_game():
-    if action.has_dialog == 1:
-        return 0
-    save_mgmt.savegame(player.name)
-    print_message("** Game Saved **")
+# # save game
+# def save_game():
+#     if action.has_dialog == 1:
+#         return 0
+#     save_mgmt.savegame(player.name)
+#     print_message("** Game Saved **")
 
 
 # determine if the player is dead, and, if so, end the game.
@@ -1233,7 +1233,7 @@ def mouse_handler(xy):
     inv_x2 = inv_x1 + iconsize
     if xy[0] > inv_x1 and xy[0] < inv_x2 and xy[1] > icon_y1 and xy[1] < icon_y2:
         show_inv()
-        return 0
+        return None
 
     save_x1 = inv_x2
     save_x2 = save_x1 + iconsize

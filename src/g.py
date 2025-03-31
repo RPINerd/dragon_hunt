@@ -10,12 +10,7 @@ from icecream import ic
 
 import config
 import game_screen as pygscreen
-
-# player info
 from player import player
-
-# needed for scripting
-# from scripting import g, maps, read_maps, read_scripts, read_shops, newgame_act
 from scripting import *
 
 # This is the screen that will be used for the game.
@@ -52,9 +47,6 @@ hpbar_width = 0
 
 # per turn scripting, for hp recovery and the like.
 per_turn_script = []
-
-# Default key bindings for the game.
-bindings: dict[str, int] = {}
 
 # Used in place of some of the Tkinter variables.
 break_one_loop = 0
@@ -103,17 +95,10 @@ def add_skill(skill_loc):
 # Load the skills. Requires config.MODULES_DIR to be set
 def read_skills():
     # Add built-in skills.
-    addskill("Rage", 0, 1, 10, "Gives you increased damage for the" + " rest of a battle", picture="items/rage.png")
+    addskill("Rage", 0, 1, 10, "Gives you increased damage for the rest of a battle", picture="items/rage.png")
     addskill("Sneak Away", 1, 1, 10, "Attempts to leave a battle.", picture="items/sneak_away.png")
-    addskill(
-        "Dismember",
-        3,
-        2,
-        20,
-        "Your next attack will do maximum" + " damage, and ignore armor",
-        picture="items/bastard_sword.png",
-    )
-    addskill("Frenzy", 2, 2, 30, "Your next attack will try to hit" + " more than once", picture="items/frenzy.png")
+    addskill("Dismember", 3, 2, 20, "Your next attack will do maximum damage, and ignore armor", picture="items/bastard_sword.png")
+    addskill("Frenzy", 2, 2, 30, "Your next attack will try to hit more than once", picture="items/frenzy.png")
     if path.exists(config.MODULES_DIR + "/data/skills.txt"):
         temp_skills = read_script_file("/data/skills.txt")
 

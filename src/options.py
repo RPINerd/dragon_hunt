@@ -355,7 +355,7 @@ def custom_key():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 key_key_handler(event.key)
                 repeat_key = 0
             elif event.type == pygame.MOUSEMOTION:
@@ -473,7 +473,7 @@ def init_window_options():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 key_handler(event.key)
                 repeat_key = 0
             elif event.type == pygame.MOUSEMOTION:

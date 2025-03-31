@@ -19,26 +19,24 @@
 # This file controls the load game screen. The actual load/save game
 # functions are in g.loadgame/savegame
 
+import pickle
 from os import listdir, mkdir, path, remove
 
 import pygame
 
 import config
 import g
+import game_screen as pygscreen
 
 # was a game loaded? Used to determine whether to use newgame script.
 did_load = ""
 
-global saves_array
 saves_array = []
 
-global saves_pos
 saves_pos = 0
 
-global prevent_dbl_load
 prevent_dbl_load = 0
 
-# help_text = StringVar()
 name_text = ""
 hp_text = ""
 ep_text = ""
@@ -48,7 +46,7 @@ gold_text = ""
 exp_text = ""
 level_text = ""
 
-# return_from_loadgame = StringVar()
+screen = pygscreen.get_screen()
 
 
 # called when "Load" is pressed
@@ -68,7 +66,7 @@ def load_selected():
         (config.TILESIZE * config.MAPSIZE_X / 2, 140 + config.BUTTONS["load_scr.png"].get_height()),
     )
     g.print_string(
-        g.screen,
+        screen,
         "Loading game. Please wait",
         g.font,
         (
@@ -78,9 +76,7 @@ def load_selected():
     )
     pygame.display.flip()
 
-    # g.loadgame(saves_array[saves_pos])
     did_load = saves_array[saves_pos]
-    # 	return_from_loadgame.set(1)
     g.break_one_loop = 1
 
 
@@ -106,17 +102,17 @@ def refresh_save_info():
     else:
         save_loc = config.MODULES_DIR + "/saves/" + saves_array[saves_pos]
         savefile = open(save_loc)
-        version_unused = g.pickle.load(savefile)
-        tmp_stats["name"] = str(g.pickle.load(savefile))
-        tmp_stats["hp"] = str(g.pickle.load(savefile))
-        tmp_stats["ep"] = str(g.pickle.load(savefile))
-        unused_maxhp = g.pickle.load(savefile)
-        unused_maxep = g.pickle.load(savefile)
-        tmp_stats["attack"] = str(g.pickle.load(savefile))
-        tmp_stats["defense"] = str(g.pickle.load(savefile))
-        tmp_stats["gold"] = str(g.pickle.load(savefile))
-        tmp_stats["exp"] = str(g.pickle.load(savefile))
-        tmp_stats["level"] = str(g.pickle.load(savefile))
+        version_unused = pickle.load(savefile)
+        tmp_stats["name"] = str(pickle.load(savefile))
+        tmp_stats["hp"] = str(pickle.load(savefile))
+        tmp_stats["ep"] = str(pickle.load(savefile))
+        unused_maxhp = pickle.load(savefile)
+        unused_maxep = pickle.load(savefile)
+        tmp_stats["attack"] = str(pickle.load(savefile))
+        tmp_stats["defense"] = str(pickle.load(savefile))
+        tmp_stats["gold"] = str(pickle.load(savefile))
+        tmp_stats["exp"] = str(pickle.load(savefile))
+        tmp_stats["level"] = str(pickle.load(savefile))
         savefile.close()
 
         tmp = saves_pos - (saves_pos % 5)
@@ -132,7 +128,7 @@ def refresh_save_info():
 def display_stats(stat_dict, titles_dict):
     pixels_per_line = 20
     g.unclean_screen = True
-    g.screen.fill(
+    screen.fill(
         config.COLORS["light_gray"],
         (
             config.TILESIZE * config.MAPSIZE_X / 4 + config.BUTTONS["loadgame_up.png"].get_width() + 3,
@@ -144,21 +140,21 @@ def display_stats(stat_dict, titles_dict):
     info_x = config.TILESIZE * config.MAPSIZE_X / 4 + config.BUTTONS["loadgame_up.png"].get_width() + 5
     info_y = config.TILESIZE * config.MAPSIZE_Y / 3
     linenum = 0
-    g.print_string(g.screen, "Name: " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(screen, "Name: " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, "HP: " + stat_dict["hp"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(screen, "HP: " + stat_dict["hp"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, "MP: " + stat_dict["ep"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(screen, "MP: " + stat_dict["ep"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, "Attack: " + stat_dict["attack"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(screen, "Attack: " + stat_dict["attack"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, "Defense: " + stat_dict["defense"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(screen, "Defense: " + stat_dict["defense"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, "Gold: " + stat_dict["gold"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(screen, "Gold: " + stat_dict["gold"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, "XP: " + stat_dict["exp"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(screen, "XP: " + stat_dict["exp"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
-    g.print_string(g.screen, "Level: " + stat_dict["level"], g.font, (info_x, info_y + pixels_per_line * linenum))
+    g.print_string(screen, "Level: " + stat_dict["level"], g.font, (info_x, info_y + pixels_per_line * linenum))
     linenum += 1
 
     for i in range(5):
@@ -175,7 +171,7 @@ def display_stats(stat_dict, titles_dict):
             inner_color=inner_color,
         )
         g.print_string(
-            g.screen,
+            screen,
             titles_dict[i],
             g.font,
             (
@@ -392,18 +388,18 @@ def refresh_buttons():
         up_img = "loadgame_up_sel.png"
     else:
         down_img = "loadgame_down_sel.png"
-    g.screen.blit(
+    screen.blit(
         config.BUTTONS[load_img], (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3 + 140)
     )
-    g.screen.blit(
+    screen.blit(
         config.BUTTONS[leave_img],
         (
             config.TILESIZE * config.MAPSIZE_X / 4 + config.BUTTONS["load_scr.png"].get_width(),
             config.TILESIZE * config.MAPSIZE_Y / 3 + 140,
         ),
     )
-    g.screen.blit(config.BUTTONS[up_img], (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3))
-    g.screen.blit(
+    screen.blit(config.BUTTONS[up_img], (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3))
+    screen.blit(
         config.BUTTONS[down_img],
         (
             config.TILESIZE * config.MAPSIZE_X / 4,
@@ -425,10 +421,10 @@ def init_window_loadgame():
     did_load = ""
 
     # add the saves images
-    g.screen.blit(
+    screen.blit(
         config.BUTTONS["loadgame_up.png"], (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3)
     )
-    g.screen.blit(
+    screen.blit(
         config.BUTTONS["loadgame_down.png"],
         (
             config.TILESIZE * config.MAPSIZE_X / 4,

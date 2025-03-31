@@ -74,12 +74,15 @@ class Tile:
         self.items.remove(itemname)
 
 
-class map:
-    def additem(self, itemname, x, y):
+class Map:
+
+    """"""
+
+    def additem(self, itemname, x, y) -> None:
         self.field[y][x].additem(itemname)
         item.add_dropped_item(itemname, (x, y), self.name)
 
-    def del_item(self, itemname, x, y):
+    def del_item(self, itemname, x, y) -> None:
         self.field[y][x].del_item(itemname)
         item.del_dropped_item(itemname, x, y, self.name)
 
@@ -112,7 +115,7 @@ class map:
         self.per_tile_info = []  # unused after load
 
         # grab the needed data from the file
-        if mapname == "":
+        if not self.name:
             return
         map_file = g.read_script_file("/data/maps/" + self.name, from_editor)
 
@@ -197,11 +200,10 @@ class map:
                         self.tiles[current_tile][0].append(map_line[:-1])
                     else:
                         self.tiles[current_tile][0].append(map_strip)
-                else:  # action
-                    if from_editor == 1:
-                        self.tiles[current_tile][1].append(map_line[:-1])
-                    else:
-                        self.tiles[current_tile][1].append(map_strip)
+                elif from_editor == 1:
+                    self.tiles[current_tile][1].append(map_line[:-1])
+                else:
+                    self.tiles[current_tile][1].append(map_strip)
 
             if curr_mode == 3:
                 if map_strip == "":
@@ -307,7 +309,7 @@ def read_scripts():
 
 
 # shop data.
-class shop_item:
+class ShopItem:
     def __init__(self, name):
         self.item_name = name
         itemnum = item.finditem(name)
@@ -349,14 +351,14 @@ class shop_item:
         self.picture = picture
 
 
-class shop:
+class Shop:
     def __init__(self, shopname):
         self.name = shopname.strip()
         self.itemlist = []
         self.curitem = -1
 
     def additem(self, itemname):
-        self.itemlist.append(shop_item(itemname))
+        self.itemlist.append(ShopItem(itemname))
         self.curitem += 1
 
     def item_add_cost(self, itemcost):
@@ -404,7 +406,7 @@ def read_shops():
             continue
 
         if shop_line[:5].lower() == ":shop":
-            shops.append(shop(shop_line[5:].strip()))
+            shops.append(Shop(shop_line[5:].strip()))
             cur_shop += 1
         elif shop_line[:5].lower() == ":item":
             shops[cur_shop].additem(shop_line[5:].strip())

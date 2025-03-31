@@ -84,8 +84,9 @@ def rename_character() -> None:
 def key_handler_up(key_name: int) -> None:
     """"""
     global key_down
-    if key_down == "":
+    if not key_down:
         return
+    # ? wtf
     if key_name == key_name:
         key_down = ""
 
@@ -136,13 +137,12 @@ def adjust_name(input_char: str) -> None:
     global curr_name_loc
     usable_chars = "`~!@#$%^&*()-_=+|[{]};:'\",<.>/? "
     c = input_char
-    if c == "":
+    if not c:
         return
     if len(name_stat) > MAXNAMELEN:
         return
-    if c.isalnum() == 0:
-        if usable_chars.find(c) == -1:
-            return
+    if not c.isalnum() and c not in usable_chars:
+        return
     name_stat = name_stat[:curr_name_loc] + input_char + name_stat[curr_name_loc:]
     curr_name_loc += 1
 
@@ -250,7 +250,7 @@ def begin_game(loadgame_name: str = "") -> bool:
     # This prevents a race condition
     global already_started_game
     if already_started_game == 1:
-        return 0
+        return False
     already_started_game = 1
 
     g.create_norm_box(
@@ -272,10 +272,10 @@ def begin_game(loadgame_name: str = "") -> bool:
     global name_stat
     player.name = name_stat
 
-    if player.name == "":
+    if not player.name:
         player.name = "Nameless"
     # bring the main window up.
-    if loadgame_name != "":
+    if loadgame_name:
         save_mgmt.loadgame(loadgame_name)
     main.init_window_main(new_game)
     already_started_game = 0
@@ -283,7 +283,7 @@ def begin_game(loadgame_name: str = "") -> bool:
 
     # after returning to this screen, reset everything.
     init_window()
-    return 1
+    return True
 
 
 def load_game() -> None:
@@ -303,7 +303,7 @@ def load_game() -> None:
 def show_options() -> None:
     """Bring the options window up."""
     temp_surface = pygame.Surface((400, 300))
-    temp_surface.blit(g.screen, (0, 0), (100, 100, 400, 300))
+    temp_surface.blit(screen, (0, 0), (100, 100, 400, 300))
     options.init_window_options()
     screen.blit(temp_surface, (100, 100))
 
@@ -315,41 +315,41 @@ def quit_game() -> None:
 # refresh the buttons.
 def refresh_buttons():
     if config.mut["CURR_BUTTON"] > 4:
-        g.screen.blit(config.BUTTONS["begin.png"], (inner_new_game_width, inner_button_start))
-        g.screen.blit(config.BUTTONS["skill.png"], (inner_rename_width, inner_button_start))
-        g.screen.blit(config.BUTTONS["reroll.png"], (inner_reroll_width, inner_button_start))
-        g.screen.blit(config.BUTTONS["leave.png"], (inner_quit_width, inner_button_start))
+        screen.blit(config.BUTTONS["begin.png"], (inner_new_game_width, inner_button_start))
+        screen.blit(config.BUTTONS["skill.png"], (inner_rename_width, inner_button_start))
+        screen.blit(config.BUTTONS["reroll.png"], (inner_reroll_width, inner_button_start))
+        screen.blit(config.BUTTONS["leave.png"], (inner_quit_width, inner_button_start))
         if config.mut["CURR_BUTTON"] == 5:
-            g.screen.blit(config.BUTTONS["begin_sel.png"], (inner_new_game_width, inner_button_start))
+            screen.blit(config.BUTTONS["begin_sel.png"], (inner_new_game_width, inner_button_start))
             refresh_help("Begin a new game")
         if config.mut["CURR_BUTTON"] == 6:
-            g.screen.blit(config.BUTTONS["skill_sel.png"], (inner_rename_width, inner_button_start))
+            screen.blit(config.BUTTONS["skill_sel.png"], (inner_rename_width, inner_button_start))
             refresh_help("Change your name")
         if config.mut["CURR_BUTTON"] == 7:
-            g.screen.blit(config.BUTTONS["reroll_sel.png"], (inner_reroll_width, inner_button_start))
+            screen.blit(config.BUTTONS["reroll_sel.png"], (inner_reroll_width, inner_button_start))
             refresh_help("Reroll your statistics")
         if config.mut["CURR_BUTTON"] == 8:
-            g.screen.blit(config.BUTTONS["leave_sel.png"], (inner_quit_width, inner_button_start))
+            screen.blit(config.BUTTONS["leave_sel.png"], (inner_quit_width, inner_button_start))
             refresh_help("Back to the main menu")
         if config.mut["CURR_BUTTON"] == 9:
             refresh_help("")
 
     else:
-        g.screen.blit(config.BUTTONS["begin.png"], (new_game_width, button_start))
-        g.screen.blit(config.BUTTONS["load.png"], (load_width, button_start))
-        g.screen.blit(config.BUTTONS["options.png"], (options_width, button_start))
-        g.screen.blit(config.BUTTONS["quit.png"], (quit_width, button_start))
+        screen.blit(config.BUTTONS["begin.png"], (new_game_width, button_start))
+        screen.blit(config.BUTTONS["load.png"], (load_width, button_start))
+        screen.blit(config.BUTTONS["options.png"], (options_width, button_start))
+        screen.blit(config.BUTTONS["quit.png"], (quit_width, button_start))
         if config.mut["CURR_BUTTON"] == 0:
-            g.screen.blit(config.BUTTONS["begin_sel.png"], (new_game_width, button_start))
+            screen.blit(config.BUTTONS["begin_sel.png"], (new_game_width, button_start))
             refresh_help("Create a new character")
         if config.mut["CURR_BUTTON"] == 1:
-            g.screen.blit(config.BUTTONS["load_sel.png"], (load_width, button_start))
+            screen.blit(config.BUTTONS["load_sel.png"], (load_width, button_start))
             refresh_help("Load an old game")
         if config.mut["CURR_BUTTON"] == 2:
-            g.screen.blit(config.BUTTONS["options_sel.png"], (options_width, button_start))
+            screen.blit(config.BUTTONS["options_sel.png"], (options_width, button_start))
             refresh_help("Change the options")
         if config.mut["CURR_BUTTON"] == 3:
-            g.screen.blit(config.BUTTONS["quit_sel.png"], (quit_width, button_start))
+            screen.blit(config.BUTTONS["quit_sel.png"], (quit_width, button_start))
             refresh_help("Quit the game")
         if config.mut["CURR_BUTTON"] == 4:
             refresh_help("")
@@ -359,8 +359,8 @@ def refresh_buttons():
 def refresh_help(string):
     start_xy = (15, button_start + button_height / 2)
     size = (180, 14)
-    g.screen.fill(config.COLORS["very_dark_blue"], (start_xy[0], start_xy[1], size[0], size[1]))
-    g.print_string(g.screen, string, g.font, start_xy, config.COLORS["white"])
+    screen.fill(config.COLORS["very_dark_blue"], (start_xy[0], start_xy[1], size[0], size[1]))
+    g.print_string(screen, string, g.font, start_xy, config.COLORS["white"])
 
 
 def key_handler(key_name) -> bool:
@@ -372,9 +372,9 @@ def key_handler(key_name) -> bool:
     if key_name == config.BINDINGS["cancel"]:
         if config.mut["CURR_BUTTON"] > 4:
             back_from_new_game()
-            return 0
+            return False
         g.break_one_loop = 100
-        return 1
+        return True
     if key_name == config.BINDINGS["up"] or key_name == config.BINDINGS["left"]:
         if config.mut["CURR_BUTTON"] == 0:
             config.mut["CURR_BUTTON"] = 4
@@ -405,9 +405,10 @@ def key_handler(key_name) -> bool:
             reroll_stats()
         elif config.mut["CURR_BUTTON"] == 8:
             back_from_new_game()
-            return 0
+            return False
 
     refresh_buttons()
+    return False
 
 
 def mouse_handler_move(xy: tuple[int, int]) -> None:
@@ -527,14 +528,12 @@ def init_window() -> None:
             if event.type == pygame.QUIT:
                 return
             if event.type == pygame.KEYDOWN:
-                if key_handler(event.key) == 1:
+                if key_handler(event.key):
                     return
             elif event.type == pygame.MOUSEMOTION:
                 mouse_handler_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    if key_handler(pygame.K_RETURN) == 1:
-                        return
+            elif event.type == pygame.MOUSEBUTTONDOWN and event.button == 1 and key_handler(pygame.K_RETURN):
+                return
 
 
 def refresh_new_game() -> None:

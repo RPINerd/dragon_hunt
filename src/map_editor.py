@@ -28,6 +28,7 @@ import pygame
 pygame.init()
 pygame.font.init()
 
+from icecream import ic
 
 import config
 import g
@@ -73,8 +74,6 @@ def create_map():
     # this creates the actual map.
     global cur_map
     cur_map = g.map("")
-    # g.maps.append(g.map(map_name))
-    # g.zgrid = len(g.maps) -1
 
     cur_map.field.append([])
     for y in range(mapsize_x):  # upper border
@@ -116,8 +115,7 @@ def create_map():
 def move_up(dist=1):
     global portal_y
     portal_y -= dist
-    if portal_y < 0:
-        portal_y = 0
+    portal_y = max(portal_y, 0)
     refresh_map()
 
 
@@ -126,16 +124,14 @@ def move_down(dist=1):
     portal_y += dist
     if portal_y + portalsize > mapsize_y:
         portal_y = mapsize_y - portalsize
-    if portal_y < 0:
-        portal_y = 0
+    portal_y = max(portal_y, 0)
     refresh_map()
 
 
 def move_left(dist=1):
     global portal_x
     portal_x -= dist
-    if portal_x < 0:
-        portal_x = 0
+    portal_x = max(portal_x, 0)
     refresh_map()
 
 
@@ -144,8 +140,7 @@ def move_right(dist=1):
     portal_x += dist
     if portal_x + portalsize > mapsize_x:
         portal_x = mapsize_x - portalsize
-    if portal_x < 0:
-        portal_x = 0
+    portal_x = max(portal_x, 0)
     refresh_map()
 
 
@@ -500,7 +495,7 @@ def change_scripting(x, y, modetype):
         tmp_file.writelines(scripting_list)
         tmp_file.close()
         tmp = os.spawnlp(os.P_WAIT, editor, editor, "temp_editor_script.txt")
-        tmp_file = open("temp_editor_script.txt", "r")
+        tmp_file = open("temp_editor_script.txt")
         scripting_list = []
         while True:
             tmp_line = tmp_file.readline()
@@ -542,28 +537,6 @@ def change_scripting(x, y, modetype):
         cur_map.field[y][x].actions = []
         for line in scripting_list:
             cur_map.field[y][x].actions.append(line)
-
-
-# Given xy coords, and the scripting for a tile, each line separated by \n,
-# set the tile data.
-def really_change_scripting(x, y, onload, action):
-    onload_array = onload.split("\n")
-    action_array = action.split("\n")
-    cur_map.field[y][x].onload = []
-    for line in onload_array:
-        if line != "":
-            cur_map.field[y][x].onload.append(line)
-    cur_map.field[y][x].actions = []
-    for line in action_array:
-        if line != "":
-            cur_map.field[y][x].actions.append(line)
-    close_scripting_window()
-
-    scrollleft = float(portal_x) / mapsize_x
-    scrollright = float((portal_x + portalsize)) / mapsize_x
-
-
-# 	x_scroll.set(scrollleft, scrollright)
 
 
 # this loads the various tiles.
@@ -648,25 +621,25 @@ def click_tiles(xy):
     global cur_tile
     tmp = cur_tile_num
     x = xy[0] - (pygscreen.SCREEN_WIDTH - (tilebox_width) * (config.TILESIZE + 1))
-        cur_tile_num = x / (config.TILESIZE + 1) + tilebox_width * (xy[1] / (config.TILESIZE + 1))
-        tmp_dir = cur_tile_set
-        if tmp_dir == "default":
-            tmp_dir = ""
-        i = 0
-        j = 0
-        for tile_name in tilenames:
-            tmp_name = tile_name.split("/")[0]
-            if tmp_name[-4:] == ".png":
-                tmp_name = ""
-            if tmp_dir == tmp_name:
-                if j == cur_tile_num:
-                    cur_tile = tilenames[i]
-                j += 1
-            i += 1
-        if tmp != cur_tile_num:
-            display_tiles()
-            return 2
-        return 1
+    cur_tile_num = x / (config.TILESIZE + 1) + tilebox_width * (xy[1] / (config.TILESIZE + 1))
+    tmp_dir = cur_tile_set
+    if tmp_dir == "default":
+        tmp_dir = ""
+    i = 0
+    j = 0
+    for tile_name in tilenames:
+        tmp_name = tile_name.split("/")[0]
+        if tmp_name[-4:] == ".png":
+            tmp_name = ""
+        if tmp_dir == tmp_name:
+            if j == cur_tile_num:
+                cur_tile = tilenames[i]
+            j += 1
+        i += 1
+    if tmp != cur_tile_num:
+        display_tiles()
+        return 2
+    return 1
 
 
 # show tile set as buttons
@@ -1486,7 +1459,7 @@ def sel_mod(selected_mod):
                     tmp = click_tiles(event.pos)
                     if tmp > 0:
                         break
-                    if cur_mode == "replace" or cur_mode == "add" or cur_mode == "remove" or cur_mode == "walkable":
+                    if cur_mode in {"replace", "add", "remove", "walkable"}:
                         mouse_button_down = True
                         last_square = (
                             (event.pos[0] / config.TILESIZE) + portal_x,

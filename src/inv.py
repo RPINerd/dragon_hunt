@@ -51,12 +51,6 @@ inner_cur_button = 0
 
 # distance from the top of the inv box each button should be placed.
 # Values are added in init_window.
-# use_height = 0
-# remove_height = 0
-# save_height = 0
-# leave_height = 0
-# total_height = 0
-#
 equip_height = 0
 drop_height = 0
 skill_height = 0
@@ -85,35 +79,36 @@ tmp_menu_height = 0
 inv_canvas_width = 0
 inv_canvas_height = 0
 
-# Change to return to the main game
-# back_to_main = StringVar()
-# back_to_inv = StringVar()
+screen = pygscreen.get_screen()
 
 
-# when given a number from 0-8 (as returned by curr_item-inv_height*inv_width)
-# return the proper location in the player.equip array. Corrects for the empty
-# spaces in the display.
-def convert_equip_loc_to_index(loc):
-    if loc == 0:
-        return -1
-    if loc == 1:
-        return 3
-    if loc == 2:
-        return 4
+def convert_equip_loc_to_index(loc: int) -> int:
+    """
+    Convert the location in the equipment display to the actual index in the player.equip array
 
-    if loc == 3:
-        return 0
-    if loc == 4:
-        return 1
-    if loc == 5:
-        return 2
+    Given a number from 0-8 (as returned by curr_item-inv_height*inv_width) return the
+    proper location in the player.equip array.
+    Corrects for the empty spaces in the display.
 
-    if loc == 6:
-        return -1
-    if loc == 7:
-        return 5
-    if loc == 8:
-        return -1
+    Args:
+        loc (int): The location in the equipment display.
+
+    Returns:
+        int: The index in the player.equip array.
+    """
+    trans_index = {
+        0: -1,
+        1: 3,
+        2: 4,
+        3: 0,
+        4: 1,
+        5: 2,
+        6: -1,
+        7: 5,
+        8: -1,
+    }
+
+    return trans_index[loc]
 
 
 # Called when "Use" is pressed on the inv menu
@@ -128,7 +123,7 @@ def open_use_item():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if use_key_handler(event.key) == 1:
                     return
             elif event.type == pygame.MOUSEMOTION:
@@ -136,8 +131,6 @@ def open_use_item():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if use_mouse_click(event.pos) == 1:
                     return
-    menu_bind_keys()
-    menu_bind_keys()
 
 
 # Called when "Drop" is pressed on the inv menu
@@ -152,7 +145,7 @@ def open_drop_item():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if drop_key_handler(event.key) == 1:
                     return
             elif event.type == pygame.MOUSEMOTION:
@@ -160,7 +153,6 @@ def open_drop_item():
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if drop_mouse_click(event.pos) == 1:
                     return
-    menu_bind_keys()
 
 
 def open_equip_item():
@@ -180,19 +172,17 @@ def open_equip_item():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.KEYDOWN:
                 if equip_key_handler(event.key) == 1:
                     if curr_item >= inv_width * inv_height:
                         curr_item = 0
                     return
             elif event.type == pygame.MOUSEMOTION:
                 equip_mouse_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if equip_mouse_click(event.pos) == 1:
-                    if curr_item >= inv_width * inv_height:
-                        curr_item = 0
-                    return
-    menu_bind_keys()
+            elif event.type == pygame.MOUSEBUTTONDOWN and equip_mouse_click(event.pos):
+                if curr_item >= inv_width * inv_height:
+                    curr_item = 0
+                return
 
 
 def open_skill_menu() -> str | None:
@@ -206,19 +196,18 @@ def open_skill_menu() -> str | None:
         g.clock.tick(30)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return
-            elif event.type == pygame.KEYDOWN:
+                return None
+            if event.type == pygame.KEYDOWN:
                 tmp = skill_key_handler(event.key)
                 if tmp == 1:
-                    return
-                elif tmp == "end":
+                    return None
+                if tmp == "end":
                     return "end"
             elif event.type == pygame.MOUSEMOTION:
                 skill_mouse_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if skill_mouse_click(event.pos) == 1:
-                    return
-    menu_bind_keys()
+                    return None
 
 
 # Generic function for creating a sub-menu for the inv.
@@ -249,14 +238,14 @@ def open_inner_menu(screen_str):
     tmp_menu_width = config.BUTTONS[screen_str + ".png"].get_width() + config.BUTTONS["leave.png"].get_width()
     tmp_menu_height = config.BUTTONS["leave.png"].get_height()
 
-    create_inv_display(screen_str)
+    create_inv_display()
 
     # button rectangle
     g.create_norm_box((tmp_menu_x_base, tmp_menu_y_base), (tmp_menu_width, tmp_menu_height))
 
 
-# Create a generic inventory display.
-def create_inv_display(screen_str):
+def create_inv_display() -> None:
+    """Create a generic inventory display"""
     g.create_norm_box(
         (tmp_x_base, tmp_y_base),
         (
@@ -267,7 +256,7 @@ def create_inv_display(screen_str):
         ),
     )
 
-    # per-item borders
+    # Per-item borders
     for y in range(inv_height):
         for x in range(inv_width):
             g.create_norm_box(
@@ -341,34 +330,34 @@ def refresh_equip() -> None:
 
     # Weapon
     if player.equip[0] != -1:
-        draw_item(item.item[player.equip[0]].picturename, 0, 1, tmpx, tmpy, "equip")
+        draw_item(item.item[player.equip[0]].picturename, 0, 1, tmpx, tmpy)
     else:
-        draw_item("items/weapon_eq.png", 0, 1, tmpx, tmpy, "equip")
+        draw_item("items/weapon_eq.png", 0, 1, tmpx, tmpy)
     # Armor
     if player.equip[1] != -1:
-        draw_item(item.item[player.equip[1]].picturename, 1, 1, tmpx, tmpy, "equip")
+        draw_item(item.item[player.equip[1]].picturename, 1, 1, tmpx, tmpy)
     else:
-        draw_item("items/armor_eq.png", 1, 1, tmpx, tmpy, "equip")
+        draw_item("items/armor_eq.png", 1, 1, tmpx, tmpy)
     # Shield
     if player.equip[2] != -1:
-        draw_item(item.item[player.equip[2]].picturename, 2, 1, tmpx, tmpy, "equip")
+        draw_item(item.item[player.equip[2]].picturename, 2, 1, tmpx, tmpy)
     else:
-        draw_item("items/shield_eq.png", 2, 1, tmpx, tmpy, "equip")
+        draw_item("items/shield_eq.png", 2, 1, tmpx, tmpy)
     # Helmet
     if player.equip[3] != -1:
-        draw_item(item.item[player.equip[3]].picturename, 1, 0, tmpx, tmpy, "equip")
+        draw_item(item.item[player.equip[3]].picturename, 1, 0, tmpx, tmpy)
     else:
-        draw_item("items/helmet_eq.png", 1, 0, tmpx, tmpy, "equip")
+        draw_item("items/helmet_eq.png", 1, 0, tmpx, tmpy)
     # Gloves
     if player.equip[4] != -1:
-        draw_item(item.item[player.equip[4]].picturename, 2, 0, tmpx, tmpy, "equip")
+        draw_item(item.item[player.equip[4]].picturename, 2, 0, tmpx, tmpy)
     else:
-        draw_item("items/gloves_eq.png", 2, 0, tmpx, tmpy, "equip")
+        draw_item("items/gloves_eq.png", 2, 0, tmpx, tmpy)
     # Boots
     if player.equip[5] != -1:
-        draw_item(item.item[player.equip[5]].picturename, 1, 2, tmpx, tmpy, "equip")
+        draw_item(item.item[player.equip[5]].picturename, 1, 2, tmpx, tmpy)
     else:
-        draw_item("items/boots_eq.png", 1, 2, tmpx, tmpy, "equip")
+        draw_item("items/boots_eq.png", 1, 2, tmpx, tmpy)
 
     main.refresh_bars()
     pygame.display.flip()
@@ -406,17 +395,14 @@ def refresh_inv_display(screen_str):
     # draw the help text
     if curr_item >= inv_width * inv_height:  # equipment
         tempitem = convert_equip_loc_to_index(curr_item - (inv_width * inv_height))
-        if tempitem == -1:
-            helptext = ""
-        elif player.equip[tempitem] == -1:
+        if tempitem == -1 or player.equip[tempitem] == -1:
             helptext = ""
         else:
             helptext = item.item[player.equip[tempitem]].name
-    else:  # Inv
-        if curr_item == -1 or item.inv[curr_item] == -1:
-            helptext = ""
-        else:
-            helptext = item.item[item.inv[curr_item]].name
+    elif curr_item == -1 or item.inv[curr_item] == -1:
+        helptext = ""
+    else:
+        helptext = item.item[item.inv[curr_item]].name
 
     g.create_norm_box((tmp_menu_x_base, tmp_menu_y_base + tmp_menu_height), (tmp_menu_width, 17))
 
@@ -455,9 +441,7 @@ def refresh_skill(screen_str):
 
     # draw the help text
     g.create_norm_box((tmp_menu_x_base, tmp_menu_y_base + tmp_menu_height), (tmp_menu_width, 17))
-    if len(player.skill) <= curr_item:
-        helptext = ""
-    elif curr_item == -1 or player.skill[curr_item][5] == 0 or player.skill[curr_item][1] <= 4:
+    if len(player.skill) <= curr_item or curr_item == -1 or player.skill[curr_item][5] == 0 or player.skill[curr_item][1] <= 4:
         helptext = ""
     else:
         helptext = player.skill[curr_item][0] + " (" + str(player.skill[curr_item][2]) + " EP)"
@@ -482,8 +466,7 @@ def refresh_stat_display():
     g.create_norm_box((start_x + 5, bar_start + bar_height + 1), (g.hpbar_width, bar_height), inner_color="hp_red")
 
     temp_width = g.hpbar_width * player.hp / player.adj_maxhp
-    if temp_width < 0:
-        temp_width = 0
+    temp_width = max(temp_width, 0)
 
     bar_height = 15
     bar_start = start_y + 21
@@ -492,8 +475,7 @@ def refresh_stat_display():
     # 		bar_start+bar_height-1, fill="#05BB05", tags=("stats", "inv"))
     # 	main.canvas_map.delete("show_ep")
     temp_width = g.hpbar_width * player.ep / player.adj_maxep
-    if temp_width < 0:
-        temp_width = 0
+    temp_width = max(temp_width, 0)
     g.create_norm_box((start_x + 5, bar_start + bar_height + 1), (temp_width, bar_height), inner_color="ep_blue")
     # 	main.canvas_map.create_rectangle(start_x+5, bar_start+bar_height+1, start_x+temp_width+5,
     # 		bar_start+bar_height*2+1, fill="#2525EE", tags=("stats", "inv"))
@@ -579,7 +561,7 @@ def leave_inv() -> None:
 def rm_equip() -> None:
     """Puts a worn item into the inventory. Called from the remove button."""
     if action.has_dialog == 1:
-        return 0
+        return
     # Curr_item is the current location in the equipment canvas.
     # The missing numbers in this sequence are the blank spots in the display.
     sel_equipment = -1
@@ -597,12 +579,11 @@ def rm_equip() -> None:
     elif c_item == 7:
         sel_equipment = 5
     if sel_equipment == -1:
-        return 0
+        return
 
-    if player.equip[sel_equipment] != -1:
-        if -1 != item.take_inv_item(player.equip[sel_equipment]):
-            main.print_message("You take off your " + item.item[player.equip[sel_equipment]].name)
-            player.equip[sel_equipment] = -1
+    if player.equip[sel_equipment] != -1 and item.take_inv_item(player.equip[sel_equipment]) != -1:
+        main.print_message("You take off your " + item.item[player.equip[sel_equipment]].name)
+        player.equip[sel_equipment] = -1
     player.reset_stats()
     refresh_equip()
     refresh_stat_display()
@@ -611,15 +592,15 @@ def rm_equip() -> None:
 def wear_item() -> None:
     """Wears the item at the current location in the inventory."""
     if action.has_dialog == 1:
-        return 0
+        return
     if curr_item >= inv_width * inv_height:
         rm_equip()
-        return 0
+        return
 
     try:
         item_value = item.inv[curr_item]
     except IndexError:
-        return 0
+        return
 
     if item_value == -1:
         return
@@ -645,24 +626,24 @@ def wear_item() -> None:
 def drop_item() -> None:
     """Drops the item at the current location in the inventory."""
     if action.has_dialog == 1:
-        return 0
+        return
     if curr_item >= len(item.inv) or item.inv[curr_item] == -1:
-        return 0
+        return
     try:
         item_to_delete = item.find_inv_item(item.inv[curr_item])
     except IndexError:
-        return 0
+        return
 
     if item.item[item.inv[item_to_delete]].price == 0 and item.item[item.inv[item_to_delete]].value == 0:
         main.print_message("You feel attached to your " + item.item[item.inv[item_to_delete]].name)
-        return 0
+        return
     # the inv[] location of the item is now in item_to_delete.
 
     # Ask if the player really wants to drop it.
     tmp_surface = pygame.Surface((300, 200))
     tmp_surface.blit(g.screen, (0, 0), (170, 140, 300, 200))
     if main.show_yesno("Drop your " + item.item[item.inv[item_to_delete]].name + "?"):
-        g.screen.blit(tmp_surface, (170, 140))
+        screen.blit(tmp_surface, (170, 140))
         main.print_message("You drop your " + item.item[item.inv[curr_item]].name)
 
         # Add dropped item to map
@@ -671,7 +652,7 @@ def drop_item() -> None:
         # Remove the item from inventory
         item.drop_inv_item(curr_item)
     else:
-        g.screen.blit(tmp_surface, (170, 140))
+        screen.blit(tmp_surface, (170, 140))
     main.refresh_tile(g.xgrid, g.ygrid, g.zgrid)
     g.cur_window = "inventory_drop"
     refresh_drop()
@@ -687,13 +668,13 @@ def use_item(item_index: int = -1) -> None:
     # 	if action.has_dialog == 1: return 0
     if item_index == -1:
         if curr_item >= len(item.inv) or item.inv[curr_item] == -1:
-            return 0
+            return
 
         # put the item[] index of the item into item_value
         try:
             item_value = item.inv[curr_item]
         except IndexError:
-            return 0
+            return
 
         # put the equip slot into item_loc
         item_loc = item.item[item_value].type
@@ -713,10 +694,8 @@ def use_item(item_index: int = -1) -> None:
         player.take_damage(item.item[item_value].quality)
         if item_index == -1:
             item.drop_inv_item(curr_item)
-    if item_loc == 16 or item_loc == 17:
-        if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, item.item[item_value].scripting) == 1:
-            if item_index == -1:
-                item.drop_inv_item(curr_item)
+    if item_loc in {16, 17} and action.activate_lines(g.xgrid, g.ygrid, g.zgrid, item.item[item_value].scripting) == 1 and item_index == -1:
+        item.drop_inv_item(curr_item)
 
     if item_index == -1:
         refresh_use()
@@ -728,15 +707,15 @@ def useskill(free_skill: int = 0) -> bool:
     # sanity checks
     skill_index = curr_item
     if skill_index >= len(player.skill):
-        return 0
+        return True
 
     if free_skill == 0:
         if player.skill[skill_index][5] == 0:
-            return 0
+            return True
         if player.skill[skill_index][2] > player.ep:
-            return 0
+            return True
 
-    if player.skill[skill_index][1] == 5 or player.skill[skill_index][1] == 6:  # Scripted
+    if player.skill[skill_index][1] in {5, 6}:  # Scripted
         tempxy = (g.xgrid, g.ygrid, g.zgrid)
         # If the scripting ends with an "end" command,
         if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, player.skill[skill_index][6]) == 1 and free_skill == 0:
@@ -745,21 +724,18 @@ def useskill(free_skill: int = 0) -> bool:
         main.refresh_bars()
         refresh_stat_display()
         if tempxy != (g.xgrid, g.ygrid, g.zgrid):
-            return "end"
-    return 1
+            return False
+    return True
 
 
 def refresh_menu_buttons() -> None:
     """Refreshes the buttons in the main inventory menu."""
     global oldbutton
     if action.has_dialog == 1:
-        return 0
-
+        return
     if oldbutton == config.mut["CURR_BUTTON"]:
         return
     oldbutton = config.mut["CURR_BUTTON"]
-    # 	if main.canvas_map.winfo_exists() == 0: return 0
-    # 	main.canvas_map.delete("buttons")
     use_image = "use.png"
     equip_image = "equip.png"
     drop_image = "drop.png"
@@ -779,75 +755,33 @@ def refresh_menu_buttons() -> None:
     elif config.mut["CURR_BUTTON"] == 5:
         leave_image = "leave_sel.png"
 
-    g.screen.blit(config.BUTTONS[use_image], (base_x, base_y))
-    g.screen.blit(config.BUTTONS[equip_image], (base_x, base_y + equip_height))
-    g.screen.blit(config.BUTTONS[drop_image], (base_x, base_y + drop_height))
-    g.screen.blit(config.BUTTONS[skill_image], (base_x, base_y + skill_height))
-    g.screen.blit(config.BUTTONS[save_image], (base_x, base_y + save_height))
-    g.screen.blit(config.BUTTONS[leave_image], (base_x, base_y + leave_height))
+    screen.blit(config.BUTTONS[use_image], (base_x, base_y))
+    screen.blit(config.BUTTONS[equip_image], (base_x, base_y + equip_height))
+    screen.blit(config.BUTTONS[drop_image], (base_x, base_y + drop_height))
+    screen.blit(config.BUTTONS[skill_image], (base_x, base_y + skill_height))
+    screen.blit(config.BUTTONS[save_image], (base_x, base_y + save_height))
+    screen.blit(config.BUTTONS[leave_image], (base_x, base_y + leave_height))
 
     pygame.display.flip()
 
 
-# refresh this screen. Call after moving around items. x,y is the location
-# of the upper-left of the inv display on the main screen.
-def refresh_inv(x, y, input_tag):
-    if action.has_dialog == 1:
-        return 0
-    # 	canvas_inv.delete("item")
-    # 	invpos = 0
-    # Draw a selection box around the current item.
-    # 	if config.mut["CURR_BUTTON"] == 0 or (cur_button == 1):
-    for i in range(len(item.inv)):
-        g.create_norm_box(
-            (
-                x + (i % inv_width) * config.TILESIZE + 2 * ((i % inv_width) + 1),
-                y + (i / inv_width) * config.TILESIZE + 2 * ((i / inv_width) + 1),
-            ),
-            (config.TILESIZE, config.TILESIZE),
-            inner_color="dh_green",
-        )
+def draw_item(input_picture: str, x: int, y: int, x_offset: int, y_offset: int) -> None:
+    """
+    Draw an item at the specified coordinates
 
-    if curr_item != -1:
-        g.create_norm_box(
-            (
-                x + (curr_item % inv_width) * config.TILESIZE + 2 * ((curr_item % inv_width) + 1),
-                y + (curr_item / inv_width) * config.TILESIZE + 2 * ((curr_item / inv_width) + 1),
-            ),
-            (config.TILESIZE, config.TILESIZE),
-            inner_color="dark_green",
-        )
-
-    # draw the item pictures.
-    for i in range(len(item.inv)):
-        if item.inv[i] != -1:
-            draw_item(item.item[item.inv[i]].picturename, i % inv_width, i / inv_width, x, y, input_tag)
-    # 			invpos += 1
-
-    # 	canvas_equip.delete("item")
-    if config.mut["CURR_BUTTON"] == 3:  # equipment
-        g.create_norm_box(
-            (
-                (curr_item % equip_size) * config.TILESIZE + 2 * ((curr_item % equip_size) + 1),
-                (curr_item / equip_size) * config.TILESIZE + 2 * ((curr_item / equip_size) + 1),
-            ),
-            (config.TILESIZE, config.TILESIZE),
-            inner_color="dark_green",
-        )
-
-
-# Takes a canvas, a string (leading to a picture in config.TILES[]), and xy coords
-# (in tiles, starting from 0), an xy offset from the upper-left of canvas_map,
-# and draws the picture.
-def draw_item(input_picture, x, y, x_offset, y_offset, tag):
-    g.screen.blit(
+    Args:
+        input_picture (str): The name of the picture to draw.
+        x (int): The x coordinate in tiles.
+        y (int): The y coordinate in tiles.
+        x_offset (int): The x offset from the upper-left of the canvas.
+        y_offset (int): The y offset from the upper-left of the canvas.
+    """
+    screen.blit(
         config.TILES[input_picture],
         (x_offset + x * config.TILESIZE + 2 * (x + 1), y_offset + y * config.TILESIZE + 2 * (y + 1)),
     )
 
 
-# All keypresses in window_inv pass through here. Based on the key name,
-# give the right action. ("etc", "left", "right", "up", "down", "return")
 def menu_key_handler(key_name: int) -> bool:
     """
     All keypresses in window_inv pass through here.
@@ -945,7 +879,7 @@ def skill_key_handler(key_name):
     tmp = inner_key_handler(key_name)
     if tmp == 2:
         tmp2 = useskill()
-        if tmp2 == "end":
+        if not tmp2:
             return "end"
     if tmp != 1:
         refresh_skill("skill")
@@ -1005,18 +939,19 @@ def equip_key_handler(key_name):
     return 0
 
 
-def menu_mouse_click(xy):
+def menu_mouse_click(xy: tuple[int, int]) -> bool:
+    """"""
     if action.has_dialog == 1:
-        return 0
+        return False
     base_loc_y = xy[1] - base_y
     base_loc_x = xy[0] - base_x
     if base_loc_y < 0 or base_loc_x < 0 or base_loc_y > total_height or base_loc_x > button_width:
-        return None
+        return False
     return menu_key_handler(config.BINDINGS["action"])
 
 
-# generic mouse click while an inner menu is open.
-def inner_mouse_click(xy, button):
+def inner_mouse_click(xy, button) -> int:
+    """Generic mouse click while an inner menu is open"""
     # decide if the mouse is within one of the boxes.
     global curr_item
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
@@ -1033,7 +968,8 @@ def inner_mouse_click(xy, button):
     return 0
 
 
-def use_mouse_click(xy):
+def use_mouse_click(xy) -> int:
+    """"""
     tmp = inner_mouse_click(xy, "use")
     if tmp == 2:
         use_item()
@@ -1042,7 +978,8 @@ def use_mouse_click(xy):
     return tmp
 
 
-def drop_mouse_click(xy):
+def drop_mouse_click(xy) -> int:
+    """"""
     tmp = inner_mouse_click(xy, "use")
     if tmp == 2:
         drop_item()
@@ -1051,11 +988,12 @@ def drop_mouse_click(xy):
     return tmp
 
 
-def skill_mouse_click(xy):
+def skill_mouse_click(xy) -> int:
+    """"""
     tmp = inner_mouse_click(xy, "skill")
     if tmp == 2:
         tmp2 = useskill()
-        if tmp2 == "end":
+        if not tmp2:
             return "end"
     if tmp != 1:
         refresh_skill("skill")
@@ -1186,7 +1124,7 @@ def menu_mouse_move(xy):
     base_loc_x = xy[0] - base_x
     if base_loc_y < 0 or base_loc_x < 0 or base_loc_y > total_height or base_loc_x > button_width:
         return
-    elif base_loc_y < equip_height:
+    if base_loc_y < equip_height:
         config.mut["CURR_BUTTON"] = 0
     elif base_loc_y < drop_height:
         config.mut["CURR_BUTTON"] = 1
@@ -1214,8 +1152,7 @@ def inner_mouse_move(xy, button=""):
         else:
             inner_cur_button = 1
         return 1
-    else:
-        return 0
+    return 0
 
 
 def use_mouse_move(xy):
@@ -1291,8 +1228,7 @@ def init_window_inv():
     g.cur_window = "inventory"
 
     temp_width = g.hpbar_width * player.ep / player.adj_maxep
-    if temp_width < 0:
-        temp_width = 0
+    temp_width = max(temp_width, 0)
 
     # Create the labels to the right:
     tmp_width = 52
@@ -1327,13 +1263,13 @@ def init_window_inv():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-            elif event.type == pygame.KEYDOWN:
-                if menu_key_handler(event.key) == 1:
+            if event.type == pygame.KEYDOWN:
+                if menu_key_handler(event.key):
                     return
             elif event.type == pygame.MOUSEMOTION:
                 menu_mouse_move(event.pos)
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if menu_mouse_click(event.pos) == 1:
+                if menu_mouse_click(event.pos):
                     return
 
 

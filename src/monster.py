@@ -1,22 +1,4 @@
-# monster.py
-# Copyright (C) 2005 Free Software Foundation
-# This file is part of Dragon Hunt.
-
-# Dragon Hunt is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
-
-# Dragon Hunt is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-
-# You should have received a copy of the GNU General Public License
-# along with Dragon Hunt; if not, write to the Free Software
-# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-# This file contains everything about the monsters.
+"""This file contains everything about the monsters"""
 
 from os import listdir
 from random import random
@@ -27,47 +9,55 @@ import config
 import g
 
 
-# This class contains one or more monster, that can attack the player in a group.
-class monster_group_class:
-    def __init__(self, name):
+class MonsterGroup:
+
+    """This class contains one or more monster, that can attack the player in a group."""
+
+    def __init__(self, name: str) -> None:
+        """"""
         self.name = str(name)
         # The message given when the monster group attacks.
         self.attack_message = "The " + self.name + " attacks you."
-        # The xy coords. of the upper-middle of each monster.
+        # The xy coords of the upper-middle of each monster.
         self.x_pos = []
         self.y_pos = []
-        # filled with strings matched up to names in monster_class upon attack.
+        # Filled with strings matched up to names in Monster class upon attack.
         self.monster_list = []
 
 
-class monster_class:
-    def __init__(self, name, hp, attack, defense, exp, gold, descript):
-        self.name = str(name)
-        self.hp = int(hp)
-        self.maxhp = int(hp)
-        self.attack = int(attack)
-        self.defense = int(defense)
-        self.exp = int(exp)
-        self.gold = int(gold)
-        self.description = str(descript)
+class Monster:
+
+    """This class contains all the information about a monster."""
+
+    def __init__(self, name: str, hp: int, attack: int, defense: int, exp: int, gold: int, descript: str) -> None:
+        """"""
+        self.name = name
+        self.hp = hp
+        self.maxhp = hp
+        self.attack = attack
+        self.defense = defense
+        self.exp = exp
+        self.gold = gold
+        self.description = descript
+
         # An array of lines, describing the scripting run when the monster dies.
         # If given, this *replaces* the exp/gold giving code, making those
         # entries useless.
         self.on_death = []
 
-    def reset(self):  # resets the monster for a battle
+    def reset(self) -> None:
+        """Resets the monster for a battle"""
         self.hp = self.maxhp
 
 
-global monsters
-monsters = []
+monsters: list[Monster] = []
 
-global monster_groups
-monster_groups = []
+# ? Maybe rename monster groups to 'encounters'
+monster_groups: list[MonsterGroup] = []
 
 
-# Given the name of a monster, return the index in the monsters[] array.
-def monster_name_to_index(name):
+def monster_name_to_index(name: str) -> int:
+    """Given the name of a monster, return the index in the monsters[] array"""
     for i in range(len(monsters)):
         if name.lower() == monsters[i].name.lower():
             return i
@@ -75,10 +65,16 @@ def monster_name_to_index(name):
     return -1
 
 
-# find an appropriate monster group for the given (zgrid) dungeon level.
-# -1 is returned if no monsters are available for this level;
-# otherwise, the position in monster_groups[] is returned.
-def find_level_monster(level):
+def find_level_monster(level: int) -> int:
+    """
+    Find an appropriate monster group for the given (zgrid) dungeon level
+
+    Args:
+        level (int): The zgrid level of the dungeon.
+
+    Returns:
+        int: The index of the monster group in the monster_groups list, or -1 if no monsters are available.
+    """
     # Pick a random entry in the monster table of the map.
     if len(config.MAPS[level].monster) == 0:
         return -1
@@ -91,8 +87,12 @@ def find_level_monster(level):
     return -1
 
 
-# read monsters directory, and place in monsters[]. This is called on startup.
-def read_monster():
+def read_monster() -> None:
+    """
+    Read monsters directory, and place in monsters[]. This is called on startup.
+
+    TODO should be part of the module loading process?
+    """
     # put the names of the available monsters in array_monsters.
     array_monsters = listdir(config.MODULES_DIR + "/data/monsters")
 
@@ -100,15 +100,10 @@ def read_monster():
     i = 0
     while i < len(array_monsters):
         extension_start = len(array_monsters[i]) - 4
-        if extension_start <= 0:
+        if extension_start <= 0 or array_monsters[i][:1] == "." or array_monsters[i][extension_start : extension_start + 4] != ".txt":
             array_monsters.pop(i)
         else:
-            if array_monsters[i][:1] == ".":
-                array_monsters.pop(i)
-            elif array_monsters[i][extension_start : extension_start + 4] != ".txt":
-                array_monsters.pop(i)
-            else:
-                i += 1
+            i += 1
 
     # go through all monsters, adding them to our knowledge.
     for monster_filename in array_monsters:
@@ -123,7 +118,7 @@ def read_monster():
     # go through all lines of the file
     for monster_line in monster_file:
         if monster_line[:1] == ":":
-            monster_groups.append(monster_group_class(monster_line[1:]))
+            monster_groups.append(MonsterGroup(monster_line[1:]))
             cur_group += 1
             continue
         monster_command = monster_line.split("=")[0].strip().lower()
@@ -140,9 +135,15 @@ def read_monster():
                 monster_groups[cur_group].y_pos.append(int(entry.strip()))
 
 
-# given a filename, (relative to config.MODULES_DIR + "/data/monsters")
-# open and interpret the monster.
-def addmonster(filename):
+def addmonster(filename: str) -> None:
+    """
+    Given a filename, open and interpret the monster
+
+    Filename should be relative to {config.MODULES_DIR}/data/monsters
+
+    Args:
+        filename (str): The name of the monster file to read.
+    """
     global monsters
 
     temp_name = ""
@@ -158,8 +159,8 @@ def addmonster(filename):
 
     monster_file = g.read_script_file("/data/monsters/" + filename)
     # go through all lines of the file
-    for monster_line in monster_file:
-        monster_line = monster_line.strip()
+    for fline in monster_file:
+        monster_line = fline.strip()
 
         if curr_mode == 1:
             temp_on_death.append(monster_line)
@@ -185,17 +186,25 @@ def addmonster(filename):
         else:
             ic("bad line of " + monster_line + " found in " + filename)
 
-    # actually add the monster
-    monsters.append(monster_class(temp_name, temp_hp, temp_attack, temp_defense, temp_exp, temp_gold, temp_description))
+    monsters.append(Monster(temp_name, temp_hp, temp_attack, temp_defense, temp_exp, temp_gold, temp_description))
 
     for line in temp_on_death:
         monsters[len(monsters) - 1].on_death.append(line)
 
 
-# copies an instance of a monster class to another instance. Used to get a
-# clean copy.
-def copy_monster(from_monster):
-    to_monster = monster_class(
+def copy_monster(from_monster: Monster) -> Monster:
+    """
+    Copies an instance of a monster class to another instance
+
+    # TODO this should just be a class method or copy constructor
+
+    Args:
+        from_monster (Monster): The monster to copy.
+
+    Returns:
+        Monster: A new instance of the monster with the same attributes.
+    """
+    to_monster = Monster(
         from_monster.name,
         from_monster.maxhp,
         from_monster.attack,
