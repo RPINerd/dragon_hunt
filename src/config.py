@@ -6,9 +6,7 @@ MODULES = ["DarkAges", "DragonHunt", " ", " ", " "]
 MODULES_DIR = ""
 
 # Screen resolution
-SCREEN_WIDTH = 1024
-SCREEN_HEIGHT = 768
-FULLSCREEN = False
+MUTE: bool = False
 
 # Tile size notes from original code:
 # size (in tiles) of the editor screen. 15 works well with 640x480,
@@ -62,6 +60,7 @@ DICE: list[list[int]] = [[], [], [], [], []]  # Array of dice for the player
 DEFAULT_NAME: str = "Alfred"  # Default name for the player
 ICONS: dict[str,] = {}
 MAPS: list = []
+SOUNDS: dict[str, dict[int, pygame.Sound]] = {}
 TILES: dict[str,] = {}
 
 DEBUG = False

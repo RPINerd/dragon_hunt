@@ -16,6 +16,7 @@ import loadgame
 import main
 import options
 import save_mgmt
+import utils
 from modloader import read_maps
 from player import player
 
@@ -54,11 +55,11 @@ def reroll_stats() -> None:
     global attack_stat
     global defense_stat
     global gold_stat
-    hp_stat = g.die_roll(config.DICE[0][0], config.DICE[0][1]) + config.DICE[0][2]
-    ep_stat = g.die_roll(config.DICE[1][0], config.DICE[1][1]) + config.DICE[1][2]
-    attack_stat = g.die_roll(config.DICE[2][0], config.DICE[2][1]) + config.DICE[2][2]
-    defense_stat = g.die_roll(config.DICE[3][0], config.DICE[3][1]) + config.DICE[3][2]
-    gold_stat = g.die_roll(config.DICE[4][0], config.DICE[4][1]) + config.DICE[4][2]
+    hp_stat = utils.die_roll(config.DICE[0][0], config.DICE[0][1]) + config.DICE[0][2]
+    ep_stat = utils.die_roll(config.DICE[1][0], config.DICE[1][1]) + config.DICE[1][2]
+    attack_stat = utils.die_roll(config.DICE[2][0], config.DICE[2][1]) + config.DICE[2][2]
+    defense_stat = utils.die_roll(config.DICE[3][0], config.DICE[3][1]) + config.DICE[3][2]
+    gold_stat = utils.die_roll(config.DICE[4][0], config.DICE[4][1]) + config.DICE[4][2]
 
     reset_vars()
     refresh_new_game()

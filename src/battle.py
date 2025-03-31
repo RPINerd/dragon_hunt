@@ -27,6 +27,7 @@ import g
 import inv
 import main
 import monster
+import utils
 from player import player
 
 mon_index = 0
@@ -444,8 +445,8 @@ def attack_monster(i, attack_power):
         return None
     # find the damage done
     global num_dice
-    damage = g.die_roll(num_dice, attack_power + 2)
-    damage = damage - g.die_roll(1, monster_list[i].defense + 2)
+    damage = utils.die_roll(num_dice, attack_power + 2)
+    damage = damage - utils.die_roll(1, monster_list[i].defense + 2)
     if damage > 0:
         if monster_hurt(i, damage) == 1:
             return 0
@@ -462,8 +463,8 @@ def attack_player():
 
 # Make the i'th monster attack you
 def attack_player_per_monster(i):
-    damage = g.die_roll(1, monster_list[i].attack + 2)
-    damage = damage - g.die_roll(1, player.adj_defense + 2)
+    damage = utils.die_roll(1, monster_list[i].attack + 2)
+    damage = damage - utils.die_roll(1, player.adj_defense + 2)
     if damage > 0:
         main.print_message("The " + monster_list[i].name + " hits you for " + str(damage) + " damage.")
         player.take_damage(-1 * damage)
@@ -576,8 +577,8 @@ def runaway(force_success: bool = False) -> bool:
         return True
     # Attempt to run. Testers get better chance.
     if (
-        (g.die_roll(1, 10 + run_attempts) > 7)
-        or (player.name == "testing123" and g.die_roll(1, 10) > 5)
+        (utils.die_roll(1, 10 + run_attempts) > 7)
+        or (player.name == "testing123" and utils.die_roll(1, 10) > 5)
         or (force_success)
     ):
         main.print_message("You coward! You ran away from the " + monster.monster_groups[mon_index].name + ".")
@@ -835,7 +836,7 @@ def useskill(skill_index, free_skill=0):
             # pay for the skill
             player.use_ep(-1 * player.skill[skill_index][2])
         global run_attempts
-        if g.die_roll(1, 10 + int(player.level) + run_attempts) > 4:
+        if utils.die_roll(1, 10 + int(player.level) + run_attempts) > 4:
             runaway(True)
             global did_run
             did_run = 1

@@ -3,7 +3,6 @@
 # needed for save/load game
 from os import path
 from pathlib import Path
-from random import random
 
 import pygame
 from icecream import ic
@@ -165,22 +164,6 @@ def read_skills():
             temp_skill_scripting,
             temp_skill_picture,
         )
-
-
-# Rolls dice in the form 2d6, where 2 is the number of dice, and 6 the number of
-# sides on each die. modify is the bonus given to each die. Use die_roll(2, 6)
-# Modify is the bonus given to each die. Use die_roll(2, 6) + 4 for bonuses on
-# the entire roll, die_roll(2, 6, 1) for bonuses on each roll. Default = 0
-def die_roll(dice, sides, modfy=0):
-    sides = max(sides, 1)
-    dice = max(dice, 1)
-
-    sum = 0
-    for x in range(dice):
-        die = int((random() * sides) + 1 + modfy)
-        sum += die
-
-    return sum
 
 
 # Returns the symbol of the given tile. X and Y are absolute coords.

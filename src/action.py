@@ -826,8 +826,8 @@ def script_hurt(x: int, y: int, z: int, argument_array):  # hurt player (reduced
         return "bad"
 
     # interpret the second part of the command
-    damage = g.die_roll(1, int(argument_array[0][0]) + 2)
-    damage = damage - g.die_roll(1, player.adj_defense + 2)
+    damage = utils.die_roll(1, int(argument_array[0][0]) + 2)
+    damage = damage - utils.die_roll(1, player.adj_defense + 2)
     player.take_damage(-1 * damage)
     return 1
 
@@ -1264,7 +1264,7 @@ def script_rng(x: int, y: int, z: int, argument_array):  # Random Number Generat
     if check_types_args(argument_array, [0, 0], "rng") == 0:
         return "bad"
 
-    temp = g.die_roll(1, int(argument_array[1][0]))
+    temp = utils.die_roll(1, int(argument_array[1][0]))
     if int(argument_array[0][0]) >= temp:
         return temp
     return 0
