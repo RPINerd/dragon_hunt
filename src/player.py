@@ -32,7 +32,7 @@ class Player:
     """This class is used to store all the player's information."""
 
     def __init__(self) -> None:
-        """Initialize a blank player object."""
+        """Initialize a player with empty stats, skills, and equipment."""
         self.name: str = ""
         self.hp: int = 0
         self.ep: int = 0
@@ -73,13 +73,10 @@ class Player:
 
     def add_exp(self, input_exp: int) -> None:
         """
-        Adds experience to the player and handles level gains.
+        Add experience and trigger a level-up script when eligible.
 
         Args:
-            input_exp (int): The amount of experience to add.
-
-        Returns:
-            None
+            input_exp (int): Experience points to add.
         """
         self.exp += input_exp
         if self.exp < 1:
@@ -93,10 +90,10 @@ class Player:
 
     def exp_till_level(self) -> int:
         """
-        Calculates experience needed to reach the next level.
+        Calculate the experience remaining until the next level.
 
         Returns:
-            (int): Exp needed for next level
+            int: Experience points needed; zero if the threshold has been reached.
         """
         if not config.mut["EXP_LIST"]:
             return_val = int(10 * (self.level + 1) * (self.level + 1)) - int(self.exp)
@@ -108,26 +105,20 @@ class Player:
 
     def take_damage(self, damage: int) -> None:
         """
-        Inflict damage on the player.
+        Reduce the player’s hit points by an amount.
 
         Args:
-            damage (int): The amount of damage to inflict.
-
-        Returns:
-            None
+            damage (int): Damage to apply.
         """
         self.hp -= damage
         self.hp = min(self.adj_maxhp, self.hp)
 
     def use_ep(self, ep_cost: int) -> None:
         """
-        Use energy/mana/etc. points
+        Spend energy points without reducing them below zero.
 
         Args:
-            ep_cost (int): The amount of energy points to use.
-
-        Returns:
-            None
+            ep_cost (int): Energy points to spend.
         """
         self.ep -= ep_cost
         self.ep = min(self.adj_maxep, self.ep)
@@ -135,10 +126,10 @@ class Player:
 
     def raise_hp(self, hp_raise: int) -> None:
         """
-        Raise the player's max hit points.
+        Increase the player’s base and adjusted maximum hit points.
 
         Args:
-            hp_raise (int): The amount of hit points to gain.
+            hp_raise (int): Amount to add.
         """
         self.maxhp += hp_raise
         self.maxhp = max(self.maxhp, 1)
@@ -147,10 +138,10 @@ class Player:
 
     def raise_ep(self, ep_raise: int) -> None:
         """
-        Raise the player's max energy/mana points.
+        Increase the player’s base and adjusted maximum energy points.
 
         Args:
-            ep_raise (int): The amount of energy points to gain.
+            ep_raise (int): Amount to add.
         """
         self.maxep += ep_raise
         self.maxep = max(self.maxep, 1)
@@ -159,10 +150,10 @@ class Player:
 
     def raise_attack(self, attack_raise: int) -> None:
         """
-        Raise the player's attack power.
+        Increase the player’s base and adjusted attack.
 
         Args:
-            attack_raise (int): The amount of attack power to gain.
+            attack_raise (int): Amount to add.
         """
         self.attack += attack_raise
         self.attack = max(self.attack, 1)
@@ -171,10 +162,10 @@ class Player:
 
     def raise_defense(self, defense_raise: int) -> None:
         """
-        Raise the player's defense power.
+        Increase the player’s base and adjusted defense.
 
         Args:
-            defense_raise (int): The amount of defense power to gain.
+            defense_raise (int): Amount to add.
         """
         self.defense += defense_raise
         self.defense = max(self.defense, 1)
@@ -183,50 +174,50 @@ class Player:
 
     def buff_hp(self, hp_buff: int) -> None:
         """
-        Buff the player's hit points.
+        Increase the player’s adjusted maximum hit points.
 
         Args:
-            hp_buff (int): The amount of hit points to gain.
+            hp_buff (int): Amount to add.
         """
         self.adj_maxhp += hp_buff
         self.adj_maxhp = max(self.adj_maxhp, 1)
 
     def buff_ep(self, ep_buff: int) -> None:
         """
-        Buff the player's energy/mana points.
+        Increase the player’s adjusted maximum energy points.
 
         Args:
-            ep_buff (int): The amount of energy points to gain.
+            ep_buff (int): Amount to add.
         """
         self.adj_maxep += ep_buff
         self.adj_maxep = max(self.adj_maxep, 1)
 
     def buff_attack(self, attack_buff: int) -> None:
         """
-        Buff the player's attack power.
+        Increase the player’s adjusted attack.
 
         Args:
-            attack_buff (int): The amount of attack power to gain.
+            attack_buff (int): Amount to add.
         """
         self.adj_attack += attack_buff
         self.adj_attack = max(self.adj_attack, 1)
 
     def buff_defense(self, defense_buff: int) -> None:
         """
-        Buff the player's defense power.
+        Increase the player’s adjusted defense.
 
         Args:
-            defense_buff (int): The amount of defense power to gain.
+            defense_buff (int): Amount to add.
         """
         self.adj_defense += defense_buff
         self.adj_defense = max(self.adj_defense, 1)
 
     def add_skillpoints(self, points: int) -> None:
         """
-        Add skill points to the player.
+        Add skill points, clamping the total at zero.
 
         Args:
-            points (int): The amount of skill points to add.
+            points (int): Number of skill points to add; may be negative.
         """
         self.skillpoints += points
         if self.skillpoints < 1:
@@ -234,13 +225,13 @@ class Player:
 
     def findskill(self, name: str) -> int:
         """
-        Find a skill in the player's skill list by name
+        Find a skill by name, ignoring letter case.
 
         Args:
-            name (str): The name of the skill to find
+            name (str): Skill name to search for.
 
         Returns:
-            (int): The index of the skill in the player's skill list, -1 if not found.
+            int: Index in the skill list, or -1 if not found.
         """
         for i in range(len(self.skill)):
             if name.lower() == self.skill[i][0].lower():
@@ -249,12 +240,13 @@ class Player:
 
     def add_skill(self, skill_loc: int) -> int:
         """
-        Add a skill to the player's skill list.
+        Mark a skill as acquired if it is not already learned.
 
         Args:
-            skill_loc (int): The index of the skill in the player's skill list.
+            skill_loc (int): Index of the skill in the skill list.
+
         Returns:
-            (int): 1 if the skill was added, 0 if it was already acquired.
+            int: 1 if the skill was added, or 0 if already acquired.
         """
         if self.skill[skill_loc][5] == 1:
             return 0
@@ -263,17 +255,17 @@ class Player:
 
     def give_gold(self, gold: int) -> None:
         """
-        Give gold to the player.
+        Add gold to the player, clamping the total at zero.
 
         Args:
-            gold (int): The amount of gold to give.
+            gold (int): Amount of gold to add; may be negative.
         """
         self.gold += gold
         if self.gold < 1:
             self.gold = 0
 
     def reset_stats(self) -> None:
-        """Recalculate the players adjusted stats."""
+        """Recalculate adjusted stats using base stats and equipped items."""
         self.adj_attack = self.attack
         self.adj_defense = self.defense
         self.adj_maxhp = self.maxhp

@@ -21,27 +21,27 @@ logger = logging.getLogger(__name__)
 
 
 def load_icons() -> None:
-    """This loads the icons"""
+    """Load module icons into the shared icon dictionary."""
     config.ICONS = read_images("/images/icons/")
 
 
 def load_backgrounds() -> None:
-    """Load the background images for battles"""
+    """Load module battle backgrounds into the shared background dictionary."""
     config.BACKGROUNDS = read_images("/images/backgrounds/")
 
 
 def load_buttons() -> None:
-    """This loads the buttons"""
+    """Load module button images into the shared button dictionary."""
     config.BUTTONS = read_images("/images/buttons/")
 
 
 def load_tiles() -> None:
-    """Loads the various tiles."""
+    """Load module tile images into the shared tile dictionary."""
     config.TILES = read_images("/images/tiles/")
 
 
 def load_sounds() -> None:
-    """Walk the sound directory and load all sounds into the SOUNDS dictionary."""
+    """Load module sound effects into the shared sound dictionary."""
     if config.MUTE:
         return
     try:
@@ -70,16 +70,25 @@ def load_sounds() -> None:
 
 def read_images(dir_name: str) -> dict[str, pygame.Surface]:
     """
-    Read all images in the given directory and its subdirectories
+    Load images from a module directory and its subdirectories.
 
     Args:
-        dir_name (str): The directory to read images from
+        dir_name (str): Directory path relative to the selected module.
 
     Returns:
-        image_dictionary (dict[str, pygame.Surface]): A dictionary of all images in the directory
+        dict[str, pygame.Surface]: Image paths mapped to loaded surfaces.
     """
     def inner_read_images(dir_name: str, image_dictionary: dict[str, pygame.Surface]) -> dict[str, pygame.Surface]:
-        """"""
+        """
+        Add image files from a directory tree to a shared dictionary.
+
+        Args:
+            dir_name (str): Root directory to scan.
+            image_dictionary (dict[str, pygame.Surface]): Dictionary to populate and return.
+
+        Returns:
+            dict[str, pygame.Surface]: The populated image dictionary.
+        """
         i = 0
         for root, dirs, files in walk(dir_name):
             (head, tail) = path.split(root)
@@ -105,17 +114,15 @@ def read_images(dir_name: str) -> dict[str, pygame.Surface]:
     image_dictionary = inner_read_images("../data/buttons", image_dictionary)
     image_dictionary = inner_read_images(config.MODULES_DIR + dir_name, image_dictionary)
 
-    return image_dictionary  #noqa
+    return image_dictionary  # ruff: ignore[unnecessary-assign]
 
 
 def read_maps(from_editor: int = 0) -> None:
     """
-    Read the data/maps directory and place in maps[]
-
-    This called at startup
+    Read module maps and update the maximum map dimensions.
 
     Args:
-        from_editor (int, optional): 1 if being called from editor. Defaults to 0.
+        from_editor (int): Whether maps are being read for the editor; 1 enables editor mode.
     """
     del config.MAPS[:]
     load_backgrounds()
@@ -134,11 +141,7 @@ def read_maps(from_editor: int = 0) -> None:
 
 
 def read_perturn() -> None:
-    """
-    Read the perturn file for the selected module"
-
-    Expects config.MODULES_DIR to be set
-    """
+    """Load scripts assigned to game turns."""
     cur_turns = []
     temp_cur_turns = []
     for i in range(30):
@@ -160,7 +163,7 @@ def read_perturn() -> None:
 
 
 def read_settings() -> None:
-    """Read the settings file and set the global variables accordingly"""
+    """Read settings and update game configuration."""
     # global editor_xy
 
     # editor_xy = (1024, 768)
@@ -188,23 +191,11 @@ def read_settings() -> None:
 
 def read_skills() -> None:
     """
-    Read the skills file for the selected module
+    Load built-in and module-defined player skills.
 
-    TODO the players owned skills should be part of the player object, not a global variable
-
-    Each skill is a list of properties in the config.SKILLS object.
-    Each line contains:
-        name, effect, level, price, description, acquired, scripting, picture.
-
-    Effect is an integer that tells battle.py which case in a select to pick.
-    (0=Rage, 1=Sneak, 2=Frenzy, 3=Dismember, 4=Scripted (battle), 5=Scripted (out of battle), 6=Scripted (both).)
-    Level is the skillpoints required to get the skill,
-    Price is the ep needed to use.
-    Acquired tells if the skill has already been learned by the player.
-    Scripting is an array (that may be empty) that describes the scripting run on use.
-    Picture is the picture used to show that skill.
+    Module skill definitions may include metadata and scripting lines.
     """
-    if path.exists(config.MODULES_DIR + "/data/skills.txt"):
+    if Path(config.MODULES_DIR + "/data/skills.txt").exists():
         temp_skills = utils.read_script_file("/data/skills.txt")
 
     # Built-in/standard skills
@@ -315,9 +306,15 @@ def read_skills() -> None:
 
 
 def read_variables() -> None:
-    """Read the variables file for the selected module"""
+    """Load module variables and player defaults."""
     def _read_dice(index: int, dice_string: str) -> None:
-        """Load a dice set string of the form 2d4+5"""
+        """
+        Parse a dice expression into the configured dice table.
+
+        Args:
+            index (int): Dice-table slot to update.
+            dice_string (str): Expression in the form NdS or NdS+M.
+        """
         first = dice_string.split("d", 1)[0].strip()
         temp = dice_string.split("d", 1)[1].strip()
         if "+" not in temp:
@@ -369,18 +366,7 @@ def read_variables() -> None:
 
 
 def init_gamedata() -> None:
-    """
-    Initialize the game data.
-
-    ? Originally had a lot of loading screens but is now way too fast to even percieve
-
-    TODO "read maps" has a nifty bar that I should emulate throughout the other loads
-    TODO refactor so that everyone just uses pygscreen.get_screen() instead of screen
-    TODO refactor this to just use config.screensizes across everything
-
-    Returns:
-        None
-    """
+    """Load settings and module data required to start the game."""
     logger.info("Read settings")
     read_settings()
     logger.info("Load backgrounds")

@@ -20,9 +20,10 @@
 # Author: Allison Marles
 # Date: Sept.1, 2004
 
+import logging
 import os
 import sys
-import logging
+from pathlib import Path
 
 import pygame
 
@@ -77,6 +78,9 @@ item_list = {"blank": 4}
 def create_map():
 
     # this creates the actual map.
+    """
+    Create a bordered map using the configured dimensions.
+    """
     global cur_map
     cur_map = g.map("")
 
@@ -118,6 +122,12 @@ def create_map():
 
 
 def move_up(dist=1):
+    """
+    Move the map editor viewport upward.
+
+    Args:
+        dist (int): The number of tiles to move.
+    """
     global portal_y
     portal_y -= dist
     portal_y = max(portal_y, 0)
@@ -125,6 +135,12 @@ def move_up(dist=1):
 
 
 def move_down(dist=1):
+    """
+    Move the map editor viewport downward.
+
+    Args:
+        dist (int): The number of tiles to move.
+    """
     global portal_y
     portal_y += dist
     if portal_y + portalsize > mapsize_y:
@@ -134,6 +150,12 @@ def move_down(dist=1):
 
 
 def move_left(dist=1):
+    """
+    Move the map editor viewport left.
+
+    Args:
+        dist (int): The number of tiles to move.
+    """
     global portal_x
     portal_x -= dist
     portal_x = max(portal_x, 0)
@@ -141,6 +163,12 @@ def move_left(dist=1):
 
 
 def move_right(dist=1):
+    """
+    Move the map editor viewport right.
+
+    Args:
+        dist (int): The number of tiles to move.
+    """
     global portal_x
     portal_x += dist
     if portal_x + portalsize > mapsize_x:
@@ -150,13 +178,24 @@ def move_right(dist=1):
 
 
 def click_map(xy: tuple[int, int]) -> None:
-    """"""
+    """
+    Apply the current map-editor action at the clicked tile.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     if not cur_tile or cur_mode in {"remove", "walkable", "scripting", "scripting2"}:
         set_tile((xy[0] / config.TILESIZE) + portal_x, (xy[1] / config.TILESIZE) + portal_y, cur_tile)
 
 
 # set mode to add, replace, remove, or walkable
 def set_mode(mode):
+    """
+    Set the active map-editing mode.
+
+    Args:
+        mode (str): The map-editing mode to activate.
+    """
     global cur_mode
     cur_mode = mode
     refresh_map()
@@ -164,6 +203,12 @@ def set_mode(mode):
 
 # set all interior tiles to background tile
 def set_bkg(bkg):
+    """
+    Set the background tile for the map interior.
+
+    Args:
+        bkg (str): The background tile name.
+    """
     global background
     background = bkg
     for y in range(mapsize_y - 2):
@@ -176,6 +221,12 @@ def set_bkg(bkg):
 
 # what will appear around edges of map (must be walk 0 to keep hero penned in)
 def set_border(edge):
+    """
+    Set the tile used along the map border.
+
+    Args:
+        edge (str): The border tile name.
+    """
     global border
     border = edge
     for y in range(mapsize_y):
@@ -203,6 +254,13 @@ last_xy = (0, 0)
 
 
 def print_cur_xy(xy, ignore_and_force=False):
+    """
+    Display the current map-editor mode and coordinates.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+        ignore_and_force (bool): Whether to redraw the last coordinate unconditionally.
+    """
     global last_xy
     if ignore_and_force:
         xy = last_xy
@@ -223,6 +281,9 @@ def print_cur_xy(xy, ignore_and_force=False):
 # refresh map. This refreshes every tile, as accuracy is rather important here.
 # (compared to the main game)
 def refresh_map():
+    """
+    Redraw the map editor viewport.
+    """
     screen.fill(config.COLORS["black"])
     # 	canvas_map.delete(ALL)
     for y in range(portal_y, portal_y + portalsize):
@@ -401,6 +462,14 @@ def refresh_map():
 
 # set tile at x, y to name.
 def set_tile(x, y, name):
+    """
+    Apply the selected tile or editing action at a map coordinate.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        name (str): The selected tile or item name.
+    """
     if x >= mapsize_x:
         return
     if y >= mapsize_y:
@@ -454,6 +523,14 @@ def set_tile(x, y, name):
 
 # add name item to tile at x, y
 def add_item(x, y, name):
+    """
+    Add an item and its pickup script to a map tile.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        name (str): The selected tile or item name.
+    """
     tmp = main.ask_for_string("Amount of item? (examples: 5, a)")
     if tmp == -1:
         refresh_map()
@@ -479,6 +556,14 @@ def add_item(x, y, name):
 # lines of the tile, and allow for editing.
 # BUGGED
 def change_scripting(x, y, modetype):
+    """
+    Edit a tile’s on-load or action script.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        modetype (int): Which script list to edit.
+    """
     scripting_list = []
     if modetype == 0:
         for line in cur_map.field[y][x].onload:
@@ -496,11 +581,11 @@ def change_scripting(x, y, modetype):
     if editor != "":
         for line_num in range(len(scripting_list)):
             scripting_list[line_num] += "\n"
-        tmp_file = open("temp_editor_script.txt", "w")
+        tmp_file = Path("temp_editor_script.txt").open("w")
         tmp_file.writelines(scripting_list)
         tmp_file.close()
         tmp = os.spawnlp(os.P_WAIT, editor, editor, "temp_editor_script.txt")
-        tmp_file = open("temp_editor_script.txt")
+        tmp_file = Path("temp_editor_script.txt").open()
         scripting_list = []
         while True:
             tmp_line = tmp_file.readline()
@@ -546,6 +631,9 @@ def change_scripting(x, y, modetype):
 
 # this loads the various tiles.
 def load_tiles():
+    """
+    Load the available map-editor tiles.
+    """
     global tiles
     tiles = {"blank": pygame.Surface((32, 32))}
     global tilenames
@@ -571,10 +659,13 @@ def load_tiles():
 
 
 def get_walk_values():
+    """
+    Load tile walkability values.
+    """
     global walk_vals
     walk_vals = {"blank": 0}
     walk_defs_loc = config.MODULES_DIR + "/data/" + "walk_defs.txt"
-    walk_defs = open(walk_defs_loc)
+    walk_defs = Path(walk_defs_loc).open()
     # read lines, store in walk[tilename] = 1 or 0
     walk_line = walk_defs.readline()
     while walk_line != "" and walk_line[:1] != ":":
@@ -595,6 +686,9 @@ def get_walk_values():
 
 
 def set_codes():
+    """
+    Build lookup codes for the current tile set.
+    """
     global codes
     codes = []
     # This gives me a few thousand (3844) distinct tiles per map.
@@ -605,6 +699,13 @@ def set_codes():
 
 # set current tile to work with
 def choose_tile(file, num):
+    """
+    Select a tile file by its list position.
+
+    Args:
+        file (str): The tile file name.
+        num (int): The tile-file position.
+    """
     global cur_tile
     global cur_tile_num
     cur_tile = file
@@ -615,11 +716,23 @@ def choose_tile(file, num):
 # set up tile
 def setup_tilebox():
     # this creates the tile display portion
+    """
+    Initialize the tile-selection box.
+    """
     global tilebox
     tilebox = []
 
 
 def click_tiles(xy):
+    """
+    Handle a click in the tile-selection panel.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        int: The result of handling the click.
+    """
     if xy[0] < pygscreen.SCREEN_WIDTH - (tilebox_width) * (config.TILESIZE + 1):
         return 0
     global cur_tile_num
@@ -649,6 +762,12 @@ def click_tiles(xy):
 
 # show tile set as buttons
 def display_tiles(set=""):
+    """
+    Display the tile-selection panel.
+
+    Args:
+        set (str): The tile-set name to display.
+    """
     global cur_tile_set
     global cur_tile
     cur_tile = ""
@@ -717,6 +836,16 @@ def display_tiles(set=""):
 
 
 def check_repeat_tile(x, y):
+    """
+    Check whether the selected tile repeats across an area.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+
+    Returns:
+        int: 1 if the tile repeats across the checked area, otherwise 0.
+    """
     for in_y in range(y):
         for in_x in range(mapsize_x):  # for each previous tile.
             if tiles_equal(cur_map.field[y][x], cur_map.field[in_y][in_x]) == 1:
@@ -731,14 +860,17 @@ def check_repeat_tile(x, y):
 
 # save map to map dir
 def save_map():
+    """
+    Save the current map.
+    """
     set_codes()
     map_loc = config.MODULES_DIR + "/data/maps/" + map_name
     logger.info("Saving map to %s", map_loc)
     try:
-        os.rename(map_loc, map_loc + "~")
+        Path(map_loc).rename(map_loc + "~")
     except OSError:
         pass
-    map_file = open(map_loc, "w")
+    map_file = Path(map_loc).open("w")
     count = 0
     for y in range(mapsize_y):
         for x in range(mapsize_x):  # for each tile
@@ -804,13 +936,16 @@ def save_map():
     g.zgrid = g.mapname2zgrid(cur_map.name)
     copy_map(config.MAPS[g.zgrid], cur_map)
     try:
-        os.remove(map_loc + "~")
+        Path(map_loc + "~").unlink()
     except OSError:
         pass
 
 
 # loads the loadmap window, then loads the returned map into cur_map.
 def do_load_map():
+    """
+    Load a map selected from the available maps.
+    """
     array_maps = os.listdir(config.MODULES_DIR + "/data/maps/")
     array_maps.sort()
     # remove CVS directory
@@ -849,6 +984,13 @@ def do_load_map():
 
 # given input and output maps, copies the important parts.
 def copy_map(output_map, input_map):
+    """
+    Copy map data from one map object to another.
+
+    Args:
+        output_map (g.map): The map object to update.
+        input_map (g.map): The map object to copy.
+    """
     output_map.name = input_map.name
     global map_name
     map_name = output_map.name
@@ -876,6 +1018,13 @@ def copy_map(output_map, input_map):
 
 # given input and output tiles, copies the important parts.
 def copy_tile(output_tile, input_tile):
+    """
+    Copy tile data from one tile object to another.
+
+    Args:
+        output_tile (g.tile): The tile object to update.
+        input_tile (g.tile): The tile object to copy.
+    """
     output_tile.walk = input_tile.walk
     output_tile.onload = []
     for line in input_tile.onload:
@@ -888,6 +1037,16 @@ def copy_tile(output_tile, input_tile):
 # given two tiles, return 1 if they are equal, 0 if not.
 # Checks onload and actions.
 def tiles_equal(tile1, tile2):
+    """
+    Check whether two tiles have matching contents.
+
+    Args:
+        tile1 (g.tile): The first tile to compare.
+        tile2 (g.tile): The second tile to compare.
+
+    Returns:
+        int: 1 if the tile contents match, otherwise 0.
+    """
     if len(tile1.onload) != len(tile2.onload):
         return 0
     if len(tile1.actions) != len(tile2.actions):
@@ -903,6 +1062,13 @@ def tiles_equal(tile1, tile2):
 
 # given x and y in tiles, resizes the map, destroying and creating tiles as needed.
 def really_change_mapsize(x, y):
+    """
+    Change the map dimensions after confirmation.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+    """
     global mapsize_x
     global mapsize_y
     mapsize_x = int(x)
@@ -935,7 +1101,15 @@ def really_change_mapsize(x, y):
 
 
 def ask_yesno(line: str | None = None) -> bool:
-    """Tiny wrapper around main.show_yesno to handle confirmation popup"""
+    """
+    Display a confirmation prompt and return the answer.
+
+    Args:
+        line (str | None): The text to display or edit.
+
+    Returns:
+        bool: Whether the user confirmed.
+    """
     tmp_surface = pygame.Surface(screen_size)
     tmp_surface.blit(screen, (0, 0))
     tmp_answer = main.show_yesno(line)
@@ -945,6 +1119,9 @@ def ask_yesno(line: str | None = None) -> bool:
 
 
 def toggle_grid():
+    """
+    Toggle the map editor tile grid.
+    """
     if config.TILEGRID:
         config.TILEGRID = False
     else:
@@ -953,12 +1130,23 @@ def toggle_grid():
 
 
 def quick_button(command_string, xy, size):
+    """
+    Draw a compact menu button.
+
+    Args:
+        command_string (str): The command to execute.
+        xy (tuple[int, int]): The screen or tile coordinates.
+        size (tuple[int, int]): The button dimensions.
+    """
     widgets.bordered_box(screen, xy, size)
     widgets.print_string(screen, command_string, g.font, (xy[0] + 2, xy[1] + 1))
     g.unclean_screen = True
 
 
 def make_menus():
+    """
+    Create the map editor menus.
+    """
     quick_button("File", (0, 0), (25, 14))
     quick_button("Tileset", (25, 0), (35, 14))
     quick_button("Map Settings", (60, 0), (70, 14))
@@ -967,6 +1155,15 @@ def make_menus():
 
 
 def click_menu(xy):
+    """
+    Handle a click in the map editor menu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        int: The selected menu action.
+    """
     if xy[0] > 175:
         return 0
     if xy[1] > 14:
@@ -981,6 +1178,18 @@ def click_menu(xy):
 
 
 def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wide=False):
+    """
+    Display a selectable list and return the chosen entry.
+
+    Args:
+        input_array (list): The entries to display.
+        act_as_menu (bool): Whether to display the list as a menu.
+        return_pos (bool): Whether to return the selected position.
+        extra_wide (bool): Whether to use the wider list layout.
+
+    Returns:
+        int | str: The selected position or entry, or -1 if cancelled.
+    """
     cur_pos = 0
     while len(input_array) % 16 != 0 or len(input_array) == 0:
         input_array.append("")
@@ -1084,6 +1293,12 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
 
 
 def tile_dir_list(autoselect=-1):
+    """
+    Display the available tile sets and select one.
+
+    Args:
+        autoselect (int): The list entry to select initially.
+    """
     global cur_tile_set
     list_of_dirs = []
     cur_dir = 0
@@ -1111,12 +1326,21 @@ def tile_dir_list(autoselect=-1):
 
 
 def change_portal(size):
+    """
+    Change the map editor viewport size.
+
+    Args:
+        size (tuple[int, int]): The button dimensions.
+    """
     global portalsize
     portalsize = size
     refresh_map()
 
 
 def main_menu():
+    """
+    Display and handle the map editor main menu.
+    """
     list_of_opts = ["New", "Rename", "Load", "Save", "Quit"]
     tmp = select_from_list(list_of_opts, True)
     if tmp == -1:
@@ -1136,13 +1360,15 @@ def main_menu():
         do_load_map()
     elif tmp == "Save":
         save_map()
-    elif tmp == "Quit":
-        if ask_yesno("Quit the editor?"):
-            sys.exit()
+    elif tmp == "Quit" and ask_yesno("Quit the editor?"):
+        sys.exit()
     refresh_map()
 
 
 def map_menu():
+    """
+    Display and handle the map settings menu.
+    """
     list_of_opts = ["Map Mode", "Map Size", "Background", "Border", "Monsters", "Battle Background"]
     tmp = select_from_list(list_of_opts, True)
     if tmp == -1:
@@ -1282,6 +1508,12 @@ def map_menu():
 
 def sel_mod(selected_mod):
     # 	window_sel_game.withdraw()
+    """
+    Select the module to edit.
+
+    Args:
+        selected_mod (str): The selected module name.
+    """
     config.MODULES_DIR = "../modules/" + selected_mod
     # put all items in a list
     global item_dir
@@ -1437,12 +1669,11 @@ def sel_mod(selected_mod):
             elif event.type == pygame.MOUSEMOTION:
                 tmp_square = ((event.pos[0] / config.TILESIZE) + portal_x, (event.pos[1] / config.TILESIZE) + portal_y)
                 print_cur_xy(tmp_square)
-                if mouse_button_down:
-                    if tmp_square != last_square:
-                        last_square = tmp_square
-                        tmp = click_map(event.pos)
-                        if tmp > 0:
-                            break
+                if mouse_button_down and tmp_square != last_square:
+                    last_square = tmp_square
+                    tmp = click_map(event.pos)
+                    if tmp > 0:
+                        break
 
             elif event.type == pygame.MOUSEBUTTONUP:
                 if event.button == 1:

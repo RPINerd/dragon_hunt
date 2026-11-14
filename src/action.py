@@ -29,15 +29,13 @@ screen = pygscreen.get_screen()
 
 def interpret_line(message: str) -> str:
     """
-    Process a string while following ~Action~ code
-
-    Given a string interpret all ~Action~ embedded variables, and return the displayable string.
+    Replace embedded script variables in a display string.
 
     Args:
-        message (str): String to interpret
+        message (str): Text that may contain embedded script variables.
 
     Returns:
-        str: Displayable string
+        str: Displayable text with embedded variables expanded.
     """
     # The ~Variable~ sequence enables variables to be inserted into info.
     num_of_tildes = message.count("~")
@@ -77,19 +75,16 @@ def interpret_line(message: str) -> str:
 
 def activate_lines(x: int, y: int, z: int, commands: list[str]) -> int:
     """
-    Given an array of commands, run them.
-
-    See scripting.txt for details.
-    Note that x and y are absolute values.
+    Execute a sequence of action-script commands.
 
     Args:
-        x (int): x coordinate
-        y (int): y coordinate
-        z (int): z coordinate
-        commands (list[str]): List of commands to run
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        commands (list[str]): Action-script commands to execute.
 
     Returns:
-        int: 1 if successful, 0 otherwise
+        int | str: Integer success status or a malformed-script status.
     """
     i = 0
     # Go through all action lines.
@@ -131,6 +126,16 @@ def activate_lines(x: int, y: int, z: int, commands: list[str]) -> int:
 # "endif" associated with the command. corrector is the current position in the
 # file as a whole, used to correct for missing part of the array.
 def find_if_else_block(commands, corrector):
+    """
+    Find the else and endif commands matching an if block.
+
+    Args:
+        commands (list[str]): Action-script commands to execute.
+        corrector (int): Offset of the command list within the full script.
+
+    Returns:
+        tuple[int, int]: Indexes of the matching else and endif commands.
+    """
     num_of_ifs = 0
     else_loc = -1
     endif_loc = -1
@@ -154,6 +159,15 @@ def find_if_else_block(commands, corrector):
 # Given a string/command, return either 0 (if the command is a number),
 # 1 (if it is a string), or 2 (if it is an actual command).
 def command_type(command) -> int:
+    """
+    Classify a script expression as a number, string, or command.
+
+    Args:
+        command (str): Script expression or command text.
+
+    Returns:
+        int: 0 for a number, 1 for a string, or 2 for a command.
+    """
     command = command.strip()
 
     # Note that this only checks the first character. This is purposeful, as
@@ -170,6 +184,15 @@ def command_type(command) -> int:
 # matching ")". Note that the beginning "(" is required to help prevent
 # off-by-one errors.
 def match_parenth(command):
+    """
+    Find the closing parenthesis for an opening parenthesis.
+
+    Args:
+        command (str): Script expression or command text.
+
+    Returns:
+        int: Position of the matching parenthesis, or -1 if unmatched.
+    """
     command = command.strip()
     if command[0] != "(":
         logger.error("match_parenth() called with a bad string: %s", command)
@@ -201,6 +224,15 @@ def match_parenth(command):
 # Like match_parenth(), but allows beginning characters before the (. Meant for
 # matching the end of a command.
 def match_command(command):
+    """
+    Find the end of a command expression in a script string.
+
+    Args:
+        command (str): Script expression or command text.
+
+    Returns:
+        int: Position just after the command expression, or -1 if invalid.
+    """
     command = command.strip()
     tmp = command.find("(")
     if tmp == -1:
@@ -215,6 +247,15 @@ def match_command(command):
 # off-by-one errors. Also note that this function allows the \" sequence
 # for the literal " character.
 def match_quotes(command):
+    """
+    Find the closing quote for a quoted script string.
+
+    Args:
+        command (str): Script expression or command text.
+
+    Returns:
+        int: Position of the closing quote, or -1 if unmatched.
+    """
     if command[0] != '"':
         logger.error("match_quotes() called with a bad string: %s", command)
         return -1
@@ -234,10 +275,13 @@ def match_quotes(command):
 
 def insert_newlines(command: str) -> str:
     """
-    Given a string, replace the sequence \n with the actual newline character.
+    Replace escaped newline sequences with newline characters.
 
-    :param command: string
-    :return: string
+    Args:
+        command (str): Script expression or command text.
+
+    Returns:
+        str: Text with escaped newline sequences expanded.
     """
     return command.replace("\\n", "\n")
 
@@ -245,6 +289,18 @@ def insert_newlines(command: str) -> str:
 # Given a list of ,-separated commands, return an array of the return values
 # for each command. Used to parse argument lists.
 def run_arguments(x: int, y: int, z: int, commands):
+    """
+    Evaluate a comma-separated list of script arguments.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        commands (str): Comma-separated script argument expressions.
+
+    Returns:
+        list | str: Parsed argument values or a script error/end status.
+    """
     commands = commands.strip()
     return_vals = []
 
@@ -281,6 +337,18 @@ def run_arguments(x: int, y: int, z: int, commands):
 # "end" (end script), or "bad" (same as end, but also logs debugging info).
 # x and y are absolute values.
 def run_command(x: int, y: int, z: int, command):
+    """
+    Evaluate one action-script command or expression.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        command (str): Script expression or command text.
+
+    Returns:
+        int | str | None: The evaluated command result or script status.
+    """
     command = command.strip()
 
     # if command is a number, just return the number.
@@ -466,13 +534,16 @@ def run_command(x: int, y: int, z: int, command):
 
 def check_num_args(num_of_args: int, lower_num: int, upper_num: int, command_name: str) -> int:
     """
-    Make sure the number of arguments to a function is good.
+    Check whether a command has an allowed number of arguments.
 
-    :param num_of_args: number of arguments
-    :param lower_num: lower number of arguments
-    :param upper_num: upper number of arguments
-    :param command_name: name of the command
-    :return: 1 if the number of arguments is good, 0 otherwise
+    Args:
+        num_of_args (int): Number of arguments supplied.
+        lower_num (int): Minimum accepted argument count.
+        upper_num (int): Maximum accepted argument count.
+        command_name (str): Command name used in error messages.
+
+    Returns:
+        int: 1 if the count is valid; otherwise 0.
     """
     if num_of_args < lower_num or num_of_args > upper_num:
         logger.error(
@@ -488,15 +559,16 @@ def check_num_args(num_of_args: int, lower_num: int, upper_num: int, command_nam
 
 def check_types_args(args: list, arg_types: list, command_name: str, quiet: int = 0) -> int:
     """
-    Make sure the script arguments are of the right type.
-    (0=number, 1=string, 2=don't care)
-    Note that all 'command' arguments should have disappeared by the time this function is called.
+    Check whether parsed script arguments have the expected types.
 
-    :param args: list of arguments
-    :param arg_types: list of argument types
-    :param command_name: name of the command
-    :param quiet: quiet flag
-    :return: 1 if the script arguments are of the right type, 0 otherwise
+    Args:
+        args (list): Parsed arguments, each containing a value and type.
+        arg_types (list): Expected argument type codes.
+        command_name (str): Command name used in error messages.
+        quiet (int): Nonzero to suppress type-mismatch logging.
+
+    Returns:
+        int: 1 if the argument types are valid; otherwise 0.
     """
     for i in range(len(arg_types)):
         if args[i] == "bad":
@@ -515,6 +587,18 @@ def check_types_args(args: list, arg_types: list, command_name: str, quiet: int 
 
 
 def script_addpix(x: int, y: int, z: int, argument_array):  # add a picture to the tile.
+    """
+    add a picture to the tile.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "addpix") == 0:
         return "bad"
 
@@ -526,6 +610,18 @@ def script_addpix(x: int, y: int, z: int, argument_array):  # add a picture to t
 
 
 def script_addoverpix(x: int, y: int, z: int, argument_array):  # add a picture to the tile.
+    """
+    add a picture to the tile.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "addoverpix") == 0:
         return "bad"
 
@@ -534,6 +630,18 @@ def script_addoverpix(x: int, y: int, z: int, argument_array):  # add a picture 
 
 
 def script_addskill(x: int, y: int, z: int, argument_array):  # add a skill
+    """
+    add a skill.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "addskill") == 0:
         return "bad"
 
@@ -545,6 +653,18 @@ def script_addskill(x: int, y: int, z: int, argument_array):  # add a skill
 
 
 def script_attack(x: int, y: int, z: int, argument_array):  # cause creature to attack
+    """
+    cause creature to attack.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "attack") == 0:
         return "bad"
 
@@ -573,6 +693,18 @@ def script_attack(x: int, y: int, z: int, argument_array):  # cause creature to 
 
 def script_damage_monster(x: int, y: int, z: int, argument_array):  # In battle, hurt monster for either
     # adj_attack points, or Command points. *NOT* reduced by armor.
+    """
+    In battle, hurt monster for either.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
         logger.warning("damage_monster called outside of battle.")
         return -1
@@ -592,7 +724,18 @@ def script_damage_monster(x: int, y: int, z: int, argument_array):  # In battle,
 
 
 def script_delpix(x: int, y: int, z: int, argument_array) -> str | int:
-    """Remove a picture from the tile."""
+    """
+    Handle the delpix action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        str | int: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "delpix") == 0:
         return "bad"
 
@@ -605,6 +748,18 @@ def script_delpix(x: int, y: int, z: int, argument_array) -> str | int:
 
 
 def script_dialog(x: int, y: int, z: int, argument_array):  # show a message in a dialog box.
+    """
+    show a message in a dialog box.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "dialog") == 0:
         return "bad"
     main.show_dialog(insert_newlines(argument_array[0][0][1:-1]))
@@ -612,16 +767,52 @@ def script_dialog(x: int, y: int, z: int, argument_array):  # show a message in 
 
 
 def script_die(x: int, y: int, z: int, argument_array):  # process endgame.txt script
+    """
+    process endgame.txt script.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     player.hp = -1
     activate_lines(x, y, z, g.endgame_act)
     return "end"
 
 
 def script_end(x: int, y: int, z: int, argument_array):  # end the script
+    """
+    end the script.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     return "end"
 
 
 def script_equip(x: int, y: int, z: int, argument_array):  # adjust equipment
+    """
+    adjust equipment.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1, 1], "equip") == 0:
         return "bad"
 
@@ -673,6 +864,18 @@ def script_equip(x: int, y: int, z: int, argument_array):  # adjust equipment
 
 
 def script_fade(x: int, y: int, z: int, argument_array):
+    """
+    Handle the fade action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        str | None: Error status string, or None after the fade operation.
+    """
     if check_types_args(argument_array, [0], "fade") == 0:
         return "bad"
 
@@ -687,6 +890,18 @@ def script_fade(x: int, y: int, z: int, argument_array):
 
 
 def script_find(x: int, y: int, z: int, argument_array):
+    """
+    Handle the find action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1, 2], "find") == 0:
         return "bad"
 
@@ -716,6 +931,18 @@ def script_find(x: int, y: int, z: int, argument_array):
 
 
 def script_gamestat(x: int, y: int, z: int, argument_array):
+    """
+    Handle the gamestat action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "gamestat") == 0:
         return "bad"
 
@@ -742,6 +969,18 @@ def script_gamestat(x: int, y: int, z: int, argument_array):
 
 
 def script_generic_dialog(x: int, y: int, z: int, argument_array):  # Custom dialog box.
+    """
+    Custom dialog box.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        object: Result returned by the dialog popup.
+    """
     if check_types_args(argument_array, [1], "generic_dialog") == 0:
         return "bad"
     line = argument_array.pop(0)
@@ -755,6 +994,18 @@ def script_generic_dialog(x: int, y: int, z: int, argument_array):  # Custom dia
 
 
 def script_give(x: int, y: int, z: int, argument_array):  # Change stats. Note that negative numbers also work
+    """
+    Change stats. Note that negative numbers also work.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1, 2], "give") == 0:
         return "bad"
 
@@ -810,7 +1061,18 @@ def script_give(x: int, y: int, z: int, argument_array):  # Change stats. Note t
 
 
 def script_hero(x: int, y: int, z: int, argument_array) -> str | None:
-    """Change hero pix"""
+    """
+    Handle the hero action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "hero") == 0:
         return "bad"
 
@@ -821,6 +1083,18 @@ def script_hero(x: int, y: int, z: int, argument_array) -> str | None:
 
 
 def script_hurt(x: int, y: int, z: int, argument_array):  # hurt player (reduced by armor)
+    """
+    hurt player (reduced by armor).
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [0], "hurt") == 0:
         return "bad"
 
@@ -833,6 +1107,18 @@ def script_hurt(x: int, y: int, z: int, argument_array):  # hurt player (reduced
 
 def script_hurt_monster(x: int, y: int, z: int, argument_array):  # In battle, hurt monster for either
     # adj_attack points, or Command points. Reduced by armor.
+    """
+    In battle, hurt monster for either.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
         logger.warning("hurt_monster called outside of battle.")
         return -1
@@ -853,6 +1139,18 @@ def script_hurt_monster(x: int, y: int, z: int, argument_array):  # In battle, h
 
 
 def script_if(x: int, y: int, z: int, argument_array):
+    """
+    Handle the if action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if len(argument_array) == 1:
         argument_array.append(['"=="', 1])
         argument_array.append([1, 0])
@@ -902,6 +1200,18 @@ def script_if(x: int, y: int, z: int, argument_array):
 
 
 def script_info(x: int, y: int, z: int, argument_array):  # display line of text in textbox below main screen
+    """
+    display line of text in textbox below main screen.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [2], "info") == 0:
         return "bad"
 
@@ -916,6 +1226,18 @@ def script_info(x: int, y: int, z: int, argument_array):  # display line of text
 
 
 def script_inv(x: int, y: int, z: int, argument_array):  # inventory functions.
+    """
+    inventory functions.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1, 1], "inv") == 0:
         return "bad"
 
@@ -983,6 +1305,18 @@ def script_inv(x: int, y: int, z: int, argument_array):  # inventory functions.
 
 
 def script_inv_spot(x: int, y: int, z: int, argument_array):  # return name of given inv item.
+    """
+    return name of given inv item.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [0], "inv_spot") == 0:
         return "bad"
 
@@ -996,6 +1330,18 @@ def script_inv_spot(x: int, y: int, z: int, argument_array):  # return name of g
 
 
 def script_is_equipped(x: int, y: int, z: int, argument_array):  # is the given item equipped?
+    """
+    is the given item equipped?.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "is_equipped") == 0:
         return "bad"
 
@@ -1009,6 +1355,18 @@ def script_is_equipped(x: int, y: int, z: int, argument_array):  # is the given 
 
 
 def script_item(x: int, y: int, z: int, argument_array):  # give item
+    """
+    give item.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     argument_array = [['"give"', 1], argument_array[0]]
     tmp = script_inv(x, y, z, argument_array)
     if check_types_args(argument_array, [1], "item") == 0:
@@ -1020,14 +1378,36 @@ def script_item(x: int, y: int, z: int, argument_array):  # give item
 
 
 def script_lose(x: int, y: int, z: int, argument_array) -> str:
-    """"""
+    """
+    Handle the lose action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        str: Script value or status result.
+    """
     player.hp = -1
     main.close_window()
     return "end"
 
 
 def script_mapspot(x: int, y: int, z: int, argument_array) -> str | int:
-    """"""
+    """
+    Handle the mapspot action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        str | int: Script value or status result.
+    """
     if check_types_args(argument_array, [1, 0, 0, 1], "mapspot") == 0:
         return "bad"
 
@@ -1077,6 +1457,18 @@ def script_mapspot(x: int, y: int, z: int, argument_array) -> str | int:
 
 
 def script_mapstat(x: int, y: int, z: int, argument_array):
+    """
+    Handle the mapstat action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1, 1], "mapstat") == 0:
         return "bad"
     switch2 = argument_array[0][0][1:-1].lower()
@@ -1111,6 +1503,18 @@ def script_mapstat(x: int, y: int, z: int, argument_array):
 
 # In battle, change the stats of the given monster
 def script_monster_give_stat(x: int, y: int, z: int, argument_array):
+    """
+    In battle, change the stats of the given monster.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [2, 1, 2], "monster_give_stat") == 0:
         return "bad"
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
@@ -1152,7 +1556,18 @@ def script_monster_give_stat(x: int, y: int, z: int, argument_array):
 
 
 def script_monster_stat(x: int, y: int, z: int, argument_array) -> str | int:
-    """In battle, return the stats of the given monster"""
+    """
+    Handle the monster stat action-script command.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        str | int: Script value or status result.
+    """
     if check_types_args(argument_array, [0, 1], "monster_stat") == 0:
         return "bad"
     if g.cur_window not in {"battle", "battle_item", "battle_skill"}:
@@ -1188,6 +1603,18 @@ def script_monster_stat(x: int, y: int, z: int, argument_array) -> str | int:
 
 def script_monster_select(x: int, y: int, z: int, argument_array):  # In battle, ask the player to
     # select a monster
+    """
+    In battle, ask the player to.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if g.cur_window != "battle" and g.cur_window != "battle_item" and g.cur_window != "battle_skill":
         logger.warning("monster_select called outside of battle.")
         return -1
@@ -1199,6 +1626,18 @@ def script_monster_select(x: int, y: int, z: int, argument_array):  # In battle,
 
 
 def script_move(x: int, y: int, z: int, argument_array):  # move the player
+    """
+    move the player.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1, 0, 0], "move") == 0:
         return "bad"
 
@@ -1225,10 +1664,34 @@ def script_move(x: int, y: int, z: int, argument_array):  # move the player
 
 
 def script_pass(x: int, y: int, z: int, argument_array):  # do nothing
+    """
+    do nothing.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     return 1
 
 
 def script_pix(x: int, y: int, z: int, argument_array):  # change tile picture
+    """
+    change tile picture.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "pix") == 0:
         return "bad"
 
@@ -1239,11 +1702,35 @@ def script_pix(x: int, y: int, z: int, argument_array):  # change tile picture
 
 
 def script_printvars(x: int, y: int, z: int, argument_array):  # debug: log all variables
+    """
+    debug: log all variables.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     logger.debug("Script variables: %s", g.var_list)
     return 1
 
 
 def script_question(x: int, y: int, z: int, argument_array):  # yes/no dialog box
+    """
+    yes/no dialog box.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "question") == 0:
         return "bad"
 
@@ -1256,11 +1743,35 @@ def script_question(x: int, y: int, z: int, argument_array):  # yes/no dialog bo
 
 
 def script_refresh(x: int, y: int, z: int, argument_array):  # refresh the screen manually.
+    """
+    refresh the screen manually.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     main.refreshmap()
     return 1
 
 
 def script_rng(x: int, y: int, z: int, argument_array):  # Random Number Generator
+    """
+    Random Number Generator.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [0, 0], "rng") == 0:
         return "bad"
 
@@ -1271,6 +1782,18 @@ def script_rng(x: int, y: int, z: int, argument_array):  # Random Number Generat
 
 
 def script_run(x: int, y: int, z: int, argument_array):  # Run the actions of a different tile.
+    """
+    Run the actions of a different tile.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1, 0, 0], "run") == 0:
         return "bad"
 
@@ -1288,6 +1811,18 @@ def script_run(x: int, y: int, z: int, argument_array):  # Run the actions of a 
 
 
 def script_set(x: int, y: int, z: int, argument_array):  # set variable (in g.var_list)
+    """
+    set variable (in g.var_list).
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if len(argument_array) == 2:
         argument_array = [argument_array[0], ['"="', 1], argument_array[1]]
 
@@ -1357,6 +1892,18 @@ def script_set(x: int, y: int, z: int, argument_array):  # set variable (in g.va
 
 
 def script_skill(x: int, y: int, z: int, argument_array):  # skill functions
+    """
+    skill functions.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [2, 2], "skill") == 0:
         return "bad"
 
@@ -1392,6 +1939,18 @@ def script_skill(x: int, y: int, z: int, argument_array):  # skill functions
 
 
 def script_stat(x: int, y: int, z: int, argument_array):  # return stat
+    """
+    return stat.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "stat") == 0:
         return "bad"
 
@@ -1431,6 +1990,18 @@ def script_stat(x: int, y: int, z: int, argument_array):  # return stat
 
 
 def script_store(x: int, y: int, z: int, argument_array: list) -> int | str:  # enter store
+    """
+    enter store.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "store") == 0:
         return "bad"
 
@@ -1441,6 +2012,18 @@ def script_store(x: int, y: int, z: int, argument_array: list) -> int | str:  # 
 
 
 def script_take(x: int, y: int, z: int, argument_array):  # Drop item, by name.
+    """
+    Drop item, by name.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     argument_array = [['"take"', 1], argument_array[0]]
     return script_inv(x, y, z, argument_array)
 
@@ -1455,6 +2038,18 @@ def script_take(x: int, y: int, z: int, argument_array):  # Drop item, by name.
 
 
 def script_var(x: int, y: int, z: int, argument_array):  # return variable (in g.var_list)
+    """
+    return variable (in g.var_list).
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [1], "var") == 0:
         return "bad"
 
@@ -1474,6 +2069,18 @@ def script_var(x: int, y: int, z: int, argument_array):  # return variable (in g
 
 
 def script_walk(x: int, y: int, z: int, argument_array):  # change tile walkability
+    """
+    change tile walkability.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        str | None: Error status string, or None after updating walkability.
+    """
     if check_types_args(argument_array, [0], "walk") == 0:
         return "bad"
     config.MAPS[z].field[y][x].walk = argument_array[0][0]
@@ -1481,6 +2088,18 @@ def script_walk(x: int, y: int, z: int, argument_array):  # change tile walkabil
 
 
 def script_wall_n(x: int, y: int, z: int, argument_array):  # change tile wall values
+    """
+    change tile wall values.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [0], "wall_n") == 0:
         return "bad"
     config.MAPS[z].field[y][x].wall_n = argument_array[0][0]
@@ -1488,6 +2107,18 @@ def script_wall_n(x: int, y: int, z: int, argument_array):  # change tile wall v
 
 
 def script_wall_s(x: int, y: int, z: int, argument_array):  # change tile wall values
+    """
+    change tile wall values.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [0], "wall_s") == 0:
         return "bad"
     config.MAPS[z].field[y][x].wall_s = argument_array[0][0]
@@ -1495,6 +2126,18 @@ def script_wall_s(x: int, y: int, z: int, argument_array):  # change tile wall v
 
 
 def script_wall_e(x: int, y: int, z: int, argument_array):  # change tile wall values
+    """
+    change tile wall values.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [0], "wall_e") == 0:
         return "bad"
     config.MAPS[z].field[y][x].wall_e = argument_array[0][0]
@@ -1502,6 +2145,18 @@ def script_wall_e(x: int, y: int, z: int, argument_array):  # change tile wall v
 
 
 def script_wall_w(x: int, y: int, z: int, argument_array):  # change tile wall values
+    """
+    change tile wall values.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     if check_types_args(argument_array, [0], "wall_w") == 0:
         return "bad"
     config.MAPS[z].field[y][x].wall_w = argument_array[0][0]
@@ -1509,4 +2164,16 @@ def script_wall_w(x: int, y: int, z: int, argument_array):  # change tile wall v
 
 
 def script_win(x: int, y: int, z: int, argument_array):  # process wingame.txt script
+    """
+    process wingame.txt script.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        z (int): Map index.
+        argument_array (list): Parsed script arguments, each containing a value and type.
+
+    Returns:
+        int | str | None: Script value or status result.
+    """
     return activate_lines(x, y, z, g.wingame_act)

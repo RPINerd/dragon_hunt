@@ -1,6 +1,6 @@
 """This file controls the options screen."""
 
-from os import path
+from pathlib import Path
 
 import pygame
 
@@ -23,16 +23,13 @@ tmp_keys = {}
 
 def box_with_text(xy: tuple[int, int], text: str, focused: bool, active: bool = False) -> None:
     """
-    Create a box with text inside it, colored based on focus and state
+    Draw a text box styled according to its focus and active state.
 
-    unfocused, inactive = gray
-    focused, inactive = green
-    focused, active = red
     Args:
-        xy (tuple[int, int]): The x and y coordinates of the box
-        text (str): The text to display inside the box
-        focused (bool): Whether the box is currently focused
-        active (bool): Whether the box is currently active
+        xy (tuple[int, int]): The screen or tile coordinates.
+        text (str): The text to display.
+        focused (bool): Whether the box has focus.
+        active (bool): Whether the box is active.
     """
     in_color = "light_gray"
     if focused:
@@ -44,7 +41,9 @@ def box_with_text(xy: tuple[int, int], text: str, focused: bool, active: bool = 
 
 
 def refresh_window() -> None:
-    """"""
+    """
+    Refresh the options window.
+    """
     # create the window
     x_start = config.TILESIZE * config.MAPSIZE_X / 2 - 90
     y_start = config.TILESIZE * config.MAPSIZE_Y / 2 - 80
@@ -102,7 +101,12 @@ def refresh_window() -> None:
 
 
 def refresh_key_window(adjusting: bool = False) -> None:
-    """"""
+    """
+    Refresh the key-binding window.
+
+    Args:
+        adjusting (bool): Whether a key binding is being changed.
+    """
     # create the window
     x_start = config.TILESIZE * config.MAPSIZE_X / 2 - 90
     y_start = config.TILESIZE * config.MAPSIZE_Y / 2 - 80
@@ -168,9 +172,10 @@ def refresh_key_window(adjusting: bool = False) -> None:
 
 def key_handler(switch: int) -> None:
     """
-    All keypresses in new_game pass through here
+    Handle a key action in the options window.
 
-    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    Args:
+        switch (int): The key action to handle.
     """
     global curr_button
     global tmp_fullscreen
@@ -237,8 +242,8 @@ def key_handler(switch: int) -> None:
 
             # save the settings to disk
             options_file_text = []
-            if path.exists(config.MODULES_DIR + "/../../settings.txt") == 1:
-                optionfile = open(config.MODULES_DIR + "/../../settings.txt")
+            if Path(config.MODULES_DIR + "/../../settings.txt").exists() == 1:
+                optionfile = Path(config.MODULES_DIR + "/../../settings.txt").open()
                 options_file_text = optionfile.readlines()
             else:
                 "Could not open settings.txt. Not saving settings."
@@ -268,7 +273,7 @@ def key_handler(switch: int) -> None:
                     options_file_text[linenum] = command + "=" + str(g.fullscreen) + "\n"
 
             optionfile.close()
-            optionfile = open(config.MODULES_DIR + "/../../settings.txt", "w")
+            optionfile = Path(config.MODULES_DIR + "/../../settings.txt").open("w")
             optionfile.writelines(options_file_text)
 
             cancel_settings()
@@ -288,6 +293,15 @@ def key_handler(switch: int) -> None:
 
 
 def bind_new_key(start_key):
+    """
+    Wait for and return a replacement key binding.
+
+    Args:
+        start_key (int): The key code to bind.
+
+    Returns:
+        int | None: The new key code, or None if cancelled.
+    """
     while True:
         pygame.time.wait(30)
         g.clock.tick(30)
@@ -304,6 +318,12 @@ def bind_new_key(start_key):
 
 # key handler for the key customizer window.
 def key_key_handler(switch):
+    """
+    Handle a key press while changing a key binding.
+
+    Args:
+        switch (int): The key action to handle.
+    """
     global curr_button
     global tmp_keys
     if switch == config.BINDINGS["cancel"]:
@@ -349,6 +369,9 @@ def key_key_handler(switch):
 
 
 def custom_key():
+    """
+    Open the custom key-binding interface.
+    """
     refresh_key_window()
     while True:
         pygame.time.wait(30)
@@ -364,12 +387,17 @@ def custom_key():
                 repeat_key = 0
             elif event.type == pygame.MOUSEMOTION:
                 mouse_handler_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if mouse_handler_down(event.pos) == 1:
-                    return
+            elif event.type == pygame.MOUSEBUTTONDOWN and mouse_handler_down(event.pos) == 1:
+                return
 
 
 def mouse_handler_move(pos):
+    """
+    Update the options selection after mouse movement.
+
+    Args:
+        pos (tuple[int, int]): The mouse position.
+    """
     pos = (pos[0], pos[1] - config.TILESIZE * config.MAPSIZE_Y / 2 + 80)
     global curr_button
     if (
@@ -444,6 +472,12 @@ def mouse_handler_move(pos):
 
 
 def mouse_handler_down(pos):
+    """
+    Handle a mouse click in the options window.
+
+    Args:
+        pos (tuple[int, int]): The mouse position.
+    """
     global curr_button
     if curr_button >= 9:
         key_key_handler(pygame.K_RETURN)
@@ -452,6 +486,9 @@ def mouse_handler_down(pos):
 
 
 def init_window_options():
+    """
+    Initialize the options window.
+    """
     global curr_button
     curr_button = 0
 
@@ -482,10 +519,12 @@ def init_window_options():
                 repeat_key = 0
             elif event.type == pygame.MOUSEMOTION:
                 mouse_handler_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if mouse_handler_down(event.pos) == 1:
-                    return
+            elif event.type == pygame.MOUSEBUTTONDOWN and mouse_handler_down(event.pos) == 1:
+                return
 
 
 def cancel_settings():
+    """
+    Cancel changes and close the options window.
+    """
     g.break_one_loop = 1

@@ -50,6 +50,7 @@ screen = pygscreen.get_screen()
 
 # called when "Load" is pressed
 def load_selected():
+    """Validate and begin loading the selected save."""
     global return_from_loadgame
     global did_load
     global prevent_dbl_load
@@ -89,6 +90,7 @@ def load_selected():
 
 # Uses saves_pos to display infomation about that save.
 def refresh_save_info():
+    """Refresh the save list and selected save preview."""
     from save_mgmt import display_save_name
 
     tmp_stats = {
@@ -124,6 +126,14 @@ def refresh_save_info():
 
 
 def display_stats(stat_dict, titles_dict, error_message=None):
+    """
+    Draw save names and the selected save’s player details.
+
+    Args:
+        stat_dict (dict[str, str]): Player fields to display.
+        titles_dict (list[str]): Five save names for the current page.
+        error_message (str | None): Optional error to display instead of player details.
+    """
     pixels_per_line = 20
     g.unclean_screen = True
     screen.fill(
@@ -185,9 +195,10 @@ def display_stats(stat_dict, titles_dict, error_message=None):
 
 def key_handler(switch: int) -> None:
     """
-    All keypresses in new_game pass through here
+    Handle a key press on the load-game screen.
 
-    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    Args:
+        switch (int): Pygame key code.
     """
     global saves_pos
     if switch == config.BINDINGS["cancel"]:
@@ -220,6 +231,7 @@ def key_handler(switch: int) -> None:
 
 # called when "Cancel" is pressed
 def cancel_load():
+    """Cancel loading and return from the load-game screen."""
     global did_load
     # 	global return_from_loadgame
     did_load = ""
@@ -227,6 +239,12 @@ def cancel_load():
 
 
 def mouse_handler_move(xy):
+    """
+    Update the highlighted control from the pointer position.
+
+    Args:
+        xy (tuple[int, int]): Pointer coordinates.
+    """
     # up arrow:
     if mouse_over(
         xy,
@@ -273,6 +291,12 @@ def mouse_handler_move(xy):
 
 
 def mouse_handler_down(xy):
+    """
+    Handle a mouse-button press on the load-game screen.
+
+    Args:
+        xy (tuple[int, int]): Pointer coordinates.
+    """
     global saves_pos
     # up arrow:
     if mouse_over(
@@ -356,6 +380,12 @@ def mouse_handler_down(xy):
 
 
 def mouse_handler_double(xy):
+    """
+    Handle a double-click on the save list.
+
+    Args:
+        xy (tuple[int, int]): Pointer coordinates.
+    """
     global saves_pos
     # save "listbox"
     if mouse_over(
@@ -370,12 +400,26 @@ def mouse_handler_double(xy):
 
 
 def mouse_over(xy, x1, y1, x2, y2):
+    """
+    Check whether a point is within a rectangular region.
+
+    Args:
+        xy (tuple[int, int]): Point to test.
+        x1 (int | float): Left edge.
+        y1 (int | float): Top edge.
+        x2 (int | float): Right edge.
+        y2 (int | float): Bottom edge.
+
+    Returns:
+        int: 1 if the point is inside the rectangle, otherwise 0.
+    """
     if xy[0] >= x1 and xy[0] <= x2 and xy[1] >= y1 and xy[1] <= y2:
         return 1
     return 0
 
 
 def refresh_buttons():
+    """Redraw the load-screen controls."""
     g.unclean_screen = True
     # canvas_map.delete("loadgame_buttons")
     load_img = "load_scr.png"
@@ -411,6 +455,12 @@ def refresh_buttons():
 
 
 def init_window_loadgame():
+    """
+    Display the load-game screen and process input.
+
+    Returns:
+        str | None: Selected save filename, or None if the screen was closed.
+    """
     # create the window
     global prevent_dbl_load
     prevent_dbl_load = 0
@@ -469,9 +519,8 @@ def init_window_loadgame():
                 key_handler_up(event.key)
             elif event.type == pygame.MOUSEMOTION:
                 mouse_handler_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if mouse_handler_down(event.pos) == 1:
-                    return None
+            elif event.type == pygame.MOUSEBUTTONDOWN and mouse_handler_down(event.pos) == 1:
+                return None
 
         if g.unclean_screen:
             pygame.display.flip()
@@ -480,6 +529,12 @@ def init_window_loadgame():
 
 
 def key_handler_up(key_name):
+    """
+    Handle a key release on the load-game screen.
+
+    Args:
+        key_name (int): Pygame key code.
+    """
     global key_down
     if key_down == "":
         return

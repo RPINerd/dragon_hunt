@@ -15,7 +15,12 @@ class MonsterGroup:
     """This class contains one or more monster, that can attack the player in a group."""
 
     def __init__(self, name: str) -> None:
-        """"""
+        """
+        Create a monster encounter group.
+
+        Args:
+            name (str): Encounter group name.
+        """
         self.name = str(name)
         # The message given when the monster group attacks.
         self.attack_message = "The " + self.name + " attacks you."
@@ -31,7 +36,18 @@ class Monster:
     """This class contains all the information about a monster."""
 
     def __init__(self, name: str, hp: int, attack: int, defense: int, exp: int, gold: int, descript: str) -> None:
-        """"""
+        """
+        Create a monster with its combat and reward values.
+
+        Args:
+            name (str): Monster name.
+            hp (int): Maximum hit points.
+            attack (int): Attack strength.
+            defense (int): Defense strength.
+            exp (int): Experience reward.
+            gold (int): Gold reward.
+            descript (str): Monster description.
+        """
         self.name = name
         self.hp = hp
         self.maxhp = hp
@@ -47,7 +63,7 @@ class Monster:
         self.on_death = []
 
     def reset(self) -> None:
-        """Resets the monster for a battle"""
+        """Restore the monster to its maximum hit points."""
         self.hp = self.maxhp
 
 
@@ -58,7 +74,15 @@ monster_groups: list[MonsterGroup] = []
 
 
 def monster_name_to_index(name: str) -> int:
-    """Given the name of a monster, return the index in the monsters[] array"""
+    """
+    Find a monster by name, ignoring letter case.
+
+    Args:
+        name (str): Monster name to search for.
+
+    Returns:
+        int: Index in the monster list, or -1 if not found.
+    """
     for i in range(len(monsters)):
         if name.lower() == monsters[i].name.lower():
             return i
@@ -68,13 +92,13 @@ def monster_name_to_index(name: str) -> int:
 
 def find_level_monster(level: int) -> int:
     """
-    Find an appropriate monster group for the given (zgrid) dungeon level
+    Select a configured monster group for a dungeon level.
 
     Args:
-        level (int): The zgrid level of the dungeon.
+        level (int): Index of the map whose encounter groups are used.
 
     Returns:
-        int: The index of the monster group in the monster_groups list, or -1 if no monsters are available.
+        int: Monster-group index, or -1 if none is available or found.
     """
     # Pick a random entry in the monster table of the map.
     if len(config.MAPS[level].monster) == 0:
@@ -89,11 +113,7 @@ def find_level_monster(level: int) -> int:
 
 
 def read_monster() -> None:
-    """
-    Read monsters directory, and place in monsters[]. This is called on startup.
-
-    TODO should be part of the module loading process?
-    """
+    """Load monster definitions and encounter groups from the module."""
     # put the names of the available monsters in array_monsters.
     array_monsters = listdir(config.MODULES_DIR + "/data/monsters")
 
@@ -138,12 +158,10 @@ def read_monster() -> None:
 
 def addmonster(filename: str) -> None:
     """
-    Given a filename, open and interpret the monster
-
-    Filename should be relative to {config.MODULES_DIR}/data/monsters
+    Read one monster definition file into the monster table.
 
     Args:
-        filename (str): The name of the monster file to read.
+        filename (str): Monster data filename, relative to the module monster directory.
     """
     global monsters
 
@@ -195,15 +213,13 @@ def addmonster(filename: str) -> None:
 
 def copy_monster(from_monster: Monster) -> Monster:
     """
-    Copies an instance of a monster class to another instance
-
-    # TODO this should just be a class method or copy constructor
+    Create a copy of a monster, including current hit points and death scripts.
 
     Args:
-        from_monster (Monster): The monster to copy.
+        from_monster (Monster): Monster instance to copy.
 
     Returns:
-        Monster: A new instance of the monster with the same attributes.
+        Monster: New monster instance with copied values.
     """
     to_monster = Monster(
         from_monster.name,

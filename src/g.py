@@ -61,6 +61,16 @@ clock = pygame.time.Clock()
 def checklocation(x, y):
 
     # Assume that all off-map areas are rock.
+    """
+    Return the tile symbol at the given map coordinates.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+
+    Returns:
+        str: Tile symbol at the coordinates, or "a" if they are off-map.
+    """
     if x < 0 or y < 0:
         return "a"
     try:
@@ -74,6 +84,18 @@ def checklocation(x, y):
 # like checklocation, but just returns 0 (unwalkable) or 1 (walkable)
 def iswalkable(x, y, dx, dy):
     # set direction hero is moving in
+    """
+    Check whether the player can move to the given map coordinates.
+
+    Args:
+        x (int): Absolute map x-coordinate.
+        y (int): Absolute map y-coordinate.
+        dx (int): Horizontal movement offset for the attempted step.
+        dy (int): Vertical movement offset for the attempted step.
+
+    Returns:
+        int: 1 if the move is allowed; otherwise 0.
+    """
     if dy == -1:
         move_direction = "n"
     elif dy == 1:
@@ -110,6 +132,15 @@ def iswalkable(x, y, dx, dy):
 
 # takes the name of a map, and returns its zgrid.
 def mapname2zgrid(name):
+    """
+    Find the map index with the requested name.
+
+    Args:
+        name (str): Map name to find.
+
+    Returns:
+        int: Matching map index, or -1 if the name is not found.
+    """
     for i in range(len(config.MAPS)):
         if config.MAPS[i].name == name:
             return i

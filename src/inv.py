@@ -85,17 +85,13 @@ screen = pygscreen.get_screen()
 
 def convert_equip_loc_to_index(loc: int) -> int:
     """
-    Convert the location in the equipment display to the actual index in the player.equip array
-
-    Given a number from 0-8 (as returned by curr_item-inv_height*inv_width) return the
-    proper location in the player.equip array.
-    Corrects for the empty spaces in the display.
+    Convert an equipment display position to its equipment-array index.
 
     Args:
-        loc (int): The location in the equipment display.
+        loc (int): The position in the equipment display.
 
     Returns:
-        int: The index in the player.equip array.
+        int: The index in the equipment array.
     """
     trans_index = {
         0: -1,
@@ -114,6 +110,9 @@ def convert_equip_loc_to_index(loc: int) -> int:
 
 # Called when "Use" is pressed on the inv menu
 def open_use_item():
+    """
+    Open the inventory item-use menu.
+    """
     open_inner_menu("use")
     g.cur_window = "inventory_use"
     refresh_use()
@@ -129,13 +128,15 @@ def open_use_item():
                     return
             elif event.type == pygame.MOUSEMOTION:
                 use_mouse_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if use_mouse_click(event.pos) == 1:
-                    return
+            elif event.type == pygame.MOUSEBUTTONDOWN and use_mouse_click(event.pos) == 1:
+                return
 
 
 # Called when "Drop" is pressed on the inv menu
 def open_drop_item():
+    """
+    Open the inventory item-drop menu.
+    """
     open_inner_menu("drop")
     g.cur_window = "inventory_drop"
     refresh_drop()
@@ -151,12 +152,14 @@ def open_drop_item():
                     return
             elif event.type == pygame.MOUSEMOTION:
                 drop_mouse_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if drop_mouse_click(event.pos) == 1:
-                    return
+            elif event.type == pygame.MOUSEBUTTONDOWN and drop_mouse_click(event.pos) == 1:
+                return
 
 
 def open_equip_item():
+    """
+    Open the inventory equipment menu.
+    """
     global curr_item
     open_inner_menu("equip")
 
@@ -187,7 +190,12 @@ def open_equip_item():
 
 
 def open_skill_menu() -> str | None:
-    """"""
+    """
+    Open the inventory skill menu.
+
+    Returns:
+        str | None: The selected skill-menu result, or None if no choice was made.
+    """
     open_inner_menu("skill")
     g.cur_window = "inventory_skill"
     refresh_skill("skill")
@@ -206,13 +214,18 @@ def open_skill_menu() -> str | None:
                     return "end"
             elif event.type == pygame.MOUSEMOTION:
                 skill_mouse_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if skill_mouse_click(event.pos) == 1:
-                    return None
+            elif event.type == pygame.MOUSEBUTTONDOWN and skill_mouse_click(event.pos) == 1:
+                return None
 
 
 # Generic function for creating a sub-menu for the inv.
 def open_inner_menu(screen_str):
+    """
+    Open an inventory submenu.
+
+    Args:
+        screen_str (str): The inventory submenu name.
+    """
     global inner_cur_button
     inner_cur_button = 0
     global tmp_x_base
@@ -246,7 +259,9 @@ def open_inner_menu(screen_str):
 
 
 def create_inv_display() -> None:
-    """Create a generic inventory display"""
+    """
+    Create the inventory display.
+    """
     widgets.bordered_box(screen,
         (tmp_x_base, tmp_y_base),
         (
@@ -268,7 +283,12 @@ def create_inv_display() -> None:
 
 
 def refresh_inner_buttons(screen_str: str) -> None:
-    """Refreshes the inner menu buttons."""
+    """
+    Refresh the inventory submenu buttons.
+
+    Args:
+        screen_str (str): The inventory submenu name.
+    """
     first_image = screen_str + ".png"
     leave_image = "leave.png"
     if inner_cur_button == 0:
@@ -290,17 +310,23 @@ def refresh_inner_buttons(screen_str: str) -> None:
 
 
 def refresh_use() -> None:
-    """Refreshes the item display in the inner menus."""
+    """
+    Refresh the item-use submenu.
+    """
     refresh_inv_display("use")
 
 
 def refresh_drop() -> None:
-    """"""
+    """
+    Refresh the item-drop submenu.
+    """
     refresh_inv_display("drop")
 
 
 def refresh_equip() -> None:
-    """"""
+    """
+    Refresh the equipment submenu.
+    """
     refresh_inv_display("equip")
     # rebuild the equipment display
     temp_canvas_width = (config.TILESIZE * equip_size) + 8
@@ -366,6 +392,12 @@ def refresh_equip() -> None:
 
 def refresh_inv_display(screen_str):
     # Draw a selection box around the current item.
+    """
+    Refresh the inventory item display.
+
+    Args:
+        screen_str (str): The inventory submenu name.
+    """
     x = tmp_x_base
     y = tmp_y_base
     for i in range(len(item.inv)):
@@ -413,6 +445,12 @@ def refresh_inv_display(screen_str):
 
 def refresh_skill(screen_str):
     # Draw a selection box around the current item.
+    """
+    Refresh the skill display.
+
+    Args:
+        screen_str (str): The inventory submenu name.
+    """
     x = tmp_x_base
     y = tmp_y_base
     for i in range(len(item.inv)):
@@ -453,7 +491,9 @@ def refresh_skill(screen_str):
 
 # Refreshes the stat display to the right side of the inv.
 def refresh_stat_display():
-
+    """
+    Refresh the character stat display.
+    """
     start_x = (config.TILESIZE * main.mapsizex) / 2
     start_y = (config.TILESIZE * main.mapsizey - total_height) / 2
     # hp/ep bars
@@ -553,14 +593,18 @@ def refresh_stat_display():
 
 
 def leave_inv() -> None:
-    """Called when "Leave" is pressed"""
+    """
+    Close the inventory window.
+    """
     if action.has_dialog == 1:
         return
     g.cur_window = "main"
 
 
 def rm_equip() -> None:
-    """Puts a worn item into the inventory. Called from the remove button."""
+    """
+    Remove the selected equipped item.
+    """
     if action.has_dialog == 1:
         return
     # Curr_item is the current location in the equipment canvas.
@@ -591,7 +635,9 @@ def rm_equip() -> None:
 
 
 def wear_item() -> None:
-    """Wears the item at the current location in the inventory."""
+    """
+    Equip the selected inventory item.
+    """
     if action.has_dialog == 1:
         return
     if curr_item >= inv_width * inv_height:
@@ -625,7 +671,9 @@ def wear_item() -> None:
 
 
 def drop_item() -> None:
-    """Drops the item at the current location in the inventory."""
+    """
+    Drop the selected inventory item.
+    """
     if action.has_dialog == 1:
         return
     if curr_item >= len(item.inv) or item.inv[curr_item] == -1:
@@ -661,10 +709,10 @@ def drop_item() -> None:
 
 def use_item(item_index: int = -1) -> None:
     """
-    Uses the item at the current location in the inventory
+    Use the selected inventory item.
 
     Args:
-        item_index (int): The index of the item to use. If -1, uses the current item.
+        item_index (int): The item index, or -1 to use the current selection.
     """
     # 	if action.has_dialog == 1: return 0
     if item_index == -1:
@@ -704,7 +752,15 @@ def use_item(item_index: int = -1) -> None:
 
 
 def useskill(free_skill: int = 0) -> bool:
-    """"""
+    """
+    Use the selected skill.
+
+    Args:
+        free_skill (int): The free-skill mode to apply.
+
+    Returns:
+        bool: Whether the skill was used.
+    """
     # sanity checks
     skill_index = curr_item
     if skill_index >= len(player.skill):
@@ -730,7 +786,9 @@ def useskill(free_skill: int = 0) -> bool:
 
 
 def refresh_menu_buttons() -> None:
-    """Refreshes the buttons in the main inventory menu."""
+    """
+    Refresh the main inventory menu buttons.
+    """
     global oldbutton
     if action.has_dialog == 1:
         return
@@ -768,14 +826,14 @@ def refresh_menu_buttons() -> None:
 
 def draw_item(input_picture: str, x: int, y: int, x_offset: int, y_offset: int) -> None:
     """
-    Draw an item at the specified coordinates
+    Draw an item at the specified screen location.
 
     Args:
-        input_picture (str): The name of the picture to draw.
-        x (int): The x coordinate in tiles.
-        y (int): The y coordinate in tiles.
-        x_offset (int): The x offset from the upper-left of the canvas.
-        y_offset (int): The y offset from the upper-left of the canvas.
+        input_picture (str): The item image name.
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        x_offset (int): The horizontal pixel offset.
+        y_offset (int): The vertical pixel offset.
     """
     screen.blit(
         config.TILES[input_picture],
@@ -785,9 +843,13 @@ def draw_item(input_picture: str, x: int, y: int, x_offset: int, y_offset: int) 
 
 def menu_key_handler(key_name: int) -> bool:
     """
-    All keypresses in window_inv pass through here.
+    Handle a key press in the main inventory menu.
 
-    Based on the key name, give the right action ("etc", "left", "right", "up", "down", "return").
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        bool: Whether the key action was handled.
     """
     if key_name == config.BINDINGS["cancel"]:
         return True
@@ -834,6 +896,15 @@ def menu_key_handler(key_name: int) -> bool:
 
 # generic key handler for anytime there is an inner inv window open.
 def inner_key_handler(key_name):
+    """
+    Handle a key press in an inventory submenu.
+
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        int: The submenu key-action result.
+    """
     global curr_item
     if key_name == config.BINDINGS["cancel"]:
         return 1
@@ -859,6 +930,15 @@ def inner_key_handler(key_name):
 
 
 def use_key_handler(key_name):
+    """
+    Handle a key press in the item-use submenu.
+
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        int: The submenu key-action result.
+    """
     tmp = inner_key_handler(key_name)
     if tmp == 2:
         use_item()
@@ -868,6 +948,15 @@ def use_key_handler(key_name):
 
 
 def drop_key_handler(key_name):
+    """
+    Handle a key press in the item-drop submenu.
+
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        int: The submenu key-action result.
+    """
     tmp = inner_key_handler(key_name)
     if tmp == 2:
         drop_item()
@@ -877,6 +966,15 @@ def drop_key_handler(key_name):
 
 
 def skill_key_handler(key_name):
+    """
+    Handle a key press in the skill submenu.
+
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        int | str: The submenu key-action result.
+    """
     tmp = inner_key_handler(key_name)
     if tmp == 2:
         tmp2 = useskill()
@@ -889,6 +987,15 @@ def skill_key_handler(key_name):
 
 # I have to do this separate, as the equip screen has an extra display.
 def equip_key_handler(key_name):
+    """
+    Handle a key press in the equipment submenu.
+
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        int: The submenu key-action result.
+    """
     global curr_item
     if key_name == config.BINDINGS["cancel"]:
         return 1
@@ -941,7 +1048,15 @@ def equip_key_handler(key_name):
 
 
 def menu_mouse_click(xy: tuple[int, int]) -> bool:
-    """"""
+    """
+    Handle a mouse click in the main inventory menu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        bool: Whether the click was handled.
+    """
     if action.has_dialog == 1:
         return False
     base_loc_y = xy[1] - base_y
@@ -952,7 +1067,16 @@ def menu_mouse_click(xy: tuple[int, int]) -> bool:
 
 
 def inner_mouse_click(xy, button) -> int:
-    """Generic mouse click while an inner menu is open"""
+    """
+    Handle a mouse click in an inventory submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+        button (int | str): The mouse button or submenu name.
+
+    Returns:
+        int: The submenu mouse-action result.
+    """
     # decide if the mouse is within one of the boxes.
     global curr_item
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
@@ -970,7 +1094,15 @@ def inner_mouse_click(xy, button) -> int:
 
 
 def use_mouse_click(xy) -> int:
-    """"""
+    """
+    Handle a click in the item-use submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        int: The submenu mouse-action result.
+    """
     tmp = inner_mouse_click(xy, "use")
     if tmp == 2:
         use_item()
@@ -980,7 +1112,15 @@ def use_mouse_click(xy) -> int:
 
 
 def drop_mouse_click(xy) -> int:
-    """"""
+    """
+    Handle a click in the item-drop submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        int: The submenu mouse-action result.
+    """
     tmp = inner_mouse_click(xy, "use")
     if tmp == 2:
         drop_item()
@@ -990,7 +1130,15 @@ def drop_mouse_click(xy) -> int:
 
 
 def skill_mouse_click(xy) -> int:
-    """"""
+    """
+    Handle a click in the skill submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        int: The submenu mouse-action result.
+    """
     tmp = inner_mouse_click(xy, "skill")
     if tmp == 2:
         tmp2 = useskill()
@@ -1002,7 +1150,15 @@ def skill_mouse_click(xy) -> int:
 
 
 def equip_mouse_click(xy: tuple[int, int]) -> bool:
-    """"""
+    """
+    Handle a click in the equipment submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        bool: Whether the click was handled.
+    """
     # decide if the mouse is within one of the boxes.
     global curr_item
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
@@ -1039,6 +1195,15 @@ def equip_mouse_click(xy: tuple[int, int]) -> bool:
 
 def inner_mouse_dbl_click(xy):
     # decide if the mouse is within one of the boxes.
+    """
+    Handle a double-click in an inventory submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        int: The result.
+    """
     global curr_item
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
     if temp_num != -1:
@@ -1049,6 +1214,12 @@ def inner_mouse_dbl_click(xy):
 
 def equip_mouse_dbl_click(xy):
     # decide if the mouse is within one of the boxes.
+    """
+    Handle a double-click in the equipment submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     global curr_item
     temp_num = which_box(xy[0] - tmp_x_base, xy[1] - tmp_y_base, inv_width)
     # If the click was outside of the inv area.
@@ -1072,18 +1243,36 @@ def equip_mouse_dbl_click(xy):
 
 
 def drop_mouse_dbl_click(xy):
+    """
+    Handle a double-click in the item-drop submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     if inner_mouse_dbl_click(xy):
         drop_item()
     refresh_drop()
 
 
 def use_mouse_dbl_click(xy):
+    """
+    Handle a double-click in the item-use submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     if inner_mouse_dbl_click(xy):
         use_item()
     refresh_use()
 
 
 def skill_mouse_dbl_click(xy):
+    """
+    Handle a double-click in the skill submenu.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     if inner_mouse_dbl_click(xy):
         useskill()
     refresh_skill("skill")
@@ -1094,6 +1283,17 @@ def skill_mouse_dbl_click(xy):
 # the width of the inventory box.
 def which_box(x, y, temp_size):
     # Check for the left border
+    """
+    Find the inventory grid cell at the given coordinates.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        temp_size (int): The grid-cell size.
+
+    Returns:
+        int: The grid-cell index, or -1 when outside the grid.
+    """
     if x < 3:
         return -1
     # Transform x from pixels to tiles
@@ -1121,6 +1321,12 @@ def which_box(x, y, temp_size):
 
 
 def menu_mouse_move(xy):
+    """
+    Update the main inventory menu selection after mouse movement.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     base_loc_y = xy[1] - base_y
     base_loc_x = xy[0] - base_x
     if base_loc_y < 0 or base_loc_x < 0 or base_loc_y > total_height or base_loc_x > button_width:
@@ -1141,6 +1347,16 @@ def menu_mouse_move(xy):
 
 
 def inner_mouse_move(xy, button=""):
+    """
+    Update an inventory submenu selection after mouse movement.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+        button (int | str): The mouse button or submenu name.
+
+    Returns:
+        int: The selected submenu button index.
+    """
     global inner_cur_button
     if (
         (xy[0] > tmp_menu_x_base)
@@ -1157,27 +1373,54 @@ def inner_mouse_move(xy, button=""):
 
 
 def use_mouse_move(xy):
+    """
+    Update the item-use selection after mouse movement.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     if inner_mouse_move(xy, "use"):
         refresh_inner_buttons("use")
 
 
 def drop_mouse_move(xy):
+    """
+    Update the item-drop selection after mouse movement.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     if inner_mouse_move(xy, "drop"):
         refresh_inner_buttons("drop")
 
 
 def equip_mouse_move(xy):
+    """
+    Update the equipment selection after mouse movement.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     if inner_mouse_move(xy, "equip"):
         refresh_inner_buttons("equip")
 
 
 def skill_mouse_move(xy):
+    """
+    Update the skill selection after mouse movement.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     if inner_mouse_move(xy, "skill"):
         refresh_inner_buttons("skill")
 
 
 # This creates the inv area within the map canvas.
 def init_window_inv():
+    """
+    Initialize the inventory window.
+    """
     global oldbutton
     oldbutton = 99
 
@@ -1269,15 +1512,12 @@ def init_window_inv():
                     return
             elif event.type == pygame.MOUSEMOTION:
                 menu_mouse_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if menu_mouse_click(event.pos):
-                    return
+            elif event.type == pygame.MOUSEBUTTONDOWN and menu_mouse_click(event.pos):
+                return
 
 
 def menu_bind_keys() -> None:
     """
-    Bind the keys for the inventory menu.
-
-    Called upon window creation and return from a yes/no box
+    Bind the keyboard handlers for the inventory window.
     """
     g.cur_window = "inventory"

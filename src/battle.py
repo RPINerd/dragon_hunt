@@ -101,6 +101,15 @@ screen = pygscreen.get_screen()
 
 # given an index in the monster array, return the y start of the monster.
 def y_start(mon_num):
+    """
+    Return the vertical position for a monster in the battle view.
+
+    Args:
+        mon_num (int): Monster index in the current group.
+
+    Returns:
+        int: Vertical screen coordinate for the monster.
+    """
     if len(monster.monster_groups[mon_index].y_pos) > mon_num:
         return monster_start[1] + monster.monster_groups[mon_index].y_pos[mon_num]
     return monster_start[1] + 10
@@ -108,6 +117,7 @@ def y_start(mon_num):
 
 # refreshes the battle view. Call after changing anything.
 def refresh():
+    """Redraw the battle view and its status bars."""
     global monster_slashes
     screen.fill(
         config.COLORS["black"],
@@ -268,6 +278,15 @@ def refresh():
 
 # attack button was pressed
 def attack(event=0):
+    """
+    Perform the player’s attack and then resolve monster attacks.
+
+    Args:
+        event (pygame.event.Event | int): Optional event; defaults to 0 and is unused.
+
+    Returns:
+        int | None: The result of the operation.
+    """
     global active_button
     if can_leave() == 1:
         return 0
@@ -303,6 +322,12 @@ def attack(event=0):
 # arrow.
 def select_monster():
     # find out if we need to make the player select a monster.
+    """
+    Select a living monster to target.
+
+    Returns:
+        int: The result of the operation.
+    """
     num_of_monsters = 0
     last_mon_num = 0
     for i in range(len(monster_list)):
@@ -349,7 +374,7 @@ def select_monster():
                     choose_monster_next()
                     refresh()
                     pygame.display.flip()
-                elif event.key == config.BINDINGS["action"] or config.BINDINGS["attack"]:
+                elif event.key in (config.BINDINGS["action"], config.BINDINGS["attack"]):
                     g.break_one_loop = 1
             elif event.type == pygame.MOUSEMOTION:
                 monster_mouse_move(event.pos)
@@ -374,7 +399,7 @@ def select_monster():
 
 
 def choose_monster_prev() -> None:
-    """Cycle through the previous monsters when attacking. Used by the keyboard."""
+    """Select the previous living monster in the target list."""
     global active_button
     i = active_button
     while True:
@@ -394,7 +419,7 @@ def choose_monster_prev() -> None:
 
 
 def choose_monster_next() -> None:
-    """Cycle through the next monsters when attacking. Used by the keyboard."""
+    """Select the next living monster in the target list."""
     global active_button
     i = active_button
     while True:
@@ -415,12 +440,24 @@ def choose_monster_next() -> None:
 
 # called on Return when the yesno dialog box is active.
 def choose_monster(event=None):
+    """
+    Confirm the currently selected monster.
+
+    Args:
+        event (pygame.event.Event | None): Optional Pygame event passed by the callback.
+    """
     global return_from_dialog
     return_from_dialog.set("1")
 
 
 # Cancels the monster selection. Called on Esc.
 def cancel_monster(event=None):
+    """
+    Cancel monster selection.
+
+    Args:
+        event (pygame.event.Event | None): Optional Pygame event passed by the callback.
+    """
     global active_button
     active_button = -1
     global return_from_dialog
@@ -430,26 +467,41 @@ def cancel_monster(event=None):
 # Called whenever the mouse moves in the monster canvas. Used to select the
 # proper monster, given the x and y location of the mouse.
 def monster_mouse_move(xy):
+    """
+    Select a living monster under the mouse pointer.
+
+    Args:
+        xy (tuple[int, int]): Mouse position in screen coordinates.
+    """
     try:
         global active_button
         for i in range(len(monster_list)):
-            if monster_list[i].hp > 0:
-                if (
-                    xy[0] >= base_mon_hp_start[i]
-                    and xy[0] <= base_mon_hp_start[i] + base_mon_hp_width[i]
-                    and xy[1] >= base_mon_hp_y_start[i] - base_mon_hp_height[i]
-                    and xy[1] <= base_mon_hp_y_start[i]
-                ):
-                    active_button = i
-                    # help_text.set("Attack the " + monster_list[i].name)
-                    set_description_text(i)
-                    refresh()
+            if monster_list[i].hp > 0 and (
+                xy[0] >= base_mon_hp_start[i]
+                and xy[0] <= base_mon_hp_start[i] + base_mon_hp_width[i]
+                and xy[1] >= base_mon_hp_y_start[i] - base_mon_hp_height[i]
+                and xy[1] <= base_mon_hp_y_start[i]
+            ):
+                active_button = i
+                # help_text.set("Attack the " + monster_list[i].name)
+                set_description_text(i)
+                refresh()
     except AttributeError:
         active_button = -1
 
 
 # attack the i'th monster in monster_list[], with an attack of power attack_power.
 def attack_monster(i, attack_power):
+    """
+    Attack a monster with the specified attack power.
+
+    Args:
+        i (int): Monster index.
+        attack_power (int): Attack power used to calculate damage.
+
+    Returns:
+        int | None: The result of the operation.
+    """
     if i == -1:
         return None
     # find the damage done
@@ -465,6 +517,7 @@ def attack_monster(i, attack_power):
 
 # Make all monsters attack the player.
 def attack_player():
+    """Have each living monster attack the player."""
     for i in range(len(monster_list)):
         if monster_list[i].hp > 0 and player.hp > 0:
             attack_player_per_monster(i)
@@ -472,6 +525,12 @@ def attack_player():
 
 # Make the i'th monster attack you
 def attack_player_per_monster(i):
+    """
+    Have one monster attack the player.
+
+    Args:
+        i (int): Monster index.
+    """
     damage = utils.die_roll(1, monster_list[i].attack + 2)
     damage = damage - utils.die_roll(1, player.adj_defense + 2)
     if damage > 0:
@@ -493,6 +552,13 @@ def attack_player_per_monster(i):
 # places a slash mark over the i'th monster, to indicate a hit, or "h" for the
 # hero.
 def monster_slashed(i, damage):
+    """
+    Mark a monster or the player as having been hit.
+
+    Args:
+        i (int | str): Monster index, or "h" to mark the player.
+        damage (int): Amount of damage to apply.
+    """
     global monster_slashes
     if str(i) == "h":
         monster_slashes[-1] = [1, 0, damage]
@@ -502,6 +568,7 @@ def monster_slashed(i, damage):
 
 # clears slashmarks for all monsters, and the hero.
 def clear_slashes():
+    """Clear hit indicators for all combatants."""
     global monster_slashes
     for i in range(len(monster_slashes)):
         monster_slashes[i] = [0, 0, 0]
@@ -509,6 +576,16 @@ def clear_slashes():
 
 # Hurts monster i for damage points. Kills it if the damage is great enough.
 def monster_hurt(i, damage):
+    """
+    Apply damage to a monster and handle its defeat.
+
+    Args:
+        i (int): Monster index.
+        damage (int): Amount of damage to apply.
+
+    Returns:
+        int: The result of the operation.
+    """
     monster_list[i].hp = monster_list[i].hp - damage
     if damage > 0:
         monster_slashed(i, damage)
@@ -522,6 +599,12 @@ def monster_hurt(i, damage):
 
 # use to reward the player for killing a monster
 def monster_dead(i):
+    """
+    Handle rewards and cleanup when a monster dies.
+
+    Args:
+        i (int): Monster index.
+    """
     global active_button
     # make the display look better
     monster_list[i].hp = 0
@@ -557,11 +640,11 @@ def monster_dead(i):
 
 def can_leave() -> bool:
     """
-    Determine if the battle is over.
+    Determine whether the battle has ended.
 
     Returns:
-        bool: True if the battle is over, False otherwise.
-        """
+        bool: True if the battle has ended; otherwise False.
+    """
     if player.hp <= 0:
         return True
     return all(monster_list[i].hp <= 0 for i in range(len(monster_list)))
@@ -570,12 +653,13 @@ def can_leave() -> bool:
 # run/leave/quit button was pressed
 def runaway(force_success: bool = False) -> bool:
     """
-    Attempt to run away from the battle.
+    Attempt to escape from the current battle.
 
     Args:
-        force_success (bool): If True, the player will always succeed in running away.
+        force_success (bool): If true, guarantee a successful escape.
+
     Returns:
-        bool: True if the player successfully ran away, False otherwise.
+        bool: True if the player leaves battle; otherwise False.
     """
     global run_attempts
     global did_run
@@ -603,7 +687,7 @@ def runaway(force_success: bool = False) -> bool:
 
 
 def open_item_menu() -> None:
-    """The use item button was pressed in the battle window. Open the item display."""
+    """Open the battle item menu."""
     # don't do anything if battle is over.
     if can_leave() == 1:
         return
@@ -641,7 +725,7 @@ def open_item_menu() -> None:
 
 
 def open_skill_menu() -> None:
-    """The use skill button was pressed in the battle window. Open the skill display."""
+    """Open the battle skill menu."""
     # don't do anything if battle is over.
     if can_leave() == 1:
         return
@@ -682,6 +766,12 @@ def open_skill_menu() -> None:
 def refresh_skill_display(screen_str):
     # 	main.canvas_map.delete("item")
     # Draw a selection box around the current item.
+    """
+    Draw the skill selection display.
+
+    Args:
+        screen_str (str): Menu label associated with the skill display.
+    """
     x = inv.tmp_x_base
     y = inv.tmp_y_base
     tmp_item = inv.curr_item
@@ -722,6 +812,16 @@ def refresh_skill_display(screen_str):
 # Use a given item. item_index is the location in the item.item[] array.
 # If leave_item==1, the item will not be removed from the inventory.
 def useitem(item_index, leave_item=0):
+    """
+    Use an item during battle.
+
+    Args:
+        item_index (int): Index of the item in the item database.
+        leave_item (int): If nonzero, leave the item in inventory and do not advance battle.
+
+    Returns:
+        int | None: The result of the operation.
+    """
     global active_button
     # don't do anything if battle is over.
     if can_leave() == 1 or item_index == -1:
@@ -776,9 +876,8 @@ def useitem(item_index, leave_item=0):
     # If item is scripted:
     if item_type == 15 or item_type == 17:
         # If the scripting ends with an "end" command,
-        if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, g.item.item[item_value].scripting) == 1:
-            if leave_item == 0:
-                g.item.drop_inv_item(g.item.find_inv_item(item_value))
+        if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, g.item.item[item_value].scripting) == 1 and leave_item == 0:
+            g.item.drop_inv_item(g.item.find_inv_item(item_value))
         if can_leave() == 0 and leave_item == 0:
             attack_player()
         active_button = -1
@@ -809,6 +908,16 @@ def useitem(item_index, leave_item=0):
 # Use a skill. Called upon hitting the right button; uses skill_index.
 # (skill_index is position in player.skill[])
 def useskill(skill_index, free_skill=0):
+    """
+    Use a skill during battle.
+
+    Args:
+        skill_index (int): Index of the skill in the player skill list.
+        free_skill (int): If nonzero, do not charge skill cost or advance the menu.
+
+    Returns:
+        int | None: The result of the operation.
+    """
     global active_button
     # don't do anything if monster is dead.
     if can_leave() == 1:
@@ -884,10 +993,9 @@ def useskill(skill_index, free_skill=0):
             attack_player()
     elif player.skill[skill_index][1] == 4 or player.skill[skill_index][1] == 6:  # Scripted
         # If the scripting ends with an "end" command,
-        if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, player.skill[skill_index][6]) == 1:
-            if free_skill == 0:
-                # pay for the skill
-                player.use_ep(-1 * player.skill[skill_index][2])
+        if action.activate_lines(g.xgrid, g.ygrid, g.zgrid, player.skill[skill_index][6]) == 1 and free_skill == 0:
+            # pay for the skill
+            player.use_ep(-1 * player.skill[skill_index][2])
         if can_leave() == 0:
             attack_player()
         main.refresh_bars()
@@ -906,7 +1014,7 @@ def useskill(skill_index, free_skill=0):
 
 
 def inspect_monst() -> None:
-    """The inspect button was pressed in the battle window."""
+    """Display details for a selected monster."""
     if can_leave() == 1:
         return
 
@@ -927,7 +1035,7 @@ def inspect_monst() -> None:
 
 
 def refresh_buttons() -> None:
-    """Refresh the buttons in the main battle view."""
+    """Redraw the battle action buttons."""
     attack_name = "attack.png"
     use_name = "use.png"
     skill_name = "skill.png"
@@ -955,9 +1063,13 @@ def refresh_buttons() -> None:
 
 def key_handler(key_name: int) -> str | int:
     """
-    All keypresses in new_game pass through here
+    Handle a keyboard event in the battle view.
 
-    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    Args:
+        key_name (int): Pygame key code.
+
+    Returns:
+        str | int: The result of the operation.
     """
     if key_name == config.BINDINGS["cancel"]:
         return runaway()
@@ -988,6 +1100,15 @@ def key_handler(key_name: int) -> str | int:
 
 
 def item_key_handler(key_name):
+    """
+    Handle a keyboard event in the battle item menu.
+
+    Args:
+        key_name (int): Pygame key code.
+
+    Returns:
+        int: The result of the operation.
+    """
     tmp = inv.inner_key_handler(key_name)
     if tmp == 2:
         useitem(g.item.inv[inv.curr_item])
@@ -999,6 +1120,15 @@ def item_key_handler(key_name):
 
 
 def skill_key_handler(key_name):
+    """
+    Handle a keyboard event in the battle skill menu.
+
+    Args:
+        key_name (int): Pygame key code.
+
+    Returns:
+        int: The result of the operation.
+    """
     tmp = inv.inner_key_handler(key_name)
     if tmp == 2:
         useskill(inv.curr_item)
@@ -1010,6 +1140,12 @@ def skill_key_handler(key_name):
 
 
 def item_mouse_click(xy):
+    """
+    Handle a mouse click in the battle item menu.
+
+    Args:
+        xy (tuple[int, int]): Mouse position in screen coordinates.
+    """
     tmp = inv.inner_mouse_click(xy, "use")
     if tmp == 2:
         useitem(g.item.inv[inv.curr_item])
@@ -1020,6 +1156,12 @@ def item_mouse_click(xy):
 
 
 def skill_mouse_click(xy):
+    """
+    Handle a mouse click in the battle skill menu.
+
+    Args:
+        xy (tuple[int, int]): Mouse position in screen coordinates.
+    """
     tmp = inv.inner_mouse_click(xy, "skill")
     if tmp == 2:
         useskill(inv.curr_item)
@@ -1030,23 +1172,47 @@ def skill_mouse_click(xy):
 
 
 def item_mouse_dbl_click(xy):
+    """
+    Handle a double-click in the battle item menu.
+
+    Args:
+        xy (tuple[int, int]): Mouse position in screen coordinates.
+    """
     if inv.inner_mouse_dbl_click(xy):
         useitem(g.item.inv[inv.curr_item])
     inv.refresh_inv_display("use")
 
 
 def skill_mouse_dbl_click(xy):
+    """
+    Handle a double-click in the battle skill menu.
+
+    Args:
+        xy (tuple[int, int]): Mouse position in screen coordinates.
+    """
     if inv.inner_mouse_dbl_click(xy):
         useskill(g.item.inv[inv.curr_item])
     refresh_skill_display("skill")
 
 
 def item_mouse_move(xy):
+    """
+    Handle mouse movement in the battle item menu.
+
+    Args:
+        xy (tuple[int, int]): Mouse position in screen coordinates.
+    """
     if inv.inner_mouse_move(xy, "use"):
         inv.refresh_inner_buttons("use")
 
 
 def skill_mouse_move(xy):
+    """
+    Handle mouse movement in the battle skill menu.
+
+    Args:
+        xy (tuple[int, int]): Mouse position in screen coordinates.
+    """
     if inv.inner_mouse_move(xy, "skill"):
         inv.refresh_inner_buttons("skill")
 
@@ -1057,6 +1223,12 @@ def skill_mouse_move(xy):
 
 
 def mouse_handler_move(xy):
+    """
+    Update the selected battle button from the mouse position.
+
+    Args:
+        xy (tuple[int, int]): Mouse position in screen coordinates.
+    """
     tmp_button = config.mut["CURR_BUTTON"]
     if xy[0] < attack_button_loc or xy[1] < button_y_start or xy[1] > button_y_start + button_height:
         config.mut["CURR_BUTTON"] = -1
@@ -1078,14 +1250,27 @@ def mouse_handler_move(xy):
 
 # ! BUG apparently?
 def set_description_text(i: int) -> None:
-    """Sets the description to the left of the battle view to that of the i'th monster"""
+    """
+    Set the description for the selected monster.
+
+    Args:
+        i (int): Monster index.
+    """
     pass
     # canvas_desc.delete(ALL)
     # canvas_desc.create_text(1, 5, anchor=NW, text=monster_list[i].description, width=195)
 
 
 def begin(mon_index_input: int) -> str | int:
-    """Initiate a battle"""
+    """
+    Initialize and run a battle for the selected monster group.
+
+    Args:
+        mon_index_input (int): Index of the monster group to battle.
+
+    Returns:
+        str | int: The result of the operation.
+    """
     # 	global window_battle
     bgcolour = "lightgrey"
     # 	window_battle = Frame(g.window_main, bd=4, relief=GROOVE, bg=bgcolour)
@@ -1237,17 +1422,21 @@ def begin(mon_index_input: int) -> str | int:
 
 # bind the keys. Called upon window creation and return from a yes/no box
 def bind_keys():
+    """Set the active keyboard context to the battle view."""
     g.cur_window = "battle"
 
 
 # keybindings when choosing a monster to attack.
 def bind_attack_keys():
+    """Set the active keyboard context to monster selection."""
     g.cur_window = "battle_attack"
 
 
 def bind_item_keys():
+    """Set the active keyboard context to the item menu."""
     g.cur_window = "battle_item"
 
 
 def bind_skill_keys():
+    """Set the active keyboard context to the skill menu."""
     g.cur_window = "battle_skill"

@@ -3,7 +3,6 @@
 """
 
 import logging
-
 from pathlib import Path
 
 import action
@@ -19,6 +18,12 @@ logger = logging.getLogger(__name__)
 # Class map contains data on each map, and the tiles contained within.
 class Tile:
     def __init__(self, symbol):
+        """
+        Create a tile definition.
+
+        Args:
+            symbol (str): The tile symbol represented by this tile.
+        """
         # Filled in with a Tkinter image reference
         self.pix = ""
         # The actual filename of the tile.
@@ -43,35 +48,75 @@ class Tile:
         self.items = []
 
     def add_act(self, action) -> None:
-        """"""
+        """
+        Action script line on this tile.
+
+        Args:
+            action (str): Action script line.
+        """
         self.actions.append(action)
 
     def add_onload(self, onload) -> None:
-        """"""
+        """
+        On-load script line on this tile.
+
+        Args:
+            onload (str): On-load script line.
+        """
         self.onload.append(onload)
 
     def add_pix(self, picture) -> None:
-        """"""
+        """
+        Picture identifier to add on this tile.
+
+        Args:
+            picture (str): Picture identifier to add.
+        """
         self.addpix.append(picture)
 
     def add_over_pix(self, picture) -> None:
-        """"""
+        """
+        Over-hero picture identifier to add on this tile.
+
+        Args:
+            picture (str): Over-hero picture identifier to add.
+        """
         self.addoverpix.append(picture)
 
     def del_pix(self, picture) -> None:
-        """"""
+        """
+        Remove a picture identifier from this tile.
+
+        Args:
+            picture (str): Picture identifier to remove.
+        """
         self.addpix.remove(picture)
 
     def del_over_pix(self, picture) -> None:
-        """"""
+        """
+        Remove an over-hero picture identifier from this tile.
+
+        Args:
+            picture (str): Over-hero picture identifier to remove.
+        """
         self.addoverpix.remove(picture)
 
     def additem(self, itemname) -> None:
-        """"""
+        """
+        Add an item name to this tile.
+
+        Args:
+            itemname (str): Item name to add.
+        """
         self.items.append(itemname)
 
     def del_item(self, itemname) -> None:
-        """"""
+        """
+        Remove an item name from this tile.
+
+        Args:
+            itemname (str): Item name to remove.
+        """
         self.items.remove(itemname)
 
 
@@ -80,14 +125,37 @@ class Map:
     """"""
 
     def additem(self, itemname, x, y) -> None:
+        """
+        Place a dropped item on this map.
+
+        Args:
+            itemname (str): Name of the item to place.
+            x (int): Horizontal tile coordinate.
+            y (int): Vertical tile coordinate.
+        """
         self.field[y][x].additem(itemname)
         item.add_dropped_item(itemname, (x, y), self.name)
 
     def del_item(self, itemname, x, y) -> None:
+        """
+        Remove a dropped item from this map.
+
+        Args:
+            itemname (str): Name of the item to remove.
+            x (int): Horizontal tile coordinate.
+            y (int): Vertical tile coordinate.
+        """
         self.field[y][x].del_item(itemname)
         item.del_dropped_item(itemname, x, y, self.name)
 
     def __init__(self, mapname: Path, from_editor: int = 0) -> None:
+        """
+        Load a map and build its tile field.
+
+        Args:
+            mapname (Path): Path to the map data file.
+            from_editor (int): Whether to preserve editor formatting; 1 enables it.
+        """
         self.name = mapname.name.strip()
         self.field = []  # multidimentional array of tile class members.
         self.monster = []  # monsters that can attack on this level.
@@ -256,12 +324,23 @@ class Map:
             self.battle_background = config.BACKGROUNDS["generic.png"]
 
     def add_tile(self, tile_name):
+        """
+        Add a tile definition to the map.
+
+        Args:
+            tile_name (str): Symbol identifying the tile.
+        """
         new_tile = Tile(tile_name)
         self.tiles[tile_name] = new_tile
 
     # I need to call this with zgrid as it is not stored locally.
     def preprocess_map(self, zloc):
+        """
+        Run eligible tile on-load commands before play.
 
+        Args:
+            zloc (int): Map index used by the action system.
+        """
         for yloc in range(len(self.field)):
             for xloc in range(len(self.field[yloc])):
                 if (
@@ -289,6 +368,7 @@ levelup_act = []
 
 # read scripts from disk, and place in *_act[]
 def read_scripts():
+    """Load the game-wide script files."""
     # This is a bit weird, but Python does not seem to allow the simple way.
     global endgame_act
     global wingame_act
@@ -312,6 +392,12 @@ def read_scripts():
 # shop data.
 class ShopItem:
     def __init__(self, name):
+        """
+        Create a shop entry, using item defaults when available.
+
+        Args:
+            name (str): Item name for this shop entry.
+        """
         self.item_name = name
         itemnum = item.finditem(name)
         self.cost = 0
@@ -331,56 +417,152 @@ class ShopItem:
             self.picture = item.item[itemnum].picturename
 
     def add_cost(self, itemcost):
+        """
+        Set the shop entry purchase cost.
+
+        Args:
+            itemcost (str | int): The purchase cost.
+        """
         self.cost = itemcost
 
     def add_value(self, itemvalue):
+        """
+        Set the shop entry sale value.
+
+        Args:
+            itemvalue (str | int): The sale value.
+        """
         self.value = itemvalue
 
     def add_buytype(self, itembuytype):
+        """
+        Set the shop entry payment type.
+
+        Args:
+            itembuytype (str): Payment type.
+        """
         self.buytype = itembuytype
 
     def add_power(self, itempower):
+        """
+        Set the shop entry displayed power.
+
+        Args:
+            itempower (str | int): The displayed power.
+        """
         self.power = itempower
 
     def add_description(self, itemdescription):
+        """
+        Set the shop entry display description.
+
+        Args:
+            itemdescription (str): Item description.
+        """
         self.description = itemdescription
 
     def add_act(self, action):
+        """
+        Add an action line to the shop entry.
+
+        Args:
+            action (str): Action line to append.
+        """
         self.actions.append(action)
 
     def add_picture(self, picture):
+        """
+        Set the shop entry picture identifier.
+
+        Args:
+            picture (str): Picture identifier.
+        """
         self.picture = picture
 
 
 class Shop:
     def __init__(self, shopname):
+        """
+        Create an empty shop.
+
+        Args:
+            shopname (str): Shop name.
+        """
         self.name = shopname.strip()
         self.itemlist = []
         self.curitem = -1
 
     def additem(self, itemname):
+        """
+        Add an item entry to the shop.
+
+        Args:
+            itemname (str): Name of the item to add.
+        """
         self.itemlist.append(ShopItem(itemname))
         self.curitem += 1
 
     def item_add_cost(self, itemcost):
+        """
+        Set the current shop item purchase cost.
+
+        Args:
+            itemcost (str | int): The purchase cost.
+        """
         self.itemlist[self.curitem].add_cost(itemcost)
 
     def item_add_value(self, itemvalue):
+        """
+        Set the current shop item sale value.
+
+        Args:
+            itemvalue (str | int): The sale value.
+        """
         self.itemlist[self.curitem].add_value(itemvalue)
 
     def item_add_buytype(self, itembuytype):
+        """
+        Set the current shop item payment type.
+
+        Args:
+            itembuytype (str): Payment type.
+        """
         self.itemlist[self.curitem].add_buytype(itembuytype)
 
     def item_add_power(self, itempower):
+        """
+        Set the current shop item displayed power.
+
+        Args:
+            itempower (str | int): The displayed power.
+        """
         self.itemlist[self.curitem].add_power(itempower)
 
     def item_add_description(self, itemdescription):
+        """
+        Set the current shop item description.
+
+        Args:
+            itemdescription (str): Item description.
+        """
         self.itemlist[self.curitem].add_description(itemdescription)
 
     def item_add_act(self, action):
+        """
+        Add an action line to the current shop item.
+
+        Args:
+            action (str): Action line to append.
+        """
         self.itemlist[self.curitem].add_act(action)
 
     def item_add_picture(self, picture):
+        """
+        Set the current shop item picture identifier.
+
+        Args:
+            picture (str): Picture identifier.
+        """
         self.itemlist[self.curitem].add_picture(picture)
 
 
@@ -390,9 +572,10 @@ shops = []
 # read and interpret shops.txt. Must be called after read_items()
 # Places data into shops[].
 def read_shops():
+    """Load and parse the selected module’s shop definitions."""
     # grab the needed data from the file
     shop_loc = config.MODULES_DIR + "/data/shops.txt"
-    shop_file = open(shop_loc)
+    shop_file = Path(shop_loc).open()
 
     cur_shop = -1
 

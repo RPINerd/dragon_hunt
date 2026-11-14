@@ -18,10 +18,10 @@ pygame.font.init()
 
 def get_screen() -> pygame.Surface:
     """
-    Get the pygame screen object.
+    Return the shared Pygame display surface.
 
     Returns:
-        The pygame screen object.
+        pygame.Surface: The shared Pygame display surface.
     """
     global _screen
     return _screen

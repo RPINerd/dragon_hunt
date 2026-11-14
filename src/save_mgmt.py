@@ -16,34 +16,83 @@ SAVE_VERSION = 1
 
 
 def save_filename(player_name: str) -> str:
-    """Return a filesystem-safe save filename for a player name."""
+    """
+    Build a filesystem-safe save filename from a player name.
+
+    Args:
+        player_name (str): Player name to encode.
+
+    Returns:
+        str: Encoded save filename.
+    """
     if not player_name:
         raise ValueError("Player name cannot be empty.")
     return f"save-{quote(player_name, safe=' -_.')}.json"
 
 
 def display_save_name(save_file: str) -> str:
-    """Return a readable name for a save filename."""
+    """
+    Decode a save filename for display.
+
+    Args:
+        save_file (str): Save filename to format.
+
+    Returns:
+        str: Readable player name, or the unchanged filename if it is not a generated save name.
+    """
     if save_file.startswith("save-") and save_file.endswith(".json"):
         return unquote(save_file[5:-5])
     return save_file
 
 
 def _save_path(save_file: str) -> Path:
+    """
+    Resolve and validate a save filename under the module save directory.
+
+    Args:
+        save_file (str): Filename to resolve.
+
+    Returns:
+        Path: Path to the save file.
+    """
     if not save_file or Path(save_file).name != save_file or "/" in save_file or "\\" in save_file:
         raise ValueError("Save name must be a non-empty filename.")
     return Path(config.MODULES_DIR) / "saves" / save_file
 
 
 def _is_number(value: Any) -> bool:
+    """
+    Check whether a value is a finite integer or float.
+
+    Args:
+        value (Any): Value to check.
+
+    Returns:
+        bool: Whether the value is a finite number.
+    """
     return type(value) is int or (type(value) is float and math.isfinite(value))
 
 
 def _reject_json_constant(value: str) -> None:
+    """
+    Reject a non-standard JSON numeric constant.
+
+    Args:
+        value (str): Invalid constant reported by the JSON parser.
+    """
     raise ValueError(f"Invalid numeric value: {value}.")
 
 
 def _validate_save(data: Any) -> dict[str, Any]:
+    """
+    Validate the structure and fields of decoded save data.
+
+    Args:
+        data (Any): Decoded JSON value.
+
+    Returns:
+        dict[str, Any]: Validated save data.
+    """
     if not isinstance(data, dict):
         raise ValueError("Save data must be an object.")
     if type(data.get("version")) is not int or data["version"] != SAVE_VERSION:
@@ -94,7 +143,15 @@ def _validate_save(data: Any) -> dict[str, Any]:
 
 
 def read_save(save_file: str) -> dict[str, Any]:
-    """Read and validate a save file for both the preview and game loader."""
+    """
+    Read and validate a save file for both the preview and game loader.
+
+    Args:
+        save_file (str): Save filename to read.
+
+    Returns:
+        dict[str, Any]: Validated save data.
+    """
     save_path = _save_path(save_file)
     with save_path.open(encoding="utf-8") as savefile:
         try:
@@ -105,6 +162,15 @@ def read_save(save_file: str) -> dict[str, Any]:
 
 
 def _item_name(item_index: int) -> str | None:
+    """
+    Resolve an item index to its name.
+
+    Args:
+        item_index (int): Index in the item table; -1 represents an empty slot.
+
+    Returns:
+        str | None: Item name, or None for an empty slot.
+    """
     if item_index == -1:
         return None
     if item_index < 0 or item_index >= len(item.item):
@@ -113,7 +179,12 @@ def _item_name(item_index: int) -> str | None:
 
 
 def savegame(save_file: str) -> None:
-    """Write the current game state as a versioned JSON document."""
+    """
+    Write the current game state as a versioned JSON document.
+
+    Args:
+        save_file (str): Player name used to form the save filename.
+    """
     save_path = _save_path(save_filename(save_file))
     if g.zgrid < 0 or g.zgrid >= len(config.MAPS):
         raise ValueError(f"Invalid current map index: {g.zgrid}.")
@@ -175,6 +246,15 @@ def savegame(save_file: str) -> None:
 
 
 def _find_map(map_name: str) -> int:
+    """
+    Find a loaded map by name.
+
+    Args:
+        map_name (str): Map name to find.
+
+    Returns:
+        int: Index of the map in the loaded map list.
+    """
     for map_index, game_map in enumerate(config.MAPS):
         if game_map.name == map_name:
             return map_index
@@ -182,12 +262,30 @@ def _find_map(map_name: str) -> int:
 
 
 def _check_position(map_index: int, x: int, y: int, label: str) -> None:
+    """
+    Validate that coordinates are inside a map.
+
+    Args:
+        map_index (int): Index of the loaded map.
+        x (int): Horizontal tile coordinate.
+        y (int): Vertical tile coordinate.
+        label (str): Object label used in validation errors.
+    """
     field = config.MAPS[map_index].field
     if y < 0 or y >= len(field) or x < 0 or x >= len(field[y]):
         raise ValueError(f"Save contains an invalid {label} position.")
 
 
 def _resolve_items(item_names: list[str | None]) -> list[int]:
+    """
+    Resolve saved item names to item-table indices.
+
+    Args:
+        item_names (list[str | None]): Item names, with None for empty slots.
+
+    Returns:
+        list[int]: Item indices, using -1 for empty slots.
+    """
     item_indexes = []
     for name in item_names:
         if name is None:
@@ -201,7 +299,12 @@ def _resolve_items(item_names: list[str | None]) -> list[int]:
 
 
 def loadgame(save_file: str) -> None:
-    """Load a previously saved game, validating it before changing game state."""
+    """
+    Load a previously saved game, validating it before changing game state.
+
+    Args:
+        save_file (str): Save filename to load.
+    """
     data = read_save(save_file)
     player_data = data["player"]
     location = data["location"]

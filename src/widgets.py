@@ -24,7 +24,17 @@ class Button:
         font: pygame.font = None,
         image: pygame.image = None
     ) -> None:
-        """"""
+        """
+        Create a button with its position, appearance, and optional content.
+
+        Args:
+            coords (tuple[int, int]): Top-left screen coordinates.
+            dimensions (tuple[int, int]): Button width and height.
+            color (pygame.typing.ColorLike): Fill color.
+            text (str): Button label.
+            font (pygame.font): Font associated with the button.
+            image (pygame.image): Image associated with the button.
+        """
         self.x = coords[0]
         self.y = coords[1]
         self.width = dimensions[0]
@@ -35,7 +45,12 @@ class Button:
         self.image = image
 
     def draw(self, screen: pygame.Surface) -> None:
-        """"""
+        """
+        Draw the button rectangle on a surface.
+
+        Args:
+            screen (pygame.Surface): Surface to draw on.
+        """
         pygame.draw.rect(screen, self.color, (self.x, self.y, self.width, self.height))
 
 
@@ -44,7 +59,20 @@ class Listbox:
     """"""
 
     def __init__(self, xy, size, viewable_items, lines_per_item, bg_color, sel_color, out_color, font_color, font):
-        """"""
+        """
+        Create a list box with the requested layout and colors.
+
+        Args:
+            xy (tuple[int, int]): Top-left screen coordinates.
+            size (tuple[int, int]): List-box width and height.
+            viewable_items (int): Number of visible list entries.
+            lines_per_item (int): Text lines displayed for each entry.
+            bg_color (pygame.typing.ColorLike): Entry background color.
+            sel_color (pygame.typing.ColorLike): Selected-entry color.
+            out_color (pygame.typing.ColorLike): List-box outline color.
+            font_color (pygame.typing.ColorLike): Text color.
+            font (pygame.font.Font): Font used to render entries.
+        """
         self.xy = xy
         self.size = (size[0], size[1] - 1)
         self.viewable_items = viewable_items
@@ -73,6 +101,16 @@ class Listbox:
             )
 
     def refresh_listbox(self, selected, lines_array):
+        """
+        Draw the list entries and indicate the selected entry.
+
+        Args:
+            selected (int): Visible entry index to highlight.
+            lines_array (list[str]): Text lines for the visible entries.
+
+        Returns:
+            int: 1 on success, or 0 if the supplied list is invalid.
+        """
         if len(lines_array) != self.viewable_items:
             logger.error(
                 "Listbox line count %d does not match viewable item count %d.",
@@ -116,7 +154,15 @@ class Listbox:
         return 1
 
     def is_over(self, xy: tuple[int, int]) -> int:
-        """"""
+        """
+        Return the visible entry under a pointer position.
+
+        Args:
+            xy (tuple[int, int]): Pointer coordinates.
+
+        Returns:
+            float: Entry position within the list box, or -1 if outside.
+        """
         if (
             xy[0] >= self.xy[0]
             and xy[1] >= self.xy[1]
@@ -133,7 +179,17 @@ class Scrollbar:
     """"""
 
     def __init__(self, xy, size, viewable_items, bg_color, fore_color, out_color):
-        """"""
+        """
+        Create and draw a scrollbar for a list.
+
+        Args:
+            xy (tuple[int, int]): Top-left screen coordinates.
+            size (int): Scrollbar height.
+            viewable_items (int): Number of list entries visible at once.
+            bg_color (pygame.typing.ColorLike): Scrollbar track color.
+            fore_color (pygame.typing.ColorLike): Thumb and arrow background color.
+            out_color (pygame.typing.ColorLike): Scrollbar outline color.
+        """
         self.xy = xy
         self.size = (18, size)
         self.viewable_items = viewable_items
@@ -164,6 +220,13 @@ class Scrollbar:
         self.refresh_scroll(0, 100)
 
     def refresh_scroll(self, start_item, total_items):
+        """
+        Redraw the scrollbar thumb for the current list position.
+
+        Args:
+            start_item (int): Index of the first visible list item.
+            total_items (int): Total number of list items.
+        """
         start_item = min(start_item, total_items - self.viewable_items)
 
         screen.blit(self.scroll_surface, self.xy)
@@ -175,6 +238,15 @@ class Scrollbar:
         screen.fill(self.fore_color, (self.xy[0] + 1, self.xy[1] + self.start_y, self.size[0] - 2, self.size_y))
 
     def is_over(self, xy):
+        """
+        Identify the scrollbar region at a pointer position.
+
+        Args:
+            xy (tuple[int, int]): Pointer coordinates.
+
+        Returns:
+            int: Region code for an arrow or gutter, or -1 if outside the scrollbar.
+        """
         if (
             xy[0] >= self.xy[0]
             and xy[1] >= self.xy[1]
@@ -193,6 +265,17 @@ class Scrollbar:
         return -1
 
     def adjust_pos(self, event, list_pos, item_list):
+        """
+        Adjust the list position in response to a scrollbar click.
+
+        Args:
+            event (pygame.event.Event): Mouse event to process.
+            list_pos (int): Current selected list index.
+            item_list (list): Items in the list.
+
+        Returns:
+            int: Updated selected list index.
+        """
         if event.type != pygame.MOUSEBUTTONUP:
             return list_pos
         if event.button != 1:
@@ -216,7 +299,15 @@ class Scrollbar:
 
 
 def refresh_list(listbox: Listbox, scrollbar: Scrollbar, list_pos: int, list_array: list) -> None:
-    """"""
+    """
+    Redraw a list box and its optional scrollbar.
+
+    Args:
+        listbox (Listbox): List box to refresh.
+        scrollbar (Scrollbar): Scrollbar to refresh, or 0 if absent.
+        list_pos (int): Selected item index.
+        list_array (list): List content to display.
+    """
     selected_item = list_pos % listbox.viewable_items
     viewable_items = listbox.viewable_items
     start_pos = int((list_pos / viewable_items) * viewable_items)
@@ -240,14 +331,14 @@ def bordered_box(
     outline_color: str = "black",
     inner_color: str = "light_gray") -> None:
     """
-    Create a box on the screen with the given parameters.
+    Draw a filled box with an outline.
 
     Args:
-        screen (pygame.Surface): The surface to draw on.
-        xy (list | tuple): The coordinates of the box (x, y).
-        size (list | tuple): The size of the box (width, height).
-        outline_color (str): The color of the box outline.
-        inner_color (str): The color of the inner box.
+        screen (pygame.Surface): Surface to draw on.
+        xy (list | tuple): Top-left coordinates.
+        size (list | tuple): Box width and height.
+        outline_color (str): Configured outline color name.
+        inner_color (str): Configured fill color name.
     """
     screen.fill(config.COLORS[outline_color], (xy[0], xy[1], size[0], size[1]))
     screen.fill(config.COLORS[inner_color], (xy[0] + 1, xy[1] + 1, size[0] - 2, size[1] - 2))
@@ -262,16 +353,16 @@ def print_string(
     align: int = 0,
     width: int = -1) -> None:
     """
-    Print a string to the screen
+    Render a single line of text on a surface.
 
     Args:
-        surface (pygame.Surface): The surface to print to
-        text (str): The string to print
-        font (pygame.font.Font): The font to use
-        xy (tuple): The xy coordinates to print the text at
-        color (pygame.ColorLike): The color to print the text in
-        align (int): 0=left, 1=center, 2=right
-        width (int): The width of the text box. -1 for no limit.
+        surface (pygame.Surface): Surface to draw on.
+        text (str): Text to render.
+        font (pygame.font.Font): Font used to render the text.
+        xy (tuple[int, int]): Position or alignment anchor.
+        color (pygame.typing.ColorLike): Text color.
+        align (int): Alignment: 0 left, 1 center, 2 right.
+        width (int): Optional clipping width; -1 disables clipping.
     """
     text = text.replace("\t", "     ")
     if align != 0:
@@ -294,25 +385,21 @@ def print_paragraph(
     width: int,
     xy: tuple[int, int],
     color: pygame.typing.ColorLike = config.COLORS["black"]) -> int:
-    r"""
-    Print a string to the screen, wrapping it to fit within a certain width
+    """
+    Render text wrapped to fit within a maximum width.
 
-    Used to display descriptions and such.
-
-    Note that bkshl+n can be used for newlines, but it must be used as
-    `line1 \\n line2` in code, separated by spaces, with the bkshl escaped)
-    Escape not needed in scripts.
+    Tabs are expanded before wrapping; script line breaks are preserved.
 
     Args:
-        surface (pygame.Surface): The surface to print to
-        text (str): The string to print
-        font (pygame.font.Font): The font to use
-        width (int): The width to wrap the text to
-        xy (tuple): The xy coordinates to print the text at
-        color (pygame.ColorLike): The color to print the text in
+        surface (pygame.Surface): Surface to draw on.
+        text (str): Text to render.
+        font (pygame.font.Font): Font used to render the text.
+        width (int): Maximum line width in pixels.
+        xy (tuple[int, int]): Top-left position.
+        color (pygame.typing.ColorLike): Text color.
 
     Returns:
-        int: The number of lines printed
+        int: Number of lines rendered.
     """
     text = text.replace("\t", "     ")
     start_xy = xy

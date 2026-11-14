@@ -22,7 +22,20 @@ class Item:
         img_name: str,
         bonuses: tuple[int, int, int, int],
         script: list[str]) -> None:
-        """"""
+        """
+        Create an item definition.
+
+        Args:
+            name (str): Item name.
+            type (int): Item category code.
+            qual (int): Item quality or power.
+            price (int): Purchase price.
+            val (int): Sale value.
+            desc (str): Item description.
+            img_name (str): Tile image name.
+            bonuses (tuple[int, int, int, int]): Hit-point, energy, attack, and defense bonuses.
+            script (list[str]): Script lines run when the item is used.
+        """
         self.name = name
         # type is 0-5 for equipment, 10-20 for items, and 99 for system items.
         # type 10 is unusable (use for story items/keys) 11 is healing, 12 is
@@ -50,7 +63,14 @@ class DroppedItem:
     """An array of dropped items. Used for keeping dropped items around through save/loads."""
 
     def __init__(self, name: str, pos: tuple[int, int], mapname: str) -> None:
-        """"""
+        """
+        Record an item dropped at a map position.
+
+        Args:
+            name (str): Dropped item name.
+            pos (tuple[int, int]): Map tile coordinates.
+            mapname (str): Name of the map containing the item.
+        """
         self.name = name
         self.x = pos[0]
         self.y = pos[1]
@@ -73,15 +93,13 @@ for x in range(28):
 
 def find_inv_item(num: int) -> int:
     """
-    Find an item in the inventory
-
-    Given an index in the item[] array, return the index of the first occurance in the inv[] array
+    Find an item in the inventory by its item-table index.
 
     Args:
-        num (int): The index in the item[] array
+        num (int): Index in the item table.
 
     Returns:
-        int: The index of the first occurance in the inv; -1 for failure
+        int: Inventory slot containing the item, or -1 if absent.
     """
     for i in range(len(inv)):
         if inv[i] == num:
@@ -91,13 +109,13 @@ def find_inv_item(num: int) -> int:
 
 def take_inv_item(num: int) -> int:
     """
-    Takes the index of an item in the item[] array, and places it in the first empty spot in the inv[] array
+    Place an item in the first empty inventory slot.
 
     Args:
-        num (int): An index of the item from the item[] array
+        num (int): Index of the item in the item table.
 
-    Retuns:
-        (int): Index of inv[] item is placed at; -1 for failure
+    Returns:
+        int: Inventory slot used, or -1 if the inventory is full.
     """
     for i in range(len(inv)):
         if inv[i] == -1:
@@ -108,10 +126,10 @@ def take_inv_item(num: int) -> int:
 
 def drop_inv_item(num: int) -> None:
     """
-    Takes the index of an item in the inv[] array, removes it, then removes the empty space
+    Remove an item from the inventory and compact its slots.
 
     Args:
-        num (int): The index of the item in the inv[] array
+        num (int): Inventory slot to clear.
     """
     inv[num] = -1
     for i in range(num + 1, len(inv)):
@@ -121,13 +139,13 @@ def drop_inv_item(num: int) -> None:
 
 def finditem(name: str) -> int:
     """
-    Find an item in the item[] array
+    Find an item by name, ignoring letter case.
 
     Args:
-        name (str): The name of the item to find
+        name (str): Item name to search for.
 
     Returns:
-        int: The index of the item in the item[] array; -1 if not found
+        int: Index in the item table, or -1 if not found.
     """
     tmpname = name.lower()
     for i in range(len(item)):
@@ -137,7 +155,7 @@ def finditem(name: str) -> int:
 
 
 def read_items() -> None:
-    """Read items directory; called on startup"""
+    """Load item definitions from the selected module."""
     # Put the names of the available items in array_items.
     array_items = listdir(config.MODULES_DIR + "/data/items")
 
@@ -157,10 +175,10 @@ def read_items() -> None:
 
 def additem(item_filename: str) -> None:
     """
-    Given the filename of an item, load the data into the item array
+    Read an item definition file into the item table.
 
     Args:
-        item_filename (str): The filename of the item to load
+        item_filename (str): Item data filename.
     """
     global item
 
@@ -228,12 +246,26 @@ def additem(item_filename: str) -> None:
 
 
 def add_dropped_item(name: str, pos: tuple[int, int], mapname: str) -> None:
-    """Add a dropped item to the dropped_items array."""
+    """
+    Record an item dropped on a map tile.
+
+    Args:
+        name (str): Name of the dropped item.
+        pos (tuple[int, int]): Tile coordinates.
+        mapname (str): Name of the map.
+    """
     dropped_items.append(DroppedItem(name, pos, mapname))
 
 
 def del_dropped_item(name: str, pos: tuple[int, int], mapname: str) -> None:
-    """Delete a dropped item from the dropped_items array."""
+    """
+    Remove a matching dropped-item record.
+
+    Args:
+        name (str): Name of the item.
+        pos (tuple[int, int]): Tile coordinates.
+        mapname (str): Name of the map.
+    """
     x, y = pos
     for i in range(len(dropped_items)):
         if (
@@ -247,7 +279,7 @@ def del_dropped_item(name: str, pos: tuple[int, int], mapname: str) -> None:
 
 
 def load_dropped_items() -> None:
-    """"""
+    """Place saved dropped items onto their map tiles."""
     for dropped_item in dropped_items:
         z = g.mapname2zgrid(dropped_item.mapname)
         config.MAPS[z].field[dropped_item.y][dropped_item.x].additem(dropped_item.name)

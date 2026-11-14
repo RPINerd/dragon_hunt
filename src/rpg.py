@@ -14,15 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 def main() -> None:
-    """
-    The main function of the game. This is the first function called upon launch.
-
-    Args:
-        None
-
-    Returns:
-        None
-    """
+    """Initialize the game and start the selected module."""
     configure_logging()
     pygame.init()
     pygame.font.init()

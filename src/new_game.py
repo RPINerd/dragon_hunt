@@ -49,7 +49,9 @@ curr_name_loc = -1
 
 
 def reroll_stats() -> None:
-    """Reroll the stats for the character (from reroll button)"""
+    """
+    Reroll the character’s starting stats.
+    """
     global name_stat
     global hp_stat
     global ep_stat
@@ -67,7 +69,9 @@ def reroll_stats() -> None:
 
 
 def rename_character() -> None:
-    """Called when the user presses the rename button"""
+    """
+    Prompt for and apply a character name.
+    """
     global name_stat
     global curr_name_loc
     curr_name_loc = len(name_stat)
@@ -84,7 +88,12 @@ def rename_character() -> None:
 
 
 def key_handler_up(key_name: int) -> None:
-    """"""
+    """
+    Handle a key release on the new-game screen.
+
+    Args:
+        key_name (int): The key code to handle.
+    """
     global key_down
     if not key_down:
         return
@@ -94,7 +103,9 @@ def key_handler_up(key_name: int) -> None:
 
 
 def refresh_name() -> None:
-    """"""
+    """
+    Redraw the character name and stats.
+    """
     screen.fill(
         config.COLORS["light_gray"],
         (config.TILESIZE * main.mapsizex / 4 + 10, config.TILESIZE * main.mapsizey / 3 + 10, 280, 14),
@@ -187,7 +198,9 @@ def refresh_name() -> None:
 
 
 def reset_vars() -> None:
-    """Reset the game variables to their default values"""
+    """
+    Reset character and game variables to their defaults.
+    """
     # move variables to player.*
     player.maxhp = int(hp_stat)
     player.maxep = int(ep_stat)
@@ -222,7 +235,9 @@ def reset_vars() -> None:
 
 
 def get_stats() -> None:
-    """Get stats from globals"""
+    """
+    Read the character stats from the current settings.
+    """
     global name_stat
     global hp_stat
     global ep_stat
@@ -239,15 +254,13 @@ def get_stats() -> None:
 
 def begin_game(loadgame_name: str = "") -> bool:
     """
-    Called when the user presses the "Begin" button in the new game screen.
-
-    Use the stats given to create a new character and start the game.
+    Create or load a character and start the game.
 
     Args:
-        loadgame_name (str): The name of the save file to load. Blank for a new game.
+        loadgame_name (str): The save file name, or an empty string for a new game.
 
     Returns:
-        bool: True if the game was started, False if it was not.
+        bool: Whether the game started successfully.
     """
     # This prevents a race condition
     global already_started_game
@@ -290,6 +303,9 @@ def begin_game(loadgame_name: str = "") -> bool:
 
 def load_game() -> None:
     # bring the loadgame window up.
+    """
+    Open the load-game screen.
+    """
     global new_game
     load_game = 0
     temp_surface = pygame.Surface((400, 300))
@@ -303,7 +319,9 @@ def load_game() -> None:
 
 
 def show_options() -> None:
-    """Bring the options window up."""
+    """
+    Open the options window from the new-game screen.
+    """
     temp_surface = pygame.Surface((400, 300))
     temp_surface.blit(screen, (0, 0), (100, 100, 400, 300))
     options.init_window_options()
@@ -311,11 +329,17 @@ def show_options() -> None:
 
 
 def quit_game() -> None:
+    """
+    Request that the game close.
+    """
     return
 
 
 # refresh the buttons.
 def refresh_buttons():
+    """
+    Refresh the new-game menu buttons.
+    """
     if config.mut["CURR_BUTTON"] > 4:
         screen.blit(config.BUTTONS["begin.png"], (inner_new_game_width, inner_button_start))
         screen.blit(config.BUTTONS["skill.png"], (inner_rename_width, inner_button_start))
@@ -359,6 +383,12 @@ def refresh_buttons():
 
 
 def refresh_help(string):
+    """
+    Refresh help text for the new-game screen.
+
+    Args:
+        string (str): The text to display.
+    """
     start_xy = (15, button_start + button_height / 2)
     size = (180, 14)
     screen.fill(config.COLORS["very_dark_blue"], (start_xy[0], start_xy[1], size[0], size[1]))
@@ -367,9 +397,13 @@ def refresh_help(string):
 
 def key_handler(key_name) -> bool:
     """
-    All keypresses in new_game pass through here
+    Handle a key action on the new-game screen.
 
-    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        bool: Whether the key action was handled.
     """
     if key_name == config.BINDINGS["cancel"]:
         if config.mut["CURR_BUTTON"] > 4:
@@ -414,7 +448,12 @@ def key_handler(key_name) -> bool:
 
 
 def mouse_handler_move(xy: tuple[int, int]) -> None:
-    """"""
+    """
+    Update the new-game menu selection after mouse movement.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     prev_button = config.mut["CURR_BUTTON"]
     if config.mut["CURR_BUTTON"] > 4:
         if (
@@ -450,7 +489,9 @@ def mouse_handler_move(xy: tuple[int, int]) -> None:
 
 
 def init_new_game() -> None:
-    """Called when newgame is pressed on the main menu"""
+    """
+    Initialize a new character for the new-game screen.
+    """
     global name_stat
     name_stat = config.DEFAULT_NAME
     global inner_button_start
@@ -477,7 +518,9 @@ def init_new_game() -> None:
 
 
 def back_from_new_game() -> None:
-    """Called when the user presses the back button"""
+    """
+    Return from the new-game screen to the previous menu.
+    """
     screen.blit(config.BACKGROUNDS["new_game.png"], (0, 0))
     config.mut["CURR_BUTTON"] = 0
     refresh_buttons()
@@ -485,7 +528,9 @@ def back_from_new_game() -> None:
 
 
 def init_window() -> None:
-    """Called upon game start"""
+    """
+    Initialize the new-game window.
+    """
     pygame.display.set_caption(g.game_name)
 
     global bgcolour
@@ -539,7 +584,9 @@ def init_window() -> None:
 
 
 def refresh_new_game() -> None:
-    """Refresh the new game screen"""
+    """
+    Redraw the new-game screen.
+    """
     quarter_width = config.TILESIZE * main.mapsizex / 4
     third_height = config.TILESIZE * main.mapsizey / 3
     half_width = config.TILESIZE * main.mapsizex / 2

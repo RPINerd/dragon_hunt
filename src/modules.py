@@ -17,6 +17,15 @@ MODULES_ROOT = Path(__file__).resolve().parent.parent / "modules"
 
 
 def _is_installed_module(module_path: Path) -> bool:
+    """
+    Check whether a module directory contains its required game data.
+
+    Args:
+        module_path (Path): Directory to check for module data.
+
+    Returns:
+        bool: True if the required module data files are present.
+    """
     maps_path = module_path / "data" / "maps"
     return (
         module_path.is_dir()
@@ -26,7 +35,15 @@ def _is_installed_module(module_path: Path) -> bool:
 
 
 def discover_installed_modules(module_root: Path = MODULES_ROOT) -> list[str]:
-    """Return module folders that contain the minimum game data required to start."""
+    """
+    Return module folders that contain the required game data.
+
+    Args:
+        module_root (Path): Directory containing candidate module folders.
+
+    Returns:
+        list[str]: Names of the installed module folders found.
+    """
     if not module_root.is_dir():
         return []
     return sorted(
@@ -38,15 +55,10 @@ def discover_installed_modules(module_root: Path = MODULES_ROOT) -> list[str]:
 
 def load(selected_mod: str = "DragonHunt") -> None:
     """
-    Initialize and run the provided module.
-
-    This is effectively the main launching point for the game, starting up the core game window and loop.
+    Initialize and run the selected game module.
 
     Args:
-        selected_mod (str): The selected module to run.
-
-    Returns:
-        None
+        selected_mod (str): Name of the installed module to start.
     """
     screen = pygscreen.get_screen()
     pygame.display.set_caption("Loading")
@@ -77,10 +89,10 @@ def load(selected_mod: str = "DragonHunt") -> None:
 
 def select() -> int | None:
     """
-    Display a menu to select a module. Return None if the picker is cancelled.
+    Display the module picker and return the selected module index.
 
     Returns:
-        The selected module index, or None if the picker is cancelled.
+        int | None: The chosen module index, or None if selection is cancelled.
     """
     if not config.MODULES:
         return None
@@ -193,7 +205,7 @@ def select() -> int | None:
                 return None
 
             # Keyboard input
-            elif event.type == KEYDOWN:
+            if event.type == KEYDOWN:
                 if event.key == K_UP:
                     selected_index = (selected_index - 1) % len(module_names)
                 elif event.key == K_DOWN:

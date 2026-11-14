@@ -67,7 +67,7 @@ temp_button_y = 0
 
 
 def refresh_buttons() -> None:
-    """Redraw the buttons at the bottom of the shop window."""
+    """Redraw the shop action buttons when the selection changes."""
     global prev_button
 
     if prev_button == config.mut["CURR_BUTTON"]:
@@ -96,15 +96,15 @@ def refresh_buttons() -> None:
 
 def set_details(name: str, cost: int, value: int, power: int, description: str, inv_or_shop: str) -> None:
     """
-    Sets the info in the middle of the shop screen
+    Display an item’s name, price or value, power, and description.
 
     Args:
-        name (str): The name of the item.
-        cost (int): The cost of the item (buying).
-        value (int): The value of the item (selling).
-        power (int): The power or quality level of the item.
-        description (str): The description of the item.
-        inv_or_shop (str): Whether the item is in the inventory or shop.
+        name (str): Item name.
+        cost (int): Purchase cost.
+        value (int): Sale value.
+        power (int): Item power or quality.
+        description (str): Item description.
+        inv_or_shop (str): Whether the item is shown from the inventory or shop.
     """
     screen.fill(config.COLORS["light_gray"], (canvas_x_start + temp_canvas_width, canvas_y_start + 25, 137, 190))
 
@@ -134,13 +134,11 @@ def set_details(name: str, cost: int, value: int, power: int, description: str, 
 
 def show_details(event: int = 0, sel_item: int = -1) -> None:
     """
-    Show info for a selected item in the middle of the window
-
-    The use of sel_item gives the ability to look at an item without selecting it, while working normally the rest of the time
+    Refresh the details panel for the selected item.
 
     Args:
-        # TODO event (int): The event that triggered this function.
-        sel_item (int): The item to show details for
+        event (int): Legacy event code; currently unused.
+        sel_item (int): Item slot to display, or -1 to use the current selection.
     """
     if sel_item == -1:
         sel_item = curr_item
@@ -189,7 +187,7 @@ def show_details(event: int = 0, sel_item: int = -1) -> None:
 
 # place appropriate items into the store.
 def refresh_shop():
-
+    """Redraw the shop and inventory contents."""
     invpos = 0
 
     # per-item borders
@@ -292,7 +290,7 @@ def refresh_shop():
 
 
 def sell_item() -> None:
-    """Called upon pressing "Sell"; uses the selected item."""
+    """Sell the selected inventory item when it can be sold."""
     if curr_focus != 0:
         return
     if curr_item > len(item.inv):
@@ -325,7 +323,7 @@ def sell_item() -> None:
 
 
 def buy_item() -> None:
-    """Called upon pressing "Buy"; uses the selected item."""
+    """Buy the selected shop item when payment and item actions allow it."""
     if curr_focus != 1:
         return
     if curr_item >= len(g.shops[store_num].itemlist):
@@ -372,6 +370,16 @@ def buy_item() -> None:
 # Used in mouse_sel_inv and mouse_sel_shop. Takes x y coordinates, and returns
 # the selected box, or -1 for none.
 def which_box(x, y):
+    """
+    Map canvas coordinates to a shop-grid slot.
+
+    Args:
+        x (int | float): Horizontal coordinate relative to the grid.
+        y (int | float): Vertical coordinate relative to the grid.
+
+    Returns:
+        int | float: Grid slot index, or -1 if the point is outside a slot.
+    """
     if x < 3:
         return -1
     tempx = x - 3
@@ -398,6 +406,12 @@ def which_box(x, y):
 
 # called when the user releases the mouse in the inv canvas.
 def mouse_sel_inv(xy):
+    """
+    Select an inventory slot from a mouse position.
+
+    Args:
+        xy (tuple[int, int]): Pointer coordinates relative to the inventory grid.
+    """
     # decide if the mouse is within one of the boxes.
     global curr_item
     global curr_focus
@@ -411,7 +425,15 @@ def mouse_sel_inv(xy):
 
 
 def mouse_sel_shop(xy: tuple[int, int]) -> bool:
-    """Called when the user releases the mouse in the shop canvas."""
+    """
+    Handle a mouse release in the shop window.
+
+    Args:
+        xy (tuple[int, int]): Pointer coordinates.
+
+    Returns:
+        bool: True when the shop should close; otherwise False.
+    """
     global curr_item
     global curr_focus
     global last_click_time
@@ -462,7 +484,15 @@ def mouse_sel_shop(xy: tuple[int, int]) -> bool:
 
 
 def mouse_handler_dbl(xy: tuple[int, int]) -> bool:
-    """"""
+    """
+    Handle a double-click on an inventory or shop item.
+
+    Args:
+        xy (tuple[int, int]): Pointer coordinates.
+
+    Returns:
+        bool: True when the click should close the shop; otherwise False.
+    """
     global curr_item
     global curr_focus
 
@@ -495,7 +525,12 @@ def mouse_handler_dbl(xy: tuple[int, int]) -> bool:
 
 
 def mouse_move(xy: tuple[int, int]) -> None:
-    """Called when the mouse moves over the shop window."""
+    """
+    Update the highlighted shop action button from pointer position.
+
+    Args:
+        xy (tuple[int, int]): Pointer coordinates.
+    """
     if (
         xy[0] > temp_button_x
         and xy[0] < temp_button_x + temp_button_width
@@ -513,9 +548,13 @@ def mouse_move(xy: tuple[int, int]) -> None:
 
 def key_handler(switch: int) -> bool:
     """
-    All keypresses in new_game pass through here
+    Handle a key press in the shop window.
 
-    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    Args:
+        switch (int): Pygame key code.
+
+    Returns:
+        bool: True when the shop should close; otherwise False.
     """
     global curr_item
     global curr_focus
@@ -566,7 +605,12 @@ def key_handler(switch: int) -> bool:
 
 
 def init_window_shop(store_type_input: str) -> None:
-    """Initialize the shop window."""
+    """
+    Initialize and display a shop window.
+
+    Args:
+        store_type_input (str): Name of the shop to open.
+    """
     g.cur_window = "shop"
     global last_click_time
     last_click_time = 0

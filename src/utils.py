@@ -11,7 +11,12 @@ logger = logging.getLogger(__name__)
 
 
 def play_sound(sound_name: str) -> None:
-    """"""
+    """
+    Play a randomly selected variant of a named sound effect.
+
+    Args:
+        sound_name (str): Key of the sound set to play.
+    """
     try:
         dict_size = len(config.SOUNDS[sound_name])
         config.SOUNDS[sound_name][int(random() * dict_size)].play()
@@ -23,22 +28,17 @@ def play_sound(sound_name: str) -> None:
 
 def die_roll(dice: int, sides: int, modfy: int = 0) -> int:
     """
-    Perform a dice roll and return the result.
+    Roll dice and return their total with a modifier applied to each die.
 
-    Rolls dice in the form 2d6, where 2 is the number of dice, and 6 the number of sides
-    on each die. Modify is the bonus given to each die.
-    Use die_roll(2, 6) + 4 for bonuses on the entire roll, or die_roll(2, 6, 1) for bonuses on each roll.
+    Use a separate addition to modify the total roll instead of each individual die.
 
     Args:
-        dice (int): The number of dice to roll.
-        sides (int): The number of sides on each die.
-        modfy (int): The modifier to add to each die roll.
+        dice (int): Number of dice to roll.
+        sides (int): Number of sides on each die.
+        modfy (int): Modifier added to each die roll.
 
     Returns:
-        int: The sum of the rolled dice plus the modifier.
-
-    Raises:
-        ValueError: If the number of dice or sides is less than 1.
+        int: Sum of all modified die results.
     """
     if dice < 1:
         raise ValueError("Number of dice must be greater than 0")
@@ -55,34 +55,25 @@ def die_roll(dice: int, sides: int, modfy: int = 0) -> int:
 
 def read_script_file(file_name: str | Path, from_editor: int = 0) -> list[str]:
     """
-    Parse a script file and return a list of commands/scripts
-
-    The from_editor parameter is used to determine if the call is coming from the map
-    editor or not. If it is, the script will be returned as-is, without any parsing.
-
-    TODO if the file provided is a path, could simplify the calling to not require str concat
-    TODO switch to a context manager for file opening, merge in the interpret lines logic
-    TODO error handling for file not found, etc.
+    Read a script file, optionally preserving its source formatting.
 
     Args:
-        file_name (str): The name of the file to read
-        from_editor (int, optional): 1 if being called from editor. Defaults to 0.
+        file_name (str | Path): Path relative to the selected module.
+        from_editor (int): Set to 1 to return lines without parsing.
 
     Returns:
-        list[str]: The scripting commands in the file
+        list[str]: Script lines, with comments and blank lines removed unless editor mode is enabled.
     """
 
     def interpret_lines(script_lines: list[str]) -> list[str]:
         """
-        Interpret lines of a script file.
-
-        Deals with comments, empty lines, and line-continuation to properly interpret the scripting.
+        Normalize script lines and remove comments and blank lines.
 
         Args:
-            script_lines (list[str]): The lines of the script file to interpret.
+            script_lines (list[str]): Lines read from a script file.
 
         Returns:
-            list[str]: The interpreted lines of the script file.
+            list[str]: Interpreted script lines.
         """
         cur_line = 0
         while True:

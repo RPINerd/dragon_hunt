@@ -65,6 +65,15 @@ screen = pygscreen.get_screen()
 
 # Print a message in status box. Works with ~Action~ embedded commands.
 def print_message(message):
+    """
+    Display the next message in the message box.
+
+    Args:
+        message (str): The message to display.
+
+    Returns:
+        int: 1 if the message is added, otherwise 0.
+    """
     global curr_message_num
     global message_array
     curr_message_num += 1
@@ -83,6 +92,9 @@ def print_message(message):
 
 
 def refresh_message_box():
+    """
+    Redraw the message box.
+    """
     widgets.bordered_box(screen, (0, pygscreen.SCREEN_HEIGHT - 64), (pygscreen.SCREEN_WIDTH * 3 / 5, 64), "black", "dh_green")
 
     message_start = pygscreen.SCREEN_HEIGHT - 62
@@ -95,6 +107,12 @@ def refresh_message_box():
 # determine if the player is dead, and, if so, end the game.
 def dead_yet():
     # did you die?
+    """
+    Check whether the player has been defeated.
+
+    Returns:
+        int: 1 if the player is defeated, otherwise 0.
+    """
     if player.hp <= 0:
         action.run_command(g.xgrid, g.ygrid, g.zgrid, "die()")
         return 1
@@ -103,6 +121,15 @@ def dead_yet():
 
 # back to main menu. Called on death.
 def close_window(event=0):
+    """
+    Close the current window or resolve its active dialog.
+
+    Args:
+        event (pygame.event.Event | int | None): The event that triggered the handler.
+
+    Returns:
+        int | None: The close result, or None when the event is handled without closing.
+    """
     if action.has_dialog == 1:
         return None
     if player.hp < 1:
@@ -117,6 +144,14 @@ def close_window(event=0):
 # Activate any scripting associated with a tile. X and Y are absolute coords.
 # Assumes scripting stored in maps[zgrid].field[y][x].actions[]
 def activate_scripting(x, y, z):
+    """
+    Run the scripting commands attached to a location.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        z (int): The map depth or level.
+    """
     return_num = 0
     temp_zgrid = z
 
@@ -153,7 +188,9 @@ def activate_scripting(x, y, z):
 # redraws the main map. Call after moving.
 def refreshmap():
     # redraw the tiles
-
+    """
+    Refresh the map and its visible contents.
+    """
     redisplay_map()
     refreshhero()
     refresh_inv_icon()
@@ -164,6 +201,12 @@ def refreshmap():
 
 # refreshes the stat display in the lower-right.
 def refresh_inv_icon(redisplay=0):
+    """
+    Refresh the inventory icon and its display.
+
+    Args:
+        redisplay (bool): Whether to redraw the display.
+    """
     info_top_x = mapsizex * config.TILESIZE - 3 * iconsize
     info_top_y = mapsizey * config.TILESIZE - 7 * iconsize
     info_bottom_x = mapsizex * config.TILESIZE
@@ -206,6 +249,9 @@ def refresh_inv_icon(redisplay=0):
 
 
 def refresh_bars():
+    """
+    Redraw the player status bars.
+    """
     start_width = pygscreen.SCREEN_WIDTH - 3 * iconsize
     start_height = pygscreen.SCREEN_HEIGHT - 7 * iconsize - 11
     widgets.bordered_box(screen, (start_width, start_height), (3 * iconsize, 6), "black", "hp_red")
@@ -219,6 +265,16 @@ def refresh_bars():
 
 # given x and y (absolute coods.) refresh the given tile. (ADJUST FOR PARTIAL)
 def refresh_tile(x, y, input_zgrid, xshift=0, yshift=0):
+    """
+    Redraw the specified map tile.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        input_zgrid (int): The map depth to process.
+        xshift (int): The horizontal drawing offset.
+        yshift (int): The vertical drawing offset.
+    """
     for picture in findtile(x, y, input_zgrid):
         map_canvas.blit(
             picture, ((x + half_mapx + 1 + xshift) * config.TILESIZE, (y + half_mapy + 1 + yshift) * config.TILESIZE)
@@ -230,7 +286,9 @@ def refresh_tile(x, y, input_zgrid, xshift=0, yshift=0):
 
 
 def refreshhero() -> None:
-    """Refresh the hero; faster than refreshing the whole map"""
+    """
+    Redraw the player character.
+    """
     for picture in findtile(g.xgrid, g.ygrid, g.zgrid):
         screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
@@ -250,6 +308,15 @@ def refreshhero() -> None:
 # on. Note that this maches up to the arangement of numbers on a keypad.
 # This variable is meant to be used for drawing bordering levels.
 def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
+    """
+    Process a map tile’s on-load commands.
+
+    Args:
+        recurse (bool): Whether to process nested map locations.
+        input_zgrid (int): The map depth to process.
+        onlypartial (int): The partial-processing limit.
+        rootzgrid (int): The root map depth.
+    """
     if config.DEBUG:
         tmp_time = pygame.time.get_ticks()
         if onlypartial == 5:
@@ -363,13 +430,22 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
 
 
 def debug_print_level():
+    """
+    Print the current debug level when debugging is enabled.
+    """
     if config.DEBUG:
         pygame.image.save(map_canvas, "templevel.bmp")
         logger.debug("Saved level to templevel.bmp")
 
 
 def redisplay_map(x: int = 0, y: int = 0) -> None:
-    """Redraw the map, centered on the player."""
+    """
+    Redraw the map view.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+    """
     if (x == 0 and y == 0) or player.hp <= 0:
         screen.blit(map_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
         screen.blit(map_over_canvas, (-(g.xgrid + 1) * config.TILESIZE, -(g.ygrid + 1) * config.TILESIZE))
@@ -422,6 +498,17 @@ def redisplay_map(x: int = 0, y: int = 0) -> None:
 # Return an array of pictures that the given tile should display.
 # x and y are absolute coords.
 def findtile(x, y, input_zgrid):
+    """
+    Collect the pictures displayed on a map tile.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        input_zgrid (int): The map depth to process.
+
+    Returns:
+        list: The pictures found on the tile.
+    """
     testing = 0
     returnpix = []
     # If dealing with an off-map area, grab the nearest known tile.
@@ -458,6 +545,17 @@ def findtile(x, y, input_zgrid):
 
 
 def findovertile(x, y, input_zgrid):
+    """
+    Collect the overlay pictures displayed on a map tile.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+        input_zgrid (int): The map depth to process.
+
+    Returns:
+        list: The overlay pictures found on the tile.
+    """
     testing = 0
     returnpix = []
     # If dealing with an off-map area, return nothing
@@ -488,6 +586,13 @@ def findovertile(x, y, input_zgrid):
 # dialog box showing, then if travel is possible to a spot, move there.
 # requires the change in xy coordinates. Called with move_north and the like.
 def move_hero(x, y):
+    """
+    Move the player by the requested tile offset.
+
+    Args:
+        x (int): The horizontal coordinate.
+        y (int): The vertical coordinate.
+    """
     global movement_done
     tempy = g.ygrid + y
     tempx = g.xgrid + x
@@ -605,6 +710,9 @@ def move_hero(x, y):
 
 # called at the end of movement. Controls the passing of time.
 def passturn():
+    """
+    Advance the game by one turn.
+    """
     global free_move
 
     # handle timed effects
@@ -642,6 +750,15 @@ def passturn():
 
 # Starts a battle. Takes the index of the monster in monster.monster_groups
 def start_battle(mon_index):
+    """
+    Start a battle with the selected monster.
+
+    Args:
+        mon_index (int): The index of the monster to battle.
+
+    Returns:
+        int: The result.
+    """
     global free_move
     tmp = battle.begin(mon_index)
     if tmp == 1:  # if you ran, you failed
@@ -663,11 +780,32 @@ def start_battle(mon_index):
 # Call to display a dialog box. Used to work with action.py.
 # Note this only works if window_main is visible.
 def show_dialog(line=None, txt_width=-1, allow_move=True):
+    """
+    Display a dialog with a single button.
+
+    Args:
+        line (str): The text to display or edit.
+        txt_width (int): The requested text width, or -1 for automatic sizing.
+        allow_move (bool): Whether the player may move while the dialog is open.
+
+    Returns:
+        int: The selected button index.
+    """
     return show_popup(line, ["begin.png"], allow_move, txt_width)
 
 
 # given a string, display that string, along with yes and no buttons.
 def show_yesno(line: str = "", allow_move: bool = True):
+    """
+    Display a yes-or-no dialog.
+
+    Args:
+        line (str): The text to display or edit.
+        allow_move (bool): Whether the player may move while the dialog is open.
+
+    Returns:
+        int: The selected button index.
+    """
     return show_popup(line, ["no.png", "yes.png"], allow_move)
 
 
@@ -677,6 +815,20 @@ def show_yesno(line: str = "", allow_move: bool = True):
 # normal customizable keys, to prevent problems.
 def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allow_move=True, input_width=-1):
     # Move the array of button names to a global array. We'll need it later.
+    """
+    Prompt the player to enter text.
+
+    Args:
+        line (str): The text to display or edit.
+        textbox_text (str): The initial text in the input box.
+        max_len (int): The maximum accepted text length.
+        extra_restrict (int): The additional input restriction mode.
+        allow_move (bool): Whether the player may move while the dialog is open.
+        input_width (int): The input-box width, or -1 for automatic sizing.
+
+    Returns:
+        str | int: The entered text, or -1 if cancelled.
+    """
     global button_array2
     button_array2 = ["no.png", "yes.png"]
     usable_chars = "`~!@#$%^&*()-_=+|[{]};:'\",<.>/? \t"
@@ -858,16 +1010,16 @@ def ask_for_string(line="", textbox_text="", max_len=100, extra_restrict=0, allo
 
 def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = True, input_width: int = -1) -> int:
     """
-    Display a popup dialog box for user interaction.
+    Display a popup and return the selected button index.
 
     Args:
-        line (str): The text to display in the dialog box.
-        button_array (list[str]): A list of button image names to display.
-        allow_move (bool): Whether to allow movement while the dialog is open.
-        input_width (int): The width of the input box, -1 to fit to text.
+        line (str): The text to display or edit.
+        button_array (list[str]): The button image names to display.
+        allow_move (bool): Whether the player may move while the dialog is open.
+        input_width (int): The input-box width, or -1 for automatic sizing.
 
     Returns:
-        int: The index of the button pressed, or -1 if the dialog was closed.
+        int: The selected button index, or -1 if closed.
     """
     # Move the array of button names to a global array. We'll need it later.
     global button_array2
@@ -971,6 +1123,12 @@ def show_popup(line: str = "", button_array: list[str] = [], allow_move: bool = 
 
 
 def change_button(xy):
+    """
+    Set the active popup button.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     global active_button
     old_button = active_button
     for i in range(len(button_array2)):
@@ -982,6 +1140,9 @@ def change_button(xy):
 
 
 def refresh_buttons():
+    """
+    Redraw the active popup buttons.
+    """
     global active_button
     for i in range(len(button_array2)):
         if active_button == i:
@@ -993,6 +1154,9 @@ def refresh_buttons():
 
 
 def increase_button():
+    """
+    Move the popup selection to the next button.
+    """
     global active_button
     active_button += 1
     if active_button >= len(button_array2):
@@ -1001,6 +1165,9 @@ def increase_button():
 
 
 def decrease_button():
+    """
+    Move the popup selection to the previous button.
+    """
     global active_button
     active_button -= 1
     if active_button < 0:
@@ -1012,6 +1179,12 @@ def decrease_button():
 # execute it.
 def load_console():
     # Only let cheaters access the console.
+    """
+    Open the scripting console when permitted.
+
+    Returns:
+        int: The console-opening result.
+    """
     if player.name not in ["god", "testing123", "script_test", "ghostie"]:
         return 0
     global console_text
@@ -1029,6 +1202,12 @@ def load_console():
 
 # If the main window is destroyed unexpectedly, try to prevent the worst errors.
 def cleanup(event=None):
+    """
+    Reset transient game state after the window closes.
+
+    Args:
+        event (pygame.event.Event | int | None): The event that triggered the handler.
+    """
     g.break_one_loop = 50
     try:
         inv.leave_inv()
@@ -1039,6 +1218,12 @@ def cleanup(event=None):
 
 # call to create window_main.
 def init_window_main(is_new_game=0):
+    """
+    Initialize the main game window.
+
+    Args:
+        is_new_game (bool): The is new game value.
+    """
     modloader.load_tiles()
     global map_canvas
     tmp_map_size = (
@@ -1124,9 +1309,8 @@ def init_window_main(is_new_game=0):
                 key_handler_up(event.key)
             elif event.type == pygame.MOUSEMOTION:
                 mouse_move(event.pos)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                if mouse_handler(event.pos) == 1:
-                    return
+            elif event.type == pygame.MOUSEBUTTONDOWN and mouse_handler(event.pos) == 1:
+                return
         # this is after the event loop, as otherwise, moving from map to map
         # creates a timing bug that fires this once too much.
         if repeat_key > 140:
@@ -1146,10 +1330,22 @@ def init_window_main(is_new_game=0):
 # this binds keys to the appropriate commands. Needs to be called after
 # returning from various subwindows.
 def bind_keys():
+    """
+    Bind keyboard handlers for the main window.
+    """
     pass
 
 
 def key_handler_down(key_name):
+    """
+    Handle a key press in the main game window.
+
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        int | None: The action result, or None when a movement key is pressed.
+    """
     global key_down
     if key_name == config.BINDINGS["up"]:
         key_down[0] = True
@@ -1165,9 +1361,13 @@ def key_handler_down(key_name):
 
 def key_handler(key_name: int) -> int:
     """
-    All keypresses in new_game pass through here
+    Dispatch a keyboard action in the main game window.
 
-    Based on the key name, give the right action. ("etc", "left", "right", "up", "down", "return")
+    Args:
+        key_name (int): The key code to handle.
+
+    Returns:
+        int: The result.
     """
     if config.DEBUG:
         tmp_time = pygame.time.get_ticks()
@@ -1197,6 +1397,12 @@ def key_handler(key_name: int) -> int:
 
 
 def key_handler_up(key_name):
+    """
+    Handle a key release in the main game window.
+
+    Args:
+        key_name (int): The key code to handle.
+    """
     global key_down
     if key_name == config.BINDINGS["up"]:
         key_down[0] = False
@@ -1209,11 +1415,23 @@ def key_handler_up(key_name):
 
 
 def unbind_keys():
+    """
+    Unbind keyboard handlers for the main window.
+    """
     pass
 
 
 # handles mouse clicks on the main tile canvas.
 def mouse_handler(xy):
+    """
+    Handle a mouse click in the main window.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+
+    Returns:
+        int | object | None: The result.
+    """
     icon_y1 = mapsizey * config.TILESIZE - iconsize
     icon_y2 = mapsizey * config.TILESIZE
 
@@ -1270,6 +1488,12 @@ def mouse_handler(xy):
 
 # called whenever the mouse moves
 def mouse_move(xy):
+    """
+    Update the main window in response to mouse movement.
+
+    Args:
+        xy (tuple[int, int]): The screen or tile coordinates.
+    """
     global inv_icon_image
     global quit_icon_image
     global save_icon_image
@@ -1325,6 +1549,9 @@ def mouse_move(xy):
 
 # show the inventory.
 def show_inv():
+    """
+    Open the inventory window.
+    """
     global key_down
     key_down = [False, False, False, False]
     if action.has_dialog == 1:
@@ -1336,7 +1563,12 @@ def show_inv():
 
 
 def enter_store(cur_loc: str) -> None:
-    """"""
+    """
+    Open the store at the current location.
+
+    Args:
+        cur_loc (str): The current store location.
+    """
     global key_down
     key_down = [False, False, False, False]
     shop.init_window_shop(cur_loc)
