@@ -2,7 +2,6 @@ import os
 import subprocess
 import sys
 import textwrap
-import unittest
 from pathlib import Path
 
 
@@ -25,24 +24,24 @@ modloader.read_maps()
 """
 
 
-class SaveManagementTest(unittest.TestCase):
-    def run_save_probe(self, body: str) -> subprocess.CompletedProcess[str]:
-        env = os.environ.copy()
-        env["SDL_VIDEODRIVER"] = "dummy"
-        env["SDL_AUDIODRIVER"] = "dummy"
-        return subprocess.run(
-            [sys.executable, "-c", SAVE_TEST_SETUP + textwrap.dedent(body)],
-            cwd=PROJECT_ROOT / "src",
-            env=env,
-            capture_output=True,
-            check=False,
-            text=True,
-            timeout=30,
-        )
+def run_save_probe(body: str) -> subprocess.CompletedProcess[str]:
+    env = os.environ.copy()
+    env["SDL_VIDEODRIVER"] = "dummy"
+    env["SDL_AUDIODRIVER"] = "dummy"
+    return subprocess.run(
+        [sys.executable, "-c", SAVE_TEST_SETUP + textwrap.dedent(body)],
+        cwd=PROJECT_ROOT / "src",
+        env=env,
+        capture_output=True,
+        check=False,
+        text=True,
+        timeout=30,
+    )
 
-    def test_round_trips_game_state_and_rejects_bad_saves_without_mutation(self) -> None:
-        result = self.run_save_probe(
-            """
+
+def test_round_trips_game_state_and_rejects_bad_saves_without_mutation() -> None:
+    result = run_save_probe(
+        """
             import json
             import tempfile
             from pathlib import Path
@@ -141,11 +140,7 @@ class SaveManagementTest(unittest.TestCase):
                 raise AssertionError("Unsupported save versions must be rejected")
             assert player.name == "Unchanged"
             save_dir.cleanup()
-            """
-        )
+        """
+    )
 
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-
-
-if __name__ == "__main__":
-    unittest.main()
+    assert result.returncode == 0, result.stdout + result.stderr

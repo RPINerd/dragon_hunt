@@ -2,14 +2,13 @@ import os
 import subprocess
 import sys
 import textwrap
-import unittest
 from pathlib import Path
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
-class StartupTest(unittest.TestCase):
+class TestStartup:
     def test_module_selection_reaches_new_game_screen(self) -> None:
         env = os.environ.copy()
         env["SDL_VIDEODRIVER"] = "dummy"
@@ -49,8 +48,8 @@ class StartupTest(unittest.TestCase):
             timeout=30,
         )
 
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("STARTUP_SMOKE_OK", result.stdout)
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "STARTUP_SMOKE_OK" in result.stdout
 
     def test_module_discovery_filters_incomplete_folders(self) -> None:
         env = os.environ.copy()
@@ -92,7 +91,7 @@ class StartupTest(unittest.TestCase):
             timeout=30,
         )
 
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        assert result.returncode == 0, result.stdout + result.stderr
 
     def test_module_picker_window_close_exits_cleanly(self) -> None:
         env = os.environ.copy()
@@ -130,8 +129,8 @@ class StartupTest(unittest.TestCase):
             timeout=30,
         )
 
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("PICKER_QUIT_OK", result.stdout)
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "PICKER_QUIT_OK" in result.stdout
 
     def test_module_picker_escape_cancels(self) -> None:
         env = os.environ.copy()
@@ -163,9 +162,5 @@ class StartupTest(unittest.TestCase):
             timeout=30,
         )
 
-        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
-        self.assertIn("PICKER_CANCEL_OK", result.stdout)
-
-
-if __name__ == "__main__":
-    unittest.main()
+        assert result.returncode == 0, result.stdout + result.stderr
+        assert "PICKER_CANCEL_OK" in result.stdout
