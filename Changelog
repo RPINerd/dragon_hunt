@@ -18,7 +18,7 @@ Split into Active and Archive sections. Active is the current development versio
 
 Currently in development so changlog is not complete or even accurate
 
-    Complete conversion of all code to python3.12 and pygame 2.5x
+    Complete conversion of all code to Python 3.15+ and pygame 2.5.x
 
 ## Archive
 
@@ -474,7 +474,7 @@ These were mostly preserved as-is, with only minor formatting/spacing changes
 ### Version - 3.0
 
     started from scratch
-    writing Dragon Hunt in Python this time as 
+    writing Dragon Hunt in Python this time as
         1) I don't have a Visual Basic compiler anymore
         2) I am running Linux now, making it difficult for me to run one in any case
         3) I needed to learn Python.

@@ -24,16 +24,16 @@ Current Version - 4.0-dev
 
 ## Requirements
 
-Python - 3.13
-Pygame-ce - 2.5.3
+Python - 3.15 or newer
+Pygame-ce - 2.5.8 or newer
 
 Game is built on Linux, but should work on Windows and Mac OSX as well provided the above requirements are met.
 
 ## Launching the Game
 
-Run the shell script `Play` from the root directory
-or
-Run `python rpg.py` from the `./src/` directory
+Install dependencies with `uv sync`, then run the shell script `Play` from the root directory. The launcher uses the project environment defined by `pyproject.toml` and `uv.lock`.
+
+To run the entry point directly, run `uv run --project .. python rpg.py` from the `./src/` directory.
 
 ## Map Editor
 

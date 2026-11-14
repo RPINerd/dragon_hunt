@@ -1,6 +1,12 @@
 #!/bin/sh
 # This script is used to run the game from the command line.
 
-tempname=$(dirname "$0")
-cd "$tempname/src" || exit
-exec python rpg.py "$@"
+project_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd) || exit 1
+
+if ! command -v uv >/dev/null 2>&1; then
+    printf '%s\n' "Play requires uv. Install uv, then run 'uv sync' from the project directory." >&2
+    exit 127
+fi
+
+cd "$project_dir/src" || exit
+exec uv run --project "$project_dir" python rpg.py "$@"

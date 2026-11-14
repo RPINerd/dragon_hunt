@@ -7,13 +7,6 @@
 import pygame
 from icecream import ic
 
-import config
-import game_screen as pygscreen
-import modules
-import new_game
-
-screen = pygscreen.get_screen()
-
 
 def main() -> None:
     """
@@ -25,22 +18,23 @@ def main() -> None:
     Returns:
         None
     """
-    # Load assets into memory
+    pygame.init()
+    pygame.font.init()
+
+    import config
+    import modules
+    import new_game
 
     # Check modules to decide if selection is needed
     if len(config.MODULES) == 1:
         modules.load(config.MODULES[0])
-        return
-
-    # Call the module selection script
-    module_index = modules.select()
-    modules.load(config.MODULES[module_index])
+    else:
+        module_index = modules.select()
+        modules.load(config.MODULES[module_index])
 
     ic("Module loaded, initializing game")
     new_game.init_window()
 
 
 if __name__ == "__main__":
-    pygame.init()
-    pygame.font.init()
     main()
