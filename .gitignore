@@ -9,7 +9,6 @@ __pycache__/
 .vscode/
 
 # Temporary Files
-*.lock
 *.log
 *.tmp
 

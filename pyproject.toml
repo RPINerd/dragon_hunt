@@ -9,15 +9,15 @@ maintainers = [
 version = "4.0-dev"
 description = "A simple rogue-like RPG game."
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.15"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: CCPL :: GPLv2",
     "Operating System :: Linux",
 ]
 dependencies = [
-    "icecream>=2.1.4",
-    "pygame-ce>=2.5.3",
+    "icecream>=2.2.0",
+    "pygame-ce>=2.5.8",
 ]
 
 [project.urls]
