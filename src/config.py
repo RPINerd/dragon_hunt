@@ -3,8 +3,7 @@ from pathlib import Path
 
 import pygame
 
-# Previously array_mods
-MODULES: list[str] = ["DarkAges", "DragonHunt", " ", " ", " "]
+MODULES: list[str] = []
 MODULES_DIR: str | Path = ""
 
 # Screen resolution

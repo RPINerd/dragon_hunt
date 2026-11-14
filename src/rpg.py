@@ -25,11 +25,19 @@ def main() -> None:
     import modules
     import new_game
 
-    # Check modules to decide if selection is needed
+    config.MODULES = modules.discover_installed_modules()
+    if not config.MODULES:
+        ic("No installed game modules found. Exiting.")
+        pygame.quit()
+        return
+
     if len(config.MODULES) == 1:
         modules.load(config.MODULES[0])
     else:
         module_index = modules.select()
+        if module_index is None:
+            pygame.quit()
+            return
         modules.load(config.MODULES[module_index])
 
     ic("Module loaded, initializing game")

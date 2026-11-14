@@ -4,12 +4,36 @@ Module selection screen and game initialization
 Select function displays a window where the user can select a module to play
 Load function initializes the game and runs the selected module
 """
+from pathlib import Path
+
 import pygame
-from pygame.locals import K_DOWN, K_RETURN, K_UP, KEYDOWN, MOUSEBUTTONDOWN, QUIT
+from pygame.locals import K_DOWN, K_ESCAPE, K_RETURN, K_UP, KEYDOWN, MOUSEBUTTONDOWN, QUIT
 
 import config
 import game_screen as pygscreen
 import modloader
+
+MODULES_ROOT = Path(__file__).resolve().parent.parent / "modules"
+
+
+def _is_installed_module(module_path: Path) -> bool:
+    maps_path = module_path / "data" / "maps"
+    return (
+        module_path.is_dir()
+        and (module_path / "data" / "variables.txt").is_file()
+        and any(map_path.is_file() for map_path in maps_path.glob("*.txt"))
+    )
+
+
+def discover_installed_modules(module_root: Path = MODULES_ROOT) -> list[str]:
+    """Return module folders that contain the minimum game data required to start."""
+    if not module_root.is_dir():
+        return []
+    return sorted(
+        module_path.name
+        for module_path in module_root.iterdir()
+        if not module_path.name.startswith(".") and _is_installed_module(module_path)
+    )
 
 
 def load(selected_mod: str = "DragonHunt") -> None:
@@ -28,7 +52,10 @@ def load(selected_mod: str = "DragonHunt") -> None:
     pygame.display.set_caption("Loading")
     pygame.display.set_icon(pygame.image.load("../data/icon.png"))
 
-    config.MODULES_DIR = "../modules/" + selected_mod
+    module_path = MODULES_ROOT / selected_mod
+    if Path(selected_mod).name != selected_mod or not _is_installed_module(module_path):
+        raise ValueError(f"Module is not installed or is missing required data: {selected_mod}")
+    config.MODULES_DIR = str(module_path)
     screen_width = screen.get_width()
     screen_height = screen.get_height()
     pygame.draw.rect(
@@ -48,13 +75,16 @@ def load(selected_mod: str = "DragonHunt") -> None:
     modloader.init_gamedata()
 
 
-def select() -> int:
+def select() -> int | None:
     """
-    Display a menu to select a module.
+    Display a menu to select a module. Return None if the picker is cancelled.
 
     Returns:
-        The index of the selected module to load
+        The selected module index, or None if the picker is cancelled.
     """
+    if not config.MODULES:
+        return None
+
     selected_index = 0
     xres = 1024
     yres = 768
@@ -73,7 +103,7 @@ def select() -> int:
     quit_width = icons["quit"].get_width()
 
     # Reformat list of modules so that the words have spaces between them
-    modules = [
+    module_names = [
         module[0] + "".join([" " + char if char.isupper() else char for char in module[1:]])
         for module in config.MODULES
     ]
@@ -91,8 +121,7 @@ def select() -> int:
     font = pygame.font.Font(None, 18)
 
     # Main game loop
-    running = True
-    while running:
+    while True:
 
         # Clear the screen
         screen.fill(config.COLORS["purple"])
@@ -138,7 +167,7 @@ def select() -> int:
         screen.blit(icons["loadupsel"], (xres // 4 + 5, yres // 2 - list_box_height // 2 + 5))
 
         # Render the selections
-        for i, selection in enumerate(modules):
+        for i, selection in enumerate(module_names):
             text = font.render(selection, True, (0, 0, 0))
             text_rect = text.get_rect()
             text_rect.center = (
@@ -161,27 +190,33 @@ def select() -> int:
 
             # Closing the window
             if event.type == QUIT:
-                pygame.quit()
+                return None
 
             # Keyboard input
             elif event.type == KEYDOWN:
                 if event.key == K_UP:
-                    selected_index = (selected_index - 1) % len(modules)
+                    selected_index = (selected_index - 1) % len(module_names)
                 elif event.key == K_DOWN:
-                    selected_index = (selected_index + 1) % len(modules)
+                    selected_index = (selected_index + 1) % len(module_names)
                 elif event.key == K_RETURN:
-                    running = False
+                    return selected_index
+                elif event.key == K_ESCAPE:
+                    return None
 
             # Mouse input
-            elif event.type == MOUSEBUTTONDOWN:
-                mouse_pos = pygame.mouse.get_pos()
-                for i, selection in enumerate(modules):
-                    if (
-                        xres // 4 + 5 < mouse_pos[0] < xres // 4 + 5 + icons["loadup"].get_width()
-                        and yres // 2 - list_box_height // 2 + (arrow_height * 2) + 10 + i * 30
-                        < mouse_pos[1]
-                        < yres // 2 - list_box_height // 2 + (arrow_height * 2) + 10 + i * 30 + 25
-                    ):
+            elif event.type == MOUSEBUTTONDOWN and event.button == 1:
+                load_pos = (xres - quit_width - 5, yres - quit_height * 2 - 5)
+                quit_pos = (xres - quit_width - 5, yres - quit_height - 5)
+                if pygame.Rect(load_pos, icons["load"].get_size()).collidepoint(event.pos):
+                    return selected_index
+                if pygame.Rect(quit_pos, icons["quit"].get_size()).collidepoint(event.pos):
+                    return None
+                for i in range(len(module_names)):
+                    option_rect = pygame.Rect(
+                        xres // 4 + 5,
+                        yres // 2 - list_box_height // 2 + (arrow_height * 2) + 10 + i * 30,
+                        icons["loadup"].get_width(),
+                        25,
+                    )
+                    if option_rect.collidepoint(event.pos):
                         selected_index = i
-
-    return selected_index
