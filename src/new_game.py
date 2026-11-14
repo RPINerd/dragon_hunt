@@ -267,7 +267,6 @@ def begin_game(loadgame_name: str = "") -> bool:
     pygame.display.flip()
 
     read_maps()
-    item.load_dropped_items()
 
     # just in case someone changed the name
     # after rerolling or loading
@@ -279,6 +278,7 @@ def begin_game(loadgame_name: str = "") -> bool:
     # bring the main window up.
     if loadgame_name:
         save_mgmt.loadgame(loadgame_name)
+    item.load_dropped_items()
     main.init_window_main(new_game)
     already_started_game = 0
     g.break_one_loop = 0

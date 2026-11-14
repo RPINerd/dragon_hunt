@@ -16,11 +16,9 @@
 # along with Dragon Hunt; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-# This file controls the load game screen. The actual load/save game
-# functions are in g.loadgame/savegame
+# This file controls the load game screen. Save data is read by save_mgmt.
 
-import pickle
-from os import listdir, mkdir, path, remove
+from pathlib import Path
 
 import pygame
 
@@ -61,6 +59,14 @@ def load_selected():
 
     if prevent_dbl_load == 1:
         return
+    from save_mgmt import read_save
+
+    try:
+        read_save(saves_array[saves_pos])
+    except (OSError, ValueError):
+        refresh_save_info()
+        return
+
     prevent_dbl_load = 1
     widgets.bordered_box(screen,
         (config.TILESIZE * config.MAPSIZE_X / 4, config.TILESIZE * config.MAPSIZE_Y / 3),
@@ -83,50 +89,41 @@ def load_selected():
 
 # Uses saves_pos to display infomation about that save.
 def refresh_save_info():
-    # This is the bad way to do this, as it needs updating whenever the
-    # save format changes significantly.
-    tmp_stats = {}
+    from save_mgmt import display_save_name
+
+    tmp_stats = {
+        "name": "",
+        "hp": "",
+        "ep": "",
+        "attack": "",
+        "defense": "",
+        "gold": "",
+        "exp": "",
+        "level": "",
+    }
     tmp_titles = []
+    error_message = None
 
-    if len(saves_array) == 0:
-        tmp_stats["name"] = ""
-        tmp_stats["hp"] = ""
-        tmp_stats["ep"] = ""
-        tmp_stats["attack"] = ""
-        tmp_stats["defense"] = ""
-        tmp_stats["gold"] = ""
-        tmp_stats["exp"] = ""
-        tmp_stats["level"] = ""
-        for i in range(5):
-            tmp_titles.append("")
-    # 		return
-    else:
-        save_loc = config.MODULES_DIR + "/saves/" + saves_array[saves_pos]
-        savefile = open(save_loc)
-        version_unused = pickle.load(savefile)
-        tmp_stats["name"] = str(pickle.load(savefile))
-        tmp_stats["hp"] = str(pickle.load(savefile))
-        tmp_stats["ep"] = str(pickle.load(savefile))
-        unused_maxhp = pickle.load(savefile)
-        unused_maxep = pickle.load(savefile)
-        tmp_stats["attack"] = str(pickle.load(savefile))
-        tmp_stats["defense"] = str(pickle.load(savefile))
-        tmp_stats["gold"] = str(pickle.load(savefile))
-        tmp_stats["exp"] = str(pickle.load(savefile))
-        tmp_stats["level"] = str(pickle.load(savefile))
-        savefile.close()
+    if saves_array:
+        from save_mgmt import read_save
 
-        tmp = saves_pos - (saves_pos % 5)
-        for i in range(5):
-            if len(saves_array) <= tmp + i:
-                savetext = ""
-            else:
-                savetext = saves_array[tmp + i]
-            tmp_titles.append(savetext)
-    display_stats(tmp_stats, tmp_titles)
+        try:
+            player_data = read_save(saves_array[saves_pos])["player"]
+        except (OSError, ValueError) as error:
+            error_message = f"Unable to read save: {error}"
+        else:
+            for field in tmp_stats:
+                tmp_stats[field] = str(player_data[field])
+
+    page_start = saves_pos - (saves_pos % 5)
+    for index in range(5):
+        save_index = page_start + index
+        save_name = saves_array[save_index] if save_index < len(saves_array) else ""
+        tmp_titles.append(display_save_name(save_name))
+    display_stats(tmp_stats, tmp_titles, error_message)
 
 
-def display_stats(stat_dict, titles_dict):
+def display_stats(stat_dict, titles_dict, error_message=None):
     pixels_per_line = 20
     g.unclean_screen = True
     screen.fill(
@@ -140,23 +137,27 @@ def display_stats(stat_dict, titles_dict):
     )
     info_x = config.TILESIZE * config.MAPSIZE_X / 4 + config.BUTTONS["loadgame_up.png"].get_width() + 5
     info_y = config.TILESIZE * config.MAPSIZE_Y / 3
-    linenum = 0
-    widgets.print_string(screen, "Name: " + stat_dict["name"], g.font, (info_x, info_y + pixels_per_line * linenum))
-    linenum += 1
-    widgets.print_string(screen, "HP: " + stat_dict["hp"], g.font, (info_x, info_y + pixels_per_line * linenum))
-    linenum += 1
-    widgets.print_string(screen, "MP: " + stat_dict["ep"], g.font, (info_x, info_y + pixels_per_line * linenum))
-    linenum += 1
-    widgets.print_string(screen, "Attack: " + stat_dict["attack"], g.font, (info_x, info_y + pixels_per_line * linenum))
-    linenum += 1
-    widgets.print_string(screen, "Defense: " + stat_dict["defense"], g.font, (info_x, info_y + pixels_per_line * linenum))
-    linenum += 1
-    widgets.print_string(screen, "Gold: " + stat_dict["gold"], g.font, (info_x, info_y + pixels_per_line * linenum))
-    linenum += 1
-    widgets.print_string(screen, "XP: " + stat_dict["exp"], g.font, (info_x, info_y + pixels_per_line * linenum))
-    linenum += 1
-    widgets.print_string(screen, "Level: " + stat_dict["level"], g.font, (info_x, info_y + pixels_per_line * linenum))
-    linenum += 1
+    if error_message:
+        widgets.print_paragraph(screen, error_message, g.font, 140, (info_x, info_y))
+    else:
+        linenum = 0
+        for label, field in (
+            ("Name", "name"),
+            ("HP", "hp"),
+            ("MP", "ep"),
+            ("Attack", "attack"),
+            ("Defense", "defense"),
+            ("Gold", "gold"),
+            ("XP", "exp"),
+            ("Level", "level"),
+        ):
+            widgets.print_string(
+                screen,
+                f"{label}: {stat_dict[field]}",
+                g.font,
+                (info_x, info_y + pixels_per_line * linenum),
+            )
+            linenum += 1
 
     for i in range(5):
         if i == saves_pos % 5:
@@ -433,20 +434,15 @@ def init_window_loadgame():
         ),
     )
 
-    pixels_per_line = 20
-
-    # If there is no save directory, make one.
-    if path.isdir(config.MODULES_DIR + "/saves") == 0:
-        if path.exists(config.MODULES_DIR + "/saves") == 1:
-            remove(config.MODULES_DIR + "/saves")
-        mkdir(config.MODULES_DIR + "/saves")
+    save_dir = Path(config.MODULES_DIR) / "saves"
+    save_dir.mkdir(parents=True, exist_ok=True)
     # show the files contained in the saves directory.
     global saves_array
-    saves_array = []
-    tmp_saves_array = listdir(config.MODULES_DIR + "/saves")
-    for save_name in tmp_saves_array:
-        if save_name[:1] != "." and save_name != "CVS":
-            saves_array.append(save_name)
+    saves_array = [
+        save_path.name
+        for save_path in save_dir.iterdir()
+        if save_path.is_file() and not save_path.name.startswith(".") and save_path.name != "CVS"
+    ]
     global saves_pos
     saves_pos = 0
 

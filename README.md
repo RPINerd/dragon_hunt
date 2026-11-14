@@ -53,6 +53,8 @@ Esc         - Leave screen
 `q`         - Quits
 `a`         - Attack (in battle)
 
+Save files use a versioned JSON format and are stored in the selected module's `saves/` directory. Legacy save formats are not automatically migrated.
+
 ## Original Credits
 
 Evil Mr Henry
