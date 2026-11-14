@@ -34,14 +34,13 @@ half_mapy = int(mapsizey / 2)
 active_button = 0
 
 # used to prevent drawing problems.
-global already_refreshed
 already_refreshed = 0
 
 # max number of messages to keep.
 max_messages = 25
 
 # number of free moves after attack left.
-global free_move
+free_move = 0
 
 # Image used for the inventory icon.
 inv_icon_image = "inv.png"
@@ -49,9 +48,7 @@ quit_icon_image = "quit.png"
 save_icon_image = "save.png"
 scroller_icon_image = "scroller.png"
 
-global message_array
 message_array = []
-global curr_message_num
 curr_message_num = 0
 
 
@@ -59,7 +56,6 @@ map_canvas = pygame.Surface((1, 1))
 map_over_canvas = pygame.Surface((1, 1))
 map_under_canvas = pygame.Surface((1, 1))
 
-global key_down
 key_down = [False, False, False, False]
 
 screen = pygscreen.get_screen()
@@ -92,14 +88,6 @@ def refresh_message_box():
         widgets.print_string(screen, message, g.font, (5, message_start), width=pygscreen.SCREEN_WIDTH * 3 / 5 - 5)
         message_start += 12
     g.unclean_screen = True
-
-
-# # save game
-# def save_game():
-#     if action.has_dialog == 1:
-#         return 0
-#     save_mgmt.savegame(player.name)
-#     print_message("** Game Saved **")
 
 
 # determine if the player is dead, and, if so, end the game.
@@ -1198,7 +1186,7 @@ def key_handler(key_name: int) -> int:
     elif key_name == config.BINDINGS["action"] or key_name == config.BINDINGS["inv"]:
         show_inv()
     elif key_name == config.BINDINGS["save"]:
-        save_mgmt.save_game(player.name)
+        save_mgmt.savegame(player.name)
     elif key_name == config.BINDINGS["load_console"]:
         load_console()
     elif key_name == pygame.K_F10:
@@ -1238,7 +1226,7 @@ def mouse_handler(xy):
     save_x1 = inv_x2
     save_x2 = save_x1 + iconsize
     if xy[0] > save_x1 and xy[0] < save_x2 and xy[1] > icon_y1 and xy[1] < icon_y2:
-        save_mgmt.save_game(player.name)
+        save_mgmt.savegame(player.name)
         return None
 
     quit_x1 = save_x2

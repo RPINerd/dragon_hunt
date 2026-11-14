@@ -20,7 +20,6 @@ if config.DEBUG:
     from time import clock
 
 # set to 1 whenever the player really shouldn't be moving.
-global has_dialog
 has_dialog = 0
 
 screen = pygscreen.get_screen()

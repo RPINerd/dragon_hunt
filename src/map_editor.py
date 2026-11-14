@@ -35,12 +35,13 @@ import g
 import game_screen as pygscreen
 import main
 import modloader
+import widgets
 from widgets import Listbox, Scrollbar, refresh_list
 
 pygame.display.set_caption("Map Editor")
 
-g.screen_size = g.editor_xy
-g.screen = pygame.display.set_mode(g.screen_size)
+screen_size = g.editor_xy
+screen = pygame.display.set_mode(screen_size)
 
 mapsize_x = 25
 mapsize_y = 25
@@ -202,9 +203,9 @@ def print_cur_xy(xy, ignore_and_force=False):
     if ignore_and_force:
         xy = last_xy
     if last_xy != xy or ignore_and_force:
-        g.screen.fill(config.COLORS["black"], (pygscreen.SCREEN_WIDTH - 100, pygscreen.SCREEN_HEIGHT - 30, 100, 12))
-        g.print_string(
-            g.screen,
+        screen.fill(config.COLORS["black"], (pygscreen.SCREEN_WIDTH - 100, pygscreen.SCREEN_HEIGHT - 30, 100, 12))
+        widgets.print_string(
+            screen,
             cur_mode + "  " + str(xy[0]) + ", " + str(xy[1]),
             g.font,
             (pygscreen.SCREEN_WIDTH - 3, pygscreen.SCREEN_HEIGHT - 30),
@@ -218,7 +219,7 @@ def print_cur_xy(xy, ignore_and_force=False):
 # refresh map. This refreshes every tile, as accuracy is rather important here.
 # (compared to the main game)
 def refresh_map():
-    g.screen.fill(config.COLORS["black"])
+    screen.fill(config.COLORS["black"])
     # 	canvas_map.delete(ALL)
     for y in range(portal_y, portal_y + portalsize):
         if y >= mapsize_y:
@@ -232,7 +233,7 @@ def refresh_map():
                     if line == "":
                         continue
                     if line[:3].lower() == "pix" or line[:6].lower() == "addpix" or line[:10].lower() == "addoverpix":
-                        g.screen.blit(
+                        screen.blit(
                             config.TILES[line[line.find("(") + 2 : g.action.match_command(line) - 2]],
                             ((x - portal_x) * config.TILESIZE, (y - portal_y) * config.TILESIZE),
                         )
@@ -252,7 +253,7 @@ def refresh_map():
                 for line in cur_map.field[y][x].onload:
                     line = line.strip().lower()
                     if line == "walk(1)":
-                        g.create_norm_box(
+                        widgets.bordered_box(screen,
                             (
                                 (x - portal_x) * config.TILESIZE + config.TILESIZE / 3,
                                 (y - portal_y) * config.TILESIZE + config.TILESIZE / 3,
@@ -261,7 +262,7 @@ def refresh_map():
                             inner_color="white",
                         )
                     if line == "walk(0)":
-                        g.create_norm_box(
+                        widgets.bordered_box(screen,
                             (
                                 (x - portal_x) * config.TILESIZE + config.TILESIZE / 3,
                                 (y - portal_y) * config.TILESIZE + config.TILESIZE / 3,
@@ -271,7 +272,7 @@ def refresh_map():
                         )
                     # The wall_* display. Show a black bar on the given side.
                     if line == "wall_n(1)":
-                        g.create_norm_box(
+                        widgets.bordered_box(screen,
                             (
                                 (x - portal_x) * config.TILESIZE + config.TILESIZE / 8,
                                 (y - portal_y) * config.TILESIZE + 2,
@@ -281,7 +282,7 @@ def refresh_map():
                             "black",
                         )
                     if line == "wall_s(1)":
-                        g.create_norm_box(
+                        widgets.bordered_box(screen,
                             (
                                 (x - portal_x) * config.TILESIZE + config.TILESIZE / 8,
                                 (y - portal_y) * config.TILESIZE + config.TILESIZE - 7,
@@ -291,7 +292,7 @@ def refresh_map():
                             "black",
                         )
                     if line == "wall_w(1)":
-                        g.create_norm_box(
+                        widgets.bordered_box(screen,
                             (
                                 (x - portal_x) * config.TILESIZE + 2,
                                 (y - portal_y) * config.TILESIZE + config.TILESIZE / 8,
@@ -301,7 +302,7 @@ def refresh_map():
                             "black",
                         )
                     if line == "wall_e(1)":
-                        g.create_norm_box(
+                        widgets.bordered_box(screen,
                             (
                                 (x - portal_x) * config.TILESIZE + config.TILESIZE - 7,
                                 (y - portal_y) * config.TILESIZE + config.TILESIZE / 8,
@@ -324,7 +325,7 @@ def refresh_map():
                 for line in cur_map.field[y][x].onload:
                     temp_command = line.strip()[:3].lower()
                     if temp_command != "wal" and temp_command != "pix":
-                        g.create_norm_box(
+                        widgets.bordered_box(screen,
                             (
                                 (x - portal_x) * config.TILESIZE + config.TILESIZE / 3,
                                 (y - portal_y) * config.TILESIZE + config.TILESIZE / 3,
@@ -333,7 +334,7 @@ def refresh_map():
                             inner_color="white",
                         )
                 if len(cur_map.field[y][x].actions) > 0:
-                    g.create_norm_box(
+                    widgets.bordered_box(screen,
                         (
                             (x - portal_x) * config.TILESIZE + config.TILESIZE / 3 + 2,
                             (y - portal_y) * config.TILESIZE + config.TILESIZE / 3 + 2,
@@ -341,7 +342,7 @@ def refresh_map():
                         (config.TILESIZE / 3 - 4, config.TILESIZE / 3 - 4),
                         inner_color="white",
                     )
-                    g.screen.fill(
+                    screen.fill(
                         config.COLORS["black"],
                         (
                             (x - portal_x) * config.TILESIZE + config.TILESIZE / 2 - 2,
@@ -358,7 +359,7 @@ def refresh_map():
                 if x >= mapsize_x:
                     break
                 if x == cur_tilecopy_x and y == cur_tilecopy_y:
-                    g.create_norm_box(
+                    widgets.bordered_box(screen,
                         (
                             (x - portal_x) * config.TILESIZE + config.TILESIZE / 3 + 2,
                             (y - portal_y) * config.TILESIZE + config.TILESIZE / 3 + 2,
@@ -369,22 +370,22 @@ def refresh_map():
     # grid display
     if config.TILEGRID:
         for y in range(portalsize):
-            g.screen.fill(config.COLORS["black"], (0, y * config.TILESIZE, portalsize * config.TILESIZE, 1))
+            screen.fill(config.COLORS["black"], (0, y * config.TILESIZE, portalsize * config.TILESIZE, 1))
         for x in range(portalsize):
-            g.screen.fill(config.COLORS["black"], (x * config.TILESIZE, 0, 1, portalsize * config.TILESIZE))
+            screen.fill(config.COLORS["black"], (x * config.TILESIZE, 0, 1, portalsize * config.TILESIZE))
 
     g.unclean_screen = True
 
     # scrollbars
     scroll_length = pygscreen.SCREEN_HEIGHT - 2
-    g.create_norm_box((0, scroll_length - 1), (scroll_length, 4))
-    g.create_norm_box(
+    widgets.bordered_box(screen, (0, scroll_length - 1), (scroll_length, 4))
+    widgets.bordered_box(screen,
         ((scroll_length * portal_x) / mapsize_x, scroll_length - 1),
         ((scroll_length * portalsize) / mapsize_x, 4),
         inner_color="ep_blue",
     )
-    g.create_norm_box((scroll_length - 1, 0), (4, scroll_length))
-    g.create_norm_box(
+    widgets.bordered_box(screen, (scroll_length - 1, 0), (4, scroll_length))
+    widgets.bordered_box(screen,
         (scroll_length - 1, (scroll_length * portal_y) / mapsize_y),
         (4, (scroll_length * portalsize) / mapsize_y),
         inner_color="ep_blue",
@@ -661,7 +662,7 @@ def display_tiles(set=""):
     cur = 0
     global tile_set_size
     tile_set_size = 0
-    g.screen.fill(
+    screen.fill(
         config.COLORS["black"],
         (
             pygscreen.SCREEN_WIDTH - (tilebox_width) * (config.TILESIZE + 1) - 1,
@@ -685,7 +686,7 @@ def display_tiles(set=""):
                 cur_row = cur_row + 1
                 cur_col = 0
             if cur_tile_num == cur_col + tilebox_width * cur_row:
-                g.screen.fill(
+                screen.fill(
                     config.COLORS["hp_red"],
                     (
                         pygscreen.SCREEN_WIDTH - (col_span - cur_col) * (config.TILESIZE + 1) - 1,
@@ -695,14 +696,14 @@ def display_tiles(set=""):
                     ),
                 )
                 cur_tile = file
-            g.screen.blit(
+            screen.blit(
                 tiles[file],
                 (pygscreen.SCREEN_WIDTH - (col_span - cur_col) * (config.TILESIZE + 1), cur_row * (config.TILESIZE + 1)),
             )
             cur_col = cur_col + 1
             cur = cur + 1
-    g.print_string(
-        g.screen,
+    widgets.print_string(
+        screen,
         cur_tile.split("/")[-1],
         g.font,
         (pygscreen.SCREEN_WIDTH - 4, pygscreen.SCREEN_HEIGHT - 18),
@@ -819,7 +820,7 @@ def do_load_map():
     if tmp == -1:
         refresh_map()
         return
-    g.print_string(g.screen, "Loading", g.font, (250, 150), config.COLORS["white"])
+    widgets.print_string(screen, "Loading", g.font, (250, 150), config.COLORS["white"])
     pygame.display.flip()
     g.zgrid = g.mapname2zgrid(tmp)
     global cur_map
@@ -931,10 +932,10 @@ def really_change_mapsize(x, y):
 
 def ask_yesno(line: str | None = None) -> bool:
     """Tiny wrapper around main.show_yesno to handle confirmation popup"""
-    tmp_surface = pygame.Surface(g.screen_size)
-    tmp_surface.blit(g.screen, (0, 0))
+    tmp_surface = pygame.Surface(screen_size)
+    tmp_surface.blit(screen, (0, 0))
     tmp_answer = main.show_yesno(line)
-    g.screen.blit(tmp_surface, (0, 0))
+    screen.blit(tmp_surface, (0, 0))
     g.unclean_screen = True
     return tmp_answer
 
@@ -948,8 +949,8 @@ def toggle_grid():
 
 
 def quick_button(command_string, xy, size):
-    g.create_norm_box(xy, size)
-    g.print_string(g.screen, command_string, g.font, (xy[0] + 2, xy[1] + 1))
+    widgets.bordered_box(screen, xy, size)
+    widgets.print_string(screen, command_string, g.font, (xy[0] + 2, xy[1] + 1))
     g.unclean_screen = True
 
 
@@ -997,8 +998,8 @@ def select_from_list(input_array, act_as_menu=False, return_pos=False, extra_wid
         (width + 10, 10), 350, 16, config.COLORS["light_gray"], config.COLORS["hp_green"], config.COLORS["white"]
     )
 
-    g.screen.blit(config.BUTTONS["load_sel.png"], (10, 360))
-    g.screen.blit(config.BUTTONS["quit.png"], (10 + config.BUTTONS["load_sel.png"].get_width(), 360))
+    screen.blit(config.BUTTONS["load_sel.png"], (10, 360))
+    screen.blit(config.BUTTONS["quit.png"], (10 + config.BUTTONS["load_sel.png"].get_width(), 360))
     refresh_list(input_listbox, input_scroll, cur_pos, input_array)
     while True:
         pygame.time.wait(30)
@@ -1501,7 +1502,7 @@ else:
     tmp = select_from_list(array_mods, True)
     if tmp == -1:
         sys.exit()
-    g.print_string(g.screen, "Loading", g.font, (250, 150), config.COLORS["white"])
+    widgets.print_string(screen, "Loading", g.font, (250, 150), config.COLORS["white"])
     pygame.display.flip()
 pygame.display.set_caption("Map Editor")
 sel_mod(tmp)
