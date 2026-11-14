@@ -4,8 +4,13 @@
     This stub allows the player to select the module, or, if there is only one, automatically selects for the player.
 """
 
+import logging
+
 import pygame
-from icecream import ic
+
+from logging_config import configure_logging
+
+logger = logging.getLogger(__name__)
 
 
 def main() -> None:
@@ -18,6 +23,7 @@ def main() -> None:
     Returns:
         None
     """
+    configure_logging()
     pygame.init()
     pygame.font.init()
 
@@ -27,7 +33,7 @@ def main() -> None:
 
     config.MODULES = modules.discover_installed_modules()
     if not config.MODULES:
-        ic("No installed game modules found. Exiting.")
+        logger.error("No installed game modules found. Exiting.")
         pygame.quit()
         return
 
@@ -40,7 +46,7 @@ def main() -> None:
             return
         modules.load(config.MODULES[module_index])
 
-    ic("Module loaded, initializing game")
+    logger.info("Module loaded, initializing game")
     new_game.init_window()
 
 

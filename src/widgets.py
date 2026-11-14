@@ -1,9 +1,12 @@
 """Widgets for neater implememntation of UI elements."""
+import logging
+
 import pygame
-from icecream import ic
 
 import config
 import game_screen as pygscreen
+
+logger = logging.getLogger(__name__)
 
 screen = pygscreen.get_screen()
 
@@ -71,16 +74,19 @@ class Listbox:
 
     def refresh_listbox(self, selected, lines_array):
         if len(lines_array) != self.viewable_items:
-            ic("CRASH WARNING: len(lines_array)=" + str(len(lines_array)))
-            ic("CRASH WARNING: self.viewable_items=" + str(self.viewable_items))
+            logger.error(
+                "Listbox line count %d does not match viewable item count %d.",
+                len(lines_array),
+                self.viewable_items,
+            )
             return 0
 
         if selected >= self.viewable_items:
-            ic("Error in refresh_listbox(). selected =" + str(selected))
+            logger.warning("Invalid refresh_listbox selection: %s", selected)
             selected = 0
 
         if len(lines_array) % (self.viewable_items * self.lines_per_item) != 0:
-            ic("Error in refresh_listbox(). len(lines_array)=" + str(len(lines_array)))
+            logger.error("Invalid refresh_listbox line count: %d", len(lines_array))
             return 0
 
         screen.blit(self.list_surface, self.xy)
@@ -219,7 +225,7 @@ def refresh_list(listbox: Listbox, scrollbar: Scrollbar, list_pos: int, list_arr
     tmp = listbox.refresh_listbox(selected_item, list_array[start_pos:end_pos])
 
     if tmp == 0:
-        ic(list_array)
+        logger.debug("Listbox items: %s", list_array)
     if scrollbar != 0:
         scrollbar.refresh_scroll(
             list_pos, ((len(list_array) / listbox.viewable_items) + 1) * listbox.viewable_items - 1

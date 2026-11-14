@@ -1,12 +1,13 @@
 """This file contains everything about the monsters"""
 
+import logging
 from os import listdir
 from random import random
 
-from icecream import ic
-
 import config
 import utils
+
+logger = logging.getLogger(__name__)
 
 
 class MonsterGroup:
@@ -61,7 +62,7 @@ def monster_name_to_index(name: str) -> int:
     for i in range(len(monsters)):
         if name.lower() == monsters[i].name.lower():
             return i
-    ic("monster " + name + " not found in monsters directory.")
+    logger.warning("Monster %s not found in monsters directory.", name)
     return -1
 
 
@@ -83,7 +84,7 @@ def find_level_monster(level: int) -> int:
     for i in range(len(monster_groups)):
         if mon_name.lower() == monster_groups[i].name.lower():
             return i
-    ic("monster " + mon_name + " not found in monsters directory.")
+    logger.warning("Monster %s not found in monsters directory.", mon_name)
     return -1
 
 
@@ -184,7 +185,7 @@ def addmonster(filename: str) -> None:
         elif monster_command.lower() == ":on_death":
             curr_mode = 1
         else:
-            ic("bad line of " + monster_line + " found in " + filename)
+            logger.error("Bad line %s found in %s", monster_line, filename)
 
     monsters.append(Monster(temp_name, temp_hp, temp_attack, temp_defense, temp_exp, temp_gold, temp_description))
 

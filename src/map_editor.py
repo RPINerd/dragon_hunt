@@ -22,13 +22,15 @@
 
 import os
 import sys
+import logging
 
 import pygame
 
+from logging_config import configure_logging
+
+configure_logging()
 pygame.init()
 pygame.font.init()
-
-from icecream import ic
 
 import config
 import g
@@ -37,6 +39,8 @@ import main
 import modloader
 import widgets
 from widgets import Listbox, Scrollbar, refresh_list
+
+logger = logging.getLogger(__name__)
 
 pygame.display.set_caption("Map Editor")
 
@@ -238,7 +242,7 @@ def refresh_map():
                             ((x - portal_x) * config.TILESIZE, (y - portal_y) * config.TILESIZE),
                         )
             except IndexError:
-                ic("Crash prevention: ", x, y, len(cur_map.field))
+                logger.warning("Prevented map bounds error at (%s, %s); map height is %s.", x, y, len(cur_map.field))
     # If we are adjusting walkable status, display black/white box on tile.
     # White for walkable, Black for non. Note that if the walkable status
     # depends on an if statement, this may have incorrect results. (No good
@@ -729,7 +733,7 @@ def check_repeat_tile(x, y):
 def save_map():
     set_codes()
     map_loc = config.MODULES_DIR + "/data/maps/" + map_name
-    ic("Saving map to " + map_loc)
+    logger.info("Saving map to %s", map_loc)
     try:
         os.rename(map_loc, map_loc + "~")
     except OSError:
@@ -743,7 +747,7 @@ def save_map():
                     cur_map.field[y][x].name = codes[count]
                     count += 1
             except IndexError:
-                ic("Crash prevention:", x, y)
+                logger.warning("Prevented map bounds error at (%s, %s).", x, y)
                 return
 
     for y in range(mapsize_y):
@@ -1188,17 +1192,17 @@ def map_menu():
                 return
             size_array = tmp.split("x")
             if len(size_array) != 2:
-                ic("Bad size of " + tmp)
+                logger.warning("Invalid map size: %s", tmp)
                 refresh_map()
                 return
             try:
                 xysize = (int(size_array[0]), int(size_array[1]))
             except ValueError:
-                ic("Bad size of " + tmp)
+                logger.warning("Invalid map size: %s", tmp)
                 refresh_map()
                 return
             if xysize[0] < 1 or xysize[1] < 1:
-                ic("Bad size of " + tmp)
+                logger.warning("Invalid map size: %s", tmp)
                 refresh_map()
                 return
             really_change_mapsize(xysize[0], xysize[1])
@@ -1495,7 +1499,7 @@ elif len(sys.argv) > 1:
         mod_loc = array_mods.index(sys.argv[1])
         tmp = array_mods[mod_loc]
     except ValueError:
-        ic(f"The module {sys.argv[1]} was not found!")
+        logger.error("The module %s was not found!", sys.argv[1])
         tmp = array_mods[0]
 else:
     pygame.display.set_caption("Select module")

@@ -18,8 +18,9 @@
 
 # this file controls the battle window.
 
+import logging
+
 import pygame
-from icecream import ic
 
 import action
 import config
@@ -31,6 +32,10 @@ import monster
 import utils
 import widgets
 from player import player
+
+logger = logging.getLogger(__name__)
+
+logger = logging.getLogger(__name__)
 
 mon_index = 0
 
@@ -316,7 +321,7 @@ def select_monster():
             active_button = i
             break
     else:
-        ic("BUG: select_monster called when all monsters were dead")
+        logger.error("select_monster called when all monsters were dead")
         return -1
 
     global return_from_dialog
@@ -380,7 +385,7 @@ def choose_monster_prev() -> None:
             active_button = i
             break
         if i == active_button:
-            ic("choose_monster_prev couldn't find a monster.")
+            logger.warning("choose_monster_prev couldn't find a monster.")
             active_button = -1
             return
     # help_text.set("Attack the " + monster_list[active_button].name)
@@ -400,7 +405,7 @@ def choose_monster_next() -> None:
             active_button = i
             break
         if i == active_button:
-            ic("choose_monster_next couldn't find a monster.")
+            logger.warning("choose_monster_next couldn't find a monster.")
             active_button = -1
             return
     # help_text.set("Attack the " + monster_list[active_button].name)

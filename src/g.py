@@ -2,12 +2,15 @@
 
 # needed for save/load game
 
+import logging
+
 import pygame
-from icecream import ic
 
 import config
 import game_screen as pygscreen
 from scripting import *
+
+logger = logging.getLogger(__name__)
 
 # This is the screen that will be used for the game.
 screen = pygscreen.get_screen()
@@ -110,7 +113,7 @@ def mapname2zgrid(name):
     for i in range(len(config.MAPS)):
         if config.MAPS[i].name == name:
             return i
-    ic("file " + name + " not found")
+    logger.warning("Map file %s not found.", name)
     return -1
 
 

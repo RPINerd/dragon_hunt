@@ -1,9 +1,9 @@
 """This file controls the wilderness and dungeon"""
 
+import logging
 from random import random
 
 import pygame
-from icecream import ic
 
 import action
 import battle
@@ -17,6 +17,8 @@ import save_mgmt
 import shop
 import widgets
 from player import player
+
+logger = logging.getLogger(__name__)
 
 # size, in tiles, of the main screen. While this is adjustable,
 # odd numbers would work much better. (To keep the player centered.)
@@ -233,7 +235,7 @@ def refreshhero() -> None:
         screen.blit(picture, ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
 
     if player.cur_hero not in config.TILES:
-        ic(f"Warning: Hero {player.cur_hero} not found!")
+        logger.warning("Hero %s not found!", player.cur_hero)
         return
 
     screen.blit(config.TILES[player.cur_hero], ((mapsizex / 2) * config.TILESIZE, (mapsizey / 2) * config.TILESIZE))
@@ -251,7 +253,7 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
     if config.DEBUG:
         tmp_time = pygame.time.get_ticks()
         if onlypartial == 5:
-            ic(f"Entering level {config.MAPS[g.zgrid].name}")
+            logger.info("Entering level %s", config.MAPS[g.zgrid].name)
 
     if input_zgrid == -1:
         input_zgrid = g.zgrid
@@ -357,13 +359,13 @@ def process_onload(recurse=True, input_zgrid=-1, onlypartial=5, rootzgrid=-1):
     global free_move
     free_move = 1
     if config.DEBUG:
-        ic("loaded " + str(input_zgrid) + " in " + str(pygame.time.get_ticks() - tmp_time))
+        logger.debug("Loaded level %s in %s ms", input_zgrid, pygame.time.get_ticks() - tmp_time)
 
 
 def debug_print_level():
     if config.DEBUG:
         pygame.image.save(map_canvas, "templevel.bmp")
-        ic("Saved level to templevel.bmp")
+        logger.debug("Saved level to templevel.bmp")
 
 
 def redisplay_map(x: int = 0, y: int = 0) -> None:
@@ -446,12 +448,10 @@ def findtile(x, y, input_zgrid):
         return returnpix
     except KeyError:
         # if the author forgot to define the tile, point out the mistake.
-        ic(
-            "Tile of "
-            + config.MAPS[input_zgrid].field[y][x].name
-            + " is not defined"
-            + " in map "
-            + config.MAPS[input_zgrid].name
+        logger.warning(
+            "Tile %s is not defined in map %s",
+            config.MAPS[input_zgrid].field[y][x].name,
+            config.MAPS[input_zgrid].name,
         )
         returnpix.append(config.MAPS[input_zgrid].field[0][0].pix)
         return returnpix
@@ -479,7 +479,7 @@ def findovertile(x, y, input_zgrid):
         return []
     except KeyError:
         # if the author forgot to define the tile, point out the mistake.
-        ic("Tile is not defined in map " + config.MAPS[input_zgrid].name)
+        logger.warning("Tile is not defined in map %s", config.MAPS[input_zgrid].name)
         returnpix.append(config.MAPS[input_zgrid].field[0][0].pix)
         return returnpix
 
@@ -1066,7 +1066,7 @@ def init_window_main(is_new_game=0):
             )
             pygame.display.flip()
     if config.DEBUG:
-        ic("Level loading time: ", pygame.time.get_ticks() - tmp_time2)
+        logger.debug("Level loading time: %s ms", pygame.time.get_ticks() - tmp_time2)
 
     # width of the hp/ep bars.
     g.hpbar_width = config.TILESIZE * 3
@@ -1192,7 +1192,7 @@ def key_handler(key_name: int) -> int:
     elif key_name == pygame.K_F10:
         debug_print_level()
     if config.DEBUG:
-        ic(pygame.time.get_ticks() - tmp_time)
+        logger.debug("Debug print level took %s ms", pygame.time.get_ticks() - tmp_time)
     return 0
 
 

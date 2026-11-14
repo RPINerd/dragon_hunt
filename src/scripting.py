@@ -2,15 +2,16 @@
     This file controls the loading of datafiles
 """
 
+import logging
 
 from pathlib import Path
-
-from icecream import ic
 
 import action
 import config
 import item
 import utils
+
+logger = logging.getLogger(__name__)
 
 
 # map data. Class tile contains data on each tile,
@@ -170,7 +171,7 @@ class Map:
                     elif map_command == "level_downright":
                         self.downright_level = map_line.split("=", 1)[1].strip()
                     else:
-                        ic(f"Bad command of {map_command} received!")
+                        logger.error("Bad command %s received!", map_command)
 
             # input tile data
             if curr_mode == 2:
@@ -243,7 +244,7 @@ class Map:
                     for obj in self.tiles[character][1]:
                         self.field[cur_line][cur_char].actions.append(obj)
                 except KeyError:
-                    ic("Tile " + character + " is undefined in map " + self.name)
+                    logger.warning("Tile %s is undefined in map %s", character, self.name)
 
         # place the per-tile data into self.field
         for line in self.per_tile_info:

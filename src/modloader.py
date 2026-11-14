@@ -1,10 +1,10 @@
 """Functions to handler the loading of individual module components."""
+import logging
 import sys
 from os import path, walk
 from pathlib import Path
 
 import pygame
-from icecream import ic
 
 import config
 import g
@@ -16,6 +16,8 @@ from item import read_items
 from monster import read_monster
 from player import player
 from scripting import read_scripts, read_shops
+
+logger = logging.getLogger(__name__)
 
 
 def load_icons() -> None:
@@ -45,7 +47,7 @@ def load_sounds() -> None:
     try:
         pygame.mixer.init()
     except pygame.error as message:
-        ic(f"Error: Unable to init sound (pygame message: {message})")
+        logger.error("Unable to init sound (pygame message: %s)", message)
         MUTE = True
         return
 
@@ -93,11 +95,11 @@ def read_images(dir_name: str) -> dict[str, pygame.Surface]:
                         else:  # if image is in root dir
                             image_dictionary[tilename] = pygame.image.load(root + "/" + tilename).convert_alpha()
             except pygame.error:
-                ic(root[i:] + "/" + tilename + " failed to load")
+                logger.warning("%s failed to load", root[i:] + "/" + tilename)
         return image_dictionary
 
     if not pygame.image.get_extended():
-        ic("Error: SDL_image required. Exiting.")
+        logger.error("SDL_image required. Exiting.")
         sys.exit()
     image_dictionary = {"blank": pygame.Surface((32, 32))}
     image_dictionary = inner_read_images("../data/buttons", image_dictionary)
@@ -330,7 +332,7 @@ def read_variables() -> None:
     variable_path = Path(config.MODULES_DIR + "/data/variables.txt")
     # Verify that the variables file exists.
     if not Path.exists(variable_path):
-        ic(f"Error: No variables file found in {config.MODULES_DIR}/data/.. Exiting.")
+        logger.error("No variables file found in %s/data/.. Exiting.", config.MODULES_DIR)
         sys.exit()
 
     # Open the module variables file and parse it
@@ -362,7 +364,7 @@ def read_variables() -> None:
                 config.mut["EXP_LIST"] = line_value.split(" ")
 
     if not config.mut["GAME_NAME"]:
-        ic("Warning: No game name found in variables file. Defaulting to 'Dragon Hunt'")
+        logger.warning("No game name found in variables file. Defaulting to 'Dragon Hunt'")
         config.mut["GAME_NAME"] = "Dragon Hunt"
 
 
@@ -379,27 +381,27 @@ def init_gamedata() -> None:
     Returns:
         None
     """
-    ic("Read settings")
+    logger.info("Read settings")
     read_settings()
-    ic("Load backgrounds")
+    logger.info("Load backgrounds")
     load_backgrounds()
-    ic("Read scripts")
+    logger.info("Read scripts")
     read_scripts()
-    ic("Read items")
+    logger.info("Read items")
     read_items()
-    ic("Read skills")
+    logger.info("Read skills")
     read_skills()
-    ic("Read monsters")
+    logger.info("Read monsters")
     read_monster()
-    ic("Read variables")
+    logger.info("Read variables")
     read_variables()
-    ic("Read shops")
+    logger.info("Read shops")
     read_shops()
-    ic("Read perturn")
+    logger.info("Read perturn")
     read_perturn()
-    ic("Load buttons")
+    logger.info("Load buttons")
     load_buttons()
-    ic("Load icons")
+    logger.info("Load icons")
     load_icons()
-    ic("Load sounds")
+    logger.info("Load sounds")
     load_sounds()

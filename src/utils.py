@@ -1,11 +1,13 @@
 """"""
+import logging
 from pathlib import Path
 from random import random
 
 import pygame
-from icecream import ic
 
 import config
+
+logger = logging.getLogger(__name__)
 
 
 def play_sound(sound_name: str) -> None:
@@ -16,7 +18,7 @@ def play_sound(sound_name: str) -> None:
     except KeyError:
         raise KeyError(f"Missing sound set {sound_name}")
     except pygame.error:
-        ic(f"Error: Unable to play sound {sound_name}")
+        logger.warning("Unable to play sound %s", sound_name)
 
 
 def die_roll(dice: int, sides: int, modfy: int = 0) -> int:

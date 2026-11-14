@@ -19,8 +19,9 @@
 # This file controls the town shops.
 
 
+import logging
+
 import pygame
-from icecream import ic
 
 import config
 import g
@@ -29,6 +30,8 @@ import item
 import main
 import widgets
 from player import player
+
+logger = logging.getLogger(__name__)
 
 screen = pygscreen.get_screen()
 
@@ -143,7 +146,7 @@ def show_details(event: int = 0, sel_item: int = -1) -> None:
         sel_item = curr_item
     if curr_focus == 0:  # inv
         if sel_item < len(item.inv):
-            ic(sel_item)
+            logger.debug("Selected item index: %s", sel_item)
             if item.inv[sel_item] != -1:
                 tempitem = item.item[item.inv[sel_item]]
                 if tempitem.type == 14 and g.shops[store_num].name == "a Gem Shop":
